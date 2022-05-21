@@ -1,0 +1,51 @@
+CHANGELOG/LISTA DE CAMBIOS DE THE LAST 15 DAYS BY R o y e r 5 5 1#8604
+
+********[ IMPORTANTE ]*******
+
+Creadores Nota:
+
+-El dia 10 y 11 fue hecho por Ha Juegos, este add-on es una comision, asi que si presentas errores o algun bug, reportaselo al creador original para saberlo https://discord.gg/QT26U2sTC6
+
+
+****************************
+
+VERSION 1.0.0 (Concept)
+
+--Dia 10: (By Ha Juegos)
+
+Nueva armor: La "Sneaky Astroner"
+- Casco: Hará que pases desapercibido aunque mires a los ojos a los endermans pero si no lo consigues los endermans siempre te atacarán aunque no los mires
+- Pechera: Te da resistencia 2 y reduce tu KB, si no la tienes, tendrás más KB y debilidad 2
+- Pantalones: Da resistencia al fuego y en caso de no conseguirlos, el fuego te hará oneshot cada que hagas contacto con él
+- Botas: Dan velocidad 2 y si no son conseguidas, lentitud 2
+
+- Llevar toda la armadura da: Regeneración 1 y healthboost 5
+
+Si no llevas la armadura, en el End te dara veneno 1 siempre
+
+
+Para Poder conseguir la armor debes matar:
+
+- Casco: Enderman [Ahora tiene velocidad 2, fuerza 5, Resistencia 2, son inmunes al fuego y agua
+- Pechera: Ravager [Tiene fuerza X, Resistencia 2, salto 3 y es inmune a proyectiles]
+- Pantalones: Piglins Brutes [Tienen armadura de netherite protección contra explosiones X y solo reciben daño por medio de explosivos]
+- Botas: Llamas [Resistencia 4, un mucho mejor campo de visión y más velocidad de disparo, hacen oneshot]
+
+--Dia 11: (By Ha Juegos)
+
+Se hace la pelea contra el dragon:
+El dragon tiene 1000 de vida y puede:
+--Ataques:
+- Al golpearlo puede haber posibilidad que el dragon te devuelva el daño mientras esta en el centro
+- Te da el efecto de nausea por 10s y si te sigues moviendo en ese entonces, te dara el efecto de wither 4 por 10s
+- Puede summonear wardens con menos vida y daño
+- Puede darte levitacion 10 por 10 segundos
+- Puede golpearte con KnockBack 50
+- Puede darte el efecto del conduit y mientras este este activado y termine los jugadores seran teletrasportados de forma aleatoria en el end
+
+- Las cabras son agresivas siempre y tienen fuerza X y sonido ambiental por siempre
+- Spawnean creepers de clase en el End
+- Hay Mas cooldown en las EnderPearls
+- Dormir te da un 70% de posibilidad de que se genere un enderman donde estas
+- Pescar o usar la caña de pescar genera con un 50% de posibilidad, una cabra
+
