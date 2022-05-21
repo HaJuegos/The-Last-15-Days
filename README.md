@@ -9,10 +9,9 @@ Un Curioso add-on donde el mundo diariamente se hara mas peligroso y lo unico qu
 <p align="center">
   <a href="https://discord.gg/p6a7tqVJxn"><img src="https://img.shields.io/discord/782053401281429504?style=plastic&color=red&logo=discord&label=Server%20de%20Discord" alt="Discord "/></a>
   <a href="https://ko-fi.com/hajuegos0710"><img src="https://img.shields.io/npm/v/express?url=https://ko-fi.com/hajuegos0710&style=plastic&logo=kofi&label=Pagina%20De%20Donaciones&color=inactive" alt="Ko-Fi "/></a>
-  <a href="https://github.com/HaJuegos/The-Last-15-Days"><img src="https://img.shields.io/github/stars/HaJuegos/The-Last-15-Days?label=Total%20de%20Estrellas&style=plastic&logo=github&color=blueviolet" alt="GitHub Stars "/></a>
+  <a href="https://twitter.com/ha_juegos?s=09"><img src="https://img.shields.io/twitter/follow/ha_juegos?style=plastic&color=success&logo=twitter&label=Seguidores" alt="Twitter "/></a>
 </p>
 <p align="center">
-  <a href="https://twitter.com/ha_juegos?s=09"><img src="https://img.shields.io/twitter/follow/ha_juegos?style=plastic&color=success&logo=twitter&label=Seguidores" alt="Twitter "/></a>
   <a href="https://www.youtube.com/watch?v=SWd6QM0TTJo"><img src="https://img.shields.io/youtube/views/SWd6QM0TTJo?style=plastic&logo=youtube&color=red&label=Vistas%20Del%20Tutorial" alt="Youtube "/></a>
 </p>
 
