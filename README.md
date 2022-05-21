@@ -28,3 +28,6 @@ Un Curioso add-on donde el mundo diariamente se hara mas peligroso y lo unico qu
 ## OPCIONES EXPERIMENTALES
 
 Este add-on requiere de estas opciones experimentales activas en tu mundo para poder funcionan de forma correcta, Procura tenerlo activo.
+
+![Captura de pantalla (396)](https://user-images.githubusercontent.com/102632956/169634712-cfa10b65-e98b-4500-a1ad-b2f9f38d0475.png)
+![Captura de pantalla (397)](https://user-images.githubusercontent.com/102632956/169634717-6a40efa5-7fd3-4494-9646-45ccae2ba8a4.png)
