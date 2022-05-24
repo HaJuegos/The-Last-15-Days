@@ -1,15 +1,16 @@
-CHANGELOG/LISTA DE CAMBIOS DE THE LAST 15 DAYS BY R o y e r 5 5 1#8604
+CHANGELOG/LISTA DE CAMBIOS DE THE LAST 15 DAYS BY R o y e r 5 5 1#8604 (VERSION 1.1.0 BETA)
 
 ********[ IMPORTANTE ]*******
 
 Creadores Nota:
 
--El dia 10 y 11 fue hecho por Ha Juegos, este add-on es una comision, asi que si presentas errores o algun bug, reportaselo al creador original para saberlo https://discord.gg/QT26U2sTC6
+-El dia 10 y 11 fue hecho por Ha Juegos. Este add-on es una comision, asi que si presentas errores o algun bug, reportalo en el Servidor de Discord https://discord.gg/p6a7tqVJxn
+-Los Dias 0-4 Fueron Hechos por Convex. Este add-on es una comision, asi que si presentas errores o algun bug, reportalo en el Servidor de Discord https://discord.gg/p6a7tqVJxn
 
 
 ****************************
 
-VERSION 1.0.0 (Concept)
+VERSION 1.1.0
 
 --Dia 0: (By Convex)
 
