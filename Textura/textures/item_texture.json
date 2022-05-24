@@ -1,24 +1,36 @@
+/* This file belongs to: "Ha Juegos" and "Convex" (Copyright 2022), Any unauthorized modification or change will be penalized, more information to authorize your copies you can contact me on discord: https://discord.gg/p6a7tqVJxn
+My youtube channel for more updates: https://www.youtube.com/c/HaJuegos and the Convex GitHub: https://github.com/conveex
+********************************************************************
+Este archivo pertenece a: "Ha Juegos" y "Convex" (Copyright 2022), Cualquier modificación o cambio no autorizado será sancionado, más información para autorizar tus copias puedes contactar conmigo en discord: https://discord.gg/p6a7tqVJxn
+Mi canal de youtube para más actualizaciones: https://www.youtube.com/c/HaJuegos y el GitHub de Convex: https://github.com/conveex */
 {
-  "resource_pack_name":"15_days",
-    "texture_name":"atlas.items",
-    "texture_data":{
-        "iron_apple":{
-            "textures":"textures/items/iron_apple"
-        },
-        "astroner_boots":{
-            "textures":"textures/items/astroner_boots"
-        },
-        "astroner_leggings":{
-            "textures":"textures/items/astroner_leggings"
-        },
-        "astroner_helmet":{
-            "textures":"textures/items/astroner_helmet"
-        },
-        "astroner_chestplate":{
-            "textures":"textures/items/astroner_chestplate"
-        },
-        "summoner_totem":{
-            "textures":"textures/items/summoner_totem"
-        }
-    }
+	"resource_pack_name": "RP_15_days",
+	"texture_name": "atlas.items",
+	"texture_data": {
+		// Items Category Texture
+		"iron_apple": {
+			"textures": "textures/items/custom_items/dia_2_items/iron_apple"
+		},
+		"summoner_totem": {
+			"textures": "textures/items/custom_items/dia_4_items/summoner_totem"
+		},
+		// Armors Category Texture Item
+		"astroner_boots": {
+			"textures": "textures/items/sneaky_astroner_armor/boots"
+		},
+		"astroner_leggings": {
+			"textures": "textures/items/sneaky_astroner_armor/leggings"
+		},
+		"astroner_helmet": {
+			"textures": "textures/items/sneaky_astroner_armor/helmet"
+		},
+		"astroner_chestplate": {
+			"textures": "textures/items/sneaky_astroner_armor/chestplate"
+		}
+	}
 }
+/* This file belongs to: "Ha Juegos" and "Convex" (Copyright 2022), Any unauthorized modification or change will be penalized, more information to authorize your copies you can contact me on discord: https://discord.gg/p6a7tqVJxn
+My youtube channel for more updates: https://www.youtube.com/c/HaJuegos and the Convex GitHub: https://github.com/conveex
+********************************************************************
+Este archivo pertenece a: "Ha Juegos" y "Convex" (Copyright 2022), Cualquier modificación o cambio no autorizado será sancionado, más información para autorizar tus copias puedes contactar conmigo en discord: https://discord.gg/p6a7tqVJxn
+Mi canal de youtube para más actualizaciones: https://www.youtube.com/c/HaJuegos y el GitHub de Convex: https://github.com/conveex */
