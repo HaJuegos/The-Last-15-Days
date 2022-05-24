@@ -1,29 +1,6 @@
-{
-    "format_version": "1.12",
-    "minecraft:recipe_shaped": {
-      "description": {
-      "identifier": "cnvx:iron_apple"
-      },
-  
-      
-      "tags": [ "crafting_table" ],
-      "pattern": [
-        "###",
-        "#X#",
-        "###"
-      ],
-      "key": {
-        "#": {
-          "item": "minecraft:iron_ingot"
-        },
-        "X": {
-          "item": "minecraft:apple"
-        }
-      },
-      "result": {
-        "item": "cnvx:iron_apple",
-        "data": 0
-      }
-    }
-  }
-  
+/* This file belongs to: "conveex" (Ha Juegos Copyright 2022), Any unauthorized modification or change will be penalized, more information to authorize your copies you can contact me on discord: https://discord.gg/p6a7tqVJxn
+GitHubs: https://github.com/CibNumeritos https://github.com/conveex
+*********************************************************************
+Este archivo pertenece a: "conveex" (Ha Juegos Copyright 2022), Cualquier modificación o cambio no autorizado será sancionado, más información para autorizar tus copias puedes contactar conmigo en discord: https://discord.gg/p6a7tqVJxn
+Sus GitHubs: https://github.com/conveex */
+{"format_version":"1.12","minecraft:recipe_shaped":{"description":{"identifier":"cnvx:iron_apple"},"tags":["crafting_table"],"pattern":["###","#X#","###"],"key":{"#":{"item":"minecraft:iron_ingot"},"X":{"item":"minecraft:apple"}},"result":{"item":"cnvx:iron_apple","data":0}}}
