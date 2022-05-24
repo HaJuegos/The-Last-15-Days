@@ -1,1 +1,0 @@
-execute @a ~ ~ ~ fill ~-1 ~ ~-1 ~1 ~2 ~1 air 0 replace portal
