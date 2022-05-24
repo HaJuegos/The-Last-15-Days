@@ -1,1 +1,21 @@
-{}
+{
+  "resource_pack_name":"15_days",
+    "texture_name":"atlas.items",
+    "texture_data":{
+        "iron_apple":{
+            "textures":"textures/items/iron_apple"
+        },
+        "astroner_boots":{
+            "textures":"textures/items/astroner_boots"
+        },
+        "astroner_leggings":{
+            "textures":"textures/items/astroner_leggings"
+        },
+        "astroner_helmet":{
+            "textures":"textures/items/astroner_helmet"
+        },
+        "astroner_chestplate":{
+            "textures":"textures/items/astroner_chestplate"
+        }
+    }
+}
