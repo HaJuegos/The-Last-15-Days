@@ -1,3 +1,10 @@
+## This file belongs to: "Ha Juegos" and "Convex" (Copyright 2022), Any unauthorized modification or change will be penalized, more information to authorize your copies you can contact me on discord: https://discord.gg/p6a7tqVJxn
+## My youtube channel for more updates: https://www.youtube.com/c/HaJuegos and the Convex GitHub: https://github.com/conveex
+## ********************************************************************
+## Este archivo pertenece a: "Ha Juegos" y "Convex" (Copyright 2022), Cualquier modificación o cambio no autorizado será sancionado, más información para autorizar tus copias puedes contactar conmigo en discord: https://discord.gg/p6a7tqVJxn
+## Mi canal de youtube para más actualizaciones: https://www.youtube.com/c/HaJuegos y el GitHub de Convex: https://github.com/conveex
+
+## Nombre de Items Armadura
 item.ha:sneaky_astroner_helmet=Casco del Astronauta Cauteloso
 item.ha:sneaky_astroner_chestplate=Coraza del Astronauta Cauteloso
 item.ha:sneaky_astroner_leggings=Musleras del Astronauta Cauteloso
@@ -5,6 +12,6 @@ item.ha:sneaky_astroner_boots=Botas del Astronauta Cauteloso
 item.cnvx:iron_apple=§7Manzana de Hierro
 item.cnvx:summoner_totem=§8Tótem Invocador
 
-
+## Mensaje de ataques
 message.attack_warning_stop=§dHas sido teletransportado aleatoriamente.
 message.attack_warning=§eEstas moviendote! Para de moverte hasta que el sonido termine

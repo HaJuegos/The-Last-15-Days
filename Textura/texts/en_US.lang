@@ -1,8 +1,8 @@
-## This file belongs to: "Ha Juegos" (Copyright 2022), Any unauthorized modification or change will be penalized, more information to authorize your copies you can contact me on discord: https://discord.gg/p6a7tqVJxn
-## My youtube channel for more updates: https://www.youtube.com/c/HaJuegos
+## This file belongs to: "Ha Juegos" and "Convex" (Copyright 2022), Any unauthorized modification or change will be penalized, more information to authorize your copies you can contact me on discord: https://discord.gg/p6a7tqVJxn
+## My youtube channel for more updates: https://www.youtube.com/c/HaJuegos and the Convex GitHub: https://github.com/conveex
 ## ********************************************************************
-## Este archivo pertenece a: "Ha Juegos" (Copyright 2022), Cualquier modificación o cambio no autorizado será sancionado, más información para autorizar tus copias puedes contactar conmigo en discord: https://discord.gg/p6a7tqVJxn
-## Mi canal de youtube para más actualizaciones: https://www.youtube.com/c/HaJuegos
+## Este archivo pertenece a: "Ha Juegos" y "Convex" (Copyright 2022), Cualquier modificación o cambio no autorizado será sancionado, más información para autorizar tus copias puedes contactar conmigo en discord: https://discord.gg/p6a7tqVJxn
+## Mi canal de youtube para más actualizaciones: https://www.youtube.com/c/HaJuegos y el GitHub de Convex: https://github.com/conveex
 
 ## Warning! English translations are not all very accurate, if you see something wrong, report it on my discord server or if you want to help with translations! (Server in Spanish but send me MD if you don't know Spanish)
 
@@ -17,4 +17,3 @@ item.cnvx:summoner_totem=§8Invocation Totem
 ## Message Attacks
 message.attack_warning_stop=§dYou were randomly teleported.
 message.attack_warning=§eYou're moving! Stop until the sound ends
-

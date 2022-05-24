@@ -1,32 +1,6 @@
-{
-    "format_version": "1.8.0",
-    "minecraft:spawn_rules": {
-        "description": {
-            "identifier": "minecraft:cave_spider",
-            "population_control": "monster"
-        },
-        "conditions": [
-            {
-                "minecraft:spawns_on_surface": {},
-                "minecraft:spawns_underground": {},
-                "minecraft:brightness_filter": {
-                    "min": 0,
-                    "max": 7,
-                    "adjust_for_weather": true
-                },
-                "minecraft:difficulty_filter": {
-                    "min": "easy",
-                    "max": "hard"
-                },
-                "minecraft:weight": {
-                    "default": 100
-                },
-                "minecraft:biome_filter": {
-                    "test": "has_biome_tag",
-                    "operator": "==",
-                    "value": "monster"
-                }
-            }
-        ]
-    }
-}
+/* This file belongs to: "conveex" (Ha Juegos Copyright 2022), Any unauthorized modification or change will be penalized, more information to authorize your copies you can contact me on discord: https://discord.gg/p6a7tqVJxn
+GitHubs: https://github.com/CibNumeritos https://github.com/conveex
+*********************************************************************
+Este archivo pertenece a: "conveex" (Ha Juegos Copyright 2022), Cualquier modificación o cambio no autorizado será sancionado, más información para autorizar tus copias puedes contactar conmigo en discord: https://discord.gg/p6a7tqVJxn
+Sus GitHubs: https://github.com/conveex */
+{"format_version":"1.8.0","minecraft:spawn_rules":{"description":{"identifier":"minecraft:cave_spider","population_control":"monster"},"conditions":[{"minecraft:spawns_on_surface":{},"minecraft:spawns_underground":{},"minecraft:brightness_filter":{"min":0,"max":7,"adjust_for_weather":true},"minecraft:difficulty_filter":{"min":"easy","max":"hard"},"minecraft:weight":{"default":100},"minecraft:biome_filter":{"test":"has_biome_tag","operator":"==","value":"monster"}}]}}
