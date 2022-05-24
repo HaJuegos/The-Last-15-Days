@@ -12,6 +12,7 @@ item.ha:sneaky_astroner_chestplate=The "Sneaky Astroner" Chestplate
 item.ha:sneaky_astroner_leggings=The "Sneaky Astroner" Leggings
 item.ha:sneaky_astroner_boots=The "Sneaky Astroner" Boots
 item.cnvx:iron_apple=§7Iron Apple
+item.cnvx:summoner_totem=§8Invocation Totem
 
 ## Message Attacks
 message.attack_warning_stop=§dYou were randomly teleported.

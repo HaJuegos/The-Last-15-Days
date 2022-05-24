@@ -16,6 +16,9 @@
         },
         "astroner_chestplate":{
             "textures":"textures/items/astroner_chestplate"
+        },
+        "summoner_totem":{
+            "textures":"textures/items/summoner_totem"
         }
     }
 }
