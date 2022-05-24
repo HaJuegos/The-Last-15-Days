@@ -1,0 +1,11 @@
+execute @a ~ ~ ~ fill ~-1 ~ ~-1 ~1 ~2 ~1 air 0 replace portal
+execute @a ~ ~ ~ detect ~ ~ ~ deadbush 0 effect @s poison 10 0
+execute @a ~ ~ ~ detect ~ ~ ~ sweet_berry_bush 0 effect @s poison 10 0
+execute @a ~ ~ ~ detect ~ ~ ~ sweet_berry_bush 1 effect @s poison 10 0
+execute @a ~ ~ ~ detect ~ ~ ~ sweet_berry_bush 2 effect @s poison 10 0
+execute @a ~ ~ ~ detect ~ ~ ~ sweet_berry_bush 3 effect @s poison 10 0
+execute @a ~ ~ ~ detect ~0.3 ~ ~ cactus 0 effect @s poison 10 0
+execute @a ~ ~ ~ detect ~-0.3 ~ ~ cactus 0 effect @s poison 10 0
+execute @a ~ ~ ~ detect ~ ~ ~0.3 cactus 0 effect @s poison 10 0
+execute @a ~ ~ ~ detect ~ ~ ~-0.3 cactus 0 effect @s poison 10 0
+execute @a ~ ~ ~ detect ~ ~-1 ~ cactus 0 effect @s poison 10 0
