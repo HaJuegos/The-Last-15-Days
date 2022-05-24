@@ -1,3 +1,9 @@
+## This file belongs to: "conveex" (Ha Juegos Copyright 2022), Any unauthorized modification or change will be penalized, more information to authorize your copies you can contact me on discord: https://discord.gg/p6a7tqVJxn
+## GitHubs: https://github.com/CibNumeritos https://github.com/conveex
+## *********************************************************************
+## Este archivo pertenece a: "conveex" (Ha Juegos Copyright 2022), Cualquier modificación o cambio no autorizado será sancionado, más información para autorizar tus copias puedes contactar conmigo en discord: https://discord.gg/p6a7tqVJxn
+## Sus GitHubs: https://github.com/conveex 
+
 scoreboard objectives add fox_stealing dummy fox_stealing
 scoreboard players random @s fox_stealing 0 40
 execute @s[scores={fox_stealing=0}] ~ ~ ~ replaceitem entity @s slot.inventory 0 air
