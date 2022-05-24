@@ -1,1 +1,9 @@
+item.ha:sneaky_astroner_helmet=Casco del Astronauta Cauteloso
+item.ha:sneaky_astroner_chestplate=Coraza del Astronauta Cauteloso
+item.ha:sneaky_astroner_leggings=Musleras del Astronauta Cauteloso
+item.ha:sneaky_astroner_boots=Botas del Astronauta Cauteloso
 item.cnvx:iron_apple=§7Manzana de Hierro
+
+
+message.attack_warning_stop=§dHas sido teletransportado aleatoriamente.
+message.attack_warning=§eEstas moviendote! Para de moverte hasta que el sonido termine
