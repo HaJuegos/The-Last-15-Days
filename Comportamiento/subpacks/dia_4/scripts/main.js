@@ -41,6 +41,7 @@ world.events.tick.subscribe(eventKit => {
                 world.getDimension("overworld").runCommand(`execute "${player.nameTag}" ~ ~ ~ replaceitem entity @s slot.hotbar 8 golden_carrot 15`)
                 world.getDimension("overworld").runCommand(`execute "${player.nameTag}" ~ ~ ~ replaceitem entity @s slot.hotbar 7 water_bucket`)
                 world.getDimension("overworld").runCommand(`execute "${player.nameTag}" ~ ~ ~ scoreboard objectives add ban dummy ban`)
+                world.getDimension("overworld").runCommand(`execute "${player.nameTag}" ~ ~ ~ scoreboard objectives add SwapInv dummy`)
                 player.addTag("Kit")
             } else { }
         }
