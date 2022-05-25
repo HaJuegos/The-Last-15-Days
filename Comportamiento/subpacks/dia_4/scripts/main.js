@@ -52,7 +52,17 @@ world.events.beforeItemUse.subscribe(eventMilk => {
     const player = eventMilk.source
     const item = eventMilk.item
     if (item.id == 'minecraft:milk_bucket') {
-            player.addTag("TomoLeche")
+        player.addTag("TomoLeche")
+    } else if (item.id == 'minecraft:totem_of_undying') {
+        for (const plr of world.getPlayers()) {
+            if (runCommand(`execute "${plr.nameTag}" ~ ~ ~ testfor @s[hasitem={item=totem,location=slot.weapon.offhand}]`).error == true) {
+                player.runCommand(`replaceitem entity @s slot.weapon.offhand 0 totem`)
+                player.runCommand(`replaceitem entity @s slot.weapon.mainhand 0 air`)
+                player.runCommand(`playsound armor.equip_chain @s`)
+            } else {
+
+            }
+        }
     }
 })
 
