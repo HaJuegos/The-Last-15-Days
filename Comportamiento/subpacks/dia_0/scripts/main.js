@@ -28,7 +28,9 @@ world.events.beforeChat.subscribe(eventData => {
 })
 world.events.tick.subscribe(() => {
     const players = Array.from(world.getPlayers(banQuery))
-    for (const player of players) { player.runCommand(`kick ${player.name} ¡Has muerto y ahora estas baneado!`) }
+    for (const player of players) { 
+        player.runCommand(`kick ${player.name} ¡Has muerto y ahora estas baneado!`) 
+    }
 })
 world.events.tick.subscribe(eventKit => {
     try {
