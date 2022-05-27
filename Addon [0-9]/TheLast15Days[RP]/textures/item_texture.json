@@ -1,0 +1,21 @@
+{
+    "resource_pack_name":"15_days",
+    "texture_name":"atlas.items",
+    "texture_data":{
+        "iron_apple":{
+            "textures":"textures/items/iron_apple"
+        },
+        "summoner_totem":{
+            "textures":"textures/items/summoner_totem"
+        },
+        "infernal_relic":{
+            "textures":"textures/items/infernal_relic"
+        },
+        "igneous_fragment":{
+            "textures":"textures/items/igneous_fragment"
+        },
+        "hoglin_tusk":{
+            "textures":"textures/items/hoglin_tusk"
+        }
+    }
+}

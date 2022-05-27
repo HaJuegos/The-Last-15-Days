@@ -1,0 +1,160 @@
+{
+    "format_version": "1.16.0",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "minecraft:bat",
+            "is_spawnable": true,
+            "is_summonable": true,
+            "is_experimental": false
+        },
+        "component_groups": {
+            "cnvx:explode": {
+                "minecraft:explode": {
+                    "fuse_length": 0,
+                    "fuse_lit": true,
+                    "power": 4,
+                    "causes_fire": false,
+                    "destroy_affected_by_griefing": true
+                }
+            },
+            "cnvx:bat_angry": {
+                "minecraft:attack": {
+                    "damage": 5
+                },
+                "minecraft:behavior.melee_attack": {
+                    "priority": 3,
+                    "speed_multiplier": 1.4,
+                    "on_attack": {
+                        "event": "cnvx:explode",
+                        "target": "self"
+                    }
+                },
+                "minecraft:behavior.hurt_by_target": {
+                    "priority": 1
+                },
+                "minecraft:behavior.nearest_attackable_target": {
+                    "priority": 2,
+                    "must_see": true,
+                    "reselect_targets": true,
+                    "entity_types": [
+                        {
+                            "filters": {
+                                "any_of": [
+                                    {
+                                        "test": "is_family",
+                                        "subject": "other",
+                                        "value": "player"
+                                    }
+                                ]
+                            },
+                            "max_dist": 35
+                        }
+                    ]
+                },
+                "minecraft:follow_range": {
+                    "value": 64
+                }
+            }
+        },
+        "components": {
+            "minecraft:damage_sensor": {
+                "triggers": [
+                    {
+                        "cause": "attack",
+                        "on_damage": {
+                            "filters": {
+                                "all_of": [
+                                    {
+                                        "test": "has_damage",
+                                        "value": "attack"
+                                    },
+                                    {
+                                        "test": "is_family",
+                                        "subject": "damager",
+                                        "value": "player"
+                                    }
+                                ]
+                            },
+                            "event": "cnvx:explode"
+                        }
+                    },
+                    {
+                        "cause": "fall",
+                        "deals_damage": false
+                    }
+                ]
+            },
+            "minecraft:is_hidden_when_invisible": {},
+            "minecraft:type_family": {
+                "family": [
+                    "bat",
+                    "mob"
+                ]
+            },
+            "minecraft:breathable": {
+                "total_supply": 15,
+                "suffocate_time": 0
+            },
+            "minecraft:collision_box": {
+                "width": 0.5,
+                "height": 0.9
+            },
+            "minecraft:hurt_on_condition": {
+                "damage_conditions": [
+                    {
+                        "filters": {
+                            "test": "in_lava",
+                            "subject": "self",
+                            "operator": "==",
+                            "value": true
+                        },
+                        "cause": "lava",
+                        "damage_per_tick": 4
+                    }
+                ]
+            },
+            "minecraft:movement": {
+                "value": 0.4
+            },
+            "minecraft:navigation.float": {
+                "can_path_over_water": true,
+                "can_path_from_air": true
+            },
+            "minecraft:movement.basic": {},
+            "minecraft:jump.static": {},
+            "minecraft:despawn": {
+                "despawn_from_distance": {}
+            },
+            "minecraft:behavior.float": {
+                "priority": 0
+            },
+            "minecraft:can_fly": {},
+            "minecraft:health": {
+                "value": 6,
+                "max": 6
+            },
+            "minecraft:nameable": {},
+            "minecraft:physics": {},
+            "minecraft:conditional_bandwidth_optimization": {},
+            "minecraft:attack": {
+                "damage": 5
+            }
+        },
+        "events": {
+            "minecraft:entity_spawned": {
+                "add": {
+                    "component_groups": [
+                        "cnvx:bat_angry"
+                    ]
+                }
+            },
+            "cnvx:explode": {
+                "add": {
+                    "component_groups": [
+                        "cnvx:explode"
+                    ]
+                }
+            }
+        }
+    }
+}

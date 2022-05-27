@@ -1,0 +1,214 @@
+{
+    "format_version": "1.18.30",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "cnvx:creeper_aoe",
+            "is_spawnable": false,
+            "is_summonable": true,
+            "is_experimental": false,
+            "scripts": {
+                "animate": [
+                    "effects"
+                ]
+            },
+            "animations": {
+                "effects": "animation.effects"
+            }
+        },
+        "component_groups": {
+            "cnvx:radioactive_creeper": {
+                "minecraft:timer": {
+                    "time": [
+                        20,
+                        20
+                    ],
+                    "time_down_event": {
+                        "event": "cnvx:despawn"
+                    }
+                },
+                "minecraft:type_family": {
+                    "family": [
+                        "radioactive"
+                    ]
+                },
+                "minecraft:spawn_entity": {
+                    "entities": [
+                        {
+                            "should_leash": false,
+                            "num_to_spawn": 1,
+                            "min_wait_time": 0,
+                            "max_wait_time": 0,
+                            "spawn_entity": "cnvx:creeper_aoe",
+                            "spawn_event": "cnvx:radioactive_creeper_p",
+                            "single_use": true
+                        }
+                    ]
+                }
+            },
+            "cnvx:radioactive_creeper_p": {
+                "minecraft:projectile": {
+                    "on_hit": {
+                        "spawn_aoe_cloud": {
+                            "radius": 2.5,
+                            "radius_on_use": 0,
+                            "potion": 34,
+                            "duration": 30,
+                            "particle": "fallingdust",
+                            "color": [
+                                123,
+                                125,
+                                125
+                            ],
+                            "affect_owner": false,
+                            "reapplication_delay": 9999
+                        },
+                        "remove_on_hit": {}
+                    },
+                    "power": 1.6,
+                    "gravity": 0,
+                    "inertia": 1,
+                    "anchor": 2,
+                    "offset": [
+                        0,
+                        0.5,
+                        0
+                    ],
+                    "semi_random_diff_damage": true,
+                    "uncertainty_base": 10,
+                    "reflect_on_hurt": false
+                }
+            },
+            "cnvx:debuff_creeper": {
+                "minecraft:timer": {
+                    "time": [
+                        20,
+                        20
+                    ],
+                    "time_down_event": {
+                        "event": "cnvx:despawn"
+                    }
+                },
+                "minecraft:type_family": {
+                    "family": [
+                        "debuff"
+                    ]
+                },
+                "minecraft:spawn_entity": {
+                    "entities": [
+                        {
+                            "should_leash": false,
+                            "num_to_spawn": 1,
+                            "min_wait_time": 0,
+                            "max_wait_time": 0,
+                            "spawn_entity": "cnvx:creeper_aoe",
+                            "spawn_event": "cnvx:debuff_creeper_p",
+                            "single_use": true
+                        }
+                    ]
+                }
+            },
+            "cnvx:debuff_creeper_p": {
+                "minecraft:projectile": {
+                    "on_hit": {
+                        "spawn_aoe_cloud": {
+                            "radius": 2.5,
+                            "radius_on_use": 0,
+                            "potion": 36,
+                            "duration": 30,
+                            "particle": "fallingdust",
+                            "color": [
+                                0,
+                                0,
+                                0
+                            ],
+                            "affect_owner": false,
+                            "reapplication_delay": 9999
+                        },
+                        "remove_on_hit": {}
+                    },
+                    "power": 1.6,
+                    "gravity": 0,
+                    "inertia": 1,
+                    "anchor": 2,
+                    "offset": [
+                        0,
+                        0.5,
+                        0
+                    ],
+                    "semi_random_diff_damage": true,
+                    "uncertainty_base": 10,
+                    "reflect_on_hurt": false
+                }
+            },
+            "cnvx:despawn": {
+                "minecraft:instant_despawn": {
+                    "remove_child_entities": true
+                }
+            }
+        },
+        "components": {
+            "minecraft:physics": {
+                "has_collision": false,
+                "has_gravity": false
+            },
+            "minecraft:collision_box": {
+                "width": 2.5,
+                "height": 0.30
+            },
+            "minecraft:persistent": {},
+            "minecraft:pushable": {
+                "is_pushable": false,
+                "is_pushable_by_piston": false
+            },
+            "minecraft:damage_sensor": {
+                "triggers": [
+                    {
+                        "cause": "all",
+                        "deals_damage": false
+                    }
+                ]
+            },
+            "minecraft:knockback_resistance": {
+                "value": 100,
+                "max": 100
+            }
+        },
+        "events": {
+            "cnvx:despawn": {
+                "add": {
+                    "component_groups": [
+                        "cnvx:despawn"
+                    ]
+                }
+            },
+            "cnvx:radioactive_creeper": {
+                "add": {
+                    "component_groups": [
+                        "cnvx:radioactive_creeper"
+                    ]
+                }
+            },
+            "cnvx:debuff_creeper": {
+                "add": {
+                    "component_groups": [
+                        "cnvx:debuff_creeper"
+                    ]
+                }
+            },
+            "cnvx:radioactive_creeper_p": {
+                "add": {
+                    "component_groups": [
+                        "cnvx:radioactive_creeper_p"
+                    ]
+                }
+            },
+            "cnvx:debuff_creeper_p": {
+                "add": {
+                    "component_groups": [
+                        "cnvx:debuff_creeper_p"
+                    ]
+                }
+            }
+        }
+    }
+}

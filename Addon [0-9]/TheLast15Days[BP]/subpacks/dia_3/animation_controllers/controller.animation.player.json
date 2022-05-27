@@ -1,0 +1,61 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.death": {
+            "states": {
+                "alive": {
+                    "transitions": [
+                        {
+                            "dead": "query.is_alive==0"
+                        }
+                    ]
+                },
+                "dead": {
+                    "transitions": [
+                        {
+                            "respawn": "!query.is_alive==0"
+                        }
+                    ],
+                    "on_entry": [
+                        "/execute @s[tag=!dead] ~ ~ ~ effect @a blindness 10 0",
+                        "/execute @s[tag=!dead] ~ ~ ~ effect @a nausea 10 0",
+                        "/execute @s[tag=!dead] ~ ~ ~ execute @r ~ ~ ~ summon lightning_bolt ~ ~ ~",
+                        "/execute @s[tag=!dead] ~ ~ ~ tellraw @a {\"rawtext\": [{\"text\":\"§c\"},{\"selector\":\"@s\"},{\"text\":\" Murió y ha causado un §4Resquicio Infernal\"}]}",
+                        "/execute @s[tag=!dead] ~ ~ ~ scoreboard players set @s ban 1",
+                        "/tag @s[tag=!dead] add dead"
+                    ]
+                },
+                "respawn": {
+                    "transitions": [
+                        {
+                            "alive": "!query.is_alive==0"
+                        }
+                    ]
+                }
+            }
+        },
+        "controller.animation.sleep": {
+            "states": {
+                "default": {
+                    "transitions": [
+                        {
+                            "sleeping": "query.is_sleeping"
+                        }
+                    ]
+                },
+                "sleeping": {
+                    "transitions": [
+                        {
+                            "default": "!query.is_sleeping"
+                        }
+                    ],
+                    "on_entry": [
+                        "/time set 0",
+                        "/weather clear",
+                        "/tellraw @a {\"rawtext\":[{\"text\":\"§a\"},{\"selector\":\"@s\"},{\"text\":\" Fue a dormir, Buenos días!\"}]}"
+                    ]
+                }
+            }
+        }
+    }
+}

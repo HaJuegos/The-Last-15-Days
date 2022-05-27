@@ -1,0 +1,209 @@
+{
+    "format_version": "1.12.0",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "minecraft:fireball",
+            "is_spawnable": false,
+            "is_summonable": false,
+            "is_experimental": false
+        },
+        "component_groups": {
+            "minecraft:exploding": {
+                "minecraft:explode": {
+                    "fuse_length": 0,
+                    "fuse_lit": true,
+                    "power": 5,
+                    "causes_fire": true,
+                    "fire_affected_by_griefing": true,
+                    "destroy_affected_by_griefing": true
+                }
+            },
+            "cnvx:skeleton_fireball": {
+                "minecraft:projectile": {
+                    "on_hit": {
+                        "definition_event": {
+                            "affect_projectile": true,
+                            "event_trigger": {
+                                "event": "cnvx:explode_skeleton",
+                                "target": "self"
+                            }
+                        }
+                    },
+                    "power": 1.6,
+                    "gravity": 0.00,
+                    "inertia": 1,
+                    "liquid_inertia": 1,
+                    "uncertainty_base": 0,
+                    "uncertainty_multiplier": 0,
+                    "anchor": 1,
+                    "offset": [
+                        0,
+                        -0.1,
+                        0
+                    ],
+                    "reflect_on_hurt": true,
+                    "catch_fire": true
+                },
+                "minecraft:despawn": {
+                    "despawn_from_distance": {}
+                }
+            },
+            "cnvx:explode_skeleton_4": {
+                "minecraft:explode": {
+                    "fuse_length": 0,
+                    "fuse_lit": true,
+                    "power": 4,
+                    "causes_fire": true,
+                    "fire_affected_by_griefing": true,
+                    "destroy_affected_by_griefing": true
+                }
+            },
+            "cnvx:explode_skeleton_6": {
+                "minecraft:explode": {
+                    "fuse_length": 0,
+                    "fuse_lit": true,
+                    "power": 6,
+                    "causes_fire": true,
+                    "fire_affected_by_griefing": true,
+                    "destroy_affected_by_griefing": true
+                }
+            },
+            "cnvx:explode_skeleton_8": {
+                "minecraft:explode": {
+                    "fuse_length": 0,
+                    "fuse_lit": true,
+                    "power": 8,
+                    "causes_fire": true,
+                    "fire_affected_by_griefing": true,
+                    "destroy_affected_by_griefing": true
+                }
+            },
+            "cnvx:explode_skeleton_10": {
+                "minecraft:explode": {
+                    "fuse_length": 0,
+                    "fuse_lit": true,
+                    "power": 10,
+                    "causes_fire": true,
+                    "fire_affected_by_griefing": true,
+                    "destroy_affected_by_griefing": true
+                }
+            }
+        },
+        "components": {
+            "minecraft:collision_box": {
+                "width": 0.31,
+                "height": 0.31
+            },
+            "minecraft:projectile": {
+                "on_hit": {
+                    "definition_event": {
+                        "affect_projectile": true,
+                        "event_trigger": {
+                            "event": "minecraft:explode",
+                            "target": "self"
+                        }
+                    }
+                },
+                "power": 1.6,
+                "gravity": 0.00,
+                "inertia": 1,
+                "liquid_inertia": 1,
+                "uncertainty_base": 0,
+                "uncertainty_multiplier": 0,
+                "anchor": 1,
+                "offset": [
+                    0,
+                    -0.1,
+                    0
+                ],
+                "reflect_on_hurt": true,
+                "catch_fire": true
+            },
+            "minecraft:physics": {},
+            "minecraft:pushable": {
+                "is_pushable": true,
+                "is_pushable_by_piston": true
+            },
+            "minecraft:conditional_bandwidth_optimization": {
+                "default_values": {
+                    "max_optimized_distance": 80.0,
+                    "max_dropped_ticks": 7,
+                    "use_motion_prediction_hints": true
+                }
+            }
+        },
+        "events": {
+            "minecraft:entity_spawned": {
+                "sequence": [
+                    {
+                        "filters": {
+                            "test": "is_family",
+                            "subject": "other",
+                            "operator": "==",
+                            "value": "ghast"
+                        },
+                        "add": {
+                            "component_groups": []
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_family",
+                            "subject": "other",
+                            "operator": "==",
+                            "value": "skeleton"
+                        },
+                        "add": {
+                            "component_groups": [
+                                "cnvx:skeleton_fireball"
+                            ]
+                        }
+                    }
+                ]
+            },
+            "minecraft:explode": {
+                "add": {
+                    "component_groups": [
+                        "minecraft:exploding"
+                    ]
+                }
+            },
+            "cnvx:explode_skeleton": {
+                "randomize": [
+                    {
+                        "weight": 25,
+                        "add": {
+                            "component_groups": [
+                                "cnvx:explode_skeleton_4"
+                            ]
+                        }
+                    },
+                    {
+                        "weight": 25,
+                        "add": {
+                            "component_groups": [
+                                "cnvx:explode_skeleton_6"
+                            ]
+                        }
+                    },
+                    {
+                        "weight": 25,
+                        "add": {
+                            "component_groups": [
+                                "cnvx:explode_skeleton_8"
+                            ]
+                        }
+                    },
+                    {
+                        "weight": 25,
+                        "add": {
+                            "component_groups": [
+                                "cnvx:explode_skeleton_10"
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}
