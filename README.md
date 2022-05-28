@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/HaJuegos/The-Last-15-Days/blob/base_1.18/.github/icon_template/pack_icon.png" alt="icon_addon" width=200>
+  <img src="https://github.com/HaJuegos/The-Last-15-Days/blob/main/.github/icon_template/pack_icon.png" alt="icon_addon" width=400>
   <h3 align="center">The Last 15 Days By Royer (Ha Juegos Add-on)</h3>
   
  <p align="center">
