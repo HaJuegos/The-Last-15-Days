@@ -18,17 +18,15 @@ Un Curioso add-on donde el mundo diariamente se hara mas peligroso y lo unico qu
 
 ## NOTAS DE USO
 
-- **ADVERTENCIA:** _Este add-on es completamente en ingles de momento. Esto principalmente iba a hacer en español, pero debido a que es un test y tambien no esta pagado aun. Pues se hizo de manera rapida y conceptual_
-
-- Este Add-on es una version Comisionada y pagada para Royer. El cual fue creado por Ha Juegos, Cib y Convex y es perteneciente a Royer y Ha Juegos. Cualquier comercializacion, modificacion, subida no autorizada de este add-on por links externos, Subir contenido con el add-on sin dejar permisos y decir que es de tu propiedad. es completamente sancionable. Para mas informacion sobre tus modificaciones o otro tipo de cosa, contactame en Privado en discord (Ha Juegos#0123), via twitter (https://twitter.com/ha_juegos) o via correo (hajuegos87@gmail.com).
+- Este Add-on es una version Comisionada y pagada para Royer. El cual fue creado por Ha Juegos y Convex y es perteneciente a Royer y Ha Juegos. Cualquier comercializacion, modificacion, subida no autorizada de este add-on por links externos, Subir contenido con el add-on sin dejar permisos y decir que es de tu propiedad. es completamente sancionable. Para mas informacion sobre tus modificaciones o otro tipo de cosa, contactame en Privado en discord (Ha Juegos#0123), via twitter (https://twitter.com/ha_juegos) o via correo (hajuegos87@gmail.com). Gracias por descargar y probar este add-on :D. Se que se puede mejorar bastante con el tiempo para llegar a una version definitiva. Disfruta!. Si viste un bug o quiere reportar algo para mejorar, puedes hacerlo directamente en este proyecto de GitHub (https://github.com/HaJuegos/The-Last-15-Days/issues/new/choose) o en mi server de discord (https://discord.gg/p6a7tqVJxn) Cualquier reporte de bug o idea para mejorar se agradecera bastante o hasta se puede recompensar en el futuro.
 
 ## GUIA DE USO
 
+- **SOLO SE DEBE JUGAR EN LA 1.18.30 Y VERSIONES MENORES A ESTE**
 - Generalmente todo el add-on es automatico asi que no requieres que hagas o pongas algo fuera de lo normal.
 
 ## OPCIONES EXPERIMENTALES
 
-Este add-on requiere de estas opciones experimentales activas en tu mundo para poder funcionan de forma correcta, Procura tenerlo activo.
+- _Este add-on requiere de estas opciones experimentales activas en tu mundo para poder funcionan de forma correcta, Procura tenerlo activo._
 
-![Captura de pantalla (396)](https://user-images.githubusercontent.com/102632956/169634712-cfa10b65-e98b-4500-a1ad-b2f9f38d0475.png)
-![Captura de pantalla (397)](https://user-images.githubusercontent.com/102632956/169634717-6a40efa5-7fd3-4494-9646-45ccae2ba8a4.png)
+
