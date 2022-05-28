@@ -45,25 +45,25 @@ world.events.tick.subscribe(eventKit => {
 })
 
 world.events.beforeItemUse.subscribe(eventMilk => {
-    const player = eventMilk.source
+    const players = eventMilk.source
     const item = eventMilk.item
-    for (const plr of world.getPlayers()) {
-        if (!plr.hasTag("totemlock")) {
-            if (item.id == 'minecraft:totem_of_undying' && !plr.hasTag("totemlock") && !plr.hasTag("shield")) {
-                if (runCommand(`execute "${plr.nameTag}" ~ ~ ~ testfor @s[hasitem={item=totem,location=slot.weapon.offhand}]`).error == true) {
-                    player.runCommand(`replaceitem entity @s slot.weapon.offhand 0 totem`)
-                    player.runCommand(`replaceitem entity @s slot.weapon.mainhand 0 air`)
-                    player.runCommand(`playsound armor.equip_chain @s`)
-                } else {
-
-                }
-
+    let player = Array.from(world.getPlayers()).find(plr => plr.nameTag == players.nameTag)
+    if (!player.hasTag("totemlock")) {
+        if (item.id == 'minecraft:totem_of_undying' && !player.hasTag("totemlock") && !player.hasTag("shield")) {
+            if (runCommand(`execute "${player.nameTag}" ~ ~ ~ testfor @s[hasitem={item=totem,location=slot.weapon.offhand}]`).error == true) {
+                player.runCommand(`replaceitem entity @s slot.weapon.offhand 0 totem`)
+                player.runCommand(`replaceitem entity @s slot.weapon.mainhand 0 air`)
+                player.runCommand(`playsound armor.equip_chain @s`)
             } else {
 
             }
 
+        } else {
+
         }
+
     }
+
 })
 
 world.events.tick.subscribe(totemFix => {

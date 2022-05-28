@@ -8,6 +8,37 @@
             "is_experimental": false
         },
         "component_groups": {
+            "cnvx:tusk_drop": {
+                "minecraft:damage_sensor": {
+                    "triggers": [
+                        {
+                            "on_damage": {
+                                "filters": {
+                                    "all_of": {
+                                        "all_of": [
+                                            {
+                                                "test": "has_damage",
+                                                "value": "fatal"
+                                            },
+                                            {
+                                                "test": "is_family",
+                                                "subject": "other",
+                                                "value": "player"
+                                            }
+                                        ]
+                                    }
+                                },
+                                "event": "cnvx:drop",
+                                "target": "self"
+                            }
+                        },
+                        {
+                            "cause": "projectile",
+                            "deals_damage": false
+                        }
+                    ]
+                }
+            },
             "zombification_sensor": {
                 "minecraft:environment_sensor": {
                     "triggers": {
@@ -68,8 +99,8 @@
             "attack_cooldown": {
                 "minecraft:attack_cooldown": {
                     "attack_cooldown_time": [
-                        10.0,
-                        15.0
+                        1.0,
+                        3.0
                     ],
                     "attack_cooldown_complete_event": {
                         "event": "attack_cooldown_complete_event",
@@ -219,9 +250,9 @@
                 },
                 "minecraft:behavior.melee_attack": {
                     "priority": 4,
-                    "speed_multiplier": 1,
+                    "speed_multiplier": 1.1,
                     "track_target": true,
-                    "reach_multiplier": 2.5,
+                    "reach_multiplier": 4,
                     "cooldown_time": 2
                 },
                 "minecraft:attack": {
@@ -281,14 +312,14 @@
                     {
                         "effect": "speed",
                         "duration": 99999,
-                        "amplifier": 2,
+                        "amplifier": 4,
                         "visible": true,
                         "ambient": false
                     },
                     {
                         "effect": "resistance",
                         "duration": 99999,
-                        "amplifier": 1,
+                        "amplifier": 3,
                         "visible": true,
                         "ambient": false
                     },
@@ -303,6 +334,7 @@
             },
             "minecraft:is_hidden_when_invisible": {},
             "minecraft:nameable": {},
+            "minecraft:fire_immune": {},
             "minecraft:health": {
                 "value": 40,
                 "max": 40
@@ -453,11 +485,32 @@
                 "randomize": [
                     {
                         "weight": 95,
-                        "trigger": "spawn_adult"
+                        "trigger": "spawn_adult",
+                        "add": {
+                            "component_groups": [
+                                "cnvx:tusk_drop"
+                            ]
+                        }
                     },
                     {
                         "weight": 5,
                         "trigger": "spawn_baby"
+                    }
+                ]
+            },
+            "cnvx:drop": {
+                "randomize": [
+                    {
+                        "weight": 10,
+                        "run_command": {
+                            "command": [
+                                "structure load hoglin_tusk ~ ~ ~"
+                            ]
+                        }
+                    },
+                    {
+                        "weight": 90,
+                        "add": {}
                     }
                 ]
             },

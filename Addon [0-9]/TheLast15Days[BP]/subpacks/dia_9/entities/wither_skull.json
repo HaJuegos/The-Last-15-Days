@@ -199,7 +199,7 @@
                             "test": "is_family",
                             "subject": "other",
                             "operator": "==",
-                            "value": "skeleton"
+                            "value": "wither_skeleton"
                         },
                         "add": {
                             "component_groups": [

@@ -74,7 +74,7 @@
       },
       "cnvx:dolphin_damage": {
         "minecraft:breathable": {
-          "total_supply": 2,
+          "total_supply": 0,
           "suffocate_time": -0.1,
           "inhale_time": 3.75,
           "generates_bubbles": false

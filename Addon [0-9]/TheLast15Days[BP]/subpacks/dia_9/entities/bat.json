@@ -52,7 +52,7 @@
                     ]
                 },
                 "minecraft:follow_range": {
-                    "value": 64
+                    "value": 128
                 }
             }
         },
@@ -114,11 +114,10 @@
                 ]
             },
             "minecraft:movement": {
-                "value": 0.4
+                "value": 0.1
             },
             "minecraft:navigation.float": {
-                "can_path_over_water": true,
-                "can_path_from_air": true
+                "can_path_over_water": true
             },
             "minecraft:movement.basic": {},
             "minecraft:jump.static": {},
@@ -127,6 +126,16 @@
             },
             "minecraft:behavior.float": {
                 "priority": 0
+            },
+            "minecraft:behavior.float_wander": {
+                "xz_dist": 10,
+                "y_dist": 7,
+                "y_offset": -2.0,
+                "random_reselect": true,
+                "float_duration": [
+                    0.1,
+                    0.35
+                ]
             },
             "minecraft:can_fly": {},
             "minecraft:health": {

@@ -536,7 +536,8 @@
                     "monster",
                     "undead",
                     "skeleton",
-                    "mob"
+                    "mob",
+                    "wither_skeleton"
                 ]
             },
             "minecraft:physics": {},
