@@ -29,4 +29,5 @@ Un Curioso add-on donde el mundo diariamente se hara mas peligroso y lo unico qu
 
 - _Este add-on requiere de estas opciones experimentales activas en tu mundo para poder funcionan de forma correcta, Procura tenerlo activo._
 
-
+![oldui](https://user-images.githubusercontent.com/102632956/170806491-14def776-7205-47f4-b3f5-a2e894266d64.png)
+![newui](https://user-images.githubusercontent.com/102632956/170806482-8d9c8294-6e3f-475f-8461-e38dae11a00f.png)
