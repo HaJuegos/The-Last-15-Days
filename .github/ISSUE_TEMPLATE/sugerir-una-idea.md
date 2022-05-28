@@ -1,9 +1,9 @@
 ---
 name: Sugerir una idea
 about: Sugiera una idea para este proyecto
-title: ''
+title: "[FEATURE] "
 labels: enhancement
-assignees: HaJuegos
+assignees: HaJuegos, conveex, Rozzzher
 
 ---
 

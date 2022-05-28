@@ -1,9 +1,9 @@
 ---
 name: Reporte de bugs
 about: Crear un informe que nos ayude a mejorar
-title: ''
+title: "[BUG] "
 labels: bug
-assignees: HaJuegos
+assignees: HaJuegos, conveex, Rozzzher
 
 ---
 
