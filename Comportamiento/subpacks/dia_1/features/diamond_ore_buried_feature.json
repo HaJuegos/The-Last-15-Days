@@ -1,6 +1,28 @@
-/* This file belongs to: "conveex" (Ha Juegos Copyright 2022), Any unauthorized modification or change will be penalized, more information to authorize your copies you can contact me on discord: https://discord.gg/p6a7tqVJxn
-GitHubs: https://github.com/CibNumeritos https://github.com/conveex
-*********************************************************************
-Este archivo pertenece a: "conveex" (Ha Juegos Copyright 2022), Cualquier modificación o cambio no autorizado será sancionado, más información para autorizar tus copias puedes contactar conmigo en discord: https://discord.gg/p6a7tqVJxn
-Sus GitHubs: https://github.com/conveex */
-{"format_version":"1.13.0","minecraft:ore_feature":{"description":{"identifier":"minecraft:diamond_ore_buried_feature"},"count":10,"discard_chance_on_air_exposure":0.2,"replace_rules":[{"places_block":"minecraft:diamond_ore","may_replace":[{"name":"minecraft:stone"}]},{"places_block":"minecraft:deepslate_diamond_ore","may_replace":[{"name":"minecraft:deepslate"}]}]}}
+{
+  "format_version": "1.13.0",
+  "minecraft:ore_feature": {
+    "description": {
+      "identifier": "minecraft:diamond_ore_buried_feature"
+    },
+    "count": 10,
+    "discard_chance_on_air_exposure": 0.2,
+    "replace_rules": [
+      {
+        "places_block": "minecraft:diamond_ore",
+        "may_replace": [
+          {
+            "name": "minecraft:stone"
+          }
+        ]
+      },
+      {
+        "places_block": "minecraft:deepslate_diamond_ore",
+        "may_replace": [
+          {
+            "name": "minecraft:deepslate"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,11 +1,117 @@
-/* This file belongs to: "Ha Juegos" And "Convex" (Copyright 2022), Any unauthorized modification or change will be penalized, more information to authorize your copies you can contact me on discord: https://discord.gg/p6a7tqVJxn
-My youtube channel for more updates: https://www.youtube.com/c/HaJuegos
-********************************************************************
-Este archivo pertenece a: "Ha Juegos" y "Convex" (Copyright 2022), Cualquier modificación o cambio no autorizado será sancionado, más información para autorizar tus copias puedes contactar conmigo en discord: https://discord.gg/p6a7tqVJxn
-Mi canal de youtube para más actualizaciones: https://www.youtube.com/c/HaJuegos */
-{"format_version":2,"header":{"name":"§a[B]§r §7The Last 15 Days§r","description":"§6All Behavior, Create By:§4 [Ha Juegos And Convex].§r§6 Copyright [2022]. §rYoutube: youtube.com/channel/UCvuaxYzlotxb-n_cH3KAQww/ Discord: discord.gg/p6a7tqVJxn","uuid":"83143fea-fd8e-44f5-840d-b91b7196481d","version":[1,1,0],"min_engine_version":[1,18,30]},"modules":[{"type":"data","description":"§6Create By:§4 [Ha Juegos].§r§6 Copyright [2022]. §rYoutube: youtube.com/channel/UCvuaxYzlotxb-n_cH3KAQww/ Discord: discord.gg/p6a7tqVJxn","uuid":"aacab0ef-d036-4510-8569-e3223581e31a","version":[1,0,0]},{"type":"javascript","description":"§6Create By:§4 [Convex].§r§6 Copyright [2022]. §rGitHub: github.com/conveex Discord: discord.gg/p6a7tqVJxn","uuid":"ac2e55a6-c13d-43d9-8722-ed1b641cef05","version":[1,0,0],"entry":"scripts/main.js"}],"dependencies":[{"uuid":"b26a4d4c-afdf-4690-88f8-931846312678","version":[0,1,0]},{"uuid":"6f4b6893-1bb6-42fd-b458-7fa3d0c89616","version":[0,1,0]},{"version":[1,1,0],"uuid":"eaa82699-4f72-4a22-843a-7e2e4157c3c3"}],"subpacks":[{"folder_name":"dia_1","name":"§1Dia 1","memory_tier":3},{"folder_name":"dia_2","name":"§cDia 2","memory_tier":3},{"folder_name":"dia_3","name":"§dDia 3","memory_tier":3},{"folder_name":"dia_4","name":"§eDia 4","memory_tier":3},{"folder_name":"dia_10","name":"Dia 10 (Conceptual)(Alpha)","memory_tier":3},{"folder_name":"dia_11","name":"Dia 11 (Conceptual)(Alpha)","memory_tier":3}],"metadata":{"authors":["Ha Juegos","Convex"],"url":"https://www.youtube.com/c/HaJuegos","license":"Credits.txt o join to the discord server for more info"}}
-/* This file belongs to: "Ha Juegos" And "Convex" (Copyright 2022), Any unauthorized modification or change will be penalized, more information to authorize your copies you can contact me on discord: https://discord.gg/p6a7tqVJxn
-My youtube channel for more updates: https://www.youtube.com/c/HaJuegos
-********************************************************************
-Este archivo pertenece a: "Ha Juegos" y "Convex" (Copyright 2022), Cualquier modificación o cambio no autorizado será sancionado, más información para autorizar tus copias puedes contactar conmigo en discord: https://discord.gg/p6a7tqVJxn
-Mi canal de youtube para más actualizaciones: https://www.youtube.com/c/HaJuegos */
+{
+    "format_version": 2,
+    "header": {
+        "name": "§l§6The Last 15 Days [BP]",
+        "description": "§7Behavior pack created by convex for the last 15 days addon day 0",
+        "uuid": "b11765ff-c5df-4d07-94da-7164595af1f9",
+        "version": [
+            1,
+            0,
+            0
+        ],
+        "min_engine_version": [
+            1,
+            18,
+            30
+        ]
+    },
+    "modules": [
+        {
+            "type": "data",
+            "uuid": "ec21fab7-a1d4-471d-83c7-76b127190c49",
+            "version": [
+                1,
+                0,
+                0
+            ]
+        },
+        {
+            "type": "javascript",
+            "uuid": "ee4daf1b-0cf0-4504-96f6-e80bb708a1a6",
+            "version": [
+                1,
+                0,
+                0
+            ],
+            "entry": "scripts/main.js"
+        }
+    ],
+    "dependencies": [
+        {
+            "uuid": "b26a4d4c-afdf-4690-88f8-931846312678",
+            "version": [
+                0,
+                1,
+                0
+            ]
+        },
+        {
+            "uuid": "6f4b6893-1bb6-42fd-b458-7fa3d0c89616",
+            "version": [
+                0,
+                1,
+                0
+            ]
+        },
+        {
+            "uuid": "88b09c6a-9097-4429-a7bf-f33e0ad572b0",
+            "version": [
+                1,
+                0,
+                0
+            ]
+        }
+    ],
+    "subpacks": [
+        {
+            "folder_name": "dia_0",
+            "name": "§1Dia 0",
+            "memory_tier": 1
+        },
+        {
+            "folder_name": "dia_1",
+            "name": "§1Dia 1",
+            "memory_tier": 1
+        },
+        {
+            "folder_name": "dia_2",
+            "name": "§1Dia 2",
+            "memory_tier": 1
+        },
+        {
+            "folder_name": "dia_3",
+            "name": "§1Dia 3",
+            "memory_tier": 1
+        },
+        {
+            "folder_name": "dia_4",
+            "name": "§1Dia 4",
+            "memory_tier": 1
+        },
+        {
+            "folder_name": "dia_5",
+            "name": "§1Dia 5",
+            "memory_tier": 3
+        },
+        {
+            "folder_name": "dia_6",
+            "name": "§1Dia 6",
+            "memory_tier": 3
+        },
+        {
+            "folder_name": "dia_7",
+            "name": "§1Dia 7",
+            "memory_tier": 3
+        },
+        {
+            "folder_name": "dia_8",
+            "name": "§1Dia 8",
+            "memory_tier": 3
+        },
+        {
+            "folder_name": "dia_9",
+            "name": "§1Dia 9",
+            "memory_tier": 3
+        }
+    ]
+}

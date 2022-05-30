@@ -1,6 +1,0 @@
-/* This file belongs to: "conveex" (Ha Juegos Copyright 2022), Any unauthorized modification or change will be penalized, more information to authorize your copies you can contact me on discord: https://discord.gg/p6a7tqVJxn
-GitHubs: https://github.com/CibNumeritos https://github.com/conveex
-*********************************************************************
-Este archivo pertenece a: "conveex" (Ha Juegos Copyright 2022), Cualquier modificación o cambio no autorizado será sancionado, más información para autorizar tus copias puedes contactar conmigo en discord: https://discord.gg/p6a7tqVJxn
-Sus GitHubs: https://github.com/conveex */
-{"format_version":"1.10.0","animation_controllers":{"controller.animation.death":{"states":{"alive":{"transitions":[{"dead":"query.is_alive==0"}]},"dead":{"transitions":[{"respawn":"!query.is_alive==0"}],"on_entry":["/execute @s[tag=!dead] ~ ~ ~ effect @a blindness 10 0","/execute @s[tag=!dead] ~ ~ ~ effect @a nausea 10 0","/execute @s[tag=!dead] ~ ~ ~ execute @r ~ ~ ~ summon lightning_bolt ~ ~ ~","/execute @s[tag=!dead] ~ ~ ~ tellraw @a {\"rawtext\": [{\"text\":\"§c\"},{\"selector\":\"@s\"},{\"text\":\" Murió y ha causado un §4Resquicio Infernal\"}]}","/execute @s[tag=!dead] ~ ~ ~ scoreboard players set @s ban 1","/tag @s[tag=!dead] add dead"]},"respawn":{"transitions":[{"alive":"!query.is_alive==0"}]}}}}}

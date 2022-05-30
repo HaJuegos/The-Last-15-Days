@@ -1,15 +1,13 @@
-/* This file belongs to: "conveex" (Ha Juegos Copyright 2022), Any unauthorized modification or change will be penalized, more information to authorize your copies you can contact me on discord: https://discord.gg/p6a7tqVJxn
-GitHubs: https://github.com/CibNumeritos https://github.com/conveex
-*********************************************************************
-Este archivo pertenece a: "conveex" (Ha Juegos Copyright 2022), Cualquier modificación o cambio no autorizado será sancionado, más información para autorizar tus copias puedes contactar conmigo en discord: https://discord.gg/p6a7tqVJxn
-Sus GitHubs: https://github.com/conveex */
-
 import { EntityQueryOptions, EntityQueryScoreOptions, world } from "mojang-minecraft"
+
 const ban = new EntityQueryScoreOptions()
 ban.objective = "ban"
 ban.minScore = 1
 const banQuery = new EntityQueryOptions
 banQuery.scoreOptions = [ban]
+
+
+
 world.events.beforeChat.subscribe(eventData => {
     eventData.cancel = true
     const msg = eventData.message
@@ -27,21 +25,19 @@ world.events.beforeChat.subscribe(eventData => {
         }
     } else { }
 })
+
 world.events.tick.subscribe(() => {
     const players = Array.from(world.getPlayers(banQuery))
-    for (const player of players) { 
+    for (const player of players) {
         player.runCommand(`kick ${player.name} ¡Has muerto y ahora estas baneado!`)
     }
 })
+
 world.events.tick.subscribe(eventKit => {
     try {
         for (const player of world.getPlayers()) {
             if (!player.hasTag("Kit")) {
-                world.getDimension("overworld").runCommand(`execute "${player.nameTag}" ~ ~ ~ replaceitem entity @s slot.weapon.offhand 0 totem`)
-                world.getDimension("overworld").runCommand(`execute "${player.nameTag}" ~ ~ ~ replaceitem entity @s slot.hotbar 8 golden_carrot 15`)
-                world.getDimension("overworld").runCommand(`execute "${player.nameTag}" ~ ~ ~ replaceitem entity @s slot.hotbar 7 water_bucket`)
-                world.getDimension("overworld").runCommand(`execute "${player.nameTag}" ~ ~ ~ scoreboard objectives add ban dummy ban`)
-                world.getDimension("overworld").runCommand(`execute "${player.nameTag}" ~ ~ ~ scoreboard objectives add SwapInv dummy`)
+                world.getDimension("overworld").runCommand(`execute "${player.nameTag}" ~ ~ ~ function start`)
                 player.addTag("Kit")
             } else { }
         }
@@ -49,19 +45,53 @@ world.events.tick.subscribe(eventKit => {
 })
 
 world.events.beforeItemUse.subscribe(eventMilk => {
-    const player = eventMilk.source
+    const players = eventMilk.source
     const item = eventMilk.item
+    let player = Array.from(world.getPlayers()).find(plr => plr.nameTag == players.nameTag)
     if (item.id == 'minecraft:milk_bucket') {
         player.addTag("TomoLeche")
-    } else if (item.id == 'minecraft:totem_of_undying') {
-        for (const plr of world.getPlayers()) {
-            if (runCommand(`execute "${plr.nameTag}" ~ ~ ~ testfor @s[hasitem={item=totem,location=slot.weapon.offhand}]`).error == true) {
+    } else if (!player.hasTag("totemlock")) {
+        if (item.id == 'minecraft:totem_of_undying' && !player.hasTag("totemlock") && !player.hasTag("shield")) {
+            if (runCommand(`execute "${player.nameTag}" ~ ~ ~ testfor @s[hasitem={item=totem,location=slot.weapon.offhand}]`).error == true) {
                 player.runCommand(`replaceitem entity @s slot.weapon.offhand 0 totem`)
                 player.runCommand(`replaceitem entity @s slot.weapon.mainhand 0 air`)
                 player.runCommand(`playsound armor.equip_chain @s`)
             } else {
 
             }
+
+        } else {
+
+        }
+
+    }
+
+})
+
+world.events.tick.subscribe(totemFix => {
+    for (const plr of world.getPlayers()) {
+        if (runCommand(`execute "${plr.nameTag}" ~ ~ ~ testfor @s[hasitem={item=totem,location=slot.weapon.offhand}]`).error == false) {
+            try {
+                plr.runCommand("tag @s[tag=!totemlock] add totemlock")
+            } catch { }
+        } else if (runCommand(`execute "${plr.nameTag}" ~ ~ ~ testfor @s[hasitem={item=totem,location=slot.weapon.offhand}]`).error == true) {
+            try {
+                plr.runCommand("tag @s[tag=totemlock] remove totemlock")
+            } catch { }
+        }
+    }
+})
+
+world.events.tick.subscribe(shieldFix => {
+    for (const plr of world.getPlayers()) {
+        if (runCommand(`execute "${plr.nameTag}" ~ ~ ~ testfor @s[hasitem={item=shield,location=slot.weapon.offhand}]`).error == false) {
+            try {
+                plr.runCommand("tag @s[tag=!shield] add shield")
+            } catch { }
+        } else if (runCommand(`execute "${plr.nameTag}" ~ ~ ~ testfor @s[hasitem={item=shield,location=slot.weapon.offhand}]`).error == true) {
+            try {
+                plr.runCommand("tag @s[tag=shield] remove shield")
+            } catch { }
         }
     }
 })
@@ -73,6 +103,8 @@ world.events.tick.subscribe(eventEffect => {
                 world.getDimension("overworld").runCommand(`effect "${plr.nameTag}" nausea 10 0 false`)
                 world.getDimension("overworld").runCommand(`effect "${plr.nameTag}" poison 10 9 false`)
                 plr.removeTag("TomoLeche")
+            } else {
+
             }
         }
     } catch { }
@@ -89,9 +121,3 @@ function runCommand(command) {
         }
     }
 }
-
-/* This file belongs to: "conveex" (Ha Juegos Copyright 2022), Any unauthorized modification or change will be penalized, more information to authorize your copies you can contact me on discord: https://discord.gg/p6a7tqVJxn
-GitHubs: https://github.com/CibNumeritos https://github.com/conveex
-*********************************************************************
-Este archivo pertenece a: "conveex" (Ha Juegos Copyright 2022), Cualquier modificación o cambio no autorizado será sancionado, más información para autorizar tus copias puedes contactar conmigo en discord: https://discord.gg/p6a7tqVJxn
-Sus GitHubs: https://github.com/conveex */

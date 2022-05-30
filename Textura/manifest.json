@@ -1,11 +1,24 @@
-/* This file belongs to: "Ha Juegos" And "Convex" (Copyright 2022), Any unauthorized modification or change will be penalized, more information to authorize your copies you can contact me on discord: https://discord.gg/p6a7tqVJxn
-My youtube channel for more updates: https://www.youtube.com/c/HaJuegos
-********************************************************************
-Este archivo pertenece a: "Ha Juegos" y "Convex" (Copyright 2022), Cualquier modificación o cambio no autorizado será sancionado, más información para autorizar tus copias puedes contactar conmigo en discord: https://discord.gg/p6a7tqVJxn
-Mi canal de youtube para más actualizaciones: https://www.youtube.com/c/HaJuegos */
-{"format_version":2,"header":{"name":"§a[R]§r §7The Last 15 Days§r","description":"§6Textures, Create By:§4 [Ha Juegos And Convex].§r§6 Copyright [2022]. §rYoutube: youtube.com/channel/UCvuaxYzlotxb-n_cH3KAQww/ Discord: discord.gg/p6a7tqVJxn","uuid":"eaa82699-4f72-4a22-843a-7e2e4157c3c3","version":[1,1,0],"min_engine_version":[1,18,30]},"modules":[{"type":"resources","description":"§6Create By:§4 [Ha Juegos].§r§6 Copyright [2022]. §rYoutube: youtube.com/channel/UCvuaxYzlotxb-n_cH3KAQww/ Discord: discord.gg/p6a7tqVJxn","uuid":"61c1da83-50ff-48c7-858d-d57985638fe2","version":[1,0,0]}],"dependencies":[{"version":[1,1,0],"uuid":"83143fea-fd8e-44f5-840d-b91b7196481d"}],"metadata":{"authors":["Ha Juegos","Convex"],"url":"https://www.youtube.com/c/HaJuegos","license":"Credits.txt o join to the discord server for more info"}}
-/* This file belongs to: "Ha Juegos" And "Convex" (Copyright 2022), Any unauthorized modification or change will be penalized, more information to authorize your copies you can contact me on discord: https://discord.gg/p6a7tqVJxn
-My youtube channel for more updates: https://www.youtube.com/c/HaJuegos
-********************************************************************
-Este archivo pertenece a: "Ha Juegos" y "Convex" (Copyright 2022), Cualquier modificación o cambio no autorizado será sancionado, más información para autorizar tus copias puedes contactar conmigo en discord: https://discord.gg/p6a7tqVJxn
-Mi canal de youtube para más actualizaciones: https://www.youtube.com/c/HaJuegos */
+{
+	"format_version": 2,
+	"header": {
+		"name": "The Last 15 Days (0) [RP]",
+		"description": "Resource pack created by convex for the last 15 days addon day 0",
+		"uuid": "88b09c6a-9097-4429-a7bf-f33e0ad572b0",
+		"version": [
+            1,0,0
+        ],
+		"min_engine_version": [
+            1,18,30
+        ]
+	},
+	"modules": [
+		{
+			"type": "resources",
+			"description": "Texturas del servidor Twilight.",
+			"uuid": "a3a2486a-5adf-43b4-9a66-06527ed5fe28",
+			"version": [
+                1,0,0
+            ]
+		}
+	]
+}

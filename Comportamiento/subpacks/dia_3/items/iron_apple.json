@@ -1,6 +1,38 @@
-/* This file belongs to: "conveex" (Ha Juegos Copyright 2022), Any unauthorized modification or change will be penalized, more information to authorize your copies you can contact me on discord: https://discord.gg/p6a7tqVJxn
-GitHubs: https://github.com/CibNumeritos https://github.com/conveex
-*********************************************************************
-Este archivo pertenece a: "conveex" (Ha Juegos Copyright 2022), Cualquier modificación o cambio no autorizado será sancionado, más información para autorizar tus copias puedes contactar conmigo en discord: https://discord.gg/p6a7tqVJxn
-Sus GitHubs: https://github.com/conveex */
-{"format_version":"1.16.100","minecraft:item":{"description":{"identifier":"cnvx:iron_apple","category":"nature"},"components":{"minecraft:use_duration":1.5,"minecraft:foil":false,"minecraft:icon":{"texture":"iron_apple"},"minecraft:creative_category":{"parent":"itemGroup.name.miscFood"},"minecraft:food":{"on_consume":{"event":"cnvx:consume"},"nutrition":4,"saturation_modifier":"supernatural","can_always_eat":true},"minecraft:render_offsets":"apple","minecraft:use_animation":"eat"},"events":{"cnvx:consume":{"run_command":{"command":["effect @s resistance 30 0"]}}}}}
+{
+    "format_version": "1.16.100",
+    "minecraft:item": {
+        "description": {
+            "identifier": "cnvx:iron_apple",
+            "category": "nature"
+        },
+        "components": {
+            "minecraft:use_duration": 1.5,
+            "minecraft:foil": false,
+            "minecraft:icon": {
+                "texture": "iron_apple"
+            },
+            "minecraft:creative_category": {
+                "parent": "itemGroup.name.miscFood"
+            },
+            "minecraft:food": {
+                "on_consume": {
+                    "event": "cnvx:consume"
+                },
+                "nutrition": 4,
+                "saturation_modifier": "supernatural",
+                "can_always_eat": true
+            },
+            "minecraft:render_offsets": "apple",
+            "minecraft:use_animation": "eat"
+        },
+        "events": {
+            "cnvx:consume": {
+                "run_command": {
+                    "command": [
+                        "effect @s resistance 30 0"
+                    ]
+                }
+            }
+        }
+    }
+}
