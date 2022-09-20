@@ -1,22 +1,26 @@
 # DESCARGAS RAPIDAS
 
 - Descargar Todo del add-on (Mundo, comportamientos y texturas):
-	- [**__DESCARGAR TODO__**]()
+	- [**__DESCARGAR TODO__**](https://github.com/HaJuegos/The-Last-15-Days/raw/main/Descargas/tener_todo_sobre_el_addon.mcaddon)
 
 - Add-on Por separado:
 
-	- [**__DESCARGAR TEXTURAS__**]()
-	- [**__DESCARGAR DIAS POR SEPARADO__**]()
-	- [**__DESCARGAR DIAS EN 1 SOLO ADD-ON__**]()
+	- [**__DESCARGAR TEXTURAS__**](https://github.com/HaJuegos/The-Last-15-Days/raw/main/Descargas/mcpack-mcaddon/texturas.mcpack)
+	- [**__DESCARGAR DIAS POR SEPARADO__**](https://github.com/HaJuegos/The-Last-15-Days/raw/main/Descargas/mcpack-mcaddon/comportamientos_separados.mcaddon)
+	- [**__DESCARGAR DIAS EN 1 SOLO ADD-ON__**](https://github.com/HaJuegos/The-Last-15-Days/raw/main/Descargas/mcpack-mcaddon/comportamientos_juntos.mcpack)
 
 - Mundo Template con todo ya configurado:
 
-	- [**__DESCARGAR MUNDO__**]()
+	- [**__DESCARGAR MUNDO__**](https://github.com/HaJuegos/The-Last-15-Days/raw/main/Descargas/mundo-ya-creado/mundo_con_todo_ya_puesto.mctemplate)
 
 - Archivos Zip para uso libre:
 
-	- [**__DESCARGAR TEXTURAS__**]()
-	- [**__DESCARGAR COMPORTAMIENTOS__**]()
+	- [**__DESCARGAR TEXTURAS__**](https://github.com/HaJuegos/The-Last-15-Days/raw/main/Descargas/archivos_en_zip/Texturas.zip)
+	- [**__DESCARGAR COMPORTAMIENTOS__**](https://github.com/HaJuegos/The-Last-15-Days/raw/main/Descargas/archivos_en_zip/Todos_los_comportamientos.zip)
+	
+- Opciones Experimentales:
+	
+	- [**__MIRAR OPCIONES EXPERIMENTALES__**](https://github.com/HaJuegos/The-Last-15-Days/tree/main/Descargas#opciones-experimentales)
 	
 ### ¿Que trae el Add-on?
 
