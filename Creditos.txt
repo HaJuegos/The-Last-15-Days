@@ -1,0 +1,33 @@
+/* Este archivo fue creado por ୨୧ 𓂅 𝒄𝒐𝒏𝒗𝒆𝒙 ! ♡#9947 (Discord) y @Ha_Juegos_Cat!, Cualquier reutilizacion o modificacion de este, Por favor dejar creditos originales del creador del codigo y del add-on para no tener problemas!. Si quieres contactarte con el creador de este codigo, Ve a su server de Discord: https://discord.gg/C3ZHdnUVmu y https://discord.gg/9jZHkhu86P */
+/* This file was created by ୨୧ 𓂅 𝒄𝒐𝒏𝒗𝒆𝒙 ! ♡#9947 (Discord) and @Ha_Juegos_Cat!, Any reuse or modification of this, please leave original credits to the creator of the code and add-on to avoid problems. If you want to contact the creator of this code, go to his Discord server: https://discord.gg/C3ZHdnUVmu and https://discord.gg/9jZHkhu86P */
+
+[2022] [Ha Juegos]
+
+Este complemento no debe ser distribuido o compartido si esta modificado, tambien debe informarse de cualquier modificacion publica de este mismo para no tener problemas con ello mismo. Si necesitas ayuda o informacion de contacto unete a mi Server de Discord.
+
+Mis Redes Sociales:
+Youtube: https://www.youtube.com/c/HaJuegos
+Twitter: https://twitter.com/ha_juegos
+Ko-fi Pagina de donaciones: https://ko-fi.com/hajuegos0710
+Comunidad de Discord: https://discord.gg/WH9KpNWXUz
+Twitch: https://www.twitch.tv/ha_juegos
+
+
+¡ACLARACION!:
+Este complemento es una COMISION pagada de R o y e r 5 5 1#8604, toda idea o concepto hecho aqui es perteneciente de este mismo, asi que no me hago responsable de robo de ideas u filtraciones que se lleven a caso. Todos los respectivos creditos y contenido original al mismo comisionador y director del add-on (Royer). Porfavor ve y apoya al Director del add-on:
+
+Idelizador original o Director:
+
+Royer:
+Youtube Channel: https://www.youtube.com/channel/UCJ-0Nc4TkD1y6mCW0LgJ-_A
+Comunidad de Discord: https://www.discord.gg/RX3WtWfqnA
+Twitter: https://twitter.com/RosherRandom?t=bGNZycj62cp0VhfUeBopoA&s=09
+
+********************************************************************************************************************************
+
+2do Desarrollador del Add-on: (Muchas Gracias Convex por la ayuda en este add-on <3, tambien por el avance de los dias que llevas)
+
+Convex:
+Twich: https://www.twitch.tv/convex03
+Youtube: https://www.youtube.com/channel/UCOH8ibZZ2284cOJDQKmYBEA
+Twitter: https://twitter.com/convex__
