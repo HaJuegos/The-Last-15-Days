@@ -15,8 +15,8 @@
 
 - Archivos Zip para uso libre:
 
-	- [**__DESCARGAR TEXTURAS__**](https://github.com/HaJuegos/The-Last-15-Days/raw/main/Descargas/archivos_en_zip/Texturas.zip)
-	- [**__DESCARGAR COMPORTAMIENTOS__**](https://github.com/HaJuegos/The-Last-15-Days/raw/main/Descargas/archivos_en_zip/Todos_los_comportamientos.zip)
+	- [**__DESCARGAR TEXTURAS__**](https://github.com/HaJuegos/The-Last-15-Days/raw/main/Descargas/archivos_en_zip/texturas.zip)
+	- [**__DESCARGAR COMPORTAMIENTOS__**](https://github.com/HaJuegos/The-Last-15-Days/raw/main/Descargas/archivos_en_zip/todos%20los%20comportamientos.zip)
 	
 - Opciones Experimentales:
 	
