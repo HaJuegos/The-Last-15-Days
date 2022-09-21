@@ -28,7 +28,7 @@
 - Todo en el add-on es automatico.
 - Si deseas instalar el mundo ya creado, por favor sigue estos pasos si no concoces como se hace: [**__Ver imagen__**](https://media.discordapp.net/attachments/964653057390546954/997570733473550536/exmple.png)
 - Para revivir a un compañero, deja un bloque de comandos en repetir con el siguiente comando:
-> `/scoreboard set "nombre del jugador con comillas" ban 0`
+> `/tag "nombre del jugador" remove Dead`
 y luego el comando en el chat del juego: 
 > `/execute "nombre del jugador" ~ ~ ~ function revivir`
 
