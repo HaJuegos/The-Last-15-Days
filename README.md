@@ -3,7 +3,7 @@
   <h3 align="center">The Last 15 Days</h3>
   
  <p align="center">
- Llegado por una serie Hardcore para Bedrock Edition. Ahora en tus manos en forma de add-on para todos. ¿Sobreviviras 15 Dias?</p>
+ De una serie HardCore en Minecraft Bedrock donde todo era un caos. Ahora esta en tus manos, de forma libre como Add-on. ¿Sobreviviras los 15 Dias?</p>
 </p>
 
 <p align="center">
