@@ -1,22 +1,22 @@
 # DESCARGAS RAPIDAS
 
 - Descargar Todo del add-on (Mundo, comportamientos y texturas):
-	- [**__DESCARGAR TODO__**](https://github.com/HaJuegos/The-Last-15-Days/raw/main/Descargas/tener_todo_sobre_el_addon.mcaddon)
+	- [**__DESCARGAR TODO__**](https://github.com/HaJuegos/The-Last-15-Days/raw/main/Descargas/Tener%20TODO.mcaddon)
 
 - Add-on Por separado:
 
 	- [**__DESCARGAR TEXTURAS__**](https://github.com/HaJuegos/The-Last-15-Days/raw/main/Descargas/mcpack-mcaddon/texturas.mcpack)
-	- [**__DESCARGAR DIAS POR SEPARADO__**](https://github.com/HaJuegos/The-Last-15-Days/raw/main/Descargas/mcpack-mcaddon/comportamientos_separados.mcaddon)
-	- [**__DESCARGAR DIAS EN 1 SOLO ADD-ON__**](https://github.com/HaJuegos/The-Last-15-Days/raw/main/Descargas/mcpack-mcaddon/comportamientos_juntos.mcpack)
+	- [**__DESCARGAR DIAS POR SEPARADO__**](https://github.com/HaJuegos/The-Last-15-Days/raw/main/Descargas/mcpack-mcaddon/Dias%20Separados.mcpack)
+	- [**__DESCARGAR DIAS EN 1 SOLO ADD-ON__**](https://github.com/HaJuegos/The-Last-15-Days/raw/main/Descargas/mcpack-mcaddon/Dias%20Configurables.mcaddon)
 
 - Mundo Template con todo ya configurado:
 
-	- [**__DESCARGAR MUNDO__**](https://github.com/HaJuegos/The-Last-15-Days/raw/main/Descargas/mundo-ya-creado/mundo_con_todo_ya_puesto.mctemplate)
+	- [**__DESCARGAR MUNDO__**](https://github.com/HaJuegos/The-Last-15-Days/raw/main/Descargas/mundo-ya-creado/Mundo%20ya%20Listo.mctemplate)
 
 - Archivos Zip para uso libre:
 
 	- [**__DESCARGAR TEXTURAS__**](https://github.com/HaJuegos/The-Last-15-Days/raw/main/Descargas/archivos_en_zip/texturas.zip)
-	- [**__DESCARGAR COMPORTAMIENTOS__**](https://github.com/HaJuegos/The-Last-15-Days/raw/main/Descargas/archivos_en_zip/todos%20los%20comportamientos.zip)
+	- [**__DESCARGAR COMPORTAMIENTOS__**](https://github.com/HaJuegos/The-Last-15-Days/raw/main/Descargas/archivos_en_zip/Todos%20los%20dias.zip)
 	
 - Opciones Experimentales:
 	
@@ -110,6 +110,7 @@ The Last 15 Days - Beta v0.0.1 By Royer (Add-on de Ha Juegos y Convex)
 
 - Las Brujas han cambiado y ahora:
 	- Llevan invisibilidad y pueden teletrasportarse de forma aleatoria
+	- Se generan en islas champiñon
 
 - Los Evocadores han cambiado y ahora:
 	- Puede generar Esqueletos del Wither
@@ -330,6 +331,44 @@ The Last 15 Days - Beta v0.0.1 By Royer (Add-on de Ha Juegos y Convex)
 - La EnderPearl tiene mas cooldown
 - Al dormir tienes un 70% de posibilidad de generar un Enderman en tu posicion
 - Al pescar tienes un 50% de posibilidad de generar una cabra.
+
+• Dia 12 Cambios:
+
+- Estos items ya no son obtenibles en el juego:
+	- Papas y Papas Cocinadas
+
+- Las zanahorias de oro ahora dan:
+	- Daño Instantaneo V
+
+- Las siguientes comidas si las comen te agregan Fatal Posion V por 1 minuto:
+	- Filete asado
+	- Chuleta de cerdo cocinada
+	- Cordero asado
+
+- Las remolachas ahora:
+	- Tienen 5 puntos de saturacion
+	- Te dan efecto de saturacion por 20 segundos
+
+- Las papas envenenadas ahora te dan:
+	- Regeneracion I por 10 segundos
+
+- Ahora los shulkers pueden:
+	- Cada cierto tiempo (5 minutos) podran generar los siguientes mobs:
+		- Phantom
+		- Vexs
+		- Allays
+	- Sus disparos son ahora mucho mas rapidos y estos al impactar, romperan todo en un cubo de 5x5
+
+- Los Vex del End al golpearte te daran Lentitud X por 1 minuto
+- Los Allays del End siempre trataran de robar cualquier item a su alcanze del suelo y estos llevan invisibilidad
+- El drop de los shulkers ahora es de 60% de posibilidad
+- Al portar elytras ahora te dara mas corazones
+- Los Golems de Nieve ahora:
+	- Se generan en el End
+	- Golem de Nieve del End:
+		- Si estos te hacen daño o estas cerca de un impacto de ellos, seras teletrasportado a uno de ellos
+		- Sus bolas de nieve tienen Muchisimo daño
+		- Llevan Resistencia V
 
 Att: Ha Juegos
 ```
