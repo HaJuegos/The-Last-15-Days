@@ -1,22 +1,22 @@
 # DESCARGAS RAPIDAS
 
 - Descargar Todo del add-on (Mundo, comportamientos y texturas):
-	- [**__DESCARGAR TODO__**](https://github.com/HaJuegos/The-Last-15-Days/raw/main/Descargas/Tener%20TODO.mcaddon)
+	- [**__DESCARGAR TODO__**](https://github.com/HaJuegos/The-Last-15-Days/raw/main/Descargas/Descargar%20TODO%20del%20add-on.mcaddon)
 
 - Add-on Por separado:
 
 	- [**__DESCARGAR TEXTURAS__**](https://github.com/HaJuegos/The-Last-15-Days/raw/main/Descargas/mcpack-mcaddon/texturas.mcpack)
-	- [**__DESCARGAR DIAS POR SEPARADO__**](https://github.com/HaJuegos/The-Last-15-Days/raw/main/Descargas/mcpack-mcaddon/Dias%20Separados.mcpack)
-	- [**__DESCARGAR DIAS EN 1 SOLO ADD-ON__**](https://github.com/HaJuegos/The-Last-15-Days/raw/main/Descargas/mcpack-mcaddon/Dias%20Configurables.mcaddon)
+	- [**__DESCARGAR INDIVIDUALMENTE EL ADD-ON__**](https://github.com/HaJuegos/The-Last-15-Days/raw/main/Descargas/mcpack-mcaddon/Todo%20el%20add-on%20individualmente.mcaddon)
+	- [**__DESCARGAR TODO JUNTO EL ADD-ON__**](https://github.com/HaJuegos/The-Last-15-Days/raw/main/Descargas/mcpack-mcaddon/Todo%20el%20add-on%20Junto%20y%20configurable.mcaddon)
 
 - Mundo Template con todo ya configurado:
 
-	- [**__DESCARGAR MUNDO__**](https://github.com/HaJuegos/The-Last-15-Days/raw/main/Descargas/mundo-ya-creado/Mundo%20ya%20Listo.mctemplate)
+	- [**__DESCARGAR MUNDO YA CREADO Y CONFIGURADO__**](https://github.com/HaJuegos/The-Last-15-Days/raw/main/Descargas/mundo-ya-creado/Mundo%20ya%20creado%20y%20configurado.mctemplate)
 
 - Archivos Zip para uso libre:
 
 	- [**__DESCARGAR TEXTURAS__**](https://github.com/HaJuegos/The-Last-15-Days/raw/main/Descargas/archivos_en_zip/texturas.zip)
-	- [**__DESCARGAR COMPORTAMIENTOS__**](https://github.com/HaJuegos/The-Last-15-Days/raw/main/Descargas/archivos_en_zip/Todos%20los%20dias.zip)
+	- [**__DESCARGAR COMPORTAMIENTOS__**](https://github.com/HaJuegos/The-Last-15-Days/raw/main/Descargas/archivos_en_zip/Todo%20el%20add-on%20separado.zip)
 	
 - Opciones Experimentales:
 	
@@ -25,7 +25,7 @@
 ### ¿Que trae el Add-on?
 
 ```txt
-The Last 15 Days - Beta v0.0.1 By Royer (Add-on de Ha Juegos y Convex)
+The Last 15 Days - Beta v0.0.1 By Royer (Add-on de Ha Juegos Cat! y Convex)
 
 ** Este Add-on aun esta en fase beta y puede tener errores inesperados, por favor si encuentras algo raro, reportalo en: https://discord.gg/WH9KpNWXUz
 
@@ -374,6 +374,6 @@ Att: Ha Juegos
 ```
 ## Opciones experimentales:
 
-![New](https://cdn.discordapp.com/attachments/997603479822536794/1015812030764163082/1.png)
+![New](https://cdn.discordapp.com/attachments/997603479822536794/1035704906075603045/unknown.png)
 
-![old](https://cdn.discordapp.com/attachments/997603479822536794/1015812031028412506/2.png)
+![old](https://cdn.discordapp.com/attachments/997603479822536794/1035704412317945948/unknown.png)
