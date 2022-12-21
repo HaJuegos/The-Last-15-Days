@@ -1,0 +1,116 @@
+/* Este archivo fue creado por ୨୧ 𓂅 𝒄𝒐𝒏𝒗𝒆𝒙 ! ♡#9947 (Discord) y @Ha_Juegos_Cat!, Cualquier reutilizacion o modificacion de este, Por favor dejar creditos originales del creador del codigo y del add-on para no tener problemas!. Si quieres contactarte con el creador de este codigo, Ve a su server de Discord: https://discord.gg/C3ZHdnUVmu y https://discord.gg/9jZHkhu86P */
+/* This file was created by ୨୧ 𓂅 𝒄𝒐𝒏𝒗𝒆𝒙 ! ♡#9947 (Discord) and @Ha_Juegos_Cat!, Any reuse or modification of this, please leave original credits to the creator of the code and add-on to avoid problems. If you want to contact the creator of this code, go to his Discord server: https://discord.gg/C3ZHdnUVmu and https://discord.gg/9jZHkhu86P */
+{
+	"format_version": "1.17.30",
+	"animation_controllers": {
+		"controller.animation.ha_dead_system": {
+			"initial_state": "default",
+			"states": {
+				"default": {
+					"transitions": [
+						{
+							"dead": "query.is_alive == 0"
+						}
+					]
+				},
+				"dead": {
+					"transitions": [
+						{
+							"default": "!query.is_alive == 0"
+						}
+					],
+					"on_entry": [
+						"/function system/sistema_de_muerte"
+					]
+				}
+			}
+		},
+		"controller.animation.ha_entry_world": {
+			"states": {
+				"default": {
+					"transitions": [
+						{
+							"detect": "!query.is_moving"
+						},
+						{
+							"detect": "query.is_moving"
+						}
+					]
+				},
+				"detect": {
+					"on_entry": [
+						"v.ui = query.life_time;"
+					],
+					"transitions": [
+						{
+							"ejecuted": "(query.life_time - v.ui) >= 19 && !query.is_moving"
+						},
+						{
+							"ejecuted": "(query.life_time - v.ui) >= 19 && query.is_moving"
+						}
+					]
+				},
+				"ejecuted": {
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					],
+					"on_entry": [
+						"/function system/configuracion_de_mundo",
+						"/tell @s[tag=!m6] §aDia 6.",
+						"/tag @s[tag=!m6] add m6"
+					]
+				}
+			}
+		},
+		"controller.animation.player.totem_tag": {
+			"states": {
+				"no_totem": {
+					"transitions": [
+						{
+							"totem": "query.is_item_name_any('slot.weapon.offhand','minecraft:totem_of_undying') == 1"
+						}
+					],
+					"on_entry": [
+						"/tag @s remove TotemOffHand"
+					]
+				},
+				"totem": {
+					"transitions": [
+						{
+							"no_totem": "query.is_item_name_any('slot.weapon.offhand','minecraft:totem_of_undying') == 0"
+						}
+					],
+					"on_entry": [
+						"/tag @s add TotemOffHand"
+					]
+				}
+			}
+		},
+		"controller.animation.player.shield_offhand": {
+			"states": {
+				"no_shield": {
+					"transitions": [
+						{
+							"shield": "query.is_item_name_any('slot.weapon.offhand','minecraft:shield') == 1"
+						}
+					],
+					"on_entry": [
+						"/tag @s remove ShieldOffHand"
+					]
+				},
+				"shield": {
+					"transitions": [
+						{
+							"no_shield": "query.is_item_name_any('slot.weapon.offhand','minecraft:shield') == 0"
+						}
+					],
+					"on_entry": [
+						"/tag @s add ShieldOffHand"
+					]
+				}
+			}
+		}
+	}
+}
