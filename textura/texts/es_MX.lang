@@ -1,0 +1,72 @@
+## Este archivo fue editado por @Ha_Juegos_Cat!. Cualquier modificacion que hagas a este mismo, Por favor deja el credito inicial que merece del creador del add-on para no tener problemas!. Si quieres contactarme hablame en mi Server de Discord: https://discord.gg/9jZHkhu86P
+## Mi Canal de YouTube: https://www.youtube.com/c/HaJuegos
+## This file was edited by @Ha_Juegos_Cat!. Any modifications you make to it, please leave the initial credit to the creator of the add-on so you don't have problems. If you want to contact me talk to me on my Discord Server: https://discord.gg/9jZHkhu86P
+## My YouTube Channel: https://www.youtube.com/c/HaJuegos
+
+disconnect.kicked=§r
+disconnect.kicked.reason=§r
+disconnect.removed=§r
+disconnect.removed.reason=§r
+
+dead_player_coordinates=§8§l[§r§e§lRoyerBot§8§l]§r §8§l>>§r§7 %1 murio en §l%2§r§7 mientras estaba en el §l%3§r§7.
+
+player_use_vanilla_totem=§7%1 Ha usado un %2.
+
+player_use_iron_apple=§7%1 Ha consumido una %2§7.
+
+player_use_pillager_totem=§7%1 ha utilizado su %2 §7por primera vez.
+
+achievement.message_relic_infernal=§4§l%1 ha conseguido su %2.
+
+player_dead_world=§c%1 Ha Muerto. Y ha causado un %2
+
+achievement.message_tusk_hoglin=§b%1 ha conseguido por primera vez su %2§b.
+
+achievement.message_fragment_get=§d%1 ha conseguido un %2§c. §7(%3/4)
+
+mob_alert_explode_message=§cUn(a) %1 acaba de explotar muy cerca de %2.
+
+dolphin_attacked_message=§e¡Te ha golpeado un Delfin! Te queda %1 segundos para respirar normal.
+
+dolphin_end_attack_message=§eYa ha pasado el efecto.
+
+achievement_message.helmet_sneaky_get=§4%1 ha conseguido su §5%2§4 por primera vez.
+achievement_message.chestsplate_sneaky_get=§4%1 ha conseguido la §5%2§4 por primera vez.
+achievement_message.leggings_sneaky_get=§4%1 ha conseguido las §5%2§4 por primera vez.
+achievement_message.boots_sneaky_get=§4%1 ha conseguido las §5%2§4 por primera vez.
+
+achievement_message.all_sneaky_armor=§d%1 ha conseguido su §5%2§d completa.
+
+## Items
+
+item.cnvx:iron_apple=§7Manzana de Hierro§r
+
+item.cnvx:summoner_totem=§8Tótem Invocador§r
+
+item.cnvx:ghast_fragment=§cFragmento Igneo de un Ghast§r
+item.cnvx:magma_fragment=§cFragmento Igneo de un Magma Cube§r
+item.cnvx:blaze_fragment=§cFragmento Igneo de un Blaze§r
+item.cnvx:piglin_fragment=§cFragmento Igneo de un Piglin§r
+item.cnvx:infernal_relic=§4§lReliquia Infernal§r
+
+item.cnvx:hoglin_tusk=§eColmillo de Hoglin§r
+
+## Armors
+
+item.ha:sneaky_astroner_helmet=Casco del Astronauta Cauteloso
+item.ha:sneaky_astroner_chestplate=Coraza del Astronauta Cauteloso
+item.ha:sneaky_astroner_leggings=Musleras del Astronauta Cauteloso
+item.ha:sneaky_astroner_boots=Botas del Astronauta Cauteloso
+
+## Entitys
+
+entity.ha:area_cloud_creeper.name=un Creeper de clase
+
+## Extra Translations
+
+resquicio_infernal_key=§4Resquicio Infernal§r
+fragmento_igneo_key=§cFragmento Igneo§r
+sneaky_armor_key=§5Armadura del Astronauta Cauteloso§r
+message.attack_warning_stop=§dHas sido teletransportado aleatoriamente.§r
+message.attack_warning=§eEstas moviendote! Para de moverte hasta que el sonido termine§r
+message.attack.totem_gifts=§aHa llegado un regalo de Totems.§r
