@@ -1,0 +1,23 @@
+/* Este archivo fue creado por ୨୧ 𓂅 𝒄𝒐𝒏𝒗𝒆𝒙 ! ♡#9947 (Discord) y @Ha_Juegos_Cat!, Cualquier reutilizacion o modificacion de este, Por favor dejar creditos originales del creador del codigo y del add-on para no tener problemas!. Si quieres contactarte con el creador de este codigo, Ve a su server de Discord: https://discord.gg/C3ZHdnUVmu y https://discord.gg/9jZHkhu86P */
+/* This file was created by ୨୧ 𓂅 𝒄𝒐𝒏𝒗𝒆𝒙 ! ♡#9947 (Discord) and @Ha_Juegos_Cat!, Any reuse or modification of this, please leave original credits to the creator of the code and add-on to avoid problems. If you want to contact the creator of this code, go to his Discord server: https://discord.gg/C3ZHdnUVmu and https://discord.gg/9jZHkhu86P */
+
+
+Estos archivos son pertenecientes de varios creadores, ninguno de estos es original. Si quieres usar un efecto de sonido de este add-on, recuerda dejarles los creditos para no ser sancionado!
+
+
+- "enemy_activate.ogg" - Sacado de DELTARUNE - enemy_attack_start - By TobyFox
+
+- "logro_obtenido.ogg" - Sacado de Minecraft Java Vanilla Resource - ui.toast.challenge_complete - By Mojang Studios
+
+- "muerte.ogg" - Sacado de VS QT Mod FNF - inhuman_loss_sfx - By Hazardous24
+
+- "sonido_muerte.ogg" - Sacado de Youtube - Medidor Cardiaco - By Caroline y (Una Parte del audio fue re-editado por Ha Juegos)
+
+- "summonea_mob.ogg" - Sacado de DELTARUNE - snd_rurus_appear - By TobyFox
+
+- "tamed_mob_betray.ogg" - Sacado de RIBBIT MOD (DELTARUNE) - enemy_encounter_start - By TheMaximus
+
+
+
+
+- Att: Ha Juegos
