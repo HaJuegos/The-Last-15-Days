@@ -1,0 +1,14 @@
+{
+	"namespace": "hud",
+	"hud_content": {
+		"modifications": [
+			{
+				"array_name": "controls",
+				"operation": "insert_front",
+				"value": {
+					"hasuperanimationscustomlol@hacustom_animations.all_hud_custom_animations_content": {}
+				}
+			}
+		]
+	}
+}
