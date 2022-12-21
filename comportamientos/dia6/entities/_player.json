@@ -1,0 +1,652 @@
+/* Este archivo fue creado por ୨୧ 𓂅 𝒄𝒐𝒏𝒗𝒆𝒙 ! ♡#9947 (Discord) y @Ha_Juegos_Cat!, Cualquier reutilizacion o modificacion de este, Por favor dejar creditos originales del creador del codigo y del add-on para no tener problemas!. Si quieres contactarte con el creador de este codigo, Ve a su server de Discord: https://discord.gg/C3ZHdnUVmu y https://discord.gg/9jZHkhu86P */
+/* This file was created by ୨୧ 𓂅 𝒄𝒐𝒏𝒗𝒆𝒙 ! ♡#9947 (Discord) and @Ha_Juegos_Cat!, Any reuse or modification of this, please leave original credits to the creator of the code and add-on to avoid problems. If you want to contact the creator of this code, go to his Discord server: https://discord.gg/C3ZHdnUVmu and https://discord.gg/9jZHkhu86P */
+{
+	"format_version": "1.18.20",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "minecraft:player",
+			"is_spawnable": false,
+			"is_summonable": false,
+			"is_experimental": false,
+			"animations": {
+				"muere": "controller.animation.ha_dead_system",
+				"primeravez_entra": "controller.animation.ha_entry_world",
+                "totemtag": "controller.animation.player.totem_tag",
+                "shieldtag": "controller.animation.player.shield_offhand"
+			},
+			"scripts": {
+				"animate": [
+					"muere",
+					"primeravez_entra",
+                    "totemtag",
+                    "shieldtag"
+				]
+			}
+		},
+		"component_groups": {
+			"minecraft:add_bad_omen": {
+				"minecraft:spell_effects": {
+					"add_effects": [
+						{
+							"effect": "bad_omen",
+							"duration": 6000,
+							"visible": false,
+							"display_on_screen_animation": true
+						}
+					]
+				},
+				"minecraft:timer": {
+					"time": [
+						0,
+						0
+					],
+					"looping": false,
+					"time_down_event": {
+						"event": "minecraft:clear_add_bad_omen",
+						"target": "self"
+					}
+				}
+			},
+			"minecraft:clear_bad_omen_spell_effect": {
+				"minecraft:spell_effects": {}
+			},
+			"minecraft:raid_trigger": {
+				"minecraft:raid_trigger": {
+					"triggered_event": {
+						"event": "minecraft:remove_raid_trigger",
+						"target": "self"
+					}
+				},
+				"minecraft:spell_effects": {
+					"remove_effects": "bad_omen"
+				}
+			},
+			"cnvx:temperature": {
+				"minecraft:timer": {
+					"time": [
+						600,
+						600
+					],
+					"looping": false,
+					"time_down_event": {
+						"event": "cnvx:set_tag",
+						"target": "self"
+					}
+				}
+			},
+			"cnvx:temp_damager": {
+				"minecraft:damage_over_time": {
+					"damage_per_hurt": 1,
+					"time_between_hurt": 2
+				}
+			},
+			"ha:ban": {
+				"minecraft:timer": {
+					"time": [
+						0.9,
+						0.9
+					],
+					"looping": false,
+					"time_down_event": {
+						"event": "ha:has_tag_ban"
+					}
+				}
+			}
+		},
+		"components": {
+			"minecraft:experience_reward": {
+				"on_death": "Math.Min(query.player_level * 7, 100)"
+			},
+			"minecraft:type_family": {
+				"family": [
+					"player"
+				]
+			},
+			"minecraft:is_hidden_when_invisible": {},
+			"minecraft:loot": {
+				"table": "loot_tables/empty.json"
+			},
+			"minecraft:collision_box": {
+				"width": 0.6,
+				"height": 1.8
+			},
+			"minecraft:can_climb": {},
+			"minecraft:movement": {
+				"value": 0.1
+			},
+			"minecraft:hurt_on_condition": {
+				"damage_conditions": [
+					{
+						"filters": {
+							"test": "in_lava",
+							"subject": "self",
+							"operator": "==",
+							"value": true
+						},
+						"cause": "lava",
+						"damage_per_tick": 40
+					},
+					{
+						"filters": {
+							"test": "has_damage",
+							"subject": "self",
+							"operator": "==",
+							"value": "fire_tick"
+						},
+						"cause": "fire",
+						"damage_per_tick": 24
+					}
+				]
+			},
+			"minecraft:attack": {
+				"damage": 1
+			},
+			"minecraft:exhaustion_values": {
+				"heal": 6,
+				"jump": 0.05,
+				"sprint_jump": 0.2,
+				"mine": 0.005,
+				"attack": 0.1,
+				"damage": 0.1,
+				"walk": 0,
+				"sprint": 0.01,
+				"swim": 0.01
+			},
+			"minecraft:player.saturation": {
+				"value": 5,
+				"max": 20
+			},
+			"minecraft:player.exhaustion": {
+				"value": 0,
+				"max": 20
+			},
+			"minecraft:player.level": {
+				"value": 0,
+				"max": 24791
+			},
+			"minecraft:player.experience": {
+				"value": 0,
+				"max": 1
+			},
+			"minecraft:breathable": {
+				"total_supply": 15,
+				"suffocate_time": -1,
+				"inhale_time": 3.75,
+				"generates_bubbles": false
+			},
+			"minecraft:nameable": {
+				"always_show": true,
+				"allow_name_tag_renaming": false
+			},
+			"minecraft:physics": {},
+			"minecraft:pushable": {
+				"is_pushable": false,
+				"is_pushable_by_piston": true
+			},
+			"minecraft:insomnia": {
+				"days_until_insomnia": 3
+			},
+			"minecraft:rideable": {
+				"seat_count": 2,
+				"family_types": [
+					"parrot_tame"
+				],
+				"pull_in_entities": true,
+				"seats": [
+					{
+						"position": [
+							0.4,
+							-0.2,
+							-0.1
+						],
+						"min_rider_count": 0,
+						"max_rider_count": 0,
+						"lock_rider_rotation": 0
+					},
+					{
+						"position": [
+							-0.4,
+							-0.2,
+							-0.1
+						],
+						"min_rider_count": 1,
+						"max_rider_count": 2,
+						"lock_rider_rotation": 0
+					}
+				]
+			},
+			"minecraft:conditional_bandwidth_optimization": {},
+			"minecraft:block_climber": {},
+			"minecraft:damage_sensor": {
+				"triggers": [
+					{
+						"on_damage": {
+							"filters": {
+								"any_of": [
+									{
+										"test": "is_block",
+										"subject": "block",
+										"value": "minecraft:sweet_berry_bush"
+									},
+									{
+										"test": "is_block",
+										"subject": "block",
+										"value": "minecraft:cactus"
+									}
+								]
+							},
+							"target": "self",
+							"event": "ha:effect_block"
+						},
+						"deals_damage": true
+					},
+					{
+						"cause": "attack",
+						"on_damage": {
+							"filters": {
+								"all_of": [
+									{
+										"test": "has_damage",
+										"value": "attack"
+									},
+									{
+										"test": "is_family",
+										"subject": "damager",
+										"value": "fox"
+									}
+								]
+							},
+							"event": "cnvx:fox_steal"
+						}
+					},
+					{
+						"cause": "attack",
+						"on_damage": {
+							"filters": {
+								"all_of": [
+									{
+										"test": "has_damage",
+										"value": "attack"
+									},
+									{
+										"test": "is_family",
+										"subject": "damager",
+										"value": "husk"
+									}
+								]
+							},
+							"event": "ha:husk_damage"
+						}
+					},
+					{
+						"on_damage": {
+							"filters": {
+								"all_of": [
+									{
+										"any_of": [
+											{
+												"test": "has_damage",
+												"value": "projectile"
+											},
+											{
+												"test": "has_damage",
+												"value": "attack"
+											}
+										]
+									},
+									{
+										"test": "is_family",
+										"subject": "damager",
+										"value": "stray"
+									}
+								]
+							},
+							"target": "self",
+							"event": "ha:stray_damage"
+						}
+					},
+					{
+						"on_damage": {
+							"filters": {
+								"test": "is_family",
+								"subject": "damager",
+								"value": "wither_boss"
+							},
+							"event": "ha:wither_damage"
+						},
+						"cause": "any",
+						"deals_damage": true
+					}
+				]
+			},
+			"minecraft:environment_sensor": {
+				"triggers": [
+					{
+						"filters": {
+							"all_of": [
+								{
+									"test": "has_mob_effect",
+									"subject": "self",
+									"value": "bad_omen"
+								},
+								{
+									"test": "is_in_village",
+									"subject": "self",
+									"value": true
+								}
+							]
+						},
+						"event": "minecraft:trigger_raid"
+					},
+					{
+						"filters": {
+							"test": "is_sleeping",
+							"value": true
+						},
+						"event": "ha:sleeping"
+					},
+					{
+						"filters": {
+							"test": "is_sleeping",
+							"value": false
+						},
+						"event": "ha:no_sleeping"
+					},
+					{
+						"filters": {
+							"all_of": [
+								{
+									"test": "is_temperature_type",
+									"subject": "self",
+									"value": "cold"
+								},
+								{
+									"test": "has_tag",
+									"subject": "self",
+									"operator": "!=",
+									"value": "temp"
+								},
+								{
+									"test": "has_tag",
+									"subject": "self",
+									"operator": "!=",
+									"value": "lo_tiene"
+								}
+							]
+						},
+						"event": "cnvx:cold_biome"
+					},
+					{
+						"filters": {
+							"all_of": [
+								{
+									"test": "is_temperature_type",
+									"subject": "self",
+									"value": "warm"
+								},
+								{
+									"test": "has_tag",
+									"subject": "self",
+									"operator": "!=",
+									"value": "temp"
+								},
+								{
+									"test": "has_tag",
+									"subject": "self",
+									"operator": "!=",
+									"value": "lo_tiene"
+								}
+							]
+						},
+						"event": "cnvx:warm_biome"
+					},
+					{
+						"filters": {
+							"all_of": [
+								{
+									"test": "is_temperature_type",
+									"value": "cold",
+									"operator": "!=",
+									"subject": "self"
+								},
+								{
+									"test": "is_temperature_type",
+									"value": "warm",
+									"operator": "!=",
+									"subject": "self"
+								},
+								{
+									"test": "has_tag",
+									"operator": "==",
+									"value": "temp"
+								}
+							]
+						},
+						"event": "cnvx:normal_biome"
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"operator": "==",
+							"subject": "self",
+							"value": "lo_tiene"
+						},
+						"event": "cnvx:normal_biome"
+					},
+					{
+						"filters": {
+							"test": "in_nether",
+							"value": true
+						},
+						"event": "ha:in_nether_tag"
+					},
+					{
+						"filters": {
+							"test": "in_nether",
+							"value": false
+						},
+						"event": "ha:no_nether_tag"
+					},
+                    {
+                        "filters": {
+                            "test": "has_equipment",
+                            "operator": "==",
+                            "subject": "self",
+                            "value": "minecraft:shield",
+                            "domain": "hand"
+                        },
+                        "event": "cnvx:add_shield_tag"
+                    },
+                    {
+                        "filters": {
+                            "test": "has_equipment",
+                            "operator": "!=",
+                            "subject": "self",
+                            "value": "minecraft:shield",
+                            "domain": "hand"
+                        },
+                        "event": "cnvx:remove_shield_tag"
+                    }
+				]
+			}
+		},
+		"events": {
+			"minecraft:gain_bad_omen": {
+				"add": {
+					"component_groups": [
+						"minecraft:add_bad_omen"
+					]
+				}
+			},
+			"minecraft:clear_add_bad_omen": {
+				"remove": {
+					"component_groups": [
+						"minecraft:add_bad_omen"
+					]
+				},
+				"add": {
+					"component_groups": [
+						"minecraft:clear_bad_omen_spell_effect"
+					]
+				}
+			},
+			"minecraft:trigger_raid": {
+				"add": {
+					"component_groups": [
+						"minecraft:raid_trigger"
+					]
+				}
+			},
+			"minecraft:remove_raid_trigger": {
+				"remove": {
+					"component_groups": [
+						"minecraft:raid_trigger"
+					]
+				}
+			},
+			"cnvx:add_shield_tag": {
+				"run_command": {
+					"command": [
+						"tag @s add blocking"
+					]
+				}
+			},
+			"cnvx:remove_shield_tag": {
+				"run_command": {
+					"command": [
+						"tag @s remove blocking"
+					]
+				}
+			},
+			"ha:sleeping": {
+				"run_command": {
+					"command": [
+						"execute @s[tag=!ya] ~ ~ ~ tellraw @a {\"rawtext\": [{\"text\":\"§a\"},{\"selector\":\"@s\"},{\"text\":\" Esta durmiendo. ¡Buenas Noches!\"}]}",
+						"weather clear",
+						"time add 50",
+						"tag @s add ya"
+					]
+				}
+			},
+			"ha:no_sleeping": {
+				"run_command": {
+					"command": [
+						"tag @s remove ya"
+					]
+				}
+			},
+			"cnvx:cold_biome": {
+				"add": {
+					"component_groups": [
+						"cnvx:temperature"
+					]
+				},
+				"run_command": {
+					"command": [
+						"tag @s add temp"
+					]
+				}
+			},
+			"cnvx:warm_biome": {
+				"add": {
+					"component_groups": [
+						"cnvx:temperature"
+					]
+				},
+				"run_command": {
+					"command": [
+						"tag @s add temp"
+					]
+				}
+			},
+			"cnvx:normal_biome": {
+				"remove": {
+					"component_groups": [
+						"cnvx:temperature",
+						"cnvx:temp_damager"
+					]
+				},
+				"run_command": {
+					"command": [
+						"tag @s remove temp"
+					]
+				}
+			},
+			"cnvx:set_tag": {
+				"add": {
+					"component_groups": [
+						"cnvx:temp_damager"
+					]
+				}
+			},
+			"ha:effect_block": {
+				"run_command": {
+					"command": [
+						"effect @s poison 10 0"
+					]
+				}
+			},
+			"cnvx:fox_steal": {
+				"run_command": {
+					"command": [
+						"function system/zorro_roba_item"
+					]
+				}
+			},
+			"ha:husk_damage": {
+				"run_command": {
+					"command": [
+						"effect @s hunger 30 3 false"
+					]
+				}
+			},
+			"ha:stray_damage": {
+				"run_command": {
+					"command": [
+						"effect @s slowness 30 3 false"
+					]
+				}
+			},
+			"ha:in_nether_tag": {
+				"run_command": {
+					"command": [
+						"tag @s add in_nether"
+					]
+				}
+			},
+			"ha:no_nether_tag": {
+				"run_command": {
+					"command": [
+						"tag @s remove in_nether"
+					]
+				}
+			},
+			"ha:wither_damage": {
+				"run_command": {
+					"command": [
+						"effect @s levitation 30 10 true"
+					]
+				}
+			},
+			"ha:start_delay_ban": {
+				"add": {
+					"component_groups": [
+						"ha:ban"
+					]
+				}
+			},
+			"ha:has_tag_ban": {
+				"remove": {
+					"component_groups": [
+						"ha:ban"
+					]
+				},
+				"run_command": {
+					"command": [
+						"tag @s add ban"
+					]
+				}
+			}
+		}
+	}
+}
