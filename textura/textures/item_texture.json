@@ -1,0 +1,45 @@
+/* This file belongs to: "Ha Juegos" and "Convex" (Copyright 2022), Any unauthorized modification or change will be penalized, more information to authorize your copies you can contact me on discord: https://discord.gg/p6a7tqVJxn
+My youtube channel for more updates: https://www.youtube.com/c/HaJuegos and the Convex GitHub: https://github.com/conveex
+********************************************************************
+Este archivo pertenece a: "Ha Juegos" y "Convex" (Copyright 2022), Cualquier modificación o cambio no autorizado será sancionado, más información para autorizar tus copias puedes contactar conmigo en discord: https://discord.gg/p6a7tqVJxn
+Mi canal de youtube para más actualizaciones: https://www.youtube.com/c/HaJuegos y el GitHub de Convex: https://github.com/conveex */
+{
+	"resource_pack_name": "RP_15_days",
+	"texture_name": "atlas.items",
+	"texture_data": {
+		// Items
+        "iron_apple":{
+            "textures":"textures/items/iron_apple"
+        },
+        "summoner_totem":{
+            "textures":"textures/items/summoner_totem"
+        },
+        "infernal_relic":{
+            "textures":"textures/items/infernal_relic"
+        },
+        "igneous_fragment":{
+            "textures":"textures/items/igneous_fragment"
+        },
+        "hoglin_tusk":{
+            "textures":"textures/items/hoglin_tusk"
+        },
+		// Armors Category Texture Item
+		"ha:sneaky_astroner_boots": {
+			"textures": "textures/items/sneaky_astroner_armor/boots"
+		},
+		"ha:sneaky_astroner_leggings": {
+			"textures": "textures/items/sneaky_astroner_armor/leggings"
+		},
+		"ha:sneaky_astroner_helmet": {
+			"textures": "textures/items/sneaky_astroner_armor/helmet"
+		},
+		"ha:sneaky_astroner_chestplate": {
+			"textures": "textures/items/sneaky_astroner_armor/chestplate"
+		}
+	}
+}
+/* This file belongs to: "Ha Juegos" and "Convex" (Copyright 2022), Any unauthorized modification or change will be penalized, more information to authorize your copies you can contact me on discord: https://discord.gg/p6a7tqVJxn
+My youtube channel for more updates: https://www.youtube.com/c/HaJuegos and the Convex GitHub: https://github.com/conveex
+********************************************************************
+Este archivo pertenece a: "Ha Juegos" y "Convex" (Copyright 2022), Cualquier modificación o cambio no autorizado será sancionado, más información para autorizar tus copias puedes contactar conmigo en discord: https://discord.gg/p6a7tqVJxn
+Mi canal de youtube para más actualizaciones: https://www.youtube.com/c/HaJuegos y el GitHub de Convex: https://github.com/conveex */
