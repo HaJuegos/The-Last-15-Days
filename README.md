@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://cdn.discordapp.com/attachments/997603479822536794/1021663721241718784/pack_icon.png" alt="Addon Icon" width=250>
+  <img src="https://cdn.discordapp.com/attachments/997603479822536794/1021663721241718784/pack_icon.png" alt="Addon Icon" width=450>
   <h3 align="center">The Last 15 Days</h3>
   
  <p align="center">
