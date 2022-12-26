@@ -7,14 +7,21 @@ This file was created by ୨୧ 𓂅 𝒄𝒐𝒏𝒗𝒆𝒙 ! ♡#9947 (Discor
 import { world, ItemStack, MinecraftItemTypes } from "@minecraft/server"
 
 world.events.blockBreak.subscribe(eventNetherite => {
-    try {
+	try {
         let player = Array.from(world.getPlayers()).find(p => p.name == eventNetherite.player.name)
         const block = eventNetherite.brokenBlockPermutation.type
+        let x = eventNetherite.block.location.x
+        let y = eventNetherite.block.location.y
+        let z = eventNetherite.block.location.z
         if (block.id == 'minecraft:diamond_ore') {
             player.runCommandAsync(`damage "${player.name}" 3 temperature`)
         }
 		if (block.id == 'minecraft:deepslate_diamond_ore') {
             player.runCommandAsync(`damage "${player.name}" 3 temperature`)
+        }
+        if (block.id == 'minecraft:ancient_debris') {
+            player.runCommandAsync(`summon silverfish ${x} ${y} ${z}`)
+            player.runCommandAsync(`setblock ${x} ${y} ${z} flowing_lava`)
         }
     } catch { }
 })
