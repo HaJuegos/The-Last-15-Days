@@ -1,0 +1,178 @@
+/* Creado/Editado por: HaJuegos Cat! & Convex!. Si necesitas mas informacion, hablamos en Discord: https://discord.com/users/1065525532197916722 & https://discord.com/users/736761089056047174 o tambien https://discord.com/users/714622708649951272 y https://discord.com/users/948057828495605820 */
+/* Created/Edited by: HaCatto! & Convex! If you need more information, we talk on Discord: https://discord.com/users/1065525532197916722 & https://discord.com/users/736761089056047174 or also https://discord.com/users/714622708649951272 y https://discord.com/users/948057828495605820 */
+{
+	"format_version": "1.17.0",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "ha:ghost_player",
+			"is_summonable": true,
+			"is_spawnable": true,
+			"is_experimental": false
+		},
+		"component_groups": {
+			"recoje_items": {
+				"minecraft:inventory": {
+					"inventory_size": 100
+				},
+				"minecraft:equip_item": {},
+				"minecraft:shareables": {
+					"all_items": true,
+					"all_items_max_amount": 99999,
+					"items": [
+						{
+							"priority": 1,
+							"max_amount": 64,
+							"stored_in_inventory": true
+						}
+					]
+				},
+				"minecraft:behavior.pickup_items": {
+					"priority": 2,
+					"max_dist": 100,
+					"goal_radius": 100,
+					"speed_multiplier": 0,
+					"track_target": true,
+					"can_pickup_any_item": true,
+					"can_pickup_to_hand_or_equipment": false,
+					"pickup_based_on_chance": false
+				},
+				"minecraft:behavior.equip_item": {
+					"priority": 2
+				}
+			}
+		},
+		"components": {
+			"minecraft:type_family": {
+				"family": [
+					"playerdead",
+					"inanimate",
+					"mob"
+				]
+			},
+			"minecraft:collision_box": {
+				"width": 0.8,
+				"height": 1.3
+			},
+			"minecraft:health": {
+				"value": 1,
+				"max": 1
+			},
+			"minecraft:knockback_resistance": {
+				"value": 100
+			},
+			"minecraft:nameable": {
+				"always_show": true,
+				"allow_name_tag_renaming": false
+			},
+			"minecraft:persistent": {},
+			"minecraft:damage_sensor": {
+				"triggers": [
+					{
+						"cause": "any",
+						"on_damage": {
+							"filters": {
+								"test": "is_family",
+								"subject": "other",
+								"value": "player"
+							}
+						},
+						"deals_damage": true,
+						"damage_multiplier": 9999
+					},
+					{
+						"cause": "any",
+						"on_damage": {
+							"filters": {
+								"test": "is_family",
+								"subject": "other",
+								"operator": "!=",
+								"value": "player"
+							}
+						},
+						"deals_damage": false
+					},
+					{
+						"cause": "block_explosion",
+						"deals_damage": false
+					},
+					{
+						"cause": "entity_explosion",
+						"deals_damage": false
+					},
+					{
+						"cause": "magic",
+						"deals_damage": false
+					},
+					{
+						"cause": "fire",
+						"deals_damage": false
+					},
+					{
+						"cause": "fire_tick",
+						"deals_damage": false
+					},
+					{
+						"cause": "lava",
+						"deals_damage": false
+					},
+					{
+						"cause": "fall",
+						"deals_damage": false
+					},
+					{
+						"cause": "projectile",
+						"deals_damage": false
+					}
+				]
+			},
+			"minecraft:tick_world": {
+				"radius": 2,
+				"never_despawn": true
+			},
+			"minecraft:movement": {
+				"value": 0
+			},
+			"minecraft:flying_speed": {
+				"value": 0
+			},
+			"minecraft:behavior.float": {
+				"priority": 0
+			},
+			"minecraft:navigation.hover": {
+				"can_path_over_water": true,
+				"can_sink": false,
+				"can_pass_doors": false,
+				"can_path_from_air": true,
+				"avoid_water": true,
+				"avoid_damage_blocks": true,
+				"avoid_sun": false
+			},
+			"minecraft:movement.hover": {},
+			"minecraft:jump.static": {},
+			"minecraft:can_fly": {},
+			"minecraft:behavior.look_at_player": {
+				"priority": 1,
+				"look_distance": 6,
+				"probability": 0.02
+			},
+			"minecraft:behavior.random_look_around": {
+				"priority": 1
+			},
+			"minecraft:physics": {},
+			"minecraft:pushable": {
+				"is_pushable": false,
+				"is_pushable_by_piston": true
+			},
+			"minecraft:conditional_bandwidth_optimization": {}
+		},
+		"events": {
+			"minecraft:entity_spawned": {
+				"add": {
+					"component_groups": [
+						"recoje_items"
+					]
+				}
+			}
+		}
+	}
+}
