@@ -20,8 +20,8 @@ My YouTube Channel: https://www.youtube.com/c/HaJuegos */
 					"anchor_from": "bottom_right",
 					"anchor_to": "bottom_right",
 					"shadow": true,
-					"font_size": "normal",
-					"text": "v0.0.3§r",
+					"font_size": "small",
+					"text": "v0.0.4§r",
 					"layer": 200,
 					"offset": [
 						-1.3,
@@ -36,12 +36,44 @@ My YouTube Channel: https://www.youtube.com/c/HaJuegos */
 					"anchor_from": "bottom_left",
 					"anchor_to": "bottom_left",
 					"shadow": true,
-					"font_size": "normal",
-					"text": "§c@TheLast15Days §r",
+					"font_size": "small",
+					"text": "§4@TheLast15Days §r",
 					"layer": 200,
 					"offset": [
 						1.3,
 						-6
+					],
+					"alpha": 0.3
+				}
+			},
+			{
+				"ha_name": {
+					"type": "label",
+					"anchor_from": "bottom_left",
+					"anchor_to": "bottom_left",
+					"shadow": true,
+					"font_size": "small",
+					"text": "§c@Ha_Juegos_Cat§r ",
+					"layer": 200,
+					"offset": [
+						1.3,
+						-16
+					],
+					"alpha": 0.3
+				}
+			},
+			{
+				"convex_name": {
+					"type": "label",
+					"anchor_from": "bottom_left",
+					"anchor_to": "bottom_left",
+					"shadow": true,
+					"font_size": "small",
+					"text": "§5@convex__ §r",
+					"layer": 200,
+					"offset": [
+						1.3,
+						-26
 					],
 					"alpha": 0.3
 				}

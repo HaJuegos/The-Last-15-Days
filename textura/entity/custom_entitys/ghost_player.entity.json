@@ -11,10 +11,10 @@ My YouTube Channel: https://www.youtube.com/c/HaJuegos */
 				"default": "entity_alphablend"
 			},
 			"textures": {
-				"default": "textures/entity/ghost/ghost"
+				"default": "textures/entity/ghost/ghost_v2"
 			},
 			"geometry": {
-				"default": "geometry.ghost"
+				"default": "geometry.ghost_v2"
 			},
 			"spawn_egg": {
 				"texture": "spawnegg_inventory_player"
@@ -29,7 +29,8 @@ My YouTube Channel: https://www.youtube.com/c/HaJuegos */
 				{
 					"general": "controller.animation.ghost.general"
 				}
-			]
+			],
+			"enable_attachables": true
 		}
 	}
 }
