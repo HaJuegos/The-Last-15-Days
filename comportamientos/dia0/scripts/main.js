@@ -11,17 +11,19 @@ world.events.beforeChat.subscribe(eventData => {
     eventData.cancel = true;
     const msg = eventData.message;
     const player = eventData.sender;
-    world.getDimension("overworld").runCommandAsync(`tellraw @a {"rawtext":[{"text":"§8§l[§r${(player.getTags().find((tag) => tag.startsWith("r:"))?.substring(2)?.split("-") ?? ["§4Sobreviviente"]).join("§r§l§8][§r")}§8§l]§r ${player.name} §8§l>>§r ${msg}"}]}`);
+    world.getDimension("overworld").runCommandAsync(`tellraw @a {"rawtext":[{"text":"${(player.getTags().find((tag) => tag.startsWith("r:"))?.substring(2)?.split("-") ?? ["§4Sobreviviente"]).join("§r§l§0][§r")} ${player.name} §8§l>>§r ${msg}"}]}`);
 });
 
-world.events.entityDie.subscribe(ded => {
-	for (const plr of world.getPlayers()) {
-        if (!plr.hasTag("coords")) {
-			plr.runCommandAsync(`summon ha:ghost_player "§e${plr.name} Inventory§r" ~ ~ ~`)
-            plr.runCommandAsync(`tellraw @a {"rawtext": [{"translate":"dead_player_coordinates", "with": {"rawtext": [{"selector":"@s"},{"text":"${Math.floor(plr.location.x)} ${Math.floor(plr.location.y)} ${Math.floor(plr.location.z)}"},{"text":"${getDimension(plr.dimension)}"}]}}]}`)
-			plr.addTag("coords")
-        };
-    };
+world.events.entityDie.subscribe(eventDead => {
+	const player = eventDead.deadEntity;
+	const source = eventDead.damageSource;
+	if (player.typeId == 'minecraft:player') {
+		if (!player.hasTag("coords")) {
+			player.runCommandAsync(`summon ha:ghost_player "§e${player.name} Inventory§r" ~ ~ ~`)
+			player.runCommandAsync(`tellraw @a {"rawtext": [{"translate":"dead_player_coordinates", "with": {"rawtext": [{"selector":"@s"},{"text":"${Math.floor(player.location.x)} ${Math.floor(player.location.y)} ${Math.floor(player.location.z)}"},{"text":"${getDimension(player.dimension)}"}]}}]}`)
+			player.addTag("coords")
+		};
+	};
 });
 
 system.runInterval(() => {
@@ -39,7 +41,7 @@ system.runInterval((healthEvent) => {
     for (const player of players) {
         if (player.hasComponent("health")) {
             const health = player.getComponent("health")
-            player.nameTag = (player.getTags().find((tag) => tag.startsWith("r:"))?.substring(2)?.split("-") ?? ["§8§l[§r§4Sobreviviente§8§l]§r"]).join() + " §7" + player.name + "\n§c" + Math.round(health.current) + "§7/§c" + Math.round(health.value)
+            player.nameTag = (player.getTags().find((tag) => tag.startsWith("r:"))?.substring(2)?.split("-") ?? ["§7§l[§4Sobreviviente§7]§r"]).join() + "\n§7" + player.name + " §c" + Math.round(health.current) + "§7/§c" + Math.round(health.value)
         };
     };
 }, 20);
