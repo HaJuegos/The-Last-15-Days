@@ -1,5 +1,5 @@
-/* Este archivo fue creado por ୨୧ 𓂅 𝒄𝒐𝒏𝒗𝒆𝒙 ! ♡#9947 (Discord) y @Ha_Juegos_Cat!, Cualquier reutilizacion o modificacion de este, Por favor dejar creditos originales del creador del codigo y del add-on para no tener problemas!. Si quieres contactarte con el creador de este codigo, Ve a su server de Discord: https://discord.gg/C3ZHdnUVmu y https://discord.gg/9jZHkhu86P */
-/* This file was created by ୨୧ 𓂅 𝒄𝒐𝒏𝒗𝒆𝒙 ! ♡#9947 (Discord) and @Ha_Juegos_Cat!, Any reuse or modification of this, please leave original credits to the creator of the code and add-on to avoid problems. If you want to contact the creator of this code, go to his Discord server: https://discord.gg/C3ZHdnUVmu and https://discord.gg/9jZHkhu86P */
+/* Creado/Editado por: HaJuegos Cat! & Convex!. Si necesitas mas informacion, hablamos en Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174 */
+/* Created/Edited by: HaCatto! & Convex! If you need more information, we talk on Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174 */
 {
 	"format_version": "1.18.20",
 	"minecraft:entity": {
@@ -24,6 +24,37 @@
 			}
 		},
 		"component_groups": {
+			"cnvx:temperature": {
+				"minecraft:timer": {
+					"time": [
+						600,
+						600
+					],
+					"looping": false,
+					"time_down_event": {
+						"event": "cnvx:set_tag",
+						"target": "self"
+					}
+				}
+			},
+			"cnvx:temp_damager": {
+				"minecraft:damage_over_time": {
+					"damage_per_hurt": 1,
+					"time_between_hurt": 2
+				}
+			},
+			"ha:ban": {
+				"minecraft:timer": {
+					"time": [
+						0.9,
+						0.9
+					],
+					"looping": false,
+					"time_down_event": {
+						"event": "ha:has_tag_ban"
+					}
+				}
+			},
 			"minecraft:add_bad_omen": {
 				"minecraft:spell_effects": {
 					"add_effects": [
@@ -59,37 +90,6 @@
 				},
 				"minecraft:spell_effects": {
 					"remove_effects": "bad_omen"
-				}
-			},
-			"cnvx:temperature": {
-				"minecraft:timer": {
-					"time": [
-						600,
-						600
-					],
-					"looping": false,
-					"time_down_event": {
-						"event": "cnvx:set_tag",
-						"target": "self"
-					}
-				}
-			},
-			"cnvx:temp_damager": {
-				"minecraft:damage_over_time": {
-					"damage_per_hurt": 1,
-					"time_between_hurt": 2
-				}
-			},
-			"ha:ban": {
-				"minecraft:timer": {
-					"time": [
-						0.9,
-						0.9
-					],
-					"looping": false,
-					"time_down_event": {
-						"event": "ha:has_tag_ban"
-					}
 				}
 			}
 		},
@@ -388,6 +388,25 @@
 					]
 				}
 			},
+			"ha:start_delay_ban": {
+				"add": {
+					"component_groups": [
+						"ha:ban"
+					]
+				}
+			},
+			"ha:has_tag_ban": {
+				"remove": {
+					"component_groups": [
+						"ha:ban"
+					]
+				},
+				"run_command": {
+					"command": [
+						"tag @s add ban"
+					]
+				}
+			},
 			"cnvx:cold_biome": {
 				"add": {
 					"component_groups": [
@@ -429,25 +448,6 @@
 				"add": {
 					"component_groups": [
 						"cnvx:temp_damager"
-					]
-				}
-			},
-			"ha:start_delay_ban": {
-				"add": {
-					"component_groups": [
-						"ha:ban"
-					]
-				}
-			},
-			"ha:has_tag_ban": {
-				"remove": {
-					"component_groups": [
-						"ha:ban"
-					]
-				},
-				"run_command": {
-					"command": [
-						"tag @s add ban"
 					]
 				}
 			}
