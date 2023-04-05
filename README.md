@@ -25,15 +25,15 @@
 
 ## DESCARGAS RAPIDAS
 
-[**__CLICKEAME PARA DESCARGAR TODO EL ADD-ON__**](https://link-hub.net/561815/todo-el-add-on)
+### Advertencia: Los links acontinuacion estan acortados y puede haber publicidad algo pasada, si algo, solo ve al grano y no entres a cualquier cosa malisiosa que encuentres, solo ve a los botones de descarga y saltate los anuncios.
 
-[**__CLICKEAME PARA DESCARGAR SOLO EL ADD-ON POR SEPARADO__**](https://link-hub.net/561815/solo-el-add-on-separado)
+- [**CLICK PARA DESCARGAR TODO**](https://link-hub.net/561815/todo-el-add-on)
 
-[**__CLICKEAME PARA DESCARGAR SOLO EL ADD-ON JUNTO__**](https://direct-link.net/561815/solo-el-add-on-junto)
+- [**CLICK PARA DESCARGAR EL ADD-ON JUNTO**](https://direct-link.net/561815/solo-el-add-on-junto)
 
-[**__CLICKEAME PARA DESCARGAR SOLO LAS TEXTURAS__**](https://link-target.net/561815/solo-las-texturas)
+- [**CLICK PARA DESCARGAR EL ADD-ON POR SEPARADO**](https://link-hub.net/561815/solo-el-add-on-separado)
 
-[**__CLICKEAME PARA DESCARGAR SOLO EL MAPA__**](https://link-hub.net/561815/solo-el-mundo-preparado)
+- [**CLICK PARA DESCARGAR EL MUNDO YA CONFIGURADO**](https://link-hub.net/561815/solo-el-mundo-preparado)
 
 ## GUIA DE USO
 
