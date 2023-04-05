@@ -18,9 +18,10 @@
   <a href="https://www.youtube.com/watch?v=SWd6QM0TTJo"><img src="https://img.shields.io/youtube/views/SWd6QM0TTJo?style=plastic&logo=youtube&color=red&label=Video%20Tutorial" alt="Youtube "/></a>
 </p>
 
-## NOTAS DE USO
+## ACREDITACION IMPORTANTE
 
-- Este add-on es una comision de R o y e r 5 5 1#8604, cualquier re-uso, link diferente, autocomercio o alguna cosa no autorizada por mi Ha Juegos Cat!, Sera sancionada. Por favor si vas a usar este add-on, recuerda dejar creditos para la persona que comsiona y para la persona que creo todo esto. Si quieres usar algo de este add-on, por favor pide permiso personalmente en mi [Discord](https://discord.gg/9jZHkhu86P) o por Mensaje Privado de [Twitter](https://twitter.com/Ha_Juegos_Cat) y resolveremos cualquier duda que tengas. **No hagas links con descargas directas de este add-on o me vere en la obligacion de tumbarte ese link.**
+- Este Add-on es una comision pagada de [RosherRandom](https://discord.com/users/666120110964211732) y forma parte de una colaboracion entre [Astral](https://discord.com/users/983220765006635018), [HaJuegosCat!](https://discord.com/users/714622708649951272) y [Convex!](https://discord.com/users/736761089056047174) asi que por favor recuerda cada uno de nosotros le metimos esfuerzo y dedicacion a este add-on, para que lo tengas ahora mismo en tus manos y lo puedas usar a gusto. Si deseas crear modificaciones o contenido con este mismo, procura hacer minimamente mencion a las personas que trabajamos en esto con algun link para que nos conozcan mejor. ¡Gracias!
+- Si tienes mas dudas al respecto o quieres buscar algo mas, entra al server de Discord de Add-ons de HaJuegosCat para mas informacion: https://discord.gg/WH9KpNWXUz
 
 ## DESCARGAS RAPIDAS
 
@@ -36,7 +37,7 @@
 
 ## GUIA DE USO
 
-- **El Add-on solo soporta la version 1.19.50 de Minecraft Bedrock. Esto no es definitivo ya que cualquier version oficial futura, puede provocar daños o bugs inesperados**.
+- **El Add-on solo soporta la version 1.19.70/1/2/3 de Minecraft Bedrock. Esto no es definitivo ya que cualquier version oficial futura, puede provocar daños o bugs inesperados**.
 - Todo en el add-on es automatico.
 - Si deseas instalar el mundo ya creado, por favor sigue estos pasos si no concoces como se hace: [**__Ver imagen__**](https://media.discordapp.net/attachments/964653057390546954/997570733473550536/exmple.png)
 - Para revivir a un compañero, deja un bloque de comandos en repetir con el siguiente comando:
@@ -55,9 +56,9 @@ y luego el comando en el chat del juego:
 ## OPCIONES EXPERIMENTALES
 - _Este add-on, depende de opciones experimentales, ya los puedes ver en el template del mundo y cuando lo crees, Procura tenerlos activos para no tener problemas algunos._
 
-![New](https://cdn.discordapp.com/attachments/997603479822536794/1054608128022425640/new.png)
+![New](https://cdn.discordapp.com/attachments/1093209319606071417/1093209564981252097/new.png)
 
-![old](https://cdn.discordapp.com/attachments/997603479822536794/1054608127653318676/old.png)
+![old](https://cdn.discordapp.com/attachments/1093209319606071417/1093209565266448425/old.png)
 
 ## COMO INSTALAR EL ADD-ON EN SERVIDORES
 
@@ -66,9 +67,9 @@ y luego el comando en el chat del juego:
 
 ## QUE TRAE EL ADD-ON
 ```txt
-The Last 15 Days - Beta v0.0.3 By Royer (Add-on de Ha Juegos Cat! y Convex)
+The Last 15 Days By Rosher Random, Convex y HaJuegos Cat! - Version Oficial 0.0.4
 
-** Este Add-on aun esta en fase beta y puede tener errores inesperados, por favor si encuentras algo raro, reportalo en: https://discord.gg/WH9KpNWXUz
+** Cualquier error o algo inusual que encuentres en esta version puedes reportarlo aqui: https://discord.gg/WH9KpNWXUz o enviandole un mensaje a HaJuegos Cat!: https://discord.com/users/714622708649951272
 
 -----------------------------------------------------------------
 
@@ -187,7 +188,6 @@ The Last 15 Days - Beta v0.0.3 By Royer (Add-on de Ha Juegos Cat! y Convex)
 • Dia 6 Cambios:
 
 - Todo lo relacionado con la Netherite ya es obtenible
-- La armadura de netherite es irrompible
 - Ahora el daño por la lava esta aumentado: Te hace 5 de daño
 - Ahora el daño por el fuego esta aumentado: Te hace 2 de daño
 - Los hoglins fueron cambiados y ahora:
@@ -337,10 +337,10 @@ The Last 15 Days - Beta v0.0.3 By Royer (Add-on de Ha Juegos Cat! y Convex)
 	- Tener todo el conjunto puesto: Te agrega Health Boost III, pero en cambio si no portas toda la armor. Te dara Fatal Poison por siempre en el End
 
 - Para Obtener la Sneaky Astroner debes matar los siguientes mobs:
-	- Llama (Botas, posibilidad %50)
-	- Enderman (Casco, posibilidad %50)
-	- Piglin Brute (Pantalones, posibilidad %50)
-	- Ravager (Pechera, posibilidad %50)
+	- Llama (Botas, posibilidad %15)
+	- Enderman (Casco, posibilidad %25)
+	- Piglin Brute (Pantalones, posibilidad %40)
+	- Ravager (Pechera, posibilidad %15)
 
 - La armadura es irrompible y en forma de item resiste explosiones y la lava o el fuego
 
@@ -370,7 +370,9 @@ The Last 15 Days - Beta v0.0.3 By Royer (Add-on de Ha Juegos Cat! y Convex)
 	- Llevan Fuerza X
 	- Son locas siempre
 
+- La EnderPearl tiene mas cooldown
 - Al dormir tienes un 70% de posibilidad de generar un Enderman en tu posicion
+- Al pescar tienes un 50% de posibilidad de generar una cabra.
 
 • Dia 12 Cambios:
 
@@ -406,9 +408,10 @@ The Last 15 Days - Beta v0.0.3 By Royer (Add-on de Ha Juegos Cat! y Convex)
 - Los Golems de Nieve ahora:
 	- Se generan en el End
 	- Golem de Nieve del End:
-	- Si estos te hacen daño o estas cerca de un impacto de ellos, seras teletrasportado a uno de ellos
-	- Sus bolas de nieve tienen Muchisimo daño
-	- Llevan Resistencia V
+		- Si estos te hacen daño o estas cerca de un impacto de ellos, seras teletrasportado a uno de ellos
+		- Sus bolas de nieve tienen Muchisimo daño
+		- Llevan Resistencia V
+		- Pueden ser mas habiles de lo normal
 
-Att: Ha Juegos Cat!
+Att: HaJuegos Cat!
 ```
