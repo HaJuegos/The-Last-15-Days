@@ -2,15 +2,28 @@
 /* Created/Edited by: HaCatto! & Convex! If you need more information, we talk on Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174 */
 {
 	"format_version": "1.12",
-	"minecraft:recipe_furnace": {
+	"minecraft:recipe_shaped": {
 		"description": {
-			"identifier": "minecraft:furnace_ancient_debris"
+			"identifier": "cnvx:iron_apple"
 		},
 		"tags": [
-			"furnace",
-			"blast_furnace"
+			"crafting_table"
 		],
-		"input": "minecraft:ancient_debris",
-		"output": "minecraft:ancient_debris"
+		"pattern": [
+			"###",
+			"#X#",
+			"###"
+		],
+		"key": {
+			"#": {
+				"item": "minecraft:iron_ingot"
+			},
+			"X": {
+				"item": "minecraft:apple"
+			}
+		},
+		"result": {
+			"item": "cnvx:iron_apple"
+		}
 	}
 }
