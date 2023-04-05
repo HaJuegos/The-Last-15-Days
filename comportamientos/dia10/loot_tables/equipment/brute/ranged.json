@@ -1,0 +1,88 @@
+//bridge-file-version: #0
+{
+	"pools": [
+		{
+			"rolls": 1,
+			"entries": [
+				{
+					"type": "item",
+					"name": "minecraft:diamond_helmet",
+					"functions": [
+						{
+							"function": "enchant_random_gear",
+							"chance": 0.25
+						}
+					],
+					"pools": [
+						{
+							"rolls": 1,
+							"entries": [
+								{
+									"type": "item",
+									"name": "minecraft:diamond_chestplate",
+									"functions": [
+										{
+											"function": "enchant_random_gear",
+											"chance": 0.25
+										}
+									],
+									"pools": [
+										{
+											"rolls": 1,
+											"entries": [
+												{
+													"type": "item",
+													"name": "minecraft:diamond_leggings",
+													"functions": [
+														{
+															"function": "enchant_random_gear",
+															"chance": 0.25
+														}
+													],
+													"pools": [
+														{
+															"rolls": 1,
+															"entries": [
+																{
+																	"type": "item",
+																	"name": "minecraft:diamond_boots",
+																	"functions": [
+																		{
+																			"function": "enchant_random_gear",
+																			"chance": 0.25
+																		}
+																	],
+																	"pools": [
+																		{
+																			"rolls": 1,
+																			"entries": [
+																				{
+																					"type": "item",
+																					"name": "minecraft:bow",
+																					"functions": [
+																						{
+																							"function": "enchant_random_gear",
+																							"chance": 0.25
+																						}
+																					]
+																				}
+																			]
+																		}
+																	]
+																}
+															]
+														}
+													]
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}

@@ -1,6 +1,37 @@
-/* This file belongs to: "Ha Juegos" (Copyright 2022), Any unauthorized modification or change will be penalized, more information to authorize your copies you can contact me on discord: https://discord.gg/p6a7tqVJxn
-My youtube channel for more updates: https://www.youtube.com/c/HaJuegos
-********************************************************************
-Este archivo pertenece a: "Ha Juegos" (Copyright 2022), Cualquier modificación o cambio no autorizado será sancionado, más información para autorizar tus copias puedes contactar conmigo en discord: https://discord.gg/p6a7tqVJxn
-Mi canal de youtube para más actualizaciones: https://www.youtube.com/c/HaJuegos */
-{"format_version":"1.16.0","minecraft:item":{"description":{"identifier":"minecraft:netherite_helmet"},"components":{"minecraft:max_stack_size":1,"minecraft:enchantable":{"value":15,"slot":"armor_head"},"minecraft:durability":{"max_durability":99999,"max_damage":407,"damage_chance":{"min":99999,"max":99999}},"minecraft:mining_speed":9,"minecraft:damage":4,"minecraft:armor":{"protection":3},"minecraft:wearable":{"slot":"slot.armor.head"},"minecraft:knockback_resistance":{"protection":0.1}},"events":{}}}
+/* Creado/Editado por: HaJuegos Cat! & Convex!. Si necesitas mas informacion, hablamos en Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174 */
+/* Created/Edited by: HaCatto! & Convex! If you need more information, we talk on Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174 */
+{
+	"format_version": "1.16.0",
+	"minecraft:item": {
+		"description": {
+			"identifier": "minecraft:netherite_helmet"
+		},
+		"components": {
+			"minecraft:max_stack_size": 1,
+			"minecraft:enchantable": {
+				"value": 15,
+				"slot": "armor_head"
+			},
+			"minecraft:durability": {
+				"max_durability": 99999,
+				"max_damage": 407,
+				"damage_chance": {
+					"min": 99999,
+					"max": 99999
+				}
+			},
+			"minecraft:mining_speed": 9,
+			"minecraft:damage": 4,
+			"minecraft:armor": {
+				"protection": 3
+			},
+			"minecraft:wearable": {
+				"slot": "slot.armor.head"
+			},
+			"minecraft:knockback_resistance": {
+				"protection": 0.1
+			}
+		},
+		"events": {}
+	}
+}

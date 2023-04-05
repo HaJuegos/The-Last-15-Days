@@ -1,0 +1,58 @@
+/* Creado/Editado por: HaJuegos Cat! & Convex!. Si necesitas mas informacion, hablamos en Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174 */
+/* Created/Edited by: HaCatto! & Convex! If you need more information, we talk on Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174 */
+{
+	"format_version": "1.16.100",
+	"minecraft:item": {
+		"description": {
+			"identifier": "ha:sneaky_astroner_helmet",
+			"category": "equipment"
+		},
+		"components": {
+			"minecraft:max_stack_size": 1,
+			"minecraft:render_offsets": "helmets",
+			"minecraft:creative_category": {
+				"parent": "itemGroup.name.helmet"
+			},
+			"minecraft:enchantable": {
+				"value": 15,
+				"slot": "armor_head"
+			},
+			"minecraft:armor": {
+				"protection": 3
+			},
+			"minecraft:wearable": {
+				"slot": "slot.armor.head",
+				"dispensable": true
+			},
+			"minecraft:icon": {
+				"texture": "ha:sneaky_astroner_helmet"
+			},
+			"minecraft:on_use": {
+				"on_use": {
+					"event": "sonido"
+				}
+			},
+			"minecraft:repairable": {
+				"repair_items": [
+					{
+						"items": [
+							"ha:sneaky_astroner_helmet"
+						],
+						"repair_amount": 2
+					}
+				]
+			},
+			"minecraft:explodable": false,
+			"minecraft:should_despawn": false
+		},
+		"events": {
+			"sonido": {
+				"run_command": {
+					"command": [
+						"playsound armor.equip_chain @s"
+					]
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,86 @@
+/* Creado/Editado por: HaJuegos Cat! & Convex!. Si necesitas mas informacion, hablamos en Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174 */
+/* Created/Edited by: HaCatto! & Convex! If you need more information, we talk on Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174 */
+{
+	"format_version": "1.15.0",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "minecraft:ender_crystal",
+			"is_spawnable": false,
+			"is_summonable": true,
+			"is_experimental": false,
+			"animations": {
+				"damage": "controller.animation.ha_ender_crystal_damage"
+			},
+			"scripts": {
+				"animate": [
+					"damage"
+				]
+			}
+		},
+		"component_groups": {
+			"crystal_exploding": {
+				"minecraft:explode": {
+					"fuse_length": 0,
+					"fuse_lit": true,
+					"power": 6,
+					"causes_fire": false,
+					"destroy_affected_by_griefing": true
+				},
+				"minecraft:skin_id": {
+					"value": 1
+				}
+			}
+		},
+		"components": {
+			"minecraft:collision_box": {
+				"width": 2,
+				"height": 2
+			},
+			"minecraft:health": {
+				"value": 1,
+				"max": 1
+			},
+			"minecraft:fire_immune": true,
+			"minecraft:damage_sensor": {
+				"triggers": [
+					{
+						"on_damage": {
+							"filters": {
+								"any_of": [
+									{
+										"test": "has_damage",
+										"operator": "not",
+										"value": "block_explosion"
+									},
+									{
+										"test": "has_damage",
+										"operator": "not",
+										"value": "entity_explosion"
+									}
+								]
+							},
+							"event": "minecraft:crystal_explode",
+							"target": "self"
+						}
+					}
+				]
+			},
+			"minecraft:physics": {},
+			"minecraft:pushable": {
+				"is_pushable": true,
+				"is_pushable_by_piston": true
+			},
+			"minecraft:conditional_bandwidth_optimization": {}
+		},
+		"events": {
+			"minecraft:crystal_explode": {
+				"remove": {},
+				"add": {
+					"component_groups": [
+						"crystal_exploding"
+					]
+				}
+			}
+		}
+	}
+}

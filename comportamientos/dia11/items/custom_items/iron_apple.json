@@ -1,0 +1,43 @@
+/* Creado/Editado por: HaJuegos Cat! & Convex!. Si necesitas mas informacion, hablamos en Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174 */
+/* Created/Edited by: HaCatto! & Convex! If you need more information, we talk on Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174 */
+{
+	"format_version": "1.16.100",
+	"minecraft:item": {
+		"description": {
+			"identifier": "cnvx:iron_apple",
+			"category": "nature"
+		},
+		"components": {
+			"minecraft:use_duration": 1.5,
+			"minecraft:foil": false,
+			"minecraft:icon": {
+				"texture": "iron_apple"
+			},
+			"minecraft:creative_category": {
+				"parent": "itemGroup.name.miscFood"
+			},
+			"minecraft:food": {
+				"on_consume": {
+					"event": "cnvx:consume"
+				},
+				"nutrition": 4,
+				"saturation_modifier": "supernatural",
+				"can_always_eat": true
+			},
+			"minecraft:render_offsets": "apple",
+			"minecraft:use_animation": "eat"
+		},
+		"events": {
+			"cnvx:consume": {
+				"run_command": {
+					"command": [
+						"effect @s health_boost 30 0",
+						"effect @s instant_health 30 0",
+						"effect @s regeneration 30 1",
+						"tellraw @a {\"rawtext\": [{\"translate\":\"player_use_iron_apple\", \"with\":{\"rawtext\": [{\"selector\":\"@s\"},{\"translate\":\"item.cnvx:iron_apple\"}]}}]}"
+					]
+				}
+			}
+		}
+	}
+}

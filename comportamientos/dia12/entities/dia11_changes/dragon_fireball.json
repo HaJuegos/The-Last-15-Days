@@ -1,0 +1,287 @@
+/* Creado/Editado por: HaJuegos Cat! & Convex!. Si necesitas mas informacion, hablamos en Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174 */
+/* Created/Edited by: HaCatto! & Convex! If you need more information, we talk on Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174 */
+{
+	"format_version": "1.12.0",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "minecraft:dragon_fireball",
+			"is_spawnable": false,
+			"is_summonable": true,
+			"is_experimental": false
+		},
+		"component_groups": {
+			"ha:variant_attack_1": {
+				"minecraft:projectile": {
+					"on_hit": {
+						"spawn_aoe_cloud": {
+							"radius": 6,
+							"radius_on_use": 0,
+							"potion": 23,
+							"particle": "dragonbreath",
+							"duration": 120,
+							"color": [
+								220,
+								0,
+								239
+							],
+							"affect_owner": false,
+							"reapplication_delay": 20
+						},
+						"remove_on_hit": {}
+					},
+					"power": 1.3,
+					"gravity": 0,
+					"inertia": 1,
+					"anchor": 2,
+					"offset": [
+						0,
+						0.5,
+						0
+					],
+					"semi_random_diff_damage": true,
+					"uncertainty_base": 10,
+					"reflect_on_hurt": true,
+					"hit_sound": "explode"
+				}
+			},
+			"ha:variant_attack_2": {
+				"minecraft:projectile": {
+					"on_hit": {
+						"remove_on_hit": {},
+						"spawn_chance": {
+							"first_spawn_percent_chance": 100,
+							"first_spawn_count": 1,
+							"spawn_definition": "ha:attack_nausea_timer"
+						}
+					},
+					"power": 1.3,
+					"gravity": 0,
+					"inertia": 1,
+					"anchor": 2,
+					"offset": [
+						0,
+						0.5,
+						0
+					],
+					"semi_random_diff_damage": true,
+					"uncertainty_base": 10,
+					"reflect_on_hurt": true,
+					"hit_sound": "explode"
+				}
+			},
+			"ha:variant_attack_3": {
+				"minecraft:projectile": {
+					"on_hit": {
+						"remove_on_hit": {},
+						"spawn_chance": {
+							"first_spawn_percent_chance": 100,
+							"first_spawn_count": 1,
+							"spawn_definition": "minecraft:warden"
+						}
+					},
+					"power": 1.3,
+					"gravity": 0,
+					"inertia": 1,
+					"anchor": 2,
+					"offset": [
+						0,
+						0.5,
+						0
+					],
+					"semi_random_diff_damage": true,
+					"uncertainty_base": 10,
+					"reflect_on_hurt": true,
+					"hit_sound": "explode"
+				}
+			},
+			"ha:variant_attack_4": {
+				"minecraft:projectile": {
+					"on_hit": {
+						"remove_on_hit": {},
+						"spawn_chance": {
+							"first_spawn_percent_chance": 100,
+							"first_spawn_count": 1,
+							"spawn_definition": "ha:attack_power_timer"
+						}
+					},
+					"power": 1.3,
+					"gravity": 0,
+					"inertia": 1,
+					"anchor": 2,
+					"offset": [
+						0,
+						0.5,
+						0
+					],
+					"semi_random_diff_damage": true,
+					"uncertainty_base": 10,
+					"reflect_on_hurt": true,
+					"hit_sound": "explode"
+				}
+			},
+			"ha:variant_attack_5": {
+				"minecraft:projectile": {
+					"on_hit": {
+						"spawn_chance": {
+							"first_spawn_percent_chance": 100,
+							"first_spawn_count": 1,
+							"spawn_definition": "ha:attack_summon_spider"
+						},
+						"remove_on_hit": {}
+					},
+					"power": 1.3,
+					"gravity": 0,
+					"inertia": 1,
+					"anchor": 2,
+					"offset": [
+						0,
+						0.5,
+						0
+					],
+					"semi_random_diff_damage": true,
+					"uncertainty_base": 10,
+					"reflect_on_hurt": true,
+					"hit_sound": "explode"
+				}
+			},
+			"ha:variant_attack_6": {
+				"minecraft:projectile": {
+					"on_hit": {
+						"spawn_chance": {
+							"first_spawn_percent_chance": 100,
+							"first_spawn_count": 1,
+							"spawn_definition": "ha:attack_area_totems"
+						},
+						"remove_on_hit": {}
+					},
+					"power": 1.3,
+					"gravity": 0,
+					"inertia": 1,
+					"anchor": 2,
+					"offset": [
+						0,
+						0.5,
+						0
+					],
+					"semi_random_diff_damage": true,
+					"uncertainty_base": 10,
+					"reflect_on_hurt": true,
+					"hit_sound": "explode"
+				}
+			}
+		},
+		"components": {
+			"minecraft:tick_world": {
+				"radius": 2,
+				"never_despawn": true
+			},
+			"minecraft:physics": {},
+			"minecraft:pushable": {
+				"is_pushable": true,
+				"is_pushable_by_piston": true
+			},
+			"minecraft:conditional_bandwidth_optimization": {
+				"default_values": {
+					"max_optimized_distance": 80.0,
+					"max_dropped_ticks": 7,
+					"use_motion_prediction_hints": true
+				}
+			},
+			"minecraft:collision_box": {
+				"width": 0.31,
+				"height": 0.31
+			},
+			"minecraft:projectile": {
+				"on_hit": {
+					"spawn_aoe_cloud": {
+						"radius": 6.0,
+						"radius_on_use": 0,
+						"potion": 23,
+						"particle": "dragonbreath",
+						"duration": 120,
+						"color": [
+							220,
+							0,
+							239
+						],
+						"affect_owner": false,
+						"reapplication_delay": 20
+					},
+					"remove_on_hit": {}
+				},
+				"power": 1.3,
+				"gravity": 0.0,
+				"inertia": 1,
+				"anchor": 2,
+				"offset": [
+					0,
+					0.5,
+					0
+				],
+				"semi_random_diff_damage": true,
+				"uncertainty_base": 10.0,
+				"reflect_on_hurt": true,
+				"hit_sound": "explode"
+			},
+			"minecraft:type_family": {
+				"family": [
+					"attack_dragon"
+				]
+			}
+		},
+		"events": {
+			"minecraft:entity_spawned": {
+				"randomize": [
+					{
+						"weight": 1,
+						"add": {
+							"component_groups": [
+								"ha:variant_attack_1"
+							]
+						}
+					},
+					{
+						"weight": 1,
+						"add": {
+							"component_groups": [
+								"ha:variant_attack_2"
+							]
+						}
+					},
+					{
+						"weight": 1,
+						"add": {
+							"component_groups": [
+								"ha:variant_attack_3"
+							]
+						}
+					},
+					{
+						"weight": 1,
+						"add": {
+							"component_groups": [
+								"ha:variant_attack_4"
+							]
+						}
+					},
+					{
+						"weight": 1,
+						"add": {
+							"component_groups": [
+								"ha:variant_attack_5"
+							]
+						}
+					},
+					{
+						"weight": 1,
+						"add": {
+							"component_groups": [
+								"ha:variant_attack_6"
+							]
+						}
+					}
+				]
+			}
+		}
+	}
+}

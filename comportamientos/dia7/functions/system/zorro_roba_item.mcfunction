@@ -1,8 +1,5 @@
-## This file belongs to: "Ha Juegos" and "Convex" (Copyright 2022), Any unauthorized modification or change will be penalized, more information to authorize your copies you can contact me on discord: https://discord.gg/p6a7tqVJxn
-## My youtube channel for more updates: https://www.youtube.com/c/HaJuegos and the Convex GitHub: https://github.com/conveex
-## ********************************************************************
-## Este archivo pertenece a: "Ha Juegos" y "Convex" (Copyright 2022), Cualquier modificación o cambio no autorizado será sancionado, más información para autorizar tus copias puedes contactar conmigo en discord: https://discord.gg/p6a7tqVJxn
-## Mi canal de youtube para más actualizaciones: https://www.youtube.com/c/HaJuegos y el GitHub de Convex: https://github.com/conveex
+## Creado/Editado por: HaJuegos Cat! & Convex!. Si necesitas mas informacion, hablamos en Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174
+## Created/Edited by: HaCatto! & Convex! If you need more information, we talk on Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174
 
 scoreboard objectives add fox_stealing dummy fox_stealing
 scoreboard players random @s fox_stealing 0 40

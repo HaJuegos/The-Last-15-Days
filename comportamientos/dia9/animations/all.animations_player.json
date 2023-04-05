@@ -1,3 +1,20 @@
-/* Este archivo fue creado por ୨୧ 𓂅 𝒄𝒐𝒏𝒗𝒆𝒙 ! ♡#9947 (Discord) y @Ha_Juegos_Cat!, Cualquier reutilizacion o modificacion de este, Por favor dejar creditos originales del creador del codigo y del add-on para no tener problemas!. Si quieres contactarte con el creador de este codigo, Ve a su server de Discord: https://discord.gg/C3ZHdnUVmu y https://discord.gg/9jZHkhu86P */
-/* This file was created by ୨୧ 𓂅 𝒄𝒐𝒏𝒗𝒆𝒙 ! ♡#9947 (Discord) and @Ha_Juegos_Cat!, Any reuse or modification of this, please leave original credits to the creator of the code and add-on to avoid problems. If you want to contact the creator of this code, go to his Discord server: https://discord.gg/C3ZHdnUVmu and https://discord.gg/9jZHkhu86P */
-{"format_version":"1.17.30","animations":{"animation.ha_loop_remove_dolphin_attack":{"timeline":{"0.0":["/execute @s[scores={delfincontador=!0}] ~ ~ ~ scoreboard players remove @s delfincontador 1","/execute @s[tag=!terminodelfin,scores={delfincontador=0}] ~ ~ ~ titleraw @s actionbar {\"rawtext\": [{\"translate\":\"dolphin_end_attack_message\"}]}","/execute @s[tag=!terminodelfin,scores={delfincontador=0}] ~ ~ ~ playsound fall.egg @s","/execute @s[tag=!terminodelfin,scores={delfincontador=0}] ~ ~ ~ event entity @s cnvx:remove_dolphin_damage","/execute @s[tag=!terminodelfin,scores={delfincontador=0}] ~ ~ ~ tag @s add terminodelfin"]},"animation_length":0.9,"loop":true}}}
+/* Creado/Editado por: HaJuegos Cat! & Convex!. Si necesitas mas informacion, hablamos en Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174 */
+/* Created/Edited by: HaCatto! & Convex! If you need more information, we talk on Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174 */
+{
+	"format_version": "1.17.30",
+	"animations": {
+		"animation.ha_loop_remove_dolphin_attack": {
+			"timeline": {
+				"0.0": [
+					"/execute @s[scores={delfincontador=!0}] ~ ~ ~ scoreboard players remove @s delfincontador 1",
+					"/execute @s[tag=!terminodelfin,scores={delfincontador=0}] ~ ~ ~ titleraw @s actionbar {\"rawtext\": [{\"translate\":\"dolphin_end_attack_message\"}]}",
+					"/execute @s[tag=!terminodelfin,scores={delfincontador=0}] ~ ~ ~ playsound fall.egg @s",
+					"/execute @s[tag=!terminodelfin,scores={delfincontador=0}] ~ ~ ~ event entity @s cnvx:remove_dolphin_damage",
+					"/execute @s[tag=!terminodelfin,scores={delfincontador=0}] ~ ~ ~ tag @s add terminodelfin"
+				]
+			},
+			"animation_length": 0.9,
+			"loop": true
+		}
+	}
+}
