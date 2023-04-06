@@ -442,11 +442,39 @@
                             "domain": "hand"
                         },
                         "event": "cnvx:remove_shield_tag"
-                    }
+                    },
+					{
+						"filters": {
+							"test": "in_nether",
+							"value": true
+						},
+						"event": "ha:in_nether_tag"
+					},
+					{
+						"filters": {
+							"test": "in_nether",
+							"value": false
+						},
+						"event": "ha:no_nether_tag"
+					}
 				]
 			}
 		},
 		"events": {
+			"ha:in_nether_tag": {
+				"run_command": {
+					"command": [
+						"tag @s add in_nether"
+					]
+				}
+			},
+			"ha:no_nether_tag": {
+				"run_command": {
+					"command": [
+						"tag @s remove in_nether"
+					]
+				}
+			},
 			"ha:wither_damage": {
 				"run_command": {
 					"command": [
