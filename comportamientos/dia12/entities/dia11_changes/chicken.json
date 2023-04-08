@@ -237,6 +237,9 @@
 			"minecraft:game_event_movement_tracking": {
 				"emit_flap": true
 			},
+			"minecraft:variant": {
+				"value": 1
+			},
 			"minecraft:behavior.nearest_attackable_target": {
 				"priority": 1,
 				"reselect_targets": true,
@@ -283,7 +286,7 @@
 				"run_command": {
 					"command": [
 						"playsound ui.enemy_attack_detect @a ~ ~ ~",
-						"execute @s ~ ~ ~ tellraw @a {\"rawtext\": [{\"translate\":\"mob_alert_explode_message\", \"with\": {\"rawtext\": [{\"selector\":\"@s\"},{\"selector\":\"@r[r=5]\"}]}}]}"
+						"execute @s ~ ~ ~ tellraw @a {\"rawtext\": [{\"translate\":\"mob_alert_explode_message\", \"with\": {\"rawtext\": [{\"text\":\"Skuartu\"},{\"selector\":\"@r[r=5]\"}]}}]}"
 					]
 				},
 				"add": {

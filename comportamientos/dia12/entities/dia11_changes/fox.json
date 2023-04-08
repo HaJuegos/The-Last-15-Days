@@ -18,6 +18,36 @@
 					"max_distance": 200
 				}
 			},
+			"ha:hostile_fox": {
+				"minecraft:behavior.hurt_by_target": {
+					"priority": 1
+				},
+				"minecraft:behavior.nearest_attackable_target": {
+					"priority": 2,
+					"must_see": true,
+					"reselect_targets": true,
+					"entity_types": [
+						{
+							"filters": {
+								"test": "is_family",
+								"subject": "other",
+								"value": "player"
+							},
+							"max_dist": 64
+						}
+					]
+				},
+				"minecraft:behavior.melee_attack": {
+					"priority": 3,
+					"speed_multiplier": 1.4
+				},
+				"minecraft:attack": {
+					"damage": 4
+				},
+				"minecraft:follow_range": {
+					"value": 64
+				}
+			},
 			"minecraft:fox_baby": {
 				"minecraft:is_baby": {},
 				"minecraft:scale": {
@@ -914,7 +944,8 @@
 				"trigger": "minecraft:entity_spawned",
 				"add": {
 					"component_groups": [
-						"ha:spawn_end"
+						"ha:spawn_end",
+						"ha:hostile_fox"
 					]
 				}
 			},
@@ -928,7 +959,8 @@
 									"component_groups": [
 										"minecraft:fox_adult",
 										"minecraft:fox_with_item",
-										"minecraft:docile_fox"
+										"minecraft:docile_fox",
+										"ha:hostile_fox"
 									]
 								}
 							},
@@ -937,7 +969,8 @@
 								"add": {
 									"component_groups": [
 										"minecraft:fox_baby",
-										"minecraft:docile_fox"
+										"minecraft:docile_fox",
+										"ha:hostile_fox"
 									]
 								}
 							}
@@ -950,7 +983,8 @@
 						},
 						"add": {
 							"component_groups": [
-								"minecraft:fox_arctic"
+								"minecraft:fox_arctic",
+								"ha:hostile_fox"
 							]
 						}
 					},
@@ -961,7 +995,8 @@
 						},
 						"add": {
 							"component_groups": [
-								"minecraft:fox_red"
+								"minecraft:fox_red",
+								"ha:hostile_fox"
 							]
 						}
 					}
@@ -972,7 +1007,8 @@
 					"component_groups": [
 						"minecraft:fox_baby",
 						"minecraft:trusting_fox",
-						"minecraft:docile_fox"
+						"minecraft:docile_fox",
+						"ha:hostile_fox"
 					]
 				}
 			},
@@ -984,7 +1020,8 @@
 				},
 				"add": {
 					"component_groups": [
-						"minecraft:fox_adult"
+						"minecraft:fox_adult",
+						"ha:hostile_fox"
 					]
 				}
 			},
@@ -997,7 +1034,8 @@
 				},
 				"add": {
 					"component_groups": [
-						"minecraft:fox_thunderstorm"
+						"minecraft:fox_thunderstorm",
+						"ha:hostile_fox"
 					]
 				}
 			},
@@ -1010,7 +1048,8 @@
 				},
 				"add": {
 					"component_groups": [
-						"minecraft:fox_day"
+						"minecraft:fox_day",
+						"ha:hostile_fox"
 					]
 				}
 			},
@@ -1023,28 +1062,32 @@
 				},
 				"add": {
 					"component_groups": [
-						"minecraft:fox_night"
+						"minecraft:fox_night",
+						"ha:hostile_fox"
 					]
 				}
 			},
 			"minecraft:ambient_normal": {
 				"add": {
 					"component_groups": [
-						"minecraft:fox_ambient_normal"
+						"minecraft:fox_ambient_normal",
+						"ha:hostile_fox"
 					]
 				}
 			},
 			"minecraft:ambient_sleep": {
 				"add": {
 					"component_groups": [
-						"minecraft:fox_ambient_sleep"
+						"minecraft:fox_ambient_sleep",
+						"ha:hostile_fox"
 					]
 				}
 			},
 			"minecraft:ambient_night": {
 				"add": {
 					"component_groups": [
-						"minecraft:fox_ambient_night"
+						"minecraft:fox_ambient_night",
+						"ha:hostile_fox"
 					]
 				}
 			},
@@ -1058,7 +1101,8 @@
 				},
 				"add": {
 					"component_groups": [
-						"minecraft:defending_fox"
+						"minecraft:defending_fox",
+						"ha:hostile_fox"
 					]
 				}
 			},
@@ -1072,7 +1116,8 @@
 				"add": {
 					"component_groups": [
 						"minecraft:docile_fox",
-						"minecraft:fox_day"
+						"minecraft:fox_day",
+						"ha:hostile_fox"
 					]
 				}
 			},
@@ -1086,7 +1131,8 @@
 				"add": {
 					"component_groups": [
 						"minecraft:docile_fox",
-						"minecraft:fox_night"
+						"minecraft:fox_night",
+						"ha:hostile_fox"
 					]
 				}
 			}

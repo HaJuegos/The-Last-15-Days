@@ -10,6 +10,36 @@
 			"is_experimental": false
 		},
 		"component_groups": {
+			"ha:hostile_fox": {
+				"minecraft:behavior.hurt_by_target": {
+					"priority": 1
+				},
+				"minecraft:behavior.nearest_attackable_target": {
+					"priority": 2,
+					"must_see": true,
+					"reselect_targets": true,
+					"entity_types": [
+						{
+							"filters": {
+								"test": "is_family",
+								"subject": "other",
+								"value": "player"
+							},
+							"max_dist": 64
+						}
+					]
+				},
+				"minecraft:behavior.melee_attack": {
+					"priority": 3,
+					"speed_multiplier": 1.4
+				},
+				"minecraft:attack": {
+					"damage": 4
+				},
+				"minecraft:follow_range": {
+					"value": 64
+				}
+			},
 			"minecraft:fox_baby": {
 				"minecraft:is_baby": {},
 				"minecraft:scale": {
@@ -41,7 +71,7 @@
 				},
 				"minecraft:behavior.breed": {
 					"priority": 3,
-					"speed_multiplier": 1
+					"speed_multiplier": 1.0
 				},
 				"minecraft:breedable": {
 					"require_tame": false,
@@ -65,7 +95,7 @@
 					"slot_drop_chance": [
 						{
 							"slot": "slot.weapon.mainhand",
-							"drop_chance": 1
+							"drop_chance": 1.0
 						}
 					]
 				}
@@ -85,9 +115,14 @@
 				}
 			},
 			"minecraft:docile_fox": {
+				"minecraft:behavior.panic": {
+					"priority": 1,
+					"speed_multiplier": 1.25
+				},
 				"minecraft:behavior.melee_attack": {
 					"priority": 10,
 					"track_target": true,
+					"require_complete_path": true,
 					"reach_multiplier": 1.5
 				}
 			},
@@ -95,7 +130,12 @@
 				"minecraft:behavior.melee_attack": {
 					"priority": 1,
 					"track_target": true,
+					"require_complete_path": true,
 					"reach_multiplier": 1.5
+				},
+				"minecraft:behavior.panic": {
+					"priority": 2,
+					"speed_multiplier": 1.25
 				},
 				"minecraft:environment_sensor": {
 					"triggers": [
@@ -140,17 +180,10 @@
 				},
 				"minecraft:behavior.nearest_prioritized_attackable_target": {
 					"priority": 6,
+					"attack_interval": 2,
 					"reselect_targets": true,
+					"target_search_height": 5,
 					"entity_types": [
-						{
-							"priority": 2,
-							"filters": {
-								"test": "is_family",
-								"subject": "other",
-								"value": "player"
-							},
-							"max_dist": 35
-						},
 						{
 							"filters": {
 								"test": "is_family",
@@ -224,17 +257,10 @@
 				},
 				"minecraft:behavior.nearest_prioritized_attackable_target": {
 					"priority": 6,
+					"attack_interval": 2,
 					"reselect_targets": true,
+					"target_search_height": 5,
 					"entity_types": [
-						{
-							"priority": 2,
-							"filters": {
-								"test": "is_family",
-								"subject": "other",
-								"value": "player"
-							},
-							"max_dist": 35
-						},
 						{
 							"filters": {
 								"test": "is_family",
@@ -342,7 +368,7 @@
 				"minecraft:behavior.find_cover": {
 					"priority": 0,
 					"speed_multiplier": 1,
-					"cooldown_time": 0
+					"cooldown_time": 0.0
 				}
 			},
 			"minecraft:fox_day": {
@@ -366,10 +392,10 @@
 				},
 				"minecraft:behavior.nap": {
 					"priority": 8,
-					"cooldown_min": 2,
-					"cooldown_max": 7,
-					"mob_detect_dist": 12,
-					"mob_detect_height": 6,
+					"cooldown_min": 2.0,
+					"cooldown_max": 7.0,
+					"mob_detect_dist": 12.0,
+					"mob_detect_height": 6.0,
 					"can_nap_filters": {
 						"all_of": [
 							{
@@ -424,7 +450,7 @@
 				"minecraft:behavior.find_cover": {
 					"priority": 9,
 					"speed_multiplier": 1,
-					"cooldown_time": 5
+					"cooldown_time": 5.0
 				}
 			},
 			"minecraft:fox_night": {
@@ -448,9 +474,9 @@
 				},
 				"minecraft:behavior.stroll_towards_village": {
 					"priority": 11,
-					"speed_multiplier": 1,
-					"goal_radius": 3,
-					"cooldown_time": 10,
+					"speed_multiplier": 1.0,
+					"goal_radius": 3.0,
+					"cooldown_time": 10.0,
 					"search_range": 32,
 					"start_chance": 0.005
 				}
@@ -753,7 +779,7 @@
 							]
 						},
 						"max_dist": 10,
-						"walk_speed_multiplier": 1,
+						"walk_speed_multiplier": 1.0,
 						"sprint_speed_multiplier": 1.5
 					}
 				]
@@ -767,6 +793,23 @@
 					"sweet_berries",
 					"glow_berries"
 				]
+			},
+			"minecraft:behavior.stalk_and_pounce_on_target": {
+				"priority": 7,
+				"stalk_speed": 1.2,
+				"max_stalk_dist": 12.0,
+				"leap_height": 0.9,
+				"leap_dist": 0.8,
+				"pounce_max_dist": 5.0,
+				"interest_time": 2.0,
+				"stuck_time": 2.0,
+				"strike_dist": 2.0,
+				"stuck_blocks": {
+					"test": "is_block",
+					"subject": "block",
+					"operator": "==",
+					"value": "snow_layer"
+				}
 			},
 			"minecraft:behavior.pickup_items": {
 				"priority": 11,
@@ -806,16 +849,16 @@
 			},
 			"minecraft:behavior.look_at_player": {
 				"priority": 14,
-				"look_distance": 6,
+				"look_distance": 6.0,
 				"probability": 0.02
 			},
 			"minecraft:behavior.random_look_around": {
 				"priority": 15
 			},
 			"minecraft:leashable": {
-				"soft_distance": 4,
-				"hard_distance": 6,
-				"max_distance": 10
+				"soft_distance": 4.0,
+				"hard_distance": 6.0,
+				"max_distance": 10.0
 			},
 			"minecraft:balloonable": {
 				"mass": 0.6
@@ -912,7 +955,8 @@
 									"component_groups": [
 										"minecraft:fox_adult",
 										"minecraft:fox_with_item",
-										"minecraft:docile_fox"
+										"minecraft:docile_fox",
+										"ha:hostile_fox"
 									]
 								}
 							},
@@ -921,7 +965,8 @@
 								"add": {
 									"component_groups": [
 										"minecraft:fox_baby",
-										"minecraft:docile_fox"
+										"minecraft:docile_fox",
+										"ha:hostile_fox"
 									]
 								}
 							}
@@ -934,7 +979,8 @@
 						},
 						"add": {
 							"component_groups": [
-								"minecraft:fox_arctic"
+								"minecraft:fox_arctic",
+								"ha:hostile_fox"
 							]
 						}
 					},
@@ -945,7 +991,8 @@
 						},
 						"add": {
 							"component_groups": [
-								"minecraft:fox_red"
+								"minecraft:fox_red",
+								"ha:hostile_fox"
 							]
 						}
 					}
@@ -956,7 +1003,8 @@
 					"component_groups": [
 						"minecraft:fox_baby",
 						"minecraft:trusting_fox",
-						"minecraft:docile_fox"
+						"minecraft:docile_fox",
+						"ha:hostile_fox"
 					]
 				}
 			},
@@ -968,7 +1016,8 @@
 				},
 				"add": {
 					"component_groups": [
-						"minecraft:fox_adult"
+						"minecraft:fox_adult",
+						"ha:hostile_fox"
 					]
 				}
 			},
@@ -981,7 +1030,8 @@
 				},
 				"add": {
 					"component_groups": [
-						"minecraft:fox_thunderstorm"
+						"minecraft:fox_thunderstorm",
+						"ha:hostile_fox"
 					]
 				}
 			},
@@ -994,7 +1044,8 @@
 				},
 				"add": {
 					"component_groups": [
-						"minecraft:fox_day"
+						"minecraft:fox_day",
+						"ha:hostile_fox"
 					]
 				}
 			},
@@ -1007,28 +1058,32 @@
 				},
 				"add": {
 					"component_groups": [
-						"minecraft:fox_night"
+						"minecraft:fox_night",
+						"ha:hostile_fox"
 					]
 				}
 			},
 			"minecraft:ambient_normal": {
 				"add": {
 					"component_groups": [
-						"minecraft:fox_ambient_normal"
+						"minecraft:fox_ambient_normal",
+						"ha:hostile_fox"
 					]
 				}
 			},
 			"minecraft:ambient_sleep": {
 				"add": {
 					"component_groups": [
-						"minecraft:fox_ambient_sleep"
+						"minecraft:fox_ambient_sleep",
+						"ha:hostile_fox"
 					]
 				}
 			},
 			"minecraft:ambient_night": {
 				"add": {
 					"component_groups": [
-						"minecraft:fox_ambient_night"
+						"minecraft:fox_ambient_night",
+						"ha:hostile_fox"
 					]
 				}
 			},
@@ -1042,7 +1097,8 @@
 				},
 				"add": {
 					"component_groups": [
-						"minecraft:defending_fox"
+						"minecraft:defending_fox",
+						"ha:hostile_fox"
 					]
 				}
 			},
@@ -1056,7 +1112,8 @@
 				"add": {
 					"component_groups": [
 						"minecraft:docile_fox",
-						"minecraft:fox_day"
+						"minecraft:fox_day",
+						"ha:hostile_fox"
 					]
 				}
 			},
@@ -1070,7 +1127,8 @@
 				"add": {
 					"component_groups": [
 						"minecraft:docile_fox",
-						"minecraft:fox_night"
+						"minecraft:fox_night",
+						"ha:hostile_fox"
 					]
 				}
 			}
