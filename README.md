@@ -27,17 +27,17 @@
 
 ### Advertencia: Los links acontinuacion estan acortados y puede haber publicidad algo pasada, si algo, solo ve al grano y no entres a cualquier cosa malisiosa que encuentres, solo ve a los botones de descarga y saltate los anuncios.
 
-- [**CLICK PARA DESCARGAR TODO**](https://link-hub.net/561815/todo-el-add-on)
+- [**CLICK PARA DESCARGAR TODO**]()
 
-- [**CLICK PARA DESCARGAR EL ADD-ON JUNTO**](https://direct-link.net/561815/solo-el-add-on-junto)
+- [**CLICK PARA DESCARGAR EL ADD-ON JUNTO**]()
 
-- [**CLICK PARA DESCARGAR EL ADD-ON POR SEPARADO**](https://link-hub.net/561815/solo-el-add-on-separado)
+- [**CLICK PARA DESCARGAR EL ADD-ON POR SEPARADO**]()
 
-- [**CLICK PARA DESCARGAR EL MUNDO YA CONFIGURADO**](https://link-hub.net/561815/solo-el-mundo-preparado)
+- [**CLICK PARA DESCARGAR EL MUNDO YA CONFIGURADO**]()
 
 ## GUIA DE USO
 
-- **El Add-on solo soporta la version 1.19.70/1/2/3 de Minecraft Bedrock. Esto no es definitivo ya que cualquier version oficial futura, puede provocar daños o bugs inesperados**.
+- **El Add-on solo soporta la version 1.19.80 de Minecraft Bedrock. Esto no es definitivo ya que cualquier version oficial futura, puede provocar daños o bugs inesperados**.
 - Todo en el add-on es automatico.
 - Si deseas instalar el mundo ya creado, por favor sigue estos pasos si no concoces como se hace: [**__Ver imagen__**](https://media.discordapp.net/attachments/964653057390546954/997570733473550536/exmple.png)
 - Para revivir a un compañero, deja un bloque de comandos en repetir con el siguiente comando:
@@ -67,7 +67,7 @@ y luego el comando en el chat del juego:
 
 ## QUE TRAE EL ADD-ON
 ```txt
-The Last 15 Days By Rosher Random, Convex y HaJuegos Cat! - Version Oficial 0.0.4
+The Last 15 Days By Rosher Random, Convex y HaJuegos Cat! - Version Oficial 0.0.5
 
 ** Cualquier error o algo inusual que encuentres en esta version puedes reportarlo aqui: https://discord.gg/WH9KpNWXUz o enviandole un mensaje a HaJuegos Cat!: https://discord.com/users/714622708649951272
 
@@ -313,8 +313,13 @@ The Last 15 Days By Rosher Random, Convex y HaJuegos Cat! - Version Oficial 0.0.
 		- Puede romper bloques en algunos casos
 		- Rompen barcos
 		- Puede equiparse un totem despues de regenerarse
-		- Tiene 35 de vida
+		- Tiene 25 de vida
 		- Son cazadores de mobs
+		- Pueden usar ender peals
+		- Pueden caminar por lava y seguirte si te trackean
+		- Hace 7 de daño base
+		- Lleva Fuerza III
+		
 	- Estos solo pueden recibir daño por explosiones
 	- Llevan Set de armadura de diamante con Proteccion a las explosiones IV
 
@@ -337,10 +342,11 @@ The Last 15 Days By Rosher Random, Convex y HaJuegos Cat! - Version Oficial 0.0.
 	- Tener todo el conjunto puesto: Te agrega Health Boost III, pero en cambio si no portas toda la armor. Te dara Fatal Poison por siempre en el End
 
 - Para Obtener la Sneaky Astroner debes matar los siguientes mobs:
-	- Llama (Botas, posibilidad %15)
-	- Enderman (Casco, posibilidad %25)
-	- Piglin Brute (Pantalones, posibilidad %40)
-	- Ravager (Pechera, posibilidad %15)
+	- Llama (Botas, posibilidad %50)
+	- Enderman (Casco, posibilidad %35)
+	- Piglin Brute (Pantalones, posibilidad %25)
+	- Ravager (Pechera, posibilidad %43)
+	- Dichos mobs solo dropearan la armadura, si son eliminados por el jugador, cualquier otro tipo de muerte, no lo dropeara
 
 - La armadura es irrompible y en forma de item resiste explosiones y la lava o el fuego
 
