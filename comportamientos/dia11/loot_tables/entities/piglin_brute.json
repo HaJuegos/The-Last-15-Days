@@ -7,17 +7,17 @@
 			"entries": [
 				{
 					"type": "empty",
-					"weight": 60
+					"weight": 75
 				},
 				{
 					"type": "item",
-					"name": "minecraft:appleenchanted",
-					"weight": 40
+					"name": "minecraft:enchanted_golden_apple",
+					"weight": 25
 				},
 				{
 					"type": "item",
 					"name": "ha:sneaky_astroner_leggings",
-					"weight": 40
+					"weight": 25
 				}
 			]
 		}

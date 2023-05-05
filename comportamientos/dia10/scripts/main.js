@@ -3,6 +3,24 @@
 
 import { system, world, ItemStack, MinecraftItemTypes } from "@minecraft/server";
 
+world.events.projectileHit.subscribe(eventProjectile => {
+    try {
+        let projectile = eventProjectile.projectile;
+		let hittedEntity = eventProjectile.getEntityHit();
+		let source = eventProjectile.source;
+		let hittedBlock = eventProjectile.getBlockHit();
+		if (hittedEntity != undefined && source.typeId == 'minecraft:piglin_brute' && projectile.typeId == 'minecraft:ender_pearl') {
+			let entity = hittedEntity.entity;
+			source.runCommandAsync(`tp @s ${entity.location.x} ${entity.location.y} ${entity.location.z}`);
+			source.runCommandAsync(`playsound mob.shulker.teleport @a ${entity.location.x} ${entity.location.y} ${entity.location.z}`);
+		} else if (hittedBlock != undefined && source.typeId == 'minecraft:piglin_brute' && projectile.typeId == 'minecraft:ender_pearl') {
+			let block = hittedBlock.block;
+			source.runCommandAsync(`tp @s ${block.location.x} ${block.location.y + 1} ${block.location.z}`);
+			source.runCommandAsync(`playsound mob.shulker.teleport @a ${block.location.x} ${block.location.y} ${block.location.z}`);
+		};
+    } catch { };
+});
+
 world.events.entityHit.subscribe(eventInv => {
     try {
         const players = eventInv.hitEntity;
@@ -161,13 +179,13 @@ world.events.entityDie.subscribe(eventDead => {
 });
 
 system.runInterval(() => {
-    for (const player of world.getPlayers()) {
-        if (player.hasTag("ban")) {
-            player.runCommandAsync(`kick "${player.name}" §4Game Over!`).catch((alert_data) => {
+	for (const player of world.getPlayers()) {
+		if (player.hasTag("ban")) {
+			player.runCommandAsync(`kick "${player.name}" §4Game Over!`).catch((alert_data) => {
 				console.warn(alert_data)
 			});
-        };
-    };
+		};
+	};
 }, 20);
 
 system.runInterval((healthEvent) => {
@@ -194,19 +212,33 @@ world.events.beforeItemUse.subscribe(eventMilk => {
 });
 
 world.events.entityHurt.subscribe(({ damage, hurtEntity }) => {
-    if (hurtEntity.typeId == 'minecraft:player') {
-        let player = Array.from(world.getPlayers()).find(plr => plr.name == hurtEntity.name);
-        let health = player.getComponent('minecraft:health');
-        if (runCommandAsync(`execute "${player.name}" ~ ~ ~ testfor @s[hasitem={item=totem,location=slot.weapon.offhand}]`).error == false) {
-            if (damage < 0 && health.current <= 1) {
-                player.runCommandAsync(`function system/alerta_de_totem`)
-            };
-        } else if (runCommandAsync(`execute "${player.name}" ~ ~ ~ testfor @s[hasitem={item=totem,location=slot.weapon.mainhand}]`).error == false) {
-            if (damage < 0 && health.current <= 1) {
-                player.runCommandAsync(`function system/alerta_de_totem`)
-            };
-        };
-    };
+	try {
+		if (hurtEntity.typeId == 'minecraft:player') {
+		let player = Array.from(world.getPlayers()).find(plr => plr.name == hurtEntity.name);
+		let health = player.getComponent('minecraft:health');
+		if (runCommandAsync(`execute "${player.name}" ~ ~ ~ testfor @s[hasitem={item=totem,location=slot.weapon.offhand}]`).error == false) {
+			if (damage < 0 && health.current <= 1) {
+				player.runCommandAsync(`function system/alerta_de_totem`)
+			};
+		} else if (runCommandAsync(`execute "${player.name}" ~ ~ ~ testfor @s[hasitem={item=totem,location=slot.weapon.mainhand}]`).error == false) {
+			if (damage < 0 && health.current <= 1) {
+				player.runCommandAsync(`function system/alerta_de_totem`)
+				};
+			};
+		};
+		if (hurtEntity.typeId == 'minecraft:piglin_brute') {
+		let health = hurtEntity.getComponent('minecraft:health');
+		if (runCommandAsync(`execute ${hurtEntity} ~ ~ ~ testfor @s[hasitem={item=totem,location=slot.weapon.offhand}]`).error == false) {
+			if (damage <= 0 && health.current <= 1) {
+				hurtEntity.runCommandAsync(`function system/alerta_de_totem`)
+			};
+		} else if (runCommandAsync(`execute ${hurtEntity} ~ ~ ~ testfor @s[hasitem={item=totem,location=slot.weapon.mainhand}]`).error == false) {
+			if (damage <= 0 && health.current <= 1) {
+				hurtEntity.runCommandAsync(`function system/alerta_de_totem`)
+				};
+			};
+		};
+	} catch { };
 });
 
 function getDimension(dimension) {

@@ -38,7 +38,7 @@
 					"add_effects": [
 						{
 							"effect": "resistance",
-							"amplifier": 2,
+							"amplifier": 5,
 							"duration": 99999,
 							"visible": true,
 							"ambient": false

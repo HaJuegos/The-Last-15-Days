@@ -22,12 +22,13 @@
 					},
 					"remove_on_hit": {}
 				},
-				"power": 1.5,
-				"gravity": 0.06,
+				"power": 5,
+				"gravity": 0.05,
 				"inertia": 1,
-				"uncertainty_base": 10,
-				"uncertainty_multiplier": 4,
+				"uncertainty_base": 1,
+				"uncertainty_multiplier": 0,
 				"anchor": 1,
+				"should_bounce": true,
 				"offset": [
 					0,
 					-0.1,

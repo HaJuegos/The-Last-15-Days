@@ -12,17 +12,17 @@
 			"entries": [
 				{
 					"type": "empty",
-					"weight": 85
+					"weight": 50
 				},
 				{
 					"type": "item",
 					"name": "minecraft:leather",
-					"weight": 15
+					"weight": 50
 				},
 				{
 					"type": "item",
 					"name": "ha:sneaky_astroner_boots",
-					"weight": 15
+					"weight": 50
 				}
 			]
 		}

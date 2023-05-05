@@ -12,17 +12,17 @@
 			"entries": [
 				{
 					"type": "empty",
-					"weight": 85
+					"weight": 57
 				},
 				{
 					"type": "item",
 					"name": "minecraft:saddle",
-					"weight": 15
+					"weight": 43
 				},
 				{
 					"type": "item",
 					"name": "ha:sneaky_astroner_chestplate",
-					"weight": 15
+					"weight": 43
 				}
 			]
 		}

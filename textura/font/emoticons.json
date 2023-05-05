@@ -1,4 +1,18 @@
+/* Creado/Editado por: HaJuegos Cat! & Convex!. Si necesitas mas informacion, hablamos en Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174 */
+/* Created/Edited by: HaCatto! & Convex! If you need more information, we talk on Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174 */
 [
+	{
+		"name": "ha",
+		"code": "0xE108" // 
+	},
+	{
+		"name": "convez",
+		"code": "0xE109" // 
+	},
+	{
+		"name": "royer",
+		"code": "0xE10A" // 
+	},
 	{
 		"name": "xbox_face_button_down",
 		"code": "0xE000"
@@ -466,17 +480,5 @@
 	{
 		"name": "nbsp",
 		"code": "0xE0FF"
-	},
-	{
-		"name": "ha",
-		"code": "0xE108" // 
-	},
-	{
-		"name": "convez",
-		"code": "0xE109" // 
-	},
-	{
-		"name": "royer",
-		"code": "0xE10A" // 
 	}
 ]

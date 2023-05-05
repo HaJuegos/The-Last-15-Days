@@ -167,7 +167,8 @@
 			"minecraft:persistent": {},
 			"minecraft:type_family": {
 				"family": [
-					"area_creeper"
+					"area_creeper",
+					"inanimate"
 				]
 			},
 			"minecraft:pushable": {

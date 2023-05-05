@@ -10,6 +10,30 @@
 			"is_experimental": false
 		},
 		"component_groups": {
+			"ha:ender_pearl_brute": {
+				"minecraft:projectile": {
+					"on_hit": {
+						"teleport_owner": {},
+						"spawn_chance": {
+							"first_spawn_percent_chance": 5,
+							"first_spawn_count": 1,
+							"spawn_definition": "minecraft:endermite"
+						},
+						"remove_on_hit": {}
+					},
+					"power": 2.2,
+					"gravity": 0.0445,
+					"offset": [
+						0,
+						-0.1,
+						0
+					],
+					"uncertainty_base": 16,
+					"uncertainty_multiplier": 4,
+					"anchor": 1,
+					"should_bounce": true
+				}
+			},
 			"minecraft:no_spawn": {
 				"minecraft:projectile": {
 					"on_hit": {
@@ -63,15 +87,37 @@
 				"sequence": [
 					{
 						"filters": {
-							"test": "is_game_rule",
-							"domain": "domobspawning",
-							"value": false
+							"test": "is_family",
+							"subject": "other",
+							"value": "piglin_brute"
 						},
 						"add": {
 							"component_groups": [
-								"minecraft:no_spawn"
+								"ha:ender_pearl_brute"
 							]
 						}
+					},
+					{
+						"filters": {
+							"test": "is_family",
+							"subject": "other",
+							"value": "piglin_brute",
+							"operator": "!="
+						},
+						"sequence": [
+							{
+								"filters": {
+									"test": "is_game_rule",
+									"domain": "domobspawning",
+									"value": false
+								},
+								"add": {
+									"component_groups": [
+										"minecraft:no_spawn"
+									]
+								}
+							}
+						]
 					}
 				]
 			}

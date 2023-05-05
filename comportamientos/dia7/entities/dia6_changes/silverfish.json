@@ -92,7 +92,7 @@
 			"minecraft:jump.static": {},
 			"minecraft:can_climb": {},
 			"minecraft:attack": {
-				"damage": 4
+				"damage": 27
 			},
 			"minecraft:collision_box": {
 				"width": 0.4,

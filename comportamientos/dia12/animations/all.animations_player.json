@@ -102,7 +102,7 @@
 					"/playsound random.levelup @a[tag=in_end] ~ ~ ~ 900 2"
 				],
 				"9.9": [
-					"/spreadplayers 0 0 0 55 @e[family=!attack_dragon]",
+					"/spreadplayers 0 0 0 55 @e[r=200,type=!ha:attack_llama_summon,type=!shulker,type=!ender_crystal]",
 					"/playsound portal.portal @a[tag=in_end] ~ ~ ~ 1000",
 					"/titleraw @a[tag=in_end] actionbar {\"rawtext\": [{\"translate\":\"message.attack_warning_stop\"}]}"
 				],

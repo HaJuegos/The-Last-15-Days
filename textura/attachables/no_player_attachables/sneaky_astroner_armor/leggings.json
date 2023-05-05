@@ -1,6 +1,27 @@
-/* This file belongs to: "Ha Juegos" (Copyright 2022), Any unauthorized modification or change will be penalized, more information to authorize your copies you can contact me on discord: https://discord.gg/p6a7tqVJxn
-My youtube channel for more updates: https://www.youtube.com/c/HaJuegos
-********************************************************************
-Este archivo pertenece a: "Ha Juegos" (Copyright 2022), Cualquier modificación o cambio no autorizado será sancionado, más información para autorizar tus copias puedes contactar conmigo en discord: https://discord.gg/p6a7tqVJxn
-Mi canal de youtube para más actualizaciones: https://www.youtube.com/c/HaJuegos */
-{"format_version":"1.8.0","minecraft:attachable":{"description":{"identifier":"ha:sneaky_astroner_leggings","materials":{"default":"armor","enchanted":"armor_enchanted"},"textures":{"default":"textures/models/armors/sneaky_astroner_armor/astroner_2","enchanted":"textures/misc/enchanted_item_glint"},"geometry":{"default":"geometry.humanoid.armor.leggings"},"scripts":{"parent_setup":"variable.leg_layer_visible = 0.0;"},"render_controllers":["controller.render.armor"]}}}
+/* Creado/Editado por: HaJuegos Cat! & Convex!. Si necesitas mas informacion, hablamos en Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174 */
+/* Created/Edited by: HaCatto! & Convex! If you need more information, we talk on Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174 */
+{
+	"format_version": "1.8.0",
+	"minecraft:attachable": {
+		"description": {
+			"identifier": "ha:sneaky_astroner_leggings",
+			"materials": {
+				"default": "armor",
+				"enchanted": "armor_enchanted"
+			},
+			"textures": {
+				"default": "textures/models/armors/sneaky_astroner_armor/astroner_2",
+				"enchanted": "textures/misc/enchanted_item_glint"
+			},
+			"geometry": {
+				"default": "geometry.humanoid.armor.leggings"
+			},
+			"scripts": {
+				"parent_setup": "variable.leg_layer_visible = 0.0;"
+			},
+			"render_controllers": [
+				"controller.render.armor"
+			]
+		}
+	}
+}

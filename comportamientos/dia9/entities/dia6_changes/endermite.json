@@ -71,7 +71,7 @@
 				]
 			},
 			"minecraft:attack": {
-				"damage": 4
+				"damage": 27
 			},
 			"minecraft:despawn": {
 				"despawn_from_distance": {}

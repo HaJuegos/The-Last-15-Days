@@ -8,19 +8,18 @@
 				"default": {
 					"transitions": [
 						{
-							"scape_event": "query.health <= 20"
+							"scape_event": "query.health <= 6"
 						}
 					]
 				},
 				"scape_event": {
 					"transitions": [
 						{
-							"default": "!query.health <= 20"
+							"default": "(1.0)"
 						}
 					],
 					"on_entry": [
-						"/execute @s[tag=!regeneracion] ~ ~ ~ event entity @s become_calm_event",
-						"/tag @s[tag=!regeneracion] add regeneracion"
+						"/execute @s[tag=!regeneracion] ~ ~ ~ event entity @s ha:start_regenerate"
 					]
 				}
 			}

@@ -42,3 +42,11 @@ Medidor Cardiaco (Edit) - By Caroline (Video Clip de Youtube)
 snd_rurus_appear - By TobyFox (DELTARUNE)
 
 enemy_encounter_start - By TheMaximus (DELTARUNE: Ribbit Mod)
+
+-----------------------------------------------------------------------------
+
+Otros add-ons usados:
+
+Quick Crafting, Chat Tweaks y No How To Play - By Bedrock Tweaks
+https://vanillatweaks.net/
+https://bedrocktweaks.net/

@@ -1,45 +1,47 @@
+/* Creado/Editado por: HaJuegos Cat! & Convex!. Si necesitas mas informacion, hablamos en Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174 */
+/* Created/Edited by: HaCatto! & Convex! If you need more information, we talk on Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174 */
 {
-    "format_version": "1.10.0",
-    "minecraft:client_entity": {
-        "description": {
-            "identifier": "minecraft:chicken",
-            "min_engine_version": "1.12.0",
-            "materials": {
-                "default": "chicken",
-                "legs": "chicken_legs"
-            },
-            "textures": {
-                "chicken": "textures/entity/chicken/chicken",
-                "explosive_chicken": "textures/entity/chicken/explosive_chicken"
-            },
-            "geometry": {
-                "default": "geometry.chicken.v1.12"
-            },
-            "animations": {
-                "move": "animation.chicken.move",
-                "general": "animation.chicken.general",
-                "look_at_target": "animation.common.look_at_target",
-                "baby_transform": "animation.chicken.baby_transform"
-            },
-            "scripts": {
-                "animate": [
-                    "general",
-                    {
-                        "move": "query.modified_move_speed"
-                    },
-                    "look_at_target",
-                    {
-                        "baby_transform": "query.is_baby"
-                    }
-                ]
-            },
-            "render_controllers": [
-                "controller.render.chicken"
-            ],
-            "spawn_egg": {
-                "texture": "spawn_egg",
-                "texture_index": 0
-            }
-        }
-    }
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "minecraft:chicken",
+			"min_engine_version": "1.12.0",
+			"materials": {
+				"default": "chicken",
+				"legs": "chicken_legs"
+			},
+			"textures": {
+				"chicken": "textures/entity/chicken/chicken",
+				"explosive_chicken": "textures/entity/chicken/explosive_chicken"
+			},
+			"geometry": {
+				"default": "geometry.chicken.v1.12"
+			},
+			"animations": {
+				"move": "animation.chicken.move",
+				"general": "animation.chicken.general",
+				"look_at_target": "animation.common.look_at_target",
+				"baby_transform": "animation.chicken.baby_transform"
+			},
+			"scripts": {
+				"animate": [
+					"general",
+					{
+						"move": "query.modified_move_speed"
+					},
+					"look_at_target",
+					{
+						"baby_transform": "query.is_baby"
+					}
+				]
+			},
+			"render_controllers": [
+				"controller.render.chicken"
+			],
+			"spawn_egg": {
+				"texture": "spawn_egg",
+				"texture_index": 0
+			}
+		}
+	}
 }

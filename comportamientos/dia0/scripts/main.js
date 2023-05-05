@@ -27,10 +27,10 @@ world.events.entityDie.subscribe(eventDead => {
 });
 
 system.runInterval(() => {
-    for (const player of world.getPlayers()) {
-        if (player.hasTag("ban")) {
-            player.runCommandAsync(`kick "${player.name}" §4Game Over!`).catch((alert_data) => {
-				console.warn(alert_data)
+	for (const player of world.getPlayers()) {
+		if (player.hasTag("ban")) {
+			player.runCommandAsync(`kick "${player.name}" §4Game Over!`).catch((s) => {
+				console.warn(s);
 			});
         };
     };
@@ -88,8 +88,8 @@ function getDimension(dimension) {
         case "the end": {
             return `§dEnd§7`
         } break;
-    }
-}
+    };
+};
 
 function runCommandAsync(command) {
     try {

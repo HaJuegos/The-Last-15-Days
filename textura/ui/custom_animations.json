@@ -1,9 +1,8 @@
-/* Este archivo fue editado por @Ha_Juegos_Cat!. Cualquier modificacion que hagas a este mismo, Por favor deja el credito inicial que merece del creador del add-on para no tener problemas!. Si quieres contactarme hablame en mi Server de Discord: https://discord.gg/9jZHkhu86P
-Mi Canal de YouTube: https://www.youtube.com/c/HaJuegos */
-/* This file was edited by @Ha_Juegos_Cat!. Any modifications you make to it, please leave the initial credit to the creator of the add-on so you don't have problems. If you want to contact me talk to me on my Discord Server: https://discord.gg/9jZHkhu86P
-My YouTube Channel: https://www.youtube.com/c/HaJuegos */
+/* Creado/Editado por: HaJuegos Cat!. Si necesitas mas informacion, escribeme en Discord: https://discord.com/users/714622708649951272 */
+/* Created/Edited by: HaCatto! If you need more information, write me on Discord: https://discord.com/users/714622708649951272 */
 {
 	"namespace": "hacustom_animations",
+	
 	"water_mark0": {
 		"type": "panel",
 		"offset": [
@@ -21,7 +20,7 @@ My YouTube Channel: https://www.youtube.com/c/HaJuegos */
 					"anchor_to": "bottom_right",
 					"shadow": true,
 					"font_size": "small",
-					"text": "v0.0.4§r",
+					"text": "v0.0.5§r",
 					"layer": 200,
 					"offset": [
 						-1.3,
@@ -80,6 +79,7 @@ My YouTube Channel: https://www.youtube.com/c/HaJuegos */
 			}
 		]
 	},
+	
 	"start_animation_intro0": {
 		"anim_type": "wait",
 		"duration": 0,
@@ -117,6 +117,7 @@ My YouTube Channel: https://www.youtube.com/c/HaJuegos */
 			"100%x"
 		]
 	},
+	
 	"extra_info_panel": {
 		"type": "panel",
 		"offset": [
@@ -217,6 +218,7 @@ My YouTube Channel: https://www.youtube.com/c/HaJuegos */
 			}
 		]
 	},
+	
 	"info_extra_animation_0": {
 		"anim_type": "wait",
 		"duration": 0,
@@ -297,6 +299,7 @@ My YouTube Channel: https://www.youtube.com/c/HaJuegos */
 		"from": 0.0,
 		"to": 1.0
 	},
+	
 	"all_hud_custom_animations_content": {
 		"type": "panel",
 		"controls": [
@@ -309,7 +312,3 @@ My YouTube Channel: https://www.youtube.com/c/HaJuegos */
 		]
 	}
 }
-/* Este archivo fue editado por @Ha_Juegos_Cat!. Cualquier modificacion que hagas a este mismo, Por favor deja el credito inicial que merece del creador del add-on para no tener problemas!. Si quieres contactarme hablame en mi Server de Discord: https://discord.gg/9jZHkhu86P
-Mi Canal de YouTube: https://www.youtube.com/c/HaJuegos */
-/* This file was edited by @Ha_Juegos_Cat!. Any modifications you make to it, please leave the initial credit to the creator of the add-on so you don't have problems. If you want to contact me talk to me on my Discord Server: https://discord.gg/9jZHkhu86P
-My YouTube Channel: https://www.youtube.com/c/HaJuegos */

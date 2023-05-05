@@ -1,4 +1,5 @@
-//bridge-file-version: #1
+/* Creado/Editado por: HaJuegos Cat! & Convex!. Si necesitas mas informacion, hablamos en Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174 */
+/* Created/Edited by: HaCatto! & Convex! If you need more information, we talk on Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174 */
 {
 	"pools": [
 		{
@@ -6,86 +7,28 @@
 			"entries": [
 				{
 					"type": "item",
-					"name": "minecraft:diamond_helmet",
-					"functions": [
-						{
-							"function": "enchant_random_gear",
-							"chance": 0.25
-						}
-					],
-					"pools": [
-						{
-							"rolls": 1,
-							"entries": [
-								{
-									"type": "item",
-									"name": "minecraft:diamond_chestplate",
-									"functions": [
-										{
-											"function": "enchant_random_gear",
-											"chance": 0.25
-										}
-									],
-									"pools": [
-										{
-											"rolls": 1,
-											"entries": [
-												{
-													"type": "item",
-													"name": "minecraft:diamond_leggings",
-													"functions": [
-														{
-															"function": "enchant_random_gear",
-															"chance": 0.25
-														}
-													],
-													"pools": [
-														{
-															"rolls": 1,
-															"entries": [
-																{
-																	"type": "item",
-																	"name": "minecraft:diamond_boots",
-																	"functions": [
-																		{
-																			"function": "enchant_random_gear",
-																			"chance": 0.25
-																		}
-																	],
-																	"pools": [
-																		{
-																			"rolls": 1,
-																			"entries": [
-																				{
-																					"type": "item",
-																					"name": "minecraft:appleEnchanted",
-																					"weight": 1
-																				},
-																				{
-																					"type": "item",
-																					"name": "cnvx:iron_apple",
-																					"weight": 1
-																				},
-																				{
-																					"type": "item",
-																					"name": "minecraft:golden_apple",
-																					"weight": 20
-																				}
-																			]
-																		}
-																	]
-																}
-															]
-														}
-													]
-												}
-											]
-										}
-									]
-								}
-							]
-						}
-					]
+					"name": "minecraft:enchanted_golden_apple",
+					"weight": 1
+				},
+				{
+					"type": "item",
+					"name": "cnvx:iron_apple",
+					"weight": 1
+				},
+				{
+					"type": "item",
+					"name": "minecraft:golden_apple",
+					"weight": 1
+				},
+				{
+					"type": "item",
+					"name": "minecraft:chorus_fruit",
+					"weight": 1
+				},
+				{
+					"type": "item",
+					"name": "minecraft:suspicious_stew",
+					"weight": 1
 				}
 			]
 		}

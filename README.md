@@ -195,7 +195,7 @@ The Last 15 Days By Rosher Random, Convex y HaJuegos Cat! - Version Oficial 0.0.
 	- Estos portan: Fuerza, Resistencia y Velocidad III
 	- Tienen un 15% de posibilidad de dropear un "Colmillo de Hoglin" (Viene encantado con: Daño de Artropodos, Castigo y Filo V a la vez)
 	- Su Reach (Rango de Ataque) aumento mucho de su hitbox actual
-	- No reciben daños de proyectiles pero si de efectos
+	- Solo reciben daño a melee
 	- Rompen Botes
 
 - Aparece un Nuevo item: "Colmillo de Hoglin":
@@ -204,7 +204,7 @@ The Last 15 Days By Rosher Random, Convex y HaJuegos Cat! - Version Oficial 0.0.
 
 - Al picar Ancient Debris, te generara lava y un silverfish
 - Los Silverfish y Endermites han cambiado y ahora:
-	- Quitan 4 de daño base
+	- Quitan mucha vida, lo suficiente para quitarte 4 de corazones con Set completo de Diamante encantado con Proteccion IV
 	- Son inmunes al fuego y lava
 
 • Dia 7 Cambios:
@@ -306,17 +306,17 @@ The Last 15 Days By Rosher Random, Convex y HaJuegos Cat! - Version Oficial 0.0.
 - Los Piglins normales ahora tienen mas posibilidad de que sean un Brute (15%)
 - Los Piglins Brutes fueron totalmente cambiados y ahora:
 	- Tienen habilidades de un jugador y estos pueden:
-		- Usar enderpearls si te miran desde lejos
+		- Puede tomar pociones y regenerarse con ellas
 		- Spamear arco con flechas de daño II si estas minimamente cerca
 		- Atacarte a melee con un Hacha de Netherite Filo V si estas muy cerca
 		- Puede usar comida para regenerarse en algunos casos
 		- Puede romper bloques en algunos casos
 		- Rompen barcos
 		- Puede equiparse un totem despues de regenerarse
-		- Tiene 45 de vida
+		- Tiene 35 de vida
 		- Son cazadores de mobs
 	- Estos solo pueden recibir daño por explosiones
-	- Llevan Set de armadura de diamante
+	- Llevan Set de armadura de diamante con Proteccion a las explosiones IV
 
 - Los ravagers han cambiado y ahora:
 	- Llevan Fuerza X, Impulso de Salto III y Resistencia III

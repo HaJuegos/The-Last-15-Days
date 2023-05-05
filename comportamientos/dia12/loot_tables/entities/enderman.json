@@ -12,12 +12,12 @@
 			"entries": [
 				{
 					"type": "empty",
-					"weight": 75
+					"weight": 65
 				},
 				{
 					"type": "item",
 					"name": "minecraft:ender_pearl",
-					"weight": 25,
+					"weight": 35,
 					"functions": [
 						{
 							"function": "set_count",
@@ -38,7 +38,7 @@
 				{
 					"type": "item",
 					"name": "ha:sneaky_astroner_helmet",
-					"weight": 25
+					"weight": 35
 				}
 			]
 		}

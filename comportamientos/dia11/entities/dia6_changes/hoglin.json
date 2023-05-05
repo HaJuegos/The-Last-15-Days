@@ -53,13 +53,9 @@
 			},
 			"angry_hoglin": {
 				"minecraft:angry": {
-					"duration": 10,
+					"duration": 99999,
 					"broadcast_anger": true,
-					"broadcast_range": 16,
-					"calm_event": {
-						"event": "become_calm_event",
-						"target": "self"
-					},
+					"broadcast_range": 20,
 					"angry_sound": "angry",
 					"sound_interval": {
 						"range_min": 2,
@@ -70,8 +66,8 @@
 			"attack_cooldown": {
 				"minecraft:attack_cooldown": {
 					"attack_cooldown_time": [
-						10,
-						15
+						1,
+						1
 					],
 					"attack_cooldown_complete_event": {
 						"event": "attack_cooldown_complete_event",
@@ -93,10 +89,9 @@
 				},
 				"minecraft:behavior.melee_attack": {
 					"priority": 4,
-					"speed_multiplier": 1,
+					"speed_multiplier": 1.1,
 					"track_target": true,
 					"reach_multiplier": 2,
-					"cooldown_time": 0.75,
 					"on_attack": {
 						"event": "ha:deleted_boat"
 					}
@@ -169,13 +164,13 @@
 							"lock_rider_rotation": 0
 						}
 					]
-				},
-				"minecraft:behavior.panic": {
-					"priority": 1,
-					"speed_multiplier": 1
 				}
 			},
 			"minecraft:hoglin_adult": {
+				"minecraft:on_death": {
+					"target": "self",
+					"event": "ha:drop_sword"
+				},
 				"minecraft:collision_box": {
 					"width": 1.4,
 					"height": 1.4
@@ -224,10 +219,9 @@
 				},
 				"minecraft:behavior.melee_attack": {
 					"priority": 4,
-					"speed_multiplier": 1,
+					"speed_multiplier": 1.1,
 					"track_target": true,
 					"reach_multiplier": 3.15,
-					"cooldown_time": 2,
 					"on_attack": {
 						"event": "ha:deleted_boat"
 					}
@@ -284,10 +278,6 @@
 			}
 		},
 		"components": {
-			"minecraft:on_death": {
-				"target": "self",
-				"event": "ha:drop_sword"
-			},
 			"minecraft:damage_sensor": {
 				"triggers": [
 					{
@@ -340,7 +330,7 @@
 			},
 			"minecraft:behavior.nearest_attackable_target": {
 				"priority": 4,
-				"within_radius": 16,
+				"within_radius": 21,
 				"entity_types": [
 					{
 						"filters": {
@@ -358,7 +348,7 @@
 								}
 							]
 						},
-						"max_dist": 16
+						"max_dist": 21
 					}
 				],
 				"must_see": true

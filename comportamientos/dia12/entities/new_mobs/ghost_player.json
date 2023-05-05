@@ -6,7 +6,7 @@
 		"description": {
 			"identifier": "ha:ghost_player",
 			"is_summonable": true,
-			"is_spawnable": true,
+			"is_spawnable": false,
 			"is_experimental": false
 		},
 		"component_groups": {

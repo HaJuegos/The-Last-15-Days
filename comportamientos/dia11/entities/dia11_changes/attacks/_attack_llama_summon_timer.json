@@ -82,8 +82,8 @@
 			},
 			"minecraft:timer": {
 				"time": [
-					100,
-					100
+					120,
+					120
 				],
 				"looping": true,
 				"time_down_event": {
