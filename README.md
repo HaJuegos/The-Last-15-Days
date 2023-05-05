@@ -27,13 +27,13 @@
 
 ### Advertencia: Los links acontinuacion estan acortados y puede haber publicidad algo pasada, si algo, solo ve al grano y no entres a cualquier cosa malisiosa que encuentres, solo ve a los botones de descarga y saltate los anuncios.
 
-- [**CLICK PARA DESCARGAR TODO**]()
+- [**CLICK PARA DESCARGAR TODO**](https://link-hub.net/561815/todo-el-add-on)
 
-- [**CLICK PARA DESCARGAR EL ADD-ON JUNTO**]()
+- [**CLICK PARA DESCARGAR EL ADD-ON JUNTO**](https://direct-link.net/561815/solo-el-add-on-junto)
 
-- [**CLICK PARA DESCARGAR EL ADD-ON POR SEPARADO**]()
+- [**CLICK PARA DESCARGAR EL ADD-ON POR SEPARADO**](https://link-hub.net/561815/solo-el-add-on-separado)
 
-- [**CLICK PARA DESCARGAR EL MUNDO YA CONFIGURADO**]()
+- [**CLICK PARA DESCARGAR EL MUNDO YA CONFIGURADO**](https://link-hub.net/561815/solo-el-mundo-preparado)
 
 ## GUIA DE USO
 
