@@ -15,7 +15,7 @@
   <a href="https://twitter.com/TheLast15Days"><img src="https://img.shields.io/twitter/follow/TheLast15Days?style=plastic&color=success&logo=twitter&label=The%20Last%2015%20Days%20Twitter" alt="Twitter "/></a>
   <a href="https://twitter.com/convex__"><img src="https://img.shields.io/twitter/follow/convex__?style=plastic&color=success&logo=twitter&label=Convex%20Twitter" alt="Twitter "/></a>
   <a href="https://twitter.com/Ha_Juegos_Cat"><img src="https://img.shields.io/twitter/follow/Ha_Juegos_Cat?style=plastic&color=success&logo=twitter&label=Ha%20Juegos%20Cat%20Twitter" alt="Twitter "/></a>
-  <a href="https://www.youtube.com/watch?v=SWd6QM0TTJo"><img src="https://img.shields.io/youtube/views/SWd6QM0TTJo?style=plastic&logo=youtube&color=red&label=Video%20Tutorial" alt="Youtube "/></a>
+  <a href="https://www.youtube.com/watch?v=SWd6QM0TTJo"><img src="https://img.shields.io/youtube/views/SWd6QM0TTJo?style=plastic&logo=youtube&color=red&label=Tutorial" alt="Youtube "/></a>
 </p>
 
 ## ACREDITACION IMPORTANTE
@@ -37,7 +37,7 @@
 
 ## GUIA DE USO
 
-- **El Add-on solo soporta la version 1.19.80 de Minecraft Bedrock. Esto no es definitivo ya que cualquier version oficial futura, puede provocar daños o bugs inesperados**.
+- **El Add-on solo soporta la version 1.19.80/1/2/3 de Minecraft Bedrock. Esto no es definitivo ya que cualquier version oficial futura, puede provocar daños o bugs inesperados**.
 - Todo en el add-on es automatico.
 - Si deseas instalar el mundo ya creado, por favor sigue estos pasos si no concoces como se hace: [**__Ver imagen__**](https://media.discordapp.net/attachments/964653057390546954/997570733473550536/exmple.png)
 - Para revivir a un compañero, deja un bloque de comandos en repetir con el siguiente comando:
