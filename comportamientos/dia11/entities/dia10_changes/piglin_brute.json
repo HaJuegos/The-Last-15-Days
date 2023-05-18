@@ -280,7 +280,7 @@
 						1.9,
 						1.9
 					],
-					"looping": false,
+					"looping": true,
 					"time_down_event": {
 						"event": "ha:end_regenerate",
 						"target": "self"

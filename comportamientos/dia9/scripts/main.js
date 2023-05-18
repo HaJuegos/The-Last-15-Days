@@ -163,12 +163,10 @@ world.events.entityDie.subscribe(eventDead => {
 system.runInterval(() => {
     for (const player of world.getPlayers()) {
         if (player.hasTag("ban")) {
-            player.runCommandAsync(`kick "${player.name}" §4Game Over!`).catch((alert_data) => {
-				console.warn(alert_data)
-			});
+            player.runCommandAsync(`kick "${player.name}" §4Game Over!`);
         };
     };
-}, 20);
+}, 1);
 
 system.runInterval((healthEvent) => {
     const players = Array.from(world.getPlayers());
@@ -178,7 +176,7 @@ system.runInterval((healthEvent) => {
             player.nameTag = (player.getTags().find((tag) => tag.startsWith("r:"))?.substring(2)?.split("-") ?? ["§7§l[§4Sobreviviente§7]§r"]).join() + "\n§7" + player.name + " §c" + Math.round(health.current) + "§7/§c" + Math.round(health.value)
         };
     };
-}, 20);
+}, 1);
 
 world.events.beforeItemUse.subscribe(eventMilk => {
     const players = eventMilk.source;
