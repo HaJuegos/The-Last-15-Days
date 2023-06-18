@@ -14,13 +14,13 @@
 <p align="center">
   <a href="https://twitter.com/TheLast15Days"><img src="https://img.shields.io/twitter/follow/TheLast15Days?style=plastic&color=success&logo=twitter&label=The%20Last%2015%20Days%20Twitter" alt="Twitter "/></a>
   <a href="https://twitter.com/convex__"><img src="https://img.shields.io/twitter/follow/convex__?style=plastic&color=success&logo=twitter&label=Convex%20Twitter" alt="Twitter "/></a>
-  <a href="https://twitter.com/Ha_Juegos_Cat"><img src="https://img.shields.io/twitter/follow/Ha_Juegos_Cat?style=plastic&color=success&logo=twitter&label=Ha%20Juegos%20Cat%20Twitter" alt="Twitter "/></a>
+  <a href="https://twitter.com/Ha_Juegos"><img src="https://img.shields.io/twitter/follow/Ha_Juegos?style=plastic&color=success&logo=twitter&label=Ha%20Juegos%20Cat%20Twitter" alt="Twitter "/></a>
   <a href="https://www.youtube.com/watch?v=SWd6QM0TTJo"><img src="https://img.shields.io/youtube/views/SWd6QM0TTJo?style=plastic&logo=youtube&color=red&label=Tutorial" alt="Youtube "/></a>
 </p>
 
 ## ACREDITACION IMPORTANTE
 
-- Este Add-on es una comision pagada de [RosherRandom](https://discord.com/users/666120110964211732) y forma parte de una colaboracion entre [Astral](https://discord.com/users/983220765006635018), [HaJuegosCat!](https://discord.com/users/714622708649951272) y [Convex!](https://discord.com/users/736761089056047174) asi que por favor recuerda cada uno de nosotros le metimos esfuerzo y dedicacion a este add-on, para que lo tengas ahora mismo en tus manos y lo puedas usar a gusto. Si deseas crear modificaciones o contenido con este mismo, procura hacer minimamente mencion a las personas que trabajamos en esto con algun link para que nos conozcan mejor. ¡Gracias!
+- Este Add-on es una comision pagada de [RosherRandom](https://discord.com/users/666120110964211732) y forma parte de una colaboracion entre [Astral](https://discord.com/users/983220765006635018), [HaCatto!](https://discord.com/users/714622708649951272) y [Convex!](https://discord.com/users/736761089056047174) asi que por favor recuerda cada uno de nosotros le metimos esfuerzo y dedicacion a este add-on, para que lo tengas ahora mismo en tus manos y lo puedas usar a gusto. Si deseas crear modificaciones o contenido con este mismo, procura hacer minimamente mencion a las personas que trabajamos en esto con algun link para que nos conozcan mejor. ¡Gracias!
 - Si tienes mas dudas al respecto o quieres buscar algo mas, entra al server de Discord de Add-ons de HaJuegosCat para mas informacion: https://discord.gg/WH9KpNWXUz
 
 ## DESCARGAS RAPIDAS
@@ -37,11 +37,13 @@
 
 ## GUIA DE USO
 
-- **El Add-on solo soporta la version 1.19.80/1/2/3 de Minecraft Bedrock. Esto no es definitivo ya que cualquier version oficial futura, puede provocar daños o bugs inesperados**.
+- **El Add-on solo soporta la version 1.20.0 de Minecraft Bedrock. Esto no es definitivo ya que cualquier version oficial futura, puede provocar daños o bugs inesperados**.
 - Todo en el add-on es automatico.
 - Si deseas instalar el mundo ya creado, por favor sigue estos pasos si no concoces como se hace: [**__Ver imagen__**](https://media.discordapp.net/attachments/964653057390546954/997570733473550536/exmple.png)
 - Para revivir a un compañero, deja un bloque de comandos en repetir con el siguiente comando:
 > `/tag "nombre del jugador" remove ban`
+	> En caso de no funcionar, quita el add-on primero.
+	
 y luego el comando en el chat del juego: 
 > `/execute as "nombre del jugador" run function revivir`
 
@@ -56,9 +58,11 @@ y luego el comando en el chat del juego:
 ## OPCIONES EXPERIMENTALES
 - _Este add-on, depende de opciones experimentales, ya los puedes ver en el template del mundo y cuando lo crees, Procura tenerlos activos para no tener problemas algunos._
 
-![New](https://cdn.discordapp.com/attachments/1093209319606071417/1093209564981252097/new.png)
+![New1](https://cdn.discordapp.com/attachments/997603479822536794/1119865326910308482/image.png)
+![New2](https://cdn.discordapp.com/attachments/997603479822536794/1119865326658670632/image.png)
 
-![old](https://cdn.discordapp.com/attachments/1093209319606071417/1093209565266448425/old.png)
+![old1](https://cdn.discordapp.com/attachments/997603479822536794/1119865336859213934/image.png)
+![old2](https://cdn.discordapp.com/attachments/997603479822536794/1119865337203130408/image.png)
 
 ## COMO INSTALAR EL ADD-ON EN SERVIDORES
 
@@ -67,7 +71,7 @@ y luego el comando en el chat del juego:
 
 ## QUE TRAE EL ADD-ON
 ```txt
-The Last 15 Days By Rosher Random, Convex y HaJuegos Cat! - Version Oficial 0.0.5
+The Last 15 Days By Rosher Random, Convex y HaJuegos Cat! - Version Oficial 0.0.6
 
 ** Cualquier error o algo inusual que encuentres en esta version puedes reportarlo aqui: https://discord.gg/WH9KpNWXUz o enviandole un mensaje a HaJuegos Cat!: https://discord.com/users/714622708649951272
 
@@ -82,7 +86,7 @@ The Last 15 Days By Rosher Random, Convex y HaJuegos Cat! - Version Oficial 0.0.
 		- Tambien generara un rayo directo a un jugador aleatorio x muerte
 
 - Hay OnePlayerSleep pero este esta modificado para que no sea de forma instantanea
-- Rangos iguales a Java Edition
+- Rangos iguales a Java Edition y ahora con Traducciones!
 - Alerta de uso del Totem para todos los jugadores
 - Totem rapido, con tu tecla de interaccion puedes ponerte un totem rapido en la segunda mano desde la hotbar (el boton de interaccion, es con el que interactuas en el mundo, como por ejemplo, en telefono es mantener presionado la pantalla, en pc es click derecho, en consola es literalmente el boton llamado "interaccion" etc)
 - No es visible la semilla del mundo
@@ -115,7 +119,7 @@ The Last 15 Days By Rosher Random, Convex y HaJuegos Cat! - Version Oficial 0.0.
 - Los arbustos secos, bayas dulces y el cactus te dan:
 	- Veneno I x 10 segundos
 - Los zorros ahora son hostiles y estos al atacarte, te pueden robar un item aleatorio de tu inventario
-- Los Phantoms ahora tienen Resistencia al Fuego y su forma de ataque es ahora exageradamente rapido
+- Los Phantoms ahora tienen Resistencia al Fuego y atacan de forma mas constante
 - Aparece la "Manzana de Hierro":
 	- Este se consigue por medio de la mesa de crafteos agregando 8 lingotes de hierro y 1 manzana normal
 	- Al consumirlo te dara Resistencia II x 30 segundos
@@ -127,7 +131,7 @@ The Last 15 Days By Rosher Random, Convex y HaJuegos Cat! - Version Oficial 0.0.
 
 - Ahora los ahogados llevan siempre un tridente
 - Las arañas de cueva ahora pueden aparecer de forma natural
-- Los esqueletos y zombies llevan armadura de diamante
+- Ahora los Tipos de Esqueletos y Zombies, llevan armadura de diamante
 - El Zombie Vaina ahora puede:
 	- Si te ataca, te dara Hambre IV
 
@@ -167,7 +171,7 @@ The Last 15 Days By Rosher Random, Convex y HaJuegos Cat! - Version Oficial 0.0.
 
 • Dia 5 Cambios:
 
-- Ya es permitido acceder al Nether
+- Ya es permitido acceder al Nether pero no es obtenible nada relacionado a la netherite
 - Aparecen nuevos items: "Reliquia Infernal" y el "Fragmento Igneo"
 	- Reliquia Infernal:
 		- Esta se consigue por medio de la mesa de crafteo con 4 Fragmentos Igneos y una Extrella del Wither
@@ -233,7 +237,6 @@ The Last 15 Days By Rosher Random, Convex y HaJuegos Cat! - Version Oficial 0.0.
 
 - Los Ahogados han cambiado y ahora:
 	- Pueden dropear siempre oro
-	- Equiparan una Armadura de Diamante Completa
 
 - Todos los tipos y variantes de caballos ahora:
 	- Son remplazados por su variante no usada, Esqueleto y Zombie
@@ -364,7 +367,7 @@ The Last 15 Days By Rosher Random, Convex y HaJuegos Cat! - Version Oficial 0.0.
 	- Hace varios ataques diferentes dependiendo de la bola del dragon, los cuales son:
 		- Si recibes el efecto de nauseas, debes mantenerte totalmente inmovil. Si haces lo contrario, te hara oneshot
 		- Si la bola impacta en el suelo, generara un warden con mas vida y velocidad. Pero no hace tanto daño
-		- Si estas en el centro de la isla, hay una posibilidad de que el dragon te devuelva el daño que le haz provocado, te empuje muy lejos y te de Levitacion X por 10 segundos
+		- Si el dragon esta en el centro de la isla y lo atacas, este te devolvera cualquier daño que le hagas y tambien te empujara muy lejos, ademas de agregarte Levitacion X por 10 segundos
 		- Si recibes el efecto del conducto (conduit), preparate! despues de una cuenta regresiva o al acabar el efecto. Este te hara una teletrasportacion alrededor de la isla de forma aleatoria
 		- Los EnderCrystals luego de ser explotados, despues de un tiempo, en la posicion donde fueron reventados pueden generar una llama en ese mismo lugar
 		- Nube de daños por defecto del dragon
