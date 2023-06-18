@@ -14,11 +14,9 @@
 				"effects": [
 					{
 						"name": "fatal_poison",
-						"chance": 100,
+						"chance": 1.0,
 						"duration": 60,
-						"amplifier": 4,
-						"visible": 1,
-						"ambient": 0
+						"amplifier": 5
 					}
 				]
 			}

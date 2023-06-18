@@ -1,35 +1,41 @@
-/* Creado/Editado por: Convex!. Si quieres mas informacion al respecto, escribeme en Discord: https://discord.com/users/736761089056047174 o https://discord.com/users/948057828495605820 */
-/* Created/Edited by: Convex!. If you want more information about it, write me on Discord: https://discord.com/users/736761089056047174 or https://discord.com/users/948057828495605820 */
+/* Creado/Editado por: HaJuegos Cat! & Convex!. Si necesitas mas informacion, hablamos en Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174 */
+/* Created/Edited by: HaCatto! & Convex! If you need more information, we talk on Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174 */
 
-import { system, world } from "@minecraft/server";
+import { system, world, ItemStack, EquipmentSlot } from "@minecraft/server";
 
 system.events.beforeWatchdogTerminate.subscribe((eventData) => {
-  eventData.cancel = true;
+	eventData.cancel = true;
 });
 
-world.events.beforeChat.subscribe(eventData => {
-    eventData.cancel = true;
+world.beforeEvents.chatSend.subscribe(eventData => {
     const msg = eventData.message;
     const player = eventData.sender;
-    world.getDimension("overworld").runCommandAsync(`tellraw @a {"rawtext":[{"text":"${(player.getTags().find((tag) => tag.startsWith("r:"))?.substring(2)?.split("-") ?? ["§4Sobreviviente"]).join("§r§l§0][§r")} ${player.name} §8§l>>§r ${msg}"}]}`);
+	eventData.cancel = true;
+	const tag = player.getTags().find(tag => tag.startsWith("r:"))?.substring(2)?.split("-") || ["default"];
+	const key = `rank.${tag}`;
+	try {
+		world.getDimension("overworld").runCommandAsync(`tellraw @a {"rawtext":[{"text":"§l§8["},{"translate":"${key}"},{"text":"§l§8]§r ${player.name} §8§l>>§r ${msg}"}]}`);
+	} catch {};
 });
 
-world.events.entityDie.subscribe(eventDead => {
+world.afterEvents.entityDie.subscribe(eventDead => {
 	const player = eventDead.deadEntity;
 	const source = eventDead.damageSource;
-	if (player.typeId == 'minecraft:player') {
-		if (!player.hasTag("coords")) {
-			player.runCommandAsync(`summon ha:ghost_player "§e${player.name} Inventory§r" ~ ~ ~`)
-			player.runCommandAsync(`tellraw @a {"rawtext": [{"translate":"dead_player_coordinates", "with": {"rawtext": [{"selector":"@s"},{"text":"${Math.floor(player.location.x)} ${Math.floor(player.location.y)} ${Math.floor(player.location.z)}"},{"text":"${getDimension(player.dimension)}"}]}}]}`)
-			player.addTag("coords")
+	try {
+		if (player.typeId == 'minecraft:player') {
+			if (!player.hasTag("coords")) {
+				player.runCommandAsync(`summon ha:ghost_player "§e${player.name} Inventory§r" ~ ~ ~`);
+				player.runCommandAsync(`tellraw @a {"rawtext": [{"translate":"dead_player_coordinates", "with": {"rawtext": [{"selector":"@s"},{"text":"${Math.floor(player.location.x)} ${Math.floor(player.location.y)} ${Math.floor(player.location.z)}"},{"translate":"${getDimension(player.dimension)}"}]}}]}`);
+				player.addTag("coords");
+			};
 		};
-	};
+	} catch {};
 });
 
 system.runInterval(() => {
 	for (const player of world.getPlayers()) {
 		if (player.hasTag("ban")) {
-			player.runCommandAsync(`kick "${player.name}" §4Game Over!`);
+			player.runCommandAsync(`kick "${player.name}" `);
         };
     };
 }, 1);
@@ -38,55 +44,103 @@ system.runInterval((healthEvent) => {
     const players = Array.from(world.getPlayers());
     for (const player of players) {
         if (player.hasComponent("health")) {
-            const health = player.getComponent("health")
-            player.nameTag = (player.getTags().find((tag) => tag.startsWith("r:"))?.substring(2)?.split("-") ?? ["§7§l[§4Sobreviviente§7]§r"]).join() + "\n§7" + player.name + " §c" + Math.round(health.current) + "§7/§c" + Math.round(health.value)
+            const health = player.getComponent("health");
+            let rankKey = player.getTags().find((tag) => tag.startsWith("r:") || tag == "owner" || tag == "dev" || tag == "custom_1" || tag == "custom_2" || tag == "custom_3" || tag == "custom_4" || tag == "custom_5" || tag == "custom_6" || tag == "custom_7" || tag == "custom_8" || tag == "custom_9");
+			if (!rankKey) {
+                rankKey = "§r§4Survivor";
+            } else {
+                switch (true) {
+                    case (rankKey.startsWith("r:owner")): {
+						rankKey = "§r§eOwner";
+					} break;
+                    case (rankKey.startsWith("r:dev")): {
+						rankKey = "§r§6DEV";
+					} break;
+                    case (rankKey.startsWith("r:custom_1")): {
+						rankKey = "§r§cDiresito Lover";
+					} break;
+                    case (rankKey.startsWith("r:custom_2")): {
+						rankKey = "§r§aDaoLover";
+					} break;
+                    case (rankKey.startsWith("r:custom_3")): {
+						rankKey = "§r§eGreasy King";
+					} break;
+                    case (rankKey.startsWith("r:custom_4")): {
+						rankKey = "§r§bThe Last Survivor";
+					} break;
+                    case (rankKey.startsWith("r:custom_5")): {
+						rankKey = "§r§eMvpBtw";
+					} break;
+                    case (rankKey.startsWith("r:custom_6")): {
+						rankKey = "§r§dGeoKiller Fan";
+					} break;
+                    case (rankKey.startsWith("r:custom_7")): {
+						rankKey = "§r§aZzz";
+					} break;
+                    case (rankKey.startsWith("r:custom_8")): {
+						rankKey = "§r§dDiresito Fan uwu";
+					} break;
+					case (rankKey.startsWith("r:custom_9")): {
+						rankKey = "§r§eTlan sexoso";
+					} break;
+                    case (rankKey.startsWith("r:")): {
+						rankKey = "§r§4Survivor";
+					} break;
+                };
+            };
+            const fixRank = rankKey.substring(2).split("-").join(" ");
+            player.nameTag = `§7§l[${fixRank}§7§l]\n§r${player.name} §c${Math.round(health.current)}§7/§c${Math.round(health.value)}§r`;
         };
     };
 }, 1);
 
-world.events.beforeItemUse.subscribe(eventMilk => {
+world.afterEvents.itemUse.subscribe(eventMilk => {
     const players = eventMilk.source;
-    const item = eventMilk.item;
-    let player = Array.from(world.getPlayers()).find(plr => plr.name == players.name);
-    if (item.typeId == 'minecraft:totem_of_undying') {
-        if (!player.hasTag("TotemOffHand") && !player.hasTag("ShieldOffHand")) {
-            player.runCommandAsync(`replaceitem entity @s slot.weapon.offhand 0 totem`)
-            player.runCommandAsync(`replaceitem entity @s slot.weapon.mainhand 0 air`)
-            player.runCommandAsync(`playsound armor.equip_chain @s`)
-        };
-    } else { };
+	const slot = players.getComponent('minecraft:equipment_inventory');
+    const item = slot.getEquipment(EquipmentSlot.mainhand);
+	const anotherItem = slot.getEquipment(EquipmentSlot.offhand);
+	let player = Array.from(world.getPlayers()).find(plr => plr.name == players.name);
+	try {
+		if (item.typeId == 'minecraft:totem_of_undying' && anotherItem == undefined) {
+			player.runCommandAsync(`replaceitem entity @s slot.weapon.offhand 0 totem`);
+			player.runCommandAsync(`replaceitem entity @s slot.weapon.mainhand 0 air`);
+			player.runCommandAsync(`playsound armor.equip_chain @s`);
+		};
+	} catch {};
 });
 
-world.events.entityHurt.subscribe(({ damage, hurtEntity }) => {
-    if (hurtEntity.typeId == 'minecraft:player') {
-        let player = Array.from(world.getPlayers()).find(plr => plr.name == hurtEntity.name);
-        let health = player.getComponent('minecraft:health');
-        if (runCommandAsync(`execute "${player.name}" ~ ~ ~ testfor @s[hasitem={item=totem,location=slot.weapon.offhand}]`).error == false) {
-            if (damage < 0 && health.current <= 1) {
-                player.runCommandAsync(`function system/alerta_de_totem`)
-            };
-        } else if (runCommandAsync(`execute "${player.name}" ~ ~ ~ testfor @s[hasitem={item=totem,location=slot.weapon.mainhand}]`).error == false) {
-            if (damage < 0 && health.current <= 1) {
-                player.runCommandAsync(`function system/alerta_de_totem`)
-            };
-        };
-    };
+world.afterEvents.entityHurt.subscribe(hurtEvent => {
+    let hurtEntity = hurtEvent.hurtEntity;
+    let damage = hurtEvent.damage;
+    let source = hurtEvent.damageSource;
+	try {
+		if (hurtEntity.typeId != 'minecraft:player') return;
+		let player = Array.from(world.getPlayers()).find(plr => plr.name == hurtEntity.name);
+		const health = player.getComponent('minecraft:health');
+		if (health.current <= 0) {
+			system.runTimeout(() => {
+				if (health.current > 0) {
+					player.runCommandAsync(`damage @s 0 override`);
+				}
+			}, 1);
+		};
+		if (damage > 0 || source.cause != 'none') return;
+		player.runCommandAsync(`function system/alerta_de_totem`);
+	} catch {};
 });
 
 function getDimension(dimension) {
+    const keys = {
+        overworld: "dimension.over",
+        nether: "dimension.nether",
+        "the end": "dimension.end"
+    };
     const ids = ['overworld', 'nether', 'the end'];
     let d = ids.find((id) => world.getDimension(id) == dimension);
-    switch (d) {
-        case "overworld": {
-            return `§2Overworld§7`
-        } break;
-        case "nether": {
-            return `§cNether§7`
-        } break;
-        case "the end": {
-            return `§dEnd§7`
-        } break;
-    };
+    if (d && keys[d]) {
+        let rawtextKeys = keys[d];
+        return `${rawtextKeys}`;
+    }
 };
 
 function runCommandAsync(command) {
@@ -100,5 +154,5 @@ function runCommandAsync(command) {
         }
     }
 }
-/* Creado/Editado por: Convex!. Si quieres mas informacion al respecto, escribeme en Discord: https://discord.com/users/736761089056047174 o https://discord.com/users/948057828495605820 */
-/* Created/Edited by: Convex!. If you want more information about it, write me on Discord: https://discord.com/users/736761089056047174 or https://discord.com/users/948057828495605820 */
+/* Creado/Editado por: HaJuegos Cat! & Convex!. Si necesitas mas informacion, hablamos en Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174 */
+/* Created/Edited by: HaCatto! & Convex! If you need more information, we talk on Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174 */

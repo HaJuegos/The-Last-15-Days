@@ -1,0 +1,100 @@
+/* Creado/Editado por: HaJuegos Cat! & Convex!. Si necesitas mas informacion, hablamos en Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174 */
+/* Created/Edited by: HaCatto! & Convex! If you need more information, we talk on Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174 */
+{
+	"format_version": "1.12.0",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "minecraft:ender_crystal",
+			"is_spawnable": false,
+			"is_summonable": true,
+			"is_experimental": false
+		},
+		"component_groups": {
+			"crystal_exploding": {
+				"minecraft:explode": {
+					"fuse_length": 0,
+					"fuse_lit": true,
+					"power": 6,
+					"causes_fire": false,
+					"destroy_affected_by_griefing": true
+				}
+			}
+		},
+		"components": {
+			"minecraft:collision_box": {
+				"width": 2,
+				"height": 2
+			},
+			"minecraft:health": {
+				"value": 1,
+				"max": 1
+			},
+			"minecraft:fire_immune": true,
+			"minecraft:on_hurt": {
+				"event": "minecraft:crystal_explode",
+				"target": "self"
+			},
+			"minecraft:physics": {},
+			"minecraft:pushable": {
+				"is_pushable": true,
+				"is_pushable_by_piston": true
+			},
+			"minecraft:conditional_bandwidth_optimization": {}
+		},
+		"events": {
+			"minecraft:entity_spawned": {
+				"sequence": [
+					{
+						"filters": {
+							"test": "is_family",
+							"subject": "other",
+							"value": "player"
+						},
+						"run_command": {
+							"command": [
+								"tag @s add playerCrystal"
+							]
+						},
+						"add": {}
+					}
+				]
+			},
+			"minecraft:crystal_explode": {
+				"sequence": [
+					{
+						"filters": {
+							"test": "has_tag",
+							"subject": "self",
+							"value": "naturalGenerated"
+						},
+						"run_command": {
+							"command": [
+								"function system/ender_explode"
+							]
+						},
+						"remove": {},
+						"add": {
+							"component_groups": [
+								"crystal_exploding"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"subject": "self",
+							"operator": "not",
+							"value": "naturalGenerated"
+						},
+						"remove": {},
+						"add": {
+							"component_groups": [
+								"crystal_exploding"
+							]
+						}
+					}
+				]
+			}
+		}
+	}
+}

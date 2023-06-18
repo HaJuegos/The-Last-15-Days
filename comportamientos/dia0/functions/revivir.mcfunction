@@ -4,6 +4,11 @@
 tag @s remove dead
 tag @s remove coords
 tag @s remove nosound
-tag @s remove ban
-tellraw @a {"rawtext": [{"text":"§a"},{"selector":"@s"},{"text":" ha revivido. Yei!"}]}
+scoreboard players reset @s isBanned
+
+tellraw @a {"rawtext": [{"translate":"chat.player_revival", "with": {"rawtext": [{"selector":"@s"}]}}]}
+playsound mob.zombie.unfect @a
+particle minecraft:totem_particle ~~0.5~
+particle minecraft:totem_particle ~~0.5~
+particle minecraft:totem_particle ~~0.5~
 gamemode s @s

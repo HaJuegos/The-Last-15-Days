@@ -1,7 +1,7 @@
-/* Creado/Editado por: HaJuegos Cat! & Convex!. Si necesitas mas informacion, hablamos en Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174 */
-/* Created/Edited by: HaCatto! & Convex! If you need more information, we talk on Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174 */
+/* Creado/Editado por: HaJuegos Cat!. Si necesitas mas informacion, escribeme en Discord: https://discord.com/users/714622708649951272 */
+/* Created/Edited by: HaCatto! If you need more information, write me on Discord: https://discord.com/users/714622708649951272 */
 {
-	"format_version": "1.17.30",
+	"format_version": "1.18.20",
 	"animation_controllers": {
 		"controller.animation.ha_dead_system": {
 			"initial_state": "default",
@@ -58,56 +58,9 @@
 					],
 					"on_entry": [
 						"/function system/configuracion_de_mundo",
-						"/tell @s[tag=!m10] §4§lDia 10.",
-						"/tag @s[tag=!m10] add m10"
-					]
-				}
-			}
-		},
-		"controller.animation.player.totem_tag": {
-			"states": {
-				"no_totem": {
-					"transitions": [
-						{
-							"totem": "query.is_item_name_any('slot.weapon.offhand','minecraft:totem_of_undying') == 1"
-						}
-					],
-					"on_entry": [
-						"/tag @s remove TotemOffHand"
-					]
-				},
-				"totem": {
-					"transitions": [
-						{
-							"no_totem": "query.is_item_name_any('slot.weapon.offhand','minecraft:totem_of_undying') == 0"
-						}
-					],
-					"on_entry": [
-						"/tag @s add TotemOffHand"
-					]
-				}
-			}
-		},
-		"controller.animation.player.shield_offhand": {
-			"states": {
-				"no_shield": {
-					"transitions": [
-						{
-							"shield": "query.is_item_name_any('slot.weapon.offhand','minecraft:shield') == 1"
-						}
-					],
-					"on_entry": [
-						"/tag @s remove ShieldOffHand"
-					]
-				},
-				"shield": {
-					"transitions": [
-						{
-							"no_shield": "query.is_item_name_any('slot.weapon.offhand','minecraft:shield') == 0"
-						}
-					],
-					"on_entry": [
-						"/tag @s add ShieldOffHand"
+						"/tellraw @s[tag=!m10] {\"rawtext\": [{\"translate\":\"day.message_10\"}]}",
+						"/tag @s[tag=!m10] add m10",
+						"/tag @s[tag=m9] remove m9"
 					]
 				}
 			}

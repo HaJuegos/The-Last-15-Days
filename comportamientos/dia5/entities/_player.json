@@ -10,16 +10,12 @@
 			"is_experimental": false,
 			"animations": {
 				"muere": "controller.animation.ha_dead_system",
-				"primeravez_entra": "controller.animation.ha_entry_world",
-                "totemtag": "controller.animation.player.totem_tag",
-                "shieldtag": "controller.animation.player.shield_offhand"
+				"primeravez_entra": "controller.animation.ha_entry_world"
 			},
 			"scripts": {
 				"animate": [
 					"muere",
-					"primeravez_entra",
-                    "totemtag",
-                    "shieldtag"
+					"primeravez_entra"
 				]
 			}
 		},
@@ -139,7 +135,7 @@
 				"attack": 0.1,
 				"damage": 0.1,
 				"walk": 0,
-				"sprint": 0.01,
+				"sprint": 0.1,
 				"swim": 0.01
 			},
 			"minecraft:player.saturation": {
@@ -168,7 +164,9 @@
 				"always_show": true,
 				"allow_name_tag_renaming": false
 			},
-			"minecraft:physics": {},
+			"minecraft:physics": {
+				"push_towards_closest_space": true
+			},
 			"minecraft:pushable": {
 				"is_pushable": false,
 				"is_pushable_by_piston": true
@@ -210,25 +208,6 @@
 			"minecraft:damage_sensor": {
 				"triggers": [
 					{
-						"cause": "attack",
-						"on_damage": {
-							"filters": {
-								"all_of": [
-									{
-										"test": "has_damage",
-										"value": "attack"
-									},
-									{
-										"test": "is_family",
-										"subject": "damager",
-										"value": "fox"
-									}
-								]
-							},
-							"event": "cnvx:fox_steal"
-						}
-					},
-					{
 						"on_damage": {
 							"filters": {
 								"any_of": [
@@ -250,61 +229,15 @@
 						"deals_damage": true
 					},
 					{
-						"cause": "attack",
-						"on_damage": {
-							"filters": {
-								"all_of": [
-									{
-										"test": "has_damage",
-										"value": "attack"
-									},
-									{
-										"test": "is_family",
-										"subject": "damager",
-										"value": "husk"
-									}
-								]
-							},
-							"event": "ha:husk_damage"
-						}
-					},
-					{
-						"on_damage": {
-							"filters": {
-								"all_of": [
-									{
-										"any_of": [
-											{
-												"test": "has_damage",
-												"value": "projectile"
-											},
-											{
-												"test": "has_damage",
-												"value": "attack"
-											}
-										]
-									},
-									{
-										"test": "is_family",
-										"subject": "damager",
-										"value": "stray"
-									}
-								]
-							},
-							"target": "self",
-							"event": "ha:stray_damage"
-						}
-					},
-					{
+						"cause": "any",
 						"on_damage": {
 							"filters": {
 								"test": "is_family",
-								"subject": "damager",
-								"value": "wither_boss"
-							},
-							"event": "ha:wither_damage"
+								"subject": "other",
+								"value": "fragment_mob"
+							}
 						},
-						"cause": "any",
+						"damage_multiplier": 5,
 						"deals_damage": true
 					}
 				]
@@ -423,26 +356,6 @@
 						},
 						"event": "cnvx:normal_biome"
 					},
-                    {
-                        "filters": {
-                            "test": "has_equipment",
-                            "operator": "==",
-                            "subject": "self",
-                            "value": "minecraft:shield",
-                            "domain": "hand"
-                        },
-                        "event": "cnvx:add_shield_tag"
-                    },
-                    {
-                        "filters": {
-                            "test": "has_equipment",
-                            "operator": "!=",
-                            "subject": "self",
-                            "value": "minecraft:shield",
-                            "domain": "hand"
-                        },
-                        "event": "cnvx:remove_shield_tag"
-                    },
 					{
 						"filters": {
 							"test": "in_nether",
@@ -475,121 +388,10 @@
 					]
 				}
 			},
-			"ha:wither_damage": {
-				"run_command": {
-					"command": [
-						"effect @s levitation 30 10 true"
-					]
-				}
-			},
-			"ha:husk_damage": {
-				"run_command": {
-					"command": [
-						"effect @s hunger 30 3 false"
-					]
-				}
-			},
-			"ha:stray_damage": {
-				"run_command": {
-					"command": [
-						"effect @s slowness 30 3 false"
-					]
-				}
-			},
 			"ha:effect_block": {
 				"run_command": {
 					"command": [
 						"effect @s poison 10 0"
-					]
-				}
-			},
-			"cnvx:fox_steal": {
-				"run_command": {
-					"command": [
-						"function system/zorro_roba_item"
-					]
-				}
-			},
-			"minecraft:gain_bad_omen": {
-				"add": {
-					"component_groups": [
-						"minecraft:add_bad_omen"
-					]
-				}
-			},
-			"minecraft:clear_add_bad_omen": {
-				"remove": {
-					"component_groups": [
-						"minecraft:add_bad_omen"
-					]
-				},
-				"add": {
-					"component_groups": [
-						"minecraft:clear_bad_omen_spell_effect"
-					]
-				}
-			},
-			"minecraft:trigger_raid": {
-				"add": {
-					"component_groups": [
-						"minecraft:raid_trigger"
-					]
-				}
-			},
-			"minecraft:remove_raid_trigger": {
-				"remove": {
-					"component_groups": [
-						"minecraft:raid_trigger"
-					]
-				}
-			},
-			"cnvx:add_shield_tag": {
-				"run_command": {
-					"command": [
-						"tag @s add blocking"
-					]
-				}
-			},
-			"cnvx:remove_shield_tag": {
-				"run_command": {
-					"command": [
-						"tag @s remove blocking"
-					]
-				}
-			},
-			"ha:sleeping": {
-				"run_command": {
-					"command": [
-						"execute @s[tag=!ya] ~ ~ ~ tellraw @a {\"rawtext\": [{\"text\":\"§a\"},{\"selector\":\"@s\"},{\"text\":\" Esta durmiendo. ¡Buenas Noches!\"}]}",
-						"weather clear",
-						"time add 50",
-						"tag @s add ya"
-					]
-				}
-			},
-			"ha:no_sleeping": {
-				"run_command": {
-					"command": [
-						"tag @s remove ya"
-					]
-				}
-			},
-			"ha:start_delay_ban": {
-				"add": {
-					"component_groups": [
-						"ha:ban"
-					]
-				}
-			},
-			"ha:has_tag_ban": {
-				"remove": {
-					"component_groups": [
-						"ha:ban"
-					]
-				},
-				"run_command": {
-					"command": [
-						"tag @s add ban"
 					]
 				}
 			},
@@ -634,6 +436,75 @@
 				"add": {
 					"component_groups": [
 						"cnvx:temp_damager"
+					]
+				}
+			},
+			"ha:sleeping": {
+				"run_command": {
+					"command": [
+						"execute as @s[tag=!ya] run tellraw @a {\"rawtext\": [{\"translate\":\"chat.sleeping_message\", \"with\": {\"rawtext\": [{\"selector\":\"@s\"}]}}]}",
+						"weather clear",
+						"time add 50",
+						"tag @s add ya"
+					]
+				}
+			},
+			"ha:no_sleeping": {
+				"run_command": {
+					"command": [
+						"tag @s remove ya"
+					]
+				}
+			},
+			"ha:start_delay_ban": {
+				"add": {
+					"component_groups": [
+						"ha:ban"
+					]
+				}
+			},
+			"ha:has_tag_ban": {
+				"remove": {
+					"component_groups": [
+						"ha:ban"
+					]
+				},
+				"run_command": {
+					"command": [
+						"tag @s add ban"
+					]
+				}
+			},
+			"minecraft:gain_bad_omen": {
+				"add": {
+					"component_groups": [
+						"minecraft:add_bad_omen"
+					]
+				}
+			},
+			"minecraft:clear_add_bad_omen": {
+				"remove": {
+					"component_groups": [
+						"minecraft:add_bad_omen"
+					]
+				},
+				"add": {
+					"component_groups": [
+						"minecraft:clear_bad_omen_spell_effect"
+					]
+				}
+			},
+			"minecraft:trigger_raid": {
+				"add": {
+					"component_groups": [
+						"minecraft:raid_trigger"
+					]
+				}
+			},
+			"minecraft:remove_raid_trigger": {
+				"remove": {
+					"component_groups": [
+						"minecraft:raid_trigger"
 					]
 				}
 			}

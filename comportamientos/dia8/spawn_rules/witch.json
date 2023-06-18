@@ -21,7 +21,7 @@
 					"max": "hard"
 				},
 				"minecraft:weight": {
-					"default": 3
+					"default": 5
 				},
 				"minecraft:biome_filter": {
 					"test": "has_biome_tag",
@@ -42,7 +42,7 @@
 					"max": "hard"
 				},
 				"minecraft:weight": {
-					"default": 3
+					"default": 5
 				},
 				"minecraft:biome_filter": {
 					"test": "has_biome_tag",

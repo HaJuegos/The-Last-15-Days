@@ -43,7 +43,8 @@
 				"protection": 8
 			},
 			"minecraft:explodable": false,
-			"minecraft:should_despawn": false
+			"minecraft:should_despawn": false,
+			"tag:minecraft:trimmable_armors": {}
 		},
 		"events": {
 			"sonido": {

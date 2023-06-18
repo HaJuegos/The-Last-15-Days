@@ -92,35 +92,17 @@
 																			"entries": [
 																				{
 																					"type": "item",
-																					"name": "minecraft:diamond_boots",
+																					"name": "minecraft:diamond_axe",
 																					"weight": 1,
 																					"functions": [
 																						{
-																							"function": "enchant_random_gear",
-																							"chance": 0.25
-																						}
-																					],
-																					"pools": [
-																						{
-																							"rolls": 1,
-																							"entries": [
+																							"function": "specific_enchants",
+																							"enchants": [
 																								{
-																									"type": "item",
-																									"name": "minecraft:diamond_axe",
-																									"weight": 1,
-																									"functions": [
-																										{
-																											"function": "specific_enchants",
-																											"enchants": [
-																												{
-																													"id": "mending",
-																													"level": [
-																														1,
-																														1
-																													]
-																												}
-																											]
-																										}
+																									"id": "mending",
+																									"level": [
+																										1,
+																										1
 																									]
 																								}
 																							]

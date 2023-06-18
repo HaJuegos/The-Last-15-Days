@@ -4,6 +4,4 @@
 scoreboard objectives add delfincontador dummy
 scoreboard players add @s delfincontador 20
 
-titleraw @s actionbar {"rawtext": [{"translate":"dolphin_attacked_message", "with": {"rawtext": [{"score":{"name":"@s","objective":"delfincontador"}}]}}]}
-
 tag @s remove terminodelfin

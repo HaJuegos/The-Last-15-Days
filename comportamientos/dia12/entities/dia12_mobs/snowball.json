@@ -1,0 +1,120 @@
+/* Creado/Editado por: HaJuegos Cat! & Convex!. Si necesitas mas informacion, hablamos en Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174 */
+/* Created/Edited by: HaCatto! & Convex! If you need more information, we talk on Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174 */
+{
+	"format_version": "1.16.0",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "minecraft:snowball",
+			"is_spawnable": false,
+			"is_summonable": true,
+			"is_experimental": false
+		},
+		"component_groups": {
+			"ha:normal_snowball": {
+				"minecraft:projectile": {
+					"on_hit": {
+						"impact_damage": {
+							"filter": "blaze",
+							"damage": 3,
+							"knockback": true
+						},
+						"remove_on_hit": {},
+						"particle_on_hit": {
+							"particle_type": "snowballpoof",
+							"num_particles": 6,
+							"on_entity_hit": true,
+							"on_other_hit": true
+						}
+					},
+					"anchor": 1,
+					"power": 1.5,
+					"gravity": 0.03,
+					"angle_offset": 0,
+					"offset": [
+						0,
+						-0.1,
+						0
+					]
+				}
+			},
+			"ha:super_snowball": {
+				"minecraft:projectile": {
+					"on_hit": {
+						"impact_damage": {
+							"damage": [
+								120,
+								120
+							],
+							"knockback": false
+						},
+						"remove_on_hit": {},
+						"particle_on_hit": {
+							"particle_type": "snowballpoof",
+							"num_particles": 6,
+							"on_entity_hit": true,
+							"on_other_hit": true
+						}
+					},
+					"anchor": 1,
+					"power": 1.5,
+					"gravity": 0.03,
+					"angle_offset": 0,
+					"offset": [
+						0,
+						-0.1,
+						0
+					]
+				}
+			}
+		},
+		"components": {
+			"minecraft:collision_box": {
+				"width": 0.25,
+				"height": 0.25
+			},
+			"minecraft:physics": {},
+			"minecraft:pushable": {
+				"is_pushable": true,
+				"is_pushable_by_piston": true
+			},
+			"minecraft:conditional_bandwidth_optimization": {
+				"default_values": {
+					"max_optimized_distance": 100.0,
+					"max_dropped_ticks": 7,
+					"use_motion_prediction_hints": true
+				}
+			}
+		},
+		"events": {
+			"minecraft:entity_spawned": {
+				"sequence": [
+					{
+						"filters": {
+							"test": "is_family",
+							"subject": "other",
+							"value": "snowman_end"
+						},
+						"add": {
+							"component_groups": [
+								"ha:super_snowball"
+							]
+						}
+					},
+					{
+						"filters": {
+							"test": "is_family",
+							"subject": "other",
+							"operator": "not",
+							"value": "snowman_end"
+						},
+						"add": {
+							"component_groups": [
+								"ha:normal_snowball"
+							]
+						}
+					}
+				]
+			}
+		}
+	}
+}

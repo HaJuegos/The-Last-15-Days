@@ -20,8 +20,7 @@
 				},
 				"minecraft:herd": {
 					"min_size": 1,
-					"max_size": 1,
-					"event": "ha:natural_bee_spawned"
+					"max_size": 1
 				},
 				"minecraft:biome_filter": [
 					{
@@ -53,9 +52,8 @@
 					"default": 8
 				},
 				"minecraft:herd": {
-					"min_size": 2,
-					"max_size": 3,
-					"event": "ha:natural_bee_spawned"
+					"min_size": 1,
+					"max_size": 2
 				},
 				"minecraft:biome_filter": {
 					"test": "has_biome_tag",

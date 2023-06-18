@@ -29,7 +29,7 @@
 					"min_size": 3,
 					"max_size": 5
 				},
-				"minecraft:biome_filter": {
+				"minecraft:biome_filter": [
 					"any_of": [
 						{
 							"test": "has_biome_tag",
@@ -47,7 +47,7 @@
 							"value": "warm"
 						}
 					]
-				}
+				]
 			}
 		]
 	}
