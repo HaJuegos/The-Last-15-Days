@@ -1399,6 +1399,11 @@
 								"pickaxe_unit"
 							]
 						},
+						"run_command": {
+							"command": [
+								"tag @s add enderMode"
+							]
+						},
 						"add": {
 							"component_groups": [
 								"ender_unit",
@@ -1412,7 +1417,8 @@
 			"start_melee": {
 				"run_command": {
 					"command": [
-						"tag @s remove ranged"
+						"tag @s remove ranged",
+						"tag @s remove enderMode"
 					]
 				},
 				"remove": {
@@ -1430,7 +1436,8 @@
 			"start_ranged_bow": {
 				"run_command": {
 					"command": [
-						"tag @s add ranged"
+						"tag @s add ranged",
+						"tag @s remove enderMode"
 					]
 				},
 				"remove": {
@@ -1448,7 +1455,8 @@
 			"start_ranged_ender": {
 				"run_command": {
 					"command": [
-						"tag @s remove ranged"
+						"tag @s remove ranged",
+						"tag @s add enderMode"
 					]
 				},
 				"remove": {
@@ -1495,6 +1503,7 @@
 							"command": [
 								"tag @s add regeneracion",
 								"tag @s remove ranged",
+								"tag @s remove enderMode",
 								"playanimation @s animation.piglin.eating"
 							]
 						},
@@ -1522,6 +1531,7 @@
 							"command": [
 								"tag @s add regeneracion",
 								"tag @s remove ranged",
+								"tag @s remove enderMode",
 								"playanimation @s animation.piglin.eating"
 							]
 						},
@@ -1549,7 +1559,8 @@
 				"run_command": {
 					"command": [
 						"tag @s remove regeneracion",
-						"effect @s slowness 0 0"
+						"effect @s slowness 0 0",
+						"tag @s add enderMode"
 					]
 				},
 				"remove": {
