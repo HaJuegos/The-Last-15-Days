@@ -37,7 +37,7 @@
 
 ## GUIA DE USO
 
-- **El Add-on solo soporta la version 1.20.0 de Minecraft Bedrock. Esto no es definitivo ya que cualquier version oficial futura, puede provocar daños o bugs inesperados**.
+- **El Add-on solo soporta la version 1.20.0/1 de Minecraft Bedrock. Esto no es definitivo ya que cualquier version oficial futura, puede provocar daños o bugs inesperados**.
 - Todo en el add-on es automatico.
 - Si deseas instalar el mundo ya creado, por favor sigue estos pasos si no concoces como se hace: [**__Ver imagen__**](https://media.discordapp.net/attachments/964653057390546954/997570733473550536/exmple.png)
 - Para revivir a un compañero, deja un bloque de comandos en repetir con el siguiente comando:
