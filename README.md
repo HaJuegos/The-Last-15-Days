@@ -37,7 +37,7 @@
 
 ## GUIA DE USO
 
-- **El Add-on solo soporta la version 1.20.0/1 de Minecraft Bedrock. Esto no es definitivo ya que cualquier version oficial futura, puede provocar daños o bugs inesperados**.
+- **El Add-on solo soporta la version 1.20.10 de Minecraft Bedrock. Esto no es definitivo ya que cualquier version oficial futura, puede provocar daños o bugs inesperados**.
 - Todo en el add-on es automatico.
 - Si deseas instalar el mundo ya creado, por favor sigue estos pasos si no concoces como se hace: [**__Ver imagen__**](https://media.discordapp.net/attachments/964653057390546954/997570733473550536/exmple.png)
 - Para revivir a un compañero, deja un bloque de comandos en repetir con el siguiente comando:
@@ -58,11 +58,11 @@ y luego el comando en el chat del juego:
 ## OPCIONES EXPERIMENTALES
 - _Este add-on, depende de opciones experimentales, ya los puedes ver en el template del mundo y cuando lo crees, Procura tenerlos activos para no tener problemas algunos._
 
-![New1](https://cdn.discordapp.com/attachments/997603479822536794/1119865326910308482/image.png)
-![New2](https://cdn.discordapp.com/attachments/997603479822536794/1119865326658670632/image.png)
+![New1](https://cdn.discordapp.com/attachments/997603479822536794/1129289547545583626/image.png)
+![New2](https://cdn.discordapp.com/attachments/997603479822536794/1129289547742728192/image.png)
 
-![old1](https://cdn.discordapp.com/attachments/997603479822536794/1119865336859213934/image.png)
-![old2](https://cdn.discordapp.com/attachments/997603479822536794/1119865337203130408/image.png)
+![old1](https://cdn.discordapp.com/attachments/997603479822536794/1129289547306500127/image.png)
+![old2](https://cdn.discordapp.com/attachments/997603479822536794/1129289547742728192/image.png)
 
 ## COMO INSTALAR EL ADD-ON EN SERVIDORES
 
@@ -71,7 +71,7 @@ y luego el comando en el chat del juego:
 
 ## QUE TRAE EL ADD-ON
 ```txt
-The Last 15 Days By Rosher Random, Convex y HaJuegos Cat! - Version Oficial 0.0.6
+The Last 15 Days By Rosher Random, Convex y HaJuegos Cat! - Version Oficial 0.0.7
 
 ** Cualquier error o algo inusual que encuentres en esta version puedes reportarlo aqui: https://discord.gg/WH9KpNWXUz o enviandole un mensaje a HaJuegos Cat!: https://discord.com/users/714622708649951272
 
