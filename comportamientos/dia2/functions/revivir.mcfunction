@@ -2,8 +2,10 @@
 ## Created/Edited by: HaCatto! & Convex! If you need more information, we talk on Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174
 
 tag @s remove dead
-tag @s remove coords
+tag @s remove ban
 tag @s remove nosound
+tag @s remove coords
+
 scoreboard players reset @s isBanned
 
 tellraw @a {"rawtext": [{"translate":"chat.player_revival", "with": {"rawtext": [{"selector":"@s"}]}}]}

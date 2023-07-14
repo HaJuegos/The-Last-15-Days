@@ -3,7 +3,7 @@
 
 ## Manifest Texts
 pack.name=§a[RP]§4 The Last 15 Days | De RosherRandom, HaCatto y Convex!§r
-pack.description=Este es la version §e0.0.6§r, creado en la version de MC 1.20.0 | Add-on de los cambios originales de Dificultad de RosherRandom de la serie original TheLast15Days.
+pack.description=Este es la version §e0.0.7§r, creado en la version de MC 1.20.10 | Add-on de los cambios originales de Dificultad de RosherRandom de la serie original TheLast15Days.
 
 ## UI Texts
 disconnect.kicked=§4¡Has Muerto!
@@ -15,7 +15,7 @@ dolphin_attacked_message=§e¡Te ha golpeado un Delfin! Te queda %1 segundos par
 dolphin_end_attack_message=§eYa ha pasado el efecto.
 message.attack_warning_stop=§dHas sido teletransportado aleatoriamente.§r
 message.attack_warning=§eEstas moviendote! Para de moverte hasta que el sonido termine§r
-ui.addon_version=Version del Add-on: §e0.0.6§r
+ui.addon_version=Version del Add-on: §e0.0.7§r
 
 ui.info_text1=§e¡Totem Rapido!
 ui.info_text2=Ahora puedes usar tu botón de interacción
@@ -105,3 +105,4 @@ rank.custom_6=§dFan de GeoKiller§r
 rank.custom_7=§aZzz§r
 rank.custom_8=§d§lFan de Diresito uwu§r
 rank.custom_9=§eTlan sexoso§r
+rank.custom_10=§l§uMain-Astra§r

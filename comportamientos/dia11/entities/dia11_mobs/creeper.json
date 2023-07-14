@@ -1010,7 +1010,7 @@
 			"cnvx:obsidian_explosion": {
 				"run_command": {
 					"command": [
-						"fill ~-5 ~-4 ~-5 ~4 ~5 ~4 obsidian 0 replace air"
+						"fill ~-5 ~-4 ~-5 ~4 ~5 ~4 obsidian replace air"
 					]
 				}
 			},
