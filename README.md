@@ -39,13 +39,9 @@
 - Toda instalacion y configuracion del Add-on es automatico.
 - Si descargaste el Mundo PreConfigurado y no sabes que hacer con el, mira esta imagen tutorial: https://media.discordapp.net/attachments/964653057390546954/997570733473550536/exmple.png
 - Para revivir a algun Jugador, debes hacer este proceso:
->	- Entra en los archivos del Add-on.
->	- Abre la carpeta llamada "Scripts", en esta carpeta, abre el Archivo llamado "main.js".
->	- Al abrir el archivo, busca estas palabras: "const timerBan = true;".
->	- Si lo encontraste, cambia el "true" a "false" y luego en Minecraft, pon el comando: "/reload". (En caso de que sea un servidor, entonces en la consola)
->   - Dile al Jugador Muerto que entre nuevamente al mundo/servidor.
->	- Ejecuta este comando al Jugador Muerto: /execute as "nombre" at @s run function revivir.
->	- Cuando ya hayas hecho eso, regresa a los archivos del add-on, al archivo "main.js" y cambia nuevamente el valor de "true" a "false" y pon nuevamente el comando "/reload".
+>	- En el Juego, pon este comando: "!settings timerBan off". (Si te marca error, procura poner este comando antes: "/tag @s add admin")
+>	- Luego de poner el comando, cuando entre el Jugador muerto, este sera revivido automaticamente.
+>	- Cuando ya este revivido el Jugador, pon este otro comando: "!settings timerBan on" y listo.
 
 ## OPCIONES EXPERIMENTALES NECESARIAS
 - _El Add-on requiere funciones experimentales para que funcione correctamente, procura tenerlos activados en el mundo antes de poner el add-on._
