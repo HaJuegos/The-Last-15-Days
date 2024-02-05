@@ -96,5 +96,215 @@ Lista de Cambios:
 - Ahora los Aldeanos dejaron el trabajo de libreros, permanente.
 - Ahora los Aldeanos son mobs neutros.
 
+• Dia 1:
+
+- Ahora los Peces Globos tienen mas zonas para spawnear, desde la capa mas baja, hasta la mas alta.
+- Ahora las Cabras, Abejas, Oso Polares y Ocelotes seran agresivos siempre con el Jugador.
+- Ahora si te mantienes 10 minutos o mas en algun bioma caliente o frio, empezaras a recibir 1 corazon de daño constantemente hasta salir de ese bioma.
+
+• Dia 2:
+
+- Ahora los Cactus, Ballas Dulces y Arbustos muertos dan Veneno por 10 segundos.
+- Ahora los Zorros son hostiles con los Jugadores y son capaces de robar cualquier slot del inventario o armadura al golpearte.
+- Ahora los Phantoms tienen Resistencia al Fuego y pueden ser mas constantes al atacar.
+- Ahora al picar cualquier mineral de Diamante, te hara 1 corazon de daño.
+- Ahora las Abejas spawnean de forma natural en el Overworld.
+- Aparece un nuevo item: "Manzana de Hierro":
+	- Se craftea con 8 lingotes de Hierro y Una manzana.
+	- Al comerlo, te dara Resistencia II por 30 segundos.
+
+• Dia 3:
+
+- Ahora los Drowneds siempre usaran y llevaran tridentes.
+- Ahora las Arañas de Cueva spawnean de forma natural en la superficie y en el Subsuelo.
+- Ahora los Zombies y Esqueletos llevan Armadura de Diamante completa.
+- Ahora los Husk al golpearte, te dan Hambre IV.
+- Ahora los Esqueletos Errantes al dispararte, te dan Lentitud IV.
+- Ahora los Slimes al golpearte, te dan Impulso de Salto II.
+- Ahora los Esqueletos del Wither pueden spawnear en el Overworld y llevan este equipamento:
+	- Espada de Diamante con Filo V.
+	- Armadura completa de Hierro.
+
+• Dia 4:
+
+- Ahora los Ravagers tienen Fuerza y Velocidad II.
+- Ahora las Brujas tienen Invisibilidad y pueden teletransportarse, tambien se generan en las Islas Champiñon.
+- Ahora los Evocadores pueden generar Esqueletos de Wither, tienen Resistencia II y tienen una nueva habilidad, descubre como es.
+- Ahora los Zorros pueden spawnear en las Islas Champiñon.
+- Ahora las Vacas cada cierto tiempo, pueden empujarte muy lejos si estas cerca de ellas.
+- Aparece un nuevo item: "Totem Invocador":
+	- Se craftea con 4 varas de Blaze, 4 bloques de Esmeralda y 1 Totem de la Inmortalidad.
+	- Al usarlo con tu tecla de interaccion, te agregara Bad Omen con algo de Daño.
+
+• Dia 5:
+
+- El Nether esta abierto para todos.
+- Ahora los Blaze, Magma Cube, Piglins y Ghast hacen x5 de daño y se duplican al spawnear.
+- Ahora los Wither Boos tienen Velocidad II y al recibir daño a melee de este, te dara Levitacion X por 30 segundos.
+- Aparecen nuevos items: "Reliquia Infernal" y "Fragmento Ígneo"
+	- Reliquia Infernal:
+		- Se craftea con 4 Fragmento Ígneos y una Estrella del Nether.
+		- Al tenerla en el inventario, te evita cualquier daño por temperatura y te dara Resistencia, Fuerza y Resistencia al Fuego II, pero solo aplica para el Nether.
+		- Son inumnes al fuego y lava.
+	
+	- Fragmento Ígneo:
+		- Se consigue matando Blaze, MagmaCubes, Piglins y Ghast con un 10% de posibilidad de drop.
+		- Son inumnes al fuego y lava.
+
+• Dia 6:
+
+- Se desbloquea todo lo relacionado a la netherite.
+- La Armadura de Netherite ahora es irrompible.
+- Ahora el daño por Lava te hace 5 corazones de daño y por Fuego te hace 3 corazones de daño.
+- Al picar Ancient Debris, se colocara lava en su lugar y generara un Silverfish.
+- Ahora los Silverfish y Endermites tienen resistencia al fuego y hacen 2 corazones de daño base.
+- Los Hoglins han cambiado drasticamente y ahora tienen estas modificaciones:
+	- Su rate de spawn ha disminuido.
+	- Tienen Fuerza, Resistencia y Velocidad III.
+	- Al morir, tiene un 15% de posibilidad de dropear un "Colmillo de Hoglin", con encantamientos ya incluidos tales como Daño de Artropodos, Castigo y Filo V.
+	- Ahora su reach aumento y te puede atacar mas lejos.
+	- No recibe daños de todo tipo de proyectiles.
+	- Pueden romper botes cercanos.
+
+- Aparece un nuevo item: "Colmillo de Hoglin"
+	- Hace 12 de daño base.
+	- Tiene 2000 de durabilidad.
+	- Funciona como una espada normal.
+	- Se gasta 3 de durabilidad al atacar a una entidad y 1 de durabilidad en cualquier otra cosa.
+
+• Dia 7:
+
+- El spawn natural de las Abejas se ha eliminado.
+- Ahora Los Conejos, Loros, Murcielajos, Gallinas y Ranas explotan al acercarte a ellos y al atacarlos. Te pueden trackear desde lejos y avisaran al explotar.
+- Ahora las Ovejas se convierten en "Pollys":
+	- Pueden romper cualquier tipo de bloque a su paso.
+	- Tienen Velocidad IV.
+	- Al morir dejan una TNT Encendida.
+
+- Ahora los Gatos y Lobos por la noche cambian y su comportamiento es el siguiente:
+	- Se vuelven hostiles contra el jugador con una especie de alarma y obtendran Fuerza V y Velocidad III.
+
+- Ahora al ser golpeados por un Delfin, tu respiracion se acaba instantaneamente por 5 minutos. (El tiempo es stackeable)
+- Ahora los Zombie Pigman y los Piglins son hostiles ante ti sin importar que lleves y tienen Hacha de Netherite.
+- Ahora los Piglin Brutes pueden dropear con un 10% de posibilidad una Manzana Encantada y tienen Fuerza III.
+- Ahora los Drowneds siempre dropearan oro al morir y tienen Armadura Completa de Diamante.
+- Ahora todos los tipos de Caballos pueden ser reemplazados por un Caballo Zombie o un Caballo Esqueleto.
+- Ahora los Caballos Zombie o Esqueleto al golpearte te daran Nausea, Fatiga Minera y Veneno I por 20 segundos. Tambien generaran un zombie o esqueleto dependiendo que variante sea.
+- El daño de temperatura aumenta x6.
+- Ahora las Arañas y Arañas de Cueva te encierran en cubos de Telaraña.
+
+• Dia 8:
+
+- Aparecen nuevas variantes del Creeper, las cuales son:
+	- Creeper Radioactivo:
+		- Al explotar, deja una nube de daño con radio 12 que al estar en ella, te quitara 4 corazones por daño.
+
+	- Creeper Obsidiana:
+		- Al explotar, genera un cubo enorme de obsidiana 10x10.
+
+	- Creeper Debuff:
+		- Al explotar, si recibes daño de la explosion, recibiras TODOS los efectos malos del juego por 10 segundos.
+
+	- Creeper de Momis:
+		- Este tiene un radio de explosion 15 y al explotar, generara 5 Mini-creepers Momi con Velocidad V y Resistencia III.
+
+	- Creeper Ninja:
+		- Este creeper te puede trackear desde muy lejos y a travez de bloques, estara siempre cargado y lleva Velocidad III.
+
+- Ahora los Aldeanos pasan a ser hostiles.
+- Ahora los Golems de Hierro tiene Resistencia I y Fuerza IV.
+- Ahora las Arañas de Cueva tienen Fuerza III y Velocidad II, son montados por un Bebe Zombie con equipamento completo de Diamante encantado con Proteccion IV. Si te ataca el Zombie o la Araña, se te limpiara cualquier efecto.
+- Ahora las Brujas lanzaran pociones de Nivel X, su rate de spawn ha disminuido. Al ser golpeadas, se teletransportaran rapidamente hacia alcanzar su objectivo.
+
+• Dia 9:
+
+- Ahora los Pandas tienen el mismo Knockback de las vacas.
+- Ahora los Gatos pueden summonear Creepers cada 2 minutos si te trackean. (Su spawn se basa en los espacios libres)
+- Ahora los Phantoms spawnean con Esqueletos del Wither.
+- Ahora las Abejas spawnean con Esqueletos o Errantes.
+- Ahora los Esqueletos y Errantes disparan Bolas de Fuego de nivel 3 hasta 10.
+- Ahora los Esqueletos del Wither atacan a distancia y disparan Cabezas del Wither Boss con un nivel de 3 hasta 10.
+- Ahora los Zombies llevan Hachas de Diamante con Filo X y al golpearte, te desorganizan el inventario.
+- Ahora hay un 1% de posibilidad de que al spawnear un Piglin, se convierta en un Piglin Brute.
+- Los Vex ahora se pueden convertir en un Allay, su tiempo de transformacion es de 30 segundos.
+- Ahora las Cabezas del Wither Boss tienen nivel 10 de explosion.
+- Ahora los Esqueletos y Errantes tienen un 10% de posibilidad de dropear un Arco con Poder XI.
+
+• Dia 10:
+
+- Las Llamas han cambiado mucho y ahora sus proyectiles hacen Oneshot, te pueden trackear y disparar desde muy lejos y tienen Resistencia IV.
+- Ahora los Ravagers tienen Fuerza X, Salto y Resistencia III.
+- Ahora los Endermans son inmunes al fuego, lava y Agua, tambien tienen Fuerza V, Resistencia y Velocidad II y son hostiles.
+- Ahora los Piglins tienen un 15% de posibilidad de ser un Piglin Brute.
+- Los Piglins Brute cambiaron drasticamente y ahora tienen esas caracteristicas:
+	- Si estas muy lejos, usaran EnderPearls para llegar hacia ti.
+	- Si estas minimamente lejos, spamearan Flechas con Daño II.	
+	- Si estas muy cerca, Te atacara a Melee con un Hacha de Netherite Filo V.
+	- Si te escapas, mueres o tiene poca vida, intentaran comer y regenerarse.
+	- En ciertas ocaciones, puede llegar a romper bloques.
+	- Al atacar, rompera cualquier barco cercano.
+	- Hay una probabilidad de que al regenerarse o spawnear, tenga un totem en la segunda mano.
+	- Tiene 30 corazones. (60 de vida)
+	- Son hostiles con cualquier mob, menos con su propia familia.
+	- Solo reciben daño de explosiones
+	- Tiene Armadura completa de Diamante.
+
+- Las Manzanas de Hierro han cambiado y ahora al consumirlas, te dara Health Boost y Vida Instantanea I y Regeneracion III. Ya no se pueden craftear.
+- Aparece una nueva Armadura: "Cautious Astronaut Armor o Armadura del Astronauta Cauteloso"
+	- Al tener el Casco puesto, los Endermans no seran hostiles contra ti.
+	- Al tener la Pechera puesta, te dara Resistencia II y tu Knockback se reduce.
+	- Al tener los Pantalones puestos, te dara Prisa III, pero si no lo tienes puesto, te dara Fatiga Minera I.
+	- Al tener las Botas puestas, te dara Velocidad II, pero si no lo tienes puesto, te dara Lentitud II.
+	- Al tener todo el set puesto, te agrega Health Boost III. Si no tienes el Set completo, te dara Fatal Poison en el End.
+	- Para obtener la Armadura, debes conseguirlo al matar estos mobs:
+		- Llama (30%)
+		- Enderman (10%)
+		- Piglin Brute (15%)
+		- Ravager (30%)
+
+	- La Armadura es irrompible y resistente al fuego y lava.
+
+• Dia 11:
+
+- El End esta abierto en el Mundo.
+- Ahora en el End se generan Creepers (Menos el de obsidiana) con Gallinas y Zorros.
+- Ahora las Cabras tienen Fuerza X, son locas siempre y atacan a melee.
+- Al dormir, tienes un 70% de posibilidad de generar un Enderman en tu posicion.
+- Al usar la caña de pezcar, tienes un 50% de posibilidad de generar una Cabra en tu posicion.
+- El Ender Dragon ha cambiado y ahora es "RoyerBot":
+	- Tiene 1000 Corazones (2000 de vida)
+	- Ahora el RoyerBot tiene espinas y por cada que lo ataques, te devolvera el daño.
+	- Cuando lanza Bolas de Dragon, estos pueden generar:
+		- Un ataque donde te dara Nauseas, debes mantenerte totalmente quieto. Si no lo haces, te hara OneShot.
+		- Puede generar un Warden con x2 de Vida y Tiene Velocidad II, pero su daño es reducido.
+		- Un ataque donde te dara Efecto del Conducto, preparate ya que, cuando se termine el efecto, teletransportara a todas las entidades al centro de la isla de forma aleatoria.
+		- Al explotar un Endercrystal, despues de un tiempo aleatorio, generara una Llama en esa posicion.
+		- Puede generar Arañas de Cueva con Zombies en el Centro de la Isla.
+		- Puede generar una Lluvia de totems.
+
+• Dia 12:
+
+- Ahoras las Papas y Papas Cocinadas no son obtenibles en el mundo.
+- Ahora las Zanahorias de Oro dan Daño Instantaneo V.
+- Ahora al comer el Filete Azado, Chuleta de Cerdo Cocinado y el Cordero Azado dan Fatal Poison V por 1 minuto.
+- Ahora las Remolachas al comerlas te dan 5 puntos de saturacion y el Efecto de Saturacion I por 20 segundos.
+- Ahora las Papas Envenenadas no dan Veneno sino Regeneracion I por 10 segundos.
+- Ahora los Shulkers cada 5 minutos, generaran los siguientes mobs:
+	- Phantoms con Wither Skeletons.
+	- Vex
+	- Allays
+
+- Ahora los Shulkers disparan mas constantemente y sus disparos al impactar, romperan todo en un cubo de 5x5.
+- Ahora los Vex que spawneen en el End, al golpearte, te daran Lentitud X por 1 minuto.
+- Ahora los Allays que spawneen en el End, se robaran los items del suelo y tienen Invisibilidad.
+- Hay un 60% de posibilidad de que te dropee un Shulker.
+- Los Golems de Nieve han cambiado y ahora:
+	- Son hostiles.
+	- Se generan en el End.
+	- Sus bolas de nieve pueden teletransportar entidades hacia ellos.
+	- Sus bolas de nieve hacen muchisimo daño.
+	- Tienen Resistencia V.
+	- Tienen mas rango de ataque.
+
 Att: HaJuegos Cat!
 ```
