@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://cdn.discordapp.com/attachments/997603479822536794/1021663721241718784/pack_icon.png" alt="Addon Icon" width=450>
+  <img src="https://cdn.discordapp.com/attachments/997603479822536794/1212102069474041927/pack_icon.png?ex=65f09d05&is=65de2805&hm=58af9c968e79c3282f916b37e8b4bc384a6aeea08e3bbd7f07d7fa93b361de98&" alt="Addon Icon" width=450>
   <h3 align="center">The Last 15 Days</h3>
   
  <p align="center">
@@ -34,7 +34,7 @@
 
 ## MINIGUIA DE USO
 
-- **El Add-on solo soporta la version de Minecraft Bedrock 1.20.50/1/2. Cualquier version inferior o superior a futuro, puede que no funcione correctamente.**
+- **El Add-on solo soporta la version de Minecraft Bedrock 1.20.60/1/2. Cualquier version inferior o superior a futuro, puede que no funcione correctamente.**
 - **Este Add-on utilizar Scipts, asi que no esta en soporte con Aternos.**
 - Toda instalacion y configuracion del Add-on es automatico.
 - Si descargaste el Mundo PreConfigurado y no sabes que hacer con el, mira esta imagen tutorial: https://media.discordapp.net/attachments/964653057390546954/997570733473550536/exmple.png
@@ -46,11 +46,9 @@
 ## OPCIONES EXPERIMENTALES NECESARIAS
 - _El Add-on requiere funciones experimentales para que funcione correctamente, procura tenerlos activados en el mundo antes de poner el add-on._
 
-![new1](https://cdn.discordapp.com/attachments/1093209319606071417/1195898870706745384/image.png)
-![new2](https://cdn.discordapp.com/attachments/1093209319606071417/1195898870408958003/image.png)
+![esp](https://cdn.discordapp.com/attachments/997603479822536794/1212095447934697502/image.png?ex=65f096da&is=65de21da&hm=a4fd57571a6f83e6bca55ef898108b8575f28a75649d6fdb8538ec2b386a6f5e&)
 
-![old1](https://cdn.discordapp.com/attachments/1093209319606071417/1195898870153101452/image.png)
-![old2](https://cdn.discordapp.com/attachments/1093209319606071417/1195898869897244743/image.png)
+![eng](https://cdn.discordapp.com/attachments/997603479822536794/1212095175510200340/image.png?ex=65f09699&is=65de2199&hm=e832599ca0e87bbd82b17ffc8ed2794e7e8f9298c53848ad85dfb4ba2b49cddf&)
 
 ## COMO PONER ADD-ONS EN SERVIDORES
 
@@ -245,11 +243,12 @@ Lista de Cambios:
 	- Al atacar, rompera cualquier barco cercano.
 	- Hay una probabilidad de que al regenerarse o spawnear, tenga un totem en la segunda mano.
 	- Tiene 30 corazones. (60 de vida)
+	- Tiene Fuerza III.
 	- Son hostiles con cualquier mob, menos con su propia familia.
 	- Solo reciben daño de explosiones
 	- Tiene Armadura completa de Diamante.
 
-- Las Manzanas de Hierro han cambiado y ahora al consumirlas, te dara Health Boost y Vida Instantanea I y Regeneracion III. Ya no se pueden craftear.
+- Las Manzanas de Hierro han cambiado y ahora al consumirlas, te dara Health Boost I por 30 segundos y Vida Instantanea I por 10 segundos, tambien Regeneracion III por 30 segundos. Ya no se pueden craftear.
 - Aparece una nueva Armadura: "Cautious Astronaut Armor o Armadura del Astronauta Cauteloso"
 	- Al tener el Casco puesto, los Endermans no seran hostiles contra ti.
 	- Al tener la Pechera puesta, te dara Resistencia II y tu Knockback se reduce.
