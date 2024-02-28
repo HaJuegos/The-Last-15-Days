@@ -1,0 +1,109 @@
+/* Creado o Editado por: HaJuegosCat! y Convex!. Si editaras o copiaras este archivo, recuerda dejar creditos. Cualquier otra informacion o reporte, en el server de Discord: https://discord.gg/WH9KpNWXUz */
+/* Created or Edited by: HaJuegosCat! & Convex!. If you edit or copy this file, remember to give credit. For any other information or report, visit the Discord server: https://discord.gg/WH9KpNWXUz */
+{
+	"format_version": "1.16.100",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "ha:radioactive_cloud",
+			"is_summonable": true,
+			"is_spawnable": false,
+			"is_experimental": false,
+			"animations": {
+				"remove_cloud": "animation.cloud.timer"
+			},
+			"scripts": {
+				"animate": [
+					"remove_cloud"
+				]
+			}
+		},
+		"component_groups": {
+			"ha:activate_cloud": {
+				"minecraft:area_attack": {
+					"damage_range": 9.5,
+					"damage_per_tick": 8,
+					"cause": "magic",
+					"entity_filter": {
+						"all_of": [
+							{
+								"test": "is_family",
+								"subject": "other",
+								"operator": "!=",
+								"value": "creeper"
+							},
+							{
+								"test": "is_family",
+								"subject": "other",
+								"operator": "!=",
+								"value": "cloud"
+							}
+						]
+					}
+				}
+			},
+			"ha:despawn": {
+				"minecraft:instant_despawn": {}
+			}
+		},
+		"components": {
+			"minecraft:type_family": {
+				"family": [
+					"cloud",
+					"inanimate",
+					"mob"
+				]
+			},
+			"minecraft:collision_box": {
+				"width": 0.5,
+				"height": 0.5
+			},
+			"minecraft:health": {
+				"min": 1,
+				"value": 1,
+				"max": 1
+			},
+			"minecraft:damage_sensor": {
+				"triggers": [
+					{
+						"cause": "all",
+						"deals_damage": false
+					}
+				]
+			},
+			"minecraft:knockback_resistance": {
+				"value": 1
+			},
+			"minecraft:persistent": {},
+			"minecraft:physics": {
+				"has_gravity": false,
+				"has_collision": false
+			},
+			"minecraft:pushable": {
+				"is_pushable": false,
+				"is_pushable_by_piston": false
+			},
+			"minecraft:conditional_bandwidth_optimization": {}
+		},
+		"events": {
+			"minecraft:entity_spawned": {
+				"run_command": {
+					"command": [
+						"particle ha:cloud_radioactive ~~0.5~"
+					]
+				},
+				"add": {
+					"component_groups": [
+						"ha:activate_cloud"
+					]
+				}
+			},
+			"despawn": {
+				"add": {
+					"component_groups": [
+						"ha:despawn"
+					]
+				}
+			}
+		}
+	}
+}

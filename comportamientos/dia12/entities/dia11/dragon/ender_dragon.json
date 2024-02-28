@@ -1,0 +1,273 @@
+/* Creado o Editado por: HaJuegosCat! y Convex!. Si editaras o copiaras este archivo, recuerda dejar creditos. Cualquier otra informacion o reporte, en el server de Discord: https://discord.gg/WH9KpNWXUz */
+/* Created or Edited by: HaJuegosCat! & Convex!. If you edit or copy this file, remember to give credit. For any other information or report, visit the Discord server: https://discord.gg/WH9KpNWXUz */
+{
+	"format_version": "1.17.0",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "minecraft:ender_dragon",
+			"is_spawnable": true,
+			"is_summonable": true,
+			"is_experimental": false,
+			"animations": {
+				"loop": "animation.dragon.addtags"
+			},
+			"scripts": {
+				"animate": [
+					"loop"
+				]
+			}
+		},
+		"component_groups": {
+			"ha:dragon_fly": {
+				"minecraft:behavior.dragonholdingpattern": {
+					"priority": 1
+				},
+				"minecraft:behavior.dragontakeoff": {
+					"priority": 0
+				},
+				"minecraft:behavior.dragonchargeplayer": {
+					"priority": 2
+				},
+				"minecraft:behavior.dragonstrafeplayer": {
+					"priority": 3,
+					"target_in_range_and_in_view_time": 7.5
+				},
+				"minecraft:timer": {
+					"time": [
+						40,
+						40
+					],
+					"looping": false,
+					"time_down_event": {
+						"event": "ha:start_go_center",
+						"target": "self"
+					}
+				}
+			},
+			"ha:timer_remove_fly": {
+				"minecraft:on_start_landing": {
+					"event": "minecraft:start_land",
+					"target": "self"
+				}
+			},
+			"ha:dragon_center": {
+				"minecraft:behavior.dragonscanning": {
+					"priority": 2
+				},
+				"minecraft:behavior.dragonlanding": {
+					"priority": 0
+				},
+				"minecraft:behavior.dragonflaming": {
+					"priority": 1,
+					"cooldown_time": 3,
+					"flame_time": 1.5,
+					"ground_flame_count": 5,
+					"roar_time": 1
+				},
+				"minecraft:timer": {
+					"time": [
+						40,
+						40
+					],
+					"looping": false,
+					"time_down_event": {
+						"event": "ha:start_go_fly",
+						"target": "self"
+					}
+				}
+			},
+			"ha:timer_remove_center": {
+				"minecraft:on_start_takeoff": {
+					"event": "minecraft:start_fly",
+					"target": "self"
+				}
+			},
+			"dragon_death": {
+				"minecraft:behavior.dragonlanding": {
+					"priority": 0
+				},
+				"minecraft:behavior.dragonscanning": {
+					"priority": 1
+				},
+				"minecraft:timer": {
+					"time": [
+						5.4,
+						5.4
+					],
+					"looping": false,
+					"time_down_event": {
+						"event": "ha:despawn",
+						"target": "self"
+					}
+				}
+			},
+			"ha:end_death": {
+				"minecraft:behavior.dragondeath": {
+					"priority": 0
+				}
+			}
+		},
+		"components": {
+			"minecraft:shooter": {
+				"def": "minecraft:dragon_fireball"
+			},
+			"minecraft:is_hidden_when_invisible": {},
+			"minecraft:type_family": {
+				"family": [
+					"dragon",
+					"mob"
+				]
+			},
+			"minecraft:health": {
+				"value": 2000,
+				"max": 2000
+			},
+			"minecraft:boss": {
+				"name": "§6§lROYER BOT§r",
+				"should_darken_sky": false,
+				"hud_range": 999
+			},
+			"minecraft:collision_box": {
+				"width": 13,
+				"height": 4
+			},
+			"minecraft:movement": {
+				"value": 0.3
+			},
+			"minecraft:fire_immune": true,
+			"minecraft:knockback_resistance": {
+				"value": 100
+			},
+			"minecraft:flying_speed": {
+				"value": 0.6
+			},
+			"minecraft:attack": {
+				"damage": 3
+			},
+			"minecraft:damage_sensor": {
+				"triggers": [
+					{
+						"on_damage": {
+							"filters": {
+								"any_of": [
+									{
+										"test": "is_family",
+										"subject": "other",
+										"value": "llama"
+									},
+									{
+										"test": "is_family",
+										"subject": "damager",
+										"value": "llama"
+									}
+								]
+							}
+						},
+						"deals_damage": false
+					},
+					{
+						"cause": "fall",
+						"deals_damage": false
+					},
+					{
+						"cause": "block_explosion",
+						"deals_damage": false
+					},
+					{
+						"cause": "entity_explosion",
+						"deals_damage": false
+					}
+				]
+			},
+			"minecraft:on_death": {
+				"event": "minecraft:start_death",
+				"target": "self"
+			},
+			"minecraft:persistent": {},
+			"minecraft:physics": {
+				"has_gravity": false,
+				"has_collision": false
+			},
+			"minecraft:game_event_movement_tracking": {
+				"emit_flap": true
+			},
+			"minecraft:conditional_bandwidth_optimization": {}
+		},
+		"events": {
+			"minecraft:entity_spawned": {
+				"add": {
+					"component_groups": [
+						"ha:dragon_fly"
+					]
+				}
+			},
+			"ha:start_go_center": {
+				"add": {
+					"component_groups": [
+						"ha:timer_remove_fly"
+					]
+				}
+			},
+			"minecraft:start_land": {
+				"remove": {
+					"component_groups": [
+						"ha:dragon_fly",
+						"ha:timer_remove_fly"
+					]
+				},
+				"add": {
+					"component_groups": [
+						"ha:dragon_center"
+					]
+				}
+			},
+			"ha:start_go_fly": {
+				"add": {
+					"component_groups": [
+						"ha:timer_remove_center"
+					]
+				}
+			},
+			"minecraft:start_fly": {
+				"remove": {
+					"component_groups": [
+						"ha:dragon_center",
+						"ha:timer_remove_center"
+					]
+				},
+				"add": {
+					"component_groups": [
+						"ha:dragon_fly"
+					]
+				}
+			},
+			"minecraft:start_death": {
+				"run_command": {
+					"command": [
+						"execute as @e[type=!ender_dragon,r=500] at @s run event entity @s ha:despawn"
+					]
+				},
+				"remove": {
+					"component_groups": [
+						"ha:dragon_fly",
+						"ha:timer_remove_fly",
+						"ha:dragon_center",
+						"ha:timer_remove_center"
+					]
+				},
+				"add": {
+					"component_groups": [
+						"dragon_death"
+					]
+				}
+			},
+			"ha:despawn": {
+				"add": {
+					"component_groups": [
+						"ha:end_death"
+					]
+				}
+			}
+		}
+	}
+}

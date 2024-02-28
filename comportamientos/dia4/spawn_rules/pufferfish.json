@@ -1,5 +1,5 @@
-/* Creado/Editado por: HaJuegos Cat! & Convex!. Si necesitas mas informacion, hablamos en Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174 */
-/* Created/Edited by: HaCatto! & Convex! If you need more information, we talk on Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174 */
+/* Creado o Editado por: HaJuegosCat! y Convex!. Si editaras o copiaras este archivo, recuerda dejar creditos. Cualquier otra informacion o reporte, en el server de Discord: https://discord.gg/WH9KpNWXUz */
+/* Created or Edited by: HaJuegosCat! & Convex!. If you edit or copy this file, remember to give credit. For any other information or report, visit the Discord server: https://discord.gg/WH9KpNWXUz */
 {
 	"format_version": "1.8.0",
 	"minecraft:spawn_rules": {
@@ -10,44 +10,63 @@
 		"conditions": [
 			{
 				"minecraft:spawns_on_surface": {},
+				"minecraft:spawns_underground": {},
 				"minecraft:spawns_underwater": {},
-				"minecraft:distance_filter": {
-					"min": 12,
-					"max": 32
-				},
 				"minecraft:weight": {
 					"default": 25
 				},
-				"minecraft:density_limit": {
-					"surface": 3
-				},
 				"minecraft:height_filter": {
-					"min": 0,
-					"max": 64
+					"min": -64,
+					"max": 320
+				},
+				"minecraft:difficulty_filter": {
+					"min": "easy",
+					"max": "hard"
 				},
 				"minecraft:herd": {
 					"min_size": 3,
 					"max_size": 5
 				},
-				"minecraft:biome_filter": [
+				"minecraft:biome_filter": {
 					"any_of": [
 						{
 							"test": "has_biome_tag",
-							"operator": "==",
-							"value": "river"
-						},
-						{
-							"test": "has_biome_tag",
-							"operator": "==",
 							"value": "ocean"
 						},
 						{
 							"test": "has_biome_tag",
-							"operator": "==",
+							"value": "river"
+						},
+						{
+							"test": "has_biome_tag",
+							"value": "lakes"
+						},
+						{
+							"test": "has_biome_tag",
+							"value": "swamp"
+						},
+						{
+							"test": "has_biome_tag",
+							"value": "frozen"
+						},
+						{
+							"test": "has_biome_tag",
+							"value": "lukewarm"
+						},
+						{
+							"test": "has_biome_tag",
 							"value": "warm"
+						},
+						{
+							"test": "has_biome_tag",
+							"value": "overworld"
+						},
+						{
+							"test": "has_biome_tag",
+							"value": "overworld_generation"
 						}
 					]
-				]
+				}
 			}
 		]
 	}

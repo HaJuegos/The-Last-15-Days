@@ -1,5 +1,5 @@
-/* Creado/Editado por: HaJuegos Cat! & Convex!. Si necesitas mas informacion, hablamos en Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174 */
-/* Created/Edited by: HaCatto! & Convex! If you need more information, we talk on Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174 */
+/* Creado o Editado por: HaJuegosCat! y Convex!. Si editaras o copiaras este archivo, recuerda dejar creditos. Cualquier otra informacion o reporte, en el server de Discord: https://discord.gg/WH9KpNWXUz */
+/* Created or Edited by: HaJuegosCat! & Convex!. If you edit or copy this file, remember to give credit. For any other information or report, visit the Discord server: https://discord.gg/WH9KpNWXUz */
 {
 	"format_version": "1.8.0",
 	"minecraft:spawn_rules": {
@@ -10,55 +10,37 @@
 		"conditions": [
 			{
 				"minecraft:spawns_on_surface": {},
+				"minecraft:difficulty_filter": {
+					"min": "easy",
+					"max": "hard"
+				},
 				"minecraft:brightness_filter": {
 					"min": 7,
 					"max": 15,
 					"adjust_for_weather": false
 				},
 				"minecraft:weight": {
-					"default": 10
+					"default": 9
 				},
 				"minecraft:herd": {
 					"min_size": 1,
-					"max_size": 1
-				},
-				"minecraft:biome_filter": [
-					{
-						"test": "has_biome_tag",
-						"operator": "==",
-						"value": "plains"
-					},
-					{
-						"test": "has_biome_tag",
-						"operator": "==",
-						"value": "sunflower_plains"
-					},
-					{
-						"test": "has_biome_tag",
-						"operator": "==",
-						"value": "flower_forest"
-					}
-				]
-			},
-			{
-				"minecraft:spawns_on_surface": {},
-				"minecraft:spawns_on_block_filter": "minecraft:grass",
-				"minecraft:brightness_filter": {
-					"min": 7,
-					"max": 15,
-					"adjust_for_weather": false
-				},
-				"minecraft:weight": {
-					"default": 8
-				},
-				"minecraft:herd": {
-					"min_size": 1,
-					"max_size": 2
+					"max_size": 3
 				},
 				"minecraft:biome_filter": {
-					"test": "has_biome_tag",
-					"operator": "==",
-					"value": "animal"
+					"any_of": [
+						{
+							"test": "has_biome_tag",
+							"value": "overworld"
+						},
+						{
+							"test": "has_biome_tag",
+							"value": "overworld_generation"
+						},
+						{
+							"test": "has_biome_tag",
+							"value": "animal"
+						}
+					]
 				}
 			}
 		]

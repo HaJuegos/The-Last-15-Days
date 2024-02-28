@@ -1,5 +1,5 @@
-/* Creado/Editado por: HaJuegos Cat! & Convex!. Si necesitas mas informacion, hablamos en Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174 */
-/* Created/Edited by: HaCatto! & Convex! If you need more information, we talk on Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174 */
+/* Creado o Editado por: HaJuegosCat! y Convex!. Si editaras o copiaras este archivo, recuerda dejar creditos. Cualquier otra informacion o reporte, en el server de Discord: https://discord.gg/WH9KpNWXUz */
+/* Created or Edited by: HaJuegosCat! & Convex!. If you edit or copy this file, remember to give credit. For any other information or report, visit the Discord server: https://discord.gg/WH9KpNWXUz */
 {
 	"format_version": "1.18.20",
 	"minecraft:entity": {
@@ -9,26 +9,24 @@
 			"is_summonable": false,
 			"is_experimental": false,
 			"animations": {
-				"muere": "controller.animation.ha_dead_system",
-				"primeravez_entra": "controller.animation.ha_entry_world"
+				"respawn_sensor": "controller.animation.player.respawn_system",
+				"check_kit": "controller.animation.player.first_spawn"
 			},
 			"scripts": {
 				"animate": [
-					"muere",
-					"primeravez_entra"
+					"respawn_sensor",
+					"check_kit"
 				]
 			}
 		},
 		"component_groups": {
 			"ha:ban": {
 				"minecraft:timer": {
-					"time": [
-						0.9,
-						0.9
-					],
+					"time": [ 3, 3 ],
 					"looping": false,
 					"time_down_event": {
-						"event": "ha:has_tag_ban"
+						"event": "ha:set_tag_ban",
+						"target": "self"
 					}
 				}
 			},
@@ -44,10 +42,7 @@
 					]
 				},
 				"minecraft:timer": {
-					"time": [
-						0.0,
-						0.0
-					],
+					"time": [ 0, 0 ],
 					"looping": false,
 					"time_down_event": {
 						"event": "minecraft:clear_add_bad_omen",
@@ -71,6 +66,10 @@
 			}
 		},
 		"components": {
+			"minecraft:on_death": {
+				"event": "ha:resquicio_start",
+				"target": "self"
+			},
 			"minecraft:experience_reward": {
 				"on_death": "Math.Min(query.player_level * 7, 100)"
 			},
@@ -115,7 +114,7 @@
 				"mine": 0.005,
 				"attack": 0.1,
 				"damage": 0.1,
-				"walk": 0.0,
+				"walk": 0,
 				"sprint": 0.1,
 				"swim": 0.01
 			},
@@ -210,52 +209,61 @@
 							"test": "is_sleeping",
 							"value": true
 						},
-						"event": "ha:sleeping"
+						"event": "ha:sleeping_system"
 					},
 					{
 						"filters": {
 							"test": "is_sleeping",
 							"value": false
 						},
-						"event": "ha:no_sleeping"
+						"event": "ha:remove_sleep"
 					}
 				]
 			}
 		},
 		"events": {
-			"ha:sleeping": {
-				"run_command": {
+			"ha:set_tag_ban": {
+				"remove": {
+					"component_groups": [
+						"ha:ban"
+					]
+				},
+				"queue_command": {
 					"command": [
-						"execute as @s[tag=!ya] run tellraw @a {\"rawtext\": [{\"translate\":\"chat.sleeping_message\", \"with\": {\"rawtext\": [{\"selector\":\"@s\"}]}}]}",
-						"weather clear",
-						"time add 50",
-						"tag @s add ya"
+						"tag @s add banned"
 					]
 				}
 			},
-			"ha:no_sleeping": {
-				"run_command": {
-					"command": [
-						"tag @s remove ya"
+			"ha:timer_ban": {
+				"remove": {
+					"component_groups": [
+						"minecraft:add_bad_omen"
 					]
-				}
-			},
-			"ha:start_delay_ban": {
+				},
 				"add": {
 					"component_groups": [
 						"ha:ban"
 					]
 				}
 			},
-			"ha:has_tag_ban": {
-				"remove": {
-					"component_groups": [
-						"ha:ban"
-					]
-				},
-				"run_command": {
+			"ha:sleeping_system": {
+				"queue_command": {
 					"command": [
-						"tag @s add ban"
+						"function system/sleep_system"
+					]
+				}
+			},
+			"ha:remove_sleep": {
+				"queue_command": {
+					"command": [
+						"execute as @s[tag=sleep] run tag @s remove sleep"
+					]
+				}
+			},
+			"ha:resquicio_start": {
+				"queue_command": {
+					"command": [
+						"execute as @s[tag=!dead] at @s run function system/resquicio_on"
 					]
 				}
 			},

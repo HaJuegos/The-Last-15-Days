@@ -1,5 +1,5 @@
-/* Creado/Editado por: HaJuegos Cat! & Convex!. Si necesitas mas informacion, hablamos en Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174 */
-/* Created/Edited by: HaCatto! & Convex! If you need more information, we talk on Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174 */
+/* Creado o Editado por: HaJuegosCat! y Convex!. Si editaras o copiaras este archivo, recuerda dejar creditos. Cualquier otra informacion o reporte, en el server de Discord: https://discord.gg/WH9KpNWXUz */
+/* Created or Edited by: HaJuegosCat! & Convex!. If you edit or copy this file, remember to give credit. For any other information or report, visit the Discord server: https://discord.gg/WH9KpNWXUz */
 {
 	"format_version": "1.8.0",
 	"minecraft:spawn_rules": {
@@ -21,12 +21,16 @@
 					"max": "hard"
 				},
 				"minecraft:weight": {
-					"default": 5
+					"default": 3
 				},
 				"minecraft:biome_filter": {
-					"test": "has_biome_tag",
-					"operator": "==",
-					"value": "monster"
+					"any_of": [
+						{
+							"test": "has_biome_tag",
+							"operator": "==",
+							"value": "monster"
+						}
+					]
 				}
 			},
 			{
@@ -42,12 +46,16 @@
 					"max": "hard"
 				},
 				"minecraft:weight": {
-					"default": 5
+					"default": 15
 				},
 				"minecraft:biome_filter": {
-					"test": "has_biome_tag",
-					"operator": "==",
-					"value": "mooshroom_island"
+					"any_of": [
+						{
+							"test": "has_biome_tag",
+							"operator": "==",
+							"value": "mooshroom_island"
+						}
+					]
 				}
 			}
 		]

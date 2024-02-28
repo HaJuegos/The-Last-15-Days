@@ -1,0 +1,120 @@
+/* Creado o Editado por: HaJuegosCat! y Convex!. Si editaras o copiaras este archivo, recuerda dejar creditos. Cualquier otra informacion o reporte, en el server de Discord: https://discord.gg/WH9KpNWXUz */
+/* Created or Edited by: HaJuegosCat! & Convex!. If you edit or copy this file, remember to give credit. For any other information or report, visit the Discord server: https://discord.gg/WH9KpNWXUz */
+{
+	"format_version": "1.10.0",
+	"animations": {
+		"animation.cloud.timer": {
+			"animation_length": 10.0,
+			"loop": false,
+			"timeline": {
+				"9.0": [
+					"@s despawn"
+				]
+			}
+		},
+		"animation.cloud_nausea.timer": {
+			"animation_length": 12,
+			"loop": false,
+			"timeline": {
+				"0.1": [
+					"/tag @a[tag=in_end] add nauseaAttack"
+				],
+				"1.0": [
+					"/playsound random.click @a[tag=in_end] ~ ~ ~ 900 2"
+				],
+				"2.0": [
+					"/playsound random.click @a[tag=in_end] ~ ~ ~ 900 2"
+				],
+				"3.0": [
+					"/playsound random.click @a[tag=in_end] ~ ~ ~ 900 2"
+				],
+				"4.0": [
+					"/playsound random.click @a[tag=in_end] ~ ~ ~ 900 2"
+				],
+				"5.0": [
+					"/playsound random.click @a[tag=in_end] ~ ~ ~ 900 2"
+				],
+				"6.0": [
+					"/playsound random.click @a[tag=in_end] ~ ~ ~ 900 2"
+				],
+				"7.0": [
+					"/playsound random.click @a[tag=in_end] ~ ~ ~ 900 2"
+				],
+				"8.0": [
+					"/playsound random.click @a[tag=in_end] ~ ~ ~ 900 2"
+				],
+				"9.0": [
+					"/playsound random.click @a[tag=in_end] ~ ~ ~ 900 2"
+				],
+				"10.0": [
+					"/playsound random.levelup @a[tag=in_end] ~ ~ ~ 900 2"
+				],
+				"10.9": [
+					"/damage @a[tag=moving] 999 magic entity @e[type=ender_dragon,c=1]",
+					"/camera @a[tag=moving] fade time 0 1.2 0 color 0 0 0",
+					"/titleraw @a[tag=moving] times 1 17 1.1",
+					"/titleraw @a[tag=moving] title {\"rawtext\": [{\"translate\":\"ui.titledamage_1\"}]}",
+					"/titleraw @a[tag=moving] subtitle {\"rawtext\": [{\"translate\":\"ui.titledamage_2\"}]}"
+				],
+				"11.9": [
+					"/titleraw @a[tag=moving] reset",
+					"/tag @a[tag=nauseaAttack] remove nauseaAttack",
+					"/tag @a[tag=moving] remove moving",
+					"@s ha:despawn"
+				]
+			}
+		},
+		"animation.cloud_conduit.timer": {
+			"animation_length": 11,
+			"loop": false,
+			"timeline": {
+				"0.1": [
+					"/tellraw @a[tag=in_end] {\"rawtext\": [{\"translate\": \"chat.alert_teleport\"}]}"
+				],
+				"1.0": [
+					"/playsound random.click @a[tag=in_end] ~ ~ ~ 900 2"
+				],
+				"2.0": [
+					"/playsound random.click @a[tag=in_end] ~ ~ ~ 900 2"
+				],
+				"3.0": [
+					"/playsound random.click @a[tag=in_end] ~ ~ ~ 900 2"
+				],
+				"4.0": [
+					"/playsound random.click @a[tag=in_end] ~ ~ ~ 900 2"
+				],
+				"5.0": [
+					"/playsound random.click @a[tag=in_end] ~ ~ ~ 900 2"
+				],
+				"6.0": [
+					"/playsound random.click @a[tag=in_end] ~ ~ ~ 900 2"
+				],
+				"7.0": [
+					"/playsound random.click @a[tag=in_end] ~ ~ ~ 900 2"
+				],
+				"8.0": [
+					"/playsound random.click @a[tag=in_end] ~ ~ ~ 900 2"
+				],
+				"9.0": [
+					"/playsound random.click @a[tag=in_end] ~ ~ ~ 900 2"
+				],
+				"10.0": [
+					"/playsound random.levelup @a[tag=in_end] ~ ~ ~ 900 2"
+				],
+				"10.9": [
+					"/spreadplayers 0 0 1 55 @e[r=200,tag=!antiTp]",
+					"@s ha:despawn"
+				]
+			}
+		},
+		"animation.regenerate_llama.timer": {
+			"animation_length": 40.1,
+			"loop": true,
+			"timeline": {
+				"40.0": [
+					"@s ha:generate_llama"
+				]
+			}
+		}
+	}
+}

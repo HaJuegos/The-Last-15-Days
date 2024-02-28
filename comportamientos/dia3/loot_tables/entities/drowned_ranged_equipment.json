@@ -1,5 +1,5 @@
-/* Creado/Editado por: HaJuegos Cat! & Convex!. Si necesitas mas informacion, hablamos en Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174 */
-/* Created/Edited by: HaCatto! & Convex! If you need more information, we talk on Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174 */
+/* Creado o Editado por: HaJuegosCat! y Convex!. Si editaras o copiaras este archivo, recuerda dejar creditos. Cualquier otra informacion o reporte, en el server de Discord: https://discord.gg/WH9KpNWXUz */
+/* Created or Edited by: HaJuegosCat! & Convex!. If you edit or copy this file, remember to give credit. For any other information or report, visit the Discord server: https://discord.gg/WH9KpNWXUz */
 {
 	"pools": [
 		{
@@ -7,92 +7,24 @@
 			"entries": [
 				{
 					"type": "item",
-					"name": "minecraft:diamond_helmet",
-					"functions": [
-						{
-							"function": "enchant_random_gear",
-							"chance": 0.25
-						}
-					],
-					"pools": [
-						{
-							"rolls": 1,
-							"entries": [
-								{
-									"type": "item",
-									"name": "minecraft:diamond_chestplate",
-									"functions": [
-										{
-											"function": "enchant_random_gear",
-											"chance": 0.25
-										}
-									],
-									"pools": [
-										{
-											"rolls": 1,
-											"entries": [
-												{
-													"type": "item",
-													"name": "minecraft:diamond_leggings",
-													"functions": [
-														{
-															"function": "enchant_random_gear",
-															"chance": 0.25
-														}
-													],
-													"pools": [
-														{
-															"rolls": 1,
-															"entries": [
-																{
-																	"type": "item",
-																	"name": "minecraft:diamond_boots",
-																	"functions": [
-																		{
-																			"function": "enchant_random_gear",
-																			"chance": 0.25
-																		}
-																	],
-																	"pools": [
-																		{
-																			"rolls": 1,
-																			"entries": [
-																				{
-																					"type": "item",
-																					"name": "minecraft:trident",
-																					"weight": 5
-																				}
-																			]
-																		},
-																		{
-																			"rolls": 1,
-																			"conditions": [
-																				{
-																					"condition": "random_chance",
-																					"chance": 0.08
-																				}
-																			],
-																			"entries": [
-																				{
-																					"type": "item",
-																					"name": "minecraft:nautilus_shell",
-																					"weight": 5
-																				}
-																			]
-																		}
-																	]
-																}
-															]
-														}
-													]
-												}
-											]
-										}
-									]
-								}
-							]
-						}
-					]
+					"name": "minecraft:trident",
+					"weight": 5
+				}
+			]
+		},
+		{
+			"rolls": 1,
+			"conditions": [
+				{
+					"condition": "random_chance",
+					"chance": 0.08
+				}
+			],
+			"entries": [
+				{
+					"type": "item",
+					"name": "minecraft:nautilus_shell",
+					"weight": 5
 				}
 			]
 		}

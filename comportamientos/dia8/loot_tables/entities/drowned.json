@@ -1,21 +1,7 @@
-/* Creado/Editado por: HaJuegos Cat! & Convex!. Si necesitas mas informacion, hablamos en Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174 */
-/* Created/Edited by: HaCatto! & Convex! If you need more information, we talk on Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174 */
+/* Creado o Editado por: HaJuegosCat! y Convex!. Si editaras o copiaras este archivo, recuerda dejar creditos. Cualquier otra informacion o reporte, en el server de Discord: https://discord.gg/WH9KpNWXUz */
+/* Created or Edited by: HaJuegosCat! & Convex!. If you edit or copy this file, remember to give credit. For any other information or report, visit the Discord server: https://discord.gg/WH9KpNWXUz */
 {
 	"pools": [
-		{
-			"rolls": 1,
-			"entries": [
-				{
-					"type": "item",
-					"name": "minecraft:gold_ingot"
-				}
-			],
-			"conditions": [
-				{
-					"condition": "killed_by_player_or_pets"
-				}
-			]
-		},
 		{
 			"rolls": 1,
 			"entries": [
@@ -39,6 +25,36 @@
 							}
 						}
 					]
+				}
+			]
+		},
+		{
+			"conditions": [
+				{
+					"condition": "killed_by_player_or_pets"
+				},
+				{
+					"condition": "random_chance_with_looting",
+					"chance": 0.11,
+					"looting_multiplier": 0.02
+				}
+			],
+			"rolls": 1,
+			"entries": [
+				{
+					"type": "item",
+					"name": "minecraft:copper_ingot",
+					"weight": 5
+				}
+			]
+		},
+		{
+			"rolls": 1,
+			"entries": [
+				{
+					"type": "item",
+					"name": "minecraft:gold_ingot",
+					"weight": 1
 				}
 			]
 		}

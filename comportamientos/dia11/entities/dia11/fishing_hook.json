@@ -1,0 +1,94 @@
+/* Creado o Editado por: HaJuegosCat! y Convex!. Si editaras o copiaras este archivo, recuerda dejar creditos. Cualquier otra informacion o reporte, en el server de Discord: https://discord.gg/WH9KpNWXUz */
+/* Created or Edited by: HaJuegosCat! & Convex!. If you edit or copy this file, remember to give credit. For any other information or report, visit the Discord server: https://discord.gg/WH9KpNWXUz */
+{
+	"format_version": "1.12.0",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "minecraft:fishing_hook",
+			"is_spawnable": false,
+			"is_summonable": false,
+			"is_experimental": false
+		},
+		"component_groups": {
+			"ha:summon_goat": {
+				"minecraft:spawn_entity": [
+					{
+						"should_leash": false,
+						"num_to_spawn": 1,
+						"min_wait_time": 0,
+						"max_wait_time": 0,
+						"spawn_entity": "minecraft:goat",
+						"spawn_event": "minecraft:entity_spawned",
+						"single_use": true
+					}
+				]
+			},
+			"loot_jungle": {
+				"minecraft:loot": {
+					"table": "loot_tables/gameplay/jungle_fishing.json"
+				}
+			}
+		},
+		"components": {
+			"minecraft:collision_box": {
+				"width": 0.15,
+				"height": 0.15
+			},
+			"minecraft:projectile": {
+				"on_hit": {
+					"stick_in_ground": {}
+				}
+			},
+			"minecraft:loot": {
+				"table": "loot_tables/gameplay/fishing.json"
+			},
+			"minecraft:physics": {},
+			"minecraft:pushable": {
+				"is_pushable": false,
+				"is_pushable_by_piston": true
+			},
+			"minecraft:conditional_bandwidth_optimization": {
+				"default_values": {
+					"max_optimized_distance": 80,
+					"max_dropped_ticks": 7,
+					"use_motion_prediction_hints": true
+				}
+			}
+		},
+		"events": {
+			"ha:random_spawn": {
+				"randomize": [
+					{
+						"weight": 50
+					},
+					{
+						"weight": 50,
+						"add": {
+							"component_groups": [
+								"ha:summon_goat"
+							]
+						}
+					}
+				]
+			},
+			"minecraft:entity_spawned": {
+				"sequence": [
+					{
+						"trigger": "ha:random_spawn"
+					},
+					{
+						"filters": {
+							"test": "is_biome",
+							"value": "jungle"
+						},
+						"add": {
+							"component_groups": [
+								"loot_jungle"
+							]
+						}
+					}
+				]
+			}
+		}
+	}
+}

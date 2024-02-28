@@ -1,28 +1,41 @@
-/* Creado/Editado por: HaJuegos Cat! & Convex!. Si necesitas mas informacion, hablamos en Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174 */
-/* Created/Edited by: HaCatto! & Convex! If you need more information, we talk on Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174 */
+/* Creado o Editado por: HaJuegosCat! y Convex!. Si editaras o copiaras este archivo, recuerda dejar creditos. Cualquier otra informacion o reporte, en el server de Discord: https://discord.gg/WH9KpNWXUz */
+/* Created or Edited by: HaJuegosCat! & Convex!. If you edit or copy this file, remember to give credit. For any other information or report, visit the Discord server: https://discord.gg/WH9KpNWXUz */
 {
-	"format_version": "1.10",
+	"format_version": "1.16.100",
 	"minecraft:item": {
 		"description": {
-			"identifier": "cnvx:iron_apple"
+			"identifier": "cnvx:iron_apple",
+			"category": "nature"
 		},
 		"components": {
-			"minecraft:use_duration": 32,
+			"minecraft:use_duration": 1.6,
+			"minecraft:max_stack_size": 64,
 			"minecraft:stacked_by_data": true,
-			"minecraft:foil": false,
+			"minecraft:can_destroy_in_creative": false,
+			"minecraft:icon": {
+				"texture": "iron_apple"
+			},
+			"minecraft:use_animation": "eat",
 			"minecraft:render_offsets": "apple",
+			"minecraft:hover_text_color": "gray",
 			"minecraft:food": {
-				"nutrition": 4,
-				"saturation_modifier": "supernatural",
+				"nutrition": 3,
 				"can_always_eat": true,
-				"effects": [
-					{
-						"name": "resistance",
-						"chance": 1.0,
-						"duration": 30,
-						"amplifier": 1
-					}
-				]
+				"saturation_modifier": "normal",
+				"on_consume": {
+					"event": "ha:effects"
+				}
+			},
+			"tag:minecraft:is_food": {},
+			"tag:cnvx:iron_apple": {}
+		},
+		"events": {
+			"ha:effects": {
+				"add_mob_effect": {
+					"effect": "resistance",
+					"duration": 30,
+					"amplifier": 1
+				}
 			}
 		}
 	}

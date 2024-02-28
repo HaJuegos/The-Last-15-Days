@@ -1,0 +1,34 @@
+/* Creado o Editado por: HaJuegosCat! y Convex!. Si editaras o copiaras este archivo, recuerda dejar creditos. Cualquier otra informacion o reporte, en el server de Discord: https://discord.gg/WH9KpNWXUz */
+/* Created or Edited by: HaJuegosCat! & Convex!. If you edit or copy this file, remember to give credit. For any other information or report, visit the Discord server: https://discord.gg/WH9KpNWXUz */
+{
+	"format_version": "1.10.0",
+	"animation_controllers": {
+		"controller.animation.brute.is_critical": {
+			"initial_state": "default",
+			"states": {
+				"default": {
+					"on_entry": [
+						"@s ha:set_normal_damage",
+						"/tag @s remove critical"
+					],
+					"transitions": [
+						{
+							"is_critical": "!query.is_on_ground"
+						}
+					]
+				},
+				"is_critical": {
+					"on_entry": [
+						"@s ha:set_critical_damage",
+						"/tag @s add critical"
+					],
+					"transitions": [
+						{
+							"default": "query.is_on_ground"
+						}
+					]
+				}
+			}
+		}
+	}
+}

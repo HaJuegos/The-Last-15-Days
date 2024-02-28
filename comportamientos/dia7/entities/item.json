@@ -1,32 +1,46 @@
-/* Creado/Editado por: HaJuegos Cat! & Convex!. Si necesitas mas informacion, hablamos en Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174 */
-/* Created/Edited by: HaCatto! & Convex! If you need more information, we talk on Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174 */
+/* Creado o Editado por: HaJuegosCat! y Convex!. Si editaras o copiaras este archivo, recuerda dejar creditos. Cualquier otra informacion o reporte, en el server de Discord: https://discord.gg/WH9KpNWXUz */
+/* Created or Edited by: HaJuegosCat! & Convex!. If you edit or copy this file, remember to give credit. For any other information or report, visit the Discord server: https://discord.gg/WH9KpNWXUz */
 {
-	"format_version": "1.16.0",
+	"format_version": "1.20.50",
 	"minecraft:entity": {
 		"description": {
 			"identifier": "minecraft:item",
-			"is_spawnable": false,
 			"is_summonable": false,
+			"is_spawnable": false,
 			"is_experimental": false
 		},
 		"component_groups": {
-			"fire_immune": {
+			"anti_damage": {
+				"minecraft:health": {
+					"min": 1,
+					"max": 1,
+					"value": 1
+				},
 				"minecraft:damage_sensor": {
 					"triggers": [
-						{
-							"cause": "fire",
-							"deals_damage": false
-						},
 						{
 							"cause": "fire_tick",
 							"deals_damage": false
 						},
 						{
+							"cause": "fire",
+							"deals_damage": false
+						},
+						{
 							"cause": "lava",
+							"deals_damage": false
+						},
+						{
+							"cause": "block_explosion",
+							"deals_damage": false
+						},
+						{
+							"cause": "entity_explosion",
 							"deals_damage": false
 						}
 					]
-				}
+				},
+				"minecraft:fire_immune": true
 			}
 		},
 		"components": {
@@ -36,21 +50,23 @@
 						"filters": {
 							"test": "has_tag",
 							"subject": "self",
-							"value": "fireprote"
+							"value": "fireOff"
 						},
-						"event": "fire_immune"
+						"event": "ha:protection_item",
+						"target": "self"
 					}
 				]
 			}
 		},
 		"events": {
-			"fire_immune": {
+			"ha:protection_item": {
 				"add": {
 					"component_groups": [
-						"fire_immune"
+						"anti_damage"
 					]
 				}
-			}
+			},
+			"minecraft:entity_spawned": {}
 		}
 	}
 }

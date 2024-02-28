@@ -1,5 +1,5 @@
-/* Creado/Editado por: HaJuegos Cat! & Convex!. Si necesitas mas informacion, hablamos en Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174 */
-/* Created/Edited by: HaCatto! & Convex! If you need more information, we talk on Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174 */
+/* Creado o Editado por: HaJuegosCat! y Convex!. Si editaras o copiaras este archivo, recuerda dejar creditos. Cualquier otra informacion o reporte, en el server de Discord: https://discord.gg/WH9KpNWXUz */
+/* Created or Edited by: HaJuegosCat! & Convex!. If you edit or copy this file, remember to give credit. For any other information or report, visit the Discord server: https://discord.gg/WH9KpNWXUz */
 {
 	"format_version": "1.8.0",
 	"minecraft:spawn_rules": {
@@ -25,9 +25,18 @@
 					"event_skip_count": 2
 				},
 				"minecraft:biome_filter": {
-					"test": "has_biome_tag",
-					"operator": "==",
-					"value": "taiga"
+					"any_of": [
+						{
+							"test": "has_biome_tag",
+							"operator": "==",
+							"value": "mooshroom_island"
+						},
+						{
+							"test": "has_biome_tag",
+							"operator": "==",
+							"value": "taiga"
+						}
+					]
 				}
 			},
 			{
@@ -47,31 +56,18 @@
 					"event_skip_count": 2
 				},
 				"minecraft:biome_filter": {
-					"test": "has_biome_tag",
-					"operator": "==",
-					"value": "grove"
-				}
-			},
-			{
-				"minecraft:spawns_on_surface": {},
-				"minecraft:brightness_filter": {
-					"min": 7,
-					"max": 15,
-					"adjust_for_weather": false
-				},
-				"minecraft:weight": {
-					"default": 8
-				},
-				"minecraft:herd": {
-					"min_size": 2,
-					"max_size": 4,
-					"event": "minecraft:entity_born",
-					"event_skip_count": 2
-				},
-				"minecraft:biome_filter": {
-					"test": "has_biome_tag",
-					"operator": "==",
-					"value": "mooshroom_island"
+					"any_of": [
+						{
+							"test": "has_biome_tag",
+							"operator": "==",
+							"value": "mooshroom_island"
+						},
+						{
+							"test": "has_biome_tag",
+							"operator": "==",
+							"value": "grove"
+						}
+					]
 				}
 			}
 		]

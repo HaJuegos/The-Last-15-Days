@@ -1,0 +1,294 @@
+/* Creado o Editado por: HaJuegosCat! y Convex!. Si editaras o copiaras este archivo, recuerda dejar creditos. Cualquier otra informacion o reporte, en el server de Discord: https://discord.gg/WH9KpNWXUz */
+/* Created or Edited by: HaJuegosCat! & Convex!. If you edit or copy this file, remember to give credit. For any other information or report, visit the Discord server: https://discord.gg/WH9KpNWXUz */
+{
+	"format_version": "1.12.0",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "minecraft:dragon_fireball",
+			"is_summonable": true,
+			"is_spawnable": false,
+			"is_experimental": false
+		},
+		"component_groups": {
+			"ha:normal_cloud": {
+				"minecraft:projectile": {
+					"on_hit": {
+						"spawn_aoe_cloud": {
+							"radius": 6,
+							"radius_on_use": 0,
+							"potion": 23,
+							"particle": "dragonbreath",
+							"duration": 120,
+							"color": [
+								220,
+								0,
+								239
+							],
+							"affect_owner": false,
+							"reapplication_delay": 20
+						},
+						"remove_on_hit": {}
+					},
+					"power": 2,
+					"gravity": 0.1,
+					"inertia": 1,
+					"anchor": 2,
+					"offset": [
+						0,
+						0.5,
+						0
+					],
+					"semi_random_diff_damage": true,
+					"uncertainty_base": 10,
+					"reflect_on_hurt": true,
+					"hit_sound": "explode"
+				}
+			},
+			"ha:attack_cloud_1": {
+				"minecraft:projectile": {
+					"on_hit": {
+						"spawn_chance": {
+							"first_spawn_percent_chance": 100,
+							"first_spawn_count": 1,
+							"spawn_definition": "ha:nausea_attack"
+						},
+						"remove_on_hit": {}
+					},
+					"power": 2,
+					"gravity": 0.1,
+					"inertia": 1,
+					"anchor": 2,
+					"offset": [
+						0,
+						0.5,
+						0
+					],
+					"semi_random_diff_damage": true,
+					"uncertainty_base": 10,
+					"reflect_on_hurt": true,
+					"hit_sound": "explode"
+				}
+			},
+			"ha:attack_cloud_2": {
+				"minecraft:projectile": {
+					"on_hit": {
+						"spawn_chance": {
+							"first_spawn_percent_chance": 100,
+							"first_spawn_count": 1,
+							"spawn_definition": "minecraft:warden<ha:spawn_from_dragon>"
+						},
+						"remove_on_hit": {}
+					},
+					"power": 2,
+					"gravity": 0.1,
+					"inertia": 1,
+					"anchor": 2,
+					"offset": [
+						0,
+						0.5,
+						0
+					],
+					"semi_random_diff_damage": true,
+					"uncertainty_base": 10,
+					"reflect_on_hurt": true,
+					"hit_sound": "explode"
+				}
+			},
+			"ha:attack_cloud_3": {
+				"minecraft:projectile": {
+					"on_hit": {
+						"spawn_chance": {
+							"first_spawn_percent_chance": 100,
+							"first_spawn_count": 1,
+							"spawn_definition": "ha:conduit_attack"
+						},
+						"remove_on_hit": {}
+					},
+					"power": 2,
+					"gravity": 0.1,
+					"inertia": 1,
+					"anchor": 2,
+					"offset": [
+						0,
+						0.5,
+						0
+					],
+					"semi_random_diff_damage": true,
+					"uncertainty_base": 10,
+					"reflect_on_hurt": true,
+					"hit_sound": "explode"
+				}
+			},
+			"ha:attack_cloud_4": {
+				"minecraft:projectile": {
+					"on_hit": {
+						"spawn_chance": {
+							"first_spawn_percent_chance": 100,
+							"first_spawn_count": 1,
+							"spawn_definition": "ha:totem_attack"
+						},
+						"remove_on_hit": {}
+					},
+					"power": 2,
+					"gravity": 0.1,
+					"inertia": 1,
+					"anchor": 2,
+					"offset": [
+						0,
+						0.5,
+						0
+					],
+					"semi_random_diff_damage": true,
+					"uncertainty_base": 10,
+					"reflect_on_hurt": true,
+					"hit_sound": "explode"
+				}
+			},
+			"ha:attack_cloud_5": {
+				"minecraft:projectile": {
+					"on_hit": {
+						"definition_event": {
+							"affect_projectile": true,
+							"event_trigger": {
+								"event": "ha:generate_zombies",
+								"target": "self"
+							}
+						}
+					},
+					"power": 2,
+					"gravity": 0.1,
+					"inertia": 1,
+					"anchor": 2,
+					"offset": [
+						0,
+						0.5,
+						0
+					],
+					"semi_random_diff_damage": true,
+					"uncertainty_base": 10,
+					"reflect_on_hurt": true,
+					"hit_sound": "explode"
+				}
+			}
+		},
+		"components": {
+			"minecraft:persistent": {},
+			"minecraft:tick_world": {
+				"radius": 4,
+				"never_despawn": true
+			},
+			"minecraft:collision_box": {
+				"width": 0.31,
+				"height": 0.31
+			},
+			"minecraft:pushable": {
+				"is_pushable": true,
+				"is_pushable_by_piston": true
+			},
+			"minecraft:physics": {},
+			"minecraft:conditional_bandwidth_optimization": {
+				"default_values": {
+					"max_optimized_distance": 80,
+					"max_dropped_ticks": 7,
+					"use_motion_prediction_hints": true
+				}
+			}
+		},
+		"events": {
+			"ha:test_1": {
+				"add": {
+					"component_groups": [
+						"ha:attack_cloud_1"
+					]
+				}
+			},
+			"ha:test_2": {
+				"add": {
+					"component_groups": [
+						"ha:attack_cloud_2"
+					]
+				}
+			},
+			"ha:test_3": {
+				"add": {
+					"component_groups": [
+						"ha:attack_cloud_3"
+					]
+				}
+			},
+			"ha:test_4": {
+				"add": {
+					"component_groups": [
+						"ha:attack_cloud_4"
+					]
+				}
+			},
+			"ha:test_5": {
+				"add": {
+					"component_groups": [
+						"ha:attack_cloud_5"
+					]
+				}
+			},
+			"minecraft:entity_spawned": {
+				"randomize": [
+					{
+						"weight": 1,
+						"add": {
+							"component_groups": [
+								"ha:normal_cloud"
+							]
+						}
+					},
+					{
+						"weight": 2,
+						"add": {
+							"component_groups": [
+								"ha:attack_cloud_1"
+							]
+						}
+					},
+					{
+						"weight": 2,
+						"add": {
+							"component_groups": [
+								"ha:attack_cloud_2"
+							]
+						}
+					},
+					{
+						"weight": 2,
+						"add": {
+							"component_groups": [
+								"ha:attack_cloud_3"
+							]
+						}
+					},
+					{
+						"weight": 1,
+						"add": {
+							"component_groups": [
+								"ha:attack_cloud_4"
+							]
+						}
+					},
+					{
+						"weight": 2,
+						"add": {
+							"component_groups": [
+								"ha:attack_cloud_5"
+							]
+						}
+					}
+				]
+			},
+			"ha:generate_zombies": {
+				"run_command": {
+					"command": [
+						"scriptevent ha:summon_zombies"
+					]
+				}
+			}
+		}
+	}
+}

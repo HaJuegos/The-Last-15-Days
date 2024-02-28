@@ -1,5 +1,6 @@
 {
 	"values": [
-		"loop"
+		"system/loopSystem",
+		"system/loopItems"
 	]
 }

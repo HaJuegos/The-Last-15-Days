@@ -1,0 +1,43 @@
+/* Creado o Editado por: HaJuegosCat! y Convex!. Si editaras o copiaras este archivo, recuerda dejar creditos. Cualquier otra informacion o reporte, en el server de Discord: https://discord.gg/WH9KpNWXUz */
+/* Created or Edited by: HaJuegosCat! & Convex!. If you edit or copy this file, remember to give credit. For any other information or report, visit the Discord server: https://discord.gg/WH9KpNWXUz */
+{
+	"format_version": "1.20.10",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "ha:summoner_totem_crafting"
+		},
+		"tags": [
+			"crafting_table"
+		],
+		"pattern": [
+			"VBV",
+			"BTB",
+			"VBV"
+		],
+		"key": {
+			"V": {
+				"item": "minecraft:blaze_rod"
+			},
+			"B": {
+				"item": "minecraft:emerald_block"
+			},
+			"T": {
+				"item": "minecraft:totem_of_undying"
+			}
+		},
+		"unlock": [
+			{
+				"item": "minecraft:blaze_rod"
+			},
+			{
+				"item": "minecraft:emerald_block"
+			},
+			{
+				"item": "minecraft:totem_of_undying"
+			}
+		],
+		"result": {
+			"item": "cnvx:summoner_totem"
+		}
+	}
+}

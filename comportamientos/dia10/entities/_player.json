@@ -1,5 +1,5 @@
-/* Creado/Editado por: HaJuegos Cat! & Convex!. Si necesitas mas informacion, hablamos en Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174 */
-/* Created/Edited by: HaCatto! & Convex! If you need more information, we talk on Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174 */
+/* Creado o Editado por: HaJuegosCat! y Convex!. Si editaras o copiaras este archivo, recuerda dejar creditos. Cualquier otra informacion o reporte, en el server de Discord: https://discord.gg/WH9KpNWXUz */
+/* Created or Edited by: HaJuegosCat! & Convex!. If you edit or copy this file, remember to give credit. For any other information or report, visit the Discord server: https://discord.gg/WH9KpNWXUz */
 {
 	"format_version": "1.18.20",
 	"minecraft:entity": {
@@ -9,62 +9,30 @@
 			"is_summonable": false,
 			"is_experimental": false,
 			"animations": {
-				"muere": "controller.animation.ha_dead_system",
-				"primeravez_entra": "controller.animation.ha_entry_world",
-				"delfin_contador": "animation.ha_loop_remove_dolphin_attack"
+				"respawn_sensor": "controller.animation.player.respawn_system",
+				"check_kit": "controller.animation.player.first_spawn",
+				"loop_dolphin": "animation.player.loop_dolphin"
 			},
 			"scripts": {
 				"animate": [
-					"muere",
-					"primeravez_entra",
-					"delfin_contador"
+					"respawn_sensor",
+					"check_kit",
+					"loop_dolphin"
 				]
 			}
 		},
 		"component_groups": {
-			"ha:minus_KB": {
+			"ha:chestplate_knockback": {
 				"minecraft:knockback_resistance": {
-					"value": 0,
-					"max": 0
+					"value": 1.0
 				}
 			},
-			"ha:plus_KB": {
+			"ha:normal_knockback": {
 				"minecraft:knockback_resistance": {
-					"value": 5,
-					"max": 5
+					"value": 0.0
 				}
 			},
-			"ha:all_armor": {
-				"minecraft:health": {
-					"max": 44,
-					"min": 0
-				}
-			},
-			"ha:no_all_armor": {
-				"minecraft:health": {
-					"max": 20,
-					"min": 0
-				}
-			},
-			"cnvx:dolphin_damage": {
-				"minecraft:breathable": {
-					"total_supply": 0,
-					"suffocate_time": -0.1,
-					"inhale_time": 3.75,
-					"generates_bubbles": false
-				},
-				"minecraft:timer": {
-					"time": [
-						10,
-						10
-					],
-					"looping": false,
-					"time_down_event": {
-						"event": "cnvx:remove_dolphin_damage"
-					}
-				}
-			},
-			"cnvx:remove_dolphin_damage": {
+			"ha:default_air": {
 				"minecraft:breathable": {
 					"total_supply": 15,
 					"suffocate_time": -1,
@@ -72,7 +40,21 @@
 					"generates_bubbles": false
 				}
 			},
-			"cnvx:temperature": {
+			"ha:removed_air": {
+				"minecraft:breathable": {
+					"total_supply": 0,
+					"suffocate_time": -1,
+					"inhale_time": 3.75,
+					"generates_bubbles": false
+				}
+			},
+			"ha:weather_damage": {
+				"minecraft:damage_over_time": {
+					"damage_per_hurt": 12,
+					"time_between_hurt": 0.5
+				}
+			},
+			"ha:timer_weather_damage": {
 				"minecraft:timer": {
 					"time": [
 						600,
@@ -80,26 +62,21 @@
 					],
 					"looping": false,
 					"time_down_event": {
-						"event": "cnvx:set_tag",
+						"event": "ha:start_damage_weather",
 						"target": "self"
 					}
-				}
-			},
-			"cnvx:temp_damager": {
-				"minecraft:damage_over_time": {
-					"damage_per_hurt": 6,
-					"time_between_hurt": 2
 				}
 			},
 			"ha:ban": {
 				"minecraft:timer": {
 					"time": [
-						0.9,
-						0.9
+						3,
+						3
 					],
 					"looping": false,
 					"time_down_event": {
-						"event": "ha:has_tag_ban"
+						"event": "ha:set_tag_ban",
+						"target": "self"
 					}
 				}
 			},
@@ -142,6 +119,10 @@
 			}
 		},
 		"components": {
+			"minecraft:on_death": {
+				"event": "ha:resquicio_start",
+				"target": "self"
+			},
 			"minecraft:experience_reward": {
 				"on_death": "Math.Min(query.player_level * 7, 100)"
 			},
@@ -161,30 +142,6 @@
 			"minecraft:can_climb": {},
 			"minecraft:movement": {
 				"value": 0.1
-			},
-			"minecraft:hurt_on_condition": {
-				"damage_conditions": [
-					{
-						"filters": {
-							"test": "in_lava",
-							"subject": "self",
-							"operator": "==",
-							"value": true
-						},
-						"cause": "lava",
-						"damage_per_tick": 40
-					},
-					{
-						"filters": {
-							"test": "has_damage",
-							"subject": "self",
-							"operator": "==",
-							"value": "fire_tick"
-						},
-						"cause": "fire",
-						"damage_per_tick": 24
-					}
-				]
 			},
 			"minecraft:attack": {
 				"damage": 1
@@ -276,50 +233,53 @@
 									{
 										"test": "is_block",
 										"subject": "block",
-										"value": "minecraft:sweet_berry_bush"
+										"value": "minecraft:cactus"
 									},
 									{
 										"test": "is_block",
 										"subject": "block",
-										"value": "minecraft:cactus"
+										"value": "minecraft:sweet_berry_bush"
 									}
 								]
 							},
-							"target": "self",
-							"event": "ha:effect_block"
+							"event": "ha:poison_effects",
+							"target": "self"
 						},
-						"deals_damage": true
-					},
-					{
-						"cause": "any",
-						"on_damage": {
-							"filters": {
-								"test": "is_family",
-								"subject": "other",
-								"value": "fragment_mob"
-							}
-						},
-						"damage_multiplier": 5,
 						"deals_damage": true
 					},
 					{
 						"on_damage": {
 							"filters": {
-								"all_of": [
+								"any_of": [
 									{
-										"test": "has_damage",
-										"value": "attack"
+										"test": "is_family",
+										"subject": "other",
+										"value": "wither_boss"
 									},
 									{
 										"test": "is_family",
 										"subject": "damager",
-										"value": "zombiejockey"
+										"value": "wither_boss"
 									}
 								]
 							},
-							"event": "ha:has_zombiejocket_damage"
+							"event": "ha:wither_effect",
+							"target": "self"
 						},
-						"cause": "attack"
+						"deals_damage": true
+					},
+					{
+						"cause": "all",
+						"on_damage": {
+							"filters": {
+								"test": "has_tag",
+								"subject": "other",
+								"value": "debuff"
+							},
+							"event": "ha:damage_debuff",
+							"target": "self"
+						},
+						"deals_damage": true
 					}
 				]
 			},
@@ -347,95 +307,82 @@
 							"test": "is_sleeping",
 							"value": true
 						},
-						"event": "ha:sleeping"
+						"event": "ha:sleeping_system"
 					},
 					{
 						"filters": {
 							"test": "is_sleeping",
 							"value": false
 						},
-						"event": "ha:no_sleeping"
+						"event": "ha:remove_sleep"
 					},
 					{
 						"filters": {
 							"all_of": [
 								{
-									"test": "is_temperature_type",
-									"subject": "self",
-									"value": "cold"
-								},
-								{
 									"test": "has_tag",
 									"subject": "self",
 									"operator": "!=",
-									"value": "temp"
+									"value": "inWeatherDamage"
 								},
-								{
-									"test": "has_tag",
-									"subject": "self",
-									"operator": "!=",
-									"value": "lo_tiene"
-								}
-							]
-						},
-						"event": "cnvx:cold_biome"
-					},
-					{
-						"filters": {
-							"all_of": [
 								{
 									"test": "is_temperature_type",
 									"subject": "self",
 									"value": "warm"
-								},
-								{
-									"test": "has_tag",
-									"subject": "self",
-									"operator": "!=",
-									"value": "temp"
-								},
-								{
-									"test": "has_tag",
-									"subject": "self",
-									"operator": "!=",
-									"value": "lo_tiene"
 								}
 							]
 						},
-						"event": "cnvx:warm_biome"
+						"event": "ha:start_weather_timer"
 					},
 					{
 						"filters": {
 							"all_of": [
 								{
-									"test": "is_temperature_type",
-									"value": "cold",
-									"operator": "!=",
-									"subject": "self"
-								},
-								{
-									"test": "is_temperature_type",
-									"value": "warm",
-									"operator": "!=",
-									"subject": "self"
-								},
-								{
 									"test": "has_tag",
-									"operator": "==",
-									"value": "temp"
+									"subject": "self",
+									"operator": "!=",
+									"value": "inWeatherDamage"
+								},
+								{
+									"test": "is_temperature_type",
+									"subject": "self",
+									"value": "cold"
 								}
 							]
 						},
-						"event": "cnvx:normal_biome"
+						"event": "ha:start_weather_timer"
+					},
+					{
+						"filters": {
+							"all_of": [
+								{
+									"test": "has_tag",
+									"subject": "self",
+									"value": "inWeatherDamage"
+								},
+								{
+									"test": "is_temperature_type",
+									"subject": "self",
+									"operator": "!=",
+									"value": "warm"
+								},
+								{
+									"test": "is_temperature_type",
+									"subject": "self",
+									"operator": "!=",
+									"value": "cold"
+								}
+							]
+						},
+						"event": "ha:remove_weather_timer"
 					},
 					{
 						"filters": {
 							"test": "has_tag",
-							"operator": "==",
 							"subject": "self",
-							"value": "lo_tiene"
+							"value": "infernalRelic"
 						},
-						"event": "cnvx:normal_biome"
+						"event": "ha:remove_weather_timer"
 					},
 					{
 						"filters": {
@@ -453,411 +400,451 @@
 					},
 					{
 						"filters": {
-							"test": "has_equipment",
-							"operator": "==",
-							"domain": "head",
-							"value": "ha:sneaky_astroner_helmet"
+							"all_of": [
+								{
+									"test": "has_tag",
+									"subject": "self",
+									"operator": "!=",
+									"value": "fullArmorN"
+								},
+								{
+									"test": "has_equipment",
+									"subject": "self",
+									"value": "minecraft:netherite_helmet"
+								},
+								{
+									"test": "has_equipment",
+									"subject": "self",
+									"value": "minecraft:netherite_chestplate"
+								},
+								{
+									"test": "has_equipment",
+									"subject": "self",
+									"value": "minecraft:netherite_leggings"
+								},
+								{
+									"test": "has_equipment",
+									"subject": "self",
+									"value": "minecraft:netherite_boots"
+								}
+							]
 						},
-						"event": "ha:on_helmet"
+						"event": "ha:armor_netherite",
+						"target": "self"
 					},
 					{
 						"filters": {
 							"test": "has_equipment",
+							"domain": "torso",
+							"value": "ha:sneaky_chestplate"
+						},
+						"event": "ha:sneaky_chestplate_effect",
+						"target": "self"
+					},
+					{
+						"filters": {
+							"test": "has_equipment",
+							"subject": "self",
+							"domain": "torso",
 							"operator": "!=",
-							"value": "ha:sneaky_astroner_chestplate",
-							"domain": "torso"
+							"value": "ha:sneaky_chestplate"
 						},
-						"event": "ha:no_chestplate"
+						"event": "ha:remove_sneaky_chestplate_effect",
+						"target": "self"
 					},
 					{
 						"filters": {
 							"test": "has_equipment",
-							"operator": "==",
-							"value": "ha:sneaky_astroner_chestplate",
-							"domain": "torso"
-						},
-						"event": "ha:on_chestplate"
-					},
-					{
-						"filters": {
-							"test": "has_equipment",
-							"operator": "!=",
+							"subject": "self",
 							"domain": "leg",
-							"value": "ha:sneaky_astroner_leggings"
+							"value": "ha:sneaky_leggings"
 						},
-						"event": "ha:no_legs"
+						"event": "ha:sneaky_leggings_effect",
+						"target": "self"
 					},
 					{
 						"filters": {
 							"test": "has_equipment",
-							"operator": "==",
+							"subject": "self",
 							"domain": "leg",
-							"value": "ha:sneaky_astroner_leggings"
-						},
-						"event": "ha:on_legs"
-					},
-					{
-						"filters": {
-							"test": "has_equipment",
 							"operator": "!=",
-							"domain": "feet",
-							"value": "ha:sneaky_astroner_boots"
+							"value": "ha:sneaky_leggings"
 						},
-						"event": "ha:no_boots"
+						"event": "ha:remove_sneaky_leggings_effect",
+						"target": "self"
 					},
 					{
 						"filters": {
 							"test": "has_equipment",
-							"operator": "==",
+							"subject": "self",
 							"domain": "feet",
-							"value": "ha:sneaky_astroner_boots"
+							"value": "ha:sneaky_boots"
 						},
-						"event": "ha:on_boots"
+						"event": "ha:sneaky_boots_effect",
+						"target": "self"
+					},
+					{
+						"filters": {
+							"test": "has_equipment",
+							"subject": "self",
+							"domain": "feet",
+							"operator": "!=",
+							"value": "ha:sneaky_boots"
+						},
+						"event": "ha:remove_sneaky_boots_effect",
+						"target": "self"
+					},
+					{
+						"filters": {
+							"all_of": [
+								{
+									"test": "has_equipment",
+									"value": "ha:sneaky_helmet",
+									"domain": "head"
+								},
+								{
+									"test": "has_equipment",
+									"value": "ha:sneaky_chestplate",
+									"domain": "torso"
+								},
+								{
+									"test": "has_equipment",
+									"value": "ha:sneaky_leggings",
+									"domain": "leg"
+								},
+								{
+									"test": "has_equipment",
+									"value": "ha:sneaky_boots",
+									"domain": "feet"
+								}
+							]
+						},
+						"event": "ha:sneaky_armor_completed",
+						"target": "self"
 					},
 					{
 						"filters": {
 							"any_of": [
 								{
 									"test": "has_equipment",
-									"subject": "self",
 									"operator": "!=",
 									"domain": "head",
-									"value": "ha:sneaky_astroner_helmet"
+									"value": "ha:sneaky_helmet"
 								},
 								{
 									"test": "has_equipment",
-									"subject": "self",
 									"operator": "!=",
 									"domain": "torso",
-									"value": "ha:sneaky_astroner_chestplate"
+									"value": "ha:sneaky_chestplate"
 								},
 								{
 									"test": "has_equipment",
-									"subject": "self",
 									"operator": "!=",
 									"domain": "leg",
-									"value": "ha:sneaky_astroner_leggings"
+									"value": "ha:sneaky_leggings"
 								},
 								{
 									"test": "has_equipment",
-									"subject": "self",
 									"operator": "!=",
 									"domain": "feet",
-									"value": "ha:sneaky_astroner_boots"
+									"value": "ha:sneaky_boots"
 								}
 							]
 						},
-						"event": "ha:all_armor_off"
+						"event": "ha:debuff_sneaky_armor_completed",
+						"target": "self"
 					},
 					{
 						"filters": {
-							"all_of": [
-								{
-									"test": "has_equipment",
-									"subject": "self",
-									"operator": "==",
-									"domain": "head",
-									"value": "ha:sneaky_astroner_helmet"
-								},
-								{
-									"test": "has_equipment",
-									"subject": "self",
-									"operator": "==",
-									"domain": "torso",
-									"value": "ha:sneaky_astroner_chestplate"
-								},
-								{
-									"test": "has_equipment",
-									"subject": "self",
-									"operator": "==",
-									"domain": "leg",
-									"value": "ha:sneaky_astroner_leggings"
-								},
-								{
-									"test": "has_equipment",
-									"subject": "self",
-									"operator": "==",
-									"domain": "feet",
-									"value": "ha:sneaky_astroner_boots"
-								}
-							]
+							"test": "has_equipment",
+							"domain": "head",
+							"value": "ha:sneaky_helmet"
 						},
-						"event": "ha:all_armor_on"
-					},
-					{
-						"filters": {
-							"all_of": [
-								{
-									"test": "has_biome_tag",
-									"value": "the_end"
-								},
-								{
-									"any_of": [
-										{
-											"test": "has_equipment",
-											"subject": "self",
-											"operator": "!=",
-											"domain": "head",
-											"value": "ha:sneaky_astroner_helmet"
-										},
-										{
-											"test": "has_equipment",
-											"subject": "self",
-											"operator": "!=",
-											"domain": "torso",
-											"value": "ha:sneaky_astroner_chestplate"
-										},
-										{
-											"test": "has_equipment",
-											"subject": "self",
-											"operator": "!=",
-											"domain": "leg",
-											"value": "ha:sneaky_astroner_leggings"
-										},
-										{
-											"test": "has_equipment",
-											"subject": "self",
-											"operator": "!=",
-											"domain": "feet",
-											"value": "ha:sneaky_astroner_boots"
-										}
-									]
-								}
-							]
-						},
-						"event": "ha:entry_no_armor_end"
+						"event": "ha:sneaky_helmet_command",
+						"target": "self"
 					}
 				]
 			}
 		},
 		"events": {
-			"ha:on_helmet": {
-				"run_command": {
+			"ha:sneaky_helmet_command": {
+				"queue_command": {
 					"command": [
-						"function achievements/gettings_armor_new"
+						"execute as @s[tag=!sneaky1] run function achievements/sneaky_helmet"
 					]
 				}
 			},
-			"ha:on_chestplate": {
-				"run_command": {
+			"ha:sneaky_chestplate_effect": {
+				"queue_command": {
 					"command": [
-						"effect @s resistance 12 1 true",
-						"function achievements/gettings_armor_new"
+						"effect @s resistance 11 1 true",
+						"execute as @s[tag=!sneaky2] run function achievements/sneaky_chestplate"
 					]
 				},
 				"remove": {
 					"component_groups": [
-						"ha:minus_KB"
+						"ha:normal_knockback"
 					]
 				},
 				"add": {
 					"component_groups": [
-						"ha:plus_KB"
+						"ha:chestplate_knockback"
 					]
 				}
 			},
-			"ha:no_chestplate": {
-				"run_command": {
+			"ha:remove_sneaky_chestplate_effect": {
+				"remove": {
+					"component_groups": [
+						"ha:chestplate_knockback"
+					]
+				},
+				"add": {
+					"component_groups": [
+						"ha:normal_knockback"
+					]
+				}
+			},
+			"ha:sneaky_leggings_effect": {
+				"queue_command": {
 					"command": [
-						"effect @s weakness 12 1 true"
+						"effect @s haste 11 2 true",
+						"execute as @s[tag=!sneaky3] run function achievements/sneaky_leggings"
+					]
+				}
+			},
+			"ha:remove_sneaky_leggings_effect": {
+				"queue_command": {
+					"command": [
+						"effect @s mining_fatigue 11 0 true"
+					]
+				}
+			},
+			"ha:sneaky_boots_effect": {
+				"queue_command": {
+					"command": [
+						"effect @s speed 11 1 true",
+						"execute as @s[tag=!sneaky4] run function achievements/sneaky_boots"
+					]
+				}
+			},
+			"ha:remove_sneaky_boots_effect": {
+				"queue_command": {
+					"command": [
+						"effect @s slowness 11 1 true"
+					]
+				}
+			},
+			"ha:sneaky_armor_completed": {
+				"queue_command": {
+					"command": [
+						"effect @s health_boost 11 6 true",
+						"execute as @s[tag=!sneaky5] run function achievements/all_sneaky"
+					]
+				}
+			},
+			"ha:debuff_sneaky_armor_completed": {
+				"sequence": [
+					{
+						"filters": {
+							"test": "has_biome_tag",
+							"value": "the_end"
+						},
+						"queue_command": {
+							"command": [
+								"effect @s fatal_poison 11 1 true"
+							]
+						}
+					}
+				]
+			},
+			"ha:damage_debuff": {
+				"queue_command": {
+					"command": [
+						"function mobs/allDebuffs"
+					]
+				}
+			},
+			"minecraft:entity_spawned": {
+				"sequence": [
+					{
+						"filters": {
+							"test": "has_tag",
+							"subject": "self",
+							"value": "dolphinDebuff"
+						},
+						"trigger": "ha:remove_air_dolphin"
+					},
+					{
+						"filters": {
+							"test": "has_tag",
+							"subject": "self",
+							"value": "dolphinDebuff",
+							"operator": "!="
+						},
+						"trigger": "ha:return_air"
+					}
+				]
+			},
+			"ha:remove_air_dolphin": {
+				"queue_command": {
+					"command": [
+						"tag @s add dolphinDebuff"
 					]
 				},
 				"remove": {
 					"component_groups": [
-						"ha:plus_KB"
+						"ha:default_air"
 					]
 				},
 				"add": {
 					"component_groups": [
-						"ha:minus_KB"
+						"ha:removed_air"
 					]
 				}
 			},
-			"ha:on_legs": {
-				"run_command": {
+			"ha:return_air": {
+				"queue_command": {
 					"command": [
-						"effect @s haste 12 2 true",
-						"function achievements/gettings_armor_new"
-					]
-				}
-			},
-			"ha:no_legs": {
-				"run_command": {
-					"command": [
-						"effect @s mining_fatigue 12 0 true"
-					]
-				}
-			},
-			"ha:on_boots": {
-				"run_command": {
-					"command": [
-						"effect @s speed 12 1 true",
-						"function achievements/gettings_armor_new"
-					]
-				}
-			},
-			"ha:no_boots": {
-				"run_command": {
-					"command": [
-						"effect @s slowness 12 1 true"
-					]
-				}
-			},
-			"ha:all_armor_on": {
-				"run_command": {
-					"command": [
-						"effect @s regeneration 12 1 true",
-						"scoreboard players add @s armorfull 1",
-						"function achievements/gettings_armor_new"
+						"tag @s remove dolphinDebuff",
+						"playsound mob.guardian.death",
+						"titleraw @s actionbar {\"rawtext\": [{\"translate\": \"ui.dolphin.remove_alert\"}]}"
 					]
 				},
 				"remove": {
 					"component_groups": [
-						"ha:no_all_armor"
+						"ha:removed_air"
 					]
 				},
 				"add": {
 					"component_groups": [
-						"ha:all_armor"
-					]
-				}
-			},
-			"ha:all_armor_off": {
-				"remove": {
-					"component_groups": [
-						"ha:all_armor"
-					]
-				},
-				"add": {
-					"component_groups": [
-						"ha:no_all_armor"
-					]
-				}
-			},
-			"ha:entry_no_armor_end": {
-				"run_command": {
-					"command": [
-						"effect @s poison 12 1 true"
-					]
-				}
-			},
-			"ha:has_zombiejocket_damage": {
-				"run_command": {
-					"command": [
-						"effect @s clear"
-					]
-				}
-			},
-			"cnvx:dolphin_damage": {
-				"run_command": {
-					"command": [
-						"function system/delfin_ataca"
-					]
-				},
-				"add": {
-					"component_groups": [
-						"cnvx:dolphin_damage"
+						"ha:default_air"
 					]
 				}
 			},
 			"ha:in_nether_tag": {
-				"run_command": {
+				"queue_command": {
 					"command": [
 						"tag @s add in_nether"
 					]
 				}
 			},
 			"ha:no_nether_tag": {
-				"run_command": {
+				"queue_command": {
 					"command": [
 						"tag @s remove in_nether"
 					]
 				}
 			},
-			"ha:effect_block": {
-				"run_command": {
+			"ha:armor_netherite": {
+				"queue_command": {
+					"command": [
+						"function achievements/netherite_armor"
+					]
+				}
+			},
+			"ha:wither_effect": {
+				"queue_command": {
+					"command": [
+						"effect @s levitation 30 9"
+					]
+				}
+			},
+			"ha:poison_effects": {
+				"queue_command": {
 					"command": [
 						"effect @s poison 10 0"
 					]
 				}
 			},
-			"cnvx:cold_biome": {
-				"add": {
-					"component_groups": [
-						"cnvx:temperature"
+			"ha:remove_weather_timer": {
+				"queue_command": {
+					"command": [
+						"tag @s remove inWeatherDamage"
 					]
 				},
-				"run_command": {
-					"command": [
-						"tag @s add temp"
-					]
-				}
-			},
-			"cnvx:warm_biome": {
-				"add": {
-					"component_groups": [
-						"cnvx:temperature"
-					]
-				},
-				"run_command": {
-					"command": [
-						"tag @s add temp"
-					]
-				}
-			},
-			"cnvx:normal_biome": {
 				"remove": {
 					"component_groups": [
-						"cnvx:temperature",
-						"cnvx:temp_damager"
+						"ha:weather_damage",
+						"ha:timer_weather_damage"
+					]
+				}
+			},
+			"ha:start_damage_weather": {
+				"queue_command": {
+					"command": [
+						"tellraw @s {\"rawtext\": [{\"translate\": \"chat.danger_weather\"}]}"
 					]
 				},
-				"run_command": {
-					"command": [
-						"tag @s remove temp"
+				"remove": {
+					"component_groups": [
+						"ha:timer_weather_damage"
 					]
-				}
-			},
-			"cnvx:set_tag": {
+				},
 				"add": {
 					"component_groups": [
-						"cnvx:temp_damager"
+						"ha:weather_damage"
 					]
 				}
 			},
-			"ha:sleeping": {
-				"run_command": {
+			"ha:start_weather_timer": {
+				"queue_command": {
 					"command": [
-						"execute as @s[tag=!ya] run tellraw @a {\"rawtext\": [{\"translate\":\"chat.sleeping_message\", \"with\": {\"rawtext\": [{\"selector\":\"@s\"}]}}]}",
-						"weather clear",
-						"time add 50",
-						"tag @s add ya"
+						"tag @s add inWeatherDamage"
+					]
+				},
+				"remove": {
+					"component_groups": [
+						"minecraft:add_bad_omen"
+					]
+				},
+				"add": {
+					"component_groups": [
+						"ha:timer_weather_damage"
 					]
 				}
 			},
-			"ha:no_sleeping": {
-				"run_command": {
+			"ha:set_tag_ban": {
+				"remove": {
+					"component_groups": [
+						"ha:ban"
+					]
+				},
+				"queue_command": {
 					"command": [
-						"tag @s remove ya"
+						"tag @s add banned"
 					]
 				}
 			},
-			"ha:start_delay_ban": {
+			"ha:timer_ban": {
+				"remove": {
+					"component_groups": [
+						"minecraft:add_bad_omen"
+					]
+				},
 				"add": {
 					"component_groups": [
 						"ha:ban"
 					]
 				}
 			},
-			"ha:has_tag_ban": {
-				"remove": {
-					"component_groups": [
-						"ha:ban"
-					]
-				},
-				"run_command": {
+			"ha:sleeping_system": {
+				"queue_command": {
 					"command": [
-						"tag @s add ban"
+						"function system/sleep_system"
+					]
+				}
+			},
+			"ha:remove_sleep": {
+				"queue_command": {
+					"command": [
+						"execute as @s[tag=sleep] run tag @s remove sleep"
+					]
+				}
+			},
+			"ha:resquicio_start": {
+				"queue_command": {
+					"command": [
+						"execute as @s[tag=!dead] at @s run function system/resquicio_on"
 					]
 				}
 			},

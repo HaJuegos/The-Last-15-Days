@@ -1,0 +1,306 @@
+/* Creado o Editado por: HaJuegosCat! y Convex!. Si editaras o copiaras este archivo, recuerda dejar creditos. Cualquier otra informacion o reporte, en el server de Discord: https://discord.gg/WH9KpNWXUz */
+/* Created or Edited by: HaJuegosCat! & Convex!. If you edit or copy this file, remember to give credit. For any other information or report, visit the Discord server: https://discord.gg/WH9KpNWXUz */
+{
+	"format_version": "1.16.0",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "minecraft:enderman",
+			"is_spawnable": true,
+			"is_summonable": true,
+			"is_experimental": false
+		},
+		"component_groups": {
+			"minecraft:enderman_calm": {
+				"minecraft:on_target_acquired": {
+					"event": "minecraft:become_angry",
+					"target": "self"
+				},
+				"minecraft:movement": {
+					"value": 0.3
+				}
+			},
+			"minecraft:enderman_angry": {
+				"minecraft:angry": {
+					"duration": 25,
+					"calm_event": {
+						"event": "minecraft:on_calm",
+						"target": "self"
+					}
+				},
+				"minecraft:movement": {
+					"value": 0.45
+				}
+			}
+		},
+		"components": {
+			"minecraft:damage_sensor": {
+				"triggers": [
+					{
+						"cause": "drowning",
+						"deals_damage": false
+					}
+				]
+			},
+			"minecraft:spell_effects": {
+				"add_effects": [
+					{
+						"effect": "strength",
+						"duration": 999999999,
+						"amplifier": 5,
+						"visible": false,
+						"ambient": false
+					},
+					{
+						"effect": "resistance",
+						"duration": 999999999,
+						"amplifier": 2,
+						"visible": false,
+						"ambient": false
+					},
+					{
+						"effect": "speed",
+						"duration": 999999999,
+						"amplifier": 2,
+						"visible": false,
+						"ambient": false
+					}
+				]
+			},
+			"minecraft:is_hidden_when_invisible": {},
+			"minecraft:experience_reward": {
+				"on_death": "query.last_hit_by_player ? 5 : 0"
+			},
+			"minecraft:type_family": {
+				"family": [
+					"enderman",
+					"monster",
+					"mob"
+				]
+			},
+			"minecraft:nameable": {},
+			"minecraft:loot": {
+				"table": "loot_tables/entities/enderman.json"
+			},
+			"minecraft:health": {
+				"value": 40,
+				"max": 40
+			},
+			"minecraft:attack": {
+				"damage": 7
+			},
+			"minecraft:follow_range": 64,
+			"minecraft:collision_box": {
+				"width": 0.6,
+				"height": 2.9
+			},
+			"minecraft:teleport": {
+				"random_teleports": true,
+				"max_random_teleport_time": 30,
+				"random_teleport_cube": [
+					32,
+					32,
+					32
+				],
+				"target_distance": 16,
+				"target_teleport_chance": 0.05,
+				"light_teleport_chance": 0.05
+			},
+			"minecraft:lookat": {
+				"search_radius": 64,
+				"set_target": true,
+				"look_cooldown": 5,
+				"filters": {
+					"any_of": [
+						{
+							"all_of": [
+								{
+									"subject": "other",
+									"test": "is_family",
+									"value": "player"
+								},
+								{
+									"test": "is_visible",
+									"subject": "other",
+									"value": true
+								},
+								{
+									"test": "has_equipment",
+									"domain": "head",
+									"subject": "other",
+									"operator": "not",
+									"value": "carved_pumpkin"
+								}
+							]
+						},
+						{
+							"all_of": [
+								{
+									"subject": "other",
+									"test": "is_family",
+									"value": "player"
+								},
+								{
+									"test": "is_visible",
+									"subject": "other",
+									"value": true
+								},
+								{
+									"test": "has_equipment",
+									"domain": "head",
+									"subject": "other",
+									"operator": "not",
+									"value": "ha:sneaky_helmet"
+								}
+							]
+						}
+					]
+				}
+			},
+			"minecraft:despawn": {
+				"despawn_from_distance": {}
+			},
+			"minecraft:behavior.melee_attack": {
+				"priority": 0,
+				"can_spread_on_fire": true,
+				"cooldown_time": 0.8,
+				"melee_fov": 360,
+				"reach_multiplier": 1.2,
+				"speed_multiplier": 1.25,
+				"track_target": true
+			},
+			"minecraft:behavior.hurt_by_target": {
+				"priority": 1,
+				"hurt_owner": true
+			},
+			"minecraft:behavior.nearest_attackable_target": {
+				"priority": 2,
+				"must_see": false,
+				"entity_types": [
+					{
+						"filters": {
+							"any_of": [
+								{
+									"all_of": [
+										{
+											"test": "is_family",
+											"subject": "other",
+											"value": "player"
+										},
+										{
+											"test": "has_equipment",
+											"domain": "head",
+											"subject": "other",
+											"operator": "not",
+											"value": "ha:sneaky_helmet"
+										}
+									]
+								},
+								{
+									"test": "is_family",
+									"subject": "other",
+									"value": "endermite"
+								},
+								{
+									"test": "is_family",
+									"subject": "other",
+									"value": "irongolem"
+								},
+								{
+									"test": "is_family",
+									"subject": "other",
+									"value": "snowgolem"
+								}
+							]
+						},
+						"max_dist": 64
+					}
+				]
+			},
+			"minecraft:navigation.walk": {
+				"can_breach": true,
+				"can_break_doors": true,
+				"can_open_doors": true,
+				"can_open_iron_doors": true,
+				"can_pass_doors": true,
+				"can_path_from_air": true,
+				"can_path_over_lava": true,
+				"can_path_over_water": true
+			},
+			"minecraft:movement.basic": {},
+			"minecraft:jump.static": {},
+			"minecraft:can_climb": {},
+			"minecraft:behavior.float": {
+				"priority": 3
+			},
+			"minecraft:behavior.random_stroll": {
+				"priority": 4,
+				"speed_multiplier": 1
+			},
+			"minecraft:behavior.look_at_player": {
+				"priority": 5,
+				"look_distance": 8,
+				"probability": 8
+			},
+			"minecraft:behavior.random_look_around": {
+				"priority": 6
+			},
+			"minecraft:behavior.enderman_leave_block": {
+				"priority": 7
+			},
+			"minecraft:behavior.enderman_take_block": {
+				"priority": 8
+			},
+			"minecraft:physics": {},
+			"minecraft:pushable": {
+				"is_pushable": true,
+				"is_pushable_by_piston": true
+			},
+			"minecraft:conditional_bandwidth_optimization": {
+				"default_values": {
+					"max_optimized_distance": 80,
+					"max_dropped_ticks": 10,
+					"use_motion_prediction_hints": true
+				}
+			},
+			"minecraft:variable_max_auto_step": {
+				"base_value": 1.0625,
+				"jump_prevented_value": 0.5625
+			},
+			"minecraft:fire_immune": true
+		},
+		"events": {
+			"minecraft:entity_spawned": {
+				"remove": {},
+				"add": {
+					"component_groups": [
+						"minecraft:enderman_calm"
+					]
+				}
+			},
+			"minecraft:become_angry": {
+				"remove": {
+					"component_groups": [
+						"minecraft:enderman_calm"
+					]
+				},
+				"add": {
+					"component_groups": [
+						"minecraft:enderman_angry"
+					]
+				}
+			},
+			"minecraft:on_calm": {
+				"remove": {
+					"component_groups": [
+						"minecraft:enderman_angry"
+					]
+				},
+				"add": {
+					"component_groups": [
+						"minecraft:enderman_calm"
+					]
+				}
+			}
+		}
+	}
+}

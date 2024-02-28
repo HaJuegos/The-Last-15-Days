@@ -1,0 +1,161 @@
+/* Creado o Editado por: HaJuegosCat! y Convex!. Si editaras o copiaras este archivo, recuerda dejar creditos. Cualquier otra informacion o reporte, en el server de Discord: https://discord.gg/WH9KpNWXUz */
+/* Created or Edited by: HaJuegosCat! & Convex!. If you edit or copy this file, remember to give credit. For any other information or report, visit the Discord server: https://discord.gg/WH9KpNWXUz */
+{
+	"pools": [
+		{
+			"rolls": 1,
+			"entries": [
+				{
+					"type": "item",
+					"name": "minecraft:golden_apple",
+					"weight": 2
+				},
+				{
+					"type": "item",
+					"name": "minecraft:enchanted_golden_apple",
+					"weight": 1
+				},
+				{
+					"type": "item",
+					"name": "cnvx:iron_apple",
+					"weight": 1
+				},
+				{
+					"type": "item",
+					"name": "minecraft:chorus_fruit",
+					"weight": 1
+				},
+				{
+					"type": "item",
+					"name": "minecraft:potion",
+					"weight": 1,
+					"functions": [
+						{
+							"function": "set_data",
+							"data": {
+								"min": 22,
+								"max": 22
+							}
+						}
+					]
+				},
+				{
+					"type": "item",
+					"name": "minecraft:potion",
+					"weight": 1,
+					"functions": [
+						{
+							"function": "set_data",
+							"data": {
+								"min": 30,
+								"max": 30
+							}
+						}
+					]
+				},
+				{
+					"type": "item",
+					"name": "minecraft:potion",
+					"weight": 1,
+					"functions": [
+						{
+							"function": "set_data",
+							"data": {
+								"min": 33,
+								"max": 33
+							}
+						}
+					]
+				},
+				{
+					"type": "item",
+					"name": "minecraft:potion",
+					"weight": 1,
+					"functions": [
+						{
+							"function": "set_data",
+							"data": {
+								"min": 41,
+								"max": 41
+							}
+						}
+					]
+				},
+				{
+					"type": "item",
+					"name": "minecraft:potion",
+					"weight": 1,
+					"functions": [
+						{
+							"function": "set_data",
+							"data": {
+								"min": 8,
+								"max": 8
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"rolls": 1,
+			"entries": [
+				{
+					"type": "item",
+					"name": "minecraft:diamond_helmet",
+					"functions": [
+						{
+							"function": "enchant_random_gear",
+							"chance": 0.25
+						}
+					]
+				}
+			]
+		},
+		{
+			"rolls": 1,
+			"entries": [
+				{
+					"type": "item",
+					"name": "minecraft:diamond_chestplate",
+					"functions": [
+						{
+							"function": "enchant_random_gear",
+							"chance": 0.25
+						}
+					]
+				}
+			]
+		},
+		{
+			"rolls": 1,
+			"entries": [
+				{
+					"type": "item",
+					"name": "minecraft:diamond_leggings",
+					"functions": [
+						{
+							"function": "enchant_random_gear",
+							"chance": 0.25
+						}
+					]
+				}
+			]
+		},
+		{
+			"rolls": 1,
+			"entries": [
+				{
+					"type": "item",
+					"name": "minecraft:diamond_boots",
+					"functions": [
+						{
+							"function": "enchant_random_gear",
+							"chance": 0.25
+						}
+					]
+				}
+			]
+		}
+	]
+}

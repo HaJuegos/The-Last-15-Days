@@ -1,14 +1,9 @@
-/* Creado/Editado por: HaJuegos Cat! & Convex!. Si necesitas mas informacion, hablamos en Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174 */
-/* Created/Edited by: HaCatto! & Convex! If you need more information, we talk on Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174 */
+/* Creado o Editado por: HaJuegosCat! y Convex!. Si editaras o copiaras este archivo, recuerda dejar creditos. Cualquier otra informacion o reporte, en el server de Discord: https://discord.gg/WH9KpNWXUz */
+/* Created or Edited by: HaJuegosCat! & Convex!. If you edit or copy this file, remember to give credit. For any other information or report, visit the Discord server: https://discord.gg/WH9KpNWXUz */
 {
 	"pools": [
 		{
 			"rolls": 1,
-			"conditions": [
-				{
-					"condition": "killed_by_player_or_pets"
-				}
-			],
 			"entries": [
 				{
 					"type": "empty",
@@ -16,13 +11,33 @@
 				},
 				{
 					"type": "item",
-					"name": "minecraft:leather",
+					"name": "ha:sneaky_helmet",
 					"weight": 50
-				},
+				}
+			]
+		},
+		{
+			"rolls": 1,
+			"entries": [
 				{
 					"type": "item",
-					"name": "ha:sneaky_astroner_boots",
-					"weight": 50
+					"name": "minecraft:leather",
+					"functions": [
+						{
+							"function": "set_count",
+							"count": {
+								"min": 0,
+								"max": 2
+							}
+						},
+						{
+							"function": "looting_enchant",
+							"count": {
+								"min": 0,
+								"max": 1
+							}
+						}
+					]
 				}
 			]
 		}

@@ -1,0 +1,195 @@
+/* Creado o Editado por: HaJuegosCat! y Convex!. Si editaras o copiaras este archivo, recuerda dejar creditos. Cualquier otra informacion o reporte, en el server de Discord: https://discord.gg/WH9KpNWXUz */
+/* Created or Edited by: HaJuegosCat! & Convex!. If you edit or copy this file, remember to give credit. For any other information or report, visit the Discord server: https://discord.gg/WH9KpNWXUz */
+{
+	"format_version": "1.17.0",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "ha:regenerate_llama",
+			"is_summonable": true,
+			"is_spawnable": false,
+			"is_experimental": false,
+			"animations": {
+				"timer": "animation.regenerate_llama.timer"
+			},
+			"scripts": {
+				"animate": [
+					"timer"
+				]
+			}
+		},
+		"component_groups": {
+			"return_to_location": {
+				"minecraft:behavior.go_home": {
+					"priority": 0,
+					"speed_multiplier": 1.3,
+					"interval": 1,
+					"goal_radius": 0.1
+				}
+			},
+			"generate_1": {
+				"minecraft:spawn_entity": {
+					"entities": [
+						{
+							"should_leash": true,
+							"num_to_spawn": 1,
+							"min_wait_time": 0,
+							"max_wait_time": 0,
+							"spawn_entity": "minecraft:llama",
+							"spawn_event": "ha:spawned_from_end",
+							"single_use": true
+						}
+					]
+				},
+				"minecraft:timer": {
+					"time": [
+						0.1,
+						0.1
+					],
+					"looping": false,
+					"time_down_event": {
+						"event": "ha:remove_loop",
+						"target": "self"
+					}
+				}
+			},
+			"generate_2": {
+				"minecraft:spawn_entity": {
+					"entities": [
+						{
+							"should_leash": true,
+							"num_to_spawn": 1,
+							"min_wait_time": 0,
+							"max_wait_time": 0,
+							"spawn_entity": "minecraft:trader_llama",
+							"spawn_event": "ha:spawned_from_end",
+							"single_use": true
+						}
+					]
+				},
+				"minecraft:timer": {
+					"time": [
+						0.1,
+						0.1
+					],
+					"looping": false,
+					"time_down_event": {
+						"event": "ha:remove_loop",
+						"target": "self"
+					}
+				}
+			},
+			"despawn": {
+				"minecraft:instant_despawn": {}
+			}
+		},
+		"components": {
+			"minecraft:type_family": {
+				"family": [
+					"dragon_attack",
+					"inanimate",
+					"mob"
+				]
+			},
+			"minecraft:collision_box": {
+				"width": 0.5,
+				"height": 0.5
+			},
+			"minecraft:health": {
+				"min": 1,
+				"value": 1,
+				"max": 1
+			},
+			"minecraft:damage_sensor": {
+				"triggers": [
+					{
+						"cause": "all",
+						"deals_damage": false
+					}
+				]
+			},
+			"minecraft:knockback_resistance": {
+				"value": 1
+			},
+			"minecraft:persistent": {},
+			"minecraft:physics": {
+				"has_gravity": false,
+				"has_collision": false
+			},
+			"minecraft:pushable": {
+				"is_pushable": false,
+				"is_pushable_by_piston": false
+			},
+			"minecraft:conditional_bandwidth_optimization": {},
+			"minecraft:tick_world": {
+				"radius": 4,
+				"never_despawn": true
+			},
+			"minecraft:home": {},
+			"minecraft:behavior.float": {
+				"priority": 1
+			},
+			"minecraft:movement": {
+				"value": 0.3
+			},
+			"minecraft:flying_speed": {
+				"value": 0.15
+			},
+			"minecraft:navigation.hover": {
+				"can_path_over_water": true,
+				"can_sink": false,
+				"can_pass_doors": false,
+				"can_path_from_air": true,
+				"avoid_water": true,
+				"avoid_damage_blocks": true,
+				"avoid_sun": false
+			},
+			"minecraft:movement.hover": {},
+			"minecraft:jump.static": {},
+			"minecraft:can_fly": {}
+		},
+		"events": {
+			"minecraft:entity_spawned": {
+				"add": {
+					"component_groups": [
+						"return_to_location"
+					]
+				}
+			},
+			"ha:despawn": {
+				"add": {
+					"component_groups": [
+						"despawn"
+					]
+				}
+			},
+			"ha:generate_llama": {
+				"randomize": [
+					{
+						"weight": 1,
+						"add": {
+							"component_groups": [
+								"generate_1"
+							]
+						}
+					},
+					{
+						"weight": 1,
+						"add": {
+							"component_groups": [
+								"generate_2"
+							]
+						}
+					}
+				]
+			},
+			"ha:remove_loop": {
+				"remove": {
+					"component_groups": [
+						"generate_1",
+						"generate_2"
+					]
+				}
+			}
+		}
+	}
+}

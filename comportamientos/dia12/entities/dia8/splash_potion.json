@@ -1,0 +1,329 @@
+/* Creado o Editado por: HaJuegosCat! y Convex!. Si editaras o copiaras este archivo, recuerda dejar creditos. Cualquier otra informacion o reporte, en el server de Discord: https://discord.gg/WH9KpNWXUz */
+/* Created or Edited by: HaJuegosCat! & Convex!. If you edit or copy this file, remember to give credit. For any other information or report, visit the Discord server: https://discord.gg/WH9KpNWXUz */
+{
+	"format_version": "1.12.0",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "minecraft:splash_potion",
+			"is_spawnable": false,
+			"is_summonable": true,
+			"is_experimental": false
+		},
+		"component_groups": {
+			"ha:damage": {
+				"minecraft:projectile": {
+					"on_hit": {
+						"spawn_aoe_cloud": {
+							"radius": 1,
+							"radius_on_use": 0,
+							"potion": 23,
+							"duration": 0.1,
+							"color": [
+								220,
+								0,
+								239
+							],
+							"affect_owner": false,
+							"reapplication_delay": 9999
+						},
+						"definition_event": {
+							"affect_projectile": true,
+							"event_trigger": {
+								"event": "ha:set_damage",
+								"target": "self"
+							}
+						},
+						"douse_fire": {},
+						"thrown_potion_effect": {},
+						"remove_on_hit": {}
+					},
+					"power": 0.5,
+					"gravity": 0.05,
+					"angle_offset": -20,
+					"hit_sound": "glass"
+				}
+			},
+			"ha:health": {
+				"minecraft:projectile": {
+					"on_hit": {
+						"spawn_aoe_cloud": {
+							"radius": 1,
+							"radius_on_use": 0,
+							"duration": 0.1,
+							"color": [
+								220,
+								0,
+								239
+							],
+							"affect_owner": false,
+							"reapplication_delay": 9999,
+							"potion": 21
+						},
+						"definition_event": {
+							"affect_projectile": true,
+							"event_trigger": {
+								"event": "ha:set_health",
+								"target": "self"
+							}
+						},
+						"douse_fire": {},
+						"thrown_potion_effect": {},
+						"remove_on_hit": {}
+					},
+					"power": 0.5,
+					"gravity": 0.05,
+					"angle_offset": -20,
+					"hit_sound": "glass"
+				}
+			},
+			"ha:regeneration": {
+				"minecraft:projectile": {
+					"on_hit": {
+						"spawn_aoe_cloud": {
+							"radius": 1,
+							"radius_on_use": 0,
+							"duration": 0.1,
+							"color": [
+								220,
+								0,
+								239
+							],
+							"affect_owner": false,
+							"reapplication_delay": 9999,
+							"potion": 28
+						},
+						"definition_event": {
+							"affect_projectile": true,
+							"event_trigger": {
+								"event": "ha:set_regeneration",
+								"target": "self"
+							}
+						},
+						"douse_fire": {},
+						"thrown_potion_effect": {},
+						"remove_on_hit": {}
+					},
+					"power": 0.5,
+					"gravity": 0.05,
+					"angle_offset": -20,
+					"hit_sound": "glass"
+				}
+			},
+			"ha:slowness": {
+				"minecraft:projectile": {
+					"on_hit": {
+						"spawn_aoe_cloud": {
+							"radius": 1,
+							"radius_on_use": 0,
+							"duration": 0.1,
+							"color": [
+								220,
+								0,
+								239
+							],
+							"affect_owner": false,
+							"reapplication_delay": 9999,
+							"potion": 17
+						},
+						"definition_event": {
+							"affect_projectile": true,
+							"event_trigger": {
+								"event": "ha:set_slowness",
+								"target": "self"
+							}
+						},
+						"douse_fire": {},
+						"thrown_potion_effect": {},
+						"remove_on_hit": {}
+					},
+					"power": 0.5,
+					"gravity": 0.05,
+					"angle_offset": -20,
+					"hit_sound": "glass"
+				}
+			},
+			"ha:poison": {
+				"minecraft:projectile": {
+					"on_hit": {
+						"spawn_aoe_cloud": {
+							"radius": 1,
+							"radius_on_use": 0,
+							"duration": 0.1,
+							"color": [
+								220,
+								0,
+								239
+							],
+							"affect_owner": false,
+							"reapplication_delay": 9999,
+							"potion": 25
+						},
+						"definition_event": {
+							"affect_projectile": true,
+							"event_trigger": {
+								"event": "ha:set_poison",
+								"target": "self"
+							}
+						},
+						"douse_fire": {},
+						"thrown_potion_effect": {},
+						"remove_on_hit": {}
+					},
+					"power": 0.5,
+					"gravity": 0.05,
+					"angle_offset": -20,
+					"hit_sound": "glass"
+				}
+			},
+			"ha:weakness": {
+				"minecraft:projectile": {
+					"on_hit": {
+						"spawn_aoe_cloud": {
+							"radius": 1,
+							"radius_on_use": 0,
+							"duration": 0.1,
+							"color": [
+								220,
+								0,
+								239
+							],
+							"affect_owner": false,
+							"reapplication_delay": 9999,
+							"potion": 34
+						},
+						"definition_event": {
+							"affect_projectile": true,
+							"event_trigger": {
+								"event": "ha:set_weakness",
+								"target": "self"
+							}
+						},
+						"douse_fire": {},
+						"thrown_potion_effect": {},
+						"remove_on_hit": {}
+					},
+					"power": 0.5,
+					"gravity": 0.05,
+					"angle_offset": -20,
+					"hit_sound": "glass"
+				}
+			}
+		},
+		"components": {
+			"minecraft:collision_box": {
+				"width": 0.25,
+				"height": 0.25
+			},
+			"minecraft:projectile": {
+				"on_hit": {
+					"douse_fire": {},
+					"thrown_potion_effect": {},
+					"remove_on_hit": {}
+				},
+				"power": 0.5,
+				"gravity": 0.05,
+				"angle_offset": -20.0,
+				"hit_sound": "glass"
+			},
+			"minecraft:physics": {},
+			"minecraft:pushable": {
+				"is_pushable": true,
+				"is_pushable_by_piston": true
+			},
+			"minecraft:conditional_bandwidth_optimization": {
+				"default_values": {
+					"max_optimized_distance": 80.0,
+					"max_dropped_ticks": 5,
+					"use_motion_prediction_hints": true
+				}
+			}
+		},
+		"events": {
+			"minecraft:entity_spawned": {},
+			"ha:damage_potion": {
+				"add": {
+					"component_groups": [
+						"ha:damage"
+					]
+				}
+			},
+			"ha:set_damage": {
+				"run_command": {
+					"command": [
+						"damage @e[r=4] 999 magic"
+					]
+				}
+			},
+			"ha:health_potion": {
+				"add": {
+					"component_groups": [
+						"ha:health"
+					]
+				}
+			},
+			"ha:set_health": {
+				"run_command": {
+					"command": [
+						"effect @e[r=4] instant_health 1 9"
+					]
+				}
+			},
+			"ha:regeneration_potion": {
+				"add": {
+					"component_groups": [
+						"ha:regeneration"
+					]
+				}
+			},
+			"ha:set_regeneration": {
+				"run_command": {
+					"command": [
+						"effect @e[r=4] regeneration 11 9"
+					]
+				}
+			},
+			"ha:slowness_potion": {
+				"add": {
+					"component_groups": [
+						"ha:slowness_potion"
+					]
+				}
+			},
+			"ha:set_slowness": {
+				"run_command": {
+					"command": [
+						"effect @e[r=4] slowness 90 9"
+					]
+				}
+			},
+			"ha:poison_potion": {
+				"add": {
+					"component_groups": [
+						"ha:poison"
+					]
+				}
+			},
+			"ha:set_poison": {
+				"run_command": {
+					"command": [
+						"effect @e[r=4] poison 45 9"
+					]
+				}
+			},
+			"ha:weakness_potion": {
+				"add": {
+					"component_groups": [
+						"ha:weakness"
+					]
+				}
+			},
+			"ha:set_weakness": {
+				"run_command": {
+					"command": [
+						"effect @e[r=4] weakness 90 9"
+					]
+				}
+			}
+		}
+	}
+}

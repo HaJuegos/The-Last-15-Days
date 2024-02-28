@@ -1,0 +1,62 @@
+/* Creado o Editado por: HaJuegosCat! y Convex!. Si editaras o copiaras este archivo, recuerda dejar creditos. Cualquier otra informacion o reporte, en el server de Discord: https://discord.gg/WH9KpNWXUz */
+/* Created or Edited by: HaJuegosCat! & Convex!. If you edit or copy this file, remember to give credit. For any other information or report, visit the Discord server: https://discord.gg/WH9KpNWXUz */
+{
+	"format_version": "1.18.20",
+	"animation_controllers": {
+		"controller.animation.player.respawn_system": {
+			"initial_state": "default",
+			"states": {
+				"default": {
+					"transitions": [
+						{
+							"is_dead": "query.is_alive == 0"
+						}
+					]
+				},
+				"is_dead": {
+					"transitions": [
+						{
+							"respawn": "!query.is_alive == 0"
+						}
+					]
+				},
+				"respawn": {
+					"on_entry": [
+						"/scriptevent ha:death_knockback",
+						"@s ha:timer_ban"
+					],
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					]
+				}
+			}
+		},
+		"controller.animation.player.first_spawn": {
+			"initial_state": "default",
+			"states": {
+				"default": {
+					"transitions": [
+						{
+							"check_move": "query.life_time >= 9"
+						}
+					]
+				},
+				"check_move": {
+					"transitions": [
+						{
+							"give_kit": "query.is_moving"
+						}
+					]
+				},
+				"give_kit": {
+					"on_entry": [
+						"/execute as @s[tag=!kit] at @s run function system/kitSpawn",
+						"/function system/isDay"
+					]
+				}
+			}
+		}
+	}
+}

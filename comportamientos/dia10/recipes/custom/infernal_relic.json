@@ -1,0 +1,55 @@
+/* Creado o Editado por: HaJuegosCat! y Convex!. Si editaras o copiaras este archivo, recuerda dejar creditos. Cualquier otra informacion o reporte, en el server de Discord: https://discord.gg/WH9KpNWXUz */
+/* Created or Edited by: HaJuegosCat! & Convex!. If you edit or copy this file, remember to give credit. For any other information or report, visit the Discord server: https://discord.gg/WH9KpNWXUz */
+{
+	"format_version": "1.20.10",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "ha:infernal_relic_crafting"
+		},
+		"tags": [
+			"crafting_table"
+		],
+		"pattern": [
+			"1 2",
+			" E ",
+			"3 4"
+		],
+		"key": {
+			"E": {
+				"item": "minecraft:nether_star"
+			},
+			"1": {
+				"item": "ha:magmacube_ignite_shard"
+			},
+			"2": {
+				"item": "ha:piglin_ignite_shard"
+			},
+			"3": {
+				"item": "ha:blaze_ignite_shard"
+			},
+			"4": {
+				"item": "ha:ghast_ignite_shard"
+			}
+		},
+		"unlock": [
+			{
+				"item": "minecraft:nether_star"
+			},
+			{
+				"item": "ha:magmacube_ignite_shard"
+			},
+			{
+				"item": "ha:piglin_ignite_shard"
+			},
+			{
+				"item": "ha:blaze_ignite_shard"
+			},
+			{
+				"item": "ha:ghast_ignite_shard"
+			}
+		],
+		"result": {
+			"item": "ha:infernal_relic"
+		}
+	}
+}

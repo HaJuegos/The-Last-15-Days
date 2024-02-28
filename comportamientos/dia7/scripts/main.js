@@ -1,237 +1,420 @@
-/* Creado/Editado por: HaJuegos Cat! & Convex!. Si necesitas mas informacion, hablamos en Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174 */
-/* Created/Edited by: HaCatto! & Convex! If you need more information, we talk on Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174 */
+/* Creado o Editado por: HaJuegosCat! y Convex!. Si editaras o copiaras este archivo, recuerda dejar creditos. Cualquier otra informacion o reporte, en el server de Discord: https://discord.gg/WH9KpNWXUz */
+/* Created or Edited by: HaJuegosCat! & Convex!. If you edit or copy this file, remember to give credit. For any other information or report, visit the Discord server: https://discord.gg/WH9KpNWXUz */
 
-import { system, world, ItemStack, EquipmentSlot } from "@minecraft/server";
+import * as mc from "@minecraft/server";
+import { preRanksSetup, setupCommands, mobsExplodes } from './localVariables';
+import { timerBan } from './settings';
 
-system.beforeEvents.watchdogTerminate.subscribe((eventData) => {
-	eventData.cancel = true;
-});
+let lastCoords = {};
+let lastDime = {};
 
-world.afterEvents.entitySpawn.subscribe(entitySummon => {
+mc.world.beforeEvents.explosion.subscribe(explodeSensor => {
 	try {
-		let entity = entitySummon.entity;
-		switch (entity.typeId) {
-			case 'minecraft:sheep': {
-				entity.nameTag = "Polly";
-			} break;
-		};
+		let entity = explodeSensor.source;
+		let coords = entity.location;
+		let message = {translate: "chat.explotion_alert", with: {rawtext: [{text: `${Math.round(coords.x)} ${Math.round(coords.y)} ${Math.round(coords.z)}`},{translate: `${dimensionName(entity)}`}]}};
+		if (mobsExplodes.includes(entity.typeId)) {
+			if (entity.typeId) {
+				message.with.rawtext.push({ text: 'Skuartu' });
+				mc.world.sendMessage(message);
+			} else {
+				let entityName = entity.typeId.split(':')[1].charAt(0).toUpperCase() + entity.typeId.split(':')[1].slice(1);
+				message.with.rawtext.push({ text: entityName });
+				mc.world.sendMessage(message);
+			};
+		}; 
 	} catch {};
 });
 
-world.afterEvents.entityHurt.subscribe(entityDamage => {
+mc.world.afterEvents.entitySpawn.subscribe(duplicateMobs => {
 	try {
-		let hurtEntity = entityDamage.hurtEntity;
-		let source = entityDamage.damageSource;
-		let entityCause = source.damagingEntity;
-		let cause = source.cause;
-		let damage = entityDamage.damage;
-		switch (true) {
-			case (hurtEntity.typeId == 'minecraft:player'): {
-				if (entityCause.typeId == 'minecraft:fox') {
-					hurtEntity.runCommandAsync(`function system/zorro_roba_item`);
-				} else if (entityCause.typeId == 'minecraft:stray' && cause == 'projectile') {
-					hurtEntity.runCommandAsync(`effect @s slowness 30 3`);
-				} else if (entityCause.typeId == 'minecraft:husk') {
-					hurtEntity.runCommandAsync(`effect @s hunger 30 3`);
-				} else if (entityCause.typeId == 'minecraft:wither') {
-					hurtEntity.runCommandAsync(`effect @s levitation 30 10`);
-				} else if (entityCause.typeId == 'minecraft:dolphin') {
-					hurtEntity.runCommandAsync(`event entity @s cnvx:dolphin_damage`);
-				} else if (entityCause.typeId == 'minecraft:zombie_horse' || entityCause.typeId == 'minecraft:skeleton_horse') {
-					hurtEntity.runCommandAsync(`effect @s mining_fatigue 60 0`);
-					hurtEntity.runCommandAsync(`effect @s poison 30 1`);
-					hurtEntity.runCommandAsync(`effect @s nausea 30 0`);
-				} else if (entityCause.typeId == 'minecraft:spider' || entityCause.typeId == 'minecraft:cave_spider') {
-					hurtEntity.runCommandAsync(`fill ~3 ~3 ~3 ~-3 ~-3 ~-3 web replace air`);
+		let entity = duplicateMobs.entity;
+		let dimension = entity.dimension;
+		let coords = entity.location;
+		switch (entity.typeId) {
+			case 'minecraft:blaze':
+			case 'minecraft:piglin':
+			case 'minecraft:piglin_brute':
+			case 'minecraft:ghast': {
+				if (entity.hasTag("duplicated")) return;
+				entity.addTag("duplicated");
+				for (let i = 0; i < 2; i++) {
+					let duplicateMob = dimension.spawnEntity(`${entity.typeId}`, coords);
+					duplicateMob.addTag("duplicated");
 				};
 			} break;
+			case 'minecraft:sheep': {
+				entity.nameTag = `§bPolly§r`;
+			} break;
 		};
 	} catch {};
 });
 
-world.afterEvents.blockBreak.subscribe(eventNetherite => {
+mc.system.beforeEvents.watchdogTerminate.subscribe(dogNo => {
+	try {
+		dogNo.cancel = true;
+	} catch {};
+});
+
+mc.world.beforeEvents.playerBreakBlock.subscribe(blockSensor => {
+	try {
+		let block = blockSensor.block;
+		let player = blockSensor.player;
+		if (block.typeId == 'minecraft:diamond_ore' || block.typeId == 'minecraft:deepslate_diamond_ore') {
+			mc.system.run(() => {
+				player.applyDamage(2, { cause: mc.EntityDamageCause.temperature });
+			});
+		} else if (block.typeId == 'minecraft:ancient_debris') {
+			let coords = block.location;
+			let dimension = player.dimension;
+			mc.system.run(() => {
+				dimension.spawnEntity("minecraft:silverfish", coords);
+				dimension.runCommand(`setblock ${coords.x} ${coords.y} ${coords.z} flowing_lava`);
+			});
+		};
+	} catch {};
+});
+
+mc.world.afterEvents.projectileHitEntity.subscribe(projectileHitSensor => {
+	try {
+		let source = projectileHitSensor.source
+		let hitEntity = projectileHitSensor.getEntityHit().entity;
+		if (source.typeId == 'minecraft:stray') {
+			hitEntity.addEffect("slowness", 600, { amplifier: 3 });
+		};
+	} catch {};
+});
+
+mc.world.afterEvents.entityHurt.subscribe(damageSensor => {
+	try {
+		let damageSource = damageSensor.damageSource;
+		let cause = damageSource.cause;
+		let sourceEntity = damageSource.damagingEntity;
+		let hurtEntity = damageSensor.hurtEntity;
+		if (sourceEntity && sourceEntity.typeId == 'minecraft:slime') {
+			hurtEntity.addEffect("jump_boost", 600, { amplifier: 1 });
+		};
+		if (hurtEntity.typeId == 'minecraft:player') {
+			if (cause == 'fire' || cause == 'fireTick') {
+				hurtEntity.applyDamage(6, { cause: mc.EntityDamageCause.fireTick });
+			} else if (cause == 'lava') {
+				hurtEntity.applyDamage(10, { cause: mc.EntityDamageCause.lava });
+			};
+		};
+	} catch {};
+});
+
+mc.world.afterEvents.entityHitEntity.subscribe(hitSensor => {
     try {
-        let player = Array.from(world.getPlayers()).find(p => p.name == eventNetherite.player.name);
-        let block = eventNetherite.brokenBlockPermutation.type;
-		let x = eventNetherite.block.location.x;
-        let y = eventNetherite.block.location.y;
-        let z = eventNetherite.block.location.z;
-        if (block.id == 'minecraft:diamond_ore') {
-            player.runCommandAsync(`damage "${player.name}" 3 temperature`);
-        };
-		if (block.id == 'minecraft:deepslate_diamond_ore') {
-            player.runCommandAsync(`damage "${player.name}" 3 temperature`);
-        };
-		if (block.id == 'minecraft:ancient_debris') {
-            player.runCommandAsync(`summon silverfish ${x} ${y} ${z}`);
-            player.runCommandAsync(`setblock ${x} ${y} ${z} flowing_lava`);
-        };
+        const entityDamage = hitSensor.damagingEntity;
+        const entityHit = hitSensor.hitEntity;
+		switch (entityDamage.typeId) {
+			case 'minecraft:goat': {
+				let coordsDamage = entityDamage.location;
+				let coordsHit = entityHit.location;
+				const directionX = coordsHit.x - coordsDamage.x;
+				const directionZ = coordsHit.z - coordsDamage.z;
+				entityHit.applyKnockback(directionX, directionZ, 3.3, 0.3);
+			} break;
+			case 'minecraft:fox': {
+				if (entityHit.typeId != 'minecraft:player') return;
+				stealItemFox(entityDamage, entityHit);
+			} break;
+			case 'minecraft:husk': {
+				entityHit.addEffect("hunger", 600, { amplifier: 3 });
+			} break;
+			case 'minecraft:stray': {
+				entityHit.addEffect("slowness", 600, { amplifier: 3 });
+			} break;
+			case 'minecraft:dolphin': {
+				entityHit.runCommand(`scoreboard players add @s dolphinTimer 300`);
+				entityHit.playSound("damage.thorns");
+			} break;
+			case 'minecraft:zombie_horse': {
+				entityHit.addEffect("nausea", 400, { amplifier: 0 });
+				entityHit.addEffect("mining_fatigue", 400, { amplifier: 0 });
+				entityHit.addEffect("poison", 400, { amplifier: 0 });
+				entityHit.dimension.spawnEntity("minecraft:zombie<minecraft:entity_spawned>", entityHit.location);
+			} break;
+			case 'minecraft:skeleton_horse': {
+				entityHit.addEffect("nausea", 400, { amplifier: 0 });
+				entityHit.addEffect("mining_fatigue", 400, { amplifier: 0 });
+				entityHit.addEffect("poison", 400, { amplifier: 0 });
+				entityHit.dimension.spawnEntity("minecraft:skeleton<minecraft:entity_spawned>", entityHit.location);
+			} break;
+			case 'minecraft:spider':
+			case 'minecraft:cave_spider': {
+				entityHit.runCommand(`fill ~5~5~-5 ~-5~-5~5 web replace air`);
+			} break;
+		};
     } catch {};
 });
 
-world.beforeEvents.chatSend.subscribe(eventData => {
+mc.world.afterEvents.worldInitialize.subscribe(setupworld => {
 	try {
-		const msg = eventData.message;
-		const player = eventData.sender;
-		eventData.cancel = true;
-		let tag = player.getTags().find(tag => tag.startsWith("r:"))?.substring(2)?.split("-") || ["default"];
-		let key = `rank.${tag}`;
-		world.getDimension("overworld").runCommandAsync(`tellraw @a {"rawtext":[{"text":"§l§8["},{"translate":"${key}"},{"text":"§l§8]§r ${player.name} §8§l>>§r ${msg}"}]}`);
+		const dimension = mc.world.getDimension("overworld");
+		for (let command of setupCommands) {
+			dimension.runCommandAsync(`${command}`);
+		};
 	} catch {};
 });
 
-world.afterEvents.entityDie.subscribe(eventDead => {
+mc.world.afterEvents.entityHurt.subscribe(totemSensor => {
 	try {
-		let entity = eventDead.deadEntity;
-		let source = eventDead.damageSource;
-		let cause = source.cause;
-		let entityCause = source.damagingEntity;
-		if (entity.typeId == 'minecraft:player') {
-			if (!entity.hasTag("coords")) {
-				entity.runCommandAsync(`summon ha:ghost_player "§e${entity.name} Inventory§r" ~ ~ ~`);
-				entity.runCommandAsync(`tellraw @a {"rawtext": [{"translate":"dead_player_coordinates", "with": {"rawtext": [{"selector":"@s"},{"text":"${Math.floor(entity.location.x)} ${Math.floor(entity.location.y)} ${Math.floor(entity.location.z)}"},{"translate":"${getDimension(entity.dimension)}"}]}}]}`);
-				entity.addTag("coords");
-			};
-			if (entityCause) {
-				try {
-					let name = entityCause.name ?? entityCause.typeId;
-					console.warn(`[HALOGS] >> ${entity.name} ha muerto a manos de ${name}. Causa: ${cause}. (Estaba en el ${entity.dimension.id} en las coords ${Math.round(entity.location.x)} ${Math.round(entity.location.z)} ${Math.round(entity.location.y)})`);
-				} catch {
-					console.warn(`[HALOGS] >> ${entity.name} ha muerto a manos de una entidad desconocida, que ha muerto tambien o no se pudo obtener a tiempo. Causa: ${cause}. (Estaba en el ${entity.dimension.id} en las coords ${Math.round(entity.location.x)} ${Math.round(entity.location.z)} ${Math.round(entity.location.y)})`);
+		let damage = totemSensor.damage;
+		let entity = totemSensor.hurtEntity;
+		let source = totemSensor.damageSource;
+		if (entity.typeId != 'minecraft:player') return;
+		let health = entity.getComponent("minecraft:health");
+		if (health.currentValue <= 0) {
+			mc.system.run(() => {
+				if (health.currentValue > 0) {
+					entity.applyDamage(0, override);
 				};
-			} else {
-				console.warn(`[HALOGS] >> ${entity.name} ha muerto. Causa: ${cause}. (Estaba en el ${entity.dimension.id} en las coords ${Math.round(entity.location.x)} ${Math.round(entity.location.z)} ${Math.round(entity.location.y)})`);
-			};
-		};
-	} catch {};
-});
-
-system.runInterval(() => {
-	for (const player of world.getPlayers()) {
-		if (player.hasTag("ban")) {
-			player.runCommandAsync(`kick "${player.name}" `);
-        };
-    };
-}, 44);
-
-system.runInterval((healthEvent) => {
-	try {
-		const players = Array.from(world.getPlayers());
-		for (const player of players) {
-			if (player.hasComponent("health")) {
-				const health = player.getComponent("health");
-				let rankKey = player.getTags().find((tag) => tag.startsWith("r:") || tag == "owner" || tag == "dev" || tag == "custom_1" || tag == "custom_2" || tag == "custom_3" || tag == "custom_4" || tag == "custom_5" || tag == "custom_6" || tag == "custom_7" || tag == "custom_8" || tag == "custom_9" || tag == "custom_10");
-				if (!rankKey) {
-					rankKey = "§r§4Survivor";
-				} else {
-					switch (true) {
-						case (rankKey.startsWith("r:owner")): {
-							rankKey = "§r§eOwner";
-						} break;
-						case (rankKey.startsWith("r:dev")): {
-							rankKey = "§r§6DEV";
-						} break;
-						case (rankKey.startsWith("r:custom_1")): {
-							rankKey = "§r§cDiresito Lover";
-						} break;
-						case (rankKey.startsWith("r:custom_2")): {
-							rankKey = "§r§aDaoLover";
-						} break;
-						case (rankKey.startsWith("r:custom_3")): {
-							rankKey = "§r§eGreasy King";
-						} break;
-						case (rankKey.startsWith("r:custom_4")): {
-							rankKey = "§r§bThe Last Survivor";
-						} break;
-						case (rankKey.startsWith("r:custom_5")): {
-							rankKey = "§r§eMvpBtw";
-						} break;
-						case (rankKey.startsWith("r:custom_6")): {
-							rankKey = "§r§dGeoKiller Fan";
-						} break;
-						case (rankKey.startsWith("r:custom_7")): {
-							rankKey = "§r§aZzz";
-						} break;
-						case (rankKey.startsWith("r:custom_8")): {
-							rankKey = "§r§dDiresito Fan uwu";
-						} break;
-						case (rankKey.startsWith("r:custom_9")): {
-							rankKey = "§r§eTlan sexoso";
-						} break;
-						case (rankKey.startsWith("r:custom_10")): {
-							rankKey = "§r§l§uMain-Astra";
-						} break;
-						case (rankKey.startsWith("r:")): {
-							rankKey = "§r§4Survivor";
-						} break;
-					};
-				};
-				const fixRank = rankKey.substring(2).split("-").join(" ");
-				player.nameTag = `§7§l[${fixRank}§7§l]\n§r${player.name} §c${Math.round(health.currentValue)}§7/§c${Math.round(health.defaultValue)}§r`;
-			};
-		};
-	} catch {};
-}, 1);
-
-world.afterEvents.itemUse.subscribe(totemFast => {
-	try {
-		let item = totemFast.itemStack;
-		let player = totemFast.source;
-		let slot = player.getComponent('minecraft:equipment_inventory');
-		let mainHand = slot.getEquipment("mainhand");
-		let offHand = slot.getEquipment("offhand");
-		if (item.typeId == 'minecraft:totem_of_undying' && offHand == undefined) {
-			slot.setEquipment("offhand", mainHand);
-			slot.setEquipment("mainhand", offHand);
-			player.runCommandAsync(`playsound armor.equip_generic`);
-		};
-	} catch {};
-});
-
-world.afterEvents.entityHurt.subscribe(hurtEvent => {
-	try {
-		let hurtEntity = hurtEvent.hurtEntity;
-		let damage = hurtEvent.damage;
-		let source = hurtEvent.damageSource;
-		if (hurtEntity.typeId != 'minecraft:player') return;
-		let player = Array.from(world.getPlayers()).find(plr => plr.name == hurtEntity.name);
-		const health = player.getComponent('minecraft:health');
-		if (health.current <= 0) {
-			system.runTimeout(() => {
-				if (health.current > 0) {
-					player.runCommandAsync(`damage @s 0 override`);
-				}
-			}, 1);
+			});
 		};
 		if (damage > 0 || source.cause != 'none') return;
-		player.runCommandAsync(`function system/alerta_de_totem`);
+		entity.runCommand(`function system/totem_alert`);
 	} catch {};
 });
 
-function getDimension(dimension) {
-    const keys = {
-        overworld: "dimension.over",
-        nether: "dimension.nether",
-        "the end": "dimension.end"
+mc.world.afterEvents.entityDie.subscribe(deathSensor => {
+	try {
+		let deadEntity = deathSensor.deadEntity;
+		let source = deathSensor.damageSource;
+		if (deadEntity.typeId != 'minecraft:player') return;
+		let coords = deadEntity.location;
+		let dimension = deadEntity.dimension;
+		let damagingEntity = source.damagingEntity;
+		lastCoords = coords;
+		lastDime = dimension;
+	} catch {};
+});
+
+mc.world.afterEvents.entityHealthChanged.subscribe(healthSensor => {
+	try {
+		let entity = healthSensor.entity;
+		if (entity.typeId != 'minecraft:player') return;
+		customRankName(entity);
+	} catch {};
+});
+
+mc.world.afterEvents.playerDimensionChange.subscribe(playerBan => {
+	try {
+		let player = playerBan.player;
+		let inDime = playerBan.fromDimension;
+		let toDime = playerBan.toDimension;
+		let coords = playerBan.fromLocation;
+		let tpSpawn = mc.world.getDefaultSpawnLocation();
+		let message = {translate: "chat.danger.teleportdime", with: {rawtext: [{text: `${player.name}`},{text: `${Math.round(coords.x)} ${Math.round(coords.y)} ${Math.round(coords.z)}`},{translate: `${dimensionName(player)}`}]}}
+		if (inDime.id == 'minecraft:overworld' && toDime.id == 'minecraft:the_end') {
+			mc.world.sendMessage(message);
+			player.tryTeleport(tpSpawn, { dimension: inDime });
+		};
+	} catch {};
+});
+
+mc.world.beforeEvents.chatSend.subscribe(chatRanks => {
+	try {
+		let message = chatRanks.message;
+		let player = chatRanks.sender;
+		chatRanks.cancel = true;
+		if (!message.includes('!settings')) {
+			customRanksChat(player, message);
+		};
+	} catch {};
+});
+
+mc.world.beforeEvents.itemUse.subscribe(itemUsed => {
+	try {
+		const player = itemUsed.source;
+		const item = itemUsed.itemStack;
+		if (item.typeId == 'minecraft:totem_of_undying' || item.typeId == 'minecraft:shield') {
+			const armorSlots = player.getComponent("minecraft:equippable");
+			let itemOffHand = armorSlots.getEquipment("Offhand");
+			let itemMainHand = armorSlots.getEquipment("Mainhand");
+			const air = new mc.ItemStack("minecraft:air");
+			if (itemOffHand) {
+				mc.system.run(() => {
+					armorSlots.setEquipment("Offhand", itemMainHand);
+					armorSlots.setEquipment("Mainhand", itemOffHand);
+					player.playSound("armor.equip_generic");
+				});
+			} else {
+				mc.system.run(() => {
+					armorSlots.setEquipment("Offhand", itemMainHand);
+					armorSlots.setEquipment("Mainhand", air);
+					player.playSound("armor.equip_generic");
+				});
+			};
+		};
+	} catch {};
+});
+
+mc.world.afterEvents.playerSpawn.subscribe(banSensor => {
+	try {
+		let player = banSensor.player;
+		setCustomRank(player);
+		customRankName(player);
+		if (timerBan && player.hasTag("banned")) {
+			player.runCommand(`kick "${player.name}" `);
+		} else if (!timerBan && player.hasTag("banned")) {
+			player.runCommand(`function revivir`);
+		};
+	} catch {};
+});
+
+mc.system.afterEvents.scriptEventReceive.subscribe(staticEvents => {
+	try {
+		let events = staticEvents.id;
+		let optionalMsg = staticEvents.message;
+		let entity = staticEvents.sourceEntity;
+		let coords = { x: Math.round(entity.location.x), y: Math.round(entity.location.y), z: Math.round(entity.location.z) };
+		switch (events) {
+			case 'ha:tp_revive': {
+				let dimension = mc.world.getDimension("overworld");
+				let tpSpawn = mc.world.getDefaultSpawnLocation();
+				entity.tryTeleport(tpSpawn, { dimension: dimension });
+			} break;
+			case 'ha:resquicio_timer': {
+				let rawMessage = {translate: "chat.royerbot.player_dead", with: {rawtext: [{text: `${entity.name}`},{text: `${coords.x} ${coords.y} ${coords.z}`},{translate: `${dimensionName(entity)}`}]}};
+				mc.world.sendMessage(rawMessage);
+				swapInventory(entity, coords);
+			} break;
+			case 'ha:death_knockback': {
+				let viewCoords = entity.getViewDirection();
+				entity.tryTeleport(lastCoords, { dimension: lastDime });
+				mc.system.runTimeout(() => {
+					entity.applyKnockback(viewCoords.x, viewCoords.z, 2.5, 0.7);
+					mc.system.runTimeout(() => {
+						if (timerBan) {
+							entity.runCommand(`kick "${entity.name}" `);
+						};
+					}, 65);
+				}, 4);
+			} break;
+		};
+	} catch {};
+});
+
+function stealItemFox(fox, player) {
+    const inv = player.getComponent("minecraft:inventory").container;
+    const foxInv = fox.getComponent("minecraft:inventory").container;
+    const armorInv = player.getComponent("minecraft:equippable");
+	let validSlots = inv.emptySlotsCount;
+    let randomChance = Math.floor(Math.random() * 2);
+    if (randomChance == 0) {
+		if (validSlots == 36) return;
+		let randomSlot;
+        do {
+            randomSlot = Math.floor(Math.random() * inv.size);
+        } while (!inv.getItem(randomSlot));
+        foxInv.addItem(inv.getItem(randomSlot));
+        inv.setItem(randomSlot, undefined);
+    } else if (randomChance == 1) {
+		let armorSlots = ['Head', 'Chest', 'Legs', 'Feet', 'Offhand'];
+        let randomArmorSlot;
+        let armorItem;
+        for (let i = 0; i < armorSlots.length; i++) {
+            randomArmorSlot = armorSlots[Math.floor(Math.random() * armorSlots.length)];
+            armorItem = armorInv.getEquipment(randomArmorSlot);
+            if (armorItem) {
+                foxInv.addItem(armorItem);
+                armorInv.setEquipment(randomArmorSlot, undefined);
+                return;
+            };
+        };
+        if (validSlots == 36) return;
+        let randomSlot;
+        do {
+            randomSlot = Math.floor(Math.random() * inv.size);
+        } while (!inv.getItem(randomSlot));
+        foxInv.addItem(inv.getItem(randomSlot));
+        inv.setItem(randomSlot, undefined);
     };
-    const ids = ['overworld', 'nether', 'the end'];
-    let d = ids.find((id) => world.getDimension(id) == dimension);
-    if (d && keys[d]) {
-        let rawtextKeys = keys[d];
-        return `${rawtextKeys}`;
-    }
 };
 
-function runCommandAsync(command) {
-    try {
-        return {
-            error: false, ...world.getDimension("overworld").runCommandAsync(command)
-        }
-    } catch (error) {
-        return {
-            error: true
-        }
-    }
-}
-/* Creado/Editado por: HaJuegos Cat! & Convex!. Si necesitas mas informacion, hablamos en Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174 */
-/* Created/Edited by: HaCatto! & Convex! If you need more information, we talk on Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174 */
+function setCustomRank(player) {
+	for (const rankTag in preRanksSetup) {
+        let setTag = preRanksSetup[rankTag];
+        if (Array.isArray(setTag.name)) {
+            if (setTag.name.includes(player.name)) {
+                player.addTag(rankTag);
+                break;
+            };
+        } else {
+            if (setTag.name == player.name) {
+                player.addTag(rankTag);
+                break;
+            };
+        };
+    };
+};
+
+function customRanksChat(player, msg) {
+	let tags = player.getTags();
+	let foundTag = undefined;
+    for (let tag of tags) {
+        if (preRanksSetup[tag]) {
+            foundTag = tag;
+            break;
+        };
+    };
+    let searchRank = foundTag ? preRanksSetup[foundTag] : preRanksSetup.default;
+	let msgModifier = {translate: `${searchRank.rank}`, with: {rawtext: [{text: `${searchRank.nameRank}`},{text: `${player.name}`},{text: `${msg}`}]}};
+	mc.world.sendMessage(msgModifier);
+};
+
+function customRankName(player) {
+	let health = player.getComponent("minecraft:health");
+	let tags = player.getTags();
+	let foundTag = undefined;
+    for (let tag of tags) {
+        if (preRanksSetup[tag]) {
+            foundTag = tag;
+            break;
+        };
+    };
+    let searchRank = foundTag ? preRanksSetup[foundTag] : preRanksSetup.default;
+	player.nameTag = `${searchRank.nameRank}\n${player.name} §c${Math.round(health.currentValue)}§7/§c${health.defaultValue}§r`;
+};
+
+function swapInventory(player, coords) {
+	const inv = player.getComponent("minecraft:inventory").container;
+	const armorInv = player.getComponent("minecraft:equippable");
+	let dimension = player.dimension;
+	const radius = new mc.BlockAreaSize(5,5,5);
+	const armorSlots = ["Head", "Chest", "Legs", "Feet", "Offhand"];
+	dimension.runCommand(`summon ha:player_ghost "§e${player.name} Inventory§r" ${coords.x} ${coords.y} ${coords.z}`);
+	for (const entity of dimension.getEntities({ type: "ha:player_ghost", location: coords, volume: radius })) {
+		const invGhost = entity.getComponent("minecraft:inventory").container;
+		for (let i = 0; i < inv.size; i++) {
+			let item = inv.getItem(i);
+			if (!item) continue;
+			inv.transferItem(i, invGhost);
+		};
+		for (let slot of armorSlots) {
+			let item = armorInv.getEquipment(slot);
+			if (!item) continue;
+			invGhost.addItem(item);
+			armorInv.setEquipment(slot, undefined);
+		};
+	};
+};
+
+function dimensionName(player) {
+	const dimension = player.dimension;
+	switch (dimension.id) {
+		case 'minecraft:overworld': {
+			return "dimension.overworld"
+		} break;
+		case 'minecraft:nether': {
+			return "dimension.nether"
+		} break;
+		case 'minecraft:the_end': {
+			return "dimension.end"
+		} break;
+	};
+};
+/* Creado o Editado por: HaJuegosCat! y Convex!. Si editaras o copiaras este archivo, recuerda dejar creditos. Cualquier otra informacion o reporte, en el server de Discord: https://discord.gg/WH9KpNWXUz */
+/* Created or Edited by: HaJuegosCat! & Convex!. If you edit or copy this file, remember to give credit. For any other information or report, visit the Discord server: https://discord.gg/WH9KpNWXUz */

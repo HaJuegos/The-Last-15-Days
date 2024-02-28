@@ -1,0 +1,22 @@
+Creador original de la Serie:
+RosherRandom: https://twitter.com/RosherRandom https://www.youtube.com/channel/UCJ-0Nc4TkD1y6mCW0LgJ-_A
+
+Desarolladores del Add-on:
+Ha Juegos: https://github.com/HaJuegos https://twitter.com/Ha_Juegos https://www.youtube.com/channel/UCvuaxUzlotxb-n_cH3KAQww
+Convex!: https://github.com/conveex https://www.twitch.tv/convex03 https://twitter.com/convex__
+
+Modelado/Texturizado:
+Astral302: https://twitter.com/astral302
+
+Otros Creditos:
+Vanilla Tweaks: https://vanillatweaks.net/
+Bedrock Tweaks: https://bedrocktweaks.net/
+
+Algunos sonidos externos son provenientes de estos juegos:
+Terraria: Ghost Dead Mob Sound (ghost_killed.ogg)
+DELTARUNE CHAPTER 1: enemy attack (enemy_activate.ogg)
+Mojang: Minecraft Rare Advancement (logro_obtenido.ogg)
+VS QT MOD - FNF: Hazard_24 (muerte.ogg)
+Youtube: Heart Sound Maquine (sonido_muerte.ogg)
+DELTARUNE CHAPTER 1 (summonea_mob.ogg)
+Ribbit Mod - DELTARUNE: enemy attack (tamed_mob_betray.ogg)

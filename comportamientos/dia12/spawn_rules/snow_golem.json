@@ -1,5 +1,5 @@
-/* Creado/Editado por: HaJuegos Cat! & Convex!. Si necesitas mas informacion, hablamos en Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174 */
-/* Created/Edited by: HaCatto! & Convex! If you need more information, we talk on Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174 */
+/* Creado o Editado por: HaJuegosCat! y Convex!. Si editaras o copiaras este archivo, recuerda dejar creditos. Cualquier otra informacion o reporte, en el server de Discord: https://discord.gg/WH9KpNWXUz */
+/* Created or Edited by: HaJuegosCat! & Convex!. If you edit or copy this file, remember to give credit. For any other information or report, visit the Discord server: https://discord.gg/WH9KpNWXUz */
 {
 	"format_version": "1.8.0",
 	"minecraft:spawn_rules": {
@@ -8,6 +8,24 @@
 			"population_control": "monster"
 		},
 		"conditions": [
+			{
+				"minecraft:spawns_on_surface": {},
+				"minecraft:weight": {
+					"default": 10
+				},
+				"minecraft:herd": {
+					"min_size": 1,
+					"max_size": 2,
+					"event": "ha:spawned_from_end"
+				},
+				"minecraft:biome_filter": [
+					{
+						"test": "has_biome_tag",
+						"operator": "==",
+						"value": "the_end"
+					}
+				]
+			},
 			{
 				"minecraft:spawns_on_surface": {},
 				"minecraft:brightness_filter": {
@@ -64,26 +82,6 @@
 						"test": "has_biome_tag",
 						"operator": "==",
 						"value": "ocean"
-					}
-				]
-			},
-			{
-				"minecraft:spawns_on_surface": {},
-				"minecraft:weight": {
-					"default": 10
-				},
-				"minecraft:herd": {
-					"min_size": 1,
-					"max_size": 2
-				},
-				"minecraft:density_limit": {
-					"surface": 15
-				},
-				"minecraft:biome_filter": [
-					{
-						"test": "has_biome_tag",
-						"operator": "==",
-						"value": "the_end"
 					}
 				]
 			}

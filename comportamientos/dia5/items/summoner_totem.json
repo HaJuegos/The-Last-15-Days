@@ -1,51 +1,32 @@
-/* Creado/Editado por: HaJuegos Cat! & Convex!. Si necesitas mas informacion, hablamos en Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174 */
-/* Created/Edited by: HaCatto! & Convex! If you need more information, we talk on Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174 */
+/* Creado o Editado por: HaJuegosCat! y Convex!. Si editaras o copiaras este archivo, recuerda dejar creditos. Cualquier otra informacion o reporte, en el server de Discord: https://discord.gg/WH9KpNWXUz */
+/* Created or Edited by: HaJuegosCat! & Convex!. If you edit or copy this file, remember to give credit. For any other information or report, visit the Discord server: https://discord.gg/WH9KpNWXUz */
 {
 	"format_version": "1.16.100",
 	"minecraft:item": {
 		"description": {
 			"identifier": "cnvx:summoner_totem",
-			"category": "items"
+			"category": "equipment"
 		},
 		"components": {
+			"minecraft:use_duration": 0,
 			"minecraft:max_stack_size": 1,
 			"minecraft:icon": {
 				"texture": "summoner_totem"
 			},
+			"minecraft:render_offsets": "miscellaneous",
 			"minecraft:on_use": {
 				"on_use": {
-					"event": "cnvx:effect"
+					"event": "ha:effect"
 				}
-			},
-			"minecraft:creative_category": {
-				"parent": "itemGroup.name.items"
 			}
 		},
 		"events": {
-			"cnvx:effect": {
-				"sequence": [
-					{
-						"run_command": {
-							"command": [
-								"effect @s bad_omen 99999 100 true",
-								"damage @s 0 temperature",
-								"playsound random.totem @s",
-								"particle minecraft:totem_particle ~ ~ ~",
-								"particle minecraft:totem_particle ~ ~1 ~",
-								"particle minecraft:totem_particle ~ ~2 ~",
-								"replaceitem entity @s slot.weapon.mainhand 1 air"
-							]
-						}
-					},
-					{
-						"run_command": {
-							"command": [
-								"execute @s[tag=!primerototem] ~ ~ ~ tellraw @a {\"rawtext\": [{\"translate\":\"player_use_pillager_totem\", \"with\": {\"rawtext\": [{\"selector\":\"@s\"},{\"translate\":\"item.cnvx:summoner_totem\"}]}}]}",
-								"tag @s[tag=!primerototem] add primerototem"
-							]
-						}
-					}
-				]
+			"ha:effect": {
+				"run_command": {
+					"command": [
+						"function items/summoner_totem"
+					]
+				}
 			}
 		}
 	}

@@ -1,5 +1,42 @@
+/* Creado o Editado por: HaJuegosCat! y Convex!. Si editaras o copiaras este archivo, recuerda dejar creditos. Cualquier otra informacion o reporte, en el server de Discord: https://discord.gg/WH9KpNWXUz */
+/* Created or Edited by: HaJuegosCat! & Convex!. If you edit or copy this file, remember to give credit. For any other information or report, visit the Discord server: https://discord.gg/WH9KpNWXUz */
 {
 	"pools": [
+		{
+			"rolls": 1,
+			"entries": [
+				{
+					"type": "empty",
+					"weight": 10
+				},
+				{
+					"type": "item",
+					"name": "minecraft:book",
+					"weight": 90,
+					"functions": [
+						{
+							"function": "specific_enchants",
+							"enchants": [
+								{
+									"id": "unbreaking",
+									"level": [
+										3,
+										3
+									]
+								},
+								{
+									"id": "mending",
+									"level": [
+										1,
+										1
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		},
 		{
 			"rolls": {
 				"min": 4,
@@ -92,32 +129,6 @@
 						}
 					],
 					"name": "minecraft:snowball"
-				},
-				{
-					"type": "item",
-					"name": "minecraft:book",
-					"weight": 15,
-					"functions": [
-						{
-							"function": "specific_enchants",
-							"enchants": [
-								{
-									"id": "mending",
-									"level": [
-										1,
-										1
-									]
-								},
-								{
-									"id": "unbreaking",
-									"level": [
-										3,
-										3
-									]
-								}
-							]
-						}
-					]
 				}
 			]
 		}
