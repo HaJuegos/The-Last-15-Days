@@ -1,0 +1,47 @@
+//bridge-file-version: #0
+{
+	"entity_sounds": {
+		"entities": {
+			"cat": {
+				"events": {
+					"summon": "mob.cat.summon_mobs",
+					"ambient": "mob.cat.straymeow",
+					"ambient.tame": "mob.cat.meow",
+					"death": {
+						"pitch": 0.9,
+						"sound": "mob.cat.hit",
+						"volume": 0.5
+					},
+					"eat": "mob.cat.eat",
+					"hurt": {
+						"sound": "mob.cat.hit",
+						"volume": 0.45
+					},
+					"purr": "mob.cat.purr",
+					"purreow": "mob.cat.purreow",
+					"tempt": {
+						"pitch": 1,
+						"sound": "mob.cat.beg_for_food",
+						"volume": 0.7
+					}
+				},
+				"pitch": [
+					0.8,
+					1.2
+				],
+				"volume": 1
+			},
+			"ha:player_ghost": {
+				"events": {
+					"death": "mob.player_ghost.death",
+					"death.in.water": "mob.player_ghost.death"
+				},
+				"pitch": [
+					0.8,
+					1.2
+				],
+				"volume": 1
+			}
+		}
+	}
+}

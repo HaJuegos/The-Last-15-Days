@@ -1,0 +1,360 @@
+/* Creado/Editado por: HaJuegos Cat!. Si necesitas mas informacion, escribeme en Discord: https://discord.com/users/714622708649951272 */
+/* Created/Edited by: HaCatto! If you need more information, write me on Discord: https://discord.com/users/714622708649951272 */
+{
+	"namespace": "custom_anim",
+	
+	"version": {
+		"type": "label",
+		"anchor_from": "bottom_right",
+		"anchor_to": "bottom_right",
+		"shadow": true,
+		"font_size": "small",
+		"font_scale_factor": 1.4,
+		"offset": [ 0, -4 ],
+		"text": "ui.actual_version",
+		"alpha": 1.0,
+		"anims": [ "@custom_anim.alphaanim0" ],
+		"layer": 104
+	},
+	
+	"version_root": {
+		"type": "panel",
+		"controls": [
+			{
+				"version@custom_anim.version": {}
+			}
+		]
+	},
+	
+	"alphaanim0": {
+		"anim_type": "offset",
+		"easing": "linear",
+		"duration": 0,
+		"from": [ "0%", "-4%x" ],
+		"to": [ "0%", "-10000%x" ],
+		"next": "@custom_anim.alphaanim1"
+	},
+	"alphaanim1": {
+		"anim_type": "wait",
+		"duration": 3.5,
+		"next": "@custom_anim.alphaanim2"
+	},
+	"alphaanim2": {
+		"anim_type": "offset",
+		"easing": "in_out_expo",
+		"duration": 3.9,
+		"to": [ "0%", "-4%x" ],
+		"from": [ "0%", "-10000%x" ],
+		"next": "@custom_anim.alphaanim3"
+	},
+	"alphaanim3": {
+		"anim_type": "alpha",
+		"easing": "linear",
+		"from": 1,
+		"to": 0.3,
+		"duration": 1.5
+	},
+	
+	"mark_title&version": {
+		"type": "panel",
+		"controls": [
+			{
+				"title": {
+					"type": "image",
+					"texture": "textures/ui/the_last_title",
+					"anchor_from": "top_right",
+					"anchor_to": "top_right",
+					"size": [ "1%c + 40px", "1%c + 40px" ],
+					"offset": [ 0, -3.2 ],
+					"alpha": 0.7,
+					"anims": [ "@custom_anim.animalpha_0_1" ],
+					"layer": 101
+				}
+			},
+			{
+				"back": {
+					"type": "image",
+					"texture": "textures/ui/greyBorder",
+					"anchor_from": "top_right",
+					"anchor_to": "top_right",
+					"size": [ "1%c + 48px", "1%c + 31px" ],
+					"offset": [ 3.9, 0 ],
+					"alpha": 0.4,
+					"anims": [ "@custom_anim.animalpha_0" ],
+					"layer": 100
+				}
+			}
+		]
+	},
+	
+	"mark_title&version_root": {
+		"type": "panel",
+		"offset": [ -20, 10 ],
+		"controls": [
+			{
+				"mark@custom_anim.mark_title&version": {}
+			}
+		]
+	},
+	
+	"animalpha_0": {
+		"anim_type": "alpha",
+		"easing": "linear",
+		"from": 0.4,
+		"to": 0.0,
+		"duration": 0,
+		"next": "@custom_anim.animalpha_1"
+	},
+	"animalpha_1": {
+		"anim_type": "wait",
+		"duration": 6.0,
+		"next": "@custom_anim.animalpha_2"
+	},
+	"animalpha_2": {
+		"anim_type": "alpha",
+		"easing": "linear",
+		"from": 0.0,
+		"to": 0.4,
+		"duration": 1.0
+	},
+	
+	"animalpha_0_1": {
+		"anim_type": "alpha",
+		"easing": "linear",
+		"from": 0.7,
+		"to": 0.0,
+		"duration": 0,
+		"next": "@custom_anim.animalpha_1_1"
+	},
+	"animalpha_1_1": {
+		"anim_type": "wait",
+		"duration": 6.0,
+		"next": "@custom_anim.animalpha_2_1"
+	},
+	"animalpha_2_1": {
+		"anim_type": "alpha",
+		"easing": "linear",
+		"from": 0.0,
+		"to": 0.7,
+		"duration": 1.0
+	},
+	
+	"sutitle1_alpha": {
+		"anim_type": "wait",
+		"duration": 9.5,
+		"next": "@custom_anim.sutitle2_alpha"
+	},
+	"sutitle2_alpha": {
+		"anim_type": "alpha",
+		"easing": "linear",
+		"from": 1.0,
+		"to": 0.0,
+		"duration": 2.3
+	},
+	"sutitle3_alpha": {
+		"anim_type": "wait",
+		"duration": 9.5,
+		"next": "@custom_anim.sutitle4_alpha"
+	},
+	"sutitle4_alpha": {
+		"anim_type": "alpha",
+		"easing": "linear",
+		"from": 0.0,
+		"to": 1.0,
+		"duration": 2.3
+	},
+	
+	"img_alpha0": {
+		"anim_type": "wait",
+		"duration": 3.0,
+		"next": "@custom_anim.img_alpha1"
+	},
+	"img_alpha1": {
+		"anim_type": "alpha",
+		"easing": "linear",
+		"from": 1.0,
+		"to": 0.0,
+		"duration": 1.3,
+		"next": "@custom_anim.img_alpha4"
+	},
+	"img_alpha4": {
+		"anim_type": "wait",
+		"duration": 3.0,
+		"next": "@custom_anim.img_alpha6"
+	},
+	"img_alpha6": {
+		"anim_type": "alpha",
+		"easing": "linear",
+		"from": 0.0,
+		"to": 1.0,
+		"duration": 1.3,
+		"next": "@custom_anim.img_alpha0"
+	},
+	"img_alpha2": {
+		"anim_type": "wait",
+		"duration": 3.0,
+		"next": "@custom_anim.img_alpha3"
+	},
+	"img_alpha3": {
+		"anim_type": "alpha",
+		"easing": "linear",
+		"from": 0.0,
+		"to": 1.0,
+		"duration": 1.3,
+		"next": "@custom_anim.img_alpha5"
+	},
+	"img_alpha5": {
+		"anim_type": "wait",
+		"duration": 3.0,
+		"next": "@custom_anim.img_alpha7"
+	},
+	"img_alpha7": {
+		"anim_type": "alpha",
+		"easing": "linear",
+		"from": 1.0,
+		"to": 0.0,
+		"duration": 1.3,
+		"next": "@custom_anim.img_alpha2"
+	},
+	
+	"alert_items0": {
+		"anim_type": "offset",
+		"easing": "linear",
+		"duration": 0,
+		"from": [ "0%", "0%x" ],
+		"to": [ "100%", "0%x" ],
+		"next": "@custom_anim.alert_items1"
+	},
+	"alert_items1": {
+		"anim_type": "wait",
+		"duration": 5.5,
+		"next": "@custom_anim.alert_items2"
+	},
+	"alert_items2": {
+		"anim_type": "offset",
+		"easing": "linear",
+		"duration": 1.0,
+		"to": [ "0%", "0%x" ],
+		"from": [ "100%", "0%x" ],
+		"next": "@custom_anim.alert_items3"
+	},
+	"alert_items3": {
+		"anim_type": "wait",
+		"duration": 11.0,
+		"next": "@custom_anim.alert_items4"
+	},
+	"alert_items4": {
+		"anim_type": "offset",
+		"easing": "linear",
+		"duration": 1.0,
+		"from": [ "0%", "0%x" ],
+		"to": [ "100%", "0%x" ]
+	},
+	
+	"alert_items_imgs": {
+		"type": "panel",
+		"controls": [
+			{
+				"item2": {
+					"type": "image",
+					"anchor_from": "top_right",
+					"anchor_to": "top_right",
+					"texture": "textures/ui/advancement/shield_item",
+					"size": [ 22, 22 ],
+					"offset": [ -153, 9.5 ],
+					"alpha": 0.0,
+					"anims": [ "@custom_anim.img_alpha2" ],
+					"layer": 102
+				}
+			},
+			{
+				"item1": {
+					"type": "image",
+					"anchor_from": "top_right",
+					"anchor_to": "top_right",
+					"texture": "textures/ui/advancement/totem_item",
+					"size": [ 22, 22 ],
+					"offset": [ -153,9.5 ],
+					"anims": [ "@custom_anim.img_alpha0" ],
+					"layer": 101
+				}
+			},
+			{
+				"back": {
+					"type": "image",
+					"anchor_from": "top_right",
+					"anchor_to": "top_right",
+					"texture": "textures/ui/advancement/popup_display",
+					"size": [ "1%c + 180px", "1%c + 36px" ],
+					"offset": [ -2, 3 ],
+					"layer": 90
+				}
+			}
+		]
+	},
+	"alert_items_text1": {
+		"type": "label",
+		"shadow": true,
+		"font_size": "normal",
+		"font_scale_factor": 0.9,
+		"text": "ui.title.fast_items",
+		"localize": true,
+		"text_alignment": "center",
+		"layer": 103
+	},
+	"alert_items_text2": {
+		"type": "label",
+		"shadow": true,
+		"font_size": "normal",
+		"font_scale_factor": 0.55,
+		"text": "ui.subtitle.fast_items_1",
+		"alpha": 1.0,
+		"anims": [ "@custom_anim.sutitle1_alpha" ],
+		"text_alignment": "center",
+		"layer": 103
+	},
+	"alert_items_text3": {
+		"type": "label",
+		"shadow": true,
+		"font_size": "normal",
+		"font_scale_factor": 0.53,
+		"text": "ui.subtitle.fast_items_2",
+		"alpha": 0.0,
+		"anims": [ "@custom_anim.sutitle3_alpha" ],
+		"text_alignment": "center",
+		"layer": 103
+	},
+	
+	"alert_items_root": {
+		"type": "panel",
+		"anims": [ "@custom_anim.alert_items0" ],
+		"controls": [
+			{
+				"text3@custom_anim.alert_items_text3": {
+					"anchor_from": "top_right",
+					"anchor_to": "top_right",
+					"offset": [ -8, 22 ]
+				}
+			},
+			{
+				"text1@custom_anim.alert_items_text2": {
+					"anchor_from": "top_right",
+					"anchor_to": "top_right",
+					"offset": [ -9, 22 ]
+				}
+			},
+			{
+				"text0@custom_anim.alert_items_text1": {
+					"anchor_from": "top_right",
+					"anchor_to": "top_right",
+					"offset": [ -61, 9.4 ]
+				}
+			},
+			{
+				"back@custom_anim.alert_items_imgs": {}
+			}
+		]
+	}
+}
+/* Creado/Editado por: HaJuegos Cat!. Si necesitas mas informacion, escribeme en Discord: https://discord.com/users/714622708649951272 */
+/* Created/Edited by: HaCatto! If you need more information, write me on Discord: https://discord.com/users/714622708649951272 */

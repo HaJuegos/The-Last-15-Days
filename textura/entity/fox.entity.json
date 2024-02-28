@@ -1,0 +1,52 @@
+/* Creado o Editado por: HaJuegosCat! y Convex!. Si editaras o copiaras este archivo, recuerda dejar creditos. Cualquier otra informacion o reporte, en el server de Discord: https://discord.gg/WH9KpNWXUz */
+/* Created or Edited by: HaJuegosCat! & Convex!. If you edit or copy this file, remember to give credit. For any other information or report, visit the Discord server: https://discord.gg/WH9KpNWXUz */
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "minecraft:fox",
+			"materials": {
+				"default": "fox",
+				"mask": "fox_mask"
+			},
+			"textures": {
+				"red": "textures/entity/fox/fox",
+				"arctic": "textures/entity/fox/arctic_fox",
+				"mask_fox": "textures/entity/fox/mask_fox"
+			},
+			"geometry": {
+				"default": "geometry.fox"
+			},
+			"animations": {
+				"walk": "animation.quadruped.walk",
+				"look_at_target": "animation.common.look_at_target",
+				"baby_transform": "animation.fox.baby_transform",
+				"crouch": "animation.fox.crouch",
+				"sleep": "animation.fox.sleep",
+				"setup": "animation.fox.setup",
+				"sit": "animation.fox.sit",
+				"wiggle": "animation.fox.wiggle",
+				"stuck": "animation.fox.stuck",
+				"pounce": "animation.fox.pounce",
+				"move": "controller.animation.fox.move"
+			},
+			"scripts": {
+				"animate": [
+					"setup",
+					{
+						"baby_transform": "query.is_baby"
+					},
+					"move"
+				]
+			},
+			"render_controllers": [
+				"controller.render.fox",
+				"controller.render.mask_fox"
+			],
+			"spawn_egg": {
+				"texture": "spawn_egg",
+				"texture_index": 55
+			}
+		}
+	}
+}

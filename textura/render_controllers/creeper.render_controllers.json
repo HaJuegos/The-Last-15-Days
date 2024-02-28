@@ -1,0 +1,34 @@
+{
+	"format_version": "1.8.0",
+	"render_controllers": {
+		"controller.render.creeper": {
+			"arrays": {
+				"textures": {
+					"Array.skins": [
+						"Texture.default", // 0
+						"Texture.debuff", // 1
+						"Texture.ninja", // 2
+						"Texture.mommy", // 3
+						"Texture.obsidian", // 4
+						"Texture.radioactive" // 5
+					]
+				}
+			},
+			"geometry": "Geometry.default",
+			"materials": [
+				{
+					"*": "Material.default"
+				}
+			],
+			"textures": [
+				"Array.skins[q.variant]"
+			],
+			"overlay_color": {
+				"r": "((variable.flash == 0.0) || (query.swelling_dir < 0.0)) ? this : 1.0",
+				"g": "((variable.flash == 0.0) || (query.swelling_dir < 0.0)) ? this : 1.0",
+				"b": "((variable.flash == 0.0) || (query.swelling_dir < 0.0)) ? this : 1.0",
+				"a": "((variable.flash == 0.0) || (query.swelling_dir < 0.0)) ? this : 1.0"
+			}
+		}
+	}
+}

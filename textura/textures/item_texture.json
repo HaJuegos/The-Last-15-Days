@@ -1,0 +1,49 @@
+/* Creado o Editado por: HaJuegosCat! y Convex!. Si editaras o copiaras este archivo, recuerda dejar creditos. Cualquier otra informacion o reporte, en el server de Discord: https://discord.gg/WH9KpNWXUz */
+/* Created or Edited by: HaJuegosCat! & Convex!. If you edit or copy this file, remember to give credit. For any other information or report, visit the Discord server: https://discord.gg/WH9KpNWXUz */
+{
+	"resource_pack_name": "vanilla",
+	"texture_name": "atlas.items",
+	"texture_data": {
+		/* Items */
+		"iron_apple": {
+			"textures": "textures/items/iron_apple"
+		},
+		"summoner_totem": {
+			"textures": "textures/items/summoner_totem"
+		},
+		"infernal_relic": {
+			"textures": "textures/items/infernal_relic"
+		},
+		"fiery_fragment": {
+			"textures": "textures/items/fiery_fragment"
+		},
+		"hoglin_tusk": {
+			"textures": "textures/items/hoglin_tusk"
+		},
+		"soul_linked_totem": {
+			"textures": "textures/items/soul_linked_totem"
+		},
+		"fly_apple": {
+			"textures": "textures/items/fly_apple"
+		},
+		"warden_apple": {
+			"textures": "textures/items/warden_apple"
+		},
+		"sneaky_ingot": {
+			"textures": "textures/items/sneaky_ingot"
+		},
+		/* Armors */
+		"sneaky_boots": {
+			"textures": "textures/items/sneaky_astroner_armor/boots"
+		},
+		"sneaky_leggings": {
+			"textures": "textures/items/sneaky_astroner_armor/leggings"
+		},
+		"sneaky_helmet": {
+			"textures": "textures/items/sneaky_astroner_armor/helmet"
+		},
+		"sneaky_chestplate": {
+			"textures": "textures/items/sneaky_astroner_armor/chestplate"
+		}
+	}
+}

@@ -1,0 +1,92 @@
+/* Creado o Editado por: HaJuegosCat! y Convex!. Si editaras o copiaras este archivo, recuerda dejar creditos. Cualquier otra informacion o reporte, en el server de Discord: https://discord.gg/WH9KpNWXUz */
+/* Created or Edited by: HaJuegosCat! & Convex!. If you edit or copy this file, remember to give credit. For any other information or report, visit the Discord server: https://discord.gg/WH9KpNWXUz */
+{
+	"ui.player_death": {
+		"category": "ui",
+		"min_distance": null,
+		"max_distance": null,
+		"sounds": [
+			{
+				"name": "sounds/ui/sonido_muerte",
+				"load_on_low_memory": true,
+				"volume": 2
+			}
+		]
+	},
+	"ui.player_death_variant": {
+		"category": "ui",
+		"min_distance": null,
+		"max_distance": null,
+		"sounds": [
+			{
+				"name": "sounds/ui/muerte",
+				"load_on_low_memory": true,
+				"volume": 2.5
+			}
+		]
+	},
+	"ui.achievement.get": {
+		"category": "ui",
+		"min_distance": null,
+		"max_distance": null,
+		"sounds": [
+			{
+				"name": "sounds/ui/logro_obtenido",
+				"load_on_low_memory": true,
+				"volume": 1.5
+			}
+		]
+	},
+	"mob.enemy.explode": {
+		"category": "hostile",
+		"__use_legacy_max_distance": true,
+		"min_distance": null,
+		"max_distance": null,
+		"sounds": [
+			{
+				"name": "sounds/ui/enemy_activate",
+				"load_on_low_memory": true,
+				"volume": 2
+			}
+		]
+	},
+	"mob.change_mob_fase": {
+		"category": "hostile",
+		"min_distance": null,
+		"max_distance": 45,
+		"sounds": [
+			{
+				"name": "sounds/ui/tamed_mob_betray",
+				"load_on_low_memory": true,
+				"volume": 3
+			}
+		]
+	},
+	"mob.cat.summon_mobs": {
+		"category": "hostile",
+		"min_distance": null,
+		"max_distance": 50,
+		"sounds": [
+			{
+				"name": "sounds/ui/summonea_mob",
+				"load_on_low_memory": true,
+				"volume": 3
+			}
+		]
+	},
+	"mob.player_ghost.death": {
+		"category": "neutral",
+		"__use_legacy_max_distance": true,
+		"min_distance": null,
+		"max_distance": null,
+		"sounds": [
+			{
+				"name": "sounds/mod/ghost/ghost_killed",
+				"load_on_low_memory": true,
+				"volume": 1
+			}
+		]
+	}
+}
+/* Creado o Editado por: HaJuegosCat! y Convex!. Si editaras o copiaras este archivo, recuerda dejar creditos. Cualquier otra informacion o reporte, en el server de Discord: https://discord.gg/WH9KpNWXUz */
+/* Created or Edited by: HaJuegosCat! & Convex!. If you edit or copy this file, remember to give credit. For any other information or report, visit the Discord server: https://discord.gg/WH9KpNWXUz */

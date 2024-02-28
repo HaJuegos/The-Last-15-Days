@@ -1,0 +1,24 @@
+{
+	"format_version": "1.8.0",
+	"render_controllers": {
+		"controller.render.mask_fox": {
+			"arrays": {
+				"materials": {
+					"Array.materials": [
+						"Material.default",
+						"Material.mask"
+					]
+				}
+			},
+			"geometry": "Geometry.default",
+			"materials": [
+				{
+					"*": "Array.materials[q.mark_variant]"
+				}
+			],
+			"textures": [
+				"Texture.mask_fox"
+			]
+		}
+	}
+}

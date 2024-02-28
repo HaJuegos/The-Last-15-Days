@@ -1,0 +1,28 @@
+/* Creado o Editado por: HaJuegosCat! y Convex!. Si editaras o copiaras este archivo, recuerda dejar creditos. Cualquier otra informacion o reporte, en el server de Discord: https://discord.gg/WH9KpNWXUz */
+/* Created or Edited by: HaJuegosCat! & Convex!. If you edit or copy this file, remember to give credit. For any other information or report, visit the Discord server: https://discord.gg/WH9KpNWXUz */
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "ha:player_ghost",
+			"materials": {
+				"default": "entity_alphablend"
+			},
+			"geometry": {
+				"default": "geometry.player_ghost"
+			},
+			"textures": {
+				"default": "textures/entity/player_ghost"
+			},
+			"scripts": {
+				"animate": [ "idle" ]
+			},
+			"animations": {
+				"idle": "animation.ghost.idle"
+			},
+			"render_controllers": [
+				"controller.render.inventory_player"
+			]
+		}
+	}
+}

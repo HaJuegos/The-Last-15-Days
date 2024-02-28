@@ -1,0 +1,17 @@
+{
+	"materials": {
+		"version": "1.0.0",
+		"fox:entity_alphatest": {},
+		"fox_mask:entity_nocull": {
+			"+defines": [
+				"USE_COLOR_MASK"
+			],
+			"+states": [
+				"Blending"
+			],
+			"depthFunc": "Equal",
+			"blendSrc": "SourceAlpha",
+			"blendDst": "OneMinusSrcAlpha"
+		}
+	}
+}

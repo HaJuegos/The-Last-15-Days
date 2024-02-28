@@ -1,0 +1,28 @@
+/* Creado o Editado por: HaJuegosCat! y Convex!. Si editaras o copiaras este archivo, recuerda dejar creditos. Cualquier otra informacion o reporte, en el server de Discord: https://discord.gg/WH9KpNWXUz */
+/* Created or Edited by: HaJuegosCat! & Convex!. If you edit or copy this file, remember to give credit. For any other information or report, visit the Discord server: https://discord.gg/WH9KpNWXUz */
+{
+	"namespace": "pause",
+	
+	"menu_background/button_panel": {
+		"modifications": [
+			{
+				"control_name": "buy_button",
+				"operation": "remove"
+			},
+			{
+				"control_name": "buy",
+				"operation": "remove"
+			},
+			{
+				"control_name": "store_button_panel",
+				"operation": "remove"
+			},
+			{
+				"control_name": "server",
+				"operation": "remove"
+			}
+		]
+	}
+}
+/* Creado o Editado por: HaJuegosCat! y Convex!. Si editaras o copiaras este archivo, recuerda dejar creditos. Cualquier otra informacion o reporte, en el server de Discord: https://discord.gg/WH9KpNWXUz */
+/* Created or Edited by: HaJuegosCat! & Convex!. If you edit or copy this file, remember to give credit. For any other information or report, visit the Discord server: https://discord.gg/WH9KpNWXUz */

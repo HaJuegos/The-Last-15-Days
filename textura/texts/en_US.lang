@@ -1,0 +1,111 @@
+## Creado/Editado por: HaJuegos Cat! & Convex!. Si necesitas mas informacion, hablamos en Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174
+## Created/Edited by: HaCatto! & Convex! If you need more information, we talk on Discord: https://discord.com/users/714622708649951272 & https://discord.com/users/736761089056047174
+
+## Manifest Text
+pack.name=§e[RP]§c The Last 15 Days§b | By RosherRandom§r
+pack.description=Resources/Textures required for the Add-on.
+
+
+## UI texts
+ui.death_title=§cGame Over!
+disconnect.kicked=§cGame Over!§r
+disconnect.kicked.reason=§cGame Over!§r
+disconnect.removed=§cGame Over!§r
+disconnect.removed.reason=§cGame Over!§r
+ui.actual_version=§ev0.0.8
+
+
+ui.title.fast_items=§eFast Items Switch!  
+ui.subtitle.fast_items_1=Now, with your Interaction Button, you can quickly
+ui.subtitle.fast_items_2=switch your Totem or shield to your offhand.
+
+ui.dolphin.alert=§g§lA dolphin has hit you! You won't be able to breathe underwater for %1 second(s).
+ui.dolphin.remove_alert=§g§lYou have regained your ability to breathe underwater.
+
+ui.danger_moving_attack=§c§lYou are moving! Stay still until the nausea effect wears off...
+ui.titledamage_1=§4§lDON'T MOVE
+ui.titledamage_2=You have been attacked for moving while having nausea.
+
+
+## Chat texts
+chat.dead_player=§c>> %1 has died and caused an §4Infernal Crevice.§r
+chat.royerbot.player_dead=§8§l[§r§e§lRoyerBot§8§l]§r §8§l>>§r§7 %1 has died at §l%2§r§7 while exploring §l%3§r§7.
+chat.player_revival=§e>> %1 was revived. Yay!
+chat.sleeping=§e>> %1 is sleeping; the night will pass faster
+chat.use_totem=§7>> %1 has consumed a %2.
+chat.is_day=§a>> It is Day %1.
+chat.danger.teleportdime=§c§l>> %1 has attempted to go to the %3 at coordinates %2.
+chat.danger_weather=§4>> You are taking temperature damage, get out of there.
+chat.timerban_off=§7>> The ban system is deactivated.
+chat.timerban_on=§7>> The ban system is activated.
+chat.error.noadmin=§c>> You don't have permission to use this command. If you are an admin, use this command: "/tag @s add admin" and try again.
+chat.error.failcommand=§c>> You have misspelled the command, try checking and attempting it again.
+chat.use_summoner_totem=§7>> %1 has used his Summoning Totem for the first time.
+chat.infernal_shard_get=§c>> %1 has obtained an Ignite Shard. (%2/4)
+chat.infernal_relic_get=§4§l>> %1 has obtained his Infernal Relic.
+chat.hoglin_tusk_get=§b>> %1 has obtained the §eHoglin Tusk§b.
+chat.explotion_alert=§c>> A %3 has exploded at %1 in %2.
+chat.armor_netherite=%1 has completed the challenge §5[Cover Me in Debris]§r
+chat.consume_ironapple=§7>> %1 has consumed an Iron Apple.
+chat.alert_sneaky_get=§4>> %1 has obtained the %3§4.
+chat.alert_get_all_sneaky=§d>> %1 has obtained the complete set of Cautious Astronaut Armor.
+chat.alert_teleport=§b§l>> Get ready! In a few seconds, all entities will be teleported randomly to the center of the island.
+chat.spawn_totems=§a§l>> A rain of totems has appeared!
+chat.alert_crystal_explode=§c>> An EnderCrystal has exploded.
+chat.free_end=%1 has made the advancement §a[Free the End]§r
+
+
+## Items texts
+item.cnvx:iron_apple=§7Iron Apple§r
+item.cnvx:iron_apple.name=§7Iron Apple§r
+item.cnvx:summoner_totem=§7Summoning Totem§r
+item.cnvx:summoner_totem.name=§7Summoning Totem§r
+
+item.ha:infernal_relic=§4§lInfernal Relic§r
+item.ha:magmacube_ignite_shard=§cMagma Cube's Ignite Shard§r
+item.ha:piglin_ignite_shard=§cPiglin's Ignite Shard§r
+item.ha:blaze_ignite_shard=§cBlaze's Ignite Shard§r
+item.ha:ghast_ignite_shard=§cGhast's Ignite Shard§r
+
+item.ha:infernal_relic.name=§4§lInfernal Relic§r
+item.ha:magmacube_ignite_shard.name=§cMagma Cube's Ignite Shard§r
+item.ha:piglin_ignite_shard.name=§cPiglin's Ignite Shard§r
+item.ha:blaze_ignite_shard.name=§cBlaze's Ignite Shard§r
+item.ha:ghast_ignite_shard.name=§cGhast's Ignite Shard§r
+
+item.ha:hoglin_tusk=§eHoglin Tusk§r
+item.ha:hoglin_tusk.name=§eHoglin Tusk§r
+
+item.ha:sneaky_helmet=§hCautious Astronaut Helmet§r
+item.ha:sneaky_chestplate=§hCautious Astronaut Chestplate§r
+item.ha:sneaky_leggings=§hCautious Astronaut Leggigns§r
+item.ha:sneaky_boots=§hCautious Astronaut Boots§r
+
+item.ha:sneaky_helmet.name=§hCautious Astronaut Helmet§r
+item.ha:sneaky_chestplate.name=§hCautious Astronaut Chestplate§r
+item.ha:sneaky_leggings.name=§hCautious Astronaut Leggigns§r
+item.ha:sneaky_boots.name=§hCautious Astronaut Boots§r
+
+
+## Entities names
+entity.ha:radioactive_cloud.name=§aRadioactive Creeper§r
+entity.ender_dragon.name=§6§lROYER BOT§r
+
+entity.ha:totem_attack.name=§7Totem Rain§r
+entity.ha:conduit_attack.name=§7Teleport Attack§r
+entity.ha:nausea_attack.name=§7Nausea Attack§r
+entity.ha:regenerate_llama.name=§7Llama Generator§r
+
+
+## Dimension texts
+dimension.overworld=§a§lThe OverWorld
+dimension.nether=§c§lThe Nether
+dimension.end=§d§lThe End
+
+
+## Chat Ranks
+rank.member=%1%4 %2 §8§l>>§r %3
+rank.dev=%1%4 %2 §8§l>>§r %3
+rank.owner=%1%4 %2 §8§l>>§r %3
+
+rank.custom=%1%4 %2 §8§l>>§r %3

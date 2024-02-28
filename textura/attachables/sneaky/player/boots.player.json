@@ -1,0 +1,36 @@
+/* Creado o Editado por: HaJuegosCat! y Convex!. Si editaras o copiaras este archivo, recuerda dejar creditos. Cualquier otra informacion o reporte, en el server de Discord: https://discord.gg/WH9KpNWXUz */
+/* Created or Edited by: HaJuegosCat! & Convex!. If you edit or copy this file, remember to give credit. For any other information or report, visit the Discord server: https://discord.gg/WH9KpNWXUz */
+{
+	"format_version": "1.10.0",
+	"minecraft:attachable": {
+		"description": {
+			"identifier": "ha:sneaky_boots.player",
+			"item": {
+				"ha:sneaky_boots": "query.owner_identifier == 'minecraft:player'"
+			},
+			"materials": {
+				"default": "armor",
+				"enchanted": "armor_enchanted"
+			},
+			"textures": {
+				"default": "textures/models/armor/astroner_1",
+				"enchanted": "textures/misc/enchanted_actor_glint"
+			},
+			"geometry": {
+				"default": "geometry.player.armor.boots"
+			},
+			"scripts": {
+				"parent_setup": "variable.boot_layer_visible = 0.0;",
+				"animate": [
+					"offset"
+				]
+			},
+			"animations": {
+				"offset": "animation.armor.boots.offset"
+			},
+			"render_controllers": [
+				"controller.render.armor"
+			]
+		}
+	}
+}
