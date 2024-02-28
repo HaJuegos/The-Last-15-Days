@@ -37,7 +37,7 @@
 - **El Add-on solo soporta la version de Minecraft Bedrock 1.20.60/1/2. Cualquier version inferior o superior a futuro, puede que no funcione correctamente.**
 - **Este Add-on utilizar Scipts, asi que no esta en soporte con Aternos.**
 - Toda instalacion y configuracion del Add-on es automatico.
-- Si descargaste el Mundo PreConfigurado y no sabes que hacer con el, mira esta imagen tutorial: https://media.discordapp.net/attachments/964653057390546954/997570733473550536/exmple.png
+- Si descargaste el Mundo PreConfigurado y no sabes que hacer con el, mira esta imagen tutorial: https://cdn.discordapp.com/attachments/964653057390546954/997570733473550536/exmple.png?ex=65eb5924&is=65d8e424&hm=460a78f216fda9602e5a796446db6243387d912b0f0e93b3d9996129354579af&
 - Para revivir a algun Jugador, debes hacer este proceso:
 >	- En el Juego, pon este comando: "!settings timerBan off". (Si te marca error, procura poner este comando antes: "/tag @s add admin")
 >	- Luego de poner el comando, cuando entre el Jugador muerto, este sera revivido automaticamente.
