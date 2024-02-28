@@ -22,7 +22,7 @@
 - Este es un Add-on perteneciente a [RosherRandom](https://twitter.com/TheLast15Days) como comision pagada en Colaboracion de desarollo con [HaJuegos Cat!](https://twitter.com/Ha_Juegos), [Convex!](https://twitter.com/convex__) y [Astral302](https://twitter.com/astral302). Si utilizaras o editaras este Add-on, por favor, asegurate de mencionar al menos a los creadores de este add-on, si tienes alguna inconveniencia, pregunta o problemas con este add-on, reportalo en el Server de Discord dedicado a los Add-ons: https://discord.gg/WH9KpNWXUz
 
 ## LINKS DE DESCARGAS
-### Nota: Estos links pueden estar acortados con paginas de publicidad, no me hago cargo de descargas o redirecciones malisiosas.
+### Nota: Estos links estan vinculados a Ko-Fi, posiblemente requieras de una cuenta en dicha pagina. Estos archivos no son ni seran de pago, todo es opcional y gratuito para quien quiera disfrutarlo.
 
 - **Link para descargar TODO:** https://ko-fi.com/s/99d0f76a86
 
