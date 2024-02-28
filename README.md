@@ -24,13 +24,13 @@
 ## LINKS DE DESCARGAS
 ### Nota: Estos links pueden estar acortados con paginas de publicidad, no me hago cargo de descargas o redirecciones malisiosas.
 
-- **Link para descargar TODO el contenido:** (Aun no disponible)
+- **Link para descargar TODO:** https://ko-fi.com/s/99d0f76a86
 
-- **Link para descargar solo el Behavior/Comportamiento:** (Aun no disponible)
+- **Link para descargar el Add-on por separado:** https://ko-fi.com/s/337192d9f7
  
-- **Link para descargar solo el Resource/Texturas:** (Aun no disponible)
+- **Link para descargar el Add-on junto:** https://ko-fi.com/s/352d521c51
 
-- **Link para descargar solo el Mapa:** (Aun no disponible)
+- **Link para descargar el Mundo Pre-configurado:** https://ko-fi.com/s/5346118ec9
 
 ## MINIGUIA DE USO
 
