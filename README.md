@@ -55,6 +55,9 @@
 - **En este tutorial te enseñare como poner un add-on, manualmente, en un servidor dedicado:** https://github.com/HaJuegos/The-Games-Store/tree/main/Betas/como%20instalar%20un%20add-on%20en%20servers
 
 ## LISTA DE CAMBIOS
+
+- **Aqui tienes las imagenes canon de la serie TL15D:** https://github.com/HaJuegos/The-Last-15-Days/tree/main/banners_originales
+
 ```txt
 The Last 15 Days By RosherRandom | Colab entre HaJuegosCat! y Convex! | Version Actual: 0.0.8.
 
