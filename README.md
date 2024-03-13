@@ -32,9 +32,11 @@
 
 - **Link para descargar el Mundo Pre-configurado:** https://ko-fi.com/s/5346118ec9
 
+- **Link para descargar la version en ZIP:** https://ko-fi.com/s/dfe3e6a3e9
+
 ## MINIGUIA DE USO
 
-- **El Add-on solo soporta la version de Minecraft Bedrock 1.20.60/1/2. Cualquier version inferior o superior a futuro, puede que no funcione correctamente.**
+- **El Add-on solo soporta la version de Minecraft Bedrock 1.20.70/1. Cualquier version inferior o superior a futuro, puede que no funcione correctamente.**
 - **Este Add-on utilizar Scipts, asi que no esta en soporte con Aternos.**
 - Toda instalacion y configuracion del Add-on es automatico.
 - Si descargaste el Mundo PreConfigurado y no sabes que hacer con el, mira esta imagen tutorial: https://cdn.discordapp.com/attachments/964653057390546954/997570733473550536/exmple.png?ex=65eb5924&is=65d8e424&hm=460a78f216fda9602e5a796446db6243387d912b0f0e93b3d9996129354579af&
@@ -59,7 +61,7 @@
 - **Aqui tienes las imagenes canon de la serie TL15D:** https://github.com/HaJuegos/The-Last-15-Days/tree/main/banners_originales
 
 ```txt
-The Last 15 Days By RosherRandom | Colab entre HaJuegosCat! y Convex! | Version Actual: 0.0.8.
+The Last 15 Days By RosherRandom | Colab entre HaJuegosCat! y Convex! | Version Actual: 0.0.9.
 
 **Cualquier bug o algo que creas que no esta bien en el add-on, reportarlo en el servidor de Discord dedicado para los Add-on's de Ha Juegos. Link del Discord: https://discord.gg/WH9KpNWXUz
 
