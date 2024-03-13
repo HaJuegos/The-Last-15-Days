@@ -8,17 +8,17 @@
 				{
 					"type": "item",
 					"name": "minecraft:golden_apple",
-					"weight": 2
+					"weight": 8
 				},
 				{
 					"type": "item",
 					"name": "minecraft:enchanted_golden_apple",
-					"weight": 1
+					"weight": 6
 				},
 				{
 					"type": "item",
 					"name": "cnvx:iron_apple",
-					"weight": 1
+					"weight": 6
 				},
 				{
 					"type": "item",

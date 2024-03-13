@@ -2,17 +2,11 @@
 /* Created or Edited by: HaJuegosCat! & Convex!. If you edit or copy this file, remember to give credit. For any other information or report, visit the Discord server: https://discord.gg/WH9KpNWXUz */
 
 import * as mc from "@minecraft/server";
-import { preRanksSetup, setupCommands } from './localVariables';
-import { timerBan } from './settings';
+import { preRanksSetup, setupCommands } from './variables';
+import * as variable from './settings';
 
 let lastCoords = {};
 let lastDime = {};
-
-mc.system.beforeEvents.watchdogTerminate.subscribe(dogNo => {
-	try {
-		dogNo.cancel = true;
-	} catch {};
-});
 
 mc.world.afterEvents.worldInitialize.subscribe(setupworld => {
 	try {
@@ -123,9 +117,9 @@ mc.world.afterEvents.playerSpawn.subscribe(banSensor => {
 		let player = banSensor.player;
 		setCustomRank(player);
 		customRankName(player);
-		if (timerBan && player.hasTag("banned")) {
+		if (variable.timerBan && player.hasTag("banned")) {
 			player.runCommand(`kick "${player.name}" `);
-		} else if (!timerBan && player.hasTag("banned")) {
+		} else if (!variable.timerBan && player.hasTag("banned")) {
 			player.runCommand(`function revivir`);
 		};
 	} catch {};
@@ -154,7 +148,7 @@ mc.system.afterEvents.scriptEventReceive.subscribe(staticEvents => {
 				mc.system.runTimeout(() => {
 					entity.applyKnockback(viewCoords.x, viewCoords.z, 2.5, 0.7);
 					mc.system.runTimeout(() => {
-						if (timerBan) {
+						if (variable.timerBan) {
 							entity.runCommand(`kick "${entity.name}" `);
 						};
 					}, 65);

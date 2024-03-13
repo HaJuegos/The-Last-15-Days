@@ -318,7 +318,7 @@
 					"add_effects": [
 						{
 							"effect": "resistance",
-							"duration": 999999999,
+							"duration": 99999,
 							"amplifier": 2,
 							"visible": false,
 							"ambient": false
@@ -341,7 +341,7 @@
 					"add_effects": [
 						{
 							"effect": "resistance",
-							"duration": 999999999,
+							"duration": 99999,
 							"amplifier": 2,
 							"visible": false,
 							"ambient": false
@@ -409,7 +409,7 @@
 				"add_effects": [
 					{
 						"effect": "resistance",
-						"duration": 999999999,
+						"duration": 99999,
 						"amplifier": 2,
 						"visible": false,
 						"ambient": false

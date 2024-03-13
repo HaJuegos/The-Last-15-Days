@@ -61,7 +61,7 @@
 					{
 						"effect": "speed",
 						"amplifier": 4,
-						"duration": 999999999,
+						"duration": 99999,
 						"visible": false,
 						"ambient": false
 					}

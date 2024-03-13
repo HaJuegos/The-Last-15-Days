@@ -1029,7 +1029,7 @@
 				"always_show": true
 			},
 			"minecraft:despawn": {
-				"despawn_from_inactivity": true
+				"despawn_from_distance": {}
 			},
 			"minecraft:behavior.hurt_by_target": {
 				"priority": 1,

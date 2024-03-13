@@ -79,14 +79,14 @@
 					"add_effects": [
 						{
 							"effect": "speed",
-							"duration": 999999999,
+							"duration": 99999,
 							"amplifier": 5,
 							"visible": false,
 							"ambient": false
 						},
 						{
 							"effect": "resistance",
-							"duration": 999999999,
+							"duration": 99999,
 							"amplifier": 3,
 							"visible": false,
 							"ambient": false
@@ -149,7 +149,7 @@
 					"add_effects": [
 						{
 							"effect": "speed",
-							"duration": 999999999,
+							"duration": 99999,
 							"amplifier": 3,
 							"visible": false,
 							"ambient": false

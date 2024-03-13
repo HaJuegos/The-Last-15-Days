@@ -2,8 +2,8 @@
 /* Created or Edited by: HaJuegosCat! & Convex!. If you edit or copy this file, remember to give credit. For any other information or report, visit the Discord server: https://discord.gg/WH9KpNWXUz */
 
 import * as mc from "@minecraft/server";
+import * as variable from './settings';
 import { preRanksSetup, setupCommands, mobsExplodes } from './localVariables';
-import { timerBan } from './settings';
 import './piglinTeleport';
 
 let lastCoords = {};
@@ -94,12 +94,6 @@ mc.world.afterEvents.entitySpawn.subscribe(duplicateMobs => {
 				};
 			} break;
 		};
-	} catch {};
-});
-
-mc.system.beforeEvents.watchdogTerminate.subscribe(dogNo => {
-	try {
-		dogNo.cancel = true;
 	} catch {};
 });
 
@@ -205,6 +199,7 @@ mc.world.afterEvents.entityHitEntity.subscribe(hitSensor => {
 			case 'minecraft:piglin_brute': {
 				if (!entityDamage.hasTag("critical")) return;
 				entityHit.runCommand(`particle minecraft:critical_hit_emitter ~~2~`);
+				entityHit.runCommand(`playsound player.damage_critic @a ~~~`);
 			} break;
 		};
     } catch {};
@@ -316,9 +311,9 @@ mc.world.afterEvents.playerSpawn.subscribe(banSensor => {
 		let player = banSensor.player;
 		setCustomRank(player);
 		customRankName(player);
-		if (timerBan && player.hasTag("banned")) {
+		if (variable.timerBan && player.hasTag("banned")) {
 			player.runCommand(`kick "${player.name}" `);
-		} else if (!timerBan && player.hasTag("banned")) {
+		} else if (!variable.timerBan && player.hasTag("banned")) {
 			player.runCommand(`function revivir`);
 		};
 	} catch {};
@@ -347,7 +342,7 @@ mc.system.afterEvents.scriptEventReceive.subscribe(staticEvents => {
 				mc.system.runTimeout(() => {
 					entity.applyKnockback(viewCoords.x, viewCoords.z, 2.5, 0.7);
 					mc.system.runTimeout(() => {
-						if (timerBan) {
+						if (variable.timerBan) {
 							entity.runCommand(`kick "${entity.name}" `);
 						};
 					}, 65);

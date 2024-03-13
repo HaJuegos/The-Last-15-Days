@@ -59,7 +59,7 @@
 				"add_effects": [
 					{
 						"effect": "invisibility",
-						"duration": 999999999,
+						"duration": 99999,
 						"amplifier": 0,
 						"visible": true,
 						"ambient": false

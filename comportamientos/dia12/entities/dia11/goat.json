@@ -182,7 +182,7 @@
 				"add_effects": [
 					{
 						"effect": "strength",
-						"duration": 999999999,
+						"duration": 99999,
 						"amplifier": 10,
 						"visible": false,
 						"ambient": false

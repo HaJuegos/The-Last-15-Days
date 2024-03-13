@@ -45,21 +45,21 @@
 				"add_effects": [
 					{
 						"effect": "strength",
-						"duration": 999999999,
+						"duration": 99999,
 						"amplifier": 5,
 						"visible": false,
 						"ambient": false
 					},
 					{
 						"effect": "resistance",
-						"duration": 999999999,
+						"duration": 99999,
 						"amplifier": 2,
 						"visible": false,
 						"ambient": false
 					},
 					{
 						"effect": "speed",
-						"duration": 999999999,
+						"duration": 99999,
 						"amplifier": 2,
 						"visible": false,
 						"ambient": false

@@ -71,14 +71,14 @@
 				"add_effects": [
 					{
 						"effect": "strength",
-						"duration": 999999999,
+						"duration": 99999,
 						"amplifier": 4,
 						"visible": false,
 						"ambient": false
 					},
 					{
 						"effect": "resistance",
-						"duration": 999999999,
+						"duration": 99999,
 						"amplifier": 1,
 						"visible": false,
 						"ambient": false

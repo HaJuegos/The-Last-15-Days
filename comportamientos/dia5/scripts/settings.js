@@ -2,8 +2,11 @@
 /* Created or Edited by: HaJuegosCat! & Convex!. If you edit or copy this file, remember to give credit. For any other information or report, visit the Discord server: https://discord.gg/WH9KpNWXUz */
 
 import * as mc from "@minecraft/server";
+import * as debug from "@minecraft/debug-utilities";
 
 export let timerBan = true;
+
+debug.disableWatchdog(true);
 
 mc.world.beforeEvents.chatSend.subscribe(customCommands => {
     try {
