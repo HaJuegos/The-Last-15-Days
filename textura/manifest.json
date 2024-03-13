@@ -1,0 +1,26 @@
+/* Creado o Editado por: HaJuegosCat! y Convex!. Si editaras o copiaras este archivo, recuerda dejar creditos. Cualquier otra informacion o reporte, en el server de Discord: https://discord.gg/WH9KpNWXUz */
+/* Created or Edited by: HaJuegosCat! & Convex!. If you edit or copy this file, remember to give credit. For any other information or report, visit the Discord server: https://discord.gg/WH9KpNWXUz */
+{
+	"format_version": 2,
+	"metadata": {
+		"authors": [ "HaJuegosCat!", "Convex!", "RosherRandom" ],
+		"url": "https://discord.gg/WH9KpNWXUz && https://twitter.com/Ha_Juegos",
+		"license": "Idea Original de RosherRandom en Colaboracion como Devs, HaJuegosCat y Convex!"
+	},
+	"header": {
+		"name": "pack.name",
+		"description": "pack.description",
+		"uuid": "ce95baac-dc3f-4a04-9d88-6a53af0fda89",
+		"version": [ 0, 0, 9 ],
+		"min_engine_version": [ 1, 20, 70 ]
+	},
+	"modules": [
+		{
+			"type": "resources",
+			"uuid": "ad443583-4659-4b1d-b2e8-3d90e8e4e882",
+			"version": [ 0, 0, 1 ]
+		}
+	]
+}
+/* Creado o Editado por: HaJuegosCat! y Convex!. Si editaras o copiaras este archivo, recuerda dejar creditos. Cualquier otra informacion o reporte, en el server de Discord: https://discord.gg/WH9KpNWXUz */
+/* Created or Edited by: HaJuegosCat! & Convex!. If you edit or copy this file, remember to give credit. For any other information or report, visit the Discord server: https://discord.gg/WH9KpNWXUz */

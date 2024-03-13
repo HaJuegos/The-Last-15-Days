@@ -86,6 +86,26 @@
 				"volume": 1
 			}
 		]
+	},
+	"player.damage_critic": {
+		"__use_legacy_max_distance" : "true",
+		"category" : "player",
+		"max_distance" : null,
+		"min_distance" : null,
+		"sounds" : [
+			{
+				"load_on_low_memory" : true,
+				"name" : "sounds/ui/critic/1"
+			},
+			{
+				"load_on_low_memory" : true,
+				"name" : "sounds/ui/critic/2"
+			},
+			{
+				"load_on_low_memory" : true,
+				"name" : "sounds/ui/critic/3"
+			}
+		]
 	}
 }
 /* Creado o Editado por: HaJuegosCat! y Convex!. Si editaras o copiaras este archivo, recuerda dejar creditos. Cualquier otra informacion o reporte, en el server de Discord: https://discord.gg/WH9KpNWXUz */

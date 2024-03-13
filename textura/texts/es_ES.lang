@@ -12,7 +12,7 @@ disconnect.kicked=§c¡Game Over!§r
 disconnect.kicked.reason=§c¡Game Over!§r
 disconnect.removed=§c¡Game Over!§r
 disconnect.removed.reason=§c¡Game Over!§r
-ui.actual_version=§ev0.0.8
+ui.actual_version=§p§lv0.0.9
 
 
 ui.title.fast_items=§e¡Cambio items Rapido!
