@@ -52,6 +52,10 @@
 
 ![eng](https://cdn.discordapp.com/attachments/997603479822536794/1212095175510200340/image.png?ex=65f09699&is=65de2199&hm=e832599ca0e87bbd82b17ffc8ed2794e7e8f9298c53848ad85dfb4ba2b49cddf&)
 
+## ¡EL SERVER PIDE MODULOS REQUERIDOS?
+
+- **En este tutorial, te indicaque como solucionar este problema:** https://github.com/HaJuegos/The-Games-Store/tree/main/Betas/Como%20dar%20permiso%20a%20un%20modulo%20en%20servers#como-instalar-un-modulo-requerido-en-un-server-dedicado
+
 ## COMO PONER ADD-ONS EN SERVIDORES
 
 - **En este tutorial te enseñare como poner un add-on, manualmente, en un servidor dedicado:** https://github.com/HaJuegos/The-Games-Store/tree/main/Betas/como%20instalar%20un%20add-on%20en%20servers
