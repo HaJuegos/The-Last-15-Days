@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://cdn.discordapp.com/attachments/997603479822536794/1212102069474041927/pack_icon.png?ex=65f09d05&is=65de2805&hm=58af9c968e79c3282f916b37e8b4bc384a6aeea08e3bbd7f07d7fa93b361de98&" alt="Addon Icon" width=450>
+  <img src="https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/main/comportamientos/dia0/pack_icon.png" alt="Addon Icon" width=450>
   <h3 align="center">The Last 15 Days</h3>
   
  <p align="center">
@@ -36,10 +36,10 @@
 
 ## MINIGUIA DE USO
 
-- **El Add-on solo soporta la version de Minecraft Bedrock 1.20.70/1. Cualquier version inferior o superior a futuro, puede que no funcione correctamente.**
-- **Este Add-on utilizar Scipts, asi que no esta en soporte con Aternos.**
+- **El Add-on solo soporta la version de Minecraft Bedrock 1.20.80. Cualquier version inferior o superior a futuro, puede que no funcione correctamente.**
+- **Este Add-on utilizar Scipts, asi que puede no funcionar en algunos host gratuitos como Aternos.**
 - Toda instalacion y configuracion del Add-on es automatico.
-- Si descargaste el Mundo PreConfigurado y no sabes que hacer con el, mira esta imagen tutorial: https://cdn.discordapp.com/attachments/964653057390546954/997570733473550536/exmple.png?ex=65eb5924&is=65d8e424&hm=460a78f216fda9602e5a796446db6243387d912b0f0e93b3d9996129354579af&
+- Si descargaste el Mundo PreConfigurado y no sabes que hacer con el, mira esta imagen tutorial: https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/main/.github/exmple.png
 - Para revivir a algun Jugador, debes hacer este proceso:
 >	- En el Juego, pon este comando: "!settings timerBan off". (Si te marca error, procura poner este comando antes: "/tag @s add admin")
 >	- Luego de poner el comando, cuando entre el Jugador muerto, este sera revivido automaticamente.
@@ -48,9 +48,9 @@
 ## OPCIONES EXPERIMENTALES NECESARIAS
 - _El Add-on requiere funciones experimentales para que funcione correctamente, procura tenerlos activados en el mundo antes de poner el add-on._
 
-![esp](https://cdn.discordapp.com/attachments/997603479822536794/1212095447934697502/image.png?ex=65f096da&is=65de21da&hm=a4fd57571a6f83e6bca55ef898108b8575f28a75649d6fdb8538ec2b386a6f5e&)
+![esp](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/main/.github/exp_esp.png)
 
-![eng](https://cdn.discordapp.com/attachments/997603479822536794/1212095175510200340/image.png?ex=65f09699&is=65de2199&hm=e832599ca0e87bbd82b17ffc8ed2794e7e8f9298c53848ad85dfb4ba2b49cddf&)
+![eng](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/main/.github/exp_eng.png)
 
 ## ¿EL SERVER PIDE MODULOS REQUERIDOS?
 

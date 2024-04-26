@@ -9,7 +9,8 @@
 			{
 				"name": "sounds/ui/sonido_muerte",
 				"load_on_low_memory": true,
-				"volume": 2
+				"volume": 2.0,
+				"stream" : true
 			}
 		]
 	},
@@ -21,7 +22,8 @@
 			{
 				"name": "sounds/ui/muerte",
 				"load_on_low_memory": true,
-				"volume": 2.5
+				"volume": 2.5,
+				"stream" : true
 			}
 		]
 	},
@@ -33,7 +35,8 @@
 			{
 				"name": "sounds/ui/logro_obtenido",
 				"load_on_low_memory": true,
-				"volume": 1.5
+				"volume": 1.5,
+				"stream" : true
 			}
 		]
 	},
@@ -46,11 +49,12 @@
 			{
 				"name": "sounds/ui/enemy_activate",
 				"load_on_low_memory": true,
-				"volume": 2
+				"volume": 2.0
 			}
 		]
 	},
 	"mob.change_mob_fase": {
+		"__use_legacy_max_distance": true,
 		"category": "hostile",
 		"min_distance": null,
 		"max_distance": 45,
@@ -58,11 +62,12 @@
 			{
 				"name": "sounds/ui/tamed_mob_betray",
 				"load_on_low_memory": true,
-				"volume": 3
+				"volume": 3.0
 			}
 		]
 	},
 	"mob.cat.summon_mobs": {
+		"__use_legacy_max_distance": true,
 		"category": "hostile",
 		"min_distance": null,
 		"max_distance": 50,
@@ -70,7 +75,7 @@
 			{
 				"name": "sounds/ui/summonea_mob",
 				"load_on_low_memory": true,
-				"volume": 3
+				"volume": 3.0
 			}
 		]
 	},
@@ -83,7 +88,7 @@
 			{
 				"name": "sounds/mod/ghost/ghost_killed",
 				"load_on_low_memory": true,
-				"volume": 1
+				"volume": 2.0
 			}
 		]
 	},
