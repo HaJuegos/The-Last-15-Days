@@ -9,6 +9,25 @@ import './piglinTeleport';
 let lastCoords = {};
 let lastDime = {};
 
+mc.world.afterEvents.itemCompleteUse.subscribe(itemConsumed => {
+	try {
+		let item = itemConsumed.itemStack;
+		let player = itemConsumed.source;
+		if (item.typeId == "cnvx:iron_apple") {
+			player.runCommand(`function items/iron_apple`);
+		};
+	} catch {};
+});
+
+mc.world.afterEvents.worldInitialize.subscribe(setupworld => {
+    try {
+        const dimension = mc.world.getDimension("overworld");
+        for (let command of setupCommands) {
+            dimension.runCommandAsync(`${command}`);
+        }
+    } catch {};
+});
+
 mc.world.beforeEvents.explosion.subscribe(explodeSensor => {
 	try {
 		let entity = explodeSensor.source;
@@ -229,15 +248,6 @@ mc.world.afterEvents.entityHitEntity.subscribe(hitSensor => {
 			} break;
 		};
     } catch {};
-});
-
-mc.world.afterEvents.worldInitialize.subscribe(setupworld => {
-	try {
-		const dimension = mc.world.getDimension("overworld");
-		for (let command of setupCommands) {
-			dimension.runCommandAsync(`${command}`);
-		};
-	} catch {};
 });
 
 mc.world.afterEvents.entityHurt.subscribe(totemSensor => {

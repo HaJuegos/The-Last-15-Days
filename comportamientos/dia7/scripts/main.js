@@ -8,6 +8,16 @@ import * as variable from './settings';
 let lastCoords = {};
 let lastDime = {};
 
+mc.world.afterEvents.itemCompleteUse.subscribe(itemConsumed => {
+	try {
+		let item = itemConsumed.itemStack;
+		let player = itemConsumed.source;
+		if (item.typeId == "cnvx:iron_apple") {
+			player.runCommand(`function items/iron_apple`);
+		};
+	} catch {};
+});
+
 mc.world.beforeEvents.explosion.subscribe(explodeSensor => {
 	try {
 		let entity = explodeSensor.source;

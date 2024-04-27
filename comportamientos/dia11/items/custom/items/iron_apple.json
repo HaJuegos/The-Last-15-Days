@@ -1,67 +1,30 @@
 /* Creado o Editado por: HaJuegosCat! y Convex!. Si editaras o copiaras este archivo, recuerda dejar creditos. Cualquier otra informacion o reporte, en el server de Discord: https://discord.gg/WH9KpNWXUz */
 /* Created or Edited by: HaJuegosCat! & Convex!. If you edit or copy this file, remember to give credit. For any other information or report, visit the Discord server: https://discord.gg/WH9KpNWXUz */
 {
-	"format_version": "1.16.100",
+	"format_version": "1.20.50",
 	"minecraft:item": {
 		"description": {
 			"identifier": "cnvx:iron_apple",
-			"category": "nature"
+			"menu_category": {
+				"category": "nature"
+			}
 		},
 		"components": {
-			"minecraft:use_duration": 1.5,
 			"minecraft:max_stack_size": 64,
 			"minecraft:stacked_by_data": true,
 			"minecraft:can_destroy_in_creative": false,
-			"minecraft:creative_category": {
-				"parent": "itemGroup.name.miscFood"
-			},
 			"minecraft:icon": {
 				"texture": "iron_apple"
 			},
+			"minecraft:use_modifiers": {
+				"use_duration": 1.6,
+				"movement_modifier": 0.35
+			},
 			"minecraft:food": {
 				"nutrition": 4,
-				"can_always_eat": true,
-				"saturation_modifier": "supernatural",
-				"on_consume": {
-					"event": "ha:effects"
-				}
+				"can_always_eat": true
 			},
-			"minecraft:use_animation": "eat",
-			"minecraft:render_offsets": "apple"
-		},
-		"events": {
-			"ha:effects": {
-				"sequence": [
-					{
-						"run_command": {
-							"command": [
-								"tellraw @a {\"rawtext\": [{\"translate\": \"chat.consume_ironapple\", \"with\": {\"rawtext\": [{\"selector\": \"@s\"}]}}]}"
-							]
-						}
-					},
-					{
-						"add_mob_effect": {
-							"effect": "health_boost",
-							"duration": 30,
-							"amplifier": 0
-						}
-					},
-					{
-						"add_mob_effect": {
-							"effect": "instant_health",
-							"duration": 10,
-							"amplifier": 0
-						}
-					},
-					{
-						"add_mob_effect": {
-							"effect": "regeneration",
-							"duration": 30,
-							"amplifier": 2
-						}
-					}
-				]
-			}
+			"minecraft:use_animation": "eat"
 		}
 	}
 }
