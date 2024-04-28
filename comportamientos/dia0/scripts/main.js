@@ -207,10 +207,9 @@ function swapInventory(player, coords) {
 	const inv = player.getComponent("minecraft:inventory").container;
 	const armorInv = player.getComponent("minecraft:equippable");
 	let dimension = player.dimension;
-	const radius = new mc.BlockAreaSize(5,5,5);
 	const armorSlots = ["Head", "Chest", "Legs", "Feet", "Offhand"];
 	dimension.runCommand(`summon ha:player_ghost "§e${player.name} Inventory§r" ${coords.x} ${coords.y} ${coords.z}`);
-	for (const entity of dimension.getEntities({ type: "ha:player_ghost", location: coords, volume: radius })) {
+	for (const entity of dimension.getEntities({ type: "ha:player_ghost", location: coords, maxDistance: 1 })) {
 		const invGhost = entity.getComponent("minecraft:inventory").container;
 		for (let i = 0; i < inv.size; i++) {
 			let item = inv.getItem(i);
