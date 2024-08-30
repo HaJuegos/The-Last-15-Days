@@ -85,7 +85,7 @@ Lista de Cambios:
 - Cualquier Jugador que Utilize un Totem de la Inmortalidad, aparecera en el chat.
 - Se agrega una nueva mecanica, llamada "Items Rapidos":
 	- Items Rapidos:
-		- Esta caracteriztica consiste en que cuando usas un Totem de la Inmortalidad o un Escudo con tu tecla o boton de interaccion, se pondra en el slot de la segunda mano.
+		- Esta caracteriztica consiste en que cuando usas un item de la mano secundaria con tu tecla o boton de interaccion, se pondra en el slot de la segunda mano.
 		
 - Se quito la visibilidad de la semilla del mundo.
 - Apartir de este Dia, se indicara el numero de Dias actuales.
@@ -97,7 +97,7 @@ Lista de Cambios:
 	- 1 Cubeta de agua.
 	
 - Por el momento, los portales del Nether y del End, estan bloqueados.
-- Ahora, en todos los cofres, hay una posibilidad alta de encontrar:
+- Ahora, en todos los cofres, vaules y trial spawners, hay una posibilidad alta de encontrar:
 	- Libro encantado con Reparacion y Irrompibilidad III. (90% de Posibilidad)
 	
 - Ahora los Aldeanos dejaron el trabajo de libreros, permanente.
@@ -107,7 +107,7 @@ Lista de Cambios:
 
 - Ahora los Peces Globos tienen mas zonas para spawnear, desde la capa mas baja, hasta la mas alta.
 - Ahora las Cabras, Abejas, Oso Polares y Ocelotes seran agresivos siempre con el Jugador.
-- Ahora si te mantienes 10 minutos o mas en algun bioma caliente o frio, empezaras a recibir 1 corazon de daño constantemente hasta salir de ese bioma.
+- Si estas mas de 5 minutos en un bioma calido o frio, empezaras a recibir daño hasta salir de ese bioma.
 
 • Dia 2:
 
@@ -177,7 +177,7 @@ Lista de Cambios:
 	- Hace 12 de daño base.
 	- Tiene 2000 de durabilidad.
 	- Funciona como una espada normal.
-	- Se gasta 3 de durabilidad al atacar a una entidad y 1 de durabilidad en cualquier otra cosa.
+	- No es irrompible
 
 • Dia 7:
 
