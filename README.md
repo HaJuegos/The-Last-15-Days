@@ -90,17 +90,18 @@ Lista de Cambios:
 - Apartir de este Dia, se indicara el numero de Dias actuales.
 - Ahora la vida de los Jugadores es visible en su nombre.
 - La generacion de Diamantes fue modificada para que apareciera mas frecuentemente.
-- Los Jugadores nuevos reciben un Kit especial para su supervivencia:
+- Al entrar por primera vez al mundo, se dara un kit que consiste en:
 	- 1 totem de la inmortalidad.
 	- 15 Zanahorias de oro.
 	- 1 Cubeta de agua.
 	
-- Por el momento, los portales del Nether y del End, estan bloqueados.
-- Ahora, en todos los cofres, vaules y trial spawners, hay una posibilidad alta de encontrar:
-	- Libro encantado con Reparacion y Irrompibilidad III. (90% de Posibilidad)
+- En este Dia y siguientes, los portales del Nether y End no se pueden activar manualmente.
+- Ahora todos los Cofres de estructuras y Vaules de la Trial Chamber, vienen con:
+	- Un Libro encantado con Reparacion y Irrompibilidad III. (Con 90% de Posibilidad de aparecer)
 	
-- Ahora los Aldeanos dejaron el trabajo de libreros, permanente.
-- Ahora los Aldeanos son mobs neutros.
+- Los Aldeanos ya no tomaran el trabajo de Librero, permanentemente.
+- Ya no pueden spawnear Zombies Aldeanos Libreros.
+- Los Aldeanos ahora son mobs neutrales. (Es decir, que son tranquilos si no les atacas)
 
 • Dia 1:
 
