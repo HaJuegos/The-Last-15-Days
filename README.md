@@ -1,6 +1,6 @@
 <p align="center">
   <img src="https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/main/comportamientos/dia0/pack_icon.png" alt="Addon Icon" width=450>
-  <h3 align="center">The Last 15 Days</h3>
+  <h3 align="center">The Last 15 Days (Version 0.0.11-beta)</h3>
   
  <p align="center">
  Una Serie Hardcore creada por RosherRandom en Colaboracion con Convex! y HaJuegosCat. ¿Sobreviviras los 15 Dias?</p>
@@ -36,7 +36,7 @@
 
 ## MINIGUIA DE USO
 
-- **El Add-on solo soporta la version de Minecraft Bedrock 1.20.80. Cualquier version inferior o superior a futuro, puede que no funcione correctamente.**
+- **El Add-on solo soporta la version de Minecraft Bedrock 1.21.50/51. Cualquier version inferior o superior a futuro, puede que no funcione correctamente.**
 - **Este Add-on utilizar Scipts, asi que puede no funcionar en algunos host gratuitos como Aternos.**
 - Toda instalacion y configuracion del Add-on es automatico.
 - Si descargaste el Mundo PreConfigurado y no sabes que hacer con el, mira esta imagen tutorial: https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/main/.github/exmple.png
@@ -65,7 +65,7 @@
 - **Aqui tienes las imagenes canon de la serie TL15D:** https://github.com/HaJuegos/The-Last-15-Days/tree/main/banners_originales
 
 ```txt
-The Last 15 Days By RosherRandom | Colab entre HaJuegosCat! y Convex! | Version Actual: 0.0.9.
+The Last 15 Days By RosherRandom | Colab entre HaJuegosCat! y Convex! | Version Actual: 0.0.11-beta.
 
 **Cualquier bug o algo que creas que no esta bien en el add-on, reportarlo en el servidor de Discord dedicado para los Add-on's de Ha Juegos. Link del Discord: https://discord.gg/WH9KpNWXUz
 
@@ -83,9 +83,8 @@ Lista de Cambios:
 - Al dormir, en vez de que la noche pase instantaneamente, se pasara mucho mas rapido.
 - Los Jugadores tienen el rango llamado "Sobreviviente" y es visible en el nombre y en el chat.
 - Cualquier Jugador que Utilize un Totem de la Inmortalidad, aparecera en el chat.
-- Se agrega una nueva mecanica, llamada "Items Rapidos":
-	- Items Rapidos:
-		- Esta caracteriztica consiste en que cuando usas un item de la mano secundaria con tu tecla o boton de interaccion, se pondra en el slot de la segunda mano.
+- Se agrega una nueva mecanica llamada "Fast Items" (O Items Rapidos)
+	- Esta funcion consiste en que, con tu tecla de interaccion, al usar algun item que este permitido en la mano secundaria, se trasfiere a dicha mano de forma rapida.
 		
 - Se quito la visibilidad de la semilla del mundo.
 - Apartir de este Dia, se indicara el numero de Dias actuales.
