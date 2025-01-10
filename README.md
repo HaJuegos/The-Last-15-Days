@@ -96,12 +96,62 @@ Lista de Cambios:
 	- 1 Cubeta de agua.
 	
 - En este Dia y siguientes, los portales del Nether y End no se pueden activar manualmente.
-- Ahora todos los Cofres de estructuras y Vaules de la Trial Chamber, vienen con:
+- Ahora todos los Cofres de todas las estructuras y Vaules de la Trial Chamber, vienen con:
 	- Un Libro encantado con Reparacion y Irrompibilidad III. (Con 90% de Posibilidad de aparecer)
 	
 - Los Aldeanos ya no tomaran el trabajo de Librero, permanentemente.
 - Ya no pueden spawnear Zombies Aldeanos Libreros.
 - Los Aldeanos ahora son mobs neutrales. (Es decir, que son tranquilos si no les atacas)
+- Se añadieron algunos logros que aparecen en el chat, tales como:
+	- La Edad de Piedra
+	- Mejorando herramientas
+	- La Edad de Hierro
+	- Vístete
+	- ¡La cosa está que arde!
+	- ¿No es hierrónico?
+	- Hoy no, gracias
+	- Mente fría
+	- ¡Diamantes!
+	- Plus ultra
+	- Cúbreme de diamantes
+	- Zombiólogo
+	- ¿Se acabó?
+	- Devolver al remitente
+	- Escondido en las profundidades
+	- ¿Quién está cortando cebollas?
+	- Falsa alianza
+	- Magnetita, llévame a casita
+	- Cúbreme de netherita
+	- Por una cabeza
+	- Jugando con fuego
+	- Dr. Witherstein
+	- Mezcla explosiva
+	- Faroneitor
+	- ¿Cómo llegamos hasta aquí?
+	- Libera el End
+	- La nueva generación
+	- ¡Qué mal aliento!
+	- La ciudad al final del juego
+	- Hasta el infinito... ¡y más allá!
+	- Exilio voluntario
+	- Monster Hunter
+	- Dulces sueños
+	- Héroe de la aldea
+	- Jugada maestra
+	- ¡Diana!
+	- Post mortem
+	- El saqueador saqueado
+	- Francocazadores
+	- En el blanco
+	- Desarmadillo
+	- Bajo llave
+	- Caja de pandora
+	- ¡A tomar viento!
+	- Abelante, esta es tu casa
+	- Renacuajo al cubo
+	- Huele interesante
+	- Malos hábitos
+	- El depredador más adorable
 
 • Dia 1:
 
