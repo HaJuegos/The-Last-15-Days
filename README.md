@@ -40,10 +40,18 @@
 - **Este Add-on utilizar Scipts, asi que puede no funcionar en algunos host gratuitos como Aternos.**
 - Toda instalacion y configuracion del Add-on es automatico.
 - Si descargaste el Mundo PreConfigurado y no sabes que hacer con el, mira esta imagen tutorial: https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/main/.github/exmple.png
-- Para revivir a algun Jugador, debes hacer este proceso:
->	- En el Juego, pon este comando: "!settings timerBan off". (Si te marca error, procura poner este comando antes: "/tag @s add admin")
->	- Luego de poner el comando, cuando entre el Jugador muerto, este sera revivido automaticamente.
->	- Cuando ya este revivido el Jugador, pon este otro comando: "!settings timerBan on" y listo.
+- Comandos para Administradores (Solo con OP):
+	- !offban:
+		- Cuando este comando se ponga en el chat, el sistema automatico de ban al morir se apagara y revivira a todos los jugadores que entren y hayan muerto.
+		
+	- !onban:
+		- Cuando este comando se ponga en el chat, el sistema automatico de ban al morir se encendera y baneara nuevamente a los jugadores que ya esten muertos.
+	
+	- !mute @"[nombre]"
+		- Este comando sirve para silenciar jugadores del chat.
+		
+	- !unmute @"[nombre]"
+		- Este comando sirve para de-silenciar jugadores del chat.
 
 ## OPCIONES EXPERIMENTALES NECESARIAS
 - _El Add-on requiere funciones experimentales para que funcione correctamente, procura tenerlos activados en el mundo antes de poner el add-on._
