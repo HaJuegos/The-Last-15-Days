@@ -56,9 +56,9 @@
 ## OPCIONES EXPERIMENTALES NECESARIAS
 - _El Add-on requiere funciones experimentales para que funcione correctamente, procura tenerlos activados en el mundo antes de poner el add-on._
 
-![esp](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/main/.github/exp_esp.png)
+![esp](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/main/.github/esp.png)
 
-![eng](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/main/.github/exp_eng.png)
+![eng](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/main/.github/eng.png)
 
 ## ¿EL SERVER PIDE MODULOS REQUERIDOS?
 
