@@ -73,7 +73,7 @@
 - **Aqui tienes las imagenes canon de la serie TL15D:** https://github.com/HaJuegos/The-Last-15-Days/tree/main/banners_originales
 
 ```txt
-The Last 15 Days By RosherRandom | Colab entre HaJuegosCat! y Convex! | Version Actual: 0.0.11-beta.
+The Last 15 Days creado por RosherRandom y desarrollado por HaCatto y Convex! | Version 0.0.11-beta
 
 **Cualquier bug o algo que creas que no esta bien en el add-on, reportarlo en el servidor de Discord dedicado para los Add-on's de Ha Juegos. Link del Discord: https://discord.gg/WH9KpNWXUz
 
@@ -163,43 +163,48 @@ Lista de Cambios:
 
 • Dia 1:
 
-- Ahora los Peces Globos tienen mas zonas para spawnear, desde la capa mas baja, hasta la mas alta.
-- Ahora las Cabras, Abejas, Oso Polares y Ocelotes seran agresivos siempre con el Jugador.
-- Si estas mas de 5 minutos en un bioma calido o frio, empezaras a recibir daño hasta salir de ese bioma.
+- Ahora los Peces Globo spawnean en todos los sitios con agua.
+- Las Cabras, Abejas, Osos Polares y Ocelotes ahora son hostiles.
+- Se añade el daño por temperatura:
+	- Esta consiste en que si estas mas de 5 minutos en un bioma calido o frio, empezaras a recibir daño hasta que salgas de ese bioma.
 
 • Dia 2:
 
-- Ahora los Cactus, Ballas Dulces y Arbustos muertos dan Veneno por 10 segundos.
-- Ahora los Zorros son hostiles con los Jugadores y son capaces de robar cualquier slot del inventario o armadura al golpearte.
-- Ahora los Phantoms tienen Resistencia al Fuego y pueden ser mas constantes al atacar.
-- Ahora al picar cualquier mineral de Diamante, te hara 1 corazon de daño.
-- Ahora las Abejas spawnean de forma natural en el Overworld.
+- Al golpearte con un Cactus o una Balla Dulce, te dara Veneno por 10 segundos y al pasar por un Arbusto Muerto, tambien te dara.
+- Ahora los Zorros son hostiles y son capaces de robarte lo que tengas en el inventario y Armadura, puedes recuperar tus cosas al matar al Zorro. (En caso de que el Zorro no pueda llevar mas items, dropea el mas cercano en su posicion)
+- Los Phantoms ahora son mas constantes al atacar y tiene resistencia al fuego.
+- Al minar Minerales de Diamante, perderas 1 corazon.
+- Ahora las Abejas spawnean de manera natural en el Overworld.
 - Aparece un nuevo item: "Manzana de Hierro":
-	- Se craftea con 8 lingotes de Hierro y Una manzana.
+	- Se craftea con 8 lingotes de Hierro y una Manzana.
 	- Al comerlo, te dara Resistencia II por 30 segundos.
 
 • Dia 3:
 
-- Ahora los Drowneds siempre usaran y llevaran tridentes.
-- Ahora las Arañas de Cueva spawnean de forma natural en la superficie y en el Subsuelo.
-- Ahora los Zombies y Esqueletos llevan Armadura de Diamante completa.
-- Ahora los Husk al golpearte, te dan Hambre IV.
-- Ahora los Esqueletos Errantes al dispararte, te dan Lentitud IV.
-- Ahora los Slimes al golpearte, te dan Impulso de Salto II.
-- Ahora los Esqueletos del Wither pueden spawnear en el Overworld y llevan este equipamento:
-	- Espada de Diamante con Filo V.
-	- Armadura completa de Hierro.
+- Ahora los Drowneds tienen tridente siempre.
+- Las Arañas de Cueva ahora spawnea naturalmente en la superficie y en cuevas.
+- Ahora los Zombies y Esqueletos tienen Armadura de Diamante.
+- Los siguientes mobs al golpearte, te daran efectos como:
+	- Husk: Hambre IV por 30 segundos.
+	- Stray: Lentitud IV por 30 segundos por Flecha.
+	- Slimes: Impulso de Salto II por 30 segundos
+
+- Los Esqueletos del Wither ahora spawnean en el Overworld, tienen Armadura de Hierro con Espada de Diamante Filo V.
 
 • Dia 4:
 
-- Ahora los Ravagers tienen Fuerza y Velocidad II.
-- Ahora las Brujas tienen Invisibilidad y pueden teletransportarse, tambien se generan en las Islas Champiñon.
-- Ahora los Evocadores pueden generar Esqueletos de Wither, tienen Resistencia II y tienen una nueva habilidad, descubre como es.
-- Ahora los Zorros pueden spawnear en las Islas Champiñon.
-- Ahora las Vacas cada cierto tiempo, pueden empujarte muy lejos si estas cerca de ellas.
+- Los Ravagers spawnean con Velocidad y Fuerza II permanente.
+- Las Brujas spawnean con Invisibilidad permanente y se pueden teletransportar como el Enderman. Estas pueden spawnear en Islas Champiñon.
+- El evocador ha cambiado y ahora tienen lo siguiente:
+	- Pueden generar Esqueletos del Wither como lo hacen con los Vexs.
+	- Tiene Resistencia II permanente.
+	- Si estas muy cerca de el, empezara una mini fase donde te atacara a distancia con Flechas de Daño II.
+	
+- Los Zorros pueden spawnear en Islas Champiñon.
+- Las Vacas cada cierto tiempo, pueden empujar a los mobs cercanos muy lejos.
 - Aparece un nuevo item: "Totem Invocador":
-	- Se craftea con 4 varas de Blaze, 4 bloques de Esmeralda y 1 Totem de la Inmortalidad.
-	- Al usarlo con tu tecla de interaccion, te agregara Bad Omen con algo de Daño.
+	- Se craftea con 4 Varas de Blaze, 4 Bloques de Esmeralda y 1 Totem.
+	- Al usarlo con tu tecla de interaccion, te dara Raid Omen pero te quitara mitad de vida.
 
 • Dia 5:
 
