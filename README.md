@@ -208,39 +208,47 @@ Lista de Cambios:
 
 • Dia 5:
 
-- El Nether esta abierto para todos.
-- Ahora los Blaze, Magma Cube, Piglins y Ghast hacen x5 de daño y se duplican al spawnear.
-- Ahora los Wither Boos tienen Velocidad II y al recibir daño a melee de este, te dara Levitacion X por 30 segundos.
+- En este dia y posteriores, el Nether esta permitido y abierto para todos.
+- La Netherite aun no es obtenible.
+- Los Blaze, MagmaCube, Piglin y Piglin Brute, y Ghasts, se duplican al spawnear y tienen x5 de daño, lo cual puede o no hacerte OneShot con buen equipamento.
+- Al ser golpeado por un Wither Boss, recibiras Levitacion X por 30 segundos. El Wither Boss tendra Velocidad II permanentemente.
 - Aparecen nuevos items: "Reliquia Infernal" y "Fragmento Ígneo"
 	- Reliquia Infernal:
 		- Se craftea con 4 Fragmento Ígneos y una Estrella del Nether.
-		- Al tenerla en el inventario, te evita cualquier daño por temperatura y te dara Resistencia, Fuerza y Resistencia al Fuego II, pero solo aplica para el Nether.
-		- Son inumnes al fuego y lava.
+		- Al conseguir el item y tenerlo en el inventario, te evitara el daño por temperatura, te dara Fuerza II y Resistencia al Fuego en el Nether.
+		- Estos items no se pueden quemar.
 	
 	- Fragmento Ígneo:
 		- Se consigue matando Blaze, MagmaCubes, Piglins y Ghast con un 10% de posibilidad de drop.
-		- Son inumnes al fuego y lava.
+		- Este item no se puede quemar.
 
 • Dia 6:
 
-- Se desbloquea todo lo relacionado a la netherite.
-- La Armadura de Netherite ahora es irrompible.
-- Ahora el daño por Lava te hace 5 corazones de daño y por Fuego te hace 3 corazones de daño.
-- Al picar Ancient Debris, se colocara lava en su lugar y generara un Silverfish.
-- Ahora los Silverfish y Endermites tienen resistencia al fuego y hacen 2 corazones de daño base.
-- Los Hoglins han cambiado drasticamente y ahora tienen estas modificaciones:
-	- Su rate de spawn ha disminuido.
-	- Tienen Fuerza, Resistencia y Velocidad III.
-	- Al morir, tiene un 15% de posibilidad de dropear un "Colmillo de Hoglin", con encantamientos ya incluidos tales como Daño de Artropodos, Castigo y Filo V.
-	- Ahora su reach aumento y te puede atacar mas lejos.
-	- No recibe daños de todo tipo de proyectiles.
-	- Pueden romper botes cercanos.
-
-- Aparece un nuevo item: "Colmillo de Hoglin"
-	- Hace 12 de daño base.
-	- Tiene 2000 de durabilidad.
-	- Funciona como una espada normal.
-	- No es irrompible
+- La Netherite ya es obtenible.
+- La Armadura de Netherite ahora es Irrompible.
+- El daño por Lava te quitara 5 Corazones por tick.
+- El daño por Fuego te hace 3 Corazones por tick.
+- Al minar Ancient Debris, aparecera Lava en su lugar y un Silverfish.	
+- Los Endermites y Silverfish ahora tienen las siguientes caracteristicas:
+	- Tiene resistencia al fuego.
+	- Hace 6 Corazones de Daño.
+	- Es mas rapido.
+	
+- Los Hoglins ahora tienen las siguientes caracteristicas:
+	- Ahora spawnean con menos frecuencia.
+	- Tienen Fuerza, Resistencia y Velocidad III permanentemente.
+	- Tiene un alcanze de ataque aumentado.
+	- No puede recibir daño de Projectiles.
+	- Puede romper barcos cercanos si te golpea.
+	- Al morir tiene un 15% de probabilidad de dropear un "Colmillo de Hoglin". Este viene con encantamientos como Daño de Artropodos, Castigo y Filo V.
+	
+- Aparace un nuevo item: "Colmillo de Hoglin":
+	- Hace 10 Corazones de daño.
+	- Tiene la misma durabilidad de una Espada de Netherite.
+	- Funciona como una Espada normal.
+	
+- Se añadio nuevos logros:
+	- "Hoglin Slayer | El Cazador de Hoglins" - Consigue un Colmillo de Hoglin.
 
 • Dia 7:
 
