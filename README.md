@@ -252,47 +252,63 @@ Lista de Cambios:
 
 • Dia 7:
 
-- El spawn natural de las Abejas se ha eliminado.
-- Ahora Los Conejos, Loros, Murcielajos, Gallinas y Ranas explotan al acercarte a ellos y al atacarlos. Te pueden trackear desde lejos y avisaran al explotar.
-- Ahora las Ovejas se convierten en "Pollys":
-	- Pueden romper cualquier tipo de bloque a su paso.
-	- Tienen Velocidad IV.
-	- Al morir dejan una TNT Encendida.
+- Las Abejas dejan de spawnear naturalmente en el Overworld.
+- Los siguientes mobs son hostiles y pueden explotar si estan muy cerca de ti:
+	- Conejos
+	- Loros
+	- Gallinas
+	- Ranas
 
-- Ahora los Gatos y Lobos por la noche cambian y su comportamiento es el siguiente:
-	- Se vuelven hostiles contra el jugador con una especie de alarma y obtendran Fuerza V y Velocidad III.
+- Las Ovejas se convierten en "Pollys" con las siguientes caracteristicas:
+	- Romper cualquier bloque que se les ponga en el camino.
+	- Tienen Velocidad II permanente.
+	- Si mueren, dejan una TNT Encendida.
+	- Son hostiles y atacan muy rapido.
+	
+- Los Gatos y Lobos ahora son hostiles por la noche, aun asi los tengas domesticados. Estos por la noche tendran Fuerza V y Velocidad III hasta que termine la noche.
+- Ahora los Delfines son hostiles y tienen las siguientes caracteristicas:
+	- Si te golpean, te quitara la respiracion actuatica instantaneamente por 1 minuto.
+	- El tiempo sin respiracion acuatica es acumulable por golpe, es decir, si te golpea 2 veces, seran 10 minutos.
 
-- Ahora al ser golpeados por un Delfin, tu respiracion se acaba instantaneamente por 5 minutos. (El tiempo es stackeable)
-- Ahora los Zombie Pigman y los Piglins son hostiles ante ti sin importar que lleves y tienen Hacha de Netherite.
-- Ahora los Piglin Brutes pueden dropear con un 10% de posibilidad una Manzana Encantada y tienen Fuerza III.
-- Ahora los Drowneds siempre dropearan oro al morir y tienen Armadura Completa de Diamante.
-- Ahora todos los tipos de Caballos pueden ser reemplazados por un Caballo Zombie o un Caballo Esqueleto.
-- Ahora los Caballos Zombie o Esqueleto al golpearte te daran Nausea, Fatiga Minera y Veneno I por 20 segundos. Tambien generaran un zombie o esqueleto dependiendo que variante sea.
-- El daño de temperatura aumenta x6.
-- Ahora las Arañas y Arañas de Cueva te encierran en cubos de Telaraña.
+- Ahora los Piglins y Zombie Pigman son hostiles sin importar lo que lleves y tienen Hacha de Netherite.
+- Los Drowned al morir, dropean lingote de oro. Tienen Armadura Completa de Diamante.
+- Ahora todos los tipos de Caballos son reemplazados por un Caballo Zombie o Esqueletico.
+- Los Caballos Esqueleticos y Zombie tienen la siguiente caracteristicas:
+	- Son hostiles.
+	- Si te golpean, te daran Nausea, Fatiga Minera y Veneno I por 20 segundos.
+	- Si te golpean, pueden generar un Zombie o Esqueleto en tu posicion.
+
+- El Daño por temperaturas ahora es por 2 minutos y su daño ahora es de 4 corazones.
+- Las Arañas y Arañas de Cueva al golpearte, generaran un cubo de telaraña en tu posicion.
 
 • Dia 8:
 
-- Aparecen nuevas variantes del Creeper, las cuales son:
-	- Creeper Radioactivo:
-		- Al explotar, deja una nube de daño con radio 12 que al estar en ella, te quitara 4 corazones por daño.
+- Ahora el Creeper tiene variantes tales como:
+	- "Creeper Radioactivo":
+		- Al explotar dejara una nube de daño que quitara 4 corazones por tick, tiene un radio de 12 bloques.
+		
+	- "Creeper Obsidiana":
+		- Al explotar genera un cubo enorme de obsidiana 10x10.
+		
+	- "Creeper Debuff":
+		- Al explotar y recibir daño de la explosion, recibiras todos los efectos malos del juego por 10 segundos.
+		
+	- "Creeper Mommy":
+		- Tiene un radio 15 de explosion, al explotar generara unos Creeper Bebes de la misma variante con Velocidad V y Resistencia III  permanente. Estos explotan normal.
+		
+	- "Creeper Ninja":
+		- Te puede detectar desde muy lejos y a través de los bloques, estara cargado siempre y tienen Velocidad III permanente.
 
-	- Creeper Obsidiana:
-		- Al explotar, genera un cubo enorme de obsidiana 10x10.
-
-	- Creeper Debuff:
-		- Al explotar, si recibes daño de la explosion, recibiras TODOS los efectos malos del juego por 10 segundos.
-
-	- Creeper de Momis:
-		- Este tiene un radio de explosion 15 y al explotar, generara 5 Mini-creepers Momi con Velocidad V y Resistencia III.
-
-	- Creeper Ninja:
-		- Este creeper te puede trackear desde muy lejos y a travez de bloques, estara siempre cargado y lleva Velocidad III.
-
-- Ahora los Aldeanos pasan a ser hostiles.
-- Ahora los Golems de Hierro tiene Resistencia I y Fuerza IV.
-- Ahora las Arañas de Cueva tienen Fuerza III y Velocidad II, son montados por un Bebe Zombie con equipamento completo de Diamante encantado con Proteccion IV. Si te ataca el Zombie o la Araña, se te limpiara cualquier efecto.
-- Ahora las Brujas lanzaran pociones de Nivel X, su rate de spawn ha disminuido. Al ser golpeadas, se teletransportaran rapidamente hacia alcanzar su objectivo.
+- Los Aldeanos ya no son mobs neutros, si no hostiles
+- Los Golems de Hierro tienen Fuerza IV y Resistencia I permanentemente.
+- Las Arañas de Cueva tienen Fuerza III y Velocidad II permanente, y tienen un Zombie Bebe encima con lo siguiente:
+	- Full Diamante con Proteccion IV.
+	- Si alguno de estos te atacan, te limpian todos los efectos.
+	
+- Las brujas ahora tienen las siguientes caracteristicas:
+	- Sus pociones son de nivel X.
+	- Spawnean con menor rate.
+	- Al ser golpeadas, se teletransportan agresivamente y cerca de quien va a atacar.
 
 • Dia 9:
 
