@@ -312,17 +312,17 @@ Lista de Cambios:
 
 • Dia 9:
 
-- Ahora los Pandas tienen el mismo Knockback de las vacas.
-- Ahora los Gatos pueden summonear Creepers cada 2 minutos si te trackean. (Su spawn se basa en los espacios libres)
-- Ahora los Phantoms spawnean con Esqueletos del Wither.
-- Ahora las Abejas spawnean con Esqueletos o Errantes.
-- Ahora los Esqueletos y Errantes disparan Bolas de Fuego de nivel 3 hasta 10.
-- Ahora los Esqueletos del Wither atacan a distancia y disparan Cabezas del Wither Boss con un nivel de 3 hasta 10.
-- Ahora los Zombies llevan Hachas de Diamante con Filo X y al golpearte, te desorganizan el inventario.
-- Ahora hay un 1% de posibilidad de que al spawnear un Piglin, se convierta en un Piglin Brute.
-- Los Vex ahora se pueden convertir en un Allay, su tiempo de transformacion es de 30 segundos.
-- Ahora las Cabezas del Wither Boss tienen nivel 10 de explosion.
-- Ahora los Esqueletos y Errantes tienen un 10% de posibilidad de dropear un Arco con Poder XI.
+- Los Pandas empujan igual que las Vacas.
+- Los Gatos tienen la habilidad de spawnear Creepers a su alrededor. Su spawn es cada 2 minutos, te deben atacar primero y solo spawnean en espacios libres.
+- Los Phantoms tienen un Esqueleto del Wither encima.
+- Las Abejas tendran un Esqueleto o un Esqueleto Errante encima.
+- Los Esqueletos y Esqueletos Errantes pueden lanzar Bolas de Fuegos de Nivel 3 hasta 10.
+- Los Esqueletos del Wither ahora atacan a distancia y disparan Cabezas del Wither con Nivel de explosion 3 hasta 10.
+- Los Zombies ahora tienen Hachas de Diamante con Filo X y al golpearte te desordenan el inventario, cambiando la posicion de los items de forma aleatoria.
+- Los Piglins al spawnear, tienen un 1% de probabilidad de convertirse en Piglin Bruto.
+- Los Vex cada 30 segundos, se convierten en Allay.
+- Las Cabezas del Wither tienen Nivel de explosion de 10.
+- Los Esqueletos y Esqueletos Errantes tienen un 5% de probabilidad de dropar un Arco con Poder XI, Reparacion y Irrompibilidad III.
 
 • Dia 10:
 
