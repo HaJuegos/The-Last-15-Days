@@ -214,9 +214,13 @@ Lista de Cambios:
 - Al ser golpeado por un Wither Boss, recibiras Levitacion X por 30 segundos. El Wither Boss tendra Velocidad II permanentemente.
 - Aparecen nuevos ítems: "Gema Infernal", "Alma de Fuego" y "Corona Infernal"
 	- Corona Infernal:
-		- Se craftea con 4 Fragmento Ígneos y una Estrella del Nether.
+		- Se craftea con 3 Gemas Infernales, 1 Alma de Fuego y una Corona de Wither Vacia.
 		- Al conseguir el ítem y tenerlo en el inventario, te evitará el daño por temperatura, te dará Fuerza II y Resistencia al Fuego en el Nether.
 		- Estos ítems no se pueden quemar.
+		
+	- Corona Infernal Vacia:
+		- Se consigue matando un Wither Boss, con un 50% de probabilidad.
+		- Este item no se puede quemar.
 
 	- Gema Infernal y Alma de Fuego:
 		- Se consigue matando Blaze, MagmaCubes, Piglins y Ghast con un 10% de posibilidad de drop.
