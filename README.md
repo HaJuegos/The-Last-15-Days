@@ -210,17 +210,20 @@ Lista de Cambios:
 
 - En este dia y posteriores, el Nether esta permitido y abierto para todos.
 - La Netherite aun no es obtenible.
-- Los Blaze, MagmaCube, Piglin y Piglin Brute, y Ghasts, se duplican al spawnear y tienen x5 de daño, lo cual puede o no hacerte OneShot con buen equipamento.
+- Los Blaze, MagmaCube, Piglin y Piglin Brute, y Ghasts, se duplican al spawnear y tienen x5 de daño, lo cual puede o no, hacerte OneShot con buen equipamento.
 - Al ser golpeado por un Wither Boss, recibiras Levitacion X por 30 segundos. El Wither Boss tendra Velocidad II permanentemente.
-- Aparecen nuevos items: "Reliquia Infernal" y "Fragmento Ígneo"
-	- Reliquia Infernal:
+- Aparecen nuevos ítems: "Gema Infernal", "Alma de Fuego" y "Corona Infernal"
+	- Corona Infernal:
 		- Se craftea con 4 Fragmento Ígneos y una Estrella del Nether.
-		- Al conseguir el item y tenerlo en el inventario, te evitara el daño por temperatura, te dara Fuerza II y Resistencia al Fuego en el Nether.
-		- Estos items no se pueden quemar.
-	
-	- Fragmento Ígneo:
+		- Al conseguir el ítem y tenerlo en el inventario, te evitará el daño por temperatura, te dará Fuerza II y Resistencia al Fuego en el Nether.
+		- Estos ítems no se pueden quemar.
+
+	- Gema Infernal y Alma de Fuego:
 		- Se consigue matando Blaze, MagmaCubes, Piglins y Ghast con un 10% de posibilidad de drop.
-		- Este item no se puede quemar.
+		- Este ítem no se puede quemar.
+	
+- Se añadio nuevos logros:
+	- "Rey del Nether | The Blazing Monarch" - Consigue la Corona Infernal.
 
 • Dia 6:
 
@@ -326,38 +329,55 @@ Lista de Cambios:
 
 • Dia 10:
 
-- Las Llamas han cambiado mucho y ahora sus proyectiles hacen Oneshot, te pueden trackear y disparar desde muy lejos y tienen Resistencia IV.
-- Ahora los Ravagers tienen Fuerza X, Salto y Resistencia III.
-- Ahora los Endermans son inmunes al fuego, lava y Agua, tambien tienen Fuerza V, Resistencia y Velocidad II y son hostiles.
-- Ahora los Piglins tienen un 15% de posibilidad de ser un Piglin Brute.
-- Los Piglins Brute cambiaron drasticamente y ahora tienen esas caracteristicas:
-	- Si estas muy lejos, usaran EnderPearls para llegar hacia ti.
-	- Si estas minimamente lejos, spamearan Flechas con Daño II.	
-	- Si estas muy cerca, Te atacara a Melee con un Hacha de Netherite Filo V.
-	- Si te escapas, mueres o tiene poca vida, intentaran comer y regenerarse.
-	- En ciertas ocaciones, puede llegar a romper bloques.
-	- Al atacar, rompera cualquier barco cercano.
-	- Hay una probabilidad de que al regenerarse o spawnear, tenga un totem en la segunda mano.
-	- Tiene 30 corazones. (60 de vida)
-	- Tiene Fuerza III.
-	- Son hostiles con cualquier mob, menos con su propia familia.
-	- Solo reciben daño de explosiones
-	- Tiene Armadura completa de Diamante.
+- Las Llamas ahora son hostiles, hacen muchisimo daño y te pueden disparar desde muy lejos. Tienen Resistencia IV permanente.
+- Los Ravagers tienen Fuerza X, Impulso de Salto I y Resistencia III permanente, mas, los efectos anteriores.
+- Los Endermans pueden resisten al fuego y agua, y pueden flotar en el. Tienen Fuerza V, Resistencia y Velocidad II permanente. Tambien se vuelven hostiles.
+- Los Piglins tienen un 15% de probabilidad de volverse un Piglin Bruto.
+- Los Piglins Bruto cambiaron totalmente con las siguientes caracteristicas:
+	- Pueden usar ender pearls para teletransportarse.
+	- Pueden regenerarse en caso de tener poca vida.
+	- Pueden atacar a melee de dos formas:
+		- Con un hacha de Netherite con Filo V y te puede hacer criticos aumentando mas el daño. (90% de probabilidad)
+		- Con el Mazo con Wind Burst I y te puede hacer combos en el aire. (10% de probabilidad)
+		
+	- Puede atacar a distancia con un Arco con los siguientes efectos:
+		- Lentitud
+		- Nausea
+		- Veneno
+		- Wither
+		- Infestacion
+		- Daño Instantaneo II
+		
+	- Puede romper bloques en caso de no alcanzarte o estar mucho tiempo afk o bajo tierra.
+	- Solo puede recibir daño por explosiones.
+	- Tiene 100 corazones.
+	- Tiene Armadura de Diamante completa.
+	- Pueden spawnear con un totem en su segunda mano.
+	
+- Las Manzanas de Hierro cambiaron y ahora te dara lo siguiente:
+	- Health Bosst III por 30 segundos.
+	- Vida Instantanea I por 5 segundos.
+	- Resistencia III por 30 segundos.
+	- Regeneracion III por 5 segundos.
 
-- Las Manzanas de Hierro han cambiado y ahora al consumirlas, te dara Health Boost I por 30 segundos y Vida Instantanea I por 10 segundos, tambien Regeneracion III por 30 segundos. Ya no se pueden craftear.
-- Aparece una nueva Armadura: "Cautious Astronaut Armor o Armadura del Astronauta Cauteloso"
-	- Al tener el Casco puesto, los Endermans no seran hostiles contra ti.
-	- Al tener la Pechera puesta, te dara Resistencia II y tu Knockback se reduce.
-	- Al tener los Pantalones puestos, te dara Prisa III, pero si no lo tienes puesto, te dara Fatiga Minera I.
-	- Al tener las Botas puestas, te dara Velocidad II, pero si no lo tienes puesto, te dara Lentitud II.
-	- Al tener todo el set puesto, te agrega Health Boost III. Si no tienes el Set completo, te dara Fatal Poison en el End.
-	- Para obtener la Armadura, debes conseguirlo al matar estos mobs:
-		- Llama (30%)
-		- Enderman (10%)
-		- Piglin Brute (15%)
-		- Ravager (30%)
+- Ya no se pueden craftear Manzanas de Hierro.
+- Aparece nuevos items:
+	- "Armadura Cautelosa"
+		- El tener el casco puesto: No te atacaran Endermans.
+		- El tener la pechera puesta: Te dara Resistencia II y mas resistencia de empuje.
+		- El tener el pantalon puesto: Te dara Prisa Minera III. Pero si no lo tienes puesto, tendras Fatiga Minera I.
+		- El tener las botas puestas: Te dara Velocidad II. Pero si no lo tienes puesto, te dara Lentitud II
+		- Es irrompible.
+		- No se quema.
 
-	- La Armadura es irrompible y resistente al fuego y lava.
+- Para obtener la Armadura Cautelosa debes matar los siguientes mobs con la siguiente probabilidad:
+	- Llama con 30% de probabilidad.
+	- Enderman con 30% de probabilidad.
+	- Piglin Bruto con 30% de probabilidad.
+	- Ravager con 30% de probabilidad.
+	
+- Se añadio nuevos logros:
+	- "Full Sneaky | Full Cauteloso" - Consigue la Armor Sneaky.
 
 • Dia 11:
 
