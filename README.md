@@ -359,7 +359,7 @@ Lista de Cambios:
 	- Pueden spawnear con un totem en su segunda mano.
 	
 - Las Manzanas de Hierro cambiaron y ahora te dara lo siguiente:
-	- Health Bosst III por 30 segundos.
+	- Health Bosst V por 30 segundos.
 	- Vida Instantanea I por 5 segundos.
 	- Resistencia III por 30 segundos.
 	- Regeneracion III por 5 segundos.
@@ -370,7 +370,8 @@ Lista de Cambios:
 		- El tener el casco puesto: No te atacaran Endermans.
 		- El tener la pechera puesta: Te dara Resistencia II y mas resistencia de empuje.
 		- El tener el pantalon puesto: Te dara Prisa Minera III. Pero si no lo tienes puesto, tendras Fatiga Minera I.
-		- El tener las botas puestas: Te dara Velocidad II. Pero si no lo tienes puesto, te dara Lentitud II
+		- El tener las botas puestas: Te dara Velocidad II. Pero si no lo tienes puesto, te dara Lentitud II.
+		- Al completa toda la Armadura, tendras: Health Boost III. Pero si no, tendras Fatal Poison I en el End.
 		- Es irrompible.
 		- No se quema.
 
