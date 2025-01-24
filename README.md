@@ -386,22 +386,31 @@ Lista de Cambios:
 
 • Dia 11:
 
-- El End esta abierto en el Mundo.
-- Ahora en el End se generan Creepers (Menos el de obsidiana) con Gallinas y Zorros.
-- Ahora las Cabras tienen Fuerza X, son locas siempre y atacan a melee.
-- Al dormir, tienes un 70% de posibilidad de generar un Enderman en tu posicion.
-- Al usar la caña de pezcar, tienes un 50% de posibilidad de generar una Cabra en tu posicion.
-- El Ender Dragon ha cambiado y ahora es "RoyerBot":
-	- Tiene 1000 Corazones (2000 de vida)
-	- Ahora el RoyerBot tiene espinas y por cada que lo ataques, te devolvera el daño.
-	- Cuando lanza Bolas de Dragon, estos pueden generar:
-		- Un ataque donde te dara Nauseas, debes mantenerte totalmente quieto. Si no lo haces, te hara OneShot.
-		- Puede generar un Warden con x2 de Vida y Tiene Velocidad II, pero su daño es reducido.
-		- Un ataque donde te dara Efecto del Conducto, preparate ya que, cuando se termine el efecto, teletransportara a todas las entidades al centro de la isla de forma aleatoria.
-		- Al explotar un Endercrystal, despues de un tiempo aleatorio, generara una Llama en esa posicion.
-		- Puede generar Arañas de Cueva con Zombies en el Centro de la Isla.
-		- Puede generar una Lluvia de totems.
-
+- El End ya es accesible.
+- En el End, ahora aparecen Creepers (Menos de Obsidiana) con los siguientes mobs:
+	- Zorros.
+	- Gallinas.
+	
+- Las Cabras ahora tienen Fuerza X, son locas siempre y atacan a melee.
+- Al dormir, hay una probabilidad de un 70% de que aparezca un Enderman en tu posicion.
+- Al usar una caña de pescar, hay un 50% de probabilidad de generar una Cabra.
+- El EnderDragon pasa a convertirse en "RoyerBot", con las siguientes caracteristicas:
+	- Tiene 1000 Corazones (2000 de vida).
+	- Al golpear a RoyerBot, este te devolvera todo el daño que le hagas.
+	- Las bolas de dragon al golpear algo o alguien, puede iniciar alguno de estos ataques:
+		- Inicia un ataque de Nauseas donde debes quedarte totalmente quieto. Si no lo haces, te hara OneShot.
+		- En la posicion donde caiga, generara un Warden con lo siguiente:
+			- x2 de vida.
+			- Velocidad II permanente.
+			- Su daño base disminuye.
+			- Puede ser mas constante al atacar.
+			- No dara efecto de Darkness.
+			
+		- Inicia un ataque de Efecto del Conducto, cuando termine este efecto, teletransportara a todas las entidades aleatoriamente en el centro de la Isla.
+		- Si explota un EnderCrystal, generara una Llama o Llama de un Mercader Ambulante. Si cada cierto tiempo, la volvera a generar.
+		- Puede generar Arañas de Cueva en el centro de la isla.
+		- Puede generar un suelo de esmeralda o oro donde caera varios totems.
+		
 • Dia 12:
 
 - Ahoras las Papas y Papas Cocinadas no son obtenibles en el mundo.
