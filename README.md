@@ -202,9 +202,14 @@ Lista de Cambios:
 	
 - Los Zorros pueden spawnear en Islas Champiñon.
 - Las Vacas cada cierto tiempo, pueden empujar a los mobs cercanos muy lejos.
-- Aparece un nuevo item: "Totem Invocador":
-	- Se craftea con 4 Varas de Blaze, 4 Bloques de Esmeralda y 1 Totem.
-	- Al usarlo con tu tecla de interaccion, te dara Raid Omen pero te quitara mitad de vida.
+- Ya no se puede obtener las botellas Ominous y si tienes una, se te desaparecera.
+- Aparecen nuevos items: "Calavera de Piedra" y "Calavera de Invocacion":
+	- Calavera de Piedra:
+		- Se craftea con 2 de Piedra Lisa, 3 de Piedra y 3 de Roca (Cobblestone)
+		
+	- Calavera de Invocacion:
+		- Se craftea con 2 Bloques de Esmeralda, 3 Esmeraldas, 2 Ballestas y 1 Libro Encantado.
+		- Al usarlo con tu tecla de interaccion, te dara Bad Omen de cualquier nivel, infinito. Te quitara media vida.
 
 • Dia 5:
 
