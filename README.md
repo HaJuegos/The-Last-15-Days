@@ -397,6 +397,24 @@ Lista de Cambios:
 - El EnderDragon pasa a convertirse en "RoyerBot", con las siguientes caracteristicas:
 	- Tiene 1000 Corazones (2000 de vida).
 	- Al golpear a RoyerBot, este te devolvera todo el daño que le hagas.
+	- Antes de tener la mita de vida, su patron de bolas es este:
+		- Bola normal de un dragon.
+		- Ataque de Nausea.
+		- Ataque de Warden.
+		- Ataque de Pollys.
+		
+	- Al tener la mitad de vida, entra en su segunda fase. Que inicia con lo siguiente:
+		- Un empuje que saca a los jugadores del centro.
+		- Lanza rayos a todos los jugadores.
+		- Su nombre y patron de bolas de dragon cambian. El patron es este:
+			- Bola normal.
+			- Nausea.
+			- Conduit.
+			- Arañas.
+			- Totems.
+			- Brute.
+			- Pollys.
+		
 	- Las bolas de dragon al golpear algo o alguien, puede iniciar alguno de estos ataques:
 		- Inicia un ataque de Nauseas donde debes quedarte totalmente quieto. Si no lo haces, te hara OneShot.
 		- En la posicion donde caiga, generara un Warden con lo siguiente:
@@ -407,9 +425,11 @@ Lista de Cambios:
 			- No dara efecto de Darkness.
 			
 		- Inicia un ataque de Efecto del Conducto, cuando termine este efecto, teletransportara a todas las entidades aleatoriamente en el centro de la Isla.
-		- Si explota un EnderCrystal, generara una Llama o Llama de un Mercader Ambulante. Si cada cierto tiempo, la volvera a generar.
+		- Si explota un EnderCrystal, generara una Llama o Llama de un Mercader Ambulante. Cada cierto tiempo, la volvera a generar en esa posicion.
 		- Puede generar Arañas de Cueva en el centro de la isla.
 		- Puede generar un suelo de esmeralda o oro donde caera varios totems.
+		- Puede generar un Piglin Brute.
+		- Puede generar Pollys.
 		
 • Dia 12:
 
