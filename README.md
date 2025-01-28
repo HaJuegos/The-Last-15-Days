@@ -216,7 +216,15 @@ Lista de Cambios:
 
 - En este dia y posteriores, el Nether esta permitido y abierto para todos.
 - La Netherite aun no es obtenible.
-- Los Blaze, MagmaCube, Piglin y Piglin Brute, y Ghasts, se duplican al spawnear y tienen x5 de daño, lo cual puede o no, hacerte OneShot con buen equipamento.
+- Los Ghast ahora se convierten en "Soul Ghast":
+	- Solo spawnean en Soul Sand Valley.
+	- Si la bola te golpea, recibiras Lentitud II, Pantalla Azul por unos segundos y un movimiento fuerte de camara.
+	
+- Los Blaze ahora se convierten en "Lord Blaze":
+	- Pueden spawnear 4 Blaze normales.
+	- Pueden lanzar bolas de fuego que explotan con un rango pequeño.
+
+- Los Lord Blaze, MagmaCube, Piglin, Piglin Brute, y Soul Ghast, se duplican al spawnear y tienen x5 de daño, lo cual puede o no, hacerte OneShot con buen equipamento.
 - Al ser golpeado por un Wither Boss, recibiras Levitacion X por 30 segundos. El Wither Boss tendra Velocidad II permanentemente.
 - Aparecen nuevos ítems: "Gema Infernal", "Alma de Fuego" y "Corona Infernal"
 	- Corona Infernal:
@@ -229,7 +237,7 @@ Lista de Cambios:
 		- Este item no se puede quemar.
 
 	- Gema Infernal y Alma de Fuego:
-		- Se consigue matando Blaze, MagmaCubes, Piglins y Ghast con un 10% de posibilidad de drop.
+		- Se consigue matando Lord Blaze, MagmaCubes, Piglins y Soul Ghast con un 10% de posibilidad de drop.
 		- Este ítem no se puede quemar.
 	
 - Se añadio nuevos logros:
