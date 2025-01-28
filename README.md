@@ -200,6 +200,7 @@ Lista de Cambios:
 	- Tiene Resistencia II permanente.
 	- Si estas muy cerca de el, empezara una mini fase donde te atacara a distancia con Flechas de Daño II.
 	
+. Los Pillagers ahora tienen Carga Rapida I siempre.
 - Los Zorros pueden spawnear en Islas Champiñon.
 - Las Vacas cada cierto tiempo, pueden empujar a los mobs cercanos muy lejos.
 - Ya no se puede obtener las botellas Ominous y si tienes una, se te desaparecera.
@@ -220,7 +221,7 @@ Lista de Cambios:
 - Aparecen nuevos ítems: "Gema Infernal", "Alma de Fuego" y "Corona Infernal"
 	- Corona Infernal:
 		- Se craftea con 3 Gemas Infernales, 1 Alma de Fuego y una Corona de Wither Vacia.
-		- Al conseguir el ítem y tenerlo en el inventario, te evitará el daño por temperatura, te dará Fuerza II y Resistencia al Fuego en el Nether.
+		- Al conseguir el ítem y tenerlo en el inventario, te evitará el daño por temperatura, te dará Fuerza II, Resistencia II en el Nether y Resistencia al Fuego en todos lados mientras lo lleves.
 		- Estos ítems no se pueden quemar.
 		
 	- Corona Infernal Vacia:
@@ -283,6 +284,7 @@ Lista de Cambios:
 	- El tiempo sin respiracion acuatica es acumulable por golpe, es decir, si te golpea 2 veces, seran 10 minutos.
 
 - Ahora los Piglins y Zombie Pigman son hostiles sin importar lo que lleves y tienen Hacha de Netherite.
+- Ahora los Piglins Brutos tienen un 10% de probabilidad de dropear una Manzana Encantada.
 - Los Drowned al morir, dropean lingote de oro. Tienen Armadura Completa de Diamante.
 - Ahora todos los tipos de Caballos son reemplazados por un Caballo Zombie o Esqueletico.
 - Los Caballos Esqueleticos y Zombie tienen la siguiente caracteristicas:
@@ -339,7 +341,7 @@ Lista de Cambios:
 • Dia 10:
 
 - Las Llamas ahora son hostiles, hacen muchisimo daño y te pueden disparar desde muy lejos. Tienen Resistencia IV permanente.
-- Los Ravagers tienen Fuerza X, Impulso de Salto I y Resistencia III permanente, mas, los efectos anteriores.
+- Los Ravagers tienen Fuerza X, Impulso de Salto I y Resistencia III permanente, mas, los efectos anteriores. Ya no recibe daño de proyectiles y pueden romper TODOS los bloques.
 - Los Endermans pueden resisten al fuego y agua, y pueden flotar en el. Tienen Fuerza V, Resistencia y Velocidad II permanente. Tambien se vuelven hostiles.
 - Los Piglins tienen un 15% de probabilidad de volverse un Piglin Bruto.
 - Los Piglins Bruto cambiaron totalmente con las siguientes caracteristicas:
