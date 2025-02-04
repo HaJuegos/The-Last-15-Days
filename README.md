@@ -305,6 +305,13 @@ Lista de Cambios:
 	- Tienen Velocidad II permanente.
 	- Si mueren, dejan una TNT Encendida.
 	- Son hostiles y atacan muy rapido.
+
+- Las Pollys se pueden convertir en "Iron Pollys" haciendo lo siguiente:
+	- Solo aparecen si son golpeados por una Vaca.
+	- Tienen 100 de vida.
+	- Hacen 10 de daño base.
+	- No reciben daño de explosiones.
+	- Pueden volar.
 	
 - Los Gatos y Lobos ahora son hostiles por la noche, aun asi los tengas domesticados. Estos por la noche tendran Fuerza V y Velocidad III hasta que termine la noche.
 - Ahora los Delfines son hostiles y tienen las siguientes caracteristicas:
