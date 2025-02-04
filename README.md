@@ -223,9 +223,25 @@ Lista de Cambios:
 - Los Blaze ahora se convierten en "Lord Blaze":
 	- Pueden spawnear 4 Blaze normales.
 	- Pueden lanzar bolas de fuego que explotan con un rango pequeño.
+	
+- Aparece un nuevo Piglin, llamado "Armorer Piglin Brute":
+	- Cada 20 segundos sonara un evento que hara el mob, para hacer que los Piglins de alrededor en un radio de 11 bloques, tengan un equipamento aleatorio.
+	- La espada aleatoria que tengan los Piglins, puede estar encantada con Filo II hasta IV.
+	- Este Piglin puede atacar a Melee con el "Marillo de Piglin".
+	
+- Los MagmaCube ahora son "MagmaCopters":
+	- Pueden volar y/o saltar cuando quieran.
+	- Si estan cerca de otro MagmaCopter, pueden unirse para hacerme mas grande con mas vida y daño.
+	
+- Los Wither ahora son "King Wither":
+	- Tendra la "Corona Infernal" que generara alguno de los siguientes efectos:
+		- Espiritu Rojo: Cada 20 segundos, regenerara la vida del Wither.
+		- Espiritu Azul: Cada 20 segundos, Puede romper cualquier bloque.
+		- Espiritu Amarillo: Cada 20 segundos, dara cualquier efecto aleatorio malo a los mobs a su alrededor. El tiempo y duracion es aleatoria entre 1 y 5 minutos y I a III.
+		- Espiritu Naranja: Cada 20 segundos, revuelve el inventario de los Jugadores cercanos.
 
-- Los Lord Blaze, MagmaCube, Piglin, Piglin Brute, y Soul Ghast, se duplican al spawnear y tienen x5 de daño, lo cual puede o no, hacerte OneShot con buen equipamento.
-- Al ser golpeado por un Wither Boss, recibiras Levitacion X por 30 segundos. El Wither Boss tendra Velocidad II permanentemente.
+- Los Lord Blaze, Piglin, Piglin Brute, y Soul Ghast, se duplican al spawnear y tienen x5 de daño, lo cual puede o no, hacerte OneShot con buen equipamento.
+- Al ser golpeado por un King Wither, recibiras Levitacion X por 30 segundos. El King Wither tendra Velocidad II permanentemente.
 - Aparecen nuevos ítems: "Gema Infernal", "Alma de Fuego" y "Corona Infernal"
 	- Corona Infernal:
 		- Se craftea con 3 Gemas Infernales, 1 Alma de Fuego y una Corona de Wither Vacia.
@@ -239,6 +255,10 @@ Lista de Cambios:
 	- Gema Infernal y Alma de Fuego:
 		- Se consigue matando Lord Blaze, MagmaCubes, Piglins y Soul Ghast con un 10% de posibilidad de drop.
 		- Este ítem no se puede quemar.
+		
+	- Martillo de Piglin:
+		- Hace 8 de daño base, y puede tener encantamientos de una espada.
+		- No tiene durabilidad.
 	
 - Se añadio nuevos logros:
 	- "Rey del Nether | The Blazing Monarch" - Consigue la Corona Infernal.
