@@ -110,6 +110,12 @@ Lista de Cambios:
 - Los Aldeanos ya no tomaran el trabajo de Librero, permanentemente.
 - Ya no pueden spawnear Zombies Aldeanos Libreros.
 - Los Aldeanos ahora son mobs neutrales. (Es decir, que son tranquilos si no les atacas)
+- Aparece una nueva variante de Pillager llamado: "Pillager Bombardero":
+	- Este tiene 100 de vida.
+	- Puede lanzar desde bastante rango.
+	- Lanza una Dinamita que puede explotar en 0.75sg o 1sg y hacer una explosion menor.
+	- Al tener 50 de vida, se vuelve en su version melee, el cual consiste en estar lo mas cerca tuyo para hacer una explosion enorme.
+
 - Se añadieron algunos logros que aparecen en el chat, tales como:
 	- La Edad de Piedra
 	- Mejorando herramientas
