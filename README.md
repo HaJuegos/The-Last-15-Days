@@ -114,7 +114,7 @@ Lista de Cambios:
 	- Este tiene 100 de vida.
 	- Puede lanzar desde bastante rango.
 	- Lanza una Dinamita que puede explotar en 0.75sg o 1sg y hacer una explosion menor.
-	- Al tener 50 de vida, se vuelve en su version melee, el cual consiste en estar lo mas cerca tuyo para hacer una explosion enorme.
+	- Al tener 50 de vida, se convierte en su version melee, el cual consiste en estar lo mas cerca tuyo para hacer una explosion enorme.
 
 - Se añadieron algunos logros que aparecen en el chat, tales como:
 	- La Edad de Piedra
@@ -478,6 +478,8 @@ Lista de Cambios:
 		- Puede generar un suelo de esmeralda o oro donde caera varios totems.
 		- Puede generar un Piglin Brute.
 		- Puede generar Pollys.
+		- Puede generar una Trampa para Osos:
+			- Si estas cerca de este mob, se te pegara al cuerpo, te desactivara el movimiento por 10 segundos y te hace daño progresivamente.
 		
 • Dia 12:
 
