@@ -216,7 +216,7 @@ Lista de Cambios:
 		
 	- Calavera de Invocacion:
 		- Se craftea con 2 Bloques de Esmeralda, 3 Esmeraldas, 2 Ballestas y 1 Libro Encantado.
-		- Al usarlo con tu tecla de interaccion, te dara Bad Omen de cualquier nivel, infinito. Te quitara media vida.
+		- Al usarlo con tu tecla de interaccion, te dara Trial Omen por 5 minutos de cualquier nivel y Raid Omen por 10 segundos de cualquier nivel. Al usarlo, te quitara media vida.
 
 • Dia 5:
 
@@ -258,8 +258,17 @@ Lista de Cambios:
 		- Se consigue matando un Wither Boss, con un 50% de probabilidad.
 		- Este item no se puede quemar.
 
-	- Gema Infernal y Alma de Fuego:
-		- Se consigue matando Lord Blaze, MagmaCubes, Piglins y Soul Ghast con un 10% de posibilidad de drop.
+	- Gema Infernal:
+		- Son items individuales, eso quiere decir que los mobs no dropean el mismo item, son diferentes.
+		- Se consigue matando los siguientes mobs con las siguientes probabilidades:
+			- Lord Blaze: 10% de probabilidad.
+			- Piglins: 10% de probabilidad.
+			- MagmaCopters: 20% de probabilidad.
+			
+		- Este ítem no se puede quemar.
+		
+	- Alma de Fuego:
+		- Se consigue matando un Soul Ghast con un 30% de probabilidad.
 		- Este ítem no se puede quemar.
 		
 	- Martillo de Piglin:
@@ -305,7 +314,8 @@ Lista de Cambios:
 	- Loros
 	- Gallinas
 	- Ranas
-
+	
+- Las Gallinas ahora son "Skuartu" con una variante de skin.
 - Las Ovejas se convierten en "Pollys" con las siguientes caracteristicas:
 	- Romper cualquier bloque que se les ponga en el camino.
 	- Tienen Velocidad II permanente.
@@ -479,7 +489,8 @@ Lista de Cambios:
 		- Puede generar un Piglin Brute.
 		- Puede generar Pollys.
 		- Puede generar una Trampa para Osos:
-			- Si estas cerca de este mob, se te pegara al cuerpo, te desactivara el movimiento por 10 segundos y te hace daño progresivamente.
+			- Si estas cerca de este mob, se te pegara al cuerpo, te desactivara el movimiento por 5 segundos y te hace daño progresivamente.
+			- Puede spawnear en el End.
 		
 • Dia 12:
 
