@@ -485,7 +485,13 @@ Lista de Cambios:
 		- Inicia un ataque de Efecto del Conducto, cuando termine este efecto, teletransportara a todas las entidades aleatoriamente en el centro de la Isla.
 		- Si explota un EnderCrystal, generara una Llama o Llama de un Mercader Ambulante. Cada cierto tiempo, la volvera a generar en esa posicion.
 		- Puede generar Arañas de Cueva en el centro de la isla.
-		- Puede generar un suelo de esmeralda o oro donde caera varios totems.
+		- Puede generar un suelo de esmeralda o oro donde caera diversos items como:
+			- Totems.
+			- Manzanas doradas.
+			- Manzanas encantadas.
+			- EnderPearls.
+			- Manzanas de Hierro.
+			
 		- Puede generar un Piglin Brute.
 		- Puede generar Pollys.
 		- Puede generar una Trampa para Osos:
@@ -494,27 +500,29 @@ Lista de Cambios:
 		
 • Dia 12:
 
-- Ahoras las Papas y Papas Cocinadas no son obtenibles en el mundo.
-- Ahora las Zanahorias de Oro dan Daño Instantaneo V.
-- Ahora al comer el Filete Azado, Chuleta de Cerdo Cocinado y el Cordero Azado dan Fatal Poison V por 1 minuto.
-- Ahora las Remolachas al comerlas te dan 5 puntos de saturacion y el Efecto de Saturacion I por 20 segundos.
-- Ahora las Papas Envenenadas no dan Veneno sino Regeneracion I por 10 segundos.
-- Ahora los Shulkers cada 5 minutos, generaran los siguientes mobs:
-	- Phantoms con Wither Skeletons.
+- Las Papas y Papas Cocinadas ya no se pueden obtener.
+- La Papa Envenenada da Regeneracion V por 10 segundos.
+- Al comer una Zanahoria Dorada, te dara Daño Instantaneo.
+- Comer Filete Azado, Chuleta de Cerdo cocinado y Cordero Azado te dara Fatal Poison V por 1 minuto.
+- Comer un Pie de Calabaza, te dara Nauseas por 5 minutos.
+- Las Remolachas ahora tienen muchisima mas saturacion.
+- Los Shulkers cada 5 minutos generan los siguientes mobs:
+	- Phantoms
 	- Vex
-	- Allays
-
-- Ahora los Shulkers disparan mas constantemente y sus disparos al impactar, romperan todo en un cubo de 5x5.
-- Ahora los Vex que spawneen en el End, al golpearte, te daran Lentitud X por 1 minuto.
-- Ahora los Allays que spawneen en el End, se robaran los items del suelo y tienen Invisibilidad.
-- Hay un 60% de posibilidad de que te dropee un Shulker.
-- Los Golems de Nieve han cambiado y ahora:
+	- Allay
+	
+- Las balas de Shulker al golpearse con algo, romperan todo en un cubo de 5x5.
+- Los Shulkers son mas constantes al atacar.
+- Los Vex en el End, al golpear, daran Lentitud X por 1 minuto.
+- Los Allays en el End, se llevaran todos los items tirados y tendran Invisibilidad.
+- Los Shulkers tienen un 50% de drop.
+- Los Golems de Nieve cambiaron y ahora:
 	- Son hostiles.
-	- Se generan en el End.
-	- Sus bolas de nieve pueden teletransportar entidades hacia ellos.
-	- Sus bolas de nieve hacen muchisimo daño.
+	- Spawnean en el End.
+	- Las bolas de nieve si te golpean, te teletransportaran a el.
+	- Las bolas de nueve te hacen muchisimo daño.
 	- Tienen Resistencia V.
-	- Tienen mas rango de ataque.
-
-Att: HaJuegos Cat!
+	
+	
+Documentacion oficial hecha por: HaJuegos.
 ```
