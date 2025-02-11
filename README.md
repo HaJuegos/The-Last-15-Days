@@ -522,7 +522,69 @@ Lista de Cambios:
 	- Las bolas de nieve si te golpean, te teletransportaran a el.
 	- Las bolas de nueve te hacen muchisimo daño.
 	- Tienen Resistencia V.
+
+• Dia 13: (Este Dia no viene incluido en el producto final, debido a que la serie termino en el Dia 12, pero ya estaba hecho una idea conceptual)
+
+- Todos los Peces ahora son hostiles.
+- Los Peces te pueden quitar la respiracion acuatica como si fuera un delfin.
+- Ya no es posible ir al End, en dicho caso, moriras.
+- Todos los mobs hostiles te pueden trackear sin importar que.
+- Ahora el Warden puede romper todos los bloques.
+
+• Dia 14: (Este Dia no viene incluido en el producto final, debido a que la serie termino en el Dia 12, pero ya estaba hecho una idea conceptual)
+
+- Se añade un nuevo item: "Ultimate Orb" o "Orbe Definitivo"
+	- Debes obtener este item antes de que acabe el dia o moriras.
+	- Se consigue crafteandolo con los siguientes items:
+		- "Reliquia Hidrodinamica".
+		- Corona Infernal.
+		- "Reliquia Anti-Agonia".
+		- "Reliquia Post-Apocaliptica".
+		
+- Se añaden nuevos items: "Reliquia Hidrodinamica", "Reliquia Anti-Agonia" y "Reliquia Post-Apocaliptica":
+	- Reliquia Hidrodinamica:
+		- Se consigue crafteandolo con 16 diferentes tipos de peces, 1 esponja, 64 de Prismarina y 1 Manzana Encantada.
 	
+	- Reliquia Anti-Agonia:
+		- Se consigue crafteandolo con 4 EnderCrystals, 4 Stacks de EnderPearls, 1 Huevo del Dragon y 1 Manzana Encantada.
+		
+	- Reliquia Post-Apocaliptica:
+		- Se consigue crafteandolo con 4 Elytras, 64 Shulker Shells, 64 Bloques de Diamante y 1 Manzana Encantada.
+		
+• Dia 15: (Este Dia no viene incluido en el producto final, debido a que la serie termino en el Dia 12, pero ya estaba hecho una idea conceptual)
+
+- Los Participantes finales deben sobrevivir al apocalipsis. El mundo empieza su caos final.
+- Pueden Spawnear RoyerBots naturalmente en el Overworld.
+- Siempre es de Noche y con Tormenta.
+- Abrir Cofres, EnderChest, Camas y cualquier otro bloque interactivo, va a explotar con un rango muy enorme.
+- Se debe tener como minimo 2 Orbes Definitivos para poder sobrevivir, por persona.
+- Los nuevos chunks dejan de existir.
+- Ya no es posible ir al Nether, en dicho caso, moriras.
+- Una Niebla rojiza cae sobre los jugadores.
+- Estar mucho tiempo sin moverse, generara un Piglin Brute en tu posicion.
+- Cada 5 minutos, tienes la probabilidad de spawnear uno de estos mobs:
+	- Hoglin
+	- Ravager
+	- Wither
+	- Ghast
+	- Polly
+	- Zorros
+	
+- Vuelve el spawn natural de Abejas.
+- Ahora es mas contante el spawn natural de Phantoms.
+- Todos los mobs se duplican al spawnear.
+- Tendras los siguientes efectos de forma permanente:
+	- Hambre
+	- Infeccion
+	- Fatiga
+	
+- Los Silverfish hace muchisimo daño, atacan mas rapido, rompen bloques y tienen mas vida.
+- Los Zorros tienen killaura y no tienen cooldown de ataque.
+- Ahogarte te matara instantaneamente.
+- Spawnean Shulkers en el Overworld naturalmente.
+- Todas las explosiones afectan los bloques bajo el agua.
+- Los Totems ya no son obtenibles de ninguna forma.
+- Tienes bloqueado la mano secundaria.
 	
 Documentacion oficial hecha por: HaJuegos.
 ```
