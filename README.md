@@ -36,7 +36,7 @@
 
 ## MINIGUIA DE USO
 
-- **El Add-on solo soporta la version de Minecraft Bedrock 1.21.50/51. Cualquier version inferior o superior a futuro, puede que no funcione correctamente.**
+- **El Add-on solo soporta la version de Minecraft Bedrock 1.21.60. Cualquier version inferior o superior a futuro, puede que no funcione correctamente.**
 - **Este Add-on utilizar Scipts, asi que puede no funcionar en algunos host gratuitos como Aternos.**
 - Toda instalacion y configuracion del Add-on es automatico.
 - Si descargaste el Mundo PreConfigurado y no sabes que hacer con el, mira esta imagen tutorial: https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/main/.github/exmple.png
@@ -345,6 +345,8 @@ Lista de Cambios:
 
 - El Daño por temperaturas ahora es por 2 minutos y su daño ahora es de 4 corazones.
 - Las Arañas y Arañas de Cueva al golpearte, generaran un cubo de telaraña en tu posicion.
+- Se añadio nuevos logros:
+	- "Mark Baa: The Flying Suit | Oveja del Futuro" - Mata una Iron Polly.
 
 • Dia 8:
 
