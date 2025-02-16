@@ -110,6 +110,7 @@ Lista de Cambios:
 - Los Aldeanos ya no tomaran el trabajo de Librero, permanentemente.
 - Ya no pueden spawnear Zombies Aldeanos Libreros.
 - Los Aldeanos ahora son mobs neutrales. (Es decir, que son tranquilos si no les atacas)
+- Ya no se puede obtener las botellas Ominous y si tienes una, se te desaparecera.
 - Aparece una nueva variante de Pillager llamado: "Pillager Bombardero":
 	- Este tiene 100 de vida.
 	- Puede lanzar desde bastante rango.
@@ -209,7 +210,6 @@ Lista de Cambios:
 . Los Pillagers ahora tienen Carga Rapida I siempre.
 - Los Zorros pueden spawnear en Islas Champiñon.
 - Las Vacas cada cierto tiempo, pueden empujar a los mobs cercanos muy lejos.
-- Ya no se puede obtener las botellas Ominous y si tienes una, se te desaparecera.
 - Aparecen nuevos items: "Calavera de Piedra" y "Calavera de Invocacion":
 	- Calavera de Piedra:
 		- Se craftea con 2 de Piedra Lisa, 3 de Piedra y 3 de Roca (Cobblestone)
@@ -253,22 +253,25 @@ Lista de Cambios:
 		- Se craftea con 3 Gemas Infernales, 1 Alma de Fuego y una Corona de Wither Vacia.
 		- Al conseguir el ítem y tenerlo en el inventario, te evitará el daño por temperatura, te dará Fuerza II, Resistencia II en el Nether y Resistencia al Fuego en todos lados mientras lo lleves.
 		- Estos ítems no se pueden quemar.
+		- Los Piglins pueden tradear con este item.
 		
 	- Corona Infernal Vacia:
-		- Se consigue matando un Wither Boss, con un 50% de probabilidad.
+		- Se consigue matando un Wither Boss, con un 60% de probabilidad base (Su probabilidad aumentara un 5% por cada nivel de Looting/Saqueo).
 		- Este item no se puede quemar.
+		- Los Piglins pueden tradear con este item.
 
 	- Gema Infernal:
 		- Son items individuales, eso quiere decir que los mobs no dropean el mismo item, son diferentes.
 		- Se consigue matando los siguientes mobs con las siguientes probabilidades:
-			- Lord Blaze: 10% de probabilidad.
-			- Piglins: 10% de probabilidad.
-			- MagmaCopters: 20% de probabilidad.
+			- Lord Blaze: 30% de probabilidad base (Su probabilidad aumentara un %2 por cada nivel de Looting/Saqueo) (Le afecta el Looting/Saqueo, por lo que puede dar mas de 1).
+			- Piglins: 30% de probabilidad base (Su probabilidad aumentara un %2 por cada nivel de Looting/Saqueo) (Le afecta el Looting/Saqueo, por lo que puede dar mas de 1).
+			- MagmaCopters: 30% de probabilidad base (Su probabilidad aumentara un %2 por cada nivel de Looting/Saqueo) (Le afecta el Looting/Saqueo, por lo que puede dar mas de 1).
 			
 		- Este ítem no se puede quemar.
+		- Los Piglins pueden tradear con este item (algunos).
 		
 	- Alma de Fuego:
-		- Se consigue matando un Soul Ghast con un 30% de probabilidad.
+		- Se consigue matando un Soul Ghast con un 50% de probabilidad base (Su probabilidad aumentara un %5 por cada nivel de Looting/Saqueo) (Le afecta el Looting/Saqueo, por lo que puede dar mas de 1).
 		- Este ítem no se puede quemar.
 		
 	- Martillo de Piglin:
@@ -296,7 +299,7 @@ Lista de Cambios:
 	- Tiene un alcanze de ataque aumentado.
 	- No puede recibir daño de Projectiles.
 	- Puede romper barcos cercanos si te golpea.
-	- Al morir tiene un 15% de probabilidad de dropear un "Colmillo de Hoglin". Este viene con encantamientos como Daño de Artropodos, Castigo y Filo V.
+	- Al morir tiene un 30% de probabilidad de dropear un "Colmillo de Hoglin". Este viene con encantamientos como Daño de Artropodos, Castigo y Filo V.
 	
 - Aparace un nuevo item: "Colmillo de Hoglin":
 	- Hace 10 Corazones de daño.
@@ -335,7 +338,7 @@ Lista de Cambios:
 	- El tiempo sin respiracion acuatica es acumulable por golpe, es decir, si te golpea 2 veces, seran 10 minutos.
 
 - Ahora los Piglins y Zombie Pigman son hostiles sin importar lo que lleves y tienen Hacha de Netherite.
-- Ahora los Piglins Brutos tienen un 10% de probabilidad de dropear una Manzana Encantada.
+- Ahora los Piglins Brutos tienen un 20% de probabilidad base (Su probabilidad aumentara un %5 por cada nivel de Looting/Saqueo) (Le afecta el Looting/Saqueo, por lo que puede dar mas de 1) de dropear una Manzana Encantada.
 - Los Drowned al morir, dropean lingote de oro. Tienen Armadura Completa de Diamante.
 - Ahora todos los tipos de Caballos son reemplazados por un Caballo Zombie o Esqueletico.
 - Los Caballos Esqueleticos y Zombie tienen la siguiente caracteristicas:
@@ -436,10 +439,10 @@ Lista de Cambios:
 		- No se quema.
 
 - Para obtener la Armadura Cautelosa debes matar los siguientes mobs con la siguiente probabilidad:
-	- Llama con 30% de probabilidad.
-	- Enderman con 30% de probabilidad.
-	- Piglin Bruto con 30% de probabilidad.
-	- Ravager con 30% de probabilidad.
+	- Llama con 50% de probabilidad base. (Su probabilidad aumentara un %5 por cada nivel de Looting/Saqueo)
+	- Enderman con 30% de probabilidad base. (Su probabilidad aumentara un %5 por cada nivel de Looting/Saqueo)
+	- Piglin Bruto con 55% de probabilidad.
+	- Ravager con 40% de probabilidad base (Su probabilidad aumentara un %5 por cada nivel de Looting/Saqueo).
 	
 - Se añadio nuevos logros:
 	- "Full Sneaky | Full Cauteloso" - Consigue la Armor Sneaky.
