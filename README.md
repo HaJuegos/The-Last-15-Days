@@ -81,7 +81,8 @@ The Last 15 Days creado por RosherRandom y desarrollado por HaCatto y Convex! | 
 
 Lista de Cambios:
 
-• Dia 0:
+• Día 0:
+
 - El mundo esta en Modo Hardcore, pero con la diferencia de que si mueres, eres baneado del server permanente.
 - Cualquier Jugador al Morir, activara el "Resquicio Infernal".
 	- Resquicio Infernal:
@@ -168,25 +169,28 @@ Lista de Cambios:
 	- Malos hábitos
 	- El depredador más adorable
 
-• Dia 1:
+- Cada logro te dara 10 niveles y los logros challenge te dara 20 niveles.
+
+• Día 1:
 
 - Ahora los Peces Globo spawnean en todos los sitios con agua.
 - Las Cabras, Abejas, Osos Polares y Ocelotes ahora son hostiles.
 - Se añade el daño por temperatura:
 	- Esta consiste en que si estas mas de 5 minutos en un bioma calido o frio, empezaras a recibir daño hasta que salgas de ese bioma.
 
-• Dia 2:
+• Día 2:
 
-- Al golpearte con un Cactus o una Balla Dulce, te dara Veneno por 10 segundos y al pasar por un Arbusto Muerto, tambien te dara.
-- Ahora los Zorros son hostiles y son capaces de robarte lo que tengas en el inventario y Armadura, puedes recuperar tus cosas al matar al Zorro. (En caso de que el Zorro no pueda llevar mas items, dropea el mas cercano en su posicion)
-- Los Phantoms ahora son mas constantes al atacar y tiene resistencia al fuego.
-- Al minar Minerales de Diamante, perderas 1 corazon.
+- Al golpearte con un Cactus o una Baya Dulce, te dará Veneno por 10 segundos y al pasar por un Arbusto Muerto, también te dará.
+- Ahora los Zorros son hostiles y son capaces de robarte lo que tengas en el inventario y Armadura, puedes recuperar tus cosas al matar al Zorro. (En caso de que el Zorro no pueda llevar más ítems, dropea el más cercano en su posición)
+- Los Phantoms ahora son más constantes al atacar y tiene resistencia al fuego.
+- Al minar Minerales de Diamante, perderás 1 corazón.
 - Ahora las Abejas spawnean de manera natural en el Overworld.
-- Aparece un nuevo item: "Manzana de Hierro":
+- Los Rayos que caigan en un Para rayos, van a explotar con nivel 5.
+- Aparece un nuevo ítem: "Manzana de Hierro":
 	- Se craftea con 8 lingotes de Hierro y una Manzana.
-	- Al comerlo, te dara Resistencia II por 30 segundos.
+	- Al comerlo, te dará Resistencia II por 30 segundos.
 
-• Dia 3:
+• Día 3:
 
 - Ahora los Drowneds tienen tridente siempre.
 - Las Arañas de Cueva ahora spawnea naturalmente en la superficie y en cuevas.
