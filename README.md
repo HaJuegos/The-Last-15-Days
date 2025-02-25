@@ -235,13 +235,27 @@ Lista de Cambios:
 . Los Pillagers ahora tienen Carga Rapida I siempre.
 - Los Zorros pueden spawnear en Islas Champiñon.
 - Las Vacas cada cierto tiempo, pueden empujar a los mobs cercanos muy lejos.
-- Aparecen nuevos items: "Calavera de Piedra" y "Calavera de Invocacion":
+- Los mobs de la raid no reciben daño de explosiones.
+- Las brujas dan invisibilidad a los mobs de la raid.
+- Aparecen nuevos items: "Calavera de Piedra", "Calavera de Invocacion", "Dinamita" y "Dinamita Apagada":
 	- Calavera de Piedra:
 		- Se craftea con 2 de Piedra Lisa, 3 de Piedra y 3 de Roca (Cobblestone)
 		
 	- Calavera de Invocacion:
 		- Se craftea con 2 Bloques de Esmeralda, 3 Esmeraldas, 2 Ballestas y 1 Libro Encantado.
 		- Al usarlo con tu tecla de interaccion, te dara Trial Omen por 5 minutos de cualquier nivel y Raid Omen por 10 segundos de cualquier nivel. Al usarlo, te quitara media vida.
+		
+	- Dinamita Apagada:
+		- Es un item y a la vez un bloque.
+		- Se obtiene con probabilidad mediante los Pillagers Bombarderos. (Su probabilidad aumentara un %2 por cada nivel de Looting/Saqueo) (Le afecta el Looting/Saqueo, por lo que puede dar mas de 1).
+		- Se puede encender con un Mechero.
+		- Al encender la Dinamita, se vuelve su version encendida. Si se rompe en esta version, dropeara el item Dinamita.
+		- Al encender la Dinamita, explorara en 7 segundos.
+		
+	- Dinamita:
+		- En un item lanzable.
+		- Funciona igual que la dinamita del Bomber Pillager.
+		- Se puede obtener mediante una Dinamita Apagada al encenderla.
 
 • Dia 5:
 
