@@ -201,6 +201,27 @@ Lista de Cambios:
 	- Slimes: Impulso de Salto II por 30 segundos
 
 - Los Esqueletos del Wither ahora spawnean en el Overworld, tienen Armadura de Hierro con Espada de Diamante Filo V.
+- Los Slimes siempre dropearan 1 bola de Slime.
+- Los Slimes ahora pueden escupirte una "Baba de Slime".
+- Los Slimes ahora no reciben daño de proyectiles y los repelan.
+- Al lanzar una Ender Pearl, perderas la mitad de vida al usarla y teletransportarse. (Sin importar la armadura)
+- Los Pillagers Bombarderos te dan entre 20-25 niveles.
+- Ahora los Zombies van a spawnear con su variante. (Es decir, si un Zombie spawnea, tambien lo hara un Husk)
+- Ahora los Esqueletos van a spawnear con su variante. (Es decir, si un Esqueleto spawnea, tambien lo hara un Stray)
+- Se añade un nuevo proyectil: Baba de Slime
+	- Hace 10 de daño base.
+	- Al golpearte una, te pondra una pantalla de baba por unos segundos.
+
+- Se añaden nuevos items: "Slime Derretido" y "Perla Viscosa":
+	- Slime Derretido:
+		- Se obtiene cocinando una bola de slime en: Un Horno o un Ahumador y cualquiera de las dos Fogatas.
+		
+	- Perla Viscosa:
+		- En ciertas ocaciones puede generar un Slime al teletransportarse.
+		- Va mas rapido que una Ender Pearl.
+		- Tiene 0.6 de cooldown.
+		- No recibes daño por teletransporte.
+		- Se obtiene por medio de la mesa de crafteo con 8 de Slime Derretido y una EnderPearl.
 
 • Dia 4:
 
