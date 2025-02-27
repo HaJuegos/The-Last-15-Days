@@ -118,6 +118,7 @@ Lista de Cambios:
 	- La dinamita explota en 0.75 o 1 segundo, causando una explosión menor.
 	- Al llegar a 50 de vida, se convierte en su versión cuerpo a cuerpo, acercándose para causar una explosión enorme.
 	- Si te cae directo, te puede matar de una explosion.
+	- La dinamita puede explotar bajo el agua y hacer daño.
 
 - Se añadieron algunos logros que aparecen en el chat, tales como:
 	- La Edad de Piedra
@@ -320,251 +321,255 @@ Lista de Cambios:
 - Se han añadido nuevos logros:
 	- "Rey del Nether | The Blazing Monarch": Consigue la Corona Infernal.
 
-• Dia 6:
+• Día 6:
 
 - La Netherite ya es obtenible.
 - La Armadura de Netherite ahora es Irrompible.
-- El daño por Lava te quitara 5 Corazones por tick.
-- El daño por Fuego te hace 3 Corazones por tick.
-- Al minar Ancient Debris, aparecera Lava en su lugar y un Silverfish.	
-- Los Endermites y Silverfish ahora tienen las siguientes caracteristicas:
-	- Tiene resistencia al fuego.
-	- Hace 6 Corazones de Daño.
-	- Es mas rapido.
-	
-- Los Hoglins ahora tienen las siguientes caracteristicas:
-	- Ahora spawnean con menos frecuencia.
-	- Tienen Fuerza, Resistencia y Velocidad III permanentemente.
-	- Tiene un alcanze de ataque aumentado.
-	- No puede recibir daño de Projectiles.
-	- Puede romper barcos cercanos si te golpea.
-	- Al morir tiene un 30% de probabilidad de dropear un "Colmillo de Hoglin". Este viene con encantamientos como Daño de Artropodos, Castigo y Filo V.
-	
-- Aparace un nuevo item: "Colmillo de Hoglin":
-	- Hace 10 Corazones de daño.
-	- Tiene la misma durabilidad de una Espada de Netherite.
-	- Funciona como una Espada normal.
-	
-- Se añadio nuevos logros:
+- El daño por Lava te quitará 5 corazones por tick.
+- El daño por Fuego te hace 3 corazones por tick.
+- Al minar Ancient Debris, aparecerá Lava en su lugar y un Silverfish.
+- Los Endermites y Silverfish ahora tienen las siguientes características:
+	- Tienen resistencia al fuego.
+	- Hacen 6 corazones de daño.
+	- Son más rápidos.
+
+- Los Hoglins ahora tienen las siguientes características:
+	- Ahora aparecen con menos frecuencia.
+	- Tienen Fuerza, Resistencia y Velocidad III de forma permanente.
+	- Tienen un alcance de ataque aumentado.
+	- No pueden recibir daño de proyectiles.
+	- Pueden romper barcos cercanos si te golpean.
+	- Al morir, tienen un 30% de probabilidad de soltar un "Colmillo de Hoglin". Este viene con encantamientos como Daño a Artrópodos, Castigo y Filo V.
+
+- Aparece un nuevo ítem: "Colmillo de Hoglin":
+	- Hace 10 corazones de daño.
+	- Tiene la misma durabilidad que una Espada de Netherite.
+	- Funciona como una espada normal.
+
+- Se añadieron nuevos logros:
 	- "Hoglin Slayer | El Cazador de Hoglins" - Consigue un Colmillo de Hoglin.
 
-• Dia 7:
+• Día 7:
 
-- Las Abejas dejan de spawnear naturalmente en el Overworld.
-- Los siguientes mobs son hostiles y pueden explotar si estan muy cerca de ti:
+- Las Abejas dejan de aparecer naturalmente en el Overworld.
+- Los siguientes mobs son hostiles y pueden explotar si están muy cerca de ti: (Pueden explotar bajo el agua y hacer daño)
 	- Conejos
 	- Loros
 	- Gallinas
 	- Ranas
-	
+
 - Las Gallinas ahora son "Skuartu" con una variante de skin.
-- Las Ovejas se convierten en "Pollys" con las siguientes caracteristicas:
-	- Romper cualquier bloque que se les ponga en el camino.
-	- Tienen Velocidad II permanente.
-	- Si mueren, dejan una TNT Encendida.
-	- Son hostiles y atacan muy rapido.
+- Las Ovejas se convierten en "Pollys" con las siguientes características:
+	- Rompen cualquier bloque que se les ponga en el camino.
+	- Tienen Velocidad II de forma permanente.
+	- Si mueren, dejan una TNT Encendida, que puede explotar bajo el agua y hacer daño.
+	- Son hostiles y atacan muy rápido.
 
 - Las Pollys se pueden convertir en "Iron Pollys" haciendo lo siguiente:
-	- Solo aparecen si son golpeados por una Vaca.
+	- Solo aparecen si son golpeadas por una Vaca.
 	- Tienen 100 de vida.
 	- Hacen 10 de daño base.
 	- No reciben daño de explosiones.
 	- Pueden volar.
-	
-- Los Gatos y Lobos ahora son hostiles por la noche, aun asi los tengas domesticados. Estos por la noche tendran Fuerza V y Velocidad III hasta que termine la noche.
-- Ahora los Delfines son hostiles y tienen las siguientes caracteristicas:
-	- Si te golpean, te quitara la respiracion actuatica instantaneamente por 1 minuto.
-	- El tiempo sin respiracion acuatica es acumulable por golpe, es decir, si te golpea 2 veces, seran 10 minutos.
+
+- Los Gatos y Lobos ahora son hostiles por la noche, incluso si los tienes domesticados. Estos por la noche tendrán Fuerza V y Velocidad III hasta que termine la noche.
+- Ahora los Delfines son hostiles y tienen las siguientes características:
+	- Si te golpean, te quitarán la respiración acuática instantáneamente por 1 minuto.
+	- El tiempo sin respiración acuática es acumulable por golpe, es decir, si te golpean 2 veces, serán 2 minutos.
 
 - Ahora los Piglins y Zombie Pigman son hostiles sin importar lo que lleves y tienen Hacha de Netherite.
-- Ahora los Piglins Brutos tienen un 20% de probabilidad base (Su probabilidad aumentara un %5 por cada nivel de Looting/Saqueo) (Le afecta el Looting/Saqueo, por lo que puede dar mas de 1) de dropear una Manzana Encantada.
-- Los Drowned al morir, dropean lingote de oro. Tienen Armadura Completa de Diamante.
-- Ahora todos los tipos de Caballos son reemplazados por un Caballo Zombie o Esqueletico.
-- Los Caballos Esqueleticos y Zombie tienen la siguiente caracteristicas:
+- Ahora los Piglins Brutos tienen un 20% de probabilidad base (su probabilidad aumenta un 5% por cada nivel de Looting/Saqueo) de soltar una Manzana Encantada.
+- Los Drowned, al morir, sueltan lingotes de oro. Tienen Armadura Completa de Diamante.
+- Ahora todos los tipos de Caballos son reemplazados por un Caballo Zombi o Esquelético.
+- Los Caballos Esqueléticos y Zombis tienen las siguientes características:
 	- Son hostiles.
-	- Si te golpean, te daran Nausea, Fatiga Minera y Veneno I por 20 segundos.
-	- Si te golpean, pueden generar un Zombie o Esqueleto en tu posicion.
+	- Si te golpean, te darán Náusea, Fatiga Minera y Veneno I durante 20 segundos.
+	- Si te golpean, pueden generar un Zombi o Esqueleto en tu posición.
 
-- El Daño por temperaturas ahora es por 2 minutos y su daño ahora es de 4 corazones.
-- Las Arañas y Arañas de Cueva al golpearte, generaran un cubo de telaraña en tu posicion.
-- Se añadio nuevos logros:
+- El daño por temperaturas ahora ocurre cada 2 minutos y su daño es de 4 corazones.
+- Las Arañas y Arañas de Cueva, al golpearte, generarán un cubo de telaraña en tu posición.
+- Se añadieron nuevos logros:
 	- "Mark Baa: The Flying Suit | Oveja del Futuro" - Mata una Iron Polly.
 
-• Dia 8:
+• Día 8:
 
 - Ahora el Creeper tiene variantes tales como:
 	- "Creeper Radioactivo":
-		- Al explotar dejara una nube de daño que quitara 4 corazones por tick, tiene un radio de 12 bloques.
-		
-	- "Creeper Obsidiana":
-		- Al explotar genera un cubo enorme de obsidiana 10x10.
-		
-	- "Creeper Debuff":
-		- Al explotar y recibir daño de la explosion, recibiras todos los efectos malos del juego por 10 segundos.
-		
-	- "Creeper Mommy":
-		- Tiene un radio 15 de explosion, al explotar generara unos Creeper Bebes de la misma variante con Velocidad V y Resistencia III  permanente. Estos explotan normal.
-		
-	- "Creeper Ninja":
-		- Te puede detectar desde muy lejos y a través de los bloques, estara cargado siempre y tienen Velocidad III permanente.
-
-- Los Aldeanos ya no son mobs neutros, si no hostiles
-- Los Golems de Hierro tienen Fuerza IV y Resistencia I permanentemente.
-- Las Arañas de Cueva tienen Fuerza III y Velocidad II permanente, y tienen un Zombie Bebe encima con lo siguiente:
-	- Full Diamante con Proteccion IV.
-	- Si alguno de estos te atacan, te limpian todos los efectos.
+		- Al explotar, dejará una nube de daño que quitará 4 corazones por tick, con un radio de 12 bloques.
 	
-- Las brujas ahora tienen las siguientes caracteristicas:
-	- Sus pociones son de nivel X.
-	- Spawnean con menor rate.
-	- Al ser golpeadas, se teletransportan agresivamente y cerca de quien va a atacar.
+	- "Creeper Obsidiana":
+		- Al explotar, genera un cubo enorme de obsidiana de 10x10.
+	
+	- "Creeper Debuff":
+		- Al explotar y recibir daño de la explosión, recibirás todos los efectos negativos del juego durante 10 segundos.
+	
+	- "Creeper Mommy":
+		- Tiene un radio de explosión de 15 bloques. Al explotar, generará Creeper Bebés de la misma variante con Velocidad V y Resistencia III de forma permanente. Estos explotan normalmente.
+	
+	- "Creeper Ninja":
+		- Te puede detectar desde muy lejos y a través de los bloques. Está cargado siempre y tiene Velocidad III de forma permanente.
+		
+	- Cada variante puede explotar bajo el agua y hacer daño.
 
-• Dia 9:
+- Los Aldeanos ya no son mobs neutrales, sino hostiles.
+- Los Golems de Hierro tienen Fuerza IV y Resistencia I de forma permanente.
+- Las Arañas de Cueva tienen Fuerza III y Velocidad II de forma permanente, y tienen un Zombi Bebé encima con lo siguiente:
+	- Armadura completa de Diamante con Protección IV.
+	- Si alguno de estos te ataca, te elimina todos los efectos.
+
+- Las Brujas ahora tienen las siguientes características:
+	- Sus pociones son de nivel X.
+	- Aparecen con menor frecuencia.
+	- Al ser golpeadas, se teletransportan agresivamente cerca de quien las ataca.
+
+• Día 9:
 
 - Los Pandas empujan igual que las Vacas.
-- Los Gatos tienen la habilidad de spawnear Creepers a su alrededor. Su spawn es cada 2 minutos, te deben atacar primero y solo spawnean en espacios libres.
+- Los Gatos tienen la habilidad de generar Creepers a su alrededor. Su generación es cada 2 minutos, deben atacarte primero y solo aparecen en espacios libres.
 - Los Phantoms tienen un Esqueleto del Wither encima.
-- Las Abejas tendran un Esqueleto o un Esqueleto Errante encima.
-- Los Esqueletos y Esqueletos Errantes pueden lanzar Bolas de Fuegos de Nivel 3 hasta 10.
-- Los Esqueletos del Wither ahora atacan a distancia y disparan Cabezas del Wither con Nivel de explosion 3 hasta 10.
-- Los Zombies ahora tienen Hachas de Diamante con Filo X y al golpearte te desordenan el inventario, cambiando la posicion de los items de forma aleatoria.
-- Los Piglins al spawnear, tienen un 1% de probabilidad de convertirse en Piglin Bruto.
-- Los Vex cada 30 segundos, se convierten en Allay.
-- Las Cabezas del Wither tienen Nivel de explosion de 10.
-- Los Esqueletos y Esqueletos Errantes tienen un 5% de probabilidad de dropar un Arco con Poder XI, Reparacion y Irrompibilidad III.
+- Las Abejas tendrán un Esqueleto o un Esqueleto Errante encima.
+- Los Esqueletos y Esqueletos Errantes pueden lanzar Bolas de Fuego de Nivel 3 hasta 10, tambien pueden hacer daño bajo el agua y romper bloques con agua.
+- Los Esqueletos del Wither ahora atacan a distancia y disparan Cabezas del Wither con Nivel de explosión 3 hasta 10, tambien pueden hacer daño bajo el agua y romper bloques con agua.
+- Los Zombis ahora tienen Hachas de Diamante con Filo X y, al golpearte, desordenan tu inventario, cambiando la posición de los ítems de forma aleatoria.
+- Los Piglins, al aparecer, tienen un 1% de probabilidad de convertirse en Piglin Bruto.
+- Los Vex, cada 30 segundos, se convierten en Allay.
+- Las Cabezas del Wither tienen Nivel de explosión de 10, tambien pueden hacer daño bajo el agua y romper bloques con agua.
+- Los Esqueletos y Esqueletos Errantes tienen un 5% de probabilidad de soltar un Arco con Poder XI, Reparación e Irrompibilidad III.
 
-• Dia 10:
+• Día 10:
 
-- Las Llamas ahora son hostiles, hacen muchisimo daño y te pueden disparar desde muy lejos. Tienen Resistencia IV permanente.
-- Los Ravagers tienen Fuerza X, Impulso de Salto I y Resistencia III permanente, mas, los efectos anteriores. Ya no recibe daño de proyectiles y pueden romper TODOS los bloques.
-- Los Endermans pueden resisten al fuego y agua, y pueden flotar en el. Tienen Fuerza V, Resistencia y Velocidad II permanente. Tambien se vuelven hostiles.
-- Los Piglins tienen un 15% de probabilidad de volverse un Piglin Bruto.
-- Los Piglins Bruto cambiaron totalmente con las siguientes caracteristicas:
-	- Pueden usar ender pearls para teletransportarse.
+- Las Llamas ahora son hostiles, hacen muchísimo daño y te pueden disparar desde muy lejos. Tienen Resistencia IV permanente. Si estas muy cerca de ella, puede explotar. (Al explotar, puede romper bloques bajo el agua y hacer daño)
+- Los Ravagers tienen Fuerza X, Impulso de Salto I y Resistencia III permanente, además de los efectos anteriores. Ya no reciben daño de proyectiles y pueden romper TODOS los bloques.
+- Los Endermans ahora son resistentes al fuego y al agua, y pueden flotar en ella. Tienen Fuerza V, Resistencia y Velocidad II permanente. También se vuelven hostiles.
+- Los Piglins tienen un 15% de probabilidad de convertirse en un Piglin Bruto.
+- Los Piglins Brutos cambiaron totalmente con las siguientes características:
+	- Pueden usar Ender Pearls para teletransportarse.
 	- Pueden regenerarse en caso de tener poca vida.
-	- Pueden atacar a melee de dos formas:
-		- Con un hacha de Netherite con Filo V y te puede hacer criticos aumentando mas el daño. (90% de probabilidad)
-		- Con el Mazo con Wind Burst I y te puede hacer combos en el aire. (10% de probabilidad)
-		
-	- Puede atacar a distancia con un Arco con los siguientes efectos:
-		- Lentitud
-		- Nausea
-		- Veneno
-		- Wither
-		- Infestacion
-		- Daño Instantaneo II
-		
-	- Puede romper bloques en caso de no alcanzarte o estar mucho tiempo afk o bajo tierra.
-	- Solo puede recibir daño por explosiones.
-	- Tiene 100 corazones.
-	- Tiene Armadura de Diamante completa.
-	- Pueden spawnear con un totem en su segunda mano.
+	- Tiene Armadura de Netherite Completa, con probabilidad de que alguna tenga Proteccion contra Explosiones entre I a V.
+	- Pueden atacar cuerpo a cuerpo de dos formas:
+		- Con un hacha de Netherite con Filo V, que puede hacer críticos aumentando aún más el daño. (90% de probabilidad).
+		- Con un Mazo con Wind Burst I, que puede hacer combos en el aire. (10% de probabilidad).
 	
-- Las Manzanas de Hierro cambiaron y ahora te dara lo siguiente:
-	- Health Bosst V por 30 segundos.
-	- Vida Instantanea I por 5 segundos.
-	- Resistencia III por 30 segundos.
-	- Regeneracion III por 5 segundos.
+	- Pueden atacar a distancia con un Arco que aplica los siguientes efectos:
+		- Lentitud.
+		- Náusea.
+		- Veneno.
+		- Wither.
+		- Infestación.
+		- Daño Instantáneo II.
+	
+	- Pueden romper bloques si no pueden alcanzarte o si pasas mucho tiempo AFK o bajo tierra.
+	- Solo pueden recibir daño por explosiones.
+	- Tienen 100 corazones de vida.
+	- Pueden aparecer con un Totem en su mano secundaria.
+	
+- Las Manzanas de Hierro cambiaron y ahora te otorgan lo siguiente:
+	- Health Boost V durante 30 segundos.
+	- Vida Instantánea I durante 5 segundos.
+	- Resistencia III durante 30 segundos.
+	- Regeneración III durante 5 segundos.
 
-- Ya no se pueden craftear Manzanas de Hierro.
-- Aparece nuevos items:
-	- "Armadura Cautelosa"
-		- El tener el casco puesto: No te atacaran Endermans.
-		- El tener la pechera puesta: Te dara Resistencia II y mas resistencia de empuje.
-		- El tener el pantalon puesto: Te dara Prisa Minera III. Pero si no lo tienes puesto, tendras Fatiga Minera I.
-		- El tener las botas puestas: Te dara Velocidad II. Pero si no lo tienes puesto, te dara Lentitud II.
-		- Al completa toda la Armadura, tendras: Health Boost III. Pero si no, tendras Fatal Poison I en el End.
+- Ya no se pueden fabricar Manzanas de Hierro.
+- Aparecen nuevos ítems:
+	- "Armadura Cautelosa":
+		- Al tener el casco puesto: Los Endermans no te atacarán.
+		- Al tener la pechera puesta: Te otorgará Resistencia II y mayor resistencia al empuje.
+		- Al tener el pantalón puesto: Te otorgará Prisa Minera III. Pero si no lo tienes puesto, tendrás Fatiga Minera I.
+		- Al tener las botas puestas: Te otorgará Velocidad II. Pero si no las tienes puestas, tendrás Lentitud II.
+		- Al completar toda la Armadura: Tendrás Health Boost III. Pero si no la completas, tendrás Fatal Poison I en el End.
 		- Es irrompible.
 		- No se quema.
 
-- Para obtener la Armadura Cautelosa debes matar los siguientes mobs con la siguiente probabilidad:
-	- Llama con 50% de probabilidad base. (Su probabilidad aumentara un %5 por cada nivel de Looting/Saqueo)
-	- Enderman con 30% de probabilidad base. (Su probabilidad aumentara un %5 por cada nivel de Looting/Saqueo)
+- Para obtener la Armadura Cautelosa, debes matar los siguientes mobs con las siguientes probabilidades:
+	- Llama con 50% de probabilidad base. (Su probabilidad aumenta un 5% por cada nivel de Looting/Saqueo).
+	- Enderman con 30% de probabilidad base. (Su probabilidad aumenta un 5% por cada nivel de Looting/Saqueo).
 	- Piglin Bruto con 55% de probabilidad.
-	- Ravager con 40% de probabilidad base (Su probabilidad aumentara un %5 por cada nivel de Looting/Saqueo).
-	
-- Se añadio nuevos logros:
-	- "Full Sneaky | Full Cauteloso" - Consigue la Armor Sneaky.
+	- Ravager con 40% de probabilidad base. (Su probabilidad aumenta un 5% por cada nivel de Looting/Saqueo).
 
-• Dia 11:
+- Se añadieron nuevos logros:
+	- "Full Sneaky | Full Cauteloso" - Consigue la Armadura Cautelosa.
+
+• Día 11:
 
 - El End ya es accesible.
-- En el End, ahora aparecen Creepers (Menos de Obsidiana) con los siguientes mobs:
+- En el End, ahora aparecen Creepers (excepto los de Obsidiana) junto con los siguientes mobs:
 	- Zorros.
 	- Gallinas.
-	
-- Las Cabras ahora tienen Fuerza X, son locas siempre y atacan a melee.
-- Al dormir, hay una probabilidad de un 70% de que aparezca un Enderman en tu posicion.
+
+- Las Cabras ahora tienen Fuerza X, son agresivas siempre y atacan cuerpo a cuerpo.
+- Al dormir, hay un 70% de probabilidad de que aparezca un Enderman en tu posición.
 - Al usar una caña de pescar, hay un 50% de probabilidad de generar una Cabra.
-- El EnderDragon pasa a convertirse en "RoyerBot", con las siguientes caracteristicas:
-	- Tiene 1000 Corazones (2000 de vida).
-	- Al golpear a RoyerBot, este te devolvera todo el daño que le hagas.
-	- Antes de tener la mita de vida, su patron de bolas es este:
-		- Bola normal de un dragon.
-		- Ataque de Nausea.
+- El EnderDragon se convierte en "RoyerBot", con las siguientes características:
+	- Tiene 1000 corazones (2000 de vida).
+	- Al golpear a RoyerBot, este te devolverá todo el daño que le hagas.
+	- Antes de tener la mitad de vida, su patrón de bolas es el siguiente:
+		- Bola normal de un dragón.
+		- Ataque de Náusea.
 		- Ataque de Warden.
 		- Ataque de Pollys.
-		
-	- Al tener la mitad de vida, entra en su segunda fase. Que inicia con lo siguiente:
+
+	- Al tener la mitad de vida, entra en su segunda fase, que inicia con lo siguiente:
 		- Un empuje que saca a los jugadores del centro.
 		- Lanza rayos a todos los jugadores.
-		- Su nombre y patron de bolas de dragon cambian. El patron es este:
+		- Su nombre y patrón de bolas de dragón cambian. El patrón es el siguiente:
 			- Bola normal.
-			- Nausea.
+			- Náusea.
 			- Conduit.
 			- Arañas.
 			- Totems.
 			- Brute.
 			- Pollys.
-		
-	- Las bolas de dragon al golpear algo o alguien, puede iniciar alguno de estos ataques:
-		- Inicia un ataque de Nauseas donde debes quedarte totalmente quieto. Si no lo haces, te hara OneShot.
-		- En la posicion donde caiga, generara un Warden con lo siguiente:
+	
+	- Las bolas de dragón, al golpear algo o alguien, pueden iniciar alguno de estos ataques:
+		- Inicia un ataque de Náuseas donde debes quedarte totalmente quieto. Si no lo haces, te hará OneShot.
+		- En la posición donde caiga, generará un Warden con lo siguiente:
 			- x2 de vida.
 			- Velocidad II permanente.
 			- Su daño base disminuye.
-			- Puede ser mas constante al atacar.
-			- No dara efecto de Darkness.
-			
-		- Inicia un ataque de Efecto del Conducto, cuando termine este efecto, teletransportara a todas las entidades aleatoriamente en el centro de la Isla.
-		- Si explota un EnderCrystal, generara una Llama o Llama de un Mercader Ambulante. Cada cierto tiempo, la volvera a generar en esa posicion.
+			- Puede ser más constante al atacar.
+			- No aplicará el efecto de Oscuridad.
+		
+		- Inicia un ataque de Efecto del Conducto. Cuando termine este efecto, teletransportará a todas las entidades aleatoriamente al centro de la Isla.
+		- Si explota un EnderCrystal, generará una Llama o Llama de un Mercader Ambulante. Cada cierto tiempo, la volverá a generar en esa posición.
 		- Puede generar Arañas de Cueva en el centro de la isla.
-		- Puede generar un suelo de esmeralda o oro donde caera diversos items como:
+		- Puede generar un suelo de esmeralda o oro donde caerán diversos ítems como:
 			- Totems.
-			- Manzanas doradas.
-			- Manzanas encantadas.
-			- EnderPearls.
+			- Manzanas Doradas.
+			- Manzanas Encantadas.
+			- Ender Pearls.
 			- Manzanas de Hierro.
-			
+		
 		- Puede generar un Piglin Brute.
 		- Puede generar Pollys.
 		- Puede generar una Trampa para Osos:
-			- Si estas cerca de este mob, se te pegara al cuerpo, te desactivara el movimiento por 5 segundos y te hace daño progresivamente.
-			- Puede spawnear en el End.
+			- Si estás cerca de este mob, se te pegará al cuerpo, desactivará tu movimiento durante 5 segundos y te hará daño progresivamente.
+			- Puede aparecer en el End.
 		
-• Dia 12:
+		- Puede generar Pillagers Bombarderos.
+		
+• Día 12:
 
-- Las Papas y Papas Cocinadas ya no se pueden obtener.
-- La Papa Envenenada da Regeneracion V por 10 segundos.
-- Al comer una Zanahoria Dorada, te dara Daño Instantaneo.
-- Comer Filete Azado, Chuleta de Cerdo cocinado y Cordero Azado te dara Fatal Poison V por 1 minuto.
-- Comer un Pie de Calabaza, te dara Nauseas por 5 minutos.
-- Las Remolachas ahora tienen muchisima mas saturacion.
-- Los Shulkers cada 5 minutos generan los siguientes mobs:
-	- Phantoms
-	- Vex
-	- Allay
-	
-- Las balas de Shulker al golpearse con algo, romperan todo en un cubo de 5x5.
-- Los Shulkers son mas constantes al atacar.
-- Los Vex en el End, al golpear, daran Lentitud X por 1 minuto.
-- Los Allays en el End, se llevaran todos los items tirados y tendran Invisibilidad.
-- Los Shulkers tienen un 50% de drop.
+- Las Papas y Papas Cocidas ya no se pueden obtener.
+- La Papa Envenenada otorga Regeneración V durante 10 segundos.
+- Al comer una Zanahoria Dorada, recibirás Daño Instantáneo.
+- Comer Filete Asado, Chuleta de Cerdo Cocida y Cordero Asado te dará Fatal Poison V durante 1 minuto.
+- Comer un Pie de Calabaza te dará Náuseas durante 5 minutos.
+- Las Remolachas ahora tienen muchísima más saturación.
+- Los Shulkers, cada 5 minutos, generan los siguientes mobs:
+	- Phantoms.
+	- Vex.
+	- Allays.
+
+- Las balas de Shulker, al golpearse con algo, romperán todo en un cubo de 5x5.
+- Los Shulkers son más constantes al atacar.
+- Los Vex en el End, al golpear, otorgan Lentitud X durante 1 minuto.
+- Los Allays en el End se llevarán todos los ítems tirados y tendrán Invisibilidad.
+- Los Shulkers tienen un 50% de probabilidad de soltar ítems.
 - Los Golems de Nieve cambiaron y ahora:
 	- Son hostiles.
-	- Spawnean en el End.
-	- Las bolas de nieve si te golpean, te teletransportaran a el.
-	- Las bolas de nueve te hacen muchisimo daño.
+	- Aparecen en el End.
+	- Las bolas de nieve, si te golpean, te teletransportarán a ellos.
+	- Las bolas de nieve te hacen muchísimo daño.
 	- Tienen Resistencia V.
 
 • Dia 13: (Este Dia no viene incluido en el producto final, debido a que la serie termino en el Dia 12, pero ya estaba hecho una idea conceptual)
