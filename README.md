@@ -83,40 +83,41 @@ Lista de Cambios:
 
 • Día 0:
 
-- El mundo esta en Modo Hardcore, pero con la diferencia de que si mueres, eres baneado del server permanente.
-- Cualquier Jugador al Morir, activara el "Resquicio Infernal".
+- El mundo está en Modo Hardcore, pero con la diferencia de que si mueres, serás baneado del servidor de forma permanente.
+- Cualquier jugador, al morir, activará el "Resquicio Infernal":
 	- Resquicio Infernal:
-		- Al activarse, dara Ceguera y Nausea por 10 segundos.
-		- Generar un Rayo a un Jugador aleatorio del Juego.
-		
-- Al dormir, en vez de que la noche pase instantaneamente, se pasara mucho mas rapido.
-- Los Jugadores tienen el rango llamado "Sobreviviente" y es visible en el nombre y en el chat.
-- Cualquier Jugador que Utilize un Totem de la Inmortalidad, aparecera en el chat.
-- Se agrega una nueva mecanica llamada "Fast Items" (O Items Rapidos)
-	- Esta funcion consiste en que, con tu tecla de interaccion, al usar algun item que este permitido en la mano secundaria, se trasfiere a dicha mano de forma rapida.
-		
-- Se quito la visibilidad de la semilla del mundo.
-- Apartir de este Dia, se indicara el numero de Dias actuales.
-- Ahora la vida de los Jugadores es visible en su nombre.
-- La generacion de Diamantes fue modificada para que apareciera mas frecuentemente.
-- Al entrar por primera vez al mundo, se dara un kit que consiste en:
-	- 1 totem de la inmortalidad.
-	- 15 Zanahorias de oro.
-	- 1 Cubeta de agua.
-	
-- En este Dia y siguientes, los portales del Nether y End no se pueden activar manualmente.
-- Ahora todos los Cofres de todas las estructuras y Vaules de la Trial Chamber, vienen con:
-	- Un Libro encantado con Reparacion y Irrompibilidad III. (Con 90% de Posibilidad de aparecer)
-	
-- Los Aldeanos ya no tomaran el trabajo de Librero, permanentemente.
-- Ya no pueden spawnear Zombies Aldeanos Libreros.
-- Los Aldeanos ahora son mobs neutrales. (Es decir, que son tranquilos si no les atacas)
-- Ya no se puede obtener las botellas Ominous y si tienes una, se te desaparecera.
-- Aparece una nueva variante de Pillager llamado: "Pillager Bombardero":
-	- Este tiene 100 de vida.
-	- Puede lanzar desde bastante rango.
-	- Lanza una Dinamita que puede explotar en 0.75sg o 1sg y hacer una explosion menor.
-	- Al tener 50 de vida, se convierte en su version melee, el cual consiste en estar lo mas cerca tuyo para hacer una explosion enorme.
+		- Al activarse, otorgará Ceguera y Náusea durante 10 segundos.
+		- Generará un rayo que caerá sobre un jugador aleatorio del juego.
+
+- Al dormir, en lugar de que la noche pase instantáneamente, se acelerará considerablemente.
+- Los jugadores tienen el rango llamado "Sobreviviente", visible en su nombre y en el chat.
+- Cualquier jugador que utilice un Totem de la Inmortalidad aparecerá en el chat.
+- Se añade una nueva mecánica llamada "Fast Items" (o Ítems Rápidos):
+	- Esta función consiste en que, al usar algún ítem permitido en la mano secundaria con la tecla de interacción, se transferirá rápidamente a dicha mano.
+
+- Se ha eliminado la visibilidad de la semilla del mundo.
+- A partir de este día, se indicará el número de días actuales.
+- Ahora la vida de los jugadores es visible en su nombre.
+- La generación de diamantes ha sido modificada para que aparezcan con mayor frecuencia.
+- Al entrar por primera vez al mundo, se otorgará un kit que consiste en:
+	- 1 Totem de la Inmortalidad.
+	- 15 Zanahorias de Oro.
+	- 1 Cubeta de Agua.
+
+- En este día y los siguientes, los portales del Nether y del End no se pueden activar manualmente.
+- Ahora todos los cofres de las estructuras y las bóvedas de las Trial Chambers vienen con:
+	- Un libro encantado con Reparación e Irrompibilidad III (con un 90% de probabilidad de aparecer).
+
+- Los aldeanos ya no tomarán el trabajo de librero de forma permanente.
+- Ya no pueden aparecer Zombies Aldeanos Libreros.
+- Los aldeanos ahora son mobs neutrales (es decir, son pacíficos si no los atacas).
+- Ya no se puede obtener botellas Ominosas, y si tienes una, desaparecerá.
+- Aparece una nueva variante de Pillager llamada "Pillager Bombardero":
+	- Tiene 100 de vida.
+	- Puede lanzar dinamita desde una distancia considerable.
+	- La dinamita explota en 0.75 o 1 segundo, causando una explosión menor.
+	- Al llegar a 50 de vida, se convierte en su versión cuerpo a cuerpo, acercándose para causar una explosión enorme.
+	- Si te cae directo, te puede matar de una explosion.
 
 - Se añadieron algunos logros que aparecen en el chat, tales como:
 	- La Edad de Piedra
@@ -169,156 +170,155 @@ Lista de Cambios:
 	- Malos hábitos
 	- El depredador más adorable
 
-- Cada logro te dara 10 niveles y los logros challenge te dara 20 niveles.
+- Cada logro te dará 10 niveles, y los logros de desafío te darán 20 niveles.
 
 • Día 1:
 
-- Ahora los Peces Globo spawnean en todos los sitios con agua.
+- Ahora los Peces Globo aparecen en todos los cuerpos de agua.
 - Las Cabras, Abejas, Osos Polares y Ocelotes ahora son hostiles.
 - Se añade el daño por temperatura:
-	- Esta consiste en que si estas mas de 5 minutos en un bioma calido o frio, empezaras a recibir daño hasta que salgas de ese bioma.
+	- Consiste en que si permaneces más de 5 minutos en un bioma cálido o frío, comenzarás a recibir daño hasta que salgas de ese bioma.
 
 • Día 2:
 
-- Al golpearte con un Cactus o una Baya Dulce, te dará Veneno por 10 segundos y al pasar por un Arbusto Muerto, también te dará.
-- Ahora los Zorros son hostiles y son capaces de robarte lo que tengas en el inventario y Armadura, puedes recuperar tus cosas al matar al Zorro. (En caso de que el Zorro no pueda llevar más ítems, dropea el más cercano en su posición)
-- Los Phantoms ahora son más constantes al atacar y tiene resistencia al fuego.
-- Al minar Minerales de Diamante, perderás 1 corazón.
-- Ahora las Abejas spawnean de manera natural en el Overworld.
-- Los Rayos que caigan en un Para rayos, van a explotar con nivel 5.
+- Al golpearte con un Cactus o una Baya Dulce, recibirás Veneno durante 10 segundos. Pasar por un Arbusto Muerto también te causará este efecto.
+- Ahora los Zorros son hostiles y pueden robarte los ítems de tu inventario y armadura. Puedes recuperar tus cosas al matar al Zorro (si el Zorro no puede llevar más ítems, soltará el más cercano a su posición).
+- Los Phantoms ahora son más constantes al atacar y tienen resistencia al fuego.
+- Al minar minerales de Diamante, perderás 1 corazón.
+- Ahora las Abejas aparecen de manera natural en el Overworld.
+- Los rayos que caigan en un Pararrayos explotarán con nivel 5.
 - Aparece un nuevo ítem: "Manzana de Hierro":
-	- Se craftea con 8 lingotes de Hierro y una Manzana.
-	- Al comerlo, te dará Resistencia II por 30 segundos.
+	- Se fabrica con 8 lingotes de Hierro y una Manzana.
+	- Al comerla, te otorgará Resistencia II durante 30 segundos.
 
 • Día 3:
 
-- Ahora los Drowneds tienen tridente siempre.
-- Las Arañas de Cueva ahora spawnea naturalmente en la superficie y en cuevas.
+- Ahora los Drowned siempre llevan tridente.
+- Las Arañas de Cueva ahora aparecen naturalmente en la superficie y en cuevas.
 - Ahora los Zombies y Esqueletos tienen Armadura de Diamante.
-- Los siguientes mobs al golpearte, te daran efectos como:
-	- Husk: Hambre IV por 30 segundos.
-	- Stray: Lentitud IV por 30 segundos por Flecha.
-	- Slimes: Impulso de Salto II por 30 segundos
+- Los siguientes mobs, al golpearte, te otorgarán efectos como:
+	- Husk: Hambre IV durante 30 segundos.
+	- Stray: Lentitud IV durante 30 segundos por flecha.
+	- Slimes: Impulso de Salto II durante 30 segundos.
 
-- Los Esqueletos del Wither ahora spawnean en el Overworld, tienen Armadura de Hierro con Espada de Diamante Filo V.
-- Los Slimes siempre dropearan 1 bola de Slime.
+- Los Esqueletos del Wither ahora aparecen en el Overworld, con Armadura de Hierro y Espada de Diamante con Filo V.
+- Los Slimes siempre soltarán 1 bola de Slime.
 - Los Slimes ahora pueden escupirte una "Baba de Slime".
-- Los Slimes ahora no reciben daño de proyectiles y los repelan.
-- Al lanzar una Ender Pearl, perderas la mitad de vida al usarla y teletransportarse. (Sin importar la armadura)
-- Los Pillagers Bombarderos te dan entre 20-25 niveles.
-- Ahora los Zombies van a spawnear con su variante. (Es decir, si un Zombie spawnea, tambien lo hara un Husk)
-- Ahora los Esqueletos van a spawnear con su variante. (Es decir, si un Esqueleto spawnea, tambien lo hara un Stray)
-- Se añade un nuevo proyectil: Baba de Slime
+- Los Slimes ahora no reciben daño de proyectiles y los repelen.
+- Al lanzar una Ender Pearl, perderás la mitad de tu vida al usarla y teletransportarte (sin importar la armadura).
+- Los Pillagers Bombarderos te otorgan entre 20-25 niveles.
+- Ahora los Zombies aparecerán con su variante (es decir, si un Zombie aparece, también lo hará un Husk).
+- Ahora los Esqueletos aparecerán con su variante (es decir, si un Esqueleto aparece, también lo hará un Stray).
+- Se añade un nuevo proyectil: "Baba de Slime":
 	- Hace 10 de daño base.
-	- Al golpearte una, te pondra una pantalla de baba por unos segundos.
+	- Al golpearte, te pondrá una pantalla de baba durante unos segundos.
 
-- Se añaden nuevos items: "Slime Derretido" y "Perla Viscosa":
+- Se añaden nuevos ítems: "Slime Derretido" y "Perla Viscosa":
 	- Slime Derretido:
-		- Se obtiene cocinando una bola de slime en: Un Horno o un Ahumador y cualquiera de las dos Fogatas.
-		
-	- Perla Viscosa:
-		- En ciertas ocaciones puede generar un Slime al teletransportarse.
-		- Va mas rapido que una Ender Pearl.
-		- Tiene 0.6 de cooldown.
-		- No recibes daño por teletransporte.
-		- Se obtiene por medio de la mesa de crafteo con 8 de Slime Derretido y una EnderPearl.
-
-• Dia 4:
-
-- Los Ravagers spawnean con Velocidad y Fuerza II permanente.
-- Las Brujas spawnean con Invisibilidad permanente y se pueden teletransportar como el Enderman. Estas pueden spawnear en Islas Champiñon.
-- El evocador ha cambiado y ahora tienen lo siguiente:
-	- Pueden generar Esqueletos del Wither como lo hacen con los Vexs.
-	- Tiene Resistencia II permanente.
-	- Si estas muy cerca de el, empezara una mini fase donde te atacara a distancia con Flechas de Daño II.
+		- Se obtiene cocinando una bola de Slime en un Horno, Ahumador o cualquiera de las dos Fogatas.
 	
-. Los Pillagers ahora tienen Carga Rapida I siempre.
-- Los Zorros pueden spawnear en Islas Champiñon.
-- Las Vacas cada cierto tiempo, pueden empujar a los mobs cercanos muy lejos.
-- Los mobs de la raid no reciben daño de explosiones.
-- Las brujas dan invisibilidad a los mobs de la raid.
-- Aparecen nuevos items: "Calavera de Piedra", "Calavera de Invocacion", "Dinamita" y "Dinamita Apagada":
+	- Perla Viscosa:
+		- En ciertas ocasiones, puede generar un Slime al teletransportarse.
+		- Es más rápida que una Ender Pearl.
+		- Tiene un cooldown de 0.6 segundos.
+		- No recibes daño por teletransporte.
+		- Se obtiene en la mesa de crafteo con 8 Slime Derretido y una Ender Pearl.
+
+• Día 4:
+
+- Los Ravagers aparecen con Velocidad y Fuerza II de forma permanente.
+- Las Brujas aparecen con Invisibilidad permanente y pueden teletransportarse como los Enderman. Estas pueden aparecer en Islas Champiñón.
+- El Evocador ha cambiado y ahora tiene lo siguiente:
+	- Puede generar Esqueletos del Wither como lo hace con los Vex.
+	- Tiene Resistencia II de forma permanente.
+	- Si estás muy cerca de él, comenzará una mini fase en la que te atacará a distancia con Flechas de Daño II.
+
+- Los Pillagers ahora tienen Carga Rápida I de forma permanente.
+- Los Zorros pueden aparecer en Islas Champiñón.
+- Las Vacas, cada cierto tiempo, pueden empujar a los mobs cercanos a una gran distancia.
+- Los mobs de la incursión no reciben daño por explosiones.
+- Las Brujas otorgan invisibilidad a los mobs de la incursión.
+- Aparecen nuevos ítems: "Calavera de Piedra", "Calavera de Invocación", "Dinamita" y "Dinamita Apagada":
 	- Calavera de Piedra:
-		- Se craftea con 2 de Piedra Lisa, 3 de Piedra y 3 de Roca (Cobblestone)
-		
-	- Calavera de Invocacion:
-		- Se craftea con 2 Bloques de Esmeralda, 3 Esmeraldas, 2 Ballestas y 1 Libro Encantado.
-		- Al usarlo con tu tecla de interaccion, te dara Trial Omen por 5 minutos de cualquier nivel y Raid Omen por 10 segundos de cualquier nivel. Al usarlo, te quitara media vida.
+		- Se fabrica con 2 Piedra Lisa, 3 Piedra y 3 Roca (Cobblestone).
+	
+	- Calavera de Invocación:
+		- Se fabrica con 2 Bloques de Esmeralda, 3 Esmeraldas, 2 Ballestas y 1 Libro Encantado.
+		- Al usarlo con la tecla de interacción, te otorgará Trial Omen durante 5 minutos de cualquier nivel y Raid Omen durante 10 segundos de cualquier nivel. Al usarlo, perderás media vida.
 		
 	- Dinamita Apagada:
-		- Es un item y a la vez un bloque.
-		- Se obtiene con probabilidad mediante los Pillagers Bombarderos. (Su probabilidad aumentara un %2 por cada nivel de Looting/Saqueo) (Le afecta el Looting/Saqueo, por lo que puede dar mas de 1).
+		- Es un ítem y a la vez un bloque.
+		- Se obtiene con probabilidad al matar Pillagers Bombarderos (su probabilidad aumenta un 2% por cada nivel de Looting/Saqueo).
 		- Se puede encender con un Mechero.
-		- Al encender la Dinamita, se vuelve su version encendida. Si se rompe en esta version, dropeara el item Dinamita.
-		- Al encender la Dinamita, explorara en 7 segundos.
-		
+		- Al encenderla, se convierte en su versión encendida. Si se rompe en esta versión, soltará el ítem Dinamita.
+		- Al encenderla, explotará en 7 segundos.
+	
 	- Dinamita:
-		- En un item lanzable.
-		- Funciona igual que la dinamita del Bomber Pillager.
-		- Se puede obtener mediante una Dinamita Apagada al encenderla.
+		- Es un ítem lanzable.
+		- Funciona igual que la dinamita del Pillager Bombardero.
+		- Se puede obtener al encender una Dinamita Apagada.
+		
+• Día 5:
 
-• Dia 5:
+- A partir de este día y en los posteriores, el Nether estará permitido y abierto para todos.
+- La Netherite aún no es obtenible.
+- Los Phantoms ahora rompen bloques y aparecerán, como máximo, una noche si no duermes.
+- Los Ghast se han convertido en "Soul Ghast":
+- Solo aparecen en el Soul Sand Valley.
+- Si te golpea una de sus bolas de fuego, recibirás Lentitud II, una pantalla azul durante unos segundos y un fuerte movimiento de cámara.
+- Los Blaze ahora se han convertido en "Lord Blaze":
+	- Pueden generar hasta 4 Blaze normales.
+	- Lanzan bolas de fuego que explotan con un radio pequeño.
 
-- En este dia y posteriores, el Nether esta permitido y abierto para todos.
-- La Netherite aun no es obtenible.
-- Los Ghast ahora se convierten en "Soul Ghast":
-	- Solo spawnean en Soul Sand Valley.
-	- Si la bola te golpea, recibiras Lentitud II, Pantalla Azul por unos segundos y un movimiento fuerte de camara.
-	
-- Los Blaze ahora se convierten en "Lord Blaze":
-	- Pueden spawnear 4 Blaze normales.
-	- Pueden lanzar bolas de fuego que explotan con un rango pequeño.
-	
 - Aparece un nuevo Piglin, llamado "Armorer Piglin Brute":
-	- Cada 20 segundos sonara un evento que hara el mob, para hacer que los Piglins de alrededor en un radio de 11 bloques, tengan un equipamento aleatorio.
-	- La espada aleatoria que tengan los Piglins, puede estar encantada con Filo II hasta IV.
-	- Este Piglin puede atacar a Melee con el "Marillo de Piglin".
-	
-- Los MagmaCube ahora son "MagmaCopters":
-	- Pueden volar y/o saltar cuando quieran.
-	- Si estan cerca de otro MagmaCopter, pueden unirse para hacerme mas grande con mas vida y daño.
-	
+	- Cada 20 segundos, se activará un evento que hará que este mob equipe aleatoriamente a los Piglins cercanos en un radio de 11 bloques.
+	- La espada aleatoria que porten los Piglins puede estar encantada con Filo II hasta IV.
+	- Este Piglin puede atacar cuerpo a cuerpo con el "Martillo de Piglin".
+
+- Los Magma Cube ahora son "MagmaCopters":
+	- Pueden volar y/o saltar cuando lo deseen.
+	- Si están cerca de otro MagmaCopter, pueden fusionarse para volverse más grandes, con más vida y daño.
+
 - Los Wither ahora son "King Wither":
-	- Tendra la "Corona Infernal" que generara alguno de los siguientes efectos:
-		- Espiritu Rojo: Cada 20 segundos, regenerara la vida del Wither.
-		- Espiritu Azul: Cada 20 segundos, Puede romper cualquier bloque.
-		- Espiritu Amarillo: Cada 20 segundos, dara cualquier efecto aleatorio malo a los mobs a su alrededor. El tiempo y duracion es aleatoria entre 1 y 5 minutos y I a III.
-		- Espiritu Naranja: Cada 20 segundos, revuelve el inventario de los Jugadores cercanos.
-
-- Los Lord Blaze, Piglin, Piglin Brute, y Soul Ghast, se duplican al spawnear y tienen x5 de daño, lo cual puede o no, hacerte OneShot con buen equipamento.
-- Al ser golpeado por un King Wither, recibiras Levitacion X por 30 segundos. El King Wither tendra Velocidad II permanentemente.
-- Aparecen nuevos ítems: "Gema Infernal", "Alma de Fuego" y "Corona Infernal"
+	- Portan la "Corona Infernal", que genera uno de los siguientes efectos cada 20 segundos:
+		- Espíritu Rojo: Regenera la vida del Wither.
+		- Espíritu Azul: Puede destruir cualquier bloque.
+		- Espíritu Amarillo: Aplica un efecto negativo aleatorio a los mobs cercanos. La duración y el nivel del efecto varían entre 1 y 5 minutos, y entre nivel I y III.
+		- Espíritu Naranja: Revuelve el inventario de los jugadores cercanos.
+	
+- Los Lord Blaze, Piglin, Piglin Brute y Soul Ghast se duplican al aparecer y tienen x5 de daño, lo que puede resultar en un OneShot incluso con buen equipo.
+- Al ser golpeado por un King Wither, recibirás Levitación X durante 30 segundos. El King Wither tiene Velocidad II de forma permanente.
+- Se añaden nuevos ítems: "Gema Infernal", "Alma de Fuego" y "Corona Infernal".
 	- Corona Infernal:
-		- Se craftea con 3 Gemas Infernales, 1 Alma de Fuego y una Corona de Wither Vacia.
-		- Al conseguir el ítem y tenerlo en el inventario, te evitará el daño por temperatura, te dará Fuerza II, Resistencia II en el Nether y Resistencia al Fuego en todos lados mientras lo lleves.
+		- Se fabrica con 3 Gemas Infernales, 1 Alma de Fuego y una Corona de Wither Vacía.
+		- Al tenerla en el inventario, te protege del daño por temperatura, otorga Fuerza II, Resistencia II en el Nether y Resistencia al Fuego en cualquier lugar.
 		- Estos ítems no se pueden quemar.
-		- Los Piglins pueden tradear con este item.
+		- Los Piglins pueden comerciar con este ítem.
 		
-	- Corona Infernal Vacia:
-		- Se consigue matando un Wither Boss, con un 60% de probabilidad base (Su probabilidad aumentara un 5% por cada nivel de Looting/Saqueo).
-		- Este item no se puede quemar.
-		- Los Piglins pueden tradear con este item.
-
-	- Gema Infernal:
-		- Son items individuales, eso quiere decir que los mobs no dropean el mismo item, son diferentes.
-		- Se consigue matando los siguientes mobs con las siguientes probabilidades:
-			- Lord Blaze: 30% de probabilidad base (Su probabilidad aumentara un %2 por cada nivel de Looting/Saqueo) (Le afecta el Looting/Saqueo, por lo que puede dar mas de 1).
-			- Piglins: 30% de probabilidad base (Su probabilidad aumentara un %2 por cada nivel de Looting/Saqueo) (Le afecta el Looting/Saqueo, por lo que puede dar mas de 1).
-			- MagmaCopters: 30% de probabilidad base (Su probabilidad aumentara un %2 por cada nivel de Looting/Saqueo) (Le afecta el Looting/Saqueo, por lo que puede dar mas de 1).
-			
+	- Corona Infernal Vacía:
+		- Se obtiene al matar a un Wither Boss, con un 60% de probabilidad base (aumenta un 5% por cada nivel de Looting/Saqueo).
 		- Este ítem no se puede quemar.
-		- Los Piglins pueden tradear con este item (algunos).
-		
+		- Los Piglins pueden comerciar con él.
+	
+	- Gema Infernal:
+		- Son ítems individuales, lo que significa que los mobs no sueltan el mismo ítem, sino diferentes.
+		- Se obtienen al matar a los siguientes mobs con las siguientes probabilidades:
+			- Lord Blaze: 30% de probabilidad base (aumenta un 2% por cada nivel de Looting/Saqueo).
+			- Piglins: 30% de probabilidad base (aumenta un 2% por cada nivel de Looting/Saqueo).
+			- MagmaCopters: 30% de probabilidad base (aumenta un 2% por cada nivel de Looting/Saqueo).
+			- Este ítem no se puede quemar.
+			- Algunos Piglins pueden comerciar con él.
+			
 	- Alma de Fuego:
-		- Se consigue matando un Soul Ghast con un 50% de probabilidad base (Su probabilidad aumentara un %5 por cada nivel de Looting/Saqueo) (Le afecta el Looting/Saqueo, por lo que puede dar mas de 1).
+		- Se obtiene al matar a un Soul Ghast, con un 50% de probabilidad base (aumenta un 5% por cada nivel de Looting/Saqueo).
 		- Este ítem no se puede quemar.
 		
 	- Martillo de Piglin:
-		- Hace 8 de daño base, y puede tener encantamientos de una espada.
+		- Hace 8 de daño base y puede tener encantamientos de espada.
 		- No tiene durabilidad.
-	
-- Se añadio nuevos logros:
-	- "Rey del Nether | The Blazing Monarch" - Consigue la Corona Infernal.
+
+- Se han añadido nuevos logros:
+	- "Rey del Nether | The Blazing Monarch": Consigue la Corona Infernal.
 
 • Dia 6:
 
