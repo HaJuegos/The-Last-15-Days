@@ -117,7 +117,8 @@ Lista de Cambios:
 	- Puede lanzar dinamita desde una distancia considerable.
 	- La dinamita explota en 0.75 o 1 segundo, causando una explosión menor.
 	- Al llegar a 50 de vida, se convierte en su versión cuerpo a cuerpo, acercándose para causar una explosión enorme.
-	- Si te cae directo, te puede matar de una explosion.
+	- Si te ataca a melee, te puede matar de una explosion.
+	- Tiene un 8.33% de probabilidad de explotar solo en su fase melee al ser golpeado.
 	- La dinamita puede explotar bajo el agua y hacer daño.
 
 - Se añadieron algunos logros que aparecen en el chat, tales como:
@@ -237,8 +238,8 @@ Lista de Cambios:
 - Los Pillagers ahora tienen Carga Rápida I de forma permanente.
 - Los Zorros pueden aparecer en Islas Champiñón.
 - Las Vacas, cada cierto tiempo, pueden empujar a los mobs cercanos a una gran distancia.
-- Los mobs de la incursión no reciben daño por explosiones.
-- Las Brujas otorgan invisibilidad a los mobs de la incursión.
+- Los mobs de la raid no reciben daño por explosiones.
+- Las Brujas otorgan invisibilidad a los mobs de la raid.
 - Aparecen nuevos ítems: "Calavera de Piedra", "Calavera de Invocación", "Dinamita" y "Dinamita Apagada":
 	- Calavera de Piedra:
 		- Se fabrica con 2 Piedra Lisa, 3 Piedra y 3 Roca (Cobblestone).
@@ -357,6 +358,7 @@ Lista de Cambios:
 	- Loros
 	- Gallinas
 	- Ranas
+	- Murcielajos
 
 - Las Gallinas ahora son "Skuartu" con una variante de skin.
 - Las Ovejas se convierten en "Pollys" con las siguientes características:
