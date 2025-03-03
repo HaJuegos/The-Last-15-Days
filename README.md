@@ -398,9 +398,12 @@ Lista de Cambios:
 - Ahora el Creeper tiene variantes tales como:
 	- "Creeper Radioactivo":
 		- Al explotar, dejará una nube de daño que quitará 4 corazones por tick, con un radio de 12 bloques.
+		- Puede dejar un rastro de "Charco de Acido":
+			- Al ponerte encima de este bloque o romper este bloque, tendras Fatal Posion IV permanente.
+			- Este bloque se podra propagar aleatoriamente. Consumiendo los bloques que encuentre.
 	
 	- "Creeper Obsidiana":
-		- Al explotar, genera un cubo enorme de obsidiana de 10x10.
+		- Al explotar, genera un cubo enorme de obsidiana de 10x10. Que se llevara todo a su paso.
 	
 	- "Creeper Debuff":
 		- Al explotar y recibir daño de la explosión, recibirás todos los efectos negativos del juego durante 10 segundos.
@@ -409,11 +412,15 @@ Lista de Cambios:
 		- Tiene un radio de explosión de 15 bloques. Al explotar, generará Creeper Bebés de la misma variante con Velocidad V y Resistencia III de forma permanente. Estos explotan normalmente.
 	
 	- "Creeper Ninja":
-		- Te puede detectar desde muy lejos y a través de los bloques. Está cargado siempre y tiene Velocidad III de forma permanente.
+		- Te puede detectar desde muy lejos.
+		- Tiene Velocidad III y Invisibilidad de forma permanente. Se le quitara la Invisibilidad si esta cerca de ti.
+		- Puede generar una explosion grande.
 		
 	- Cada variante puede explotar bajo el agua y hacer daño.
 
 - Los Aldeanos ya no son mobs neutrales, sino hostiles.
+- Las Manzanas Encantadas ahora tienen un 50% de probabilidad de darte Instant Damage al ser consumido.
+- Las Manzanas Doradas ahora dan Regeneracion III por 7 segundos, Resistencia I por 1 minuto y Absorpcion II por 2 minutos.
 - Los Golems de Hierro tienen Fuerza IV y Resistencia I de forma permanente.
 - Las Arañas de Cueva tienen Fuerza III y Velocidad II de forma permanente, y tienen un Zombi Bebé encima con lo siguiente:
 	- Armadura completa de Diamante con Protección IV.
@@ -422,21 +429,60 @@ Lista de Cambios:
 - Las Brujas ahora tienen las siguientes características:
 	- Sus pociones son de nivel X.
 	- Aparecen con menor frecuencia.
-	- Al ser golpeadas, se teletransportan agresivamente cerca de quien las ataca.
+
+- Se añaden los siguientes items: "Polvo de Allay", "Esencia de Allay" y "Soul Link Totem o Tótem de Alma Ligada":
+	- Polvo de Allay:
+		- Se consigue matando Allays con Flame.
+		- Se puede comer.
+		- Al consumirlo, te dara Levitacion I por 15 segundos.
+		- Se puede cocinar.
+		- Al concinarse en un horno, Humador o Fogata, se volvera carbon natural.
+		
+	- Esencia de Allay:
+		- Se consigue por medio del Soporte para pociones con el Polvo de Allay y una Poción rara.
+		- Al consumirlo, te dara Resistencia IV por 10 segundos y Velocidad VI por 10 segundos, pero demorara un poco mas en consumirse.
+	
+	-- (ESTE CAMBIO NO ES CANON EN EL ADD-ON, POR ENDE, NO ESTA DISPONIBLE) --
+	- Soul link:
+		- Permite revivir a un Jugador muerto o ido por AFK. Pero con la condicion de que si alguno de los dos muere, los dos seran baneados permanentemente.
+		- Se consigue por medio de la mesa de crafteo con 8 Polvos de Allay y un Totem.
+		- Al usarlo, te quitara media vida. (Para pedir el desban, llama a un administrador)
+		- Solo puede usarse una vez. La persona revivida no puede usar este item.
 
 • Día 9:
 
 - Los Pandas empujan igual que las Vacas.
-- Los Gatos tienen la habilidad de generar Creepers a su alrededor. Su generación es cada 2 minutos, deben atacarte primero y solo aparecen en espacios libres.
-- Los Phantoms tienen un Esqueleto del Wither encima.
-- Las Abejas tendrán un Esqueleto o un Esqueleto Errante encima.
+- Los Gatos pueden generar Creepers al su alrededor. Lo haran en la noche mientras te trackean. Se generaran en el espacio libre mas cercano cada 15 segundos.
+- Los Phantoms tienen un Esqueleto del Wither encima. Estos son persistentes.
+- Las Abejas tendrán un Esqueleto o un Esqueleto Errante encima. Estos son persistentes.
 - Los Esqueletos y Esqueletos Errantes pueden lanzar Bolas de Fuego de Nivel 3 hasta 10, tambien pueden hacer daño bajo el agua y romper bloques con agua.
 - Los Esqueletos del Wither ahora atacan a distancia y disparan Cabezas del Wither con Nivel de explosión 3 hasta 10, tambien pueden hacer daño bajo el agua y romper bloques con agua.
-- Los Zombis ahora tienen Hachas de Diamante con Filo X y, al golpearte, desordenan tu inventario, cambiando la posición de los ítems de forma aleatoria.
+- Los Zombis ahora tienen Hachas de Diamante con Filo X y, al golpearte, desordenan tu inventario, cambiando la posición de los ítems de forma aleatoria. El daño de este puede variar.
 - Los Piglins, al aparecer, tienen un 1% de probabilidad de convertirse en Piglin Bruto.
 - Los Vex, cada 30 segundos, se convierten en Allay.
 - Las Cabezas del Wither tienen Nivel de explosión de 10, tambien pueden hacer daño bajo el agua y romper bloques con agua.
-- Los Esqueletos y Esqueletos Errantes tienen un 5% de probabilidad de soltar un Arco con Poder XI, Reparación e Irrompibilidad III.
+- Los Esqueletos y Esqueletos Errantes tienen un 10% de probabilidad de soltar un Arco con Poder XI, Reparación e Irrompibilidad III.
+- El Sistema del Resquicio Infernal ha cambiado y ahora:
+	- Además de todo lo anteriormente mencionado, al morir un jugador:
+		- Se ejecutan los "Pecados Capitales" en todos los jugadores, ya sea en el juego o fuera de línea.
+
+- Nueva mecánica: "Los Pecados Capitales":
+	- Todos estos efectos duran 5 minutos y el tiempo se puede extender por muerte.
+	- La Avaricia: La ansiedad te domina poco a poco, provocando que tus ítems se queden bloqueados en tu inventario y/o armadura. Y pierdes la mitad de los items.
+	- La Pereza: Tu energía se agota más rápido, la saturación disminuye y te cuesta caminar. Ya no puedes minar con ganas.
+	- La Lujuria: Los mobs hostiles te adoran tanto que te persiguen mucho más rápido para atacarte, de manera obsesiva.
+	- El Orgullo: Tu ego se infla, literalmente. Te vuelves más grande, lo que te impide realizar muchas acciones.
+	- La Gula: Fuiste condenado al hambre. Tu insaciable apetito te exige cada vez más comida. Al punto que empiezas a comer inconscientemente.
+	- La Envidia: A causa de tus rencores del pasado, ahora estás condenado a perder una fila de tu inventario. (Los items seran dropeados)
+	- La Ira: La ira te consume y por ende, tu vision se pone roja y los mobs a tu alrededor te atacan con fuerza.
+	- Esta mecánica es acumulable, y cuantos más efectos te afecten, peor será el combo:
+		- La Avaricia: Muchos más ítems se bloquean. Perdiendo muchos mas items.
+		- La Pereza: Tu saturación cae totalmente y te vuelves aún más lento. Y las ganas de minar te cuesta mas.
+		- La Lujuria: Los mobs hostiles se vuelven locos por ti, persiguiéndote mucho más rápido.
+		- El Orgullo: Llegaste tan alto que ya no puedes realizar casi ninguna acción.
+		- La Gula: El hambre es más constante e intenso. Comes sin parar.
+		- La Envidia: Si perder una fila de tu inventario no fue suficiente, ahora perderás varios espacios aleatorios de tu inventario y/o armadura. (Los items seran dropeados)
+		- La Ira: La ira te consume mucho mas, tu vision es cada vez menos y los mobs a tu alrededor te atacan con mas fuerza.
 
 • Día 10:
 
