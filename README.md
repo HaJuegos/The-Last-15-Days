@@ -615,24 +615,28 @@ Lista de Cambios:
 - El EnderDragon se convierte en "RoyerBot", con las siguientes características:
 	- Tiene 1000 corazones (2000 de vida).
 	- Al golpear a RoyerBot, este te devolverá todo el daño que le hagas.
-	- Antes de tener la mitad de vida, su patrón de bolas es el siguiente:
-		- Bola normal de un dragón.
-		- Ataque de Náusea.
-		- Ataque de Warden.
-		- Ataque de Pollys.
+	- Las bolas del dragon tienen un patron especifico por vida, dicho patron es el siguiente:
+		- Al spawnear por primera vez el RoyerBot:
+			- Nube de daño vanilla.
+			- Ataque de nauseas.
+			- Generar Wardens.
+			- Generar Arañas con Zombies.
+			- Generar Trampas para Osos.
+			
+		- En la Fase 2°, cambia a:
+			- Nube de daño vanilla.
+			- Genera a Warden.
+			- Ataque de nauseas.
+			- Ataque de Conduit.
+			- Generar Arañas con Zombies.
+			- Generar totems.
+			- Genera Piglins Brutes.
+			- Genera Pollys.
+			- Genera Trampas de Osos.
+			
+		- En la Fase 3°, cambia a:
+			- Todos los ataques de la fase 2° pero totalmente aleatorios.
 
-	- Al tener la mitad de vida, entra en su segunda fase, que inicia con lo siguiente:
-		- Un empuje que saca a los jugadores del centro.
-		- Lanza rayos a todos los jugadores.
-		- Su nombre y patrón de bolas de dragón cambian. El patrón es el siguiente:
-			- Bola normal.
-			- Náusea.
-			- Conduit.
-			- Arañas.
-			- Totems.
-			- Brute.
-			- Pollys.
-	
 	- Las bolas de dragón, al golpear algo o alguien, pueden iniciar alguno de estos ataques:
 		- Inicia un ataque de Náuseas donde debes quedarte totalmente quieto. Si no lo haces, te hará OneShot.
 		- En la posición donde caiga, generará un Warden con lo siguiente:
