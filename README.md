@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/main/comportamientos/dia0/pack_icon.png" alt="Addon Icon" width=450>
+  <img src="https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/v0.0.11-beta/.github/icon_template/pack_icon.png" alt="Addon Icon" width=450>
   <h3 align="center">The Last 15 Days (Version 0.0.11-beta)</h3>
   
  <p align="center">
@@ -17,9 +17,71 @@
   <a href="https://twitter.com/Ha_Juegos"><img src="https://img.shields.io/twitter/follow/Ha_Juegos?style=plastic&color=success&logo=twitter&label=HaJuegos%20Cat!%20Twitter" alt="HaJuegos Twitter"/></a>
 </p>
 
-## CREDITOS Y ACLARACIONES
+## CRÉDITOS Y ACLARACIONES  
 
-- Este es un Add-on perteneciente a [RosherRandom](https://twitter.com/TheLast15Days) como comision pagada en Colaboracion de desarollo con [HaJuegos Cat!](https://twitter.com/Ha_Juegos), [Convex!](https://twitter.com/convex__) y [Astral302](https://twitter.com/astral302). Si utilizaras o editaras este Add-on, por favor, asegurate de mencionar al menos a los creadores de este add-on, si tienes alguna inconveniencia, pregunta o problemas con este add-on, reportalo en el Server de Discord dedicado a los Add-ons: https://discord.gg/WH9KpNWXUz
+Este Add-on fue desarrollado como una comisión pagada para [RosherRandom](https://twitter.com/TheLast15Days), en colaboración con:
+
+<div align="center">
+<table>
+	<tr>
+		<td align="center">
+			<img src="https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/v0.0.11-beta/.github/icon_template/royer.png" width="100px"><br>
+			<sub><b>RosherRandom</b></sub>
+		</td>
+		<td>
+			<b>Comisionador del Add-on</b><br>
+			Idealista, Texture y Model Maker del Add-on <br>
+			<a href="https://twitter.com/TheLast15Days">Twitter Link</a>
+		</td>
+	</tr>
+	<tr>
+		<td align="center">
+			<img src="https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/v0.0.11-beta/.github/icon_template/ha.png" width="100px"><br>
+			<sub><b>HaJuegos Cat!</b></sub>
+		</td>
+		<td>
+			<b>Desarrollador del Add-on</b><br>
+			Implementación y desarrollo del Add-on<br>
+			<a href="https://twitter.com/Ha_Juegos">Twitter Link</a>
+		</td>
+	</tr>
+	<tr>
+		<td align="center">
+			<img src="https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/v0.0.11-beta/.github/icon_template/convex.png" width="100px"><br>
+			<sub><b>Convex!</b></sub>
+		</td>
+		<td>
+			<b>Desarrollador del Add-on</b><br>
+			Desarrollador del Add-on original<br>
+			<a href="https://twitter.com/convex__">Twitter Link</a>
+		</td>
+	</tr>
+	<tr>
+		<td align="center">
+			<img src="https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/v0.0.11-beta/.github/icon_template/astral.png" width="100px"><br>
+			<sub><b>Astral302</b></sub>
+		</td>
+		<td>
+			<b>Model y Texture maker</b><br>
+			Creador de texturas, modelos y partículas del Add-on.<br>
+			<a href="https://twitter.com/astral302">Twitter Link</a>
+		</td>
+	</tr>
+	<tr>
+		<td align="center">
+			<img src="https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/v0.0.11-beta/.github/icon_template/krekoh.png" width="100px"><br>
+			<sub><b>Krekoh</b></sub>
+		</td>
+		<td>
+			<b>Idea original de los "Pecados"</b><br>
+			Concepto e idea original de los "Pecados".<br>
+			<a href="https://x.com/Krekoh">Twitter Link</a>
+		</td>
+	</tr>
+</table>
+</div>
+
+Si utilizas o editas este Add-on, por favor, asegúrate de dar el debido crédito a los creadores. Si tienes preguntas, inconvenientes o problemas con el Add-on, repórtalos en el [Server de Discord dedicado a los Add-ons](https://discord.gg/WH9KpNWXUz).
 
 ## LINKS DE DESCARGAS
 ### Nota: Estos links estan vinculados a Ko-Fi, posiblemente requieras de una cuenta en dicha pagina. Estos archivos no son ni seran de pago, todo es opcional y gratuito para quien quiera disfrutarlo.
@@ -56,9 +118,9 @@
 ## OPCIONES EXPERIMENTALES NECESARIAS
 - _El Add-on requiere funciones experimentales para que funcione correctamente, procura tenerlos activados en el mundo antes de poner el add-on._
 
-![esp](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/main/.github/esp.png)
+![esp](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/v0.0.11-beta/.github/esp.png)
 
-![eng](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/main/.github/eng.png)
+![eng](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/v0.0.11-beta/.github/eng.png)
 
 ## ¿EL SERVER PIDE MODULOS REQUERIDOS?
 
