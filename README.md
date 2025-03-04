@@ -453,7 +453,7 @@ Lista de Cambios:
 
 - Los Pandas empujan igual que las Vacas.
 - Los Gatos pueden generar Creepers al su alrededor. Lo haran en la noche mientras te trackean. Se generaran en el espacio libre mas cercano cada 15 segundos.
-- Los Phantoms tienen un Esqueleto del Wither encima. Estos son persistentes.
+- Los Phantoms tienen un Esqueleto del Wither encima. Estos son persistentes y se duplican al spawnear.
 - Las Abejas tendrán un Esqueleto o un Esqueleto Errante encima. Estos son persistentes.
 - Los Esqueletos y Esqueletos Errantes pueden lanzar Bolas de Fuego de Nivel 3 hasta 10, tambien pueden hacer daño bajo el agua y romper bloques con agua.
 - Los Esqueletos del Wither ahora atacan a distancia y disparan Cabezas del Wither con Nivel de explosión 3 hasta 10, tambien pueden hacer daño bajo el agua y romper bloques con agua.
@@ -467,7 +467,7 @@ Lista de Cambios:
 		- Se ejecutan los "Pecados Capitales" en todos los jugadores, ya sea en el juego o fuera de línea.
 
 - Nueva mecánica: "Los Pecados Capitales":
-	- Todos estos efectos duran 5 minutos y el tiempo se puede extender por muerte.
+	- Todos estos efectos duran 3 minutos y el tiempo se puede extender por muerte.
 	- La Avaricia: La ansiedad te domina poco a poco, provocando que tus ítems se queden bloqueados en tu inventario y/o armadura. Y pierdes la mitad de los items.
 	- La Pereza: Tu energía se agota más rápido, la saturación disminuye y te cuesta caminar. Ya no puedes minar con ganas.
 	- La Lujuria: Los mobs hostiles te adoran tanto que te persiguen mucho más rápido para atacarte, de manera obsesiva.
@@ -487,7 +487,7 @@ Lista de Cambios:
 • Día 10:
 
 - Las Llamas ahora son hostiles, hacen muchísimo daño y te pueden disparar desde muy lejos. Tienen Resistencia IV permanente. Si estas muy cerca de ella, puede explotar. (Al explotar, puede romper bloques bajo el agua y hacer daño)
-- Los Ravagers tienen Fuerza X, Impulso de Salto I y Resistencia III permanente, además de los efectos anteriores. Ya no reciben daño de proyectiles y pueden romper TODOS los bloques.
+- Los Ravagers tienen Fuerza X, Impulso de Salto I y Resistencia III permanente, además de los efectos anteriores. Ya no reciben daño de proyectiles, los repelan y pueden romper TODOS los bloques.
 - Los Endermans ahora son resistentes al fuego y al agua, y pueden flotar en ella. Tienen Fuerza V, Resistencia y Velocidad II permanente. También se vuelven hostiles.
 - Los Piglins tienen un 15% de probabilidad de convertirse en un Piglin Bruto.
 - Los Piglins Brutos cambiaron totalmente con las siguientes características:
@@ -521,7 +521,7 @@ Lista de Cambios:
 - Aparecen nuevos ítems:
 	- "Armadura Cautelosa":
 		- Al tener el casco puesto: Los Endermans no te atacarán.
-		- Al tener la pechera puesta: Te otorgará Resistencia II y mayor resistencia al empuje.
+		- Al tener la pechera puesta: Te otorgará Resistencia II y mayor resistencia al empuje. En caso contrario, tendras Debilidad II.
 		- Al tener el pantalón puesto: Te otorgará Prisa Minera III. Pero si no lo tienes puesto, tendrás Fatiga Minera I.
 		- Al tener las botas puestas: Te otorgará Velocidad II. Pero si no las tienes puestas, tendrás Lentitud II.
 		- Al completar toda la Armadura: Tendrás Health Boost III. Pero si no la completas, tendrás Fatal Poison I en el End.
@@ -533,6 +533,10 @@ Lista de Cambios:
 	- Enderman con 30% de probabilidad base. (Su probabilidad aumenta un 5% por cada nivel de Looting/Saqueo).
 	- Piglin Bruto con 55% de probabilidad.
 	- Ravager con 40% de probabilidad base. (Su probabilidad aumenta un 5% por cada nivel de Looting/Saqueo).
+	
+- El Sistema del Resquicio Infernal ha cambiado y ahora:
+	- Además de todo lo anteriormente mencionado, al morir un jugador:
+		- El tiempo de los Pecados Capitales pasa a ser de 5 minutos.
 
 - Se añadieron nuevos logros:
 	- "Full Sneaky | Full Cauteloso" - Consigue la Armadura Cautelosa.
@@ -594,6 +598,10 @@ Lista de Cambios:
 			- Puede aparecer en el End.
 		
 		- Puede generar Pillagers Bombarderos.
+	
+- El Sistema del Resquicio Infernal ha cambiado y ahora:
+	- Además de todo lo anteriormente mencionado, al morir un jugador:
+		- El tiempo de los Pecados Capitales pasa a ser de 10 minutos.
 		
 • Día 12:
 
@@ -619,6 +627,10 @@ Lista de Cambios:
 	- Las bolas de nieve, si te golpean, te teletransportarán a ellos.
 	- Las bolas de nieve te hacen muchísimo daño.
 	- Tienen Resistencia V.
+	
+- El Sistema del Resquicio Infernal ha cambiado y ahora:
+	- Además de todo lo anteriormente mencionado, al morir un jugador:
+		- El tiempo de los Pecados Capitales pasa a ser de 15 minutos.
 
 • Dia 13: (Este Dia no viene incluido en el producto final, debido a que la serie termino en el Dia 12, pero ya estaba hecho una idea conceptual)
 
