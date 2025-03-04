@@ -84,21 +84,20 @@ Este Add-on fue desarrollado como una comisión pagada para [RosherRandom](https
 Si utilizas o editas este Add-on, por favor, asegúrate de dar el debido crédito a los creadores. Si tienes preguntas, inconvenientes o problemas con el Add-on, repórtalos en el [Server de Discord dedicado a los Add-ons](https://discord.gg/WH9KpNWXUz).
 
 ## LINKS DE DESCARGAS
-### Nota: Estos links estan vinculados a Ko-Fi, posiblemente requieras de una cuenta en dicha pagina. Estos archivos no son ni seran de pago, todo es opcional y gratuito para quien quiera disfrutarlo.
 
-- **Link para descargar TODO:** https://ko-fi.com/s/99d0f76a86
+- **Link para descargar TODO:** [Aun no disponible]
 
-- **Link para descargar el Add-on por separado:** https://ko-fi.com/s/337192d9f7
+- **Link para descargar el Add-on por separado:** [Aun no disponible]
  
-- **Link para descargar el Add-on junto:** https://ko-fi.com/s/352d521c51
+- **Link para descargar el Add-on junto:** [Aun no disponible]
 
-- **Link para descargar el Mundo Pre-configurado:** https://ko-fi.com/s/5346118ec9
+- **Link para descargar el Mundo Pre-configurado:** [Aun no disponible]
 
-- **Link para descargar la version en ZIP:** https://ko-fi.com/s/dfe3e6a3e9
+- **Link para descargar la version en ZIP:** [Aun no disponible]
 
 ## MINIGUIA DE USO
 
-- **El Add-on solo soporta la version de Minecraft Bedrock 1.21.60. Cualquier version inferior o superior a futuro, puede que no funcione correctamente.**
+- **El Add-on solo soporta la version de Minecraft Bedrock 1.21.60/1/2. Cualquier version inferior o superior a futuro, puede que no funcione correctamente.**
 - **Este Add-on utilizar Scipts, asi que puede no funcionar en algunos host gratuitos como Aternos.**
 - Toda instalacion y configuracion del Add-on es automatico.
 - Si descargaste el Mundo PreConfigurado y no sabes que hacer con el, mira esta imagen tutorial: https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/main/.github/exmple.png
