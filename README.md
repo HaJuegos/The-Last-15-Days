@@ -67,17 +67,6 @@ Este Add-on fue desarrollado como una comisión pagada para [RosherRandom](https
 			<a href="https://twitter.com/astral302">Twitter Link</a>
 		</td>
 	</tr>
-	<tr>
-		<td align="center">
-			<img src="https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/v0.0.11-beta/.github/icon_template/krekoh.png" width="100px"><br>
-			<sub><b>Krekoh</b></sub>
-		</td>
-		<td>
-			<b>Idea original de los "Pecados"</b><br>
-			Concepto e idea original de los "Pecados".<br>
-			<a href="https://x.com/Krekoh">Twitter Link</a>
-		</td>
-	</tr>
 </table>
 </div>
 
@@ -525,25 +514,27 @@ Lista de Cambios:
 - Los Esqueletos y Esqueletos Errantes tienen un 10% de probabilidad de soltar un Arco con Poder XI, Reparación e Irrompibilidad III.
 - El Sistema del Resquicio Infernal ha cambiado y ahora:
 	- Además de todo lo anteriormente mencionado, al morir un jugador:
-		- Se ejecutan los "Pecados Capitales" en todos los jugadores, ya sea en el juego o fuera de línea.
+		- Se ejecutan "La Marca del Abismo" en todos los jugadores, ya sea en el juego o fuera de línea.
 
-- Nueva mecánica: "Los Pecados Capitales":
+- Nueva mecánica: "La Marca del Abismo":
 	- Todos estos efectos duran 3 minutos y el tiempo se puede extender por muerte.
-	- La Avaricia: La ansiedad te domina poco a poco, provocando que tus ítems se queden bloqueados en tu inventario y/o armadura. Y pierdes la mitad de los items.
-	- La Pereza: Tu energía se agota más rápido, la saturación disminuye y te cuesta caminar. Ya no puedes minar con ganas.
-	- La Lujuria: Los mobs hostiles te adoran tanto que te persiguen mucho más rápido para atacarte, de manera obsesiva.
-	- El Orgullo: Tu ego se infla, literalmente. Te vuelves más grande, lo que te impide realizar muchas acciones.
-	- La Gula: Fuiste condenado al hambre. Tu insaciable apetito te exige cada vez más comida. Al punto que empiezas a comer inconscientemente.
-	- La Envidia: A causa de tus rencores del pasado, ahora estás condenado a perder una fila de tu inventario. (Los items seran dropeados)
-	- La Ira: La ira te consume y por ende, tu vision se pone roja y los mobs a tu alrededor te atacan con fuerza.
-	- Esta mecánica es acumulable, y cuantos más efectos te afecten, peor será el combo:
-		- La Avaricia: Muchos más ítems se bloquean. Perdiendo muchos mas items.
-		- La Pereza: Tu saturación cae totalmente y te vuelves aún más lento. Y las ganas de minar te cuesta mas.
-		- La Lujuria: Los mobs hostiles se vuelven locos por ti, persiguiéndote mucho más rápido.
-		- El Orgullo: Llegaste tan alto que ya no puedes realizar casi ninguna acción.
-		- La Gula: El hambre es más constante e intenso. Comes sin parar.
-		- La Envidia: Si perder una fila de tu inventario no fue suficiente, ahora perderás varios espacios aleatorios de tu inventario y/o armadura. (Los items seran dropeados)
-		- La Ira: La ira te consume mucho mas, tu vision es cada vez menos y los mobs a tu alrededor te atacan con mas fuerza.
+	- Maleficios del Abismo:
+		- "Garras del Vacío": Una fuerza oscura se aferra a tus objetos, impidiendo que los puedas usar o soltar y el vacio se lleva la mitad de tus items stackeados.
+		- "Erosión del Alma": Tu cuerpo se debilita. La saturación cae más rápido y moverte se vuelve una tarea agotadora.
+		- "Sombras Voraces": Criaturas hostiles sienten tu presencia con una intensidad aterradora y te cazan con mucha intensidad.
+		- "Engaño del Coloso": El Abismo infla tu cuerpo con un poder inestable, volviéndote más grande y torpe.
+		- "Insaciable Hambre": Sientes una necesidad incontrolable de devorar comida, sin importar si la necesitas o no. Incluso empiezas a comer sin darte cuenta.
+		- "Ojos del Abismo": El Abismo te arrebata lo que más deseas, obligándote a soltar parte de tu inventario en el suelo. (Una fila entera de tu inventario)
+		- "Furia Desquiciada": La corrupción te ciega de ira, poniendo roja tu visión, reduciendola poco a poco y haciendo que los enemigos a tu alrededor se vuelvan más fuertes.
+		
+		- Esta mecánica es acumulable, y cuantos más efectos te afecten, peor será el combo:
+			- "Garras del Vacío": La fuerza oscura se aferra a mas objectos y se lleva cada vez mas items stackeados.
+			- "Erosión del Alma": Tu saturación cae completamente y te vuelves extremadamente lento y progresivamente ya no podrias minar.
+			- "Sombras Voraces": Los mobs hostiles duplican su velocidad hacia ti.
+			- "Engaño del Coloso": Tu tamaño aumenta tanto que apenas puedes moverte o realizar acciones.
+			- "Insaciable Hambre": Comes sin parar, perdiendo el control. Los items que empiezas a comer son cada vez mas grandes.
+			- "Ojos del Abismo": Más partes de tu inventario desaparecen, incluso objetos equipados.
+			- "Furia Desquiciada": La visión se vuelve aún más limitada y los mobs te atacan con fuerza descomunal.
 
 • Día 10:
 
@@ -597,7 +588,7 @@ Lista de Cambios:
 	
 - El Sistema del Resquicio Infernal ha cambiado y ahora:
 	- Además de todo lo anteriormente mencionado, al morir un jugador:
-		- El tiempo de los Pecados Capitales pasa a ser de 5 minutos.
+		- El tiempo de La Marca del Abismo pasa a ser de 5 minutos.
 
 - Se añadieron nuevos logros:
 	- "Full Sneaky | Full Cauteloso" - Consigue la Armadura Cautelosa.
@@ -666,7 +657,7 @@ Lista de Cambios:
 	
 - El Sistema del Resquicio Infernal ha cambiado y ahora:
 	- Además de todo lo anteriormente mencionado, al morir un jugador:
-		- El tiempo de los Pecados Capitales pasa a ser de 10 minutos.
+		- El tiempo de La Marca del Abismo pasa a ser de 10 minutos.
 		
 • Día 12:
 
@@ -695,7 +686,7 @@ Lista de Cambios:
 	
 - El Sistema del Resquicio Infernal ha cambiado y ahora:
 	- Además de todo lo anteriormente mencionado, al morir un jugador:
-		- El tiempo de los Pecados Capitales pasa a ser de 15 minutos.
+		- El tiempo de La Marca del Abismo pasa a ser de 15 minutos.
 
 • Dia 13: (Este Dia no viene incluido en el producto final, debido a que la serie termino en el Dia 12, pero ya estaba hecho una idea conceptual)
 
