@@ -1,20 +1,19 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/main/comportamientos/dia0/pack_icon.png" alt="Addon Icon" width=450>
-  <h3 align="center">The Last 15 Days</h3>
-  
- <p align="center">
- Una Serie Hardcore creada por RosherRandom en Colaboracion con Convex! y HaJuegosCat. ¿Sobreviviras los 15 Dias?</p>
+	<img src="https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/v0.0.11-beta/.github/icon_template/pack_icon.png" alt="Addon Icon" width=450>
+	<h3 align="center">The Last 15 Days (Version 1.0.0-beta)</h3>
+	<p align="center"> An add-on with 15 individual days that give you the experience of the original series, a hardcore with several changes for the most daring players. Will you be able to overcome the 15 days? Created by RosherRandom </p>
 </p>
 
 <p align="center">
-  <a href="https://discord.gg/WH9KpNWXUz"><img src="https://img.shields.io/discord/782053401281429504?style=plastic&color=red&logo=discord&label=Discord%20Server%20Support" alt="Discord Server "/></a>
-  <a href="https://ko-fi.com/hajuegos0710"><img src="https://img.shields.io/npm/v/express?url=https://ko-fi.com/hajuegos0710&style=plastic&logo=kofi&label=Donations&color=inactive" alt="HaJuegos Ko-Fi "/></a>
-  <a href="https://github.com/HaJuegos/The-Last-15-Days"><img src="https://img.shields.io/github/stars/HaJuegos/The-Last-15-Days?label=GitHub%20Stars&style=plastic&logo=github&color=blueviolet" alt="GitHub Stars "/></a>
+	<a href="https://discord.gg/WH9KpNWXUz"> <img src="https://img.shields.io/discord/782053401281429504?style=plastic&color=red&logo=discord&label=Discord%20Server%20Support" alt="Discord Server "/> </a>
+	<a href="https://ko-fi.com/hajuegos0710"> <img src="https://img.shields.io/npm/v/express?url=https://ko-fi.com/hajuegos0710&style=plastic&logo=kofi&label=Donations&color=inactive" alt="HaJuegos Ko-Fi "/> </a>
+	<a href="https://github.com/HaJuegos/The-Last-15-Days"> <img src="https://img.shields.io/github/stars/HaJuegos/The-Last-15-Days?label=GitHub%20Stars&style=plastic&logo=github&color=blueviolet" alt="GitHub Stars "/> </a>
 </p>
+
 <p align="center">
-  <a href="https://twitter.com/TheLast15Days"><img src="https://img.shields.io/twitter/follow/TheLast15Days?style=plastic&color=success&logo=twitter&label=RosherRandom%20Twitter" alt="Royer Twitter "/></a>
-  <a href="https://twitter.com/convex__"><img src="https://img.shields.io/twitter/follow/convex__?style=plastic&color=success&logo=twitter&label=Convex!%20Twitter" alt="Convex Twitter"/></a>
-  <a href="https://twitter.com/Ha_Juegos"><img src="https://img.shields.io/twitter/follow/Ha_Juegos?style=plastic&color=success&logo=twitter&label=HaJuegos%20Cat!%20Twitter" alt="HaJuegos Twitter"/></a>
+	<a href="https://twitter.com/TheLast15Days"> <img src="https://img.shields.io/twitter/follow/TheLast15Days?style=plastic&color=success&logo=twitter&label=RosherRandom%20Twitter" alt="Royer Twitter "/> </a>
+	<a href="https://twitter.com/convex__"> <img src="https://img.shields.io/twitter/follow/convex__?style=plastic&color=success&logo=twitter&label=Convex!%20Twitter" alt="Convex Twitter"/> </a>
+	<a href="https://twitter.com/Ha_Juegos"> <img src="https://img.shields.io/twitter/follow/Ha_Juegos?style=plastic&color=success&logo=twitter&label=HaJuegos%20Cat!%20Twitter" alt="HaJuegos Twitter"/> </a>
 </p>
 
 ## CREDITOS Y ACLARACIONES
@@ -22,12 +21,13 @@
 - Este es un Add-on perteneciente a [RosherRandom](https://twitter.com/TheLast15Days) como comision pagada en Colaboracion de desarollo con [HaJuegos Cat!](https://twitter.com/Ha_Juegos), [Convex!](https://twitter.com/convex__) y [Astral302](https://twitter.com/astral302). Si utilizaras o editaras este Add-on, por favor, asegurate de mencionar al menos a los creadores de este add-on, si tienes alguna inconveniencia, pregunta o problemas con este add-on, reportalo en el Server de Discord dedicado a los Add-ons: https://discord.gg/WH9KpNWXUz
 
 ## LINKS DE DESCARGAS
+
 ### Nota: Estos links estan vinculados a Ko-Fi, posiblemente requieras de una cuenta en dicha pagina. Estos archivos no son ni seran de pago, todo es opcional y gratuito para quien quiera disfrutarlo.
 
 - **Link para descargar TODO:** https://ko-fi.com/s/99d0f76a86
 
 - **Link para descargar el Add-on por separado:** https://ko-fi.com/s/337192d9f7
- 
+
 - **Link para descargar el Add-on junto:** https://ko-fi.com/s/352d521c51
 
 - **Link para descargar el Mundo Pre-configurado:** https://ko-fi.com/s/5346118ec9
@@ -41,11 +41,12 @@
 - Toda instalacion y configuracion del Add-on es automatico.
 - Si descargaste el Mundo PreConfigurado y no sabes que hacer con el, mira esta imagen tutorial: https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/main/.github/exmple.png
 - Para revivir a algun Jugador, debes hacer este proceso:
->	- En el Juego, pon este comando: "!settings timerBan off". (Si te marca error, procura poner este comando antes: "/tag @s add admin")
->	- Luego de poner el comando, cuando entre el Jugador muerto, este sera revivido automaticamente.
->	- Cuando ya este revivido el Jugador, pon este otro comando: "!settings timerBan on" y listo.
+  >     - En el Juego, pon este comando: "!settings timerBan off". (Si te marca error, procura poner este comando antes: "/tag @s add admin")
+  >     - Luego de poner el comando, cuando entre el Jugador muerto, este sera revivido automaticamente.
+  >     - Cuando ya este revivido el Jugador, pon este otro comando: "!settings timerBan on" y listo.
 
 ## OPCIONES EXPERIMENTALES NECESARIAS
+
 - _El Add-on requiere funciones experimentales para que funcione correctamente, procura tenerlos activados en el mundo antes de poner el add-on._
 
 ![esp](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/main/.github/exp_esp.png)
@@ -77,16 +78,180 @@ Lista de Cambios:
 - El mundo esta en Modo Hardcore, pero con la diferencia de que si mueres, eres baneado del server permanente.
 - Cualquier Jugador al Morir, activara el "Resquicio Infernal".
 	- Resquicio Infernal:
-		- Al activarse, dara Ceguera y Nausea por 10 segundos.
-		- Generar un Rayo a un Jugador aleatorio del Juego.
-		
+		- Al activarse, otorgará Ceguera y Náusea durante 10 segundos.
+		- Generará un rayo que caerá sobre un jugador aleatorio del juego.
+
+	- Cuando un jugador muere, dejara un "Alma en Pena":
+		- Dicha entidad tendra TODO el inventario que tenia el jugador. Al matar este mob, te dropeara todos los items y tambien bastante experiencia.
+
+- Al dormir, en lugar de que la noche pase instantáneamente, se acelerará considerablemente. PERO, esto no pasara cuando este en tormenta.
+- Los jugadores tienen el rango llamado "Sobreviviente", visible en su nombre y en el chat.
+- Cualquier jugador que utilice un Totem de la Inmortalidad aparecerá en el chat.
+- Se añade una nueva mecánica llamada "Fast Totem":
+	- Esta funcion consiste en pasar rapidamente el totem en tu mano principal a la otra mano haciendo click a tu tecla de interaccion.
+
+- Se ha eliminado la visibilidad de la semilla del mundo.
+- A partir de este día, se indicará el número de días actuales.
+- Ahora la vida de los jugadores es visible en su nombre.
+- La generación de diamantes ha sido modificada para que aparezcan con mayor frecuencia.
+- Al entrar por primera vez al mundo, se otorgará un kit que consiste en:
+	- 1 Totem de la Inmortalidad.
+	- 15 Zanahorias de Oro.
+	- 1 Cubeta de Agua.
+
+- En este día y los siguientes, los portales del Nether y del End no se pueden activar manualmente.
+- Ahora todos los cofres de las estructuras y las bóvedas de las Trial Chambers vienen con:
+	- Un libro encantado con Reparación e Irrompibilidad III (con un 90% de probabilidad de aparecer).
+
+- Los aldeanos ya no tomarán el trabajo de librero de forma permanente.
+- Ya no pueden aparecer Zombies Aldeanos Libreros.
+- Los aldeanos ahora son mobs neutrales (es decir, son pacíficos si no los atacas).
+- Ya no se puede obtener botellas Ominosas, y si tienes una, desaparecerá.
+- Aparece una nueva variante de Pillager llamada "Pillager Bombardero":
+	- Tiene 100 de vida.
+	- Puede lanzar dinamita desde una distancia considerable.
+	- La dinamita explota en 0.75 o 1 segundo, causando una explosión menor.
+	- Al llegar a 50 de vida, se convierte en su versión cuerpo a cuerpo, acercándose para causar una explosión enorme.
+	- Si te ataca a melee, te puede matar de una explosion.
+	- Tiene un 8.33% de probabilidad de explotar solo en su fase melee al ser golpeado.
+	- La dinamita puede explotar bajo el agua y hacer daño.
+	- Puede spawnear en patrullas o en Pillager Outpost.
+
+- Se añadieron algunos logros que aparecen en el chat, tales como:
+	- La Edad de Piedra
+	- Mejorando herramientas
+	- La Edad de Hierro
+	- Vístete
+	- ¡La cosa está que arde!
+	- ¿No es hierrónico?
+	- Hoy no, gracias
+	- Mente fría
+	- ¡Diamantes!
+	- Plus ultra
+	- Cúbreme de diamantes
+	- Zombiólogo
+	- ¿Se acabó?
+	- Devolver al remitente
+	- Escondido en las profundidades
+	- ¿Quién está cortando cebollas?
+	- Falsa alianza
+	- Magnetita, llévame a casita
+	- Cúbreme de netherita
+	- Por una cabeza
+	- Jugando con fuego
+	- Dr. Witherstein
+	- Mezcla explosiva
+	- Faroneitor
+	- ¿Cómo llegamos hasta aquí?
+	- Libera el End
+	- La nueva generación
+	- ¡Qué mal aliento!
+	- La ciudad al final del juego
+	- Hasta el infinito... ¡y más allá!
+	- Exilio voluntario
+	- Monster Hunter
+	- Dulces sueños
+	- Héroe de la aldea
+	- Jugada maestra
+	- ¡Diana!
+	- Post mortem
+	- El saqueador saqueado
+	- Francocazadores
+	- En el blanco
+	- Desarmadillo
+	- Bajo llave
+	- Caja de pandora
+	- ¡A tomar viento!
+	- Abelante, esta es tu casa
+	- Renacuajo al cubo
+	- Huele interesante
+	- Malos hábitos
+	- El depredador más adorable
+	- ¡Sobremazazo!
+
+- Cada logro te dará 10 niveles, y los logros de desafío te darán 20 niveles.
+
+• Día 1:
+
+- Ahora los Peces Globo aparecen en todos los cuerpos de agua.
+- Las Cabras, Abejas, Osos Polares y Ocelotes ahora son hostiles.
+- Se añade el daño por temperatura:
+	- Consiste en que si permaneces más de 5 minutos en un bioma cálido o frío, comenzarás a recibir daño hasta que salgas de ese bioma.
+
+• Día 2:
+
+- Al golpearte con un Cactus o una Baya Dulce, recibirás Veneno durante 10 segundos. Pasar por un Arbusto Muerto también te causará este efecto.
+- Ahora los Zorros son hostiles y pueden robarte los ítems de tu inventario y armadura. Puedes recuperar tus cosas al matar al Zorro (si el Zorro no puede llevar más ítems, soltará el más cercano a su posición).
+- Los Phantoms ahora son más constantes al atacar y tienen resistencia al fuego.
+- Al minar minerales de Diamante, perderás 1 corazón.
+- Ahora las Abejas aparecen de manera natural en el Overworld.
+- Los rayos que caigan en un Pararrayos explotarán con nivel 5.
+- Aparece un nuevo ítem: "Manzana de Hierro":
+	- Se fabrica con 8 lingotes de Hierro y una Manzana.
+	- Al comerla, te otorgará Resistencia II durante 30 segundos.
+
+• Día 3:
+
+- Ahora los Drowned siempre llevan tridente.
+- Las Arañas de Cueva ahora aparecen naturalmente en la superficie y en cuevas.
+- Ahora los Zombies y Esqueletos tienen Armadura de Diamante.
+- Los siguientes mobs, al golpearte, te otorgarán efectos como:
+	- Husk: Hambre IV durante 30 segundos.
+	- Stray: Lentitud IV durante 30 segundos por flecha.
+	- Slimes: Impulso de Salto II durante 30 segundos.
+
+- Los Esqueletos del Wither ahora aparecen en el Overworld, con Armadura de Hierro y Espada de Diamante con Filo V.
+- Los Slimes siempre soltarán 1 bola de Slime.
+- Los Slimes ahora pueden escupirte una "Baba de Slime".
+- Los Slimes ahora no reciben daño de proyectiles y los repelen.
+- Al lanzar una Ender Pearl, perderás la mitad de tu vida al usarla y teletransportarte (sin importar la armadura).
+- Los Pillagers Bombarderos te otorgan entre 20-25 niveles.
+- Ahora los Zombies aparecerán con su variante (es decir, si un Zombie aparece, también lo hará un Husk).
+- Ahora los Esqueletos aparecerán con su variante (es decir, si un Esqueleto aparece, también lo hará un Stray).
+- Se añade un nuevo proyectil: "Baba de Slime":
+	- Hace 10 de daño base.
+	- Al golpearte, te pondrá una pantalla de baba durante unos segundos.
+
+- Se añaden nuevos ítems: "Slime Derretido" y "Perla Viscosa":
+	- Slime Derretido:
+		- Se obtiene cocinando una bola de Slime en un Horno, Ahumador o cualquiera de las dos Fogatas.
+
+	- Perla Viscosa:
+		- En ciertas ocasiones, puede generar un Slime al teletransportarse.
+		- Es más rápida que una Ender Pearl.
+		- Tiene un cooldown de 0.6 segundos.
+		- No recibes daño por teletransporte.
+		- Se obtiene en la mesa de crafteo con 8 Slime Derretido y una Ender Pearl.
+
+• Día 4:
+
+- Los Ravagers aparecen con Velocidad y Fuerza II de forma permanente.
+- Las Brujas aparecen con Invisibilidad permanente y pueden teletransportarse como los Enderman. Estas pueden aparecer en Islas Champiñón.
+- El Evocador ha cambiado y ahora tiene lo siguiente:
+	- Puede generar Esqueletos del Wither como lo hace con los Vex.
+	- Tiene Resistencia II de forma permanente.
+	- Si estás muy cerca de él, comenzará una mini fase en la que te atacará a distancia con Flechas de Daño II.
+
+- Los Pillagers ahora tienen Carga Rápida I de forma permanente.
+- Los Zorros pueden aparecer en Islas Champiñón.
+- Las Vacas, cada cierto tiempo, pueden empujar a los mobs cercanos a una gran distancia.
+- Los mobs de la raid no reciben daño por explosiones.
+- Las Brujas otorgan invisibilidad a los mobs de la raid.
+- Aparecen nuevos ítems: "Calavera de Piedra", "Calavera de Invocación", "Dinamita" y "Dinamita Apagada":
+	- Calavera de Piedra:
+		- Se fabrica con 2 Piedra Lisa, 3 Piedra y 3 Roca (Cobblestone).
+
+	- Calavera de Invocación:
+		- Se fabrica con 2 Bloques de Esmeralda, 3 Esmeraldas, 2 Ballestas y 1 Libro Encantado.
+		- Al usarlo con la tecla de interacción, te otorgará Trial Omen durante 5 minutos de cualquier nivel y Raid Omen durante 10 segundos de cualquier nivel. Al usarlo, perderás media vida.
+
 - Al dormir, en vez de que la noche pase instantaneamente, se pasara mucho mas rapido.
 - Los Jugadores tienen el rango llamado "Sobreviviente" y es visible en el nombre y en el chat.
 - Cualquier Jugador que Utilize un Totem de la Inmortalidad, aparecera en el chat.
 - Se agrega una nueva mecanica, llamada "Items Rapidos":
 	- Items Rapidos:
 		- Esta caracteriztica consiste en que cuando usas un item de la mano secundaria con tu tecla o boton de interaccion, se pondra en el slot de la segunda mano.
-		
+
 - Se quito la visibilidad de la semilla del mundo.
 - Apartir de este Dia, se indicara el numero de Dias actuales.
 - Ahora la vida de los Jugadores es visible en su nombre.
@@ -95,11 +260,11 @@ Lista de Cambios:
 	- 1 totem de la inmortalidad.
 	- 15 Zanahorias de oro.
 	- 1 Cubeta de agua.
-	
+
 - Por el momento, los portales del Nether y del End, estan bloqueados.
 - Ahora, en todos los cofres, vaules y trial spawners, hay una posibilidad alta de encontrar:
 	- Libro encantado con Reparacion y Irrompibilidad III. (90% de Posibilidad)
-	
+
 - Ahora los Aldeanos dejaron el trabajo de libreros, permanente.
 - Ahora los Aldeanos son mobs neutros.
 
@@ -153,7 +318,7 @@ Lista de Cambios:
 		- Se craftea con 4 Fragmento Ígneos y una Estrella del Nether.
 		- Al tenerla en el inventario, te evita cualquier daño por temperatura y te dara Resistencia, Fuerza y Resistencia al Fuego II, pero solo aplica para el Nether.
 		- Son inumnes al fuego y lava.
-	
+
 	- Fragmento Ígneo:
 		- Se consigue matando Blaze, MagmaCubes, Piglins y Ghast con un 10% de posibilidad de drop.
 		- Son inumnes al fuego y lava.
@@ -245,7 +410,7 @@ Lista de Cambios:
 - Ahora los Piglins tienen un 15% de posibilidad de ser un Piglin Brute.
 - Los Piglins Brute cambiaron drasticamente y ahora tienen esas caracteristicas:
 	- Si estas muy lejos, usaran EnderPearls para llegar hacia ti.
-	- Si estas minimamente lejos, spamearan Flechas con Daño II.	
+	- Si estas minimamente lejos, spamearan Flechas con Daño II.
 	- Si estas muy cerca, Te atacara a Melee con un Hacha de Netherite Filo V.
 	- Si te escapas, mueres o tiene poca vida, intentaran comer y regenerarse.
 	- En ciertas ocaciones, puede llegar a romper bloques.
