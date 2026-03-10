@@ -2,7 +2,7 @@
   <img src="https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/main/.github/icon_template/pack_icon.png" alt="Addon Icon" width=250>
   <h3 align="center">The Last 15 Days - Add-on Publico</h3>
   
-  <p align="center">El repositorio de codigo abierto para todos los usuarios, disponible tambien su descarga y desarrollo. Creado por RosherRandom, ¿Lograras llegar a los 15 dias?</p>
+  <p align="center">El repositorio de código abierto para todos los usuarios, disponible también su descarga y desarrollo. Creado por RosherRandom, ¿Lograrás llegar a los 15 días?</p>
 </p>
 
 <p align="center">
@@ -18,35 +18,44 @@
 </p>
 
 ## COLABORADORES INVOLUCRADOS
-#### Nota: Aunque el add-on sea de codigo abierto y libre para todos los creadores permitido por RosherRandom, igualmente nos gustaria la acreditacion del mismo y el trabajo que se realizo.
+#### Nota: Aunque el add-on sea de código abierto y libre para todos los creadores permitido por RosherRandom, igualmente nos gustaría la acreditación del mismo y el trabajo que se realizó.
 
 <div align="center">
 	<table>
 		<tr>
-			<td align="center" width="200px"><img src="https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/main/.github/icon_template/royer.png" width="100px" alt="RosherRandom"/><br /><sub><b>Lider del Proyecto</b></sub></td>
-			<td><strong>RosherRandom:</strong> Lider del Proyecto y creador principal de la serie <i>The Last 15 Days</i>. Tambien contribuyo en gran medida el estilo artistico.</td>
+			<td align="center" width="200px"><img src="https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/main/.github/icon_template/royer.png" width="100px" alt="RosherRandom"/><br /><sub><b>Líder del Proyecto</b></sub></td>
+			<td><strong>RosherRandom:</strong> Líder del Proyecto y creador principal de la serie <i>The Last 15 Days</i>. También contribuyó en gran medida el estilo artístico.</td>
 		</tr>
 		<tr>
 			<td align="center" width="200px"><img src="https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/main/.github/icon_template/convex.png" width="100px" alt="Convex"/><br /><sub><b>Programador</b></sub></td>
-			<td><strong>Convex:</strong> Uno de los programadores principales que ayudo en el desarrollo de la serie a nivel interno.</td>
+			<td><strong>Convex:</strong> Uno de los programadores principales que ayudó en el desarrollo de la serie a nivel interno.</td>
 		</tr>
 		<tr>
 			<td align="center" width="200px"><img src="https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/main/.github/icon_template/ha.png" width="100px" alt="HaJuegos"/><br /><sub><b>Programador</b></sub></td>
-			<td><strong>HaJuegos:</strong> Uno de los programadores principales que ayudo en el desarrollo de la serie a nivel interno.</td>
+			<td><strong>HaJuegos:</strong> Uno de los programadores principales que ayudó en el desarrollo de la serie a nivel interno.</td>
 		</tr>
 		<tr>
 			<td align="center" width="200px"><img src="https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/main/.github/icon_template/astral.png" width="100px" alt="Astral302"/><br /><sub><b>Artista</b></sub></td>
-			<td><strong>Astral302:</strong> Colaborador principal en mejorar y crear el estilo artistico del add-on.</td>
+			<td><strong>Astral302:</strong> Colaborador principal en mejorar y crear el estilo artístico del add-on.</td>
 		</tr>
 	</table>
-</div> 
+</div>
+
+---
 
 ## Links de Descarga:
 
-> Nota: Este add-on esta en desarrollo, por ende, aun no hay descargas disponibles para el publico. Puedes clonar o hacer un nuevo repo con base a este, si sabes como hacerlo.
+> [!WARNING]
+> **Estado: En Desarrollo**
+> Actualmente este add-on no tiene descargas disponibles para el público en general. 
+> 
+> Si eres desarrollador o sabes cómo hacerlo, eres libre de **clonar este repositorio** o hacer un *fork* para experimentar con él.
 
-## Informacion, Guias y informacion adicional
+---
 
-Toda la informacion adiccional y guias esta disponible ya en la wiki del add-on, si quieres revisar la informacion [haz click aqui](https://github.com/HaJuegos/The-Last-15-Days/wiki)
+## Información Adicional y Guías
 
-Tambien los cambios de dificultad fueron movidos a la wiki, si quieres revisar la informacion, [haz click aqui](https://github.com/HaJuegos/The-Last-15-Days/wiki)
+Toda la información detallada para entender y sobrevivir en este add-on ha sido organizada en nuestra Wiki oficial. Selecciona lo que necesites consultar:
+
+* 📖 **[Wiki General e Información del Add-on](https://github.com/HaJuegos/The-Last-15-Days/wiki)**: Revisa guías, mecánicas y preguntas frecuentes o mas!
+* ⚔️ **[Cambios de Dificultad](https://github.com/HaJuegos/The-Last-15-Days/wiki)**: Enterate de todos los cambios que contiene este add-on consecutivo.
