@@ -59,3 +59,13 @@ Toda la información detallada para entender y sobrevivir en este add-on ha sido
 
 * 📖 **[Wiki General e Información del Add-on](https://github.com/HaJuegos/The-Last-15-Days/wiki)**: Revisa guías, mecánicas y preguntas frecuentes o mas!
 * ⚔️ **[Cambios de Dificultad](https://github.com/HaJuegos/The-Last-15-Days/wiki)**: Enterate de todos los cambios que contiene este add-on consecutivo.
+
+---
+
+## Reporte de Bugs y Sugerencias
+
+¿Encontraste algún error de código, un problema visual o tienes una idea genial para mejorar *The Last 15 Days*? ¡Nos encantaría saberlo!
+
+El desarrollo de este add-on es un proceso continuo y la ayuda de la comunidad es fundamental. Por favor, asegúrate de revisar si alguien más ya ha reportado el mismo problema antes de crear uno nuevo.
+
+👉 **[Haz clic aquí para reportar un Bug o dejar una Sugerencia](https://github.com/HaJuegos/The-Last-15-Days/issues/new/choose)**
