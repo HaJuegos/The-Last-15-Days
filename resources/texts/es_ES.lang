@@ -43,6 +43,8 @@ ui.credits_panel.dev=Programador
 ui.credits_panel.artist=Artista
 ui.other_credits.title=Creditos Adicionales:
 ui.other_credits.role1=Texturas utilizadas en el add-on
+ui.fist_intro.title=§a§l[ Bienvenido a TL15D ]§r
+ui.fist_intro.subtitle=§4Recibiste un Kit inicial. ¡Suerte!
 
 
 ## Chat texts

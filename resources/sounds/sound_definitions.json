@@ -73,6 +73,20 @@
                 }
             ]
         },
+        "ui.login_first_time": {
+            "category": "ui",
+            "min_distance": null,
+            "max_distance": null,
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": false,
+                    "name": "sounds/ui/intro_sound",
+                    "stream": false,
+                    "volume": 1.0
+                }
+            ]
+        },
         "ui.player.death_sound": {
             "category": "ui",
             "min_distance": null,
