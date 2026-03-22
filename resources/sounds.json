@@ -1,0 +1,69 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+	"individual_event_sounds": {
+		"events": {
+			"fire": {
+				"volume": [
+					0.05,
+					0.1
+				]
+			},
+			"extinguish.fire": {
+				"volume": 0.025
+			},
+			"ignite": {
+				"volume": 0.05
+			},
+			"block.blastfurnace.fire_crackle": {
+				"volume": 0.15
+			},
+			"block.campfire.crackle": {
+				"volume": [
+					0.025,
+					0.075
+				]
+			},
+			"block.furnace.lit": {
+				"volume": 0.15
+			},
+			"mob.player.hurt_on_fire": {
+				"volume": 0.05
+			}
+		}
+	},
+	"entity_sounds": {
+		"entities": {
+			"ha:player_ghost": {
+				"events": {
+					"death": "mob.player_ghost.death_sound",
+					"reflect": {
+						"pitch": 1.0,
+						"sound": "mob.breeze.deflect",
+						"volume": 1.0
+					}
+				},
+				"pitch": [ 0.80, 1.20 ],
+				"volume": 1.0
+			},
+			"ha:bomber_pillager": {
+				"events": {
+					"ambient": "mob.pillager.idle",
+					"ambient.in.raid": {
+						"pitch": [ 0.80, 1.20 ],
+						"sound": "mob.pillager.idle",
+						"volume": 3.0
+					},
+					"celebrate": "mob.pillager.celebrate",
+					"death": "mob.pillager.death",
+					"hurt": "mob.pillager.hurt"
+				},
+				"pitch": [ 0.80, 1.20 ],
+				"variants": {
+					"key": null
+				},
+				"volume": 1.0
+			}
+		}
+	}
+}

@@ -1,0 +1,154 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.20.20",
+    "sound_definitions": {
+        "credits.click.ha": {
+            "category": "ui",
+            "max_distance": null,
+            "min_distance": null,
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": false,
+                    "name": "sounds/ui/miau",
+                    "stream": false,
+                    "volume": 3.0
+                }
+            ]
+        },
+        "credits.click.astral": {
+            "category": "ui",
+            "max_distance": null,
+            "min_distance": null,
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": false,
+                    "name": "sounds/ui/pipe_sound",
+                    "stream": false,
+                    "volume": 0.35
+                }
+            ]
+        },
+        "credits.click.royer": {
+            "category": "ui",
+            "max_distance": null,
+            "min_distance": null,
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": false,
+                    "name": "sounds/ui/royercredits",
+                    "stream": false,
+                    "volume": 0.35
+                }
+            ]
+        },
+        "ui.advancements.normal": {
+            "category": "ui",
+            "min_distance": null,
+            "max_distance": null,
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": false,
+                    "name": "sounds/ui/advancements/normal",
+                    "volume": 3.0,
+                    "stream": false
+                }
+            ]
+        },
+        "ui.advancements.rare": {
+            "category": "ui",
+            "min_distance": null,
+            "max_distance": null,
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": false,
+                    "name": "sounds/ui/advancements/challenge",
+                    "volume": 0.85,
+                    "stream": false
+                }
+            ]
+        },
+        "ui.player.death_sound": {
+            "category": "ui",
+            "min_distance": null,
+            "max_distance": null,
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": false,
+                    "name": "sounds/ui/death_sounds/player_death",
+                    "volume": 4.5,
+                    "stream": false
+                }
+            ]
+        },
+        "ui.player.death_sound_global": {
+            "category": "ui",
+            "min_distance": null,
+            "max_distance": null,
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": false,
+                    "name": "sounds/ui/death_sounds/player_death_global",
+                    "volume": 0.75,
+                    "stream": true
+                }
+            ]
+        },
+        "ui.error_sound": {
+            "category": "ui",
+            "min_distance": null,
+            "max_distance": null,
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": false,
+                    "name": "sounds/ui/errorsound",
+                    "volume": 2.0,
+                    "stream": false
+                }
+            ]
+        },
+        "mob.player_ghost.death_sound": {
+            "__use_legacy_max_distance": true,
+            "category": "neutral",
+            "min_distance": null,
+            "max_distance": null,
+            "sounds": [
+                {
+                    "is3D": true,
+                    "name": "sounds/mob/player_ghost/ded",
+                    "stream": true,
+                    "volume": 1
+                }
+            ]
+        },
+        "ambient.weather.rain": {
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "name": "sounds/ambient/weather/rain1",
+                    "volume": 0.001
+                },
+                {
+                    "name": "sounds/ambient/weather/rain2",
+                    "volume": 0.001
+                },
+                {
+                    "name": "sounds/ambient/weather/rain3",
+                    "volume": 0.001
+                },
+                {
+                    "name": "sounds/ambient/weather/rain4",
+                    "volume": 0.001
+                }
+            ]
+        }
+    }
+}

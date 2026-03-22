@@ -1,0 +1,136 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.10.0",
+    "animations": {
+        "animation.pillager_bomber.particles": {
+            "loop": true,
+            "animation_length": 0.55,
+            "particle_effects": {
+                "0.0": [
+                    {
+                        "effect": "dust",
+                        "locator": "particle"
+                    },
+                    {
+                        "effect": "dust",
+                        "locator": "particle2"
+                    }
+                ]
+            }
+        },
+        "animation.pillager_bomber.shooting_dynamite": {
+            "animation_length": 1.5,
+            "override_previous_animation": true,
+            "bones": {
+                "head": {
+                    "rotation": {
+                        "0.0": [ 0, 0, 0 ],
+                        "1.0": [ 0, 10, 0 ],
+                        "1.5": [ 0, 0, 0 ]
+                    }
+                },
+                "leftLeg": {
+                    "rotation": [ "variable.tcos0 * -1.4", -0.1, -0.1 ]
+                },
+                "rightLeg": {
+                    "rotation": [ "variable.tcos0 * 1.4", 0.1, 0.1 ]
+                },
+                "rightarm": {
+                    "rotation": {
+                        "0.0": [ 0, 0, 10 ],
+                        "1.0": [ -270, -22.5, 0 ],
+                        "1.25": [ -101.93109, -8.75168, -11.27784 ],
+                        "1.5": [ 0, 0, 10 ]
+                    }
+                },
+                "bone9": {
+                    "position": {
+                        "0.0": [ 0, 0, 0 ],
+                        "0.25": [ 1.5, 0, 1 ],
+                        "0.5": [ 0, 0, 0 ],
+                        "0.75": [ 1.5, 0, 1 ],
+                        "1.0": [ 0, 0, 0 ],
+                        "1.25": [ 1.5, 0, 1 ],
+                        "1.5": [ 0, 0, 0 ]
+                    },
+                    "scale": {
+                        "0.0": [ 1, 1, 1 ],
+                        "0.25": [ 1.5, 1, 1.5 ],
+                        "0.5": [ 1, 1, 1 ],
+                        "0.75": [ 1.5, 1, 1.5 ],
+                        "1.0": [ 1, 1, 1 ],
+                        "1.25": [ 1.5, 1, 1.5 ],
+                        "1.5": [ 1, 1, 1 ]
+                    }
+                },
+                "leftarm": {
+                    "rotation": {
+                        "0.0": [ 0, 0, -10 ],
+                        "0.5": [ 17.5, 0, 0 ],
+                        "1.5": [ 0, 0, -10 ]
+                    }
+                },
+                "bone8": {
+                    "position": {
+                        "0.0": [ 0, 0, 0 ],
+                        "0.25": [ 0, 0, 1 ],
+                        "0.5": [ 0, 0, 0 ],
+                        "0.75": [ 0, 0, 1 ],
+                        "1.0": [ 0, 0, 0 ],
+                        "1.25": [ 0, 0, 1 ],
+                        "1.5": [ 0, 0, 0 ]
+                    },
+                    "scale": {
+                        "0.0": [ 1, 1, 1 ],
+                        "0.25": [ 1.5, 1, 1.5 ],
+                        "0.5": [ 1, 1, 1 ],
+                        "0.75": [ 1.5, 1, 1.5 ],
+                        "1.0": [ 1, 1, 1 ],
+                        "1.25": [ 1.5, 1, 1.5 ],
+                        "1.5": [ 1, 1, 1 ]
+                    }
+                }
+            }
+        },
+        "animation.pillager_bomber.fase_bomber": {
+            "loop": true,
+            "override_previous_animation": true,
+            "anim_time_update": "q.modified_distance_moved",
+            "bones": {
+                "head": {
+                    "rotation": [ 0, 0, "q.is_moving ? Math.sin(q.anim_time * 40) * 7.5 : Math.sin(q.life_time * 70) * 1" ]
+                },
+                "body": {
+                    "rotation": [ "q.is_moving ? 10 : 0", 0, 0 ]
+                },
+                "leftLeg": {
+                    "rotation": [ "q.is_moving ? Math.sin(q.anim_time * 47) * 35 : 0", 0, 0 ]
+                },
+                "rightLeg": {
+                    "rotation": [ "q.is_moving ? Math.sin(q.anim_time * 47) * -35 : 0", 0, 0 ]
+                },
+                "rightarm": {
+                    "rotation": [
+                        0,
+                        0,
+                        "q.is_moving ? Math.lerp(120, 75, Math.sin(q.anim_time * 47) * 0.5 + 0.5) : Math.lerp(13, 10, Math.sin(q.life_time * 70) * 0.5 + 0.5)"
+                    ]
+                },
+                "leftarm": {
+                    "rotation": [
+                        0,
+                        0,
+                        "q.is_moving ? -(Math.lerp(120, 75, Math.sin(q.anim_time * 47) * 0.5 + 0.5)) : -(Math.lerp(13, 10, Math.sin(q.life_time * 70) * 0.5 + 0.5))"
+                    ]
+                },
+                "bone9": {
+                    "scale": [ "1 + math.cos(q.life_time * 100) * 0.075", 1, 1 ]
+                },
+                "bone8": {
+                    "scale": [ "(1 + math.cos(q.life_time * 100) * 0.075)", 1, 1 ]
+                }
+            }
+        }
+    }
+}

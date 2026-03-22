@@ -1,0 +1,72 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "ha:bomber_pillager",
+            "geometry": {
+                "default": "geometry.bomber_pillager"
+            },
+            "materials": {
+                "default": "entity_alphatest"
+            },
+            "textures": {
+                "default": "textures/entity/pillager_bomber"
+            },
+            "scripts": {
+                "pre_animation": [
+                    "variable.tcos0 = (Math.cos(query.modified_distance_moved * 38.17) * query.modified_move_speed / variable.gliding_speed_value) * 57.3;"
+                ],
+                "animate": [
+                    {
+                        "pillager_root_controller": "!q.is_chested"
+                    },
+                    "controller_particles",
+                    "controller_shooter",
+                    "controller_fase"
+                ]
+            },
+            "animations": {
+                "controller_fase": "controller.animation.pillager_bomber.start_fase",
+                "controller_shooter": "controller.animation.pillager_bomber.shooting",
+                "controller_particles": "controller.animation.pillager_bomber.particles",
+
+                "particle": "animation.pillager_bomber.particles",
+                "shoot": "animation.pillager_bomber.shooting_dynamite",
+                "fase": "animation.pillager_bomber.fase_bomber",
+
+                "humanoid_base_pose": "animation.humanoid.base_pose",
+                "look_at_target_default": "animation.humanoid.look_at_target.default",
+                "look_at_target_gliding": "animation.humanoid.look_at_target.gliding",
+                "look_at_target_swimming": "animation.humanoid.look_at_target.swimming",
+                "move": "animation.humanoid.move",
+                "riding.arms": "animation.humanoid.riding.arms",
+                "riding.legs": "animation.humanoid.riding.legs",
+                "holding": "animation.humanoid.holding",
+                "attack.rotations": "animation.humanoid.attack.rotations",
+                "bob": "animation.humanoid.bob",
+                "celebrating": "animation.humanoid.celebrating",
+                "controller_humanoid_base_pose": "controller.animation.humanoid.base_pose",
+                "controller_look_at_target": "controller.animation.humanoid.look_at_target",
+                "controller_move": "controller.animation.humanoid.move",
+                "controller_riding": "controller.animation.humanoid.riding",
+                "controller_attack": "controller.animation.humanoid.attack",
+                "controller_bob": "controller.animation.humanoid.bob",
+                "pillager_root_controller": "controller.animation.pillager_bomber.root",
+                "riding.body": "animation.humanoid.riding.body"
+            },
+            "render_controllers": [
+                "controller.render.bomber_pillager"
+            ],
+            "spawn_egg": {
+                "texture": "spawn_egg_pillager"
+            },
+            "enable_attachables": true,
+            "hide_armor": true,
+            "particle_effects": {
+                "dust": "ha:dynamite_dust"
+            }
+        }
+    }
+}

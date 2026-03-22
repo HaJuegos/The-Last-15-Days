@@ -1,0 +1,296 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "namespace": "custom_credits",
+
+    "credit_icon": {
+        "type": "image",
+        "texture": "$profile_texture",
+        "size": "$icon_size",
+        "anchor_from": "top_middle",
+        "anchor_to": "top_middle",
+        "layer": 1
+    },
+
+    "sound_icon_button": {
+        "type": "button",
+        "size": "$icon_size",
+        "anchor_from": "top_middle",
+        "anchor_to": "top_middle",
+        "layer": 1,
+        "default_control": "default",
+        "hover_control": "hover",
+        "pressed_control": "pressed",
+        "sound_name": "$click_sound",
+        "sound_volume": 1.0,
+        "sound_pitch": 1.0,
+        "button_mappings": [
+            {
+                "from_button_id": "button.menu_select",
+                "to_button_id": "button.menu_select",
+                "mapping_type": "pressed"
+            },
+            {
+                "from_button_id": "button.menu_ok",
+                "to_button_id": "button.menu_ok",
+                "mapping_type": "pressed"
+            }
+        ],
+        "controls": [
+            { "default": { "type": "image", "texture": "$profile_texture", "size": [ "100%", "100%" ] } },
+            { "hover": { "type": "image", "texture": "$profile_texture", "size": [ "100%", "100%" ], "color": [ 0.75, 0.75, 0.75 ] } },
+            { "pressed": { "type": "image", "texture": "$profile_texture", "size": [ "100%", "100%" ], "color": [ 0.5, 0.5, 0.5 ] } }
+        ]
+    },
+
+    "credit_profile": {
+        "type": "stack_panel",
+        "orientation": "vertical",
+        "size": [ "fill", "100%c" ],
+        "$click_sound|default": "random.click",
+        "controls": [
+            {
+                "icon_panel": {
+                    "type": "panel",
+                    "size": [ "100%", 46 ],
+                    "controls": [
+                        {
+                            "sound_icon@custom_credits.sound_icon_button": {
+                                "$icon_size": [ 46, 46 ]
+                            }
+                        }
+                    ]
+                }
+            },
+            { "padding1": { "type": "panel", "size": [ "100%", 6 ] } },
+            {
+                "name_panel": {
+                    "type": "panel",
+                    "size": [ "100%", 14 ],
+                    "controls": [
+                        {
+                            "name_label": {
+                                "type": "label",
+                                "text": "$profile_name",
+                                "font_size": "normal",
+                                "font_scale_factor": 1.35,
+                                "shadow": true,
+                                "anchor_from": "top_middle",
+                                "anchor_to": "top_middle",
+                                "size": [ "default", "default" ]
+                            }
+                        }
+                    ]
+                }
+            },
+            { "padding2": { "type": "panel", "size": [ "100%", 2 ] } },
+            {
+                "role_panel": {
+                    "type": "panel",
+                    "size": [ "100%", 10 ],
+                    "controls": [
+                        {
+                            "role_label": {
+                                "type": "label",
+                                "text": "$profile_role",
+                                "font_size": "normal",
+                                "font_scale_factor": 0.85,
+                                "color": [ 0.7, 0.7, 0.7 ],
+                                "shadow": true,
+                                "anchor_from": "top_middle",
+                                "anchor_to": "top_middle",
+                                "size": [ "default", "default" ]
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+
+    "other_credit_profile": {
+        "type": "stack_panel",
+        "orientation": "vertical",
+        "size": [ "fill", "100%c" ],
+        "controls": [
+            {
+                "icon_panel": {
+                    "type": "panel",
+                    "size": [ "100%", 46 ],
+                    "controls": [
+                        {
+                            "static_icon@custom_credits.credit_icon": {
+                                "$icon_size": [ 46, 46 ]
+                            }
+                        }
+                    ]
+                }
+            },
+            { "padding1": { "type": "panel", "size": [ "100%", 6 ] } },
+            {
+                "name_panel": {
+                    "type": "panel",
+                    "size": [ "100%", 14 ],
+                    "controls": [
+                        {
+                            "name_label": {
+                                "type": "label",
+                                "text": "$profile_name",
+                                "font_size": "normal",
+                                "font_scale_factor": 1.1,
+                                "shadow": true,
+                                "anchor_from": "top_middle",
+                                "anchor_to": "top_middle",
+                                "size": [ "default", 12 ]
+                            }
+                        }
+                    ]
+                }
+            },
+            { "padding2": { "type": "panel", "size": [ "100%", 2 ] } },
+            {
+                "role_panel": {
+                    "type": "panel",
+                    "size": [ "100%", 10 ],
+                    "controls": [
+                        {
+                            "role_label": {
+                                "type": "label",
+                                "text": "$profile_role",
+                                "font_size": "normal",
+                                "font_scale_factor": 0.85,
+                                "color": [ 0.7, 0.7, 0.7 ],
+                                "shadow": true,
+                                "anchor_from": "top_middle",
+                                "anchor_to": "top_middle",
+                                "size": [ "default", 10 ]
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+
+    "credits_panel": {
+        "type": "stack_panel",
+        "orientation": "vertical",
+        "size": [ "100%", "100%c" ],
+        "controls": [
+            {
+                "title_panel": {
+                    "type": "panel",
+                    "size": [ "100%", 25 ],
+                    "controls": [
+                        {
+                            "title_label": {
+                                "type": "label",
+                                "text": "ui.credits_panel.title",
+                                "font_size": "large",
+                                "shadow": true,
+                                "anchor_from": "top_middle",
+                                "anchor_to": "top_middle",
+                                "size": [ "default", "default" ]
+                            }
+                        }
+                    ]
+                }
+            },
+            { "title_spacer": { "type": "panel", "size": [ "100%", 15 ] } },
+            {
+                "profiles_row_wrapper": {
+                    "type": "panel",
+                    "size": [ "100%", 78 ],
+                    "controls": [
+                        {
+                            "profiles_horizontal_stack": {
+                                "type": "stack_panel",
+                                "orientation": "horizontal",
+                                "size": [ "100%", "100%" ],
+                                "controls": [
+                                    {
+                                        "royer@custom_credits.credit_profile": {
+                                            "$profile_texture": "textures/ui/credits/royer",
+                                            "$profile_name": "Rosher Random",
+                                            "$profile_role": "ui.credits_panel.rolecreator",
+                                            "$click_sound": "credits.click.royer"
+                                        }
+                                    },
+                                    {
+                                        "convex@custom_credits.credit_profile": {
+                                            "$profile_texture": "textures/ui/credits/convex",
+                                            "$profile_name": "Convex!",
+                                            "$profile_role": "ui.credits_panel.dev",
+                                            "$click_sound": "random.glass"
+                                        }
+                                    },
+                                    {
+                                        "ha@custom_credits.credit_profile": {
+                                            "$profile_texture": "textures/ui/credits/ha",
+                                            "$profile_name": "Ha Juegos",
+                                            "$profile_role": "ui.credits_panel.dev",
+                                            "$click_sound": "credits.click.ha"
+                                        }
+                                    },
+                                    {
+                                        "astral@custom_credits.credit_profile": {
+                                            "$profile_texture": "textures/ui/credits/astral",
+                                            "$profile_name": "Astral302",
+                                            "$profile_role": "ui.credits_panel.artist",
+                                            "$click_sound": "credits.click.astral"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            },
+            { "other_credits_spacer": { "type": "panel", "size": [ "100%", 35 ] } },
+            {
+                "other_title_panel": {
+                    "type": "panel",
+                    "size": [ "100%", 20 ],
+                    "controls": [
+                        {
+                            "other_title_label": {
+                                "type": "label",
+                                "text": "ui.other_credits.title",
+                                "font_size": "large",
+                                "shadow": true,
+                                "anchor_from": "top_middle",
+                                "anchor_to": "top_middle",
+                                "size": [ "default", "default" ]
+                            }
+                        }
+                    ]
+                }
+            },
+            { "other_title_spacer": { "type": "panel", "size": [ "100%", 12 ] } },
+            {
+                "other_profiles_row_wrapper": {
+                    "type": "panel",
+                    "size": [ "100%", 78 ],
+                    "controls": [
+                        {
+                            "other_profiles_horizontal_stack": {
+                                "type": "stack_panel",
+                                "orientation": "horizontal",
+                                "size": [ "100%", "100%" ],
+                                "controls": [
+                                    {
+                                        "other1@custom_credits.other_credit_profile": {
+                                            "$profile_texture": "textures/ui/credits/bedrock",
+                                            "$profile_name": "Bedrock Tweaks",
+                                            "$profile_role": "ui.other_credits.role1"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

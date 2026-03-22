@@ -1,0 +1,11 @@
+{
+    "materials": {
+        "version": "1.0.0",
+        "player_ghost:entity_alphatest": {
+            "+states": [
+                "Blending",
+                "DisableCulling"
+            ]
+        }
+    }
+}

@@ -1,0 +1,133 @@
+## Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days.
+## Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days.
+
+
+## Manifest texts
+pack.name=§l§4The Last 15 Days§r | Creado por §gRosherRandom§r
+pack.description=Recursos necesarios para el add-on | Desarrollado por: HaJuegos y Convex!
+
+
+## Other texts
+bt.bg.splash.potion=Poción de salpicadura
+bt.bg.lingering.potion=Poción de efecto prolongado
+bt.bg.extended.potion=Poción de efecto prolongado
+bt.bg.level_2.potion=Poción de nivel II
+bt.bg.effect.potion=Efecto de poción
+
+
+## System Texts
+disconnect.kicked=¡Game Over! Ya no puedes seguir jugando.
+disconnect.kicked.reason=¡Game Over! Ya no puedes seguir jugando.
+disconnect.removed=¡Game Over! Ya no puedes seguir jugando.
+disconnect.removed.reason=¡Game Over! Ya no puedes seguir jugando.
+
+disconnectionScreen.title.bannedByHost=Has muerto y ya no puedes seguir jugando.
+disconnectionScreen.title.kickedFromWorld=Has muerto y ya no puedes seguir jugando.
+
+gamepad_disconnect=¡Se te acabaron las pilas o el mando se apago!
+gamepad_disconnect.reconnectController=RoyerBot ha intervenido en tu sistema y ahora no reconocemos tu mando. ¡Rapido! Enciendenlo o conectalo de nuevo para continuar.
+
+pauseScreen.xboxLiveDisconnect=Se te ha desconectado la cuenta de Xbox. O estas en un mundo local o como carajos estas viendo esto? En fin, entra denuevo al mundo.
+
+
+## Title texts
+ui.game_over_title=§c¿Game Over?§r
+ui.fast_items.title=§g¡Sistema de Items rapidos activado!
+ui.fast_items.sub1=Ahora con tu tecla de interaccion, puedes cambiar
+ui.fast_items.sub2=rapidamente entre items como el totem en tu otra mano.
+ui.watermak.title=§4The Last 15 Days
+ui.watermak.version=§7v0.0.12-beta
+ui.credits_panel.title=Creditos Principales:
+ui.credits_panel.rolecreator=Creador
+ui.credits_panel.dev=Programador
+ui.credits_panel.artist=Artista
+ui.other_credits.title=Creditos Adicionales:
+ui.other_credits.role1=Texturas utilizadas en el add-on
+
+
+## Chat texts
+chat.system.resquicio_start=§c§l>>§r§c ¡%1 ha causado un §4§lResquicio Infernal§r!
+chat.system.last_location_player=§l§b[§eRoyerBot§b]§r §7§l>>§r§7 %1 ha muerto en %2 en la Dimension %3.
+chat.system.player_in_bed=§e>> %1 esta durmiendo. ¡Buenas noches!
+chat.system.error_no_perms=§7§l>> Aun no puedes realizar esta accion.
+chat.system.use_totem=§7>> %1 ha utilizado un totem.
+chat.system.day_addon=§a§l>> Es el Dia %1.
+
+## Entity Names
+entity.ha:player_ghost.name=Fantasma de un Jugador
+entity.ha:bomber_pillager.name=Saqueador Bombardero
+
+
+## Spawn egg names
+item.spawn_egg.entity.ha:bomber_pillager.name=Generador de Saqueador Bombardero
+
+
+## Items names
+item.ha:dynamite_off_item=Dinamita Arrojadiza Apagada
+item.ha:dynamite_off_item.name=Dinamita Arrojadiza Apagada
+
+item.ha:dynamite_item=Dinamita Arrojadiza
+item.ha:dynamite_item.name=Dinamita Arrojadiza
+
+
+## Block names
+tile.ha:dynamite_block.name=Bloque de Dinamita Lanzable.
+
+
+## Advacements texts
+chat.advan.normal_base=%1 ha conseguido el progreso §a[%2]§r
+chat.advan.rare_base=%1 ha completado el desafío §5[%2]§r
+
+advacement.wood_pick=La Edad de Piedra
+advacement.stone_pick=Mejorando herramientas
+advacement.iron_ingot=La Edad de Hierro
+advacement.suit_up=Vístete
+advacement.hot_stuff=¡La cosa está que arde!
+advacement.iron_pick=¿No es hierrónico?
+advacement.not_today=Hoy no, gracias
+advacement.obsidian=Mente fría
+advacement.diamonds=¡Diamantes!
+advacement.nether=Plus ultra
+advacement.diamods_armor=Cúbreme de diamantes
+advacement.zombie_doctor=Zombiólogo
+advacement.the_end=¿Se acabó?
+advacement.return_sender=Devolver al remitente
+advacement.debris=Escondido en las profundidades
+advacement.crying_obsi=¿Quién está cortando cebollas?
+advacement.ghast_over=Falsa alianza
+advacement.netherite=Cúbreme de netherita
+advacement.wither_skull=Por una cabeza
+advacement.blaze=Jugando con fuego
+advacement.wither=Dr. Witherstein
+advacement.beacon=Faroneitor
+advacement.all_effects=Mezcla explosiva
+advacement.free_end=Libera el End
+advacement.next_generation=La nueva generación
+advacement.mint=¡Qué mal aliento!
+advacement.shulker=La ciudad al final del juego
+advacement.elytra=Hasta el infinito... ¡y más allá!
+advacement.bad_omen=Exilio voluntario
+advacement.compass_block=Magnetita, llévame a casita
+advacement.monster_hunter=Monster Hunter
+advacement.betsy=La vieja Betsy
+advacement.dreams=Dulces sueños
+advacement.hero_village=Héroe de la aldea
+advacement.trident=Jugada maestra
+advacement.bow=¡Diana!
+advacement.totem=Post mortem
+advacement.pillager_now=El saqueador saqueado
+advacement.sniper_duel=Francocazadores
+advacement.bullseye=En el blanco
+advacement.under_lock=Bajo llave
+advacement.revault=La caja de Pandora
+advacement.blowback=Contrarresto
+advacement.hydrated=¡Mantente hidratado!
+advacement.bee_guest=Abelante, esta es tu casa
+advacement.bukki=Renacuajo al cubo
+advacement.sniffer=Huele interesante
+advacement.tactical_fish=Pesca táctica
+advacement.little_sniffs=Little Sniffs
+advacement.serius_dedication=Pequeños olfateos
+advacement.wax_off=Pulir cera
+advacement.axolotl=El depredador más adorable
+advacement.all_frogs=¡Uniendo nuestras fuerzas!

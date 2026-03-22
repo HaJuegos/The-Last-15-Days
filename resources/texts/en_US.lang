@@ -1,0 +1,134 @@
+## Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days.
+## Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days.
+
+
+## Manifest texts
+pack.name=§l§4The Last 15 Days§r | Created By §gRosherRandom§r
+pack.description=Resources needed for the add-on | Developed by: HaJuegos y Convex!
+
+
+## Other texts
+bt.bg.splash.potion=Splash Potion
+bt.bg.lingering.potion=Lingering Potion
+bt.bg.extended.potion=Extended Potion
+bt.bg.level_2.potion=Level II Potion
+bt.bg.effect.potion=Potion Effect
+
+
+## System Texts
+disconnect.kicked=Game Over! You can't keep playing anymore.
+disconnect.kicked.reason=Game Over! You can't keep playing anymore.
+disconnect.removed=Game Over! You can't keep playing anymore.
+disconnect.removed.reason=Game Over! You can't keep playing anymore.
+
+disconnectionScreen.title.bannedByHost=You've died and can't keep playing.
+disconnectionScreen.title.kickedFromWorld=You've died and can't keep playing.
+
+gamepad_disconnect=Your batteries ran out or the controller turned off!
+gamepad_disconnect.reconnectController=RoyerBot has intervened in your system and now we don't recognize your controller. Quick! Turn it on or connect it again to continue.
+
+pauseScreen.xboxLiveDisconnect=Your Xbox account has been disconnected. Or are you in a local world or how the hell are you seeing this? Anyway, re-enter the world.
+
+
+## Title texts
+ui.game_over_title=§cGame Over?§r
+ui.fast_items.title=§gQuick Items system activated!
+ui.fast_items.sub1=Now, using your interaction key, you can quickly
+ui.fast_items.sub2=switch between items like the totem in your other hand.
+ui.watermak.title=§4The Last 15 Days
+ui.watermak.version=§7v0.0.12-beta
+ui.credits_panel.title=Credits:
+ui.credits_panel.rolecreator=Creator
+ui.credits_panel.dev=Developer
+ui.credits_panel.artist=Artist
+ui.other_credits.title=Other Credits:
+ui.other_credits.role1=Textures used in the add-on
+
+
+## Chat texts
+chat.system.resquicio_start=§c§l>>§r§c ¡%1 caused a §4§lHellish Rift§r!
+chat.system.last_location_player=§l§b[§eRoyerBot§b]§r §7§l>>§r§7 %1 has died in %2 in Dimension %3.
+chat.system.player_in_bed=§e>> %1 is sleeping. Good night!
+chat.system.error_no_perms=§7§l>> You can't do that yet.
+chat.system.use_totem=§7>> %1 used a totem.
+chat.system.day_addon=§a§l>> It's Day %1.
+
+
+## Entity Names
+entity.ha:player_ghost.name=Player Ghost
+entity.ha:bomber_pillager.name=Bomber Pillager
+
+
+## Spawn egg names
+item.spawn_egg.entity.ha:bomber_pillager.name=Bomber Pillager Spawn Egg
+
+
+## Items names
+item.ha:dynamite_off_item=Deactivated Throwing Dynamite
+item.ha:dynamite_off_item.name=Deactivated Throwing Dynamite
+
+item.ha:dynamite_item=Throwing Dynamite
+item.ha:dynamite_item.name=Throwing Dynamite
+
+
+## Block names
+tile.ha:dynamite_block.name=Throwable Dynamite Block
+
+
+## Advacements texts
+chat.advan.normal_base=%1 has made the advancement §a[%2]§r
+chat.advan.rare_base=%1 has completed the challenge §5[%2]§r
+
+advacement.wood_pick=Stone Age
+advacement.stone_pick=Getting an Upgrade
+advacement.iron_ingot=Acquire Hardware
+advacement.suit_up=Suit Up
+advacement.hot_stuff=Hot Stuff
+advacement.iron_pick=Isn't It Iron Pick
+advacement.not_today=Not Today, Thank You
+advacement.obsidian=Ice Bucket Challenge
+advacement.diamonds=Diamonds!
+advacement.nether=We Need to Go Deeper
+advacement.diamods_armor=Cover Me with Diamonds
+advacement.zombie_doctor=Zombie Doctor
+advacement.the_end=The End?
+advacement.return_sender=Return to Sender
+advacement.debris=Hidden in the Depths
+advacement.crying_obsi=Who is Cutting Onions?
+advacement.ghast_over=Uneasy Alliance
+advacement.netherite=Cover Me in Debris
+advacement.wither_skull=Spooky Scary Skeleton
+advacement.blaze=Into Fire
+advacement.wither=Withering Heights
+advacement.beacon=Beaconator
+advacement.all_effects=A Furious Cocktail
+advacement.free_end=Free the End
+advacement.next_generation=The Next Generation
+advacement.mint=You Need a Mint
+advacement.shulker=The City at the End of the Game
+advacement.elytra=Sky's the Limit
+advacement.bad_omen=Voluntary Exile
+advacement.compass_block=Country Lode, Take Me Home
+advacement.monster_hunter=Monster Hunter
+advacement.betsy=Ol' Betsy
+advacement.dreams=Sweet Dreams
+advacement.hero_village=Hero of the Village
+advacement.trident=A Throwaway Joke
+advacement.bow=Take Aim
+advacement.totem=Postmortal
+advacement.pillager_now=Who's the Pillager Now?
+advacement.sniper_duel=Sniper Duel
+advacement.bullseye=Bullseye
+advacement.under_lock=Under Lock and Key
+advacement.revault=Revaulting
+advacement.blowback=Blowback
+advacement.hydrated=Stay Hydrated!
+advacement.bee_guest=Bee Our Guest
+advacement.bukki=Bukkit Bukkit
+advacement.sniffer=Smells Interesting
+advacement.tactical_fish=Tactical Fishing
+advacement.little_sniffs=Little Sniffs
+advacement.serius_dedication=Serious Dedication
+advacement.wax_off=Wax Off
+advacement.axolotl=The Cutest Predator
+advacement.all_frogs=With Our Powers Combined!

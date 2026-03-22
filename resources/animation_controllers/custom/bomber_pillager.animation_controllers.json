@@ -1,0 +1,87 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.pillager_bomber.root": {
+            "initial_state": "default",
+            "states": {
+                "default": {
+                    "blend_transition": 0.2,
+                    "blend_via_shortest_path": true,
+                    "animations": [
+                        "controller_humanoid_base_pose",
+                        "controller_look_at_target",
+                        "controller_move",
+                        "controller_riding",
+                        "controller_attack",
+                        "controller_bob"
+                    ],
+                    "transitions": [
+                        {
+                            "celebrating": "query.is_celebrating"
+                        }
+                    ]
+                },
+                "celebrating": {
+                    "animations": [
+                        "celebrating",
+                        {
+                            "riding.legs": "query.is_riding"
+                        }
+                    ],
+                    "blend_transition": 0.2,
+                    "blend_via_shortest_path": true,
+                    "transitions": [
+                        {
+                            "default": "!query.is_celebrating"
+                        }
+                    ]
+                }
+            }
+        },
+        "controller.animation.pillager_bomber.start_fase": {
+            "initial_state": "default",
+            "states": {
+                "default": {
+                    "transitions": [
+                        {
+                            "suicide": "q.is_chested"
+                        }
+                    ]
+                },
+                "suicide": {
+                    "animations": [ "fase" ]
+                }
+            }
+        },
+        "controller.animation.pillager_bomber.shooting": {
+            "initial_state": "default",
+            "states": {
+                "default": {
+                    "transitions": [
+                        {
+                            "shoot": "query.is_charged"
+                        }
+                    ]
+                },
+                "shoot": {
+                    "animations": [ "shoot" ],
+                    "transitions": [
+                        {
+                            "default": "!query.is_charged && q.all_animations_finished"
+                        }
+                    ]
+                }
+            }
+        },
+        "controller.animation.pillager_bomber.particles": {
+            "initial_state": "default",
+            "states": {
+                "default": {
+                    "animations": [ "particle" ]
+                }
+            }
+        }
+    }
+}
