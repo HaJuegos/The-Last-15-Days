@@ -54,6 +54,7 @@ chat.system.player_in_bed=§e>> %1 is sleeping. Good night!
 chat.system.error_no_perms=§7§l>> You can't do that yet.
 chat.system.use_totem=§7>> %1 used a totem.
 chat.system.day_addon=§a§l>> It's Day %1.
+chat.system.damage_biome=§4§l>> You're taking temperature damage. Get out of there!
 
 
 ## Entity Names
@@ -71,6 +72,9 @@ item.ha:dynamite_off_item.name=Deactivated Throwing Dynamite
 
 item.ha:dynamite_item=Throwing Dynamite
 item.ha:dynamite_item.name=Throwing Dynamite
+
+item.ha:iron_apple=§iIron Apple§r
+item.ha:iron_apple.name=§iIron Apple§r
 
 
 ## Block names

@@ -6,6 +6,18 @@
                 "Blending",
                 "DisableCulling"
             ]
+        },
+        "fox:entity_alphatest": { },
+        "mask_fox:entity_nocull": {
+            "+defines": [
+                "USE_COLOR_MASK"
+            ],
+            "+states": [
+                "Blending"
+            ],
+            "depthFunc": "Equal",
+            "blendSrc": "SourceAlpha",
+            "blendDst": "OneMinusSrcAlpha"
         }
     }
 }

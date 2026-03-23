@@ -15,7 +15,6 @@ export class TL15DBaseManager {
         [mc.GameRule.CommandBlockOutput]: false,
         [mc.GameRule.DoDayLightCycle]: true,
         [mc.GameRule.DoImmediateRespawn]: true,
-        [mc.GameRule.DoLimitedCrafting]: true,
         [mc.GameRule.DoWeatherCycle]: true,
         [mc.GameRule.KeepInventory]: true,
         [mc.GameRule.LocatorBar]: false,

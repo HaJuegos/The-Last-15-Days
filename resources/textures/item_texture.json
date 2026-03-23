@@ -13,6 +13,11 @@
             "textures": [
                 "textures/items/custom/dynamite_off"
             ]
+        },
+        "iron_apple": {
+            "textures": [
+                "textures/items/custom/iron_apple"
+            ]
         }
     }
 }

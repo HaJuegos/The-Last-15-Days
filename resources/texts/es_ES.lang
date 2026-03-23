@@ -54,6 +54,7 @@ chat.system.player_in_bed=§e>> %1 esta durmiendo. ¡Buenas noches!
 chat.system.error_no_perms=§7§l>> Aun no puedes realizar esta accion.
 chat.system.use_totem=§7>> %1 ha utilizado un totem.
 chat.system.day_addon=§a§l>> Es el Dia %1.
+chat.system.damage_biome=§4§l>> Estas recibiendo daño por temperatura. ¡Sal de alli!
 
 ## Entity Names
 entity.ha:player_ghost.name=Fantasma de un Jugador
@@ -70,6 +71,9 @@ item.ha:dynamite_off_item.name=Dinamita Arrojadiza Apagada
 
 item.ha:dynamite_item=Dinamita Arrojadiza
 item.ha:dynamite_item.name=Dinamita Arrojadiza
+
+item.ha:iron_apple=§iManzana de Hierro§r
+item.ha:iron_apple.name=§iManzana de Hierro§r
 
 
 ## Block names
