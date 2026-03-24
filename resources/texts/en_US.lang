@@ -76,6 +76,12 @@ item.ha:dynamite_item.name=Throwing Dynamite
 item.ha:iron_apple=§iIron Apple§r
 item.ha:iron_apple.name=§iIron Apple§r
 
+item.ha:invocation_skull=§7§lInvocation Skull§r
+item.ha:invocation_skull.name=§7§lInvocation Skull§r
+
+item.ha:stone_skull=Stone Skull
+item.ha:stone_skull.name=Stone Skull
+
 
 ## Block names
 tile.ha:dynamite_block.name=Throwable Dynamite Block

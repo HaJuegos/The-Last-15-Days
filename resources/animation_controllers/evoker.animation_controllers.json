@@ -1,0 +1,64 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+	"format_version": "1.10.0",
+	"animation_controllers": {
+		"controller.animation.evoker.general": {
+			"initial_state": "default",
+			"states": {
+				"ranged": {
+					"animations": [ "look_at_target", "ranged_attack", "holding", "controller_riding" ],
+					"transitions": [
+						{
+							"default": "!q.facing_target_to_range_attack"
+						}
+					]
+				},
+				"casting": {
+					"animations": [ "look_at_target", "casting", "controller_riding" ],
+					"particle_effects": [
+						{
+							"effect": "spell",
+							"locator": "left_hand"
+						},
+						{
+							"effect": "spell",
+							"locator": "right_hand"
+						}
+					],
+					"transitions": [
+						{
+							"default": "!query.is_casting"
+						}
+					]
+				},
+				"celebrating": {
+					"animations": [ "celebrating", "controller_riding" ],
+					"blend_transition": 0.2,
+					"blend_via_shortest_path": true,
+					"transitions": [
+						{
+							"default": "!query.is_celebrating"
+						}
+					]
+				},
+				"default": {
+					"animations": [ "look_at_target", "general", "controller_riding" ],
+					"blend_transition": 0.2,
+					"blend_via_shortest_path": true,
+					"transitions": [
+						{
+							"casting": "query.is_casting"
+						},
+						{
+							"celebrating": "query.is_celebrating"
+						},
+						{
+							"ranged": "q.facing_target_to_range_attack"
+						}
+					]
+				}
+			}
+		}
+	}
+}

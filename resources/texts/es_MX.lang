@@ -75,6 +75,12 @@ item.ha:dynamite_item.name=Dinamita Arrojadiza
 item.ha:iron_apple=§iManzana de Hierro§r
 item.ha:iron_apple.name=§iManzana de Hierro§r
 
+item.ha:invocation_skull=§7§lCalavera de Invocacion§r
+item.ha:invocation_skull.name=§7§lCalavera de Invocacion§r
+
+item.ha:stone_skull=Calavera de Piedra
+item.ha:stone_skull.name=Calavera de Piedra
+
 
 ## Block names
 tile.ha:dynamite_block.name=Bloque de Dinamita Lanzable.

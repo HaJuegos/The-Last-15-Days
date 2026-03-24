@@ -18,6 +18,16 @@
             "textures": [
                 "textures/items/custom/iron_apple"
             ]
+        },
+        "stone_skull": {
+            "textures": [
+                "textures/items/custom/skull_stone"
+            ]
+        },
+        "invocation_skull": {
+            "textures": [
+                "textures/items/custom/skull_invocation"
+            ]
         }
     }
 }
