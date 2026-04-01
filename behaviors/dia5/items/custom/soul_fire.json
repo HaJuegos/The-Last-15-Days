@@ -1,0 +1,30 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.26.0",
+    "minecraft:item": {
+        "description": {
+            "identifier": "ha:soul_fire",
+            "menu_category": {
+                "category": "items",
+                "group": "ha:itemGroup.name.nether_items"
+            }
+        },
+        "components": {
+            "minecraft:allow_off_hand": false,
+            "minecraft:can_destroy_in_creative": true,
+            "minecraft:fire_resistant": {
+                "value": true
+            },
+            "minecraft:glint": true,
+            "minecraft:icon": "soul_fire",
+            "minecraft:max_stack_size": 16,
+            "minecraft:rarity": "uncommon",
+            "minecraft:tags": {
+                "tags": [
+                    "ha:infernal_items"
+                ]
+            }
+        }
+    }
+}

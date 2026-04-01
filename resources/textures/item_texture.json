@@ -28,6 +28,47 @@
             "textures": [
                 "textures/items/custom/skull_invocation"
             ]
+        },
+        "soul_fire": {
+            "textures": [
+                "textures/items/custom/nether_items/soul_fire"
+            ]
+        },
+        "piglin_mace": {
+            "textures": [
+                "textures/items/custom/hammer_piglin"
+            ]
+        },
+        "infernal_crown": {
+            "textures": [
+                "textures/items/custom/infernal_crown_full"
+            ]
+        },
+        "infernal_crown_off": {
+            "textures": [
+                "textures/items/custom/infernal_crown_empty"
+            ]
+        },
+        "infernal_gem_blaze": {
+            "textures": [
+                "textures/items/custom/infernal_gems/blaze"
+            ]
+        },
+        "infernal_gem_piglin": {
+            "textures": [
+                "textures/items/custom/infernal_gems/piglin"
+            ]
+        },
+        "infernal_gem_magma": {
+            "textures": [
+                "textures/items/custom/infernal_gems/magma"
+            ]
+        },
+        "melted_slime": {
+            "textures": "textures/items/custom/melted_slime"
+        },
+        "slime_pearl": {
+            "textures": "textures/items/custom/viscous_pearl"
         }
     }
 }

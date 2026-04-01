@@ -1,0 +1,442 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.21.0",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "minecraft:player",
+            "spawn_category": "creature",
+            "is_spawnable": false,
+            "is_summonable": false,
+            "scripts": {
+                "animate": [
+                    "spawn_system"
+                ]
+            },
+            "animations": {
+                "spawn_system": "controller.animation.player.spawned_day"
+            }
+        },
+
+        "component_groups": {
+            "ha:start_biome_damage_cooldown": {
+                "minecraft:timer": {
+                    "time": [ 300, 300 ],
+                    "looping": false,
+                    "time_down_event": {
+                        "event": "ha:start_damage_biome",
+                        "target": "self"
+                    }
+                }
+            },
+            "ha:damage_biome": {
+                "minecraft:damage_over_time": {
+                    "damage_per_hurt": 1,
+                    "time_between_hurt": 1
+                }
+            },
+            "minecraft:add_raid_omen": {
+                "minecraft:spell_effects": {
+                    "add_effects": [
+                        {
+                            "effect": "raid_omen",
+                            "duration": 10,
+                            "display_on_screen_animation": true
+                        }
+                    ],
+                    "remove_effects": "bad_omen"
+                },
+                "minecraft:timer": {
+                    "time": [ 0.0, 0.0 ],
+                    "looping": false,
+                    "time_down_event": {
+                        "event": "minecraft:clear_add_raid_omen",
+                        "target": "self"
+                    }
+                }
+            },
+            "minecraft:clear_raid_omen_spell_effect": {
+                "minecraft:spell_effects": {
+                }
+            },
+            "minecraft:raid_trigger": {
+                "minecraft:raid_trigger": {
+                    "triggered_event": {
+                        "event": "minecraft:remove_raid_trigger",
+                        "target": "self"
+                    }
+                }
+            }
+        },
+
+        "components": {
+            "minecraft:experience_reward": {
+                "on_death": "Math.Min(query.player_level * 7, 100)"
+            },
+            "minecraft:type_family": {
+                "family": [ "player" ]
+            },
+            "minecraft:is_hidden_when_invisible": {
+            },
+            "minecraft:loot": {
+                "table": "loot_tables/empty.json"
+            },
+            "minecraft:collision_box": {
+                "width": 0.6,
+                "height": 1.8
+            },
+            "minecraft:can_climb": {
+            },
+            "minecraft:movement": {
+                "value": 0.1
+            },
+            "minecraft:hurt_on_condition": {
+                "damage_conditions": [
+                    {
+                        "filters": {
+                            "test": "in_lava",
+                            "subject": "self",
+                            "operator": "==",
+                            "value": true
+                        },
+                        "cause": "lava",
+                        "damage_per_tick": 4
+                    }
+                ]
+            },
+            "minecraft:attack": {
+                "damage": 1
+            },
+            "minecraft:exhaustion_values": {
+                "heal": 6.0,
+                "jump": 0.05,
+                "sprint_jump": 0.2,
+                "mine": 0.005,
+                "attack": 0.1,
+                "damage": 0.1,
+                "walk": 0.0,
+                "sprint": 0.1,
+                "swim": 0.01,
+                "lunge": 4.0
+            },
+            "minecraft:player.saturation": {
+                "value": 5,
+                "max": 20
+            },
+            "minecraft:player.exhaustion": {
+                "value": 0,
+                "max": 20
+            },
+            "minecraft:player.level": {
+                "value": 0,
+                "max": 24791
+            },
+            "minecraft:player.experience": {
+                "value": 0,
+                "max": 1
+            },
+            "minecraft:breathable": {
+                "total_supply": 15,
+                "suffocate_time": -1,
+                "inhale_time": 3.75,
+                "generates_bubbles": false
+            },
+            "minecraft:nameable": {
+                "always_show": true,
+                "allow_name_tag_renaming": false
+            },
+            "minecraft:physics": {
+                "push_towards_closest_space": true
+            },
+            "minecraft:pushable": {
+                "is_pushable": false,
+                "is_pushable_by_piston": true
+            },
+            "minecraft:insomnia": {
+                "days_until_insomnia": 1
+            },
+            "minecraft:rideable": {
+                "seat_count": 2,
+                "family_types": [
+                    "parrot_tame"
+                ],
+                "pull_in_entities": true,
+                "seats": [
+                    {
+                        "position": [ 0.4, -0.2, -0.1 ],
+                        "min_rider_count": 0,
+                        "max_rider_count": 0,
+                        "lock_rider_rotation": 0
+                    },
+                    {
+                        "position": [ -0.4, -0.2, -0.1 ],
+                        "min_rider_count": 1,
+                        "max_rider_count": 2,
+                        "lock_rider_rotation": 0
+                    }
+                ]
+            },
+            "minecraft:conditional_bandwidth_optimization": {
+            },
+            "minecraft:block_climber": { },
+            "minecraft:environment_sensor": {
+                "triggers": [
+                    {
+                        "filters": {
+                            "all_of": [
+                                {
+                                    "test": "has_mob_effect",
+                                    "subject": "self",
+                                    "value": "bad_omen"
+                                },
+                                {
+                                    "test": "is_in_village",
+                                    "subject": "self",
+                                    "value": true
+                                }
+                            ]
+                        },
+                        "event": "minecraft:gain_raid_omen"
+                    },
+                    // Sensor de cuando duerme
+                    {
+                        "filters": {
+                            "test": "is_sleeping",
+                            "value": true
+                        },
+                        "event": "ha:player_in_bed",
+                        "target": "self"
+                    },
+                    {
+                        "filters": [
+                            {
+                                "all_of": [
+                                    {
+                                        "test": "is_sleeping",
+                                        "value": false
+                                    },
+                                    {
+                                        "test": "has_tag",
+                                        "value": "inBed"
+                                    }
+                                ]
+                            }
+                        ],
+                        "event": "ha:player_off_bed",
+                        "target": "self"
+                    },
+                    // Sensor de temperatura
+                    {
+                        "filters": {
+                            "all_of": [
+                                {
+                                    "test": "has_tag",
+                                    "operator": "!=",
+                                    "value": "hasDamageBiome"
+                                },
+                                {
+                                    "test": "has_tag",
+                                    "operator": "!=",
+                                    "value": "crownInInv"
+                                },
+                                {
+                                    "any_of": [
+                                        {
+                                            "test": "is_temperature_type",
+                                            "subject": "self",
+                                            "value": "cold"
+                                        },
+                                        {
+                                            "test": "is_temperature_type",
+                                            "subject": "self",
+                                            "value": "ocean"
+                                        },
+                                        {
+                                            "test": "is_temperature_type",
+                                            "subject": "self",
+                                            "value": "warm"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "event": "ha:start_cooldown_biome_damage",
+                        "target": "self"
+                    },
+                    {
+                        "filters": {
+                            "any_of": [
+                                {
+                                    "test": "has_tag",
+                                    "value": "crownInInv"
+                                },
+                                {
+                                    "all_of": [
+                                        {
+                                            "test": "has_tag",
+                                            "value": "hasDamageBiome"
+                                        },
+                                        {
+                                            "test": "has_tag",
+                                            "operator": "!=",
+                                            "value": "crownInInv"
+                                        },
+                                        {
+                                            "none_of": [
+                                                {
+                                                    "test": "is_temperature_type",
+                                                    "subject": "self",
+                                                    "value": "cold"
+                                                },
+                                                {
+                                                    "test": "is_temperature_type",
+                                                    "subject": "self",
+                                                    "value": "ocean"
+                                                },
+                                                {
+                                                    "test": "is_temperature_type",
+                                                    "subject": "self",
+                                                    "value": "warm"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "event": "ha:remove_biome_damage",
+                        "target": "self"
+                    }
+                ]
+            },
+            "minecraft:damage_sensor": {
+                "triggers": [
+                    {
+                        "on_damage": {
+                            "filters": {
+                                "any_of": [
+                                    {
+                                        "test": "is_block",
+                                        "subject": "block",
+                                        "value": "minecraft:cactus"
+                                    },
+                                    {
+                                        "test": "is_block",
+                                        "subject": "block",
+                                        "value": "minecraft:sweet_berry_bush"
+                                    }
+                                ]
+                            },
+                            "event": "ha:add_effects_blocks",
+                            "target": "self"
+                        },
+                        "cause": "all",
+                        "deals_damage": "yes"
+                    }
+                ]
+            }
+        },
+
+        "events": {
+            "minecraft:entity_spawned": { },
+
+            "ha:player_in_bed": {
+                "queue_command": {
+                    "command": "function system/sleeping_events"
+                }
+            },
+            "ha:player_off_bed": {
+                "queue_command": {
+                    "command": "tag @s remove inBed"
+                }
+            },
+
+            "ha:start_cooldown_biome_damage": {
+                "queue_command": {
+                    "command": [
+                        "tag @s add hasDamageBiome"
+                    ]
+                },
+                "remove": {
+                    "component_groups": [
+                        "ha:damage_biome"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
+                        "ha:start_biome_damage_cooldown"
+                    ]
+                }
+            },
+            "ha:start_damage_biome": {
+                "queue_command": {
+                    "command": [
+                        "function damage_biome"
+                    ]
+                },
+                "remove": {
+                    "component_groups": [
+                        "ha:start_biome_damage_cooldown"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
+                        "ha:damage_biome"
+                    ]
+                }
+            },
+            "ha:remove_biome_damage": {
+                "queue_command": {
+                    "command": [
+                        "tag @s remove hasDamageBiome"
+                    ]
+                },
+                "remove": {
+                    "component_groups": [
+                        "ha:start_biome_damage_cooldown",
+                        "ha:damage_biome"
+                    ]
+                }
+            },
+
+            "ha:add_effects_blocks": {
+                "queue_command": {
+                    "command": [
+                        "effect @s fatal_poison 10",
+                        "effect @s slowness 10"
+                    ]
+                }
+            },
+
+            "minecraft:gain_raid_omen": {
+                "add": {
+                    "component_groups": [
+                        "minecraft:add_raid_omen"
+                    ]
+                }
+            },
+            "minecraft:clear_add_raid_omen": {
+                "remove": {
+                    "component_groups": [
+                        "minecraft:add_raid_omen"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
+                        "minecraft:clear_raid_omen_spell_effect"
+                    ]
+                }
+            },
+            "minecraft:trigger_raid": {
+                "add": {
+                    "component_groups": [ "minecraft:raid_trigger" ]
+                }
+            },
+            "minecraft:remove_raid_trigger": {
+                "remove": {
+                    "component_groups": [ "minecraft:raid_trigger" ]
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,20 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+	"format_version": "1.10.0",
+	"render_controllers": {
+		"controller.render.piglin_mace": {
+			"geometry": "Geometry.default",
+			"materials": [
+				{
+					"*": "variable.is_enchanted ? Material.enchanted : Material.default"
+				}
+			],
+			"textures": [
+				"Texture.default",
+				"Texture.enchanted"
+			],
+			"filter_lighting": true
+		}
+	}
+}

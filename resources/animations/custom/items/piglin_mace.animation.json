@@ -1,0 +1,26 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+	"format_version": "1.10.0",
+	"animations": {
+		"animation.piglin_mace.fp": {
+			"loop": true,
+			"bones": {
+				"hammer": {
+					"rotation": [ -267.38724, 52.04712, -41.27396 ],
+					"position": [ 0, 13, 3 ],
+					"scale": 1.6
+				}
+			}
+		},
+		"animation.piglin_mace.tp": {
+			"loop": true,
+			"bones": {
+				"hammer": {
+					"rotation": [ 85, 0, 0 ],
+					"position": [ 0.1, 10.5, -7 ]
+				}
+			}
+		}
+	}
+}

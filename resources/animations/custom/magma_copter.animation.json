@@ -1,0 +1,141 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.10.0",
+    "animations": {
+        "animation.magma_copter.flying": {
+            "loop": true,
+            "animation_length": 2,
+            "bones": {
+                "bodyCube_0": {
+                    "position": {
+                        "0.0": {
+                            "post": [ 0, "3.0 * (variable.slime_squish_factor < 0.0 ? 0.0 : variable.slime_squish_factor) * 1.7", 0 ],
+                            "lerp_mode": "catmullrom"
+                        },
+                        "0.5": {
+                            "post": [ 0, "0.25+3.0 * (variable.slime_squish_factor < 0.0 ? 0.0 : variable.slime_squish_factor) * 1.7", 0 ],
+                            "lerp_mode": "catmullrom"
+                        },
+                        "1.0": {
+                            "post": [ 0, "3.0 * (variable.slime_squish_factor < 0.0 ? 0.0 : variable.slime_squish_factor) * 1.7", 0 ],
+                            "lerp_mode": "catmullrom"
+                        },
+                        "1.5": {
+                            "post": [ 0, "0.25+3.0 * (variable.slime_squish_factor < 0.0 ? 0.0 : variable.slime_squish_factor) * 1.7", 0 ],
+                            "lerp_mode": "catmullrom"
+                        },
+                        "2.0": {
+                            "post": [ 0, "3.0 * (variable.slime_squish_factor < 0.0 ? 0.0 : variable.slime_squish_factor) * 1.7", 0 ],
+                            "lerp_mode": "catmullrom"
+                        }
+                    }
+                },
+                "bodyCube_1": {
+                    "position": [ 0, "2.0 * (variable.slime_squish_factor < 0.0 ? 0.0 : variable.slime_squish_factor) * 1.7", 0 ]
+                },
+                "bodyCube_2": {
+                    "position": [ 0, "1.0 * (variable.slime_squish_factor < 0.0 ? 0.0 : variable.slime_squish_factor) * 1.7", 0 ]
+                },
+                "bodyCube_4": {
+                    "position": [ 0, "-1.0 * (variable.slime_squish_factor < 0.0 ? 0.0 : variable.slime_squish_factor) * 1.7", 0 ]
+                },
+                "bodyCube_5": {
+                    "position": [ 0, "-2.0 * (variable.slime_squish_factor < 0.0 ? 0.0 : variable.slime_squish_factor) * 1.7", 0 ]
+                },
+                "bodyCube_6": {
+                    "position": [ 0, "-3.0 * (variable.slime_squish_factor < 0.0 ? 0.0 : variable.slime_squish_factor) * 1.7", 0 ]
+                },
+                "bodyCube_7": {
+                    "position": [ 0, "-4.0 * (variable.slime_squish_factor < 0.0 ? 0.0 : variable.slime_squish_factor) * 1.7", 0 ]
+                },
+                "insideCube": {
+                    "rotation": {
+                        "0.0": {
+                            "post": [ 0, 0, 0 ],
+                            "lerp_mode": "catmullrom"
+                        },
+                        "0.5": {
+                            "post": [ 0, 0, 5 ],
+                            "lerp_mode": "catmullrom"
+                        },
+                        "1.0": {
+                            "post": [ 0, 0, 0 ],
+                            "lerp_mode": "catmullrom"
+                        },
+                        "1.5": {
+                            "post": [ 0, 0, -5 ],
+                            "lerp_mode": "catmullrom"
+                        },
+                        "2.0": {
+                            "post": [ 0, 0, 0 ],
+                            "lerp_mode": "catmullrom"
+                        }
+                    },
+                    "position": {
+                        "0.0": {
+                            "post": [ 0, 5, 0 ],
+                            "lerp_mode": "catmullrom"
+                        },
+                        "0.5": {
+                            "post": [ 0, 4, 0 ],
+                            "lerp_mode": "catmullrom"
+                        },
+                        "1.0": {
+                            "post": [ 0, 5, 0 ],
+                            "lerp_mode": "catmullrom"
+                        },
+                        "1.5": {
+                            "post": [ 0, 4, 0 ],
+                            "lerp_mode": "catmullrom"
+                        },
+                        "2.0": {
+                            "post": [ 0, 5, 0 ],
+                            "lerp_mode": "catmullrom"
+                        }
+                    }
+                },
+                "propeller": {
+                    "rotation": {
+                        "0.0": {
+                            "post": [ 0, 0, 0 ],
+                            "lerp_mode": "catmullrom"
+                        },
+                        "2.0": {
+                            "post": [ 0, -2160, 0 ],
+                            "lerp_mode": "catmullrom"
+                        }
+                    }
+                },
+                "magnet_1": {
+                    "position": {
+                        "0.0": {
+                            "post": [ 3, 0, 0 ],
+                            "lerp_mode": "catmullrom"
+                        }
+                    },
+                    "scale": {
+                        "0.0": {
+                            "post": [ 0, 0, 1 ],
+                            "lerp_mode": "catmullrom"
+                        }
+                    }
+                },
+                "magnet_2": {
+                    "position": {
+                        "0.0": {
+                            "post": [ -3, 0, 0 ],
+                            "lerp_mode": "catmullrom"
+                        }
+                    },
+                    "scale": {
+                        "0.0": {
+                            "post": [ 0, 0, 0 ],
+                            "lerp_mode": "catmullrom"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

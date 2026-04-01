@@ -15,6 +15,12 @@ bt.bg.level_2.potion=Poción de nivel II
 bt.bg.effect.potion=Efecto de poción
 
 
+dialogue.socrates.bullshit1=Si eres lo que comes, ¿qué eres si te comes una Manzana Dorada Encantada pero igual te caes al vacío en Hardcore? Solo un fantasma muy brillante y costoso, amigo mío.
+dialogue.socrates.bullshit2=Si se supone que dormir restaura tu energía y sana tu alma, ¿qué eres si intentas dormir en el Nether? Un espectáculo de fuegos artificiales con un final bastante trágico, supongo.
+dialogue.socrates.bullshit3=Si las herramientas definen al constructor, ¿qué eres si guardas tu primer pico de madera hasta llegar al Dragón del End? ¿Un verdadero visionario, o solo un tipo que realmente odia la eficiencia?
+dialogue.socrates.bullshit4=Si la muerte en TL15D es el final definitivo, ¿qué eres si mueres sosteniendo un Tótem de Inmortalidad? ¿Un tramposo del destino, o solo un tonto retrasando la inevitable explosión de un Creeper?
+
+
 ## System Texts
 disconnect.kicked=¡Game Over! Ya no puedes seguir jugando.
 disconnect.kicked.reason=¡Game Over! Ya no puedes seguir jugando.
@@ -55,14 +61,27 @@ chat.system.error_no_perms=§7§l>> Aun no puedes realizar esta accion.
 chat.system.use_totem=§7>> %1 ha utilizado un totem.
 chat.system.day_addon=§a§l>> Es el Dia %1.
 chat.system.damage_biome=§4§l>> Estas recibiendo daño por temperatura. ¡Sal de alli!
+chat.system.get_debuff_wither1=§c§l>> Recibiste un efecto negativo aleatorio del Wither.
+chat.system.get_debuff_wither2=§m§l>> Tu inventario ha cambiado por culpa del Wither.
+chat.system.get_infernal_item=§4>> %1 ha conseguido el item %2.§r§7 | (%3/5)
+chat.system.get_infernal_crown=§4§l>> %1 ha conseguido %2.
+
 
 ## Entity Names
 entity.ha:player_ghost.name=Fantasma de un Jugador
 entity.ha:bomber_pillager.name=Saqueador Bombardero
+entity.ha:soul_ghast.name=§3Soul Ghast§r
+entity.ha:soul_fireball.name=Soul Fireball
+entity.ha:lord_blaze.name=§pLord Blaze§r
+entity.ha:armorer_piglin.name=Piglin Bruto Armado
+entity.ha:socrates_npc.name=Socrates, si ese mismo.
 
 
 ## Spawn egg names
 item.spawn_egg.entity.ha:bomber_pillager.name=Generador de Saqueador Bombardero
+item.spawn_egg.entity.ha:soul_ghast.name=Generador de §3Soul Ghast§r
+item.spawn_egg.entity.ha:lord_blaze.name=Generador de §pLord Blaze§r
+item.spawn_egg.entity.ha:armorer_piglin.name=Generador de Piglin Bruto Armado
 
 
 ## Items names
@@ -80,6 +99,37 @@ item.ha:invocation_skull.name=§7§lCalavera de Invocacion§r
 
 item.ha:stone_skull=Calavera de Piedra
 item.ha:stone_skull.name=Calavera de Piedra
+
+item.ha:soul_fire=§bAlma de Fuego§r
+item.ha:soul_fire.name=§bAlma de Fuego§r
+
+item.ha:piglin_mace=§gPiglin Mace§r
+item.ha:piglin_mace.name=§gPiglin Mace§r
+
+item.ha:infernal_gem_blaze=§6§lGema Infermal (Blaze)§r
+item.ha:infernal_gem_blaze.name=§6§lGema Infermal (Blaze)§r
+
+item.ha:infernal_gem_piglin=§6§lGema Infermal (Piglin)§r
+item.ha:infernal_gem_piglin.name=§6§lGema Infermal (Piglin)§r
+
+item.ha:infernal_gem_magma=§6§lGema Infermal (Magma)§r
+item.ha:infernal_gem_magma.name=§6§lGema Infermal (Magma)§r
+
+item.ha:infernal_crown=§v§lCorona Infernal§r
+item.ha:infernal_crown.name=§v§lCorona Infernal§r
+
+item.ha:infernal_crown_empty=§vCorona Infernal Vacia§r
+item.ha:infernal_crown_empty.name=§vCorona Infernal Vacia§r
+
+item.ha:slime_pearl=Perla Viscosa
+item.ha:slime_pearl.name=Perla Viscosa
+
+item.ha:melted_slime=Slime Derretido
+item.ha:melted_slime.name=Slime Derretido
+
+
+## Item Catalog
+ha:itemGroup.name.nether_items=§4Cosas del Nether§r
 
 
 ## Block names
@@ -143,3 +193,4 @@ advacement.serius_dedication=Pequeños olfateos
 advacement.wax_off=Pulir cera
 advacement.axolotl=El depredador más adorable
 advacement.all_frogs=¡Uniendo nuestras fuerzas!
+advacement.infernal_crown=Domando al Nether

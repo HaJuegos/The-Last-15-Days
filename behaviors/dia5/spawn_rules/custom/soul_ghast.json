@@ -1,0 +1,34 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.10.0",
+    "minecraft:spawn_rules": {
+        "description": {
+            "identifier": "ha:soul_ghast",
+            "population_control": "monster"
+        },
+        "conditions": [
+            {
+                "minecraft:spawns_underground": { },
+                "minecraft:difficulty_filter": {
+                    "min": "easy",
+                    "max": "hard"
+                },
+                "minecraft:weight": {
+                    "default": 25
+                },
+                "minecraft:density_limit": {
+                    "surface": 0,
+                    "underground": 2
+                },
+                "minecraft:biome_filter": {
+                    "any_of": [
+                        { "test": "has_biome_tag", "operator": "==", "value": "nether" },
+                        { "test": "has_biome_tag", "operator": "==", "value": "spawn_ghast" },
+                        { "test": "has_biome_tag", "operator": "==", "value": "soulsand_valley" }
+                    ]
+                }
+            }
+        ]
+    }
+}

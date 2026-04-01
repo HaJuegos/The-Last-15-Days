@@ -1,0 +1,95 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.king_wither.spawned": {
+            "initial_state": "default",
+            "states": {
+                "default": {
+                    "animations": [ "hide_spirits" ],
+                    "transitions": [
+                        {
+                            "show_spirits": "q.health >= 250"
+                        }
+                    ]
+                },
+                "show_spirits": {
+                    "animations": [ "show_spirits", "positions_spirits" ],
+                    "transitions": [
+                        {
+                            "idle_spirits": "q.health >= 420 && query.anim_time >= 1.35"
+                        }
+                    ]
+                },
+                "idle_spirits": {
+                    "animations": [ "scale_spirits", "look_target_spirits", "positions_spirits" ],
+                    "transitions": [
+                        {
+                            "red_spirit_start": "q.variant == 1"
+                        },
+                        {
+                            "blue_spirit_start": "q.variant == 2"
+                        },
+                        {
+                            "orange_spirit_start": "q.variant == 3"
+                        },
+                        {
+                            "yellow_spirit_start": "q.variant == 4"
+                        },
+                        {
+                            "remove_spirits": "q.health <= 150"
+                        }
+                    ]
+                },
+                "red_spirit_start": {
+                    "animations": [ "red_spirit_starts", "positions_spirits" ],
+                    "transitions": [
+                        {
+                            "idle_spirits": "q.variant != 1"
+                        },
+                        {
+                            "remove_spirits": "q.health <= 150"
+                        }
+                    ]
+                },
+                "blue_spirit_start": {
+                    "animations": [ "blue_spirit_starts", "positions_spirits" ],
+                    "transitions": [
+                        {
+                            "idle_spirits": "q.variant != 2"
+                        },
+                        {
+                            "remove_spirits": "q.health <= 150"
+                        }
+                    ]
+                },
+                "yellow_spirit_start": {
+                    "animations": [ "yellow_spirit_starts", "positions_spirits" ],
+                    "transitions": [
+                        {
+                            "idle_spirits": "q.variant != 4"
+                        },
+                        {
+                            "remove_spirits": "q.health <= 150"
+                        }
+                    ]
+                },
+                "orange_spirit_start": {
+                    "animations": [ "orange_spirit_starts", "positions_spirits" ],
+                    "transitions": [
+                        {
+                            "idle_spirits": "q.variant != 3"
+                        },
+                        {
+                            "remove_spirits": "q.health <= 150"
+                        }
+                    ]
+                },
+                "remove_spirits": {
+                    "animations": [ "positions_spirits", "despawn_spirits" ]
+                }
+            }
+        }
+    }
+}

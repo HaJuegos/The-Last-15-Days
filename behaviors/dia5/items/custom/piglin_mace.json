@@ -1,0 +1,58 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.26.0",
+    "minecraft:item": {
+        "description": {
+            "identifier": "ha:piglin_mace",
+            "menu_category": {
+                "category": "equipment",
+                "group": "minecraft:itemGroup.name.sword"
+            }
+        },
+        "components": {
+            "minecraft:allow_off_hand": false,
+            "minecraft:can_destroy_in_creative": true,
+            "minecraft:hand_equipped": false,
+            "minecraft:icon": "piglin_mace",
+            "minecraft:max_stack_size": 1,
+            "minecraft:rarity": "rare",
+            "minecraft:tags": {
+                "tags": [
+                    "minecraft:diamond_tier",
+                    "minecraft:is_sword",
+                    "minecraft:is_tool"
+                ]
+            },
+            "minecraft:repairable": {
+                "repair_items": [
+                    {
+                        "items": [
+                            "ha:piglin_mace"
+                        ],
+                        "repair_amount": "math.min(q.remaining_durability + c.other->q.remaining_durability + math.floor(q.max_durability / 20), c.other->q.max_durability)"
+                    }
+                ]
+            },
+            "minecraft:enchantable": {
+                "slot": "sword",
+                "value": 10
+            },
+            "minecraft:damage": {
+                "value": 8
+            },
+            "minecraft:durability": {
+                "damage_chance": {
+                    "min": 0,
+                    "max": 100
+                },
+                "max_durability": 5000
+            },
+            "minecraft:damage_absorption": {
+                "absorbable_causes": [
+                    "all"
+                ]
+            }
+        }
+    }
+}

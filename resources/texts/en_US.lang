@@ -15,6 +15,12 @@ bt.bg.level_2.potion=Level II Potion
 bt.bg.effect.potion=Potion Effect
 
 
+dialogue.socrates.bullshit1=If you are what you eat, what are you if you eat an Enchanted Golden Apple but still fall into the void in Hardcore? Just a very shiny, expensive ghost, my friend.
+dialogue.socrates.bullshit2=If sleeping is supposed to restore your energy and heal your soul, what are you if you try to sleep in the Nether? A fireworks show with a rather tragic ending, I suppose.
+dialogue.socrates.bullshit3=If tools define the builder, what are you if you keep your very first wooden pickaxe all the way to the Ender Dragon? A true visionary, or just a guy who really hates efficiency?
+dialogue.socrates.bullshit4=If death in Hardcore is the ultimate end, what are you if you die holding a Totem of Undying? A cheater of fate, or just a fool delaying the inevitable Creeper explosion?
+
+
 ## System Texts
 disconnect.kicked=Game Over! You can't keep playing anymore.
 disconnect.kicked.reason=Game Over! You can't keep playing anymore.
@@ -55,15 +61,27 @@ chat.system.error_no_perms=§7§l>> You can't do that yet.
 chat.system.use_totem=§7>> %1 used a totem.
 chat.system.day_addon=§a§l>> It's Day %1.
 chat.system.damage_biome=§4§l>> You're taking temperature damage. Get out of there!
+chat.system.get_debuff_wither1=§c§l>> You have received a random negative effect from the Wither.
+chat.system.get_debuff_wither2=§m§l>> Your inventory has been altered by the Wither.
+chat.system.get_infernal_item=§4>> %1 has obtained the %2§r§7 | (%3/5)
+chat.system.get_infernal_crown=§4§l>> %1 has obtained the %2§4§l.
 
 
 ## Entity Names
 entity.ha:player_ghost.name=Player Ghost
 entity.ha:bomber_pillager.name=Bomber Pillager
+entity.ha:soul_ghast.name=§3Soul Ghast§r
+entity.ha:soul_fireball.name=Soul Fireball
+entity.ha:lord_blaze.name=§pLord Blaze§r
+entity.ha:armorer_piglin.name=Armorer Piglin Brute
+entity.ha:socrates_npc.name=Socrates. Yes, that's right.
 
 
 ## Spawn egg names
 item.spawn_egg.entity.ha:bomber_pillager.name=Bomber Pillager Spawn Egg
+item.spawn_egg.entity.ha:soul_ghast.name=§3Soul Ghast§r Spawn Egg
+item.spawn_egg.entity.ha:lord_blaze.name=§pLord Blaze§r Spawn Egg
+item.spawn_egg.entity.ha:armorer_piglin.name=Armorer Piglin Brute Spawn Egg
 
 
 ## Items names
@@ -81,6 +99,37 @@ item.ha:invocation_skull.name=§7§lInvocation Skull§r
 
 item.ha:stone_skull=Stone Skull
 item.ha:stone_skull.name=Stone Skull
+
+item.ha:soul_fire=§bSoul Fire§r
+item.ha:soul_fire.name=§bSoul Fire§r
+
+item.ha:piglin_mace=§gPiglin Mace§r
+item.ha:piglin_mace.name=§gPiglin Mace§r
+
+item.ha:infernal_gem_blaze=§6§lInfernal Gem (Blaze)§r
+item.ha:infernal_gem_blaze.name=§6§lInfernal Gem (Blaze)§r
+
+item.ha:infernal_gem_piglin=§6§lInfernal Gem (Piglin)§r
+item.ha:infernal_gem_piglin.name=§6§lInfernal Gem (Piglin)§r
+
+item.ha:infernal_gem_magma=§6§lInfernal Gem (Magma)§r
+item.ha:infernal_gem_magma.name=§6§lInfernal Gem (Magma)§r
+
+item.ha:infernal_crown=§v§lInfernal Crown§r
+item.ha:infernal_crown.name=§v§lInfernal Crown§r
+
+item.ha:infernal_crown_empty=§vInfernal Crown Empty§r
+item.ha:infernal_crown_empty.name=§vInfernal Crown Empty§r
+
+item.ha:slime_pearl=Slime Pearl
+item.ha:slime_pearl.name=Slime Pearl
+
+item.ha:melted_slime=Melted Slime
+item.ha:melted_slime.name=Melted Slime
+
+
+## Item Catalog
+ha:itemGroup.name.nether_items=§4Nether's Stuff§r
 
 
 ## Block names
@@ -144,3 +193,4 @@ advacement.serius_dedication=Serious Dedication
 advacement.wax_off=Wax Off
 advacement.axolotl=The Cutest Predator
 advacement.all_frogs=With Our Powers Combined!
+advacement.infernal_crown=Conquering the Nether

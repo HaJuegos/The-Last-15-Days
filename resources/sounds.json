@@ -63,6 +63,104 @@
 					"key": null
 				},
 				"volume": 1.0
+			},
+			"ha:soul_ghast": {
+				"events": {
+					"ambient": "mob.ghast.moan",
+					"death": "mob.ghast.death",
+					"hurt": "mob.ghast.scream",
+					"shoot": {
+						"sound": "mob.ghast.fireball",
+						"volume": 0.70
+					}
+				},
+				"pitch": [ 0.2, 0.35 ],
+				"variants": {
+					"key": null
+				},
+				"volume": 5.0
+			},
+			"ha:lord_blaze": {
+				"events": {
+					"ambient": "mob.blaze.breathe",
+					"death": {
+						"sound": "mob.blaze.death",
+						"pitch": [ 0.80, 1.20 ]
+					},
+					"hurt": "mob.blaze.hit",
+					"shoot": "mob.blaze.shoot"
+				},
+				"pitch": [ 0.45, 0.55 ],
+				"variants": {
+					"key": null
+				},
+				"volume": 2.0
+			},
+			"ha:armorer_piglin": {
+				"events": {
+					"ambient": "mob.piglin_brute.ambient",
+					"angry": "mob.piglin_brute.angry",
+					"death": "mob.piglin_brute.death",
+					"hurt": "mob.piglin_brute.hurt",
+					"step": {
+						"sound": "mob.piglin_brute.step",
+						"volume": 0.350
+					}
+				},
+				"pitch": [ 0.80, 0.95 ],
+				"variants": {
+					"key": null
+				},
+				"volume": 1.0
+			},
+			"magma_cube": {
+				"__molang_version": 13,
+				"events": {
+					"ambient": "",
+					"attack": {
+						"pitch": [ 0.80, 1.20 ],
+						"sound": "mob.attack"
+					},
+					"death": "mob.magmacube.small",
+					"hurt": "mob.magmacube.small",
+					"squish.big": {
+						"pitch": [ 0.640, 0.960 ],
+						"sound": "mob.magmacube.big"
+					},
+					"squish.small": {
+						"pitch": [ 0.640, 0.960 ],
+						"sound": "mob.magmacube.small"
+					}
+				},
+				"pitch": [ 0.80, 1.20 ],
+				"variants": {
+					"key": "q.skin_id == 1 ? 'copter' : 'default'",
+					"map": {
+						"default": { },
+						"copter": {
+							"events": {
+								"ambient": "mob.magma_copter.fly"
+							},
+							"pitch": [ 0.80, 1.20 ],
+							"volume": 1.0
+						}
+					}
+				},
+				"volume": 1.0
+			},
+			"ha:socrates_npc": {
+				"events": {
+					"ambient": "mob.villager.idle",
+					"death": "mob.villager.death",
+					"haggle": "mob.villager.haggle",
+					"haggle.no": "mob.villager.no",
+					"haggle.yes": "mob.villager.yes"
+				},
+				"pitch": [ 0.80, 1.20 ],
+				"variants": {
+					"key": null
+				},
+				"volume": 1.0
 			}
 		}
 	}

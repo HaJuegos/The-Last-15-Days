@@ -109,10 +109,10 @@ class AdvancementManager extends TL15DBaseManager {
 
                     if (adv.allItemsRequired && Array.isArray(adv.items)) {
                         hasCompletedAdv = adv.items.every(singleItem =>
-                            customEventsManager.plyHasItems(ply, singleItem)
+                            customEventsManager.plyHasItems(ply, singleItem, true)
                         );
                     } else {
-                        hasCompletedAdv = customEventsManager.plyHasItems(ply, adv.items);
+                        hasCompletedAdv = customEventsManager.plyHasItems(ply, adv.items, true);
                     }
 
                     if (hasCompletedAdv) {

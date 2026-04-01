@@ -1,0 +1,109 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.26.0",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "ha:soul_fireball",
+            "runtime_identifier": "minecraft:fireball",
+            "spawn_category": "ambient",
+            "is_experimental": false,
+            "is_spawnable": false,
+            "is_summonable": true
+        },
+        "component_groups": {
+            "ha:explode": {
+                "minecraft:explode": {
+                    "causes_fire": true,
+                    "fire_affected_by_griefing": true,
+                    "fuse_lit": true,
+                    "power": 5,
+                    "destroy_affected_by_griefing": true,
+                    "fuse_length": 0
+                }
+            }
+        },
+        "components": {
+            "minecraft:projectile": {
+                "anchor": 2,
+                "gravity": 0.0,
+                "inertia": 1,
+                "liquid_inertia": 1,
+                "on_hit": {
+                    "definition_event": {
+                        "affect_projectile": true,
+                        "event_trigger": {
+                            "event": "minecraft:explode",
+                            "target": "self"
+                        }
+                    },
+                    "impact_damage": {
+                        "apply_knockback_to_blocking_targets": true,
+                        "damage": 6,
+                        "knockback": false,
+                        "semi_random_diff_damage": false
+                    }
+                },
+                "offset": [ 0, -1.5, 0 ],
+                "power": 1.6,
+                "reflect_on_hurt": true,
+                "uncertainty_base": 0,
+                "uncertainty_multiplier": 0,
+                "ignored_entities": [
+                    "boat",
+                    "chest_boat",
+                    "minecart",
+                    "illager",
+                    "ravager",
+                    "pillager",
+                    "ravager",
+                    "witch",
+                    "vex"
+                ]
+            },
+            "minecraft:health": {
+                "value": 1,
+                "max": 1,
+                "min": 1
+            },
+            "minecraft:damage_sensor": {
+                "triggers": [
+                    {
+                        "cause": "all",
+                        "deals_damage": "no"
+                    }
+                ]
+            },
+            "minecraft:collision_box": {
+                "height": 2.25,
+                "width": 1.5
+            },
+            "minecraft:conditional_bandwidth_optimization": {
+                "default_values": {
+                    "max_dropped_ticks": 7,
+                    "max_optimized_distance": 80.0,
+                    "use_motion_prediction_hints": true
+                }
+            },
+            "minecraft:cannot_be_attacked": { },
+            "minecraft:transient": { },
+            "minecraft:mob_effect_immunity": { },
+            "minecraft:dimension_bound": { },
+            "minecraft:physics": { },
+            "minecraft:pushable": {
+                "is_pushable": true,
+                "is_pushable_by_piston": true
+            }
+        },
+        "events": {
+            "minecraft:entity_spawned": { },
+            "minecraft:explode": {
+                "add": {
+                    "component_groups": [
+                        "ha:explode"
+                    ]
+                }
+            }
+        }
+    }
+}

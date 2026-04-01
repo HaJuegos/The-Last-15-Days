@@ -1,0 +1,827 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.26.0",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "ha:socrates_npc",
+            "spawn_category": "misc",
+            "is_experimental": false,
+            "is_spawnable": false,
+            "is_summonable": true
+        },
+        "component_groups": {
+            "ha:become_npc": {
+                "minecraft:npc": { }
+            },
+            "ha:angry": {
+                "minecraft:angry": {
+                    "broadcast_anger": true,
+                    "broadcast_range": 10,
+                    "calm_event": {
+                        "event": "minecraft:become_calm",
+                        "target": "self"
+                    },
+                    "broadcast_filters": {
+                        "subject": "other",
+                        "test": "is_leashed_to",
+                        "value": true
+                    },
+                    "broadcast_targets": [
+                        "llama",
+                        "trader_llama"
+                    ],
+                    "duration": 5
+                }
+            },
+            "ha:become_skeleton": {
+                "minecraft:transformation": {
+                    "into": "minecraft:skeleton<minecraft:entity_spawned>",
+                    "delay": {
+                        "value": 0.1
+                    },
+                    "drop_equipment": true,
+                    "drop_inventory": true,
+                    "keep_owner": true,
+                    "keep_level": true,
+                    "preserve_equipment": false
+                }
+            },
+            "despawning": {
+                "minecraft:type_family": {
+                    "family": [
+                        "socrates",
+                        "wandering_trader",
+                        "wandering_trader_despawning",
+                        "mob"
+                    ]
+                }
+            },
+            "ha:go_sleep": {
+                "minecraft:behavior.sleep": {
+                    "priority": 5,
+                    "goal_radius": 2.0,
+                    "speed_multiplier": 0.8,
+                    "sleep_collider_height": 0.3,
+                    "sleep_collider_width": 0.3,
+                    "sleep_y_offset": 0.6,
+                    "can_sleep_while_riding": true
+                }
+            }
+        },
+        "components": {
+            "minecraft:environment_sensor": {
+                "triggers": [
+                    {
+                        "filters": {
+                            "all_of": [
+                                {
+                                    "test": "is_daytime",
+                                    "value": false
+                                },
+                                {
+                                    "test": "is_sleeping",
+                                    "value": false
+                                }
+                            ]
+                        },
+                        "target": "self",
+                        "event": "ha:sleep"
+                    },
+                    {
+                        "filters": {
+                            "all_of": [
+                                {
+                                    "test": "is_daytime",
+                                    "value": true
+                                },
+                                {
+                                    "test": "is_sleeping",
+                                    "value": true
+                                }
+                            ]
+                        },
+                        "target": "self",
+                        "event": "ha:no_sleep"
+                    }
+                ]
+            },
+            "minecraft:dweller": {
+                "can_find_poi": true,
+                "dwelling_type": "village",
+                "can_migrate": true,
+                "dweller_role": "inhabitant",
+                "first_founding_reward": 5,
+                "update_interval_base": 60,
+                "update_interval_variant": 40
+            },
+            "minecraft:behavior.open_door": {
+                "close_door_after": true
+            },
+            "minecraft:annotation.open_door": { },
+            "minecraft:inventory": {
+                "container_type": "inventory",
+                "inventory_size": 70,
+                "private": false,
+                "can_be_siphoned_from": false,
+                "restrict_to_owner": true
+            },
+            "minecraft:equipment": {
+                "slot_drop_chance": [
+                    {
+                        "slot": "slot.weapon.mainhand",
+                        "drop_chance": -1
+                    }
+                ]
+            },
+            "minecraft:behavior.pickup_items": {
+                "can_pickup_any_item": true,
+                "pickup_based_on_chance": false,
+                "track_target": true,
+                "goal_radius": 2,
+                "priority": 4,
+                "max_dist": 20,
+                "speed_multiplier": 1.15
+            },
+            "minecraft:shareables": {
+                "items": [
+                    {
+                        "item": "minecraft:bread",
+                        "stored_in_inventory": true,
+                        "surplus_amount": 6,
+                        "want_amount": 3
+                    },
+                    {
+                        "item": "minecraft:carrot",
+                        "stored_in_inventory": true,
+                        "surplus_amount": 24,
+                        "want_amount": 60
+                    },
+                    {
+                        "item": "minecraft:potato",
+                        "stored_in_inventory": true,
+                        "surplus_amount": 24,
+                        "want_amount": 60
+                    },
+                    {
+                        "item": "minecraft:beetroot",
+                        "stored_in_inventory": true,
+                        "surplus_amount": 24,
+                        "want_amount": 60
+                    },
+                    {
+                        "item": "minecraft:wheat_seeds",
+                        "pickup_only": true,
+                        "stored_in_inventory": true,
+                        "surplus_amount": 64,
+                        "want_amount": 64
+                    },
+                    {
+                        "item": "minecraft:beetroot_seeds",
+                        "pickup_only": true,
+                        "stored_in_inventory": true,
+                        "surplus_amount": 64,
+                        "want_amount": 64
+                    },
+                    {
+                        "item": "minecraft:torchflower_seeds",
+                        "pickup_only": true,
+                        "stored_in_inventory": true,
+                        "surplus_amount": 64,
+                        "want_amount": 64
+                    },
+                    {
+                        "item": "minecraft:pitcher_pod",
+                        "pickup_only": true,
+                        "stored_in_inventory": true,
+                        "surplus_amount": 64,
+                        "want_amount": 64
+                    },
+                    {
+                        "item": "minecraft:bone_meal",
+                        "stored_in_inventory": true,
+                        "surplus_amount": 64,
+                        "want_amount": 64
+                    },
+                    {
+                        "craft_into": "minecraft:bread",
+                        "want_amount": 45,
+                        "item": "minecraft:wheat",
+                        "stored_in_inventory": true,
+                        "surplus_amount": 18
+                    },
+                    {
+                        "item": "minecraft:netherite_sword",
+                        "priority": 0,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:diamond_sword",
+                        "priority": 1,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:iron_sword",
+                        "priority": 2,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:golden_sword",
+                        "priority": 3,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:copper_sword",
+                        "priority": 4,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:stone_sword",
+                        "priority": 5,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:wooden_sword",
+                        "priority": 6,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:netherite_spear",
+                        "priority": 0,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:diamond_spear",
+                        "priority": 1,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:iron_spear",
+                        "priority": 2,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:golden_spear",
+                        "priority": 3,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:copper_spear",
+                        "priority": 4,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:stone_spear",
+                        "priority": 5,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:wooden_spear",
+                        "priority": 6,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:netherite_helmet",
+                        "priority": 0,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:diamond_helmet",
+                        "priority": 1,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:iron_helmet",
+                        "priority": 2,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:chainmail_helmet",
+                        "priority": 3,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:golden_helmet",
+                        "priority": 4,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:copper_helmet",
+                        "priority": 5,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:leather_helmet",
+                        "priority": 6,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:turtle_helmet",
+                        "priority": 7,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:skull:0",
+                        "priority": 8,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:skull:1",
+                        "priority": 8,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:carved_pumpkin",
+                        "priority": 8,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:netherite_chestplate",
+                        "priority": 0,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:diamond_chestplate",
+                        "priority": 1,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:iron_chestplate",
+                        "priority": 2,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:chainmail_chestplate",
+                        "priority": 3,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:golden_chestplate",
+                        "priority": 4,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:copper_chestplate",
+                        "priority": 5,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:leather_chestplate",
+                        "priority": 6,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:netherite_leggings",
+                        "priority": 0,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:diamond_leggings",
+                        "priority": 1,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:iron_leggings",
+                        "priority": 2,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:chainmail_leggings",
+                        "priority": 3,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:golden_leggings",
+                        "priority": 4,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:copper_leggings",
+                        "priority": 5,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:leather_leggings",
+                        "priority": 6,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:netherite_boots",
+                        "priority": 0,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:diamond_boots",
+                        "priority": 1,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:iron_boots",
+                        "priority": 2,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:chainmail_boots",
+                        "priority": 3,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:golden_boots",
+                        "priority": 4,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:copper_boots",
+                        "priority": 5,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:leather_boots",
+                        "priority": 6,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    }
+                ]
+            },
+            "minecraft:behavior.harvest_farm_block": {
+                "priority": 4,
+                "speed_multiplier": 0.8,
+                "search_range": 16,
+                "goal_radius": 1.5
+            },
+            "minecraft:behavior.share_items": {
+                "entity_types": [
+                    {
+                        "filters": {
+                            "subject": "other",
+                            "test": "is_family",
+                            "value": "player"
+                        }
+                    }
+                ],
+                "goal_radius": 2,
+                "priority": 10,
+                "max_dist": 3,
+                "speed_multiplier": 0.5
+            },
+            "minecraft:trade_table": {
+                "table": "trading/economy_trades/socrates_trades.json",
+                "display_name": "entity.ha:socrates_npc.name",
+                "new_screen": true
+            },
+            "minecraft:damage_sensor": {
+                "triggers": [
+                    {
+                        "on_damage": {
+                            "target": "self",
+                            "event": "minecraft:become_scared"
+                        },
+                        "cause": "all",
+                        "deals_damage": "yes"
+                    }
+                ]
+            },
+            "minecraft:on_death": {
+                "target": "self",
+                "event": "ha:time_traveler"
+            },
+            "minecraft:experience_reward": {
+                "on_death": "Math.Min(query.player_level * 7, 100)"
+            },
+            "minecraft:behavior.move_towards_home_restriction": {
+                "speed_multiplier": 0.6,
+                "priority": 6
+            },
+            "minecraft:behavior.float": {
+                "priority": 0
+            },
+            "minecraft:behavior.avoid_mob_type": {
+                "priority": 2,
+                "entity_types": [
+                    {
+                        "filters": {
+                            "any_of": [
+                                {
+                                    "test": "is_family",
+                                    "subject": "other",
+                                    "value": "zombie"
+                                },
+                                {
+                                    "test": "is_family",
+                                    "subject": "other",
+                                    "value": "zombie_villager"
+                                },
+                                {
+                                    "test": "is_family",
+                                    "subject": "other",
+                                    "value": "zombie_pigman"
+                                },
+                                {
+                                    "test": "is_family",
+                                    "subject": "other",
+                                    "value": "illager"
+                                },
+                                {
+                                    "test": "is_family",
+                                    "subject": "other",
+                                    "value": "vex"
+                                },
+                                {
+                                    "test": "is_family",
+                                    "subject": "other",
+                                    "value": "zoglin"
+                                }
+                            ]
+                        },
+                        "walk_speed_multiplier": 0.65,
+                        "sprint_speed_multiplier": 0.65
+                    }
+                ]
+            },
+            "minecraft:behavior.look_at_player": {
+                "priority": 8,
+                "look_time": {
+                    "min": 1,
+                    "max": 2
+                }
+            },
+            "minecraft:behavior.look_at_trading_player": {
+                "priority": 6
+            },
+            "minecraft:behavior.panic": {
+                "priority": 1,
+                "speed_multiplier": 0.75
+            },
+            "minecraft:behavior.random_look_around": {
+                "priority": 6
+            },
+            "minecraft:behavior.random_stroll": {
+                "priority": 7,
+                "speed_multiplier": 0.55
+            },
+            "minecraft:behavior.trade_interest": {
+                "priority": 3,
+                "carried_item_switch_time": 2,
+                "cooldown": 2,
+                "interest_time": 45,
+                "within_radius": 6,
+                "remove_item_time": 1
+            },
+            "minecraft:behavior.trade_with_player": {
+                "priority": 1,
+                "filters": {
+                    "all_of": [
+                        {
+                            "all_of": [
+                                {
+                                    "test": "in_water",
+                                    "value": false
+                                }
+                            ]
+                        },
+                        {
+                            "any_of": [
+                                {
+                                    "test": "on_ground",
+                                    "value": true
+                                },
+                                {
+                                    "test": "is_sleeping",
+                                    "value": true
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            "minecraft:breathable": {
+                "suffocate_time": 0,
+                "total_supply": 15
+            },
+            "minecraft:can_climb": { },
+            "minecraft:collision_box": {
+                "height": 1.9,
+                "width": 0.6
+            },
+            "minecraft:conditional_bandwidth_optimization": { },
+            "minecraft:despawn": {
+                "filters": {
+                    "all_of": [
+                        {
+                            "any_of": [
+                                {
+                                    "subject": "self",
+                                    "test": "is_family",
+                                    "value": "wandering_trader_despawning"
+                                },
+                                {
+                                    "subject": "self",
+                                    "test": "has_trade_supply",
+                                    "value": false
+                                }
+                            ]
+                        },
+                        {
+                            "operator": ">",
+                            "test": "distance_to_nearest_player",
+                            "value": 24
+                        }
+                    ]
+                },
+                "remove_child_entities": true
+            },
+            "minecraft:health": {
+                "max": 20,
+                "value": 20
+            },
+            "minecraft:home": {
+                "restriction_radius": 16,
+                "restriction_type": "random_movement"
+            },
+            "minecraft:hurt_on_condition": {
+                "damage_conditions": [
+                    {
+                        "cause": "lava",
+                        "damage_per_tick": 4,
+                        "filters": {
+                            "operator": "==",
+                            "test": "in_lava",
+                            "subject": "self",
+                            "value": true
+                        }
+                    }
+                ]
+            },
+            "minecraft:is_hidden_when_invisible": { },
+            "minecraft:jump.static": { },
+            "minecraft:movement": {
+                "value": 0.5
+            },
+            "minecraft:movement.basic": { },
+            "minecraft:nameable": {
+                "allow_name_tag_renaming": false,
+                "always_show": true
+            },
+            "minecraft:navigation.walk": {
+                "avoid_water": true,
+                "using_door_annotation": true,
+                "can_open_doors": true,
+                "can_pass_doors": true,
+                "can_path_over_water": true
+            },
+            "minecraft:physics": { },
+            "minecraft:pushable": {
+                "is_pushable": true,
+                "is_pushable_by_piston": true
+            },
+            "minecraft:spawn_entity": {
+                "entities": [
+                    {
+                        "max_wait_time": 0,
+                        "min_wait_time": 0,
+                        "num_to_spawn": 2,
+                        "single_use": true,
+                        "should_leash": true,
+                        "spawn_entity": "trader_llama",
+                        "spawn_event": "minecraft:from_wandering_trader"
+                    }
+                ]
+            },
+            "minecraft:timer": {
+                "looping": false,
+                "random_time_choices": [
+                    {
+                        "value": 2400,
+                        "weight": 50
+                    },
+                    {
+                        "value": 3600,
+                        "weight": 50
+                    }
+                ],
+                "time_down_event": {
+                    "event": "minecraft:start_despawn",
+                    "target": "self"
+                }
+            },
+            "minecraft:type_family": {
+                "family": [
+                    "socrates",
+                    "wandering_trader",
+                    "mob"
+                ]
+            }
+        },
+        "events": {
+            "minecraft:entity_spawned": { },
+            "ha:set_npc_mode": {
+                "add": {
+                    "component_groups": [
+                        "ha:become_npc"
+                    ]
+                }
+            },
+            "ha:remove_npc_mode": {
+                "remove": {
+                    "component_groups": [
+                        "ha:become_npc"
+                    ]
+                }
+            },
+            "ha:sleep": {
+                "add": {
+                    "component_groups": [
+                        "ha:go_sleep"
+                    ]
+                }
+            },
+            "ha:no_sleep": {
+                "remove": {
+                    "component_groups": [
+                        "ha:go_sleep"
+                    ]
+                }
+            },
+            "minecraft:become_calm": {
+                "remove": {
+                    "component_groups": [
+                        "ha:angry"
+                    ]
+                }
+            },
+            "minecraft:become_scared": {
+                "add": {
+                    "component_groups": [
+                        "ha:angry"
+                    ]
+                }
+            },
+            "minecraft:scheduled": {
+                "add": {
+                    "component_groups": [
+                        "managed"
+                    ]
+                }
+            },
+            "minecraft:start_despawn": {
+                "add": {
+                    "component_groups": [
+                        "despawning"
+                    ]
+                }
+            },
+            "ha:time_traveler": {
+                "add": {
+                    "component_groups": [
+                        "ha:become_skeleton"
+                    ]
+                }
+            }
+        }
+    }
+}

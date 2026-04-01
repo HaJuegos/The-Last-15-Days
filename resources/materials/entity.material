@@ -1,13 +1,15 @@
 {
     "materials": {
         "version": "1.0.0",
+        "fox:entity_alphatest": { },
+
+        // Custom materials
         "player_ghost:entity_alphatest": {
             "+states": [
                 "Blending",
                 "DisableCulling"
             ]
         },
-        "fox:entity_alphatest": { },
         "mask_fox:entity_nocull": {
             "+defines": [
                 "USE_COLOR_MASK"
@@ -18,6 +20,8 @@
             "depthFunc": "Equal",
             "blendSrc": "SourceAlpha",
             "blendDst": "OneMinusSrcAlpha"
-        }
+        },
+        "soul_ghast_body:entity_alphatest": { },
+        "soul_ghast_brillant:entity_emissive_alpha": { }
     }
 }

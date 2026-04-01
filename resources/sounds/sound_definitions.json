@@ -45,6 +45,7 @@
                 }
             ]
         },
+
         "ui.advancements.normal": {
             "category": "ui",
             "min_distance": null,
@@ -129,8 +130,38 @@
                 }
             ]
         },
+        "ui.get_debuff.wither": {
+            "category": "ui",
+            "min_distance": null,
+            "max_distance": null,
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": false,
+                    "name": "sounds/mob/king_wither/get_debuff",
+                    "volume": 1,
+                    "stream": true
+                }
+            ]
+        },
+        "ui.slime_pearl.hit": {
+            "__use_legacy_max_distance": "true",
+            "category": "player",
+            "min_distance": null,
+            "max_distance": null,
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": false,
+                    "name": "sounds/ui/slimepearl",
+                    "volume": 2,
+                    "stream": true
+                }
+            ]
+        },
+
         "mob.player_ghost.death_sound": {
-            "__use_legacy_max_distance": true,
+            "__use_legacy_max_distance": "true",
             "category": "neutral",
             "min_distance": null,
             "max_distance": null,
@@ -143,6 +174,82 @@
                 }
             ]
         },
+        "mob.soul_ghast.charge_and_shot": {
+            "__use_legacy_max_distance": "true",
+            "category": "hostile",
+            "min_distance": null,
+            "max_distance": 50,
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": true,
+                    "name": "sounds/mob/soul_ghast/laser_start_change",
+                    "stream": false,
+                    "volume": 0.95,
+                    "pitch": 1.0
+                }
+            ]
+        },
+        "mob.lord_piglin.start_gem": {
+            "__use_legacy_max_distance": "true",
+            "category": "hostile",
+            "min_distance": null,
+            "max_distance": null,
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": true,
+                    "name": "sounds/mob/piglin/start_gem",
+                    "stream": false,
+                    "volume": 2
+                }
+            ]
+        },
+        "mob.piglin.get_armor": {
+            "__use_legacy_max_distance": "true",
+            "category": "hostile",
+            "min_distance": null,
+            "max_distance": null,
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": true,
+                    "name": "sounds/mob/piglin/get_armor",
+                    "stream": false,
+                    "volume": 0.65
+                }
+            ]
+        },
+        "mob.magma_copter.fly": {
+            "__use_legacy_max_distance": "true",
+            "min_distance": null,
+            "max_distance": null,
+            "category": "hostile",
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": true,
+                    "name": "sounds/mob/magma_copter/copter_start",
+                    "stream": false,
+                    "volume": 1.35
+                }
+            ]
+        },
+        "mob.king_wither.start_spirit": {
+            "__use_legacy_max_distance": "true",
+            "min_distance": null,
+            "max_distance": 65,
+            "category": "hostile",
+            "sounds": [
+                {
+                    "is3D": true,
+                    "name": "sounds/mob/king_wither/start_spirit",
+                    "volume": 1.5,
+                    "stream": false
+                }
+            ]
+        },
+
         "ambient.weather.rain": {
             "sounds": [
                 {

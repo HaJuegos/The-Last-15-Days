@@ -1,0 +1,82 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "ha:socrates_npc",
+            "materials": {
+                "default": "entity_alphatest"
+            },
+			"geometry": {
+                "default": "geometry.humanoid.custom"
+            },
+            "textures": {
+                "default": "textures/entity/socrates_skin"
+            },
+            "scripts": {
+                "pre_animation": [
+                    "v.tcos0 = Math.cos(query.modified_distance_moved * 38.17) * query.modified_move_speed / v.gliding_speed_value * 57.3;"
+                ],
+                "variables": {
+                    "variable.item_use_normalized": "public"
+                },
+                "animate": [
+                    {
+                        "look_at_target_controller": "!q.is_sleeping"
+                    },
+                    {
+                        "move_controller": "!q.is_sleeping"
+                    },
+                    {
+                        "riding_controller": "!q.is_sleeping"
+                    },
+                    "holding_controller",
+                    "attack_controller",
+                    {
+                        "sneaking_controller": "!q.is_sleeping"
+                    },
+                    "bob_controller",
+                    "use_item_progress_controller",
+                    {
+                        "swimming_controller": "!q.is_sleeping"
+                    },
+                    {
+                        "sleeping": "q.is_sleeping"
+                    }
+                ],
+                "should_update_effects_offscreen": "1.0",
+                "scale": "1.0"
+            },
+            "animations": {
+                "look_at_target_default": "animation.humanoid.look_at_target.default",
+                "look_at_target_gliding": "animation.humanoid.look_at_target.gliding",
+                "look_at_target_swimming": "animation.humanoid.look_at_target.swimming",
+                "move": "animation.humanoid.move",
+                "riding.arms": "animation.humanoid.riding.arms",
+                "riding.legs": "animation.humanoid.riding.legs",
+                "holding": "animation.humanoid.holding",
+                "attack.rotations": "animation.humanoid.attack.rotations",
+                "sneaking": "animation.humanoid.sneaking",
+                "bob": "animation.humanoid.bob",
+                "use_item_progress": "animation.humanoid.use_item_progress",
+                "swimming": "animation.zombie.swimming",
+                "look_at_target_controller": "controller.animation.humanoid.look_at_target",
+                "move_controller": "controller.animation.humanoid.move",
+                "riding.body": "animation.humanoid.riding.body",
+                "riding_controller": "controller.animation.humanoid.riding",
+                "holding_controller": "controller.animation.humanoid.holding",
+                "attack_controller": "controller.animation.humanoid.attack",
+                "sneaking_controller": "controller.animation.humanoid.sneaking",
+                "bob_controller": "controller.animation.humanoid.bob",
+                "use_item_progress_controller": "controller.animation.humanoid.use_item_progress",
+                "swimming_controller": "controller.animation.zombie.swimming",
+                "sleeping": "animation.player.sleeping"
+            },
+            "render_controllers": [
+                "controller.render.default"
+            ],
+            "enable_attachables": true
+        }
+    }
+}

@@ -1,0 +1,42 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "ha:lord_blaze",
+            "geometry": {
+                "default": "geometry.lord_blaze"
+            },
+            "materials": {
+                "body": "blaze_body",
+                "head": "blaze_head"
+            },
+            "textures": {
+                "default": "textures/entity/lord_blaze/lord_blaze"
+            },
+            "scripts": {
+                "animate": [
+                    "controller_flame",
+                    "controller_move"
+                ]
+            },
+            "animations": {
+                "controller_move": "controller.animation.blaze.move",
+                "controller_flame": "controller.animation.blaze.flame",
+
+                "look_at_target": "animation.common.look_at_target",
+                "move": "animation.blaze.move"
+            },
+            "particle_effects": {
+                "charged_flames": "minecraft:mobflame_emitter"
+            },
+            "render_controllers": [
+                "controller.render.lord_blaze"
+            ],
+            "spawn_egg": {
+                "texture": "spawn_egg_blaze"
+            }
+        }
+    }
+}

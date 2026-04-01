@@ -1,0 +1,189 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.10.0",
+    "render_controllers": {
+        "controller.render.wither_boss": {
+            "arrays": {
+                "textures": {
+                    "Array.wither_state": [
+                        "Texture.invulnerable",
+                        "Texture.default",
+                        "Texture.king"
+                    ]
+                },
+                "geometries": {
+                    "Array.wither_geos": [
+                        "Geometry.default",
+                        "Geometry.king"
+                    ]
+                }
+            },
+            "geometry": "Array.wither_geos[q.skin_id]",
+            "materials": [
+                { "*": "Material.default" }
+            ],
+            "textures": [
+                "Array.wither_state[query.skin_id == 1 ? (variable.display_normal_skin * 2) : variable.display_normal_skin]"
+            ],
+            "overlay_color": {
+                "r": "variable.is_invulnerable ? 1.0 : (query.variant > 0 ? (query.variant == 2 ? 0.0 : 1.0) : this)",
+                "g": "variable.is_invulnerable ? 1.0 : (query.variant > 0 ? (query.variant == 3 ? 0.5 : (query.variant == 4 ? 1.0 : 0.0)) : this)",
+                "b": "variable.is_invulnerable ? 1.0 : (query.variant > 0 ? (query.variant == 2 ? 1.0 : 0.0) : this)",
+                "a": "variable.is_invulnerable ? query.overlay_alpha : (query.variant > 0 ? (math.cos(query.life_time * 90) * 0.25 + 0.4) : this)"
+            }
+        },
+        "controller.render.king_wither.spirit_red": {
+            "arrays": {
+                "materials": {
+                    "Array.materials": [
+                        "Material.spirit_normal",
+                        "Material.spirit_trans"
+                    ]
+                },
+                "textures": {
+                    "Array.skins": [
+                        "Texture.spirit_red",
+                        "Texture.spirit_red_trans"
+                    ]
+                }
+            },
+            "geometry": "Geometry.spirit_red",
+            "materials": [
+                {
+                    "*": "Array.materials[q.variant == 1 ? 0 : q.variant == 0 ? 0 : 1]"
+                }
+            ],
+            "textures": [
+                "Array.skins[q.variant == 1 ? 0 : q.variant == 0 ? 0 : 1]"
+            ],
+            "is_hurt_color": {
+                "r": 0,
+                "b": 0,
+                "g": 0,
+                "a": 0
+            },
+            "on_fire_color": {
+                "r": 0,
+                "b": 0,
+                "g": 0,
+                "a": 0
+            },
+            "ignore_lighting": true
+        },
+        "controller.render.king_wither.spirit_blue": {
+            "arrays": {
+                "materials": {
+                    "Array.materials": [
+                        "Material.spirit_normal",
+                        "Material.spirit_trans"
+                    ]
+                },
+                "textures": {
+                    "Array.skins": [
+                        "Texture.spirit_blue",
+                        "Texture.spirit_blue_trans"
+                    ]
+                }
+            },
+            "geometry": "Geometry.spirit_blue",
+            "materials": [
+                {
+                    "*": "Array.materials[q.variant == 2 ? 0 : q.variant == 0 ? 0 : 1]"
+                }
+            ],
+            "textures": [
+                "Array.skins[q.variant == 2 ? 0 : q.variant == 0 ? 0 : 1]"
+            ],
+            "is_hurt_color": {
+                "r": 0,
+                "b": 0,
+                "g": 0,
+                "a": 0
+            },
+            "on_fire_color": {
+                "r": 0,
+                "b": 0,
+                "g": 0,
+                "a": 0
+            },
+            "ignore_lighting": true
+        },
+        "controller.render.king_wither.spirit_yellow": {
+            "arrays": {
+                "materials": {
+                    "Array.materials": [
+                        "Material.spirit_normal",
+                        "Material.spirit_trans"
+                    ]
+                },
+                "textures": {
+                    "Array.skins": [
+                        "Texture.spirit_yellow",
+                        "Texture.spirit_yellow_trans"
+                    ]
+                }
+            },
+            "geometry": "Geometry.spirit_yellow",
+            "materials": [
+                {
+                    "*": "Array.materials[q.variant == 4 ? 0 : q.variant == 0 ? 0 : 1]"
+                }
+            ],
+            "textures": [
+                "Array.skins[q.variant == 4 ? 0 : q.variant == 0 ? 0 : 1]"
+            ],
+            "is_hurt_color": {
+                "r": 0,
+                "b": 0,
+                "g": 0,
+                "a": 0
+            },
+            "on_fire_color": {
+                "r": 0,
+                "b": 0,
+                "g": 0,
+                "a": 0
+            },
+            "ignore_lighting": true
+        },
+        "controller.render.king_wither.spirit_orange": {
+            "arrays": {
+                "materials": {
+                    "Array.materials": [
+                        "Material.spirit_normal",
+                        "Material.spirit_trans"
+                    ]
+                },
+                "textures": {
+                    "Array.skins": [
+                        "Texture.spirit_orange",
+                        "Texture.spirit_orange_trans"
+                    ]
+                }
+            },
+            "geometry": "Geometry.spirit_orange",
+            "materials": [
+                {
+                    "*": "Array.materials[q.variant == 3 ? 0 : q.variant == 0 ? 0 : 1]"
+                }
+            ],
+            "textures": [
+                "Array.skins[q.variant == 3 ? 0 : q.variant == 0 ? 0 : 1]"
+            ],
+            "is_hurt_color": {
+                "r": 0,
+                "b": 0,
+                "g": 0,
+                "a": 0
+            },
+            "on_fire_color": {
+                "r": 0,
+                "b": 0,
+                "g": 0,
+                "a": 0
+            },
+            "ignore_lighting": true
+        }
+    }
+}
