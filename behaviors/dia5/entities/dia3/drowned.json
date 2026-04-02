@@ -211,6 +211,12 @@
                 "singular_pickup": true,
                 "items": [
                     {
+                        "item": "ha:piglin_mace",
+                        "want_amount": 1,
+                        "surplus_amount": 1,
+                        "priority": 0
+                    },
+                    {
                         "item": "minecraft:trident",
                         "want_amount": 1,
                         "surplus_amount": 1,

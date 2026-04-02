@@ -715,7 +715,9 @@
                 "items": [
                     {
                         "item": "ha:piglin_mace",
-                        "priority": 1
+                        "want_amount": 1,
+                        "surplus_amount": 1,
+                        "priority": 0
                     },
                     {
                         "item": "minecraft:golden_sword",

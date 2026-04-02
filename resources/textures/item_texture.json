@@ -69,6 +69,9 @@
         },
         "slime_pearl": {
             "textures": "textures/items/custom/viscous_pearl"
+        },
+        "hoglin_fang": {
+            "textures": "textures/items/custom/hoglin_tusk"
         }
     }
 }

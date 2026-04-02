@@ -127,6 +127,9 @@ item.ha:slime_pearl.name=Perla Viscosa
 item.ha:melted_slime=Slime Derretido
 item.ha:melted_slime.name=Slime Derretido
 
+item.ha:hoglin_fang=§n§lColmillo de Hoglin§r
+item.ha:hoglin_fang.name=§n§lColmillo de Hoglin§r
+
 
 ## Item Catalog
 ha:itemGroup.name.nether_items=§4Cosas del Nether§r

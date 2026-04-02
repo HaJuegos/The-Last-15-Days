@@ -127,6 +127,9 @@ item.ha:slime_pearl.name=Slime Pearl
 item.ha:melted_slime=Melted Slime
 item.ha:melted_slime.name=Melted Slime
 
+item.ha:hoglin_fang=§n§lHoglin's Fang§r
+item.ha:hoglin_fang.name=§n§lHoglin's Fang§r
+
 
 ## Item Catalog
 ha:itemGroup.name.nether_items=§4Nether's Stuff§r
