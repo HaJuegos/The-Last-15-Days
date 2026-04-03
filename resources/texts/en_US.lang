@@ -85,6 +85,9 @@ item.spawn_egg.entity.ha:armorer_piglin.name=Armorer Piglin Brute Spawn Egg
 
 
 ## Items names
+item.ha:surprise_bundle=Surprise Bundle
+item.ha:surprise_bundle.name=Surprise Bundle
+
 item.ha:dynamite_off_item=Deactivated Throwing Dynamite
 item.ha:dynamite_off_item.name=Deactivated Throwing Dynamite
 
@@ -197,3 +200,4 @@ advacement.wax_off=Wax Off
 advacement.axolotl=The Cutest Predator
 advacement.all_frogs=With Our Powers Combined!
 advacement.infernal_crown=Conquering the Nether
+advacement.hoglin_tusk=The Alpha Predator

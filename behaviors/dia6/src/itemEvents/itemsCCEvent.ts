@@ -17,8 +17,39 @@ class ItemCustomComponentsManager extends TL15DBaseManager {
     constructor () {
         super();
 
+        this.surpriseBundle();
         this.ironAppleEvents();
     }
+
+    /**
+    * Metodo principal que controla los eventos principales de los componentes custom del surpriseBundle.
+    * @author HaJuegos - 23-03-2026
+    * @private
+    */
+    private surpriseBundle(): void {
+        const bundleComponent: mc.ItemCustomComponent = {
+            onUse: (args) => {
+                const sourcePly = args.source;
+                const item = args.itemStack;
+
+                if (item) {
+                    sourcePly.playSound(`armor.equip_generic`);
+                    sourcePly.runCommand(`structure load ha:books ~~1~`);
+
+                    worldToolsSimplified.setRun(() => {
+                        const bundle = new mc.ItemStack('minecraft:bundle');
+                        const inv = sourcePly.getComponent(mc.EntityComponentTypes.Inventory)?.container as mc.Container;
+                        const slot = sourcePly.selectedSlotIndex;
+
+                        inv.setItem(slot, undefined);
+                        inv.addItem(bundle);
+                    });
+                }
+            }
+        };
+
+        beforeEventsSimplified.createItemComponent('ha:surprise_bundle_events', bundleComponent);
+    };
 
     /**
      * Metodo principal que controla los eventos principales de los componentes custom de la iron apple.

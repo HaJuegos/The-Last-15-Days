@@ -85,6 +85,9 @@ item.spawn_egg.entity.ha:armorer_piglin.name=Generador de Piglin Bruto Armado
 
 
 ## Items names
+item.ha:surprise_bundle=Saco Sorpresa
+item.ha:surprise_bundle.name=Saco Sorpresa
+
 item.ha:dynamite_off_item=Dinamita Arrojadiza Apagada
 item.ha:dynamite_off_item.name=Dinamita Arrojadiza Apagada
 
@@ -197,3 +200,4 @@ advacement.wax_off=Pulir cera
 advacement.axolotl=El depredador más adorable
 advacement.all_frogs=¡Uniendo nuestras fuerzas!
 advacement.infernal_crown=Domando al Nether
+advacement.hoglin_tusk=El Depredador Alfa

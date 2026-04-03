@@ -249,6 +249,20 @@
                 }
             ]
         },
+        "mob.start_exploding.sound": {
+            "__use_legacy_max_distance": "true",
+            "min_distance": null,
+            "max_distance": null,
+            "category": "hostile",
+            "sounds": [
+                {
+                    "is3D": true,
+                    "name": "sounds/mob/start_explode",
+                    "volume": 3,
+                    "stream": false
+                }
+            ]
+        },
 
         "ambient.weather.rain": {
             "sounds": [

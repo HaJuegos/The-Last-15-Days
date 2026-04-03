@@ -41,37 +41,48 @@
         },
         "infernal_crown": {
             "textures": [
-                "textures/items/custom/infernal_crown_full"
+                "textures/items/custom/nether_items/infernal_crown_full"
             ]
         },
         "infernal_crown_off": {
             "textures": [
-                "textures/items/custom/infernal_crown_empty"
+                "textures/items/custom/nether_items/infernal_crown_empty"
             ]
         },
         "infernal_gem_blaze": {
             "textures": [
-                "textures/items/custom/infernal_gems/blaze"
+                "textures/items/custom/nether_items/blaze"
             ]
         },
         "infernal_gem_piglin": {
             "textures": [
-                "textures/items/custom/infernal_gems/piglin"
+                "textures/items/custom/nether_items/piglin"
             ]
         },
         "infernal_gem_magma": {
             "textures": [
-                "textures/items/custom/infernal_gems/magma"
+                "textures/items/custom/nether_items/magma"
             ]
         },
         "melted_slime": {
-            "textures": "textures/items/custom/melted_slime"
+            "textures": [
+                "textures/items/custom/melted_slime"
+            ]
         },
         "slime_pearl": {
-            "textures": "textures/items/custom/viscous_pearl"
+            "textures": [
+                "textures/items/custom/viscous_pearl"
+            ]
         },
         "hoglin_fang": {
-            "textures": "textures/items/custom/hoglin_tusk"
+            "textures": [
+                "textures/items/custom/hoglin_tusk"
+            ]
+        },
+        "surprise_bundle": {
+            "textures": [
+                "textures/items/custom/surprise_bundle"
+            ]
         }
     }
 }

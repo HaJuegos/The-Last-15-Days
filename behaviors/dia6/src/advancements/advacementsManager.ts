@@ -71,7 +71,8 @@ class AdvancementManager extends TL15DBaseManager {
         { textAdv: 'advacement.wax_off', tagAdv: 'advWax', items: [], isRare: false, isAction: true }, // 49
         { textAdv: 'advacement.axolotl', tagAdv: 'advAxolotl', items: vanilla.MinecraftItemTypes.AxolotlBucket, isRare: false },
         { textAdv: 'advacement.all_frogs', tagAdv: 'advAllFrogs', items: [vanilla.MinecraftItemTypes.OchreFroglight, vanilla.MinecraftItemTypes.VerdantFroglight, vanilla.MinecraftItemTypes.PearlescentFroglight], isRare: true, allItemsRequired: true },
-        { textAdv: 'advacement.infernal_crown', tagAdv: 'advInfernalCrown', items: 'ha:infernal_crown', isRare: true, allItemsRequired: true }
+        { textAdv: 'advacement.infernal_crown', tagAdv: 'advInfernalCrown', items: 'ha:infernal_crown', isRare: true, allItemsRequired: true },
+        { textAdv: 'advacement.hoglin_tusk', tagAdv: 'advHoglinTusk', items: 'ha:hoglin_fang', isRare: true, allItemsRequired: true },
     ];
 
     /**

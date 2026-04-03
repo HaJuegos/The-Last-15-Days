@@ -11,27 +11,6 @@ import { TL15DBaseManager } from "../base";
  */
 class PlyEventsManager extends TL15DBaseManager {
     /**
-     * Los rangos personalizables para usuarios que compraron un Ko-Fi en mi pagina :3
-     * @type {({ namePly: string | string[]; rank: string; colorCode: string; }[])}
-     * @author HaJuegos - 19-03-2026
-     * @private
-     */
-    private customRanks: { namePly: string | string[]; rank: string; colorCode: string; }[] = [
-        { namePly: ['Ha Juegos', 'Convex!'], rank: 'DEV', colorCode: '§l§g' },
-        { namePly: 'XChitoX3083', rank: 'Diresito Lover', colorCode: '§c' },
-        { namePly: 'Dyaerl', rank: 'DaoLover', colorCode: '§a' },
-        { namePly: 'Mattols7886', rank: 'Rey grasoso', colorCode: '§e' },
-        { namePly: 'taracubayano', rank: 'The Last Survivor', colorCode: '§b' },
-        { namePly: 'Stazku', rank: 'MvpBtw', colorCode: '§e' },
-        { namePly: 'MetWee', rank: 'FanDeGeoKiller', colorCode: '§d' },
-        { namePly: 'El Dahp', rank: 'Zzz', colorCode: '§l§a' },
-        { namePly: 'SrLoboMCTuber', rank: 'Fan de Diresito uwu ', colorCode: '§l§d' },
-        { namePly: 'ItsAncientMC', rank: 'Main-Astra', colorCode: '§l§u' },
-        { namePly: 'Diresito', rank: 'nyaowodirepene', colorCode: '§l§a' },
-        { namePly: 'E S D I 1 0', rank: 'Bendies2', colorCode: '§a' },
-    ];
-
-    /**
      * Eventos iniciales de la clase cuando es llamada o inicializada.
      * @constructor
      */
@@ -62,6 +41,8 @@ class PlyEventsManager extends TL15DBaseManager {
     private plySpawnEvents(): void {
         afterEventsSimplified.onPlayerSpawns((args) => {
             const ply = args.player;
+
+            this.setCustomRank(ply);
 
             if (ply.hasTag('banned')) {
                 ply.runCommand(`kick "${ply.name}"`);
@@ -258,10 +239,19 @@ class PlyEventsManager extends TL15DBaseManager {
                     return data.namePly == name;
                 });
 
-                const displayRank = rankData ? `${rankData.colorCode}${rankData.rank}` : `§cSobreviviente`;
+                const displayRank = rankData ? `${rankData.colorCode}${rankData.rank}` : `§4§lSobreviviente`;
 
                 worldToolsSimplified.sendMessageGlobal(`§7§l[§r${displayRank}§7§l]§r ${name} §7§l>>§r ${msg}`);
             });
+        });
+
+        afterEventsSimplified.onHealthEntityChange((args) => {
+            const entity = args.entity;
+            const newValue = args.newValue;
+
+            if (entity instanceof mc.Player) {
+                this.setCustomRank(entity, newValue, undefined, true);
+            }
         });
     }
 

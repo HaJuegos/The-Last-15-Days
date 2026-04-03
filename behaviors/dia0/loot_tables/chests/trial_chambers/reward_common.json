@@ -120,6 +120,11 @@
                             }
                         }
                     ]
+                },
+                {
+                    "type": "item",
+                    "name": "ha:surprise_bundle",
+                    "weight": 1
                 }
             ]
         }
