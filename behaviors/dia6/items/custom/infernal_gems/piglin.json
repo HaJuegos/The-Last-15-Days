@@ -11,6 +11,9 @@
             }
         },
         "components": {
+            "minecraft:display_name": {
+                "value": "item.ha:infernal_gem_piglin"
+            },
             "minecraft:allow_off_hand": false,
             "minecraft:can_destroy_in_creative": true,
             "minecraft:fire_resistant": {

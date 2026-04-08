@@ -10,6 +10,9 @@
             }
         },
         "components": {
+            "minecraft:display_name": {
+                "value": "item.ha:dynamite_off_item"
+            },
             "minecraft:allow_off_hand": false,
             "minecraft:block_placer": {
                 "block": "ha:dynamite_block"

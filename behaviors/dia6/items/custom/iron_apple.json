@@ -11,6 +11,9 @@
             }
         },
         "components": {
+            "minecraft:display_name": {
+                "value": "item.ha:iron_apple"
+            },
             "minecraft:allow_off_hand": false,
             "minecraft:can_destroy_in_creative": true,
             "ha:iron_apple_events": { },

@@ -10,6 +10,9 @@
             }
         },
         "components": {
+            "minecraft:display_name": {
+                "value": "item.ha:melted_slime"
+            },
             "minecraft:allow_off_hand": false,
             "minecraft:can_destroy_in_creative": true,
             "minecraft:icon": "melted_slime",

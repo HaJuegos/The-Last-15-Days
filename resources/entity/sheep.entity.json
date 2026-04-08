@@ -1,0 +1,66 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "minecraft:sheep",
+            "min_engine_version": "1.8.0",
+            "materials": {
+                "default": "sheep",
+
+                "iron": "entity_alphatest"
+            },
+            "textures": {
+                "default": "textures/entity/sheep/sheep",
+                "baby": "textures/entity/sheep/sheep_baby",
+
+                "iron": "textures/entity/iron_polly/iron_polly"
+            },
+            "geometry": {
+                "default": "geometry.sheep.v1.8",
+                "sheared": "geometry.sheep.sheared.v1.8",
+                "baby": "geometry.sheep.baby",
+
+                "iron": "geometry.iron_polly"
+            },
+            "animations": {
+                "setup": "animation.sheep.setup.v2",
+                "grazing": "animation.sheep.grazing.v2",
+                "walk": "animation.quadruped.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "baby_transform": "animation.sheep.baby_transform",
+                "move": "controller.animation.sheep.move",
+
+                "root_controller_iron": "controller.animation.iron_polly.root",
+                "start_flying": "animation.iron_polly.start_flying",
+                "flying": "animation.iron_polly.flying"
+            },
+            "scripts": {
+                "pre_animation": [
+					"v.fly_blend = v.fly_blend ?? 0.0;",
+					"v.fly_blend = math.lerp(v.fly_blend, q.is_moving, q.delta_time * 4.0);"
+                ],
+                "animate": [
+                    {
+                        "setup": "q.skin_id != 1"
+                    },
+                    "look_at_target",
+                    {
+                        "move": "q.skin_id != 1"
+                    },
+                    {
+                        "root_controller_iron": "q.skin_id == 1"
+                    }
+                ],
+                "scale": "query.is_baby ? 2.0 : 1.0"
+            },
+            "render_controllers": [
+                "controller.render.sheep.v2"
+            ],
+            "spawn_egg": {
+                "texture": "spawn_egg_sheep"
+            }
+        }
+    }
+}

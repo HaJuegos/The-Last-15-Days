@@ -11,6 +11,9 @@
             }
         },
         "components": {
+            "minecraft:display_name": {
+                "value": "item.ha:soul_fire"
+            },
             "minecraft:allow_off_hand": false,
             "minecraft:can_destroy_in_creative": true,
             "minecraft:fire_resistant": {

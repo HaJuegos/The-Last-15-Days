@@ -242,6 +242,7 @@
             "category": "hostile",
             "sounds": [
                 {
+                    "load_on_low_memory": true,
                     "is3D": true,
                     "name": "sounds/mob/king_wither/start_spirit",
                     "volume": 1.5,
@@ -256,9 +257,25 @@
             "category": "hostile",
             "sounds": [
                 {
+                    "load_on_low_memory": true,
                     "is3D": true,
                     "name": "sounds/mob/start_explode",
                     "volume": 3,
+                    "stream": false
+                }
+            ]
+        },
+        "mob.betray_tamed.start": {
+            "__use_legacy_max_distance": "true",
+            "min_distance": null,
+            "max_distance": 30,
+            "category": "hostile",
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": true,
+                    "name": "sounds/mob/betray_tamed",
+                    "volume": 1.55,
                     "stream": false
                 }
             ]

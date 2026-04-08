@@ -10,6 +10,9 @@
             }
         },
         "components": {
+            "minecraft:display_name": {
+                "value": "item.ha:invocation_skull"
+            },
             "minecraft:allow_off_hand": false,
             "minecraft:can_destroy_in_creative": true,
             "minecraft:glint": true,

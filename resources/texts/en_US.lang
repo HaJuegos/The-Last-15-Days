@@ -51,6 +51,7 @@ ui.other_credits.title=Other Credits:
 ui.other_credits.role1=Textures used in the add-on
 ui.fist_intro.title=§a§l[ Welcome to TL15D ]§r
 ui.fist_intro.subtitle=§4You've received a Starter Kit. Good luck!
+ui.system.dolphin_timer=§7You can breathe underwater again in %1
 
 
 ## Chat texts
@@ -65,6 +66,7 @@ chat.system.get_debuff_wither1=§c§l>> You have received a random negative effe
 chat.system.get_debuff_wither2=§m§l>> Your inventory has been altered by the Wither.
 chat.system.get_infernal_item=§4>> %1 has obtained the %2§r§7 | (%3/5)
 chat.system.get_infernal_crown=§4§l>> %1 has obtained the %2§4§l.
+chat.system.hit_by_dolphin=§e§lYou've been hit by a dolphin; you can't hold your breath underwater for %1 minutes. Try not to get hit again!
 
 
 ## Entity Names

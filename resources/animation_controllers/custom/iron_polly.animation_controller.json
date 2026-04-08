@@ -1,0 +1,30 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.iron_polly.root": {
+            "initial_state": "default",
+            "states": {
+                "default": {
+                    "transitions": [
+                        {
+                            "start_flying": "!q.is_on_ground"
+                        }
+                    ]
+                },
+                "start_flying": {
+                    "animations": [ "start_flying" ],
+                    "transitions": [
+                        {
+                            "flying_loop": "q.all_animations_finished"
+                        }
+                    ]
+                },
+                "flying_loop": {
+                    "animations": [ "flying" ]
+                }
+            }
+        }
+    }
+}

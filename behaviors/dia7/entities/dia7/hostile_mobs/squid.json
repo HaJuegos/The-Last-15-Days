@@ -1,0 +1,265 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+	"format_version": "1.26.0",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "minecraft:squid",
+			"is_summonable": true,
+			"is_spawnable": true,
+			"spawn_category": "water_creature"
+		},
+		"components": {
+			"minecraft:damage_sensor": {
+				"triggers": [
+					{
+						"on_damage": {
+							"filters": {
+								"test": "has_component",
+								"subject": "self",
+								"operator": "!=",
+								"value": "minecraft:explode"
+							},
+							"target": "self",
+							"event": "ha:start_explode"
+						},
+						"cause": "all",
+						"deals_damage": "yes"
+					}
+				]
+			},
+			"minecraft:attack": {
+				"damage": 6
+			},
+			"minecraft:behavior.melee_box_attack": {
+				"priority": 0,
+				"can_spread_on_fire": true,
+				"horizontal_reach": 1.15,
+				"melee_fov": 360,
+				"track_target": true,
+				"speed_multiplier": 1.35,
+				"on_attack": {
+					"filters": {
+						"test": "has_component",
+						"subject": "self",
+						"operator": "!=",
+						"value": "minecraft:explode"
+					},
+					"target": "self",
+					"event": "ha:start_explode"
+				}
+			},
+			"minecraft:behavior.hurt_by_target": {
+				"priority": 1
+			},
+			"minecraft:behavior.nearest_attackable_target": {
+				"priority": 2,
+				"must_see": true,
+				"reselect_targets": true,
+				"entity_types": [
+					{
+						"filters": {
+							"any_of": [
+								{
+									"test": "is_family",
+									"subject": "other",
+									"value": "player"
+								},
+								{
+									"test": "is_family",
+									"subject": "other",
+									"value": "irongolem"
+								},
+								{
+									"test": "is_family",
+									"subject": "other",
+									"value": "snowgolem"
+								}
+							]
+						},
+						"max_dist": 30
+					}
+				]
+			},
+			"minecraft:balloonable": {
+				"mass": 0.5
+			},
+			"minecraft:behavior.squid_dive": {
+				"priority": 2
+			},
+			"minecraft:behavior.squid_flee": {
+				"priority": 2
+			},
+			"minecraft:behavior.squid_idle": {
+				"priority": 2
+			},
+			"minecraft:behavior.squid_move_away_from_ground": {
+				"priority": 1
+			},
+			"minecraft:behavior.squid_out_of_water": {
+				"priority": 2
+			},
+			"minecraft:breathable": {
+				"breathes_air": false,
+				"breathes_water": true,
+				"suffocate_time": 0,
+				"total_supply": 15
+			},
+			"minecraft:can_climb": {},
+			"minecraft:collision_box": {
+				"height": 0.8,
+				"width": 0.8
+			},
+			"minecraft:conditional_bandwidth_optimization": {},
+			"minecraft:despawn": {
+				"despawn_from_distance": {}
+			},
+			"minecraft:experience_reward": {
+				"on_death": {
+					"expression": "!query.is_baby && query.last_hit_by_player ? Math.Random(1,3) : 0",
+					"version": 13
+				}
+			},
+			"minecraft:health": {
+				"max": 10,
+				"value": 10
+			},
+			"minecraft:hurt_on_condition": {
+				"damage_conditions": [
+					{
+						"cause": "lava",
+						"damage_per_tick": 4,
+						"filters": {
+							"subject": "self",
+							"test": "in_lava"
+						}
+					}
+				]
+			},
+			"minecraft:is_hidden_when_invisible": {},
+			"minecraft:jump.static": {},
+			"minecraft:leashable": {},
+			"minecraft:loot": {
+				"table": "loot_tables/entities/squid.json"
+			},
+			"minecraft:movement": {
+				"value": 0.2
+			},
+			"minecraft:movement.basic": {},
+			"minecraft:nameable": {},
+			"minecraft:navigation.walk": {
+				"can_path_over_water": true,
+				"can_sink": false
+			},
+			"minecraft:offspring": {
+				"offspring_pairs": {
+					"minecraft:squid": "minecraft:squid"
+				}
+			},
+			"minecraft:physics": {},
+			"minecraft:pushable": {
+				"is_pushable": true,
+				"is_pushable_by_piston": true
+			},
+			"minecraft:spawn_egg_interaction": {},
+			"minecraft:type_family": {
+				"family": [
+					"aquatic",
+					"squid",
+					"mob"
+				]
+			}
+		},
+		"component_groups": {
+			"ha:explode": {
+				"minecraft:damage_sensor": { },
+				"minecraft:explode": {
+					"power": 4,
+					"fuse_length": [
+						0.7,
+						0.7
+					],
+					"fuse_lit": true,
+					"allow_underwater": true,
+					"breaks_blocks": true,
+					"causes_fire": false,
+					"destroy_affected_by_griefing": true,
+					"fire_affected_by_griefing": true,
+					"toggles_blocks": true,
+					"knockback_scaling": 3
+				}
+			},
+			"minecraft:squid_adult": {
+				"minecraft:leashable_to": {}
+			},
+			"minecraft:squid_baby": {
+				"minecraft:is_baby": {},
+				"minecraft:ageable": {
+					"duration": 1200,
+					"pause_growth_items": [
+						"golden_dandelion"
+					],
+					"reset_growth_items": [
+						"golden_dandelion"
+					],
+					"grow_up": {
+						"event": "minecraft:ageable_grow_up",
+						"target": "self"
+					}
+				},
+				"minecraft:scale": {
+					"value": 0.5
+				}
+			}
+		},
+		"events": {
+			"ha:start_explode": {
+				"queue_command": {
+					"command": [
+						"playsound mob.start_exploding.sound @a ~~~"
+					]
+				},
+				"add": {
+					"component_groups": [
+						"ha:explode"
+					]
+				}
+			},
+			"minecraft:entity_born": {
+				"add": {
+					"component_groups": [
+						"minecraft:squid_baby"
+					]
+				}
+			},
+			"minecraft:entity_spawned": {
+				"randomize": [
+					{
+						"add": {
+							"component_groups": [
+								"minecraft:squid_adult"
+							]
+						},
+						"weight": 95
+					},
+					{
+						"trigger": "minecraft:entity_born",
+						"weight": 5
+					}
+				]
+			},
+			"minecraft:ageable_grow_up": {
+				"remove": {
+					"component_groups": [
+						"minecraft:squid_baby"
+					]
+				},
+				"add": {
+					"component_groups": [
+						"minecraft:squid_adult"
+					]
+				}
+			}
+		}
+	}
+}
