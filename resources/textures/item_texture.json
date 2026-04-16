@@ -83,6 +83,16 @@
             "textures": [
                 "textures/items/custom/surprise_bundle"
             ]
+        },
+        "allay_dust": {
+            "textures": [
+                "textures/items/custom/allay_dust"
+            ]
+        },
+        "allay_essence": {
+            "textures": [
+                "textures/items/custom/allay_essence"
+            ]
         }
     }
 }

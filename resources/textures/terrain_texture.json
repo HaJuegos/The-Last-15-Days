@@ -15,6 +15,11 @@
             "textures": [
                 "textures/entity/dynamite"
             ]
+        },
+        "toxic_puddle": {
+            "textures": [
+                "textures/blocks/custom/acid_pool"
+            ]
         }
     }
 }

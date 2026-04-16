@@ -77,6 +77,7 @@ entity.ha:soul_fireball.name=Soul Fireball
 entity.ha:lord_blaze.name=§pLord Blaze§r
 entity.ha:armorer_piglin.name=Piglin Bruto Armado
 entity.ha:socrates_npc.name=Socrates, si ese mismo.
+entity.ha:custom_damage_area.name=Una nube tóxica de un Creeper
 
 
 ## Spawn egg names
@@ -135,6 +136,12 @@ item.ha:melted_slime.name=Slime Derretido
 item.ha:hoglin_fang=§n§lColmillo de Hoglin§r
 item.ha:hoglin_fang.name=§n§lColmillo de Hoglin§r
 
+item.ha:allay_dust=§bPolvo de Allay§r
+item.ha:allay_dust.name=§bPolvo de Allay§r
+
+item.ha:allay_essence=§b§lEsencia de Allay§r
+item.ha:allay_essence.name=§b§lEsencia de Allay§r
+
 
 ## Item Catalog
 ha:itemGroup.name.nether_items=§4Cosas del Nether§r
@@ -142,6 +149,7 @@ ha:itemGroup.name.nether_items=§4Cosas del Nether§r
 
 ## Block names
 tile.ha:dynamite_block.name=Bloque de Dinamita Lanzable.
+tile.ha:toxic_puddle.name=Charco Toxico
 
 
 ## Advacements texts

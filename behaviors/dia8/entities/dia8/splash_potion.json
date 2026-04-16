@@ -1,0 +1,152 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.26.0",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "minecraft:splash_potion",
+            "is_experimental": false,
+            "is_summonable": true,
+            "is_spawnable": false,
+            "spawn_category": "misc",
+            "properties": {
+                "ha:type_potion": {
+                    "type": "enum",
+                    "values": [
+                        "normal",
+                        "damage",
+                        "health",
+                        "regeneration",
+                        "slowness",
+                        "poison",
+                        "weakness"
+                    ],
+                    "client_sync": true,
+                    "default": "normal"
+                }
+            }
+        },
+        "component_groups": {
+            "ha:witch_potion": {
+                "minecraft:projectile": {
+                    "angle_offset": -20.0,
+                    "on_hit": {
+                        "definition_event": {
+                            "affect_projectile": true,
+                            "event_trigger": {
+                                "event": "ha:witch_events_potion",
+                                "target": "self"
+                            }
+                        },
+                        "douse_fire": { },
+                        "impact_damage": null,
+                        "thrown_potion_effect": { }
+                    },
+                    "gravity": 0.05,
+                    "hit_sound": "glass",
+                    "power": 0.5
+                }
+            }
+        },
+        "components": {
+            "minecraft:collision_box": {
+                "height": 0.25,
+                "width": 0.25
+            },
+            "minecraft:conditional_bandwidth_optimization": {
+                "default_values": {
+                    "max_dropped_ticks": 5,
+                    "max_optimized_distance": 80.0,
+                    "use_motion_prediction_hints": true
+                }
+            },
+            "minecraft:physics": { },
+            "minecraft:projectile": {
+                "angle_offset": -20.0,
+                "on_hit": {
+                    "douse_fire": { },
+                    "impact_damage": null,
+                    "remove_on_hit": { },
+                    "thrown_potion_effect": { }
+                },
+                "gravity": 0.05,
+                "hit_sound": "glass",
+                "power": 0.5
+            },
+            "minecraft:pushable": {
+                "is_pushable": true,
+                "is_pushable_by_piston": true
+            }
+        },
+        "events": {
+            "minecraft:entity_spawned": { },
+            "ha:witch_events_potion": {
+                "queue_command": {
+                    "command": [
+                        "scriptevent ha:witch_potion_x"
+                    ]
+                }
+            },
+            "ha:witch_damage_potion": {
+                "set_property": {
+                    "ha:type_potion": "damage"
+                },
+                "add": {
+                    "component_groups": [
+                        "ha:witch_potion"
+                    ]
+                }
+            },
+            "ha:witch_health_potion": {
+                "set_property": {
+                    "ha:type_potion": "health"
+                },
+                "add": {
+                    "component_groups": [
+                        "ha:witch_potion"
+                    ]
+                }
+            },
+            "ha:witch_regeneration_potion": {
+                "set_property": {
+                    "ha:type_potion": "regeneration"
+                },
+                "add": {
+                    "component_groups": [
+                        "ha:witch_potion"
+                    ]
+                }
+            },
+            "ha:witch_slowness_potion": {
+                "set_property": {
+                    "ha:type_potion": "slowness"
+                },
+                "add": {
+                    "component_groups": [
+                        "ha:witch_potion"
+                    ]
+                }
+            },
+            "ha:witch_poison_potion": {
+                "set_property": {
+                    "ha:type_potion": "poison"
+                },
+                "add": {
+                    "component_groups": [
+                        "ha:witch_potion"
+                    ]
+                }
+            },
+            "ha:witch_weakness_potion": {
+                "set_property": {
+                    "ha:type_potion": "weakness"
+                },
+                "add": {
+                    "component_groups": [
+                        "ha:witch_potion"
+                    ]
+                }
+            }
+        }
+    }
+}

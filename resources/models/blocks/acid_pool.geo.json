@@ -1,0 +1,35 @@
+{
+	"format_version": "1.21.20",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.acid_pool_block",
+				"texture_width": 32,
+				"texture_height": 32,
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 1.375,
+				"visible_bounds_offset": [ 0, 0.3125, 0 ]
+			},
+			"bones": [
+				{
+					"name": "bone",
+					"pivot": [ 0, 0, 0 ],
+					"cubes": [
+						{
+							"origin": [ -8, 0, -8 ],
+							"size": [ 16, 1, 16 ],
+							"uv": {
+								"north": { "uv": [ 0, 0 ], "uv_size": [ 16, 0.25 ] },
+								"east": { "uv": [ 0, 0 ], "uv_size": [ 16, 0.25 ] },
+								"south": { "uv": [ 0, 0 ], "uv_size": [ 14, 0.25 ] },
+								"west": { "uv": [ 29, 32 ], "uv_size": [ 3, -1 ] },
+								"up": { "uv": [ 12, 13 ], "uv_size": [ -12, -12 ] },
+								"down": { "uv": [ 28, 31 ], "uv_size": [ 0, 0 ] }
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

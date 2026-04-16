@@ -1,0 +1,293 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.26.0",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "ha:witch_potions",
+            "runtime_identifier": "minecraft:splash_potion",
+            "spawn_category": "misc",
+            "is_experimental": false,
+            "is_summonable": true,
+            "is_spawnable": false
+        },
+        "component_groups": {
+            "ha:normal_splash": {
+                "minecraft:projectile": {
+                    "angle_offset": -20.0,
+                    "on_hit": {
+                        "douse_fire": true,
+                        "remove_on_hit": { },
+                        "thrown_potion_effect": { }
+                    },
+                    "gravity": 0.05,
+                    "hit_sound": "glass",
+                    "power": 0.5,
+                    "ignored_entities": [
+                        "boat",
+                        "chest_boat",
+                        "minecart"
+                    ]
+                }
+            },
+            "ha:witch_damage_potion": {
+                "minecraft:projectile": {
+                    "on_hit": {
+                        "definition_event": {
+                            "affect_projectile": true,
+                            "event_trigger": "ha:damage_effect"
+                        },
+                        "douse_fire": true,
+                        "thrown_potion_effect": { },
+                        "remove_on_hit": { }
+                    },
+                    "angle_offset": -20.0,
+                    "gravity": 0.05,
+                    "hit_sound": "glass",
+                    "power": 0.5,
+                    "ignored_entities": [
+                        "boat",
+                        "chest_boat",
+                        "minecart"
+                    ]
+                }
+            },
+            "ha:witch_health_potion": {
+                "minecraft:projectile": {
+                    "on_hit": {
+                        "definition_event": {
+                            "affect_projectile": true,
+                            "event_trigger": "ha:health_effect"
+                        },
+                        "douse_fire": true,
+                        "thrown_potion_effect": { },
+                        "remove_on_hit": { }
+                    },
+                    "angle_offset": -20.0,
+                    "gravity": 0.05,
+                    "hit_sound": "glass",
+                    "power": 0.5,
+                    "ignored_entities": [
+                        "boat",
+                        "chest_boat",
+                        "minecart"
+                    ]
+                }
+            },
+            "ha:witch_regeneration_potion": {
+                "minecraft:projectile": {
+                    "on_hit": {
+                        "definition_event": {
+                            "affect_projectile": true,
+                            "event_trigger": "ha:regeneration_effect"
+                        },
+                        "douse_fire": true,
+                        "thrown_potion_effect": { },
+                        "remove_on_hit": { }
+                    },
+                    "angle_offset": -20.0,
+                    "gravity": 0.05,
+                    "hit_sound": "glass",
+                    "power": 0.5,
+                    "ignored_entities": [
+                        "boat",
+                        "chest_boat",
+                        "minecart"
+                    ]
+                }
+            },
+            "ha:witch_slowness_potion": {
+                "minecraft:projectile": {
+                    "on_hit": {
+                        "definition_event": {
+                            "affect_projectile": true,
+                            "event_trigger": "ha:slowness_effect"
+                        },
+                        "douse_fire": true,
+                        "thrown_potion_effect": { },
+                        "remove_on_hit": { }
+                    },
+                    "angle_offset": -20.0,
+                    "gravity": 0.05,
+                    "hit_sound": "glass",
+                    "power": 0.5,
+                    "ignored_entities": [
+                        "boat",
+                        "chest_boat",
+                        "minecart"
+                    ]
+                }
+            },
+            "ha:witch_poison_potion": {
+                "minecraft:projectile": {
+                    "on_hit": {
+                        "definition_event": {
+                            "affect_projectile": true,
+                            "event_trigger": "ha:poison_effect"
+                        },
+                        "douse_fire": true,
+                        "thrown_potion_effect": { }
+                    },
+                    "destroy_on_hurt": false,
+                    "angle_offset": -20.0,
+                    "gravity": 0.05,
+                    "hit_sound": "glass",
+                    "power": 0.5,
+                    "ignored_entities": [
+                        "boat",
+                        "chest_boat",
+                        "minecart"
+                    ]
+                }
+            },
+            "ha:witch_weakness_potion": {
+                "minecraft:projectile": {
+                    "on_hit": {
+                        "definition_event": {
+                            "affect_projectile": true,
+                            "event_trigger": "ha:weakness_effect"
+                        },
+                        "douse_fire": true,
+                        "thrown_potion_effect": { },
+                        "remove_on_hit": { }
+                    },
+                    "angle_offset": -20.0,
+                    "gravity": 0.05,
+                    "hit_sound": "glass",
+                    "power": 0.5,
+                    "ignored_entities": [
+                        "boat",
+                        "chest_boat",
+                        "minecart"
+                    ]
+                }
+            }
+        },
+        "components": {
+            "minecraft:cannot_be_attacked": { },
+            "minecraft:floats_in_liquid": { },
+            "minecraft:transient": { },
+            "minecraft:collision_box": {
+                "height": 0.25,
+                "width": 0.25
+            },
+            "minecraft:conditional_bandwidth_optimization": {
+                "default_values": {
+                    "max_dropped_ticks": 5,
+                    "max_optimized_distance": 80.0,
+                    "use_motion_prediction_hints": true
+                }
+            },
+            "minecraft:physics": { },
+            "minecraft:pushable": {
+                "is_pushable": true,
+                "is_pushable_by_piston": true
+            }
+        },
+        "events": {
+            "minecraft:entity_spawned": {
+                "add": {
+                    "component_groups": [
+                        "ha:normal_splash"
+                    ]
+                }
+            },
+            "ha:witch_damage_potion": {
+                "add": {
+                    "component_groups": [
+                        "ha:witch_damage_potion"
+                    ]
+                }
+            },
+            "ha:damage_effect": {
+                "queue_command": {
+                    "command": [
+                        "effect @e[r=4] instant_damage 1 9"
+                    ]
+                }
+            },
+            "ha:witch_health_potion": {
+                "add": {
+                    "component_groups": [
+                        "ha:witch_health_potion"
+                    ]
+                }
+            },
+            "ha:health_effect": {
+                "queue_command": {
+                    "command": [
+                        "effect @e[r=4] instant_health 1 9"
+                    ]
+                }
+            },
+            "ha:witch_regeneration_potion": {
+                "add": {
+                    "component_groups": [
+                        "ha:witch_regeneration_potion"
+                    ]
+                }
+            },
+            "ha:regeneration_effect": {
+                "queue_command": {
+                    "command": [
+                        "effect @e[r=4] regeneration 45 9"
+                    ]
+                }
+            },
+            "ha:witch_slowness_potion": {
+                "add": {
+                    "component_groups": [
+                        "ha:witch_slowness_potion"
+                    ]
+                }
+            },
+            "ha:slowness_effect": {
+                "queue_command": {
+                    "command": [
+                        "effect @e[r=4] slowness 90 9"
+                    ]
+                }
+            },
+            "ha:witch_poison_potion": {
+                "add": {
+                    "component_groups": [
+                        "ha:witch_poison_potion"
+                    ]
+                }
+            },
+            "ha:poison_effect": {
+                "sequence": [
+                    {
+                        "filters": {
+                            "test": "has_tag",
+                            "operator": "not",
+                            "subject": "self",
+                            "value": "shoot"
+                        },
+                        "queue_command": {
+                            "command": [
+                                "effect @e[r=4] poison 45 9",
+                                "say test xd",
+                                "tag @s add shoot"
+                            ]
+                        }
+                    }
+                ]
+            },
+            "ha:witch_weakness_potion": {
+                "add": {
+                    "component_groups": [
+                        "ha:witch_weakness_potion"
+                    ]
+                }
+            },
+            "ha:weakness_effect": {
+                "queue_command": {
+                    "command": [
+                        "effect @e[r=4] weakness 90 9"
+                    ]
+                }
+            }
+        }
+    }
+}

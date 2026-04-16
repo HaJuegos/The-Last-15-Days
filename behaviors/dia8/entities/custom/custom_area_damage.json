@@ -1,0 +1,136 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.21.50",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "ha:custom_damage_area",
+            "spawn_category": "ambient",
+            "is_experimental": false,
+            "is_spawnable": false,
+            "is_summonable": true
+        },
+        "component_groups": {
+            "ha:radioactive_variant": {
+                "minecraft:area_attack": {
+                    "damage_per_tick": 4,
+                    "damage_range": 5,
+                    "cause": "magic",
+                    "damage_cooldown": 0.45,
+                    "entity_filter": {
+                        "test": "is_family",
+                        "subject": "other",
+                        "operator": "not",
+                        "value": "creeper"
+                    }
+                }
+            },
+            "ha:debuff_variant": {
+                "minecraft:environment_sensor": {
+                    "triggers": [
+                        {
+                            "filters": {
+                                "test": "has_tag",
+                                "value": "effects"
+                            },
+                            "event": "ha:debuff_effects",
+                            "target": "self"
+                        }
+                    ]
+                }
+            },
+            "ha:remove": {
+                "minecraft:instant_despawn": { }
+            },
+            "ha:timer_despawn": {
+                "minecraft:timer": {
+                    "time": [ 10, 10 ],
+                    "looping": false,
+                    "time_down_event": {
+                        "event": "ha:despawn",
+                        "target": "self"
+                    }
+                }
+            }
+        },
+        "components": {
+            "minecraft:cannot_be_attacked": { },
+            "minecraft:collision_box": {
+                "height": 0.5,
+                "width": 0.5
+            },
+            "minecraft:physics": {
+                "has_collision": true,
+                "has_gravity": false
+            },
+            "minecraft:conditional_bandwidth_optimization": { },
+            "minecraft:damage_sensor": {
+                "triggers": [
+                    {
+                        "cause": "all",
+                        "deals_damage": "no"
+                    }
+                ]
+            },
+            "minecraft:dimension_bound": { },
+            "minecraft:transient": { },
+            "minecraft:type_family": {
+                "family": [
+                    "area_cloud",
+                    "inanimate",
+                    "mob"
+                ]
+            }
+        },
+        "events": {
+            "minecraft:entity_spawned": {
+                "add": {
+                    "component_groups": [
+                        "ha:timer_despawn"
+                    ]
+                }
+            },
+            "ha:spawned_by_radioactive": {
+                "trigger": "minecraft:entity_spawned",
+                "queue_command": {
+                    "command": [
+                        "particle ha:cloud_radioactive ~~0.75~"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
+                        "ha:radioactive_variant"
+                    ]
+                }
+            },
+            "ha:spawned_by_debuff": {
+                "trigger": "minecraft:entity_spawned",
+                "queue_command": {
+                    "command": [
+                        "particle ha:cloud_debuff ~~0.75~",
+                        "tag @s add effects"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
+                        "ha:debuff_variant"
+                    ]
+                }
+            },
+            "ha:debuff_effects": {
+                "queue_command": {
+                    "command": [
+                        "function mobs/debuff_effects"
+                    ]
+                }
+            },
+            "ha:despawn": {
+                "add": {
+                    "component_groups": [
+                        "ha:remove"
+                    ]
+                }
+            }
+        }
+    }
+}

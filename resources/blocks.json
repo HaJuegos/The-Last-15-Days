@@ -3,7 +3,9 @@
 {
     "format_version": "1.21.40",
     "ha:dynamite_block": {
-        "sound": "grass",
-        "textures": "dynamite_off"
+        "sound": "grass"
+    },
+    "ha:toxic_puddle": {
+        "sound": "slime"
     }
 }

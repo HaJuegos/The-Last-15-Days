@@ -76,6 +76,7 @@
             }
         ],
         "components": {
+            "minecraft:display_name": "tile.ha:dynamite_block.name",
             "minecraft:liquid_detection": {
                 "detection_rules": [
                     {
