@@ -14,7 +14,7 @@
                 "minecraft:damage_sensor": { },
                 "minecraft:explode": {
                     "power": 4,
-                    "fuse_length": [ 0.7, 0.7],
+                    "fuse_length": [ 0.7, 0.7 ],
                     "fuse_lit": true,
                     "allow_underwater": true,
                     "breaks_blocks": true,
@@ -49,6 +49,9 @@
             }
         },
         "components": {
+            "minecraft:loot": {
+                "table": "loot_tables/entities/allay_dust.json"
+            },
             "minecraft:attack": {
                 "damage": 6
             },

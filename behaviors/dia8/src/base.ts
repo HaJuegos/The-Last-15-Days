@@ -108,10 +108,11 @@ export class TL15DBaseManager {
             return data.namePly == name;
         });
 
+        const isLinked = targetEntity.hasTag('isLinked');
         const displayRank = rankData ? `${rankData.colorCode}${rankData.rank}` : `§4§lSobreviviente`;
         const finalRank = isTakingDamage ?
-            `§7§l[§r${displayRank}§7§l]§r\n${name} §4§l${currentH ? currentH : currentVal}/${maxH ? maxH : maxVal}§r` :
-            `§7§l[§r${displayRank}§7§l]§r\n${name} §4${currentH ? currentH : currentVal}/${maxH ? maxH : maxVal}§r`;
+            `§7§l[§r${displayRank}§7§l]§r${isLinked ? '' : ''}\n${name} §4§l${currentH ? currentH : currentVal}/${maxH ? maxH : maxVal}§r` :
+            `§7§l[§r${displayRank}§7§l]§r${isLinked ? '' : ''}\n${name} §4${currentH ? currentH : currentVal}/${maxH ? maxH : maxVal}§r`;
 
         targetEntity.nameTag = finalRank;
 

@@ -93,6 +93,11 @@
             "textures": [
                 "textures/items/custom/allay_essence"
             ]
+        },
+        "soul_link": {
+            "textures": [
+                "textures/items/custom/soul_link"
+            ]
         }
     }
 }

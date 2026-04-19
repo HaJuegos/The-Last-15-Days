@@ -321,6 +321,10 @@ class EntityEventsManager extends TL15DBaseManager {
                                                 z: centerZ + dz
                                             };
 
+                                            if (targetLoc.y < -64 || targetLoc.y > 320) {
+                                                continue;
+                                            }
+
                                             try {
                                                 const targetBlock = dime.getBlock(targetLoc);
 
@@ -330,7 +334,6 @@ class EntityEventsManager extends TL15DBaseManager {
                                             } catch (e) {
                                                 continue;
                                             }
-
                                         }
                                     }
                                 }

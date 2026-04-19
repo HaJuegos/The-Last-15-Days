@@ -52,6 +52,8 @@ ui.other_credits.role1=Textures used in the add-on
 ui.fist_intro.title=§a§l[ Welcome to TL15D ]§r
 ui.fist_intro.subtitle=§4You've received a Starter Kit. Good luck!
 ui.system.dolphin_timer=§7You can breathe underwater again in %1
+ui.list_players_death.title= §4§lChoose your victim§r 
+ui.list_players_death.body=§i§oChoose a deceased player to revive them and unite your soul with theirs to continue this adventure.§r
 
 
 ## Chat texts
@@ -67,7 +69,9 @@ chat.system.get_debuff_wither2=§m§l>> Your inventory has been altered by the W
 chat.system.get_infernal_item=§4>> %1 has obtained the %2§r§7 | (%3/5)
 chat.system.get_infernal_crown=§4§l>> %1 has obtained the %2§4§l.
 chat.system.hit_by_dolphin=§e§lYou've been hit by a dolphin; you can't hold your breath underwater for %1 minutes. Try not to get hit again!
-
+chat.system.soul_link.no_plys_deaths=§7§l>> There are no players to revive, so there's no point in using the item right now.
+chat.system.soul_link.alr_used=§7§l>> You've already used this item; you can't revive any more players.
+chat.system.soul_link.select_player=§7§l>> §cThrough the Soul Link pact, §e%2 §cjust bound their fate to §e%1§c. §7Two bodies, one shared life. §4If one goes down, it's game over for both. There's no saving you now.
 
 ## Entity Names
 entity.ha:player_ghost.name=Player Ghost
@@ -141,6 +145,9 @@ item.ha:allay_dust.name=§bAllay Dust§r
 
 item.ha:allay_essence=§b§lAllay Essence§r
 item.ha:allay_essence.name=§b§lAllay Essence§r
+
+item.ha:soul_link=§s§lSoul Link§r
+item.ha:soul_link.name=§s§lSoul Link§r
 
 
 ## Item Catalog

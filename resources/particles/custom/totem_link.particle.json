@@ -2,10 +2,10 @@
 	"format_version": "1.10.0",
 	"particle_effect": {
 		"description": {
-			"identifier": "ha:get_armor_particle",
+			"identifier": "ha:totem_link_particle",
 			"basic_render_parameters": {
 				"material": "particles_alpha",
-				"texture": "textures/particle/particles"
+				"texture": "textures/particle/soul_fireball_particle"
 			}
 		},
 		"components": {
@@ -27,17 +27,17 @@
 				"linear_drag_coefficient": 2.5
 			},
 			"minecraft:particle_appearance_billboard": {
-				"size": [ "variable.particle_random_1 * variable.particle_random_2 * 0.6 + 0.1", "variable.particle_random_1 * variable.particle_random_2 * 0.6 + 0.1" ],
-				"facing_camera_mode": "lookat_xyz",
+				"size": [ 0.2, 0.2 ],
+				"facing_camera_mode": "rotate_xyz",
 				"uv": {
-					"texture_width": 128,
-					"texture_height": 128,
+					"texture_width": 16,
+					"texture_height": 176,
 					"flipbook": {
-						"base_UV": [ 56, 0 ],
-						"size_UV": [ 8, 8 ],
-						"step_UV": [ -8, 0 ],
-						"frames_per_second": 8,
-						"max_frame": 8,
+						"base_UV": [ 0, 0 ],
+						"size_UV": [ 16, 16 ],
+						"step_UV": [ 0, 16 ],
+						"frames_per_second": 11,
+						"max_frame": 11,
 						"stretch_to_lifetime": true
 					}
 				}

@@ -118,6 +118,7 @@ class PlyEventsManager extends TL15DBaseManager {
                 plyEntity.runCommand(`function system/death_effects`);
 
                 this.spawnInventory(plyEntity as mc.Player, lastLocation, lastDimension);
+                this.savePlyID(plyEntity as mc.Player);
             }
         });
 
@@ -159,6 +160,29 @@ class PlyEventsManager extends TL15DBaseManager {
             }
         });
     };
+
+    /**
+     * Metodo auxiliar que guarda los datos del jugador muerto en el mundo, esto con el fin de usarse para futuros dias.
+     * @param {mc.Player} ply Jugador en concreto a guardar datos.
+     * @author HaJuegos - 15-04-2026
+     * @private
+     */
+    private savePlyID(ply: mc.Player): void {
+        let currentIndex = mc.world.getDynamicProperty('ha:death_counter') as number | undefined;
+
+        if (currentIndex == undefined) {
+            currentIndex = 0;
+        }
+
+        const newIndex = currentIndex + 1;
+
+        mc.world.setDynamicProperty('ha:death_counter', newIndex);
+
+        const propertyId = `ha:player_death_data_${newIndex}`;
+        const propertyValue = `${ply.name}:${ply.id}`;
+
+        mc.world.setDynamicProperty(propertyId, propertyValue);
+    }
 
     /**
      * Metodo principal que controla los eventos del chat cuando un usuario envia un mensaje.

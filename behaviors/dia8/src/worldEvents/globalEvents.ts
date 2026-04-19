@@ -1,6 +1,6 @@
 import * as mc from "@minecraft/server";
 
-import { debugToolsSimplified, worldToolsSimplified } from "simplified-mojang-api";
+import { debugToolsSimplified, fakePlysSimplified, worldToolsSimplified } from "simplified-mojang-api";
 import { TL15DBaseManager } from "../base";
 
 /**
@@ -34,6 +34,12 @@ class GlobalWorldEventsManager extends TL15DBaseManager {
             if (!source) return;
 
             switch (id) {
+                case 'ha:tp_spawn': {
+                    const spawnCoords = mc.world.getDefaultSpawnLocation();
+                    const over = mc.world.getDimension('overworld');
+
+                    source.tryTeleport(spawnCoords, { checkForBlocks: true, dimension: over });
+                } break;
                 case 'ha:hitboxeson': {
                     debugToolsSimplified.showHitboxes(source);
                 } break;

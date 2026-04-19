@@ -159,6 +159,35 @@
                 }
             ]
         },
+        "ui.error_item": {
+            "category": "ui",
+            "min_distance": null,
+            "max_distance": null,
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": false,
+                    "name": "sounds/ui/error_item",
+                    "volume": 1.5,
+                    "stream": false
+                }
+            ]
+        },
+        "ui.soul_linked_used": {
+            "__use_legacy_max_distance": "true",
+            "category": "player",
+            "min_distance": null,
+            "max_distance": null,
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": true,
+                    "name": "sounds/ui/soul_linked",
+                    "volume": 2,
+                    "stream": false
+                }
+            ]
+        },
 
         "mob.player_ghost.death_sound": {
             "__use_legacy_max_distance": "true",
@@ -281,6 +310,35 @@
             ]
         },
 
+        "ambient.respawned_ply": {
+            "category": "player",
+            "__use_legacy_max_distance": "true",
+            "max_distance": 45,
+            "min_distance": null,
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": true,
+                    "name": "sounds/ambient/respawned_player",
+                    "volume": 2,
+                    "stream": true
+                }
+            ]
+        },
+        "ambient.soul_link": {
+            "category": "music",
+            "max_distance": null,
+            "min_distance": null,
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": false,
+                    "name": "sounds/ambient/choose_soullink",
+                    "volume": 0.76,
+                    "stream": false
+                }
+            ]
+        },
         "ambient.weather.rain": {
             "sounds": [
                 {

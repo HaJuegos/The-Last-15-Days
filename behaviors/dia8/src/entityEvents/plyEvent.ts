@@ -97,12 +97,54 @@ class PlyEventsManager extends TL15DBaseManager {
     private plySpawnEvents(): void {
         afterEventsSimplified.onPlayerSpawns((args) => {
             const ply = args.player;
+            const deathCounter = mc.world.getDynamicProperty('ha:death_counter') as number | undefined;
+            const pendingDeath = mc.world.getDynamicProperty(`ha:pending_death_${ply.id}`);
 
             this.setCustomRank(ply);
             ply.triggerEvent('ha:set_normal_breath');
 
+            if (pendingDeath) {
+                mc.world.setDynamicProperty(`ha:pending_death_${ply.id}`, undefined);
+
+                worldToolsSimplified.setRun(() => {
+                    worldToolsSimplified.setDelay(() => {
+                        ply.runCommand(`function system/death_linked`);
+                        ply.kill();
+                    }, worldToolsSimplified.convertSecondsToTicks(0.5));
+                });
+
+                return;
+            }
+
             if (ply.hasTag('banned')) {
-                ply.runCommand(`kick "${ply.name}"`);
+                let isLinked = false;
+
+                ply.removeTag('isLinked');
+
+                if (deathCounter) {
+                    for (let i = 1; i <= deathCounter; i++) {
+                        const propKey = `ha:player_death_data_${i}`;
+                        const dataPlys = mc.world.getDynamicProperty(propKey) as string | undefined;
+
+                        if (dataPlys) {
+                            const [name, id, linked] = dataPlys.split(':');
+
+                            if (id == ply.id) {
+                                if (linked == 'linked') {
+                                    isLinked = true;
+                                    mc.world.setDynamicProperty(propKey, undefined);
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                if (isLinked) {
+                    ply.runCommand(`function system/revive_ply_system`);
+                } else {
+                    ply.runCommand(`kick "${ply.name}" `);
+                }
             }
 
             if (!ply.hasTag('kit')) {
@@ -291,9 +333,16 @@ class PlyEventsManager extends TL15DBaseManager {
                 lastDimension = plyEntity.dimension;
                 lastViewDirection = plyEntity.getViewDirection();
 
+                plyEntity.runCommand(`scriptevent ha:tp_spawn`);
                 plyEntity.runCommand(`function system/death_effects`);
 
                 this.spawnInventory(plyEntity as mc.Player, lastLocation, lastDimension);
+
+                if (!plyEntity.hasTag('isLinked')) {
+                    this.savePlyID(plyEntity as mc.Player);
+                } else {
+                    this.soulLinkedEvents(plyEntity as mc.Player);
+                }
             }
         });
 
@@ -337,6 +386,96 @@ class PlyEventsManager extends TL15DBaseManager {
     };
 
     /**
+     * Metodo auxiliar que guarda los datos del jugador muerto en el mundo, esto con el fin de usarse para futuros dias.
+     * @param {mc.Player} ply Jugador en concreto a guardar datos.
+     * @author HaJuegos - 15-04-2026
+     * @private
+     */
+    private savePlyID(ply: mc.Player): void {
+        let currentIndex = mc.world.getDynamicProperty('ha:death_counter') as number | undefined;
+
+        if (currentIndex == undefined) {
+            currentIndex = 0;
+        }
+
+        const newIndex = currentIndex + 1;
+
+        mc.world.setDynamicProperty('ha:death_counter', newIndex);
+
+        const propertyId = `ha:player_death_data_${newIndex}`;
+        const propertyValue = `${ply.name}:${ply.id}`;
+
+        mc.world.setDynamicProperty(propertyId, propertyValue);
+    }
+
+    /**
+     * Metodo auxiliar que revisa y ejecuta la logica para matar a un jugador cuando el otro jugador muere y estan linkeados.
+     * @param {mc.Player} ply Jugador en concreto cuando muere.
+     * @author HaJuegos - 19-04-2026
+     * @private
+     */
+    private soulLinkedEvents(ply: mc.Player): void {
+        ply.removeTag('isLinked');
+
+        const currentSoulLinkeds = mc.world.getDynamicProperty('ha:linkeds_counter') as number | undefined;
+
+        if (currentSoulLinkeds) {
+            for (let i = 1; i <= currentSoulLinkeds; i++) {
+                const propKey = `ha:soul_linkeds_${i}`;
+                const dataPlys = mc.world.getDynamicProperty(propKey) as string | undefined;
+
+                if (dataPlys) {
+                    const [sourcePly, targetPly] = dataPlys.split(':');
+                    let partnerId: string | undefined = undefined;
+
+                    if (sourcePly && sourcePly.includes(ply.id)) {
+                        partnerId = targetPly.split('_').pop();
+                    } else if (targetPly && targetPly.includes(ply.id)) {
+                        partnerId = sourcePly.split('_').pop();
+                    }
+
+                    if (partnerId) {
+                        mc.world.setDynamicProperty(propKey, undefined);
+
+                        const deathCounter = mc.world.getDynamicProperty('ha:death_counter') as number | undefined;
+
+                        if (deathCounter) {
+                            for (let j = 1; j <= deathCounter; j++) {
+                                const deathKey = `ha:player_death_data_${j}`;
+                                const deathData = mc.world.getDynamicProperty(deathKey) as string | undefined;
+
+                                if (deathData) {
+                                    const [, id] = deathData.split(':');
+
+                                    if (id == ply.id || id == partnerId) {
+                                        mc.world.setDynamicProperty(deathKey, undefined);
+                                    }
+                                }
+                            }
+                        }
+
+                        const plys = mc.world.getAllPlayers();
+                        const partnerPly = plys.find(p => p.id == partnerId);
+
+                        if (partnerPly) {
+                            worldToolsSimplified.setRun(() => {
+                                worldToolsSimplified.setDelay(() => {
+                                    partnerPly.runCommand(`function system/death_linked`);
+                                    partnerPly.kill();
+                                }, worldToolsSimplified.convertSecondsToTicks(0.5));
+                            });
+                        } else {
+                            mc.world.setDynamicProperty(`ha:pending_death_${partnerId}`, true);
+                        }
+
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+    /**
      * Metodo principal que controla los eventos del chat cuando un usuario envia un mensaje.
      * @author HaJuegos - 19-03-2026
      * @private
@@ -358,9 +497,10 @@ class PlyEventsManager extends TL15DBaseManager {
                     return data.namePly == name;
                 });
 
+                const isLinked = ply.hasTag('isLinked');
                 const displayRank = rankData ? `${rankData.colorCode}${rankData.rank}` : `§4§lSobreviviente`;
 
-                worldToolsSimplified.sendMessageGlobal(`§7§l[§r${displayRank}§7§l]§r ${name} §7§l>>§r ${msg}`);
+                worldToolsSimplified.sendMessageGlobal(`§7§l[§r${displayRank}§7§l]§r${isLinked ? '' : ''} ${name} §7§l>>§r ${msg}`);
             });
         });
 

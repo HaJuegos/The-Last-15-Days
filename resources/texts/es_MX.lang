@@ -52,6 +52,8 @@ ui.other_credits.role1=Texturas utilizadas en el add-on
 ui.fist_intro.title=§a§l[ Bienvenido a TL15D ]§r
 ui.fist_intro.subtitle=§4Recibiste un Kit inicial. ¡Suerte!
 ui.system.dolphin_timer=§7Puedes volver a respirar bajo el agua en %1
+ui.list_players_death.title= §4§lElije a tu victima§r 
+ui.list_players_death.body=§i§oElije a un jugador fallecido para revivirlo y unir tu alma con él para continuar en esta aventura.§r
 
 
 ## Chat texts
@@ -67,6 +69,9 @@ chat.system.get_debuff_wither2=§m§l>> Tu inventario ha cambiado por culpa del 
 chat.system.get_infernal_item=§4>> %1 ha conseguido el item %2.§r§7 | (%3/5)
 chat.system.get_infernal_crown=§4§l>> %1 ha conseguido %2.
 chat.system.hit_by_dolphin=§e§lTe ha golpeado un delfin, ya no puedes respirar bajo el agua durante %1 minutos. ¡Intenta que no te golpeen nuevamente!
+chat.system.soul_link.no_plys_deaths=§7§l>> No hay jugadores por revivir, es inútil utilizar el item en este momento.
+chat.system.soul_link.alr_used=§7§l>> Ya has utilizado este item previamente, no puedes revivir a mas jugadores.
+chat.system.soul_link.select_player=§7§l>> §cPor el pacto del Soul Link, §e%2 §cha atado su destino al de §e%1§c. §7Son dos cuerpos, pero una sola vida. §4La muerte de uno será la condena absoluta del otro. Ya no hay salvación.
 
 
 ## Entity Names
@@ -141,6 +146,9 @@ item.ha:allay_dust.name=§bPolvo de Allay§r
 
 item.ha:allay_essence=§b§lEsencia de Allay§r
 item.ha:allay_essence.name=§b§lEsencia de Allay§r
+
+item.ha:soul_link=§s§lUnión de Almas§r
+item.ha:soul_link.name=§s§lUnión de Almas§r
 
 
 ## Item Catalog
