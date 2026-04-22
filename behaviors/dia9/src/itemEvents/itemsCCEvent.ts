@@ -1,0 +1,257 @@
+import * as mc from '@minecraft/server';
+
+import { TL15DBaseManager } from "../base";
+import { beforeEventsSimplified, ButtonFormBase, customEventsManager, worldToolsSimplified } from "simplified-mojang-api";
+
+/**
+ * Plantilla general para regisrar un nuevo componente custom para los items.
+ * @interface TemplateCustomItem
+ * @author HaJuegos - 15-04-2026
+ */
+interface TemplateCustomItem {
+    idComponent: string;
+    componentEvents: mc.ItemCustomComponent;
+}
+
+/**
+ * Clase hijo que se encarga de los eventos principales de los componentes custom de los items custom.
+ * @extends {TL15DBaseManager}
+ * @author HaJuegos - 23-03-2026
+ */
+class ItemCustomComponentsManager extends TL15DBaseManager {
+    private itemComponents: TemplateCustomItem[] = [
+        {
+            // Iron Apple Events
+            idComponent: 'ha:iron_apple_events',
+            componentEvents: {
+                onConsume(args) {
+                    const entity = args.source;
+                    const effects: Record<string, number> = {
+                        'resistance': 2,
+                        'regeneration': 0,
+                        'absorption': 0,
+                    };
+
+                    for (const [effect, level] of Object.entries(effects)) {
+                        entity.addEffect(effect, worldToolsSimplified.convertSecondsToTicks(30), { amplifier: level, showParticles: true });
+                    }
+                }
+            }
+        },
+        {
+            // Surprise Bundle Events
+            idComponent: 'ha:surprise_bundle_events',
+            componentEvents: {
+                onUse: (args) => {
+                    const sourcePly = args.source;
+                    const item = args.itemStack;
+
+                    if (item) {
+                        sourcePly.playSound(`armor.equip_generic`);
+                        sourcePly.runCommand(`structure load ha:books ~~1~`);
+
+                        worldToolsSimplified.setRun(() => {
+                            const bundle = new mc.ItemStack('minecraft:bundle');
+                            const inv = sourcePly.getComponent(mc.EntityComponentTypes.Inventory)?.container as mc.Container;
+                            const slot = sourcePly.selectedSlotIndex;
+
+                            inv.setItem(slot, undefined);
+                            inv.addItem(bundle);
+                        });
+                    }
+                }
+            }
+        },
+        {
+            // Allay Dust Events
+            idComponent: 'ha:allay_dust_events',
+            componentEvents: {
+                onConsume: (args) => {
+                    const sourceEntity = args.source;
+
+                    worldToolsSimplified.setRun(() => {
+                        sourceEntity.addEffect('levitation', worldToolsSimplified.convertSecondsToTicks(20), { amplifier: 0 });
+                    });
+                }
+            }
+        },
+        {
+            // Allay Essence Events
+            idComponent: 'ha:allay_essence_events',
+            componentEvents: {
+                onConsume: (args) => {
+                    const sourceEntity = args.source;
+
+                    worldToolsSimplified.setRun(() => {
+                        sourceEntity.addEffect('levitation', worldToolsSimplified.convertSecondsToTicks(20), { amplifier: 2 });
+                        sourceEntity.addEffect('resistance', worldToolsSimplified.convertSecondsToTicks(10), { amplifier: 4 });
+                    });
+                }
+            }
+        },
+        {
+            // Soul Link Events
+            idComponent: 'ha:soul_link_events',
+            componentEvents: {
+                onUse: (args) => {
+                    const sourceEntity = args.source;
+                    const deathCounter = mc.world.getDynamicProperty('ha:death_counter') as number | undefined;
+
+                    if (sourceEntity.hasTag('isLinked')) {
+                        worldToolsSimplified.setRun(() => {
+                            sourceEntity.sendMessage({ rawtext: [{ translate: 'chat.system.soul_link.alr_used' }] });
+                            sourceEntity.playSound('ui.error_item');
+                        });
+
+                        return;
+                    }
+
+                    if (!deathCounter || deathCounter <= 0) {
+                        worldToolsSimplified.setRun(() => {
+                            sourceEntity.sendMessage({ rawtext: [{ translate: 'chat.system.soul_link.no_plys_deaths' }] });
+                            sourceEntity.playSound('ui.error_item');
+                        });
+
+                        return;
+                    }
+
+                    const uniquePlys = new Map<string, string>();
+
+                    for (let i = 1; i <= deathCounter; i++) {
+                        const dataPlys = mc.world.getDynamicProperty(`ha:player_death_data_${i}`) as string | undefined;
+
+                        if (dataPlys) {
+                            const [name, id, linked] = dataPlys.split(':');
+
+                            if (name && id && !linked) {
+                                uniquePlys.set(id, name);
+                            }
+                        }
+                    }
+
+                    if (uniquePlys.size <= 0) {
+                        worldToolsSimplified.setRun(() => {
+                            sourceEntity.sendMessage({ rawtext: [{ translate: 'chat.system.soul_link.no_plys_deaths' }] });
+                            sourceEntity.playSound('ui.error_item');
+                        });
+
+                        return;
+                    }
+
+                    const buttons: ButtonFormBase[] = [];
+                    const btnInds: string[] = [];
+
+                    uniquePlys.forEach((name, id) => {
+                        buttons.push({ buttomText: name, iconButtomUI: 'textures/ui/custom/default_headsteve' });
+                        btnInds.push(id);
+                    });
+
+                    customEventsManager.createCustomClassicFormUI({
+                        titleForm: { rawtext: [{ translate: 'ui.list_players_death.title' }] },
+                        bodyText: { rawtext: [{ translate: 'ui.list_players_death.body' }] },
+                        buttonsForm: buttons,
+                        showPly: {
+                            targetPly: sourceEntity,
+                            onCreate: (ply) => {
+                                worldToolsSimplified.setRun(() => {
+                                    ply.playSound('random.enderchestopen');
+                                    ply.playMusic('ambient.soul_link', { fade: 0.55, loop: true });
+                                    ply.addEffect('slowness', worldToolsSimplified.convertSecondsToTicks(99999), { amplifier: 7, showParticles: false });
+                                    ply.runCommand(`fog @s push ha:fog_soul_linked_start soullink`);
+                                });
+                            },
+                            onClickBtn: (ply, btn) => {
+                                const targetPlayerId = btnInds[btn];
+
+                                worldToolsSimplified.setRun(() => {
+                                    const dime = ply.dimension;
+                                    const coords = ply.location;
+                                    const inv = ply.getComponent(mc.EntityComponentTypes.Inventory)?.container as mc.Container;
+                                    const selectSlot = ply.selectedSlotIndex;
+                                    const healthPly = ply.getComponent(mc.EntityComponentTypes.Health) as mc.EntityHealthComponent;
+                                    const currentHealth = healthPly.currentValue;
+                                    const damageAmount = Math.floor(currentHealth / 2);
+
+                                    const currentDeathCounter = mc.world.getDynamicProperty('ha:death_counter') as number | undefined;
+                                    let targetName;
+                                    let targetID;
+
+                                    if (currentDeathCounter) {
+                                        for (let i = 1; i <= currentDeathCounter; i++) {
+                                            const propKey = `ha:player_death_data_${i}`;
+                                            const dataPlys = mc.world.getDynamicProperty(propKey) as string | undefined;
+
+                                            if (dataPlys) {
+                                                const [name, id] = dataPlys.split(':');
+
+                                                if (id == targetPlayerId) {
+                                                    mc.world.setDynamicProperty(propKey, `${name}:${id}:linked`);
+                                                    targetName = name;
+                                                    targetID = id;
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                    const currentSoulLinkeds = mc.world.getDynamicProperty('ha:linkeds_counter') as number | undefined;
+                                    const nextLinkIndex = (currentSoulLinkeds ?? 0) + 1;
+
+                                    mc.world.setDynamicProperty('ha:linkeds_counter', nextLinkIndex);
+                                    mc.world.setDynamicProperty(`ha:soul_linkeds_${nextLinkIndex}`, `${ply.name}_${ply.id}:${targetName}_${targetID}`);
+
+                                    ply.addTag('isLinked');
+                                    inv.setItem(selectSlot, undefined);
+                                    ply.spawnParticle('ha:totem_link_particle', coords);
+                                    ply.spawnParticle('minecraft:totem_particle', coords);
+                                    ply.runCommand(`damage @s 0 override `);
+                                    healthPly.setCurrentValue(damageAmount);
+                                    ply.playSound('ui.soul_linked_used');
+                                    ply.playSound('random.totem', { volume: 0.35 });
+
+                                    worldToolsSimplified.sendMessageGlobal({ rawtext: [{ translate: 'chat.system.soul_link.select_player', with: { rawtext: [{ text: `${targetName}` }, { text: `${ply.name}` }] } }] });
+                                    dime.runCommand(`playsound ui.soul_linked_used @a ${coords.x} ${coords.y} ${coords.z}`);
+                                    dime.runCommand(`playsound random.totem @a ${coords.x} ${coords.y} ${coords.z} 0.35`);
+
+                                    ply.stopMusic();
+                                    ply.removeEffect('slowness');
+                                    ply.runCommand(`fog @s remove soullink`);
+                                });
+                            },
+                            onClose: (ply) => {
+                                worldToolsSimplified.setRun(() => {
+                                    ply.playSound('random.enderchestclosed');
+                                    ply.stopMusic();
+                                    ply.removeEffect('slowness');
+                                    ply.runCommand(`fog @s remove soullink`);
+                                });
+                            }
+                        },
+                    });
+                }
+            }
+        }
+    ];
+
+    /**
+     * Eventos principales de la clase cuando es inicializada o llamada.
+     * @constructor
+     */
+    constructor () {
+        super();
+
+        this.registerComponents();
+    }
+
+    /**
+     * Metodo auxiliar que registra todos los componentes custom para items de forma automatica.
+     * @author HaJuegos - 15-04-2026
+     * @private
+     */
+    private registerComponents(): void {
+        for (const itemConfig of this.itemComponents) {
+            beforeEventsSimplified.createItemComponent(itemConfig.idComponent, itemConfig.componentEvents);
+        }
+    }
+}
+
+new ItemCustomComponentsManager();

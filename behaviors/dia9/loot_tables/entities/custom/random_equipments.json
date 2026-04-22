@@ -1,0 +1,443 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "minecraft:leather_helmet",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "enchant_random_gear",
+                            "chance": 0.25
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:chainmail_helmet",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "enchant_random_gear",
+                            "chance": 0.25
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:copper_helmet",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "enchant_random_gear",
+                            "chance": 0.25
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:diamond_helmet",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "enchant_random_gear",
+                            "chance": 0.25
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:golden_helmet",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "enchant_random_gear",
+                            "chance": 0.25
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:iron_helmet",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "enchant_random_gear",
+                            "chance": 0.25
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "minecraft:leather_chestplate",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "enchant_random_gear",
+                            "chance": 0.25
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:chainmail_chestplate",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "enchant_random_gear",
+                            "chance": 0.25
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:copper_chestplate",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "enchant_random_gear",
+                            "chance": 0.25
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:diamond_chestplate",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "enchant_random_gear",
+                            "chance": 0.25
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:golden_chestplate",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "enchant_random_gear",
+                            "chance": 0.25
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:iron_chestplate",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "enchant_random_gear",
+                            "chance": 0.25
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "minecraft:leather_leggings",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "enchant_random_gear",
+                            "chance": 0.25
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:chainmail_leggings",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "enchant_random_gear",
+                            "chance": 0.25
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:copper_leggings",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "enchant_random_gear",
+                            "chance": 0.25
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:diamond_leggings",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "enchant_random_gear",
+                            "chance": 0.25
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:golden_leggings",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "enchant_random_gear",
+                            "chance": 0.25
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:iron_leggings",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "enchant_random_gear",
+                            "chance": 0.25
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "minecraft:leather_boots",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "enchant_random_gear",
+                            "chance": 0.25
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:chainmail_boots",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "enchant_random_gear",
+                            "chance": 0.25
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:copper_boots",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "enchant_random_gear",
+                            "chance": 0.25
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:diamond_boots",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "enchant_random_gear",
+                            "chance": 0.25
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:golden_boots",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "enchant_random_gear",
+                            "chance": 0.25
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:iron_boots",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "enchant_random_gear",
+                            "chance": 0.25
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "minecraft:copper_sword",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "enchant_random_gear",
+                            "chance": 0.25
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:diamond_sword",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "enchant_random_gear",
+                            "chance": 0.25
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:golden_sword",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "enchant_random_gear",
+                            "chance": 0.25
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:iron_sword",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "enchant_random_gear",
+                            "chance": 0.25
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:copper_axe",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "enchant_random_gear",
+                            "chance": 0.25
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:diamond_axe",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "enchant_random_gear",
+                            "chance": 0.25
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:golden_axe",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "enchant_random_gear",
+                            "chance": 0.25
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:iron_axe",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "enchant_random_gear",
+                            "chance": 0.25
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:iron_spear",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "enchant_with_levels",
+                            "treasure": false,
+                            "levels": {
+                                "min": 24,
+                                "max": 38
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:diamond_spear",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "enchant_with_levels",
+                            "treasure": false,
+                            "levels": {
+                                "min": 24,
+                                "max": 38
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:copper_spear",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "enchant_with_levels",
+                            "treasure": false,
+                            "levels": {
+                                "min": 24,
+                                "max": 38
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:crossbow",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "enchant_with_levels",
+                            "treasure": false,
+                            "levels": {
+                                "min": 24,
+                                "max": 38
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

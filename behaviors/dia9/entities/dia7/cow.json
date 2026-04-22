@@ -1,0 +1,452 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.26.10",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "minecraft:cow",
+            "spawn_category": "creature",
+            "is_spawnable": true,
+            "is_summonable": true,
+            "properties": {
+                "minecraft:climate_variant": {
+                    "type": "enum",
+                    "values": [ "temperate", "warm", "cold" ],
+                    "default": "temperate",
+                    "client_sync": true
+                },
+                "minecraft:sound_variant": {
+                    "type": "enum",
+                    "values": [ "default", "moody" ],
+                    "default": "default",
+                    "client_sync": true
+                }
+            }
+        },
+        "component_groups": {
+            "ha:cooldown_knock": {
+                "minecraft:timer": {
+                    "time": [ 20, 20 ],
+                    "looping": false,
+                    "time_down_event": {
+                        "event": "ha:start:knockback",
+                        "target": "self"
+                    }
+                }
+            },
+            "ha:knockback": {
+                "minecraft:knockback_resistance": {
+                    "value": 9999
+                },
+                "minecraft:behavior.knockback_roar": {
+                    "priority": 0,
+                    "attack_time": 0.1,
+                    "cooldown_time": 0.1,
+                    "knockback_damage": 1,
+                    "knockback_range": 12,
+                    "knockback_horizontal_strength": 80,
+                    "knockback_vertical_strength": 80,
+                    "duration": 0.15,
+                    "damage_filters": {
+                        "any_of": [
+                            {
+                                "test": "is_family",
+                                "subject": "other",
+                                "operator": "!=",
+                                "value": "cow"
+                            }
+                        ]
+                    },
+                    "knockback_filters": {
+                        "test": "is_family",
+                        "subject": "other",
+                        "operator": "!=",
+                        "value": "cow"
+                    },
+                    "on_roar_end": {
+                        "event": "ha:start_cooldown",
+                        "target": "self"
+                    }
+                }
+            },
+            "minecraft:cow_baby": {
+                "minecraft:is_baby": { },
+                "minecraft:scale": {
+                    "value": 0.5
+                },
+                "minecraft:ageable": {
+                    "duration": 1200,
+                    "feed_items": "wheat",
+                    "pause_growth_items": [ "golden_dandelion" ],
+                    "reset_growth_items": [ "golden_dandelion" ],
+                    "grow_up": {
+                        "event": "minecraft:ageable_grow_up",
+                        "target": "self"
+                    }
+                },
+                "minecraft:rideable": {
+                    "seat_count": 1,
+                    "family_types": [ "baby_undead" ],
+                    "seats": {
+                        "position": [ 0.0, 1.0, 0.0 ]
+                    }
+                },
+                "minecraft:behavior.follow_parent": {
+                    "priority": 12,
+                    "speed_multiplier": 1.1
+                }
+            },
+            "minecraft:cow_adult": {
+                "minecraft:leashable_to": { },
+                "minecraft:experience_reward": {
+                    "on_bred": "Math.Random(1,7)",
+                    "on_death": "query.last_hit_by_player ? Math.Random(1,3) : 0"
+                },
+                "minecraft:loot": {
+                    "table": "loot_tables/entities/cow.json"
+                },
+                "minecraft:rideable": {
+                    "seat_count": 1,
+                    "family_types": [ "baby_undead" ],
+                    "seats": {
+                        "position": [ 0.0, 1.15, 0.0 ]
+                    }
+                },
+                "minecraft:behavior.breed": {
+                    "priority": 13,
+                    "speed_multiplier": 1.0
+                },
+                "minecraft:breedable": {
+                    "require_tame": false,
+                    "breed_items": [ "wheat" ],
+                    "breeds_with": {
+                        "minecraft:cow": { }
+                    }
+                },
+                "minecraft:interact": {
+                    "interactions": [
+                        {
+                            "on_interact": {
+                                "filters": {
+                                    "all_of": [
+                                        {
+                                            "test": "is_family",
+                                            "subject": "other",
+                                            "value": "player"
+                                        },
+                                        {
+                                            "test": "has_equipment",
+                                            "domain": "hand",
+                                            "subject": "other",
+                                            "value": "bucket:0"
+                                        }
+                                    ]
+                                }
+                            },
+                            "use_item": true,
+                            "swing": true,
+                            "transform_to_item": "bucket:1",
+                            "play_sounds": "milk",
+                            "interact_text": "action.interact.milk"
+                        }
+                    ]
+                }
+            }
+        },
+        "components": {
+            "minecraft:damage_sensor": {
+                "triggers": [
+                    {
+                        "on_damage": {
+                            "filters": {
+                                "test": "is_family",
+                                "subject": "damager",
+                                "value": "sheep"
+                            }
+                        },
+                        "cause": "all",
+                        "deals_damage": "no"
+                    }
+                ]
+            },
+            "minecraft:attack": {
+                "damage": 6
+            },
+            "minecraft:behavior.melee_box_attack": {
+                "priority": 1,
+                "can_spread_on_fire": true,
+                "cooldown_time": 0.5,
+                "horizontal_reach": 1.25,
+                "melee_fov": 360,
+                "track_target": true,
+                "require_complete_path": true
+            },
+            "minecraft:behavior.hurt_by_target": {
+                "priority": 2,
+                "entity_types": [
+                    {
+                        "filters": {
+                            "test": "is_family",
+                            "subject": "other",
+                            "operator": "!=",
+                            "value": "cow"
+                        }
+                    }
+                ]
+            },
+            "minecraft:behavior.nearest_attackable_target": {
+                "priority": 3,
+                "reselect_targets": true,
+                "must_see": true,
+                "entity_types": [
+                    {
+                        "filters": {
+                            "any_of": [
+                                {
+                                    "test": "is_family",
+                                    "subject": "other",
+                                    "value": "player"
+                                },
+                                {
+                                    "test": "is_family",
+                                    "subject": "other",
+                                    "value": "irongolem"
+                                },
+                                {
+                                    "test": "is_family",
+                                    "subject": "other",
+                                    "value": "snowgolem"
+                                }
+                            ]
+                        },
+                        "max_dist": 30,
+                        "walk_speed_multiplier": 1.2,
+                        "sprint_speed_multiplier": 1.2
+                    }
+                ]
+            },
+            "minecraft:offspring": {
+                "offspring_pairs": {
+                    "minecraft:cow": "minecraft:cow"
+                },
+                "property_inheritance": {
+                    "minecraft:climate_variant": { }
+                }
+            },
+            "minecraft:spawn_egg_interaction": { },
+            "minecraft:is_hidden_when_invisible": { },
+            "minecraft:type_family": {
+                "family": [ "cow", "mob" ]
+            },
+            "minecraft:breathable": {
+                "total_supply": 15,
+                "suffocate_time": 0
+            },
+            "minecraft:navigation.walk": {
+                "can_path_over_water": true,
+                "avoid_water": true,
+                "avoid_damage_blocks": true
+            },
+            "minecraft:movement.basic": { },
+            "minecraft:jump.static": { },
+            "minecraft:can_climb": { },
+            "minecraft:collision_box": {
+                "width": 0.9,
+                "height": 1.3
+            },
+            "minecraft:nameable": { },
+            "minecraft:health": {
+                "value": 10,
+                "max": 10
+            },
+            "minecraft:hurt_on_condition": {
+                "damage_conditions": [
+                    {
+                        "filters": {
+                            "test": "in_lava",
+                            "subject": "self",
+                            "operator": "==",
+                            "value": true
+                        },
+                        "cause": "lava",
+                        "damage_per_tick": 4
+                    }
+                ]
+            },
+            "minecraft:movement": {
+                "value": 0.25
+            },
+            "minecraft:despawn": {
+                "despawn_from_distance": { }
+            },
+            "minecraft:behavior.float": {
+                "priority": 4
+            },
+            "minecraft:behavior.mount_pathing": {
+                "priority": 5,
+                "speed_multiplier": 1.5,
+                "target_dist": 0.0,
+                "track_target": true
+            },
+            "minecraft:behavior.breed": {
+                "priority": 6,
+                "speed_multiplier": 1.0
+            },
+            "minecraft:behavior.tempt": {
+                "priority": 7,
+                "speed_multiplier": 1.25,
+                "items": [ "wheat" ]
+            },
+            "minecraft:behavior.follow_parent": {
+                "priority": 8,
+                "speed_multiplier": 1.1
+            },
+            "minecraft:behavior.random_stroll": {
+                "priority": 9,
+                "speed_multiplier": 0.8
+            },
+            "minecraft:behavior.look_at_player": {
+                "priority": 10,
+                "look_distance": 6.0,
+                "probability": 0.02
+            },
+            "minecraft:behavior.random_look_around": {
+                "priority": 11
+            },
+            "minecraft:leashable": { },
+            "minecraft:balloonable": { },
+            "minecraft:physics": { },
+            "minecraft:pushable_by_entity": {
+            },
+            "minecraft:pushable_by_block": {
+            },
+            "minecraft:conditional_bandwidth_optimization": { }
+        },
+        "events": {
+            "minecraft:entity_spawned": {
+                "sequence": [
+                    {
+                        "add": {
+                            "component_groups": [
+                                "ha:cooldown_knock"
+                            ]
+                        }
+                    },
+                    {
+                        "randomize": [
+                            {
+                                "weight": 95,
+                                "trigger": "minecraft:spawn_adult"
+                            },
+                            {
+                                "weight": 5,
+                                "add": {
+                                    "component_groups": [ "minecraft:cow_baby" ]
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "first_valid": [
+                            {
+                                "filters": {
+                                    "test": "has_biome_tag",
+                                    "value": "spawns_warm_variant_farm_animals"
+                                },
+                                "set_property": {
+                                    "minecraft:climate_variant": "warm"
+                                }
+                            },
+                            {
+                                "filters": {
+                                    "test": "has_biome_tag",
+                                    "value": "spawns_cold_variant_farm_animals"
+                                },
+                                "set_property": {
+                                    "minecraft:climate_variant": "cold"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            "ha:start:knockback": {
+                "remove": {
+                    "component_groups": [
+                        "ha:cooldown_knock"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
+                        "ha:knockback"
+                    ]
+                }
+            },
+            "ha:start_cooldown": {
+                "remove": {
+                    "component_groups": [
+                        "ha:knockback"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
+                        "ha:cooldown_knock"
+                    ]
+                }
+            },
+            "minecraft:entity_born": {
+                "sequence": [
+                    {
+                        "add": {
+                            "component_groups": [
+                                "ha:cooldown_knock"
+                            ]
+                        }
+                    },
+                    {
+                        "add": {
+                            "component_groups": [ "minecraft:cow_baby" ]
+                        },
+                        "trigger": "minecraft:randomize_sound_variant"
+                    }
+                ]
+            },
+            "minecraft:entity_transformed": {
+                "remove": { },
+                "add": {
+                    "component_groups": [ "minecraft:cow_adult" ]
+                }
+            },
+            "minecraft:ageable_grow_up": {
+                "remove": {
+                    "component_groups": [ "minecraft:cow_baby" ]
+                },
+                "add": {
+                    "component_groups": [ "minecraft:cow_adult" ]
+                }
+            },
+            "minecraft:spawn_adult": {
+                "add": {
+                    "component_groups": [ "minecraft:cow_adult" ]
+                },
+                "trigger": "minecraft:randomize_sound_variant"
+            },
+            "minecraft:randomize_sound_variant": {
+                "randomize": [
+                    {
+                        "weight": 1,
+                        "set_property": {
+                            "minecraft:sound_variant": "default"
+                        }
+                    },
+                    {
+                        "weight": 1,
+                        "set_property": {
+                            "minecraft:sound_variant": "moody"
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

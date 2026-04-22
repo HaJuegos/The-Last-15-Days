@@ -309,6 +309,21 @@
                 }
             ]
         },
+        "mob.cat.start_summon": {
+            "category": "hostile",
+            "min_distance": null,
+            "max_distance": 25,
+            "__use_legacy_max_distance": "true",
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": true,
+                    "name": "sounds/ui/summon_mob",
+                    "volume": 1,
+                    "stream": false
+                }
+            ]
+        },
 
         "ambient.respawned_ply": {
             "category": "player",
@@ -321,7 +336,7 @@
                     "is3D": true,
                     "name": "sounds/ambient/respawned_player",
                     "volume": 2,
-                    "stream": true
+                    "stream": false
                 }
             ]
         },

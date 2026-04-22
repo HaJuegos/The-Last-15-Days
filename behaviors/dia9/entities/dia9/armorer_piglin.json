@@ -1,0 +1,725 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.26.0",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "ha:armorer_piglin",
+            "runtime_identifier": "minecraft:piglin",
+            "spawn_category": "monster",
+            "is_experimental": false,
+            "is_spawnable": true,
+            "is_summonable": true
+        },
+        "component_groups": {
+            "ha:convert_to_brute": {
+                "minecraft:is_shaking": { },
+                "minecraft:transformation": {
+                    "into": "minecraft:piglin_brute<minecraft:entity_spawned>",
+                    "delay": {
+                        "value": 3
+                    },
+                    "transformation_sound": "converted_to_zombified"
+                }
+            },
+            "ha:cooldown_gem": {
+                "minecraft:timer": {
+                    "time": [ 25, 25 ],
+                    "looping": true,
+                    "time_down_event": {
+                        "event": "ha:start_gem_event",
+                        "target": "self"
+                    }
+                }
+            },
+            "become_zombie": {
+                "minecraft:transformation": {
+                    "into": "minecraft:zombie_pigman",
+                    "keep_level": true,
+                    "preserve_equipment": false,
+                    "transformation_sound": "converted_to_zombified"
+                }
+            },
+            "angry": {
+                "minecraft:angry": {
+                    "angry_sound": "angry",
+                    "broadcast_anger": false,
+                    "calm_event": {
+                        "event": "become_calm_event",
+                        "target": "self"
+                    },
+                    "broadcast_anger_on_attack": false,
+                    "broadcast_anger_on_being_attacked": true,
+                    "broadcast_range": 16,
+                    "duration": 30,
+                    "broadcast_targets": [
+                        "piglin" // we want to broadcast to both normal piglins and piglin_brute
+                    ],
+                    "filters": {
+                        "all_of": [
+                            {
+                                "operator": "!=",
+                                "test": "is_family",
+                                "subject": "other",
+                                "value": "piglin"
+                            }
+                        ]
+                    },
+                    "sound_interval": {
+                        "range_max": 5,
+                        "range_min": 2
+                    }
+                }
+            },
+            "zombification_sensor": {
+                "minecraft:environment_sensor": {
+                    "triggers": {
+                        "event": "start_zombification_event",
+                        "filters": {
+                            "operator": "==",
+                            "test": "in_nether",
+                            "subject": "self",
+                            "value": false
+                        }
+                    }
+                }
+            },
+            "go_back_to_spawn": {
+                "minecraft:behavior.go_home": {
+                    "goal_radius": 4,
+                    "priority": 6,
+                    "interval": 200,
+                    "on_failed": [
+                        {
+                            "event": "go_back_to_spawn_failed",
+                            "target": "self"
+                        }
+                    ],
+                    "speed_multiplier": 0.6
+                }
+            },
+            "start_zombification": {
+                "minecraft:environment_sensor": {
+                    "triggers": {
+                        "event": "stop_zombification_event",
+                        "filters": {
+                            "operator": "==",
+                            "test": "in_nether",
+                            "subject": "self",
+                            "value": true
+                        }
+                    }
+                },
+                "minecraft:is_shaking": { },
+                "minecraft:timer": {
+                    "looping": false,
+                    "time": 15,
+                    "time_down_event": {
+                        "event": "become_zombie_event"
+                    }
+                }
+            }
+        },
+        "components": {
+            "minecraft:equip_item": {
+                "excluded_items": [
+                    {
+                        "item": "minecraft:banner:15"
+                    }
+                ]
+            },
+            "minecraft:behavior.equip_item": {
+                "priority": 2
+            },
+            "minecraft:behavior.pickup_items": {
+                "can_pickup_any_item": true,
+                "excluded_items": [
+                    "minecraft:glow_ink_sac"
+                ],
+                "pickup_based_on_chance": true,
+                "goal_radius": 2,
+                "priority": 6,
+                "max_dist": 3,
+                "speed_multiplier": 1
+            },
+            "minecraft:shareables": {
+                "items": [
+                    {
+                        "item": "ha:hoglin_fang",
+                        "want_amount": 1,
+                        "surplus_amount": 1,
+                        "priority": 0
+                    },
+                    {
+                        "item": "ha:piglin_mace",
+                        "want_amount": 1,
+                        "surplus_amount": 1,
+                        "priority": 0
+                    },
+                    {
+                        "item": "minecraft:netherite_sword",
+                        "priority": 0,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:diamond_sword",
+                        "priority": 1,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:iron_sword",
+                        "priority": 2,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:golden_sword",
+                        "priority": 3,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:copper_sword",
+                        "priority": 4,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:stone_sword",
+                        "priority": 5,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:wooden_sword",
+                        "priority": 6,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:netherite_spear",
+                        "priority": 0,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:diamond_spear",
+                        "priority": 1,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:iron_spear",
+                        "priority": 2,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:golden_spear",
+                        "priority": 3,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:copper_spear",
+                        "priority": 4,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:stone_spear",
+                        "priority": 5,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:wooden_spear",
+                        "priority": 6,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:netherite_helmet",
+                        "priority": 0,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:diamond_helmet",
+                        "priority": 1,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:iron_helmet",
+                        "priority": 2,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:chainmail_helmet",
+                        "priority": 3,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:golden_helmet",
+                        "priority": 4,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:copper_helmet",
+                        "priority": 5,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:leather_helmet",
+                        "priority": 6,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:turtle_helmet",
+                        "priority": 7,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:skull:0",
+                        "priority": 8,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:skull:1",
+                        "priority": 8,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:carved_pumpkin",
+                        "priority": 8,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:netherite_chestplate",
+                        "priority": 0,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:diamond_chestplate",
+                        "priority": 1,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:iron_chestplate",
+                        "priority": 2,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:chainmail_chestplate",
+                        "priority": 3,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:golden_chestplate",
+                        "priority": 4,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:copper_chestplate",
+                        "priority": 5,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:leather_chestplate",
+                        "priority": 6,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:netherite_leggings",
+                        "priority": 0,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:diamond_leggings",
+                        "priority": 1,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:iron_leggings",
+                        "priority": 2,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:chainmail_leggings",
+                        "priority": 3,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:golden_leggings",
+                        "priority": 4,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:copper_leggings",
+                        "priority": 5,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:leather_leggings",
+                        "priority": 6,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:netherite_boots",
+                        "priority": 0,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:diamond_boots",
+                        "priority": 1,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:iron_boots",
+                        "priority": 2,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:chainmail_boots",
+                        "priority": 3,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:golden_boots",
+                        "priority": 4,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:copper_boots",
+                        "priority": 5,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:leather_boots",
+                        "priority": 6,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    }
+                ],
+                "singular_pickup": true
+            },
+            "minecraft:attack": {
+                "damage": 9
+            },
+            "minecraft:behavior.melee_box_attack": {
+                "priority": 0,
+                "track_target": true,
+                "can_spread_on_fire": true,
+                "cooldown_time": 0.95,
+                "horizontal_reach": 1.12,
+                "melee_fov": 360,
+                "speed_multiplier": 1.05
+            },
+            "minecraft:behavior.hurt_by_target": {
+                "priority": 1,
+                "entity_types": {
+                    "filters": {
+                        "all_of": [
+                            {
+                                "test": "is_family",
+                                "subject": "other",
+                                "operator": "not",
+                                "value": "piglin"
+                            }
+                        ]
+                    }
+                }
+            },
+            "minecraft:behavior.nearest_attackable_target": {
+                "priority": 2,
+                "must_see": true,
+                "reselect_targets": true,
+                "entity_types": [
+                    {
+                        "filters": {
+                            "any_of": [
+                                {
+                                    "test": "is_family",
+                                    "subject": "other",
+                                    "value": "player"
+                                },
+                                {
+                                    "test": "is_family",
+                                    "subject": "other",
+                                    "value": "wither"
+                                },
+                                {
+                                    "test": "is_family",
+                                    "subject": "other",
+                                    "value": "irongolem"
+                                },
+                                {
+                                    "test": "is_family",
+                                    "subject": "other",
+                                    "value": "snowgolem"
+                                }
+                            ]
+                        },
+                        "max_dist": 50
+                    }
+                ]
+            },
+            "minecraft:equipment": {
+                "table": "loot_tables/entities/custom/armorer_piglin_gear.json",
+                "slot_drop_chance": [
+                    {
+                        "slot": "slot.weapon.mainhand",
+                        "drop_chance": 0
+                    }
+                ]
+            },
+            "minecraft:variant": {
+                "value": 1
+            },
+            "minecraft:annotation.open_door": { },
+            "minecraft:behavior.look_at_player": {
+                "look_time": {
+                    "min": 1,
+                    "max": 2
+                },
+                "priority": 8
+            },
+            "minecraft:behavior.random_look_around": {
+                "priority": 9
+            },
+            "minecraft:behavior.random_stroll": {
+                "priority": 7,
+                "speed_multiplier": 0.6
+            },
+            "minecraft:breathable": {
+                "suffocate_time": 0,
+                "total_supply": 15
+            },
+            "minecraft:collision_box": {
+                "height": 1.9,
+                "width": 0.6
+            },
+            "minecraft:conditional_bandwidth_optimization": { },
+            "minecraft:despawn": {
+                "filters": {
+                    "any_of": [
+                        {
+                            "all_of": [
+                                {
+                                    "test": "is_persistent",
+                                    "value": false
+                                },
+                                {
+                                    "operator": ">",
+                                    "test": "distance_to_nearest_player",
+                                    "value": 54
+                                }
+                            ]
+                        },
+                        {
+                            "all_of": [
+                                {
+                                    "test": "is_persistent",
+                                    "value": false
+                                },
+                                {
+                                    "subject": "self",
+                                    "test": "inactivity_timer",
+                                    "value": 30
+                                },
+                                {
+                                    "test": "random_chance",
+                                    "value": 800
+                                },
+                                {
+                                    "operator": ">",
+                                    "test": "distance_to_nearest_player",
+                                    "value": 32
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            "minecraft:experience_reward": {
+                "on_death": "query.last_hit_by_player ? 20 : 0"
+            },
+            "minecraft:follow_range": {
+                "value": 64
+            },
+            "minecraft:health": {
+                "max": 100,
+                "value": 100
+            },
+            "minecraft:home": { },
+            "minecraft:hurt_on_condition": {
+                "damage_conditions": [
+                    {
+                        "cause": "lava",
+                        "damage_per_tick": 4,
+                        "filters": {
+                            "operator": "==",
+                            "test": "in_lava",
+                            "subject": "self",
+                            "value": true
+                        }
+                    }
+                ]
+            },
+            "minecraft:is_hidden_when_invisible": { },
+            "minecraft:jump.static": { },
+            "minecraft:loot": {
+                "table": "loot_tables/entities/custom/armorer_piglin.json"
+            },
+            "minecraft:movement": {
+                "value": 0.35
+            },
+            "minecraft:movement.basic": { },
+            "minecraft:nameable": { },
+            "minecraft:navigation.walk": {
+                "can_open_doors": true,
+                "using_door_annotation": true,
+                "can_path_over_water": true
+            },
+            "minecraft:on_target_acquired": {
+                "event": "become_angry_event",
+                "target": "self"
+            },
+            "minecraft:physics": { },
+            "minecraft:pushable": {
+                "is_pushable": true,
+                "is_pushable_by_piston": true
+            },
+            "minecraft:type_family": {
+                "family": [
+                    "armorer_piglin",
+                    "piglin",
+                    "adult_piglin",
+                    "piglin_brute",
+                    "monster"
+                ]
+            }
+        },
+        "events": {
+            "minecraft:entity_spawned": {
+                "sequence": [
+                    {
+                        "add": {
+                            "component_groups": [
+                                "ha:cooldown_gem",
+                                "zombification_sensor",
+                                "go_back_to_spawn"
+                            ]
+                        }
+                    },
+                    {
+                        "randomize": [
+                            {
+                                "weight": 1,
+                                "add": {
+                                    "component_groups": [
+                                        "ha:convert_to_brute"
+                                    ]
+                                }
+                            },
+                            {
+                                "weight": 99
+                            }
+                        ]
+                    }
+                ]
+            },
+            "ha:start_gem_event": {
+                "queue_command": {
+                    "command": [
+                        "function mobs/armorer_events"
+                    ]
+                }
+            },
+            "stop_zombification_event": {
+                "add": {
+                    "component_groups": [
+                        "zombification_sensor"
+                    ]
+                },
+                "remove": {
+                    "component_groups": [
+                        "start_zombification"
+                    ]
+                }
+            },
+            "become_calm_event": {
+                "remove": {
+                    "component_groups": [
+                        "angry"
+                    ]
+                }
+            },
+            "become_angry_event": {
+                "add": {
+                    "component_groups": [
+                        "angry"
+                    ]
+                }
+            },
+            "become_zombie_event": {
+                "add": {
+                    "component_groups": [
+                        "become_zombie"
+                    ]
+                }
+            },
+            "go_back_to_spawn_failed": {
+                "remove": {
+                    "component_groups": [
+                        "go_back_to_spawn"
+                    ]
+                }
+            },
+            "start_zombification_event": {
+                "add": {
+                    "component_groups": [
+                        "start_zombification"
+                    ]
+                },
+                "remove": {
+                    "component_groups": [
+                        "zombification_sensor"
+                    ]
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,153 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.26.0",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "minecraft:wither_skull",
+            "is_summonable": true,
+            "is_spawnable": false
+        },
+        "component_groups": {
+            "minecraft:exploding": {
+                "minecraft:explode": {
+                    "causes_fire": false,
+                    "fuse_lit": true,
+                    "power": 1,
+                    "destroy_affected_by_griefing": true,
+                    "fuse_length": 0
+                }
+            },
+            "ha:wither_skeleton_exploding": {
+                "minecraft:explode": {
+                    "causes_fire": false,
+                    "fuse_lit": true,
+                    "power": 3,
+                    "destroy_affected_by_griefing": true,
+                    "fuse_length": 0,
+                    "allow_underwater": true,
+                    "breaks_blocks": true,
+                    "fire_affected_by_griefing": true,
+                    "toggles_blocks": true
+                }
+            },
+            "ha:spawned_normal": {
+                "minecraft:projectile": {
+                    "anchor": 1,
+                    "gravity": 0.0,
+                    "power": 1.2,
+                    "hit_sound": "bow.hit",
+                    "inertia": 1.0,
+                    "liquid_inertia": 1.0,
+                    "on_hit": {
+                        "impact_damage": { },
+                        "definition_event": {
+                            "affect_projectile": true,
+                            "event_trigger": {
+                                "event": "minecraft:explode",
+                                "target": "self"
+                            }
+                        },
+                        "mob_effect": {
+                            "amplifier": 1,
+                            "durationhard": 800,
+                            "effect": "wither",
+                            "durationeasy": 0,
+                            "durationnormal": 200
+                        }
+                    },
+                    "offset": [
+                        0,
+                        -0.1,
+                        0
+                    ],
+                    "shoot_sound": "bow",
+                    "shoot_target": false,
+                    "uncertainty_base": 7.5,
+                    "uncertainty_multiplier": 1
+                }
+            },
+            "ha:from_wither_skeleton": {
+                "minecraft:projectile": {
+                    "on_hit": {
+                        "definition_event": {
+                            "affect_projectile": true,
+                            "event_trigger": {
+                                "event": "ha:wither_skeleton_explode",
+                                "target": "self"
+                            }
+                        },
+                        "impact_damage": {
+                            "damage": 6,
+                            "knockback": false,
+                            "semi_random_diff_damage": false
+                        },
+                        "stick_in_ground": { }
+                    },
+                    "power": 3,
+                    "gravity": 0.0,
+                    "anchor": 1,
+                    "inertia": 1.0,
+                    "liquid_inertia": 1.0,
+                    "hit_sound": "bow.hit",
+                    "shoot_sound": "bow",
+                    "uncertainty_base": 2,
+                    "uncertainty_multiplier": 1,
+                    "offset": [ 0, -0.1, 0 ],
+                    "shoot_target": true,
+                    "stop_on_hurt": true,
+                    "is_dangerous": true
+                }
+            }
+        },
+        "components": {
+            "minecraft:collision_box": {
+                "height": 0.15,
+                "width": 0.15
+            },
+            "minecraft:conditional_bandwidth_optimization": {
+                "default_values": {
+                    "max_dropped_ticks": 7,
+                    "max_optimized_distance": 80.0,
+                    "use_motion_prediction_hints": true
+                }
+            },
+            "minecraft:dimension_bound": { },
+            "minecraft:physics": { },
+            "minecraft:pushable": {
+                "is_pushable": true,
+                "is_pushable_by_piston": true
+            }
+        },
+        "events": {
+            "minecraft:entity_spawned": {
+                "add": {
+                    "component_groups": [
+                        "ha:spawned_normal"
+                    ]
+                }
+            },
+            "ha:spawn_from_wither_skeleton": {
+                "add": {
+                    "component_groups": [
+                        "ha:from_wither_skeleton"
+                    ]
+                }
+            },
+            "ha:wither_skeleton_explode": {
+                "add": {
+                    "component_groups": [
+                        "ha:wither_skeleton_exploding"
+                    ]
+                }
+            },
+            "minecraft:explode": {
+                "add": {
+                    "component_groups": [
+                        "minecraft:exploding"
+                    ]
+                }
+            }
+        }
+    }
+}

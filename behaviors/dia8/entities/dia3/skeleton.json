@@ -666,11 +666,46 @@
         },
         "events": {
             "minecraft:entity_spawned": {
-                "add": {
-                    "component_groups": [
-                        "ha:become_horse"
-                    ]
-                }
+                "sequence": [
+                    {
+                        "randomize": [
+                            {
+                                "weight": 85
+                            },
+                            {
+                                "weight": 15,
+                                "add": {
+                                    "component_groups": [
+                                        "ha:become_bogged"
+                                    ]
+                                }
+                            },
+                            {
+                                "weight": 15,
+                                "add": {
+                                    "component_groups": [
+                                        "ha:become_stray"
+                                    ]
+                                }
+                            },
+                            {
+                                "weight": 15,
+                                "add": {
+                                    "component_groups": [
+                                        "ha:become_parched"
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "add": {
+                            "component_groups": [
+                                "minecraft:ranged_attack"
+                            ]
+                        }
+                    }
+                ]
             },
             "ha:is_normal_rider": {
                 "sequence": [

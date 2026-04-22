@@ -1,0 +1,525 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "tiers": [
+        {
+            "total_exp_required": 0,
+            "groups": [
+                {
+                    "num_to_select": 4,
+                    "trades": [
+                        {
+                            "wants": [
+                                {
+                                    "item": "minecraft:emerald",
+                                    "quantity": {
+                                        "min": 2,
+                                        "max": 5
+                                    },
+                                    "price_multiplier": 1.5
+                                }
+                            ],
+                            "gives": [
+                                {
+                                    "item": "minecraft:stick",
+                                    "quantity": 1
+                                }
+                            ]
+                        },
+                        {
+                            "wants": [
+                                {
+                                    "item": "minecraft:emerald",
+                                    "quantity": {
+                                        "min": 1,
+                                        "max": 3
+                                    },
+                                    "price_multiplier": 1.2
+                                }
+                            ],
+                            "gives": [
+                                {
+                                    "item": "minecraft:dirt",
+                                    "quantity": {
+                                        "min": 1,
+                                        "max": 2
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "wants": [
+                                {
+                                    "item": "minecraft:emerald",
+                                    "quantity": 5,
+                                    "price_multiplier": 2.0
+                                }
+                            ],
+                            "gives": [
+                                {
+                                    "item": "minecraft:poisonous_potato",
+                                    "quantity": 1
+                                }
+                            ]
+                        },
+                        {
+                            "wants": [
+                                {
+                                    "item": "minecraft:emerald",
+                                    "quantity": 10,
+                                    "price_multiplier": 0.8
+                                }
+                            ],
+                            "gives": [
+                                {
+                                    "item": "minecraft:deadbush",
+                                    "quantity": 1
+                                }
+                            ]
+                        },
+                        {
+                            "wants": [
+                                {
+                                    "item": "minecraft:emerald",
+                                    "quantity": 3,
+                                    "price_multiplier": 1.5
+                                }
+                            ],
+                            "gives": [
+                                {
+                                    "item": "minecraft:rotten_flesh",
+                                    "quantity": 1
+                                }
+                            ]
+                        },
+                        {
+                            "wants": [
+                                {
+                                    "item": "minecraft:emerald",
+                                    "quantity": 15,
+                                    "price_multiplier": 2.5
+                                }
+                            ],
+                            "gives": [
+                                {
+                                    "item": "minecraft:wooden_hoe",
+                                    "quantity": 1
+                                }
+                            ]
+                        },
+                        {
+                            "wants": [
+                                {
+                                    "item": "minecraft:emerald",
+                                    "quantity": {
+                                        "min": 4,
+                                        "max": 8
+                                    },
+                                    "price_multiplier": 1.0
+                                }
+                            ],
+                            "gives": [
+                                {
+                                    "item": "minecraft:spider_eye",
+                                    "quantity": 1
+                                }
+                            ]
+                        },
+                        {
+                            "wants": [
+                                {
+                                    "item": "minecraft:emerald",
+                                    "quantity": 12,
+                                    "price_multiplier": 1.8
+                                }
+                            ],
+                            "gives": [
+                                {
+                                    "item": "minecraft:leather_boots",
+                                    "quantity": 1,
+                                    "functions": [
+                                        {
+                                            "function": "set_damage",
+                                            "damage": 0.9
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "wants": [
+                                {
+                                    "item": "minecraft:emerald",
+                                    "quantity": 20,
+                                    "price_multiplier": 3.0
+                                }
+                            ],
+                            "gives": [
+                                {
+                                    "item": "minecraft:suspicious_stew",
+                                    "quantity": 1,
+                                    "functions": [
+                                        {
+                                            "function": "set_stew_effect",
+                                            "effects": [
+                                                {
+                                                    "id": 9,
+                                                    "duration": 10
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "wants": [
+                                {
+                                    "item": "minecraft:emerald",
+                                    "quantity": 64,
+                                    "price_multiplier": 5.0
+                                },
+                                {
+                                    "item": "minecraft:diamond",
+                                    "quantity": 1
+                                }
+                            ],
+                            "gives": [
+                                {
+                                    "item": "ha:invocation_skull",
+                                    "quantity": 2
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "num_to_select": 4,
+                    "trades": [
+                        {
+                            "wants": [
+                                {
+                                    "item": "minecraft:emerald",
+                                    "quantity": 5,
+                                    "price_multiplier": 1.2
+                                }
+                            ],
+                            "gives": [
+                                {
+                                    "item": "minecraft:bone",
+                                    "quantity": 1
+                                }
+                            ]
+                        },
+                        {
+                            "wants": [
+                                {
+                                    "item": "minecraft:emerald",
+                                    "quantity": 8,
+                                    "price_multiplier": 1.5
+                                }
+                            ],
+                            "gives": [
+                                {
+                                    "item": "minecraft:flint",
+                                    "quantity": 1
+                                }
+                            ]
+                        },
+                        {
+                            "wants": [
+                                {
+                                    "item": "minecraft:emerald",
+                                    "quantity": 12,
+                                    "price_multiplier": 1.8
+                                }
+                            ],
+                            "gives": [
+                                {
+                                    "item": "minecraft:bowl",
+                                    "quantity": 1
+                                }
+                            ]
+                        },
+                        {
+                            "wants": [
+                                {
+                                    "item": "minecraft:emerald",
+                                    "quantity": 2,
+                                    "price_multiplier": 2.0
+                                }
+                            ],
+                            "gives": [
+                                {
+                                    "item": "minecraft:gravel",
+                                    "quantity": 1
+                                }
+                            ]
+                        },
+                        {
+                            "wants": [
+                                {
+                                    "item": "minecraft:emerald",
+                                    "quantity": 15,
+                                    "price_multiplier": 1.5
+                                }
+                            ],
+                            "gives": [
+                                {
+                                    "item": "minecraft:kelp",
+                                    "quantity": 1
+                                }
+                            ]
+                        },
+                        {
+                            "wants": [
+                                {
+                                    "item": "minecraft:emerald",
+                                    "quantity": 25,
+                                    "price_multiplier": 2.2
+                                }
+                            ],
+                            "gives": [
+                                {
+                                    "item": "minecraft:wooden_sword",
+                                    "quantity": 1,
+                                    "functions": [
+                                        {
+                                            "function": "set_damage",
+                                            "damage": 0.8
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "wants": [
+                                {
+                                    "item": "minecraft:emerald",
+                                    "quantity": 10,
+                                    "price_multiplier": 1.5
+                                }
+                            ],
+                            "gives": [
+                                {
+                                    "item": "minecraft:wheat_seeds",
+                                    "quantity": 1
+                                }
+                            ]
+                        },
+                        {
+                            "wants": [
+                                {
+                                    "item": "minecraft:emerald",
+                                    "quantity": 30,
+                                    "price_multiplier": 2.5
+                                }
+                            ],
+                            "gives": [
+                                {
+                                    "item": "minecraft:clock",
+                                    "quantity": 1
+                                }
+                            ]
+                        },
+                        {
+                            "wants": [
+                                {
+                                    "item": "minecraft:emerald",
+                                    "quantity": 40,
+                                    "price_multiplier": 3.0
+                                }
+                            ],
+                            "gives": [
+                                {
+                                    "item": "minecraft:compass",
+                                    "quantity": 1
+                                }
+                            ]
+                        },
+                        {
+                            "wants": [
+                                {
+                                    "item": "minecraft:emerald",
+                                    "quantity": 50,
+                                    "price_multiplier": 4.0
+                                }
+                            ],
+                            "gives": [
+                                {
+                                    "item": "minecraft:name_tag",
+                                    "quantity": 1,
+                                    "functions": [
+                                        {
+                                            "function": "set_name",
+                                            "name": "Sócrates"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "num_to_select": 2,
+                    "trades": [
+                        {
+                            "wants": [
+                                {
+                                    "item": "minecraft:emerald",
+                                    "quantity": 10,
+                                    "price_multiplier": 1.2
+                                }
+                            ],
+                            "gives": [
+                                {
+                                    "item": "minecraft:sugar_cane",
+                                    "quantity": 1
+                                }
+                            ]
+                        },
+                        {
+                            "wants": [
+                                {
+                                    "item": "minecraft:emerald",
+                                    "quantity": 15,
+                                    "price_multiplier": 1.5
+                                }
+                            ],
+                            "gives": [
+                                {
+                                    "item": "minecraft:feather",
+                                    "quantity": 1
+                                }
+                            ]
+                        },
+                        {
+                            "wants": [
+                                {
+                                    "item": "minecraft:emerald",
+                                    "quantity": 20,
+                                    "price_multiplier": 1.8
+                                }
+                            ],
+                            "gives": [
+                                {
+                                    "item": "minecraft:ink_sac",
+                                    "quantity": 1
+                                }
+                            ]
+                        },
+                        {
+                            "wants": [
+                                {
+                                    "item": "minecraft:emerald",
+                                    "quantity": 25,
+                                    "price_multiplier": 2.0
+                                }
+                            ],
+                            "gives": [
+                                {
+                                    "item": "minecraft:leather",
+                                    "quantity": 1
+                                }
+                            ]
+                        },
+                        {
+                            "wants": [
+                                {
+                                    "item": "minecraft:emerald",
+                                    "quantity": 30,
+                                    "price_multiplier": 2.5
+                                }
+                            ],
+                            "gives": [
+                                {
+                                    "item": "minecraft:book",
+                                    "quantity": 1
+                                }
+                            ]
+                        },
+                        {
+                            "wants": [
+                                {
+                                    "item": "minecraft:emerald",
+                                    "quantity": 35,
+                                    "price_multiplier": 3.0
+                                }
+                            ],
+                            "gives": [
+                                {
+                                    "item": "minecraft:glass_bottle",
+                                    "quantity": 1
+                                }
+                            ]
+                        },
+                        {
+                            "wants": [
+                                {
+                                    "item": "minecraft:emerald",
+                                    "quantity": 40,
+                                    "price_multiplier": 3.5
+                                }
+                            ],
+                            "gives": [
+                                {
+                                    "item": "minecraft:fermented_spider_eye",
+                                    "quantity": 1
+                                }
+                            ]
+                        },
+                        {
+                            "wants": [
+                                {
+                                    "item": "minecraft:emerald",
+                                    "quantity": 45,
+                                    "price_multiplier": 4.0
+                                }
+                            ],
+                            "gives": [
+                                {
+                                    "item": "minecraft:blaze_powder",
+                                    "quantity": 1
+                                }
+                            ]
+                        },
+                        {
+                            "wants": [
+                                {
+                                    "item": "minecraft:emerald",
+                                    "quantity": 50,
+                                    "price_multiplier": 4.5
+                                }
+                            ],
+                            "gives": [
+                                {
+                                    "item": "minecraft:ghast_tear",
+                                    "quantity": 1
+                                }
+                            ]
+                        },
+                        {
+                            "wants": [
+                                {
+                                    "item": "minecraft:emerald",
+                                    "quantity": 64,
+                                    "price_multiplier": 10.0
+                                },
+                                {
+                                    "item": "minecraft:diamond",
+                                    "quantity": 1
+                                }
+                            ],
+                            "gives": [
+                                {
+                                    "item": "ha:slime_pearl",
+                                    "quantity": 64
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

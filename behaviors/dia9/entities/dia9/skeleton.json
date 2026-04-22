@@ -10,6 +10,122 @@
             "is_summonable": true
         },
         "component_groups": {
+            "ha:bee_ranged_mode": {
+                "minecraft:behavior.ranged_attack": {
+                    "priority": 0,
+                    "speed_multiplier": 1.25,
+                    "attack_interval_min": 0.85,
+                    "attack_interval_max": 1.75,
+                    "attack_radius": 40,
+                    "ranged_fov": 360,
+                    "swing": true,
+                    "target_in_sight_time": 0.1
+                },
+                "minecraft:shooter": {
+                    "def": "minecraft:fireball<ha:from_skeleton_bee>",
+                    "sound": "bow"
+                }
+            },
+            "ha:rider_sensors": {
+                "minecraft:behavior.hurt_by_target": {
+                    "priority": 1,
+                    "entity_types": [
+                        {
+                            "filters": {
+                                "any_of": [
+                                    {
+                                        "test": "is_family",
+                                        "subject": "other",
+                                        "operator": "not",
+                                        "value": "phantom"
+                                    },
+                                    {
+                                        "test": "is_family",
+                                        "subject": "other",
+                                        "operator": "not",
+                                        "value": "bee"
+                                    },
+                                    {
+                                        "test": "is_family",
+                                        "subject": "other",
+                                        "operator": "not",
+                                        "value": "skeleton"
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                "minecraft:damage_sensor": {
+                    "triggers": [
+                        {
+                            "on_damage": {
+                                "filters": {
+                                    "test": "is_family",
+                                    "subject": "other",
+                                    "value": "skeleton"
+                                }
+                            },
+                            "deals_damage": "no"
+                        }
+                    ]
+                },
+                "minecraft:environment_sensor": {
+                    "triggers": [
+                        {
+                            "filters": {
+                                "test": "is_riding",
+                                "value": false
+                            },
+                            "target": "self",
+                            "event": "ha:remove_persistance"
+                        }
+                    ]
+                },
+                "minecraft:behavior.nearest_attackable_target": {
+                    "priority": 2,
+                    "must_see": false,
+                    "reselect_targets": true,
+                    "entity_types": [
+                        {
+                            "filters": {
+                                "test": "is_family",
+                                "subject": "other",
+                                "value": "player"
+                            },
+                            "max_dist": 40
+                        },
+                        {
+                            "filters": {
+                                "test": "is_family",
+                                "subject": "other",
+                                "value": "irongolem"
+                            },
+                            "max_dist": 40
+                        },
+                        {
+                            "filters": {
+                                "all_of": [
+                                    {
+                                        "test": "is_family",
+                                        "subject": "other",
+                                        "value": "baby_turtle"
+                                    },
+                                    {
+                                        "test": "in_water",
+                                        "subject": "other",
+                                        "value": false
+                                    }
+                                ]
+                            },
+                            "max_dist": 40
+                        }
+                    ]
+                }
+            },
+            "ha:persistance": {
+                "minecraft:persistent": { }
+            },
             "ha:become_bogged": {
                 "minecraft:is_shaking": { },
                 "minecraft:transformation": {
@@ -196,6 +312,10 @@
             }
         },
         "components": {
+            "minecraft:on_death": {
+                "target": "self",
+                "event": "ha:random_drop_bow"
+            },
             "minecraft:behavior.ranged_attack": {
                 "priority": 0,
                 "attack_interval_min": 1.0,
@@ -559,17 +679,17 @@
                 ]
             },
             "minecraft:behavior.hurt_by_target": {
-                "priority": 1,
                 "entity_types": [
                     {
                         "filters": {
+                            "operator": "!=",
                             "test": "is_family",
                             "subject": "other",
-                            "operator": "not",
                             "value": "breeze"
                         }
                     }
-                ]
+                ],
+                "priority": 1
             },
             "minecraft:behavior.nearest_attackable_target": {
                 "priority": 2,
@@ -665,6 +785,21 @@
             }
         },
         "events": {
+            "ha:random_drop_bow": {
+                "randomize": [
+                    {
+                        "weight": 90
+                    },
+                    {
+                        "weight": 10,
+                        "queue_command": {
+                            "command": [
+                                "structure load ha:super_bow ~~1~"
+                            ]
+                        }
+                    }
+                ]
+            },
             "minecraft:entity_spawned": {
                 "sequence": [
                     {
@@ -748,6 +883,22 @@
                         }
                     }
                 ]
+            },
+            "ha:spawned_from_bee": {
+                "add": {
+                    "component_groups": [
+                        "ha:bee_ranged_mode",
+                        "ha:rider_sensors",
+                        "ha:persistance"
+                    ]
+                }
+            },
+            "ha:remove_persistance": {
+                "remove": {
+                    "component_groups": [
+                        "ha:persistance"
+                    ]
+                }
             },
             "become_stray_event": {
                 "add": {
