@@ -22,12 +22,14 @@ class BlocksCustomComponentsManager extends TL15DBaseManager {
         beforeEventsSimplified.onExplosion((args) => {
             const dime = args.dimension;
             const blocks = args.getImpactedBlocks();
-            const dynamites = blocks.filter(b => b.typeId == 'ha:dynamite_block');
+            const dynamites = blocks.filter(b => b?.isValid && b.typeId == 'ha:dynamite_block');
 
             for (const block of dynamites) {
                 if (block.permutation.getState('ha:is_on') == true) continue;
 
                 worldToolsSimplified.setRun(() => {
+                    if (!block.isValid) return;
+
                     dime.spawnEntity('ha:dynamite' as mc.VanillaEntityIdentifier, block.location, { spawnEvent: 'ha:from_chain_explodes' });
                 });
             }
@@ -59,7 +61,7 @@ class BlocksCustomComponentsManager extends TL15DBaseManager {
 
                     block.setPermutation(newState);
                     dime.playSound('random.fuse', block.location);
-                    customEventsManager.manualDamageItem(ply, item);
+                    customEventsManager.manualDamageItem({ply:ply, item:item});
                     self.startExplosionDynamite(block, dime);
                 }
             }

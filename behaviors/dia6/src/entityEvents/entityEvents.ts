@@ -189,6 +189,10 @@ class EntityEventsManager extends TL15DBaseManager {
                 const validCoords: mc.Vector3[] = [];
 
                 for (const block of damageBlocks) {
+                    if (block && !block.isValid) {
+                        continue;
+                    }
+
                     if (block.isAir || blacklistedBlocks.includes(block.typeId as vanilla.MinecraftBlockTypes)) {
                         continue;
                     }
@@ -292,7 +296,7 @@ class EntityEventsManager extends TL15DBaseManager {
                 case 'ha:give_bad_effects_wither': {
                     const dime = entity.dimension;
                     const coords = entity.location;
-                    const nearEntities = dime.getEntities({ location: coords, maxDistance: 25 });
+                    const nearEntities = dime.getEntities({ location: coords, maxDistance: 30 });
                     const badEffects = [
                         'blindness',
                         'darkness',
@@ -330,7 +334,7 @@ class EntityEventsManager extends TL15DBaseManager {
                 case 'ha:randomize_inventory_plys': {
                     const dime = entity.dimension;
                     const coords = entity.location;
-                    const nearPlys = dime.getPlayers({ location: coords, maxDistance: 20 });
+                    const nearPlys = dime.getPlayers({ location: coords, maxDistance: 30 });
 
                     for (const ply of nearPlys) {
                         customEventsManager.randomizeInvPly(ply);

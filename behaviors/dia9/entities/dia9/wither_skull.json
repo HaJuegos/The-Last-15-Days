@@ -13,7 +13,7 @@
                 "minecraft:explode": {
                     "causes_fire": false,
                     "fuse_lit": true,
-                    "power": 1,
+                    "power": 5,
                     "destroy_affected_by_griefing": true,
                     "fuse_length": 0
                 }

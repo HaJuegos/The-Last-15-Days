@@ -4,6 +4,7 @@
 tag @s remove death
 tag @s remove banned
 tag @s add isLinked
+tag @s add linkedDebuffSaved
 
 playsound ambient.respawned_ply @a ~~~
 

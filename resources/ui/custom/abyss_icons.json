@@ -1,0 +1,786 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "namespace": "abyss_icons",
+
+    // Animations Section
+
+    "base_pop": {
+        "anim_type": "size",
+        "from": [ 0, 0 ],
+        "to": [ 148, 148 ],
+        "duration": 0.15,
+        "easing": "out_back",
+        "next": "@abyss_icons.base_wait"
+    },
+    "base_wait": {
+        "anim_type": "wait",
+        "duration": 0.1,
+        "next": "@abyss_icons.base_hide"
+    },
+    "base_hide": {
+        "anim_type": "alpha",
+        "from": 1.0,
+        "to": 0.0,
+        "duration": 0.05
+    },
+
+    "number_delay": {
+        "anim_type": "size",
+        "from": [ 0, 0 ],
+        "to": [ 0, 0 ],
+        "duration": 0.25,
+        "next": "@abyss_icons.number_pop"
+    },
+    "number_pop": {
+        "anim_type": "size",
+        "from": [ 148, 148 ],
+        "to": [ 200, 200 ],
+        "duration": 0.35,
+        "easing": "out_bounce",
+        "next": "@abyss_icons.number_pop_static"
+    },
+    "number_pop_static": {
+        "anim_type": "size",
+        "from": [ 200, 200 ],
+        "to": [ 148, 148 ],
+        "duration": 0.15,
+        "easing": "out_bounce",
+        "next": "@abyss_icons.number_wait"
+    },
+    "number_wait": {
+        "anim_type": "wait",
+        "duration": 1.0,
+        "next": "@abyss_icons.fade_out"
+    },
+    "fade_out": {
+        "anim_type": "alpha",
+        "from": 1.0,
+        "to": 0.0,
+        "duration": 0.5
+    },
+
+    // Icons template base
+
+    "debuff_combo_template": {
+        "type": "image",
+        "size": [ 148, 148 ],
+        "layer": 101,
+        "anims": [
+            "@abyss_icons.number_delay"
+        ]
+    },
+    "debuff_base_combo_template": {
+        "type": "image",
+        "size": [ 148, 148 ],
+        "layer": 100,
+        "anims": [
+            "@abyss_icons.base_pop"
+        ]
+    },
+
+    // Sensor icons 
+
+    "abyssal_icons_panel": {
+        "type": "panel",
+        "controls": [
+            {
+                "base_icon@abyss_icons.debuff_base_combo_template": {
+                    "texture": "textures/ui/custom/abyss_icons/abyssal_eyes/base",
+                    "bindings": [
+                        { "binding_name": "#hud_title_text_string", "binding_condition": "once" },
+                        {
+                            "binding_type": "view",
+                            "source_property_name": "(('%.7s' * #hud_title_text_string) = 'abyssal')",
+                            "target_property_name": "#visible"
+                        }
+                    ]
+                }
+            },
+            {
+                "c1_icon@abyss_icons.debuff_combo_template": {
+                    "texture": "textures/ui/custom/abyss_icons/abyssal_eyes/1",
+                    "bindings": [
+                        { "binding_name": "#hud_title_text_string", "binding_condition": "once" },
+                        {
+                            "binding_type": "view",
+                            "source_property_name": "(#hud_title_text_string = 'abyssal:combo1')",
+                            "target_property_name": "#visible"
+                        }
+                    ]
+                }
+            },
+            {
+                "c2_icon@abyss_icons.debuff_combo_template": {
+                    "texture": "textures/ui/custom/abyss_icons/abyssal_eyes/2",
+                    "bindings": [
+                        { "binding_name": "#hud_title_text_string", "binding_condition": "once" },
+                        {
+                            "binding_type": "view",
+                            "source_property_name": "(#hud_title_text_string = 'abyssal:combo2')",
+                            "target_property_name": "#visible"
+                        }
+                    ]
+                }
+            },
+            {
+                "c3_icon@abyss_icons.debuff_combo_template": {
+                    "texture": "textures/ui/custom/abyss_icons/abyssal_eyes/3",
+                    "bindings": [
+                        { "binding_name": "#hud_title_text_string", "binding_condition": "once" },
+                        {
+                            "binding_type": "view",
+                            "source_property_name": "(#hud_title_text_string = 'abyssal:combo3')",
+                            "target_property_name": "#visible"
+                        }
+                    ]
+                }
+            },
+            {
+                "c4_icon@abyss_icons.debuff_combo_template": {
+                    "texture": "textures/ui/custom/abyss_icons/abyssal_eyes/4",
+                    "bindings": [
+                        { "binding_name": "#hud_title_text_string", "binding_condition": "once" },
+                        {
+                            "binding_type": "view",
+                            "source_property_name": "(#hud_title_text_string = 'abyssal:combo4')",
+                            "target_property_name": "#visible"
+                        }
+                    ]
+                }
+            },
+            {
+                "c5_icon@abyss_icons.debuff_combo_template": {
+                    "texture": "textures/ui/custom/abyss_icons/abyssal_eyes/5",
+                    "bindings": [
+                        { "binding_name": "#hud_title_text_string", "binding_condition": "once" },
+                        {
+                            "binding_type": "view",
+                            "source_property_name": "(#hud_title_text_string = 'abyssal:combo5')",
+                            "target_property_name": "#visible"
+                        }
+                    ]
+                }
+            },
+            {
+                "c6_icon@abyss_icons.debuff_combo_template": {
+                    "texture": "textures/ui/custom/abyss_icons/abyssal_eyes/6",
+                    "bindings": [
+                        { "binding_name": "#hud_title_text_string", "binding_condition": "once" },
+                        {
+                            "binding_type": "view",
+                            "source_property_name": "(#hud_title_text_string = 'abyssal:combo6')",
+                            "target_property_name": "#visible"
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    "colossus_icons_panel": {
+        "type": "panel",
+        "controls": [
+            {
+                "base_icon@abyss_icons.debuff_base_combo_template": {
+                    "texture": "textures/ui/custom/abyss_icons/colossus_trick/base",
+                    "bindings": [
+                        { "binding_name": "#hud_title_text_string", "binding_condition": "once" },
+                        {
+                            "binding_type": "view",
+                            "source_property_name": "(('%.8s' * #hud_title_text_string) = 'colossus')",
+                            "target_property_name": "#visible"
+                        }
+                    ]
+                }
+            },
+            {
+                "c1_icon@abyss_icons.debuff_combo_template": {
+                    "texture": "textures/ui/custom/abyss_icons/colossus_trick/1",
+                    "bindings": [
+                        { "binding_name": "#hud_title_text_string", "binding_condition": "once" },
+                        {
+                            "binding_type": "view",
+                            "source_property_name": "(#hud_title_text_string = 'colossus:combo1')",
+                            "target_property_name": "#visible"
+                        }
+                    ]
+                }
+            },
+            {
+                "c2_icon@abyss_icons.debuff_combo_template": {
+                    "texture": "textures/ui/custom/abyss_icons/colossus_trick/2",
+                    "bindings": [
+                        { "binding_name": "#hud_title_text_string", "binding_condition": "once" },
+                        {
+                            "binding_type": "view",
+                            "source_property_name": "(#hud_title_text_string = 'colossus:combo2')",
+                            "target_property_name": "#visible"
+                        }
+                    ]
+                }
+            },
+            {
+                "c3_icon@abyss_icons.debuff_combo_template": {
+                    "texture": "textures/ui/custom/abyss_icons/colossus_trick/3",
+                    "bindings": [
+                        { "binding_name": "#hud_title_text_string", "binding_condition": "once" },
+                        {
+                            "binding_type": "view",
+                            "source_property_name": "(#hud_title_text_string = 'colossus:combo3')",
+                            "target_property_name": "#visible"
+                        }
+                    ]
+                }
+            },
+            {
+                "c4_icon@abyss_icons.debuff_combo_template": {
+                    "texture": "textures/ui/custom/abyss_icons/colossus_trick/4",
+                    "bindings": [
+                        { "binding_name": "#hud_title_text_string", "binding_condition": "once" },
+                        {
+                            "binding_type": "view",
+                            "source_property_name": "(#hud_title_text_string = 'colossus:combo4')",
+                            "target_property_name": "#visible"
+                        }
+                    ]
+                }
+            },
+            {
+                "c5_icon@abyss_icons.debuff_combo_template": {
+                    "texture": "textures/ui/custom/abyss_icons/colossus_trick/5",
+                    "bindings": [
+                        { "binding_name": "#hud_title_text_string", "binding_condition": "once" },
+                        {
+                            "binding_type": "view",
+                            "source_property_name": "(#hud_title_text_string = 'colossus:combo5')",
+                            "target_property_name": "#visible"
+                        }
+                    ]
+                }
+            },
+            {
+                "c6_icon@abyss_icons.debuff_combo_template": {
+                    "texture": "textures/ui/custom/abyss_icons/colossus_trick/6",
+                    "bindings": [
+                        { "binding_name": "#hud_title_text_string", "binding_condition": "once" },
+                        {
+                            "binding_type": "view",
+                            "source_property_name": "(#hud_title_text_string = 'colossus:combo6')",
+                            "target_property_name": "#visible"
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    "hunger_icons_panel": {
+        "type": "panel",
+        "controls": [
+            {
+                "base_icon@abyss_icons.debuff_base_combo_template": {
+                    "texture": "textures/ui/custom/abyss_icons/endless_hunger/base",
+                    "bindings": [
+                        { "binding_name": "#hud_title_text_string", "binding_condition": "once" },
+                        {
+                            "binding_type": "view",
+                            "source_property_name": "(('%.6s' * #hud_title_text_string) = 'hunger')",
+                            "target_property_name": "#visible"
+                        }
+                    ]
+                }
+            },
+            {
+                "c1_icon@abyss_icons.debuff_combo_template": {
+                    "texture": "textures/ui/custom/abyss_icons/endless_hunger/1",
+                    "bindings": [
+                        { "binding_name": "#hud_title_text_string", "binding_condition": "once" },
+                        {
+                            "binding_type": "view",
+                            "source_property_name": "(#hud_title_text_string = 'hunger:combo1')",
+                            "target_property_name": "#visible"
+                        }
+                    ]
+                }
+            },
+            {
+                "c2_icon@abyss_icons.debuff_combo_template": {
+                    "texture": "textures/ui/custom/abyss_icons/endless_hunger/2",
+                    "bindings": [
+                        { "binding_name": "#hud_title_text_string", "binding_condition": "once" },
+                        {
+                            "binding_type": "view",
+                            "source_property_name": "(#hud_title_text_string = 'hunger:combo2')",
+                            "target_property_name": "#visible"
+                        }
+                    ]
+                }
+            },
+            {
+                "c3_icon@abyss_icons.debuff_combo_template": {
+                    "texture": "textures/ui/custom/abyss_icons/endless_hunger/3",
+                    "bindings": [
+                        { "binding_name": "#hud_title_text_string", "binding_condition": "once" },
+                        {
+                            "binding_type": "view",
+                            "source_property_name": "(#hud_title_text_string = 'hunger:combo3')",
+                            "target_property_name": "#visible"
+                        }
+                    ]
+                }
+            },
+            {
+                "c4_icon@abyss_icons.debuff_combo_template": {
+                    "texture": "textures/ui/custom/abyss_icons/endless_hunger/4",
+                    "bindings": [
+                        { "binding_name": "#hud_title_text_string", "binding_condition": "once" },
+                        {
+                            "binding_type": "view",
+                            "source_property_name": "(#hud_title_text_string = 'hunger:combo4')",
+                            "target_property_name": "#visible"
+                        }
+                    ]
+                }
+            },
+            {
+                "c5_icon@abyss_icons.debuff_combo_template": {
+                    "texture": "textures/ui/custom/abyss_icons/endless_hunger/5",
+                    "bindings": [
+                        { "binding_name": "#hud_title_text_string", "binding_condition": "once" },
+                        {
+                            "binding_type": "view",
+                            "source_property_name": "(#hud_title_text_string = 'hunger:combo5')",
+                            "target_property_name": "#visible"
+                        }
+                    ]
+                }
+            },
+            {
+                "c6_icon@abyss_icons.debuff_combo_template": {
+                    "texture": "textures/ui/custom/abyss_icons/endless_hunger/6",
+                    "bindings": [
+                        { "binding_name": "#hud_title_text_string", "binding_condition": "once" },
+                        {
+                            "binding_type": "view",
+                            "source_property_name": "(#hud_title_text_string = 'hunger:combo6')",
+                            "target_property_name": "#visible"
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    "shadows_icons_panel": {
+        "type": "panel",
+        "controls": [
+            {
+                "base_icon@abyss_icons.debuff_base_combo_template": {
+                    "texture": "textures/ui/custom/abyss_icons/ravenous_shadows/base",
+                    "bindings": [
+                        { "binding_name": "#hud_title_text_string", "binding_condition": "once" },
+                        {
+                            "binding_type": "view",
+                            "source_property_name": "(('%.7s' * #hud_title_text_string) = 'shadows')",
+                            "target_property_name": "#visible"
+                        }
+                    ]
+                }
+            },
+            {
+                "c1_icon@abyss_icons.debuff_combo_template": {
+                    "texture": "textures/ui/custom/abyss_icons/ravenous_shadows/1",
+                    "bindings": [
+                        { "binding_name": "#hud_title_text_string", "binding_condition": "once" },
+                        {
+                            "binding_type": "view",
+                            "source_property_name": "(#hud_title_text_string = 'shadows:combo1')",
+                            "target_property_name": "#visible"
+                        }
+                    ]
+                }
+            },
+            {
+                "c2_icon@abyss_icons.debuff_combo_template": {
+                    "texture": "textures/ui/custom/abyss_icons/ravenous_shadows/2",
+                    "bindings": [
+                        { "binding_name": "#hud_title_text_string", "binding_condition": "once" },
+                        {
+                            "binding_type": "view",
+                            "source_property_name": "(#hud_title_text_string = 'shadows:combo2')",
+                            "target_property_name": "#visible"
+                        }
+                    ]
+                }
+            },
+            {
+                "c3_icon@abyss_icons.debuff_combo_template": {
+                    "texture": "textures/ui/custom/abyss_icons/ravenous_shadows/3",
+                    "bindings": [
+                        { "binding_name": "#hud_title_text_string", "binding_condition": "once" },
+                        {
+                            "binding_type": "view",
+                            "source_property_name": "(#hud_title_text_string = 'shadows:combo3')",
+                            "target_property_name": "#visible"
+                        }
+                    ]
+                }
+            },
+            {
+                "c4_icon@abyss_icons.debuff_combo_template": {
+                    "texture": "textures/ui/custom/abyss_icons/ravenous_shadows/4",
+                    "bindings": [
+                        { "binding_name": "#hud_title_text_string", "binding_condition": "once" },
+                        {
+                            "binding_type": "view",
+                            "source_property_name": "(#hud_title_text_string = 'shadows:combo4')",
+                            "target_property_name": "#visible"
+                        }
+                    ]
+                }
+            },
+            {
+                "c5_icon@abyss_icons.debuff_combo_template": {
+                    "texture": "textures/ui/custom/abyss_icons/ravenous_shadows/5",
+                    "bindings": [
+                        { "binding_name": "#hud_title_text_string", "binding_condition": "once" },
+                        {
+                            "binding_type": "view",
+                            "source_property_name": "(#hud_title_text_string = 'shadows:combo5')",
+                            "target_property_name": "#visible"
+                        }
+                    ]
+                }
+            },
+            {
+                "c6_icon@abyss_icons.debuff_combo_template": {
+                    "texture": "textures/ui/custom/abyss_icons/ravenous_shadows/6",
+                    "bindings": [
+                        { "binding_name": "#hud_title_text_string", "binding_condition": "once" },
+                        {
+                            "binding_type": "view",
+                            "source_property_name": "(#hud_title_text_string = 'shadows:combo6')",
+                            "target_property_name": "#visible"
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    "soul_icons_panel": {
+        "type": "panel",
+        "controls": [
+            {
+                "base_icon@abyss_icons.debuff_base_combo_template": {
+                    "texture": "textures/ui/custom/abyss_icons/soul_decay/base",
+                    "bindings": [
+                        { "binding_name": "#hud_title_text_string", "binding_condition": "once" },
+                        {
+                            "binding_type": "view",
+                            "source_property_name": "(('%.4s' * #hud_title_text_string) = 'soul')",
+                            "target_property_name": "#visible"
+                        }
+                    ]
+                }
+            },
+            {
+                "c1_icon@abyss_icons.debuff_combo_template": {
+                    "texture": "textures/ui/custom/abyss_icons/soul_decay/1",
+                    "bindings": [
+                        { "binding_name": "#hud_title_text_string", "binding_condition": "once" },
+                        {
+                            "binding_type": "view",
+                            "source_property_name": "(#hud_title_text_string = 'soul:combo1')",
+                            "target_property_name": "#visible"
+                        }
+                    ]
+                }
+            },
+            {
+                "c2_icon@abyss_icons.debuff_combo_template": {
+                    "texture": "textures/ui/custom/abyss_icons/soul_decay/2",
+                    "bindings": [
+                        { "binding_name": "#hud_title_text_string", "binding_condition": "once" },
+                        {
+                            "binding_type": "view",
+                            "source_property_name": "(#hud_title_text_string = 'soul:combo2')",
+                            "target_property_name": "#visible"
+                        }
+                    ]
+                }
+            },
+            {
+                "c3_icon@abyss_icons.debuff_combo_template": {
+                    "texture": "textures/ui/custom/abyss_icons/soul_decay/3",
+                    "bindings": [
+                        { "binding_name": "#hud_title_text_string", "binding_condition": "once" },
+                        {
+                            "binding_type": "view",
+                            "source_property_name": "(#hud_title_text_string = 'soul:combo3')",
+                            "target_property_name": "#visible"
+                        }
+                    ]
+                }
+            },
+            {
+                "c4_icon@abyss_icons.debuff_combo_template": {
+                    "texture": "textures/ui/custom/abyss_icons/soul_decay/4",
+                    "bindings": [
+                        { "binding_name": "#hud_title_text_string", "binding_condition": "once" },
+                        {
+                            "binding_type": "view",
+                            "source_property_name": "(#hud_title_text_string = 'soul:combo4')",
+                            "target_property_name": "#visible"
+                        }
+                    ]
+                }
+            },
+            {
+                "c5_icon@abyss_icons.debuff_combo_template": {
+                    "texture": "textures/ui/custom/abyss_icons/soul_decay/5",
+                    "bindings": [
+                        { "binding_name": "#hud_title_text_string", "binding_condition": "once" },
+                        {
+                            "binding_type": "view",
+                            "source_property_name": "(#hud_title_text_string = 'soul:combo5')",
+                            "target_property_name": "#visible"
+                        }
+                    ]
+                }
+            },
+            {
+                "c6_icon@abyss_icons.debuff_combo_template": {
+                    "texture": "textures/ui/custom/abyss_icons/soul_decay/6",
+                    "bindings": [
+                        { "binding_name": "#hud_title_text_string", "binding_condition": "once" },
+                        {
+                            "binding_type": "view",
+                            "source_property_name": "(#hud_title_text_string = 'soul:combo6')",
+                            "target_property_name": "#visible"
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    "fury_icons_panel": {
+        "type": "panel",
+        "controls": [
+            {
+                "base_icon@abyss_icons.debuff_base_combo_template": {
+                    "texture": "textures/ui/custom/abyss_icons/unhinged_fury/base",
+                    "bindings": [
+                        { "binding_name": "#hud_title_text_string", "binding_condition": "once" },
+                        {
+                            "binding_type": "view",
+                            "source_property_name": "(('%.4s' * #hud_title_text_string) = 'fury')",
+                            "target_property_name": "#visible"
+                        }
+                    ]
+                }
+            },
+            {
+                "c1_icon@abyss_icons.debuff_combo_template": {
+                    "texture": "textures/ui/custom/abyss_icons/unhinged_fury/1",
+                    "bindings": [
+                        { "binding_name": "#hud_title_text_string", "binding_condition": "once" },
+                        {
+                            "binding_type": "view",
+                            "source_property_name": "(#hud_title_text_string = 'fury:combo1')",
+                            "target_property_name": "#visible"
+                        }
+                    ]
+                }
+            },
+            {
+                "c2_icon@abyss_icons.debuff_combo_template": {
+                    "texture": "textures/ui/custom/abyss_icons/unhinged_fury/2",
+                    "bindings": [
+                        { "binding_name": "#hud_title_text_string", "binding_condition": "once" },
+                        {
+                            "binding_type": "view",
+                            "source_property_name": "(#hud_title_text_string = 'fury:combo2')",
+                            "target_property_name": "#visible"
+                        }
+                    ]
+                }
+            },
+            {
+                "c3_icon@abyss_icons.debuff_combo_template": {
+                    "texture": "textures/ui/custom/abyss_icons/unhinged_fury/3",
+                    "bindings": [
+                        { "binding_name": "#hud_title_text_string", "binding_condition": "once" },
+                        {
+                            "binding_type": "view",
+                            "source_property_name": "(#hud_title_text_string = 'fury:combo3')",
+                            "target_property_name": "#visible"
+                        }
+                    ]
+                }
+            },
+            {
+                "c4_icon@abyss_icons.debuff_combo_template": {
+                    "texture": "textures/ui/custom/abyss_icons/unhinged_fury/4",
+                    "bindings": [
+                        { "binding_name": "#hud_title_text_string", "binding_condition": "once" },
+                        {
+                            "binding_type": "view",
+                            "source_property_name": "(#hud_title_text_string = 'fury:combo4')",
+                            "target_property_name": "#visible"
+                        }
+                    ]
+                }
+            },
+            {
+                "c5_icon@abyss_icons.debuff_combo_template": {
+                    "texture": "textures/ui/custom/abyss_icons/unhinged_fury/5",
+                    "bindings": [
+                        { "binding_name": "#hud_title_text_string", "binding_condition": "once" },
+                        {
+                            "binding_type": "view",
+                            "source_property_name": "(#hud_title_text_string = 'fury:combo5')",
+                            "target_property_name": "#visible"
+                        }
+                    ]
+                }
+            },
+            {
+                "c6_icon@abyss_icons.debuff_combo_template": {
+                    "texture": "textures/ui/custom/abyss_icons/unhinged_fury/6",
+                    "bindings": [
+                        { "binding_name": "#hud_title_text_string", "binding_condition": "once" },
+                        {
+                            "binding_type": "view",
+                            "source_property_name": "(#hud_title_text_string = 'fury:combo6')",
+                            "target_property_name": "#visible"
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    "void_icons_panel": {
+        "type": "panel",
+        "controls": [
+            {
+                "base_icon@abyss_icons.debuff_base_combo_template": {
+                    "texture": "textures/ui/custom/abyss_icons/void_claws/base",
+                    "bindings": [
+                        { "binding_name": "#hud_title_text_string", "binding_condition": "once" },
+                        {
+                            "binding_type": "view",
+                            "source_property_name": "(('%.4s' * #hud_title_text_string) = 'void')",
+                            "target_property_name": "#visible"
+                        }
+                    ]
+                }
+            },
+            {
+                "c1_icon@abyss_icons.debuff_combo_template": {
+                    "texture": "textures/ui/custom/abyss_icons/void_claws/1",
+                    "bindings": [
+                        { "binding_name": "#hud_title_text_string", "binding_condition": "once" },
+                        {
+                            "binding_type": "view",
+                            "source_property_name": "(#hud_title_text_string = 'void:combo1')",
+                            "target_property_name": "#visible"
+                        }
+                    ]
+                }
+            },
+            {
+                "c2_icon@abyss_icons.debuff_combo_template": {
+                    "texture": "textures/ui/custom/abyss_icons/void_claws/2",
+                    "bindings": [
+                        { "binding_name": "#hud_title_text_string", "binding_condition": "once" },
+                        {
+                            "binding_type": "view",
+                            "source_property_name": "(#hud_title_text_string = 'void:combo2')",
+                            "target_property_name": "#visible"
+                        }
+                    ]
+                }
+            },
+            {
+                "c3_icon@abyss_icons.debuff_combo_template": {
+                    "texture": "textures/ui/custom/abyss_icons/void_claws/3",
+                    "bindings": [
+                        { "binding_name": "#hud_title_text_string", "binding_condition": "once" },
+                        {
+                            "binding_type": "view",
+                            "source_property_name": "(#hud_title_text_string = 'void:combo3')",
+                            "target_property_name": "#visible"
+                        }
+                    ]
+                }
+            },
+            {
+                "c4_icon@abyss_icons.debuff_combo_template": {
+                    "texture": "textures/ui/custom/abyss_icons/void_claws/4",
+                    "bindings": [
+                        { "binding_name": "#hud_title_text_string", "binding_condition": "once" },
+                        {
+                            "binding_type": "view",
+                            "source_property_name": "(#hud_title_text_string = 'void:combo4')",
+                            "target_property_name": "#visible"
+                        }
+                    ]
+                }
+            },
+            {
+                "c5_icon@abyss_icons.debuff_combo_template": {
+                    "texture": "textures/ui/custom/abyss_icons/void_claws/5",
+                    "bindings": [
+                        { "binding_name": "#hud_title_text_string", "binding_condition": "once" },
+                        {
+                            "binding_type": "view",
+                            "source_property_name": "(#hud_title_text_string = 'void:combo5')",
+                            "target_property_name": "#visible"
+                        }
+                    ]
+                }
+            },
+            {
+                "c6_icon@abyss_icons.debuff_combo_template": {
+                    "texture": "textures/ui/custom/abyss_icons/void_claws/6",
+                    "bindings": [
+                        { "binding_name": "#hud_title_text_string", "binding_condition": "once" },
+                        {
+                            "binding_type": "view",
+                            "source_property_name": "(#hud_title_text_string = 'void:combo6')",
+                            "target_property_name": "#visible"
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+
+    // Center panel icons
+
+    "debuff_center_panel": {
+        "type": "panel",
+        "size": [ "100%", "100%" ],
+        "anchor_from": "center",
+        "anchor_to": "center",
+        "controls": [
+            { "abyssal@abyss_icons.abyssal_icons_panel": { } },
+            { "colossus@abyss_icons.colossus_icons_panel": { } },
+            { "hunger@abyss_icons.hunger_icons_panel": { } },
+            { "shadows@abyss_icons.shadows_icons_panel": { } },
+            { "soul@abyss_icons.soul_icons_panel": { } },
+            { "fury@abyss_icons.fury_icons_panel": { } },
+            { "void@abyss_icons.void_icons_panel": { } }
+        ]
+    },
+
+    // Factory panel center
+
+    "debuff_root_factory": {
+        "type": "panel",
+        "factory": {
+            "name": "hud_title_text_factory",
+            "control_ids": {
+                "hud_title_text": "debuff_center_panel@abyss_icons.debuff_center_panel"
+            }
+        }
+    }
+}

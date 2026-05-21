@@ -52,8 +52,14 @@ ui.other_credits.role1=Texturas utilizadas en el add-on
 ui.fist_intro.title=§a§l[ Bienvenido a TL15D ]§r
 ui.fist_intro.subtitle=§4Recibiste un Kit inicial. ¡Suerte!
 ui.system.dolphin_timer=§7Puedes volver a respirar bajo el agua en %1
+
 ui.list_players_death.title= §4§lElije a tu victima§r 
 ui.list_players_death.body=§i§oElije a un jugador fallecido para revivirlo y unir tu alma con él para continuar en esta aventura.§r
+
+ui.form_timers.title_form=§7§oTemporizadores pendientes§r
+ui.form_timers.main_text=\nTus debuffs activos son los siguientes:\n\n
+ui.form_timers.time_remain=§7Tiempo restante.§r
+ui.form_timers.final_title_form=§o§7El tiempo no se actualiza en tiempo real. Consulta este libro cuando quieras.
 
 
 ## Chat texts
@@ -72,6 +78,35 @@ chat.system.hit_by_dolphin=§e§lTe ha golpeado un delfin, ya no puedes respirar
 chat.system.soul_link.no_plys_deaths=§7§l>> No hay jugadores por revivir, es inútil utilizar el item en este momento.
 chat.system.soul_link.alr_used=§7§l>> Ya has utilizado este item previamente, no puedes revivir a mas jugadores.
 chat.system.soul_link.select_player=§7§l>> §cPor el pacto del Soul Link, §e%2 §cha atado su destino al de §e%1§c. §7Son dos cuerpos, pero una sola vida. §4La muerte de uno será la condena absoluta del otro. Ya no hay salvación.
+
+chat.system.abyss_text.abyssal_text_combo1=§1§l>> Ojos del Abismo: Sientes que una presencia oscura te arrebata varios espacios del inventario. Tranquilo, tus cosas están ahora mismo en el suelo. ¡Mala suerte!
+chat.system.abyss_text.abyssal_text_combo2=§1§l>> Ojos del Abismo: Por caer de nuevo en esta maldición, pierdes un espacio aleatorio de tu inventario. ¡Qué mala suerte! Ten cuidado con lo que guardas.
+
+chat.system.abyss_text.colossus_text_combo1=§6§l>> Engaño del Coloso: Te has vuelto enorme y pesado. Tu cuerpo se siente lento y te cuesta moverte. Ahora los enemigos te alcanzarán antes y será difícil adaptarte al entorno. ¡Mala suerte!
+
+chat.system.abyss_text.hunger_text_combo1=§2§l>> Insaciable Hambre: Tu cuerpo exige comida a gritos, haciendo que, sin querer, empieces a devorar tus propios objetos al azar. ¡Qué mala suerte!
+
+chat.system.abyss_text.shadows_text_combo1=§b§l>> Sombras Voraces: Las sombras te acechan. Ahora los monstruos que te ataquen tendrán Velocidad y Fuerza, y el efecto será más potente cada vez que te toque de nuevo. ¡Mala suerte!
+
+chat.system.abyss_text.decay_text_combo1=§n§l>> Erosión del Alma: El abismo drena tu saturación. Tu energía caerá de golpe y tu cuerpo se debilitará mucho más rápido. ¡Vaya mala suerte!
+
+chat.system.abyss_text.fury_text_combo1=§c§l>> Furia Desquiciada: La ira te consume. Puedes atacar a otros jugadores y tienes Fuerza, pero el desgaste de tus objetos será mayor cada vez que sufras este efecto. ¡Qué mala suerte!
+
+chat.system.abyss_text.void_text_combo1=§u§l>> Garras del Vacío: Tus objetos se han quedado bloqueados. No podrás soltarlos ni usarlos mientras dure el efecto. ¡Mala suerte!
+chat.system.abyss_text.void_text_combo2=§u§l>> Garras del Vacío: Más objetos quedan atados a tu inventario. Poco a poco pierdes la capacidad de mover o usar tus cosas. ¡Qué mala suerte!
+chat.system.abyss_text.void_text_combo5=§u§l>> Garras del Vacío: Tus objetos están totalmente sellados. Ya no puedes usarlos ni moverlos; el inventario está completamente bloqueado. ¡Pésima suerte!
+
+chat.system.debuff_total_changed=§7>> Se ha cambiado el total de debuffs globales del mundo a %1. (Previamente había %2 debuffs en total)
+
+chat.system.debuff_name.abyssal=§1Ojos del Abismo§7
+chat.system.debuff_name.colossus=§6Engaño del Coloso§7
+chat.system.debuff_name.hunger=§2Insaciable Hambre§7
+chat.system.debuff_name.shadows=§bSombras Voraces§7
+chat.system.debuff_name.decay=§nErosión del Alma§7
+chat.system.debuff_name.fury=§cFuria Desquiciada§7
+chat.system.debuff_name.void=§uGarras del Vacío§7
+
+chat.system.debuff_end_timer=§7>> El Debuff %1 ha terminado.
 
 
 ## Entity Names
@@ -150,6 +185,12 @@ item.ha:allay_essence.name=§b§lEsencia de Allay§r
 item.ha:soul_link=§s§lUnión de Almas§r
 item.ha:soul_link.name=§s§lUnión de Almas§r
 
+item.ha:void_item=§sVacio§r
+item.ha:void_item.name=§sVacio§r
+
+item.ha:knowledge_book=§aEnciclopedia§r
+item.ha:knowledge_book.name=§aEnciclopedia§r
+
 
 ## Item Catalog
 ha:itemGroup.name.nether_items=§4Cosas del Nether§r
@@ -219,3 +260,33 @@ advacement.axolotl=El depredador más adorable
 advacement.all_frogs=¡Uniendo nuestras fuerzas!
 advacement.infernal_crown=Domando al Nether
 advacement.hoglin_tusk=El Depredador Alfa
+
+
+## Subtitle Texts
+ui.subtitle_custom.click_btn_ha=§6Click al botón de Ha en los créditos§r
+ui.subtitle_custom.click_btn_astral=§dClick al botón de Astral en los créditos§r
+ui.subtitle_custom.click_btn_royer=§eClick al botón de Royer en los créditos§r
+
+ui.subtitle_custom.get_normal_advancement=Se obtiene un logro
+ui.subtitle_custom.get_rare_advancement=Se obtiene un logro raro
+ui.subtitle_custom.intro_sound=¡Bienvenido!
+ui.subtitle_custom.game_over=§c¡Fin del juego!§r
+ui.subtitle_custom.death_ply=§cUn jugador ha muerto§r
+ui.subtitle_custom.no_perms=No puedes hacer eso
+ui.subtitle_custom.get_wither_debuff=Obtienes un debuff de un King Wither
+ui.subtitle_custom.slime_pearl_used=Se ha usado una Slime Pearl
+ui.subtitle_custom.no_perms_item=No puedes usar este ítem
+ui.subtitle_custom.soul_linked=§3Vinculación de almas correcta§r
+ui.subtitle_custom.abyss_attack=Recibiste un debuff malo
+ui.subtitle_custom.abyss_desc=Explicación del debuff
+ui.subtitle_custom.player_ghost_death=Un fantasma de jugador ha muerto
+ui.subtitle_custom.soul_ghast_charging=Soul Ghast cargando su ataque
+ui.subtitle_custom.lord_piglin_gem=Habilidad de Lord Piglin ejecutada
+ui.subtitle_custom.piglin_get_armor=Un piglin ha cambiado de armadura
+ui.subtitle_custom.magmacopter_start=Un MagmaCopter está volando
+ui.subtitle_custom.wither_king_start=King Wither ha cambiado de habilidad
+ui.subtitle_custom.mob_explodes=Un mob está a punto de explotar
+ui.subtitle_custom.mob_betray=Un mob domesticado ha cambiado
+ui.subtitle_custom.mob_summon_attack=Un mob ha generado otros mobs
+ui.subtitle_custom.ply_respawned_soul=Un jugador ha revivido
+ui.subtitle_custom.ambient_soullink=§4Elige a tu víctima§r

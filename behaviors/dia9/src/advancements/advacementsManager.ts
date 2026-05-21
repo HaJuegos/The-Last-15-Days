@@ -10,6 +10,11 @@ import { afterEventsSimplified, beforeEventsSimplified, customEventsManager, wor
  * @author HaJuegos - 19-03-2026
  */
 class AdvancementManager extends TL15DBaseManager {
+    /**
+     * Una variable global para obtener dimensiones en concreto de la clase.
+     * @type {!mc.Dimension}
+     * @private
+     */
     private dime!: mc.Dimension;
 
     /**
@@ -174,7 +179,7 @@ class AdvancementManager extends TL15DBaseManager {
                 this.executeAdvan(sourceEntity, 41);
             }
 
-            if (sourceEntity && sourceEntity instanceof mc.Player) {
+            if ((deathEntity && deathEntity.isValid) && (sourceEntity && sourceEntity instanceof mc.Player)) {
                 const familyComp = deathEntity.getComponent(mc.EntityComponentTypes.TypeFamily) as mc.EntityTypeFamilyComponent;
 
                 if (familyComp.hasTypeFamily('monster')) {
@@ -235,6 +240,8 @@ class AdvancementManager extends TL15DBaseManager {
         afterEventsSimplified.onProjectileHitBlock((args) => {
             const sourceEntity = args.source;
             const block = args.getBlockHit().block;
+
+            if (!block.isValid || (sourceEntity && !sourceEntity.isValid)) return;
 
             if ((sourceEntity && sourceEntity instanceof mc.Player) && block.typeId == vanilla.MinecraftBlockTypes.Target) {
                 const pos1 = sourceEntity.location;

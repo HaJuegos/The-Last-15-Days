@@ -98,6 +98,16 @@
             "textures": [
                 "textures/items/custom/soul_link"
             ]
+        },
+        "void_item": {
+            "textures": [
+                "textures/items/custom/void_item"
+            ]
+        },
+        "knowledge_book": {
+            "textures": [
+                "textures/items/knowledge_book"
+            ]
         }
     }
 }

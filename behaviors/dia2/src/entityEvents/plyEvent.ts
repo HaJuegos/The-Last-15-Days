@@ -57,6 +57,7 @@ class PlyEventsManager extends TL15DBaseManager {
 
                 for (const item of listOfItems) {
                     item.lockMode = mc.ItemLockMode.inventory;
+                    item.keepOnDeath = true;
 
                     plyInv.addItem(item);
                 }

@@ -188,7 +188,7 @@
                 "damage": 10
             },
             "minecraft:behavior.melee_box_attack": {
-                "priority": 1,
+                "priority": 0,
                 "can_spread_on_fire": true,
                 "cooldown_time": 0.5,
                 "horizontal_reach": 1.2,
@@ -197,7 +197,7 @@
                 "speed_multiplier": 1.35
             },
             "minecraft:behavior.pickup_items": {
-                "priority": 0,
+                "priority": 1,
                 "can_pickup_any_item": true,
                 "goal_radius": 1,
                 "max_dist": 50,

@@ -157,6 +157,7 @@ class PlyEventsManager extends TL15DBaseManager {
 
                 for (const item of listOfItems) {
                     item.lockMode = mc.ItemLockMode.inventory;
+                    item.keepOnDeath = true;
 
                     plyInv.addItem(item);
                 }
@@ -552,6 +553,8 @@ class PlyEventsManager extends TL15DBaseManager {
             const item = plyInvContainer.getItem(i);
 
             if (item) {
+                if (item.typeId == 'ha:void_item') continue;
+
                 ghostInvContainer.addItem(item);
             }
         }
@@ -560,6 +563,8 @@ class PlyEventsManager extends TL15DBaseManager {
             const item = plyArmorContainer.getEquipment(slot);
 
             if (item) {
+                if (item.typeId == 'ha:void_item') continue;
+
                 ghostInvContainer.addItem(item);
             }
         }

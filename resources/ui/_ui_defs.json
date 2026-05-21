@@ -1,5 +1,6 @@
 {
     "ui_defs": [
+        "ui/custom/abyss_icons.json",
         "ui/custom/custom_credits.json",
         "ui/custom/fast_items.json",
         "ui/custom/water_mark.json",

@@ -30,10 +30,25 @@ class GlobalWorldEventsManager extends TL15DBaseManager {
         worldToolsSimplified.listenerScriptEvents((args) => {
             const id = args.id;
             const source = args.sourceEntity as mc.Player;
+            const msg = args.message;
 
             if (!source) return;
 
             switch (id) {
+                case 'ha:set_total_debuffs': {
+                    const previusTotal = mc.world.getDynamicProperty('ha:stack_debuffs') as number | undefined;
+                    const newTotal = Number(msg);
+
+                    mc.world.setDynamicProperty('ha:stack_debuffs', newTotal);
+                    source.setDynamicProperty('ha:stack_debuffs', 0);
+                    source.playSound('random.click');
+                    source.sendMessage({ rawtext: [{ translate: 'chat.system.debuff_total_changed', with: { rawtext: [{ text: `${newTotal}` }, { text: `${previusTotal}` }] } }] });
+                } break;
+                case 'ha:spawn_fake': {
+                    for (let i = 0; i < 2; i++) {
+                        fakePlysSimplified.createFakePly(`test_${i}`, mc.GameMode.Survival);
+                    }
+                } break;
                 case 'ha:tp_spawn': {
                     const spawnCoords = mc.world.getDefaultSpawnLocation();
                     const over = mc.world.getDimension('overworld');

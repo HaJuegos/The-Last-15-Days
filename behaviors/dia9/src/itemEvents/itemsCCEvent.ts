@@ -229,6 +229,83 @@ class ItemCustomComponentsManager extends TL15DBaseManager {
                     });
                 }
             }
+        },
+        {
+            // Knowledge Book Events
+            idComponent: 'ha:knowledge_book_events',
+            componentEvents: {
+                onUse: (args) => {
+                    const ply = args.source;
+                    const debuffMap: Record<string, string> = {
+                        'abyssal': 'chat.system.debuff_name.abyssal',
+                        'colossus': 'chat.system.debuff_name.colossus',
+                        'hunger': 'chat.system.debuff_name.hunger',
+                        'shadows': 'chat.system.debuff_name.shadows',
+                        'soul': 'chat.system.debuff_name.decay',
+                        'fury': 'chat.system.debuff_name.fury',
+                        'void': 'chat.system.debuff_name.void'
+                    };
+
+                    const debuffIds = Object.keys(debuffMap);
+
+                    let activeDebuffs: { transKey: string, timeTxt: string; }[] = [];
+
+                    for (let i = 0; i < debuffIds.length; i++) {
+                        const debuffID = debuffIds[i];
+                        const endTime = ply.getDynamicProperty(`ha:debuff_timer_${debuffID}`) as number | undefined;
+
+                        if (endTime == undefined) continue;
+
+                        const remainMs = endTime - Date.now();
+
+                        if (remainMs <= 0) continue;
+
+                        const totalS = Math.floor(remainMs / 1000);
+                        const minutes = Math.floor(totalS / 60);
+                        const seconds = totalS % 60;
+                        const mStr = minutes.toString().padStart(2, '0');
+                        const sStr = seconds.toString().padStart(2, '0');
+                        const timeFormatted = `§7${mStr}:${sStr}§r`;
+                        const transKey = debuffMap[debuffID];
+
+                        activeDebuffs.push({ transKey, timeTxt: timeFormatted });
+                    }
+
+                    if (activeDebuffs.length == 0) {
+                        return;
+                    }
+
+                    let finalText: any[] = [
+                        { translate: 'ui.form_timers.main_text' }
+                    ];
+
+                    for (let i = 0; i < activeDebuffs.length; i++) {
+                        finalText.push({ text: "- " });
+                        finalText.push({ translate: activeDebuffs[i].transKey });
+                        finalText.push({ text: `: ${activeDebuffs[i].timeTxt} ` });
+                        finalText.push({ translate: 'ui.form_timers.time_remain' });
+
+                        if (i < activeDebuffs.length - 1) {
+                            finalText.push({ text: "\n\n" });
+                        }
+                    }
+
+                    finalText.push({ text: "\n\n" });
+                    finalText.push({ translate: 'ui.form_timers.final_title_form' });
+
+                    customEventsManager.createCustomClassicFormUI({
+                        titleForm: { rawtext: [{ translate: 'ui.form_timers.title_form' }] },
+                        bodyText: { rawtext: finalText },
+                        showPly: {
+                            targetPly: ply,
+                            onCreate: (ply) => {
+                                ply.playSound('item.book.page_turn');
+                                ply.playSound('particle.soul_escape');
+                            }
+                        }
+                    });
+                }
+            }
         }
     ];
 

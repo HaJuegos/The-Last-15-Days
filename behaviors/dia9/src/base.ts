@@ -98,7 +98,7 @@ export class TL15DBaseManager {
     protected setCustomRank(targetEntity: mc.Player | mc.Entity, currentH?: number, maxH?: number, isTakingDamage?: boolean): void {
         const name = (targetEntity instanceof mc.Player) ? targetEntity.name : targetEntity.typeId;
         const healthComponent = targetEntity.getComponent(mc.EntityComponentTypes.Health) as mc.EntityHealthComponent;
-        const currentVal = healthComponent.currentValue;
+        const currentVal = Math.floor(healthComponent.currentValue);
         const maxVal = healthComponent.defaultValue;
         const rankData = this.customRanks.find((data) => {
             if (Array.isArray(data.namePly)) {

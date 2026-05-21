@@ -52,8 +52,14 @@ ui.other_credits.role1=Textures used in the add-on
 ui.fist_intro.title=§a§l[ Welcome to TL15D ]§r
 ui.fist_intro.subtitle=§4You've received a Starter Kit. Good luck!
 ui.system.dolphin_timer=§7You can breathe underwater again in %1
+
 ui.list_players_death.title= §4§lChoose your victim§r 
 ui.list_players_death.body=§i§oChoose a deceased player to revive them and unite your soul with theirs to continue this adventure.§r
+
+ui.form_timers.title_form=§7§oPending timers§r
+ui.form_timers.main_text=\nHere are your active debuffs:\n\n
+ui.form_timers.time_remain=§7Time left.§r
+ui.form_timers.final_title_form=§o§7Time doesn't update in real time. Check this book whenever you want.
 
 
 ## Chat texts
@@ -72,6 +78,36 @@ chat.system.hit_by_dolphin=§e§lYou've been hit by a dolphin; you can't hold yo
 chat.system.soul_link.no_plys_deaths=§7§l>> There are no players to revive, so there's no point in using the item right now.
 chat.system.soul_link.alr_used=§7§l>> You've already used this item; you can't revive any more players.
 chat.system.soul_link.select_player=§7§l>> §cThrough the Soul Link pact, §e%2 §cjust bound their fate to §e%1§c. §7Two bodies, one shared life. §4If one goes down, it's game over for both. There's no saving you now.
+
+chat.system.abyss_text.abyssal_text_combo1=§1§l>> Abyssal Eyes: You feel a dark presence snatching slots from your inventory. Don't panic—your items are just chilling on the floor now. Tough luck!
+chat.system.abyss_text.abyssal_text_combo2=§1§l>> Abyssal Eyes: Since you got cursed again, another random inventory slot is gone. Watch your back... and your items! Bad luck!
+
+chat.system.abyss_text.colossus_text_combo1=§6§l>> Colossus Trick: You've grown huge and heavy, making you feel sluggish and slow. Enemies will catch up to you in no time, and moving around is now a pain. Tough luck!
+
+chat.system.abyss_text.hunger_text_combo1=§2§l>> Endless Hunger: Your body is starving for more, causing you to unconsciously start eating your own random items. Sucks to be you!
+
+chat.system.abyss_text.shadows_text_combo1=§b§l>> Ravenous Shadows: The shadows are hunting you. Now, any mobs that attack you will gain Speed and Strength—and it only gets worse every time you're hit. Bad luck!
+
+chat.system.abyss_text.decay_text_combo1=§n§l>> Soul Decay: The abyss is draining your saturation. Your energy levels will tank suddenly, making your body weaken much faster. Tough luck!
+
+chat.system.abyss_text.fury_text_combo1=§c§l>> Unhinged Fury: Rage consumes you. You can now attack players and gain Strength, but your items will lose durability much faster every time you trigger this. Sucks for you!
+
+chat.system.abyss_text.void_text_combo1=§u§l>> Void Claws: Your items are locked tight in your inventory. You won't be able to drop or use them while this effect is active. Bad luck!
+chat.system.abyss_text.void_text_combo2=§u§l>> Void Claws: Even more items are bound to your inventory. You're slowly losing the ability to move or use anything. Tough luck!
+chat.system.abyss_text.void_text_combo5=§u§l>> Void Claws: Your items are now completely sealed and stuck. You can't use or move them anymore—your inventory is totally locked down. What a nightmare!
+
+chat.system.debuff_total_changed=§7>> The total number of global debuffs in the world has been changed to %1. (Previously, there were %2 debuffs in total.)
+
+chat.system.debuff_end_timer=§7>> Debuff %1 has ended.
+
+chat.system.debuff_name.abyssal=§1Abyssal Eyes§7
+chat.system.debuff_name.colossus=§6Colossus Trick§7
+chat.system.debuff_name.hunger=§2Endless Hunger§7
+chat.system.debuff_name.shadows=§bRavenous Shadows§7
+chat.system.debuff_name.decay=§nSoul Decay§7
+chat.system.debuff_name.fury=§cUnhinged Fury§7
+chat.system.debuff_name.void=§uVoid Claws§7
+
 
 ## Entity Names
 entity.ha:player_ghost.name=Player Ghost
@@ -149,6 +185,12 @@ item.ha:allay_essence.name=§b§lAllay Essence§r
 item.ha:soul_link=§s§lSoul Link§r
 item.ha:soul_link.name=§s§lSoul Link§r
 
+item.ha:void_item=§sVoid§r
+item.ha:void_item.name=§sVoid§r
+
+item.ha:knowledge_book=§aKnowledge Book§r
+item.ha:knowledge_book.name=§aKnowledge Book§r
+
 
 ## Item Catalog
 ha:itemGroup.name.nether_items=§4Nether's Stuff§r
@@ -218,3 +260,33 @@ advacement.axolotl=The Cutest Predator
 advacement.all_frogs=With Our Powers Combined!
 advacement.infernal_crown=Conquering the Nether
 advacement.hoglin_tusk=The Alpha Predator
+
+
+## Subtitle Texts
+ui.subtitle_custom.click_btn_ha=§6Click the Ha button in credits§r
+ui.subtitle_custom.click_btn_astral=§dClick the Astral button in credits§r
+ui.subtitle_custom.click_btn_royer=§eClick the Royer button in credits§r
+
+ui.subtitle_custom.get_normal_advancement=Got an achievement
+ui.subtitle_custom.get_rare_advancement=Got a rare achievement
+ui.subtitle_custom.intro_sound=Welcome!
+ui.subtitle_custom.game_over=§cGame Over!§r
+ui.subtitle_custom.death_ply=§cA player just died§r
+ui.subtitle_custom.no_perms=You can’t do that
+ui.subtitle_custom.get_wither_debuff=You got a debuff from King Wither
+ui.subtitle_custom.slime_pearl_used=Slime Pearl was used
+ui.subtitle_custom.no_perms_item=You can’t use this item
+ui.subtitle_custom.soul_linked=§3Soul link done right§r
+ui.subtitle_custom.abyss_attack=You got a nasty debuff
+ui.subtitle_custom.abyss_desc=Debuff explanation
+ui.subtitle_custom.player_ghost_death=A player’s ghost just died
+ui.subtitle_custom.soul_ghast_charging=Soul Ghast charging its attack
+ui.subtitle_custom.lord_piglin_gem=Lord Piglin skill activated
+ui.subtitle_custom.piglin_get_armor=A piglin swapped armor
+ui.subtitle_custom.magmacopter_start=A MagmaCopter is flying
+ui.subtitle_custom.wither_king_start=King Wither switched ability
+ui.subtitle_custom.mob_explodes=A mob is about to explode
+ui.subtitle_custom.mob_betray=A tamed mob just turned
+ui.subtitle_custom.mob_summon_attack=A mob spawned more mobs
+ui.subtitle_custom.ply_respawned_soul=A player respawned
+ui.subtitle_custom.ambient_soullink=§4Pick your victim§r

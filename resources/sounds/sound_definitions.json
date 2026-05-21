@@ -7,6 +7,7 @@
             "category": "ui",
             "max_distance": null,
             "min_distance": null,
+            "subtitle": "ui.subtitle_custom.click_btn_ha",
             "sounds": [
                 {
                     "load_on_low_memory": true,
@@ -21,6 +22,7 @@
             "category": "ui",
             "max_distance": null,
             "min_distance": null,
+            "subtitle": "ui.subtitle_custom.click_btn_astral",
             "sounds": [
                 {
                     "load_on_low_memory": true,
@@ -35,6 +37,7 @@
             "category": "ui",
             "max_distance": null,
             "min_distance": null,
+            "subtitle": "ui.subtitle_custom.click_btn_royer",
             "sounds": [
                 {
                     "load_on_low_memory": true,
@@ -50,6 +53,7 @@
             "category": "ui",
             "min_distance": null,
             "max_distance": null,
+            "subtitle": "ui.subtitle_custom.get_normal_advancement",
             "sounds": [
                 {
                     "load_on_low_memory": true,
@@ -64,6 +68,7 @@
             "category": "ui",
             "min_distance": null,
             "max_distance": null,
+            "subtitle": "ui.subtitle_custom.get_rare_advancement",
             "sounds": [
                 {
                     "load_on_low_memory": true,
@@ -78,6 +83,7 @@
             "category": "ui",
             "min_distance": null,
             "max_distance": null,
+            "subtitle": "ui.subtitle_custom.intro_sound",
             "sounds": [
                 {
                     "load_on_low_memory": true,
@@ -92,6 +98,7 @@
             "category": "ui",
             "min_distance": null,
             "max_distance": null,
+            "subtitle": "ui.subtitle_custom.game_over",
             "sounds": [
                 {
                     "load_on_low_memory": true,
@@ -106,6 +113,7 @@
             "category": "ui",
             "min_distance": null,
             "max_distance": null,
+            "subtitle": "ui.subtitle_custom.death_ply",
             "sounds": [
                 {
                     "load_on_low_memory": true,
@@ -120,6 +128,7 @@
             "category": "ui",
             "min_distance": null,
             "max_distance": null,
+            "subtitle": "ui.subtitle_custom.no_perms",
             "sounds": [
                 {
                     "load_on_low_memory": true,
@@ -134,6 +143,7 @@
             "category": "ui",
             "min_distance": null,
             "max_distance": null,
+            "subtitle": "ui.subtitle_custom.get_wither_debuff",
             "sounds": [
                 {
                     "load_on_low_memory": true,
@@ -149,6 +159,7 @@
             "category": "player",
             "min_distance": null,
             "max_distance": null,
+            "subtitle": "ui.subtitle_custom.slime_pearl_used",
             "sounds": [
                 {
                     "load_on_low_memory": true,
@@ -163,6 +174,7 @@
             "category": "ui",
             "min_distance": null,
             "max_distance": null,
+            "subtitle": "ui.subtitle_custom.no_perms_item",
             "sounds": [
                 {
                     "load_on_low_memory": true,
@@ -178,6 +190,7 @@
             "category": "player",
             "min_distance": null,
             "max_distance": null,
+            "subtitle": "ui.subtitle_custom.soul_linked",
             "sounds": [
                 {
                     "load_on_low_memory": true,
@@ -188,12 +201,49 @@
                 }
             ]
         },
+        "ui.abyss_attack.start": {
+            "category": "ui",
+            "min_distance": null,
+            "max_distance": null,
+            "subtitle": "ui.subtitle_custom.abyss_attack",
+            "sounds": [
+                {
+                    "is3D": false,
+                    "name": "sounds/ui/abyss_sounds/attack",
+                    "stream": true,
+                    "volume": 2
+                }
+            ]
+        },
+        "ui.abyss_attack.text_desc": {
+            "category": "ui",
+            "min_distance": null,
+            "max_distance": null,
+            "subtitle": "ui.subtitle_custom.abyss_desc",
+            "sounds": [
+                {
+                    "weight": 1,
+                    "is3D": false,
+                    "name": "sounds/ui/abyss_sounds/text_desc1",
+                    "stream": true,
+                    "volume": 2
+                },
+                {
+                    "weight": 1,
+                    "is3D": false,
+                    "name": "sounds/ui/abyss_sounds/text_desc2",
+                    "stream": true,
+                    "volume": 2
+                }
+            ]
+        },
 
         "mob.player_ghost.death_sound": {
             "__use_legacy_max_distance": "true",
             "category": "neutral",
             "min_distance": null,
             "max_distance": null,
+            "subtitle": "ui.subtitle_custom.player_ghost_death",
             "sounds": [
                 {
                     "is3D": true,
@@ -208,6 +258,7 @@
             "category": "hostile",
             "min_distance": null,
             "max_distance": 50,
+            "subtitle": "ui.subtitle_custom.soul_ghast_charging",
             "sounds": [
                 {
                     "load_on_low_memory": true,
@@ -224,6 +275,7 @@
             "category": "hostile",
             "min_distance": null,
             "max_distance": null,
+            "subtitle": "ui.subtitle_custom.lord_piglin_gem",
             "sounds": [
                 {
                     "load_on_low_memory": true,
@@ -239,6 +291,7 @@
             "category": "hostile",
             "min_distance": null,
             "max_distance": null,
+            "subtitle": "ui.subtitle_custom.piglin_get_armor",
             "sounds": [
                 {
                     "load_on_low_memory": true,
@@ -254,6 +307,7 @@
             "min_distance": null,
             "max_distance": null,
             "category": "hostile",
+            "subtitle": "ui.subtitle_custom.magmacopter_start",
             "sounds": [
                 {
                     "load_on_low_memory": true,
@@ -269,6 +323,7 @@
             "min_distance": null,
             "max_distance": 65,
             "category": "hostile",
+            "subtitle": "ui.subtitle_custom.wither_king_start",
             "sounds": [
                 {
                     "load_on_low_memory": true,
@@ -284,6 +339,7 @@
             "min_distance": null,
             "max_distance": null,
             "category": "hostile",
+            "subtitle": "ui.subtitle_custom.mob_explodes",
             "sounds": [
                 {
                     "load_on_low_memory": true,
@@ -299,6 +355,7 @@
             "min_distance": null,
             "max_distance": 30,
             "category": "hostile",
+            "subtitle": "ui.subtitle_custom.mob_betray",
             "sounds": [
                 {
                     "load_on_low_memory": true,
@@ -314,6 +371,7 @@
             "min_distance": null,
             "max_distance": 25,
             "__use_legacy_max_distance": "true",
+            "subtitle": "ui.subtitle_custom.mob_summon_attack",
             "sounds": [
                 {
                     "load_on_low_memory": true,
@@ -330,6 +388,7 @@
             "__use_legacy_max_distance": "true",
             "max_distance": 45,
             "min_distance": null,
+            "subtitle": "ui.subtitle_custom.ply_respawned_soul",
             "sounds": [
                 {
                     "load_on_low_memory": true,
@@ -341,9 +400,10 @@
             ]
         },
         "ambient.soul_link": {
-            "category": "music",
+            "category": "ambient",
             "max_distance": null,
             "min_distance": null,
+            "subtitle": "ui.subtitle_custom.ambient_soullink",
             "sounds": [
                 {
                     "load_on_low_memory": true,
