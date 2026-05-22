@@ -543,6 +543,7 @@ class AbbysDebuffsEvents extends TL15DBaseManager {
 
         worldToolsSimplified.setLoop(() => {
             for (const ply of mc.world.getAllPlayers()) {
+                this.checkNetheriteArmor(ply);
                 this.shadowsSystem(ply);
                 this.furySystem(ply, true);
             }
@@ -1100,6 +1101,10 @@ class AbbysDebuffsEvents extends TL15DBaseManager {
             const maxDurability = durability.maxDurability;
             const damage = Math.max(1, Math.floor(maxDurability * (pct / 100)));
 
+            if (durability.unbreakable) {
+                durability.unbreakable = false;
+            }
+
             customEventsManager.manualDamageItem({ ply: ply, item: item, specificInv: inv, specificDamageDurability: damage, specificSlot: slot });
         };
 
@@ -1154,6 +1159,63 @@ class AbbysDebuffsEvents extends TL15DBaseManager {
                 const item = armorInv.getEquipment(slot);
 
                 damageItemPly(item, armorChance, 'armor', slot);
+            }
+        }
+    }
+
+    /**
+     * Metodo encargado de analizar la armadura del jugador para validar si tienen armadura de netherite o armaduras irrombiples para ponerles el componente de irropible vanilla.
+     * @param {mc.Player} ply Jugador en concreto a analizar el item.
+     * @returns {void}
+     * @author HaJuegos - 22-05-2026
+     * @private
+     */
+    private checkNetheriteArmor(ply: mc.Player): void {
+        const inv = ply.getComponent(mc.EntityComponentTypes.Inventory)?.container as mc.Container;
+        const armorInv = ply.getComponent(mc.EntityComponentTypes.Equippable) as mc.EntityEquippableComponent;
+        const furyTag = ply.getTags().find(tag => tag.startsWith('furyDebuff'));
+
+        if (furyTag) return;
+
+        const netheriteItemsArmor = [
+            'minecraft:netherite_helmet',
+            'minecraft:netherite_chestplate',
+            'minecraft:netherite_leggings',
+            'minecraft:netherite_boots'
+        ];
+        const equipSlots = [mc.EquipmentSlot.Head, mc.EquipmentSlot.Chest, mc.EquipmentSlot.Legs, mc.EquipmentSlot.Feet];
+
+        /**
+         * Metodo que valida si un item es una armadura de netherite y de paso le añade la irrompibilidad al mismo.
+         * @param {(mc.ItemStack | undefined)} item El item en cuestion a considerar.
+         * @returns {(mc.ItemStack | undefined)} Devuelve el item con la irrompibilidad integrada en caso de que todo sea correcto.
+         * @author HaJuegos - 22-05-2026
+         */
+        const addUnbreak = (item: mc.ItemStack | undefined): mc.ItemStack | undefined => {
+            if (!item || !netheriteItemsArmor.includes(item.typeId)) return undefined;
+
+            const durability = item.getComponent(mc.ItemComponentTypes.Durability);
+
+            if (!durability) return undefined;
+
+            durability.unbreakable = true;
+
+            return item;
+        };
+
+        for (let i = 0; i < inv.size; i++) {
+            const newItem = addUnbreak(inv.getItem(i));
+
+            if (newItem) {
+                inv.setItem(i, newItem);
+            }
+        }
+
+        for (const slot of equipSlots) {
+            const newItem = addUnbreak(armorInv.getEquipment(slot));
+
+            if (newItem) {
+                armorInv.setEquipment(slot, newItem);
             }
         }
     }
