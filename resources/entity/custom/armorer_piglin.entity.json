@@ -15,6 +15,7 @@
                 "default": "textures/entity/armorer_piglin/armorer_piglin_brute"
             },
             "spawn_egg": {
+                // mc-disable-next-line behaviorpack.item.components.texture_not_found
                 "texture": "spawn_egg_piglin_brute"
             },
             "scripts": {

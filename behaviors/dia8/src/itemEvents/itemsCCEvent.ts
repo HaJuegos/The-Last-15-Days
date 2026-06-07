@@ -155,7 +155,7 @@ class ItemCustomComponentsManager extends TL15DBaseManager {
                             onCreate: (ply) => {
                                 worldToolsSimplified.setRun(() => {
                                     ply.playSound('random.enderchestopen');
-                                    ply.playMusic('ambient.soul_link', { fade: 0.55, loop: true });
+                                    ply.playSound('ambient.soul_link');
                                     ply.addEffect('slowness', worldToolsSimplified.convertSecondsToTicks(99999), { amplifier: 7, showParticles: false });
                                     ply.runCommand(`fog @s push ha:fog_soul_linked_start soullink`);
                                 });

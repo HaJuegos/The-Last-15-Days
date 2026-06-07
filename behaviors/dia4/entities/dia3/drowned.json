@@ -144,6 +144,7 @@
         "components": {
             "minecraft:nameable": {
             },
+            // mc-disable-next-line behaviorpack.entity.component.missing
             "minecraft:offspring": {
                 "offspring_pairs": {
                     "minecraft:drowned": "minecraft:drowned"
@@ -476,6 +477,7 @@
                 "goal_radius": 1.14,
                 "interval": 20
             },
+            // mc-disable-next-line diagnostics.components.internal.error
             "minecraft:behavior.pickup_items": {
                 "priority": 6,
                 "max_dist": 3,

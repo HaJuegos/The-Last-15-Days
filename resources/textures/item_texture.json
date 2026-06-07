@@ -108,6 +108,46 @@
             "textures": [
                 "textures/items/knowledge_book"
             ]
+        },
+        "fake_n_helmet": {
+            "textures": [
+                "textures/items/netherite_helmet"
+            ]
+        },
+        "fake_n_chestplate": {
+            "textures": [
+                "textures/items/netherite_chestplate"
+            ]
+        },
+        "fake_n_leggings": {
+            "textures": [
+                "textures/items/netherite_leggings"
+            ]
+        },
+        "fake_n_boots": {
+            "textures": [
+                "textures/items/netherite_boots"
+            ]
+        },
+        "cautious_helmet": {
+            "textures": [
+                "textures/items/custom/cautious_armor/helmet"
+            ]
+        },
+        "cautious_chestplate": {
+            "textures": [
+                "textures/items/custom/cautious_armor/chestplate"
+            ]
+        },
+        "cautious_leggings": {
+            "textures": [
+                "textures/items/custom/cautious_armor/leggings"
+            ]
+        },
+        "cautious_boots": {
+            "textures": [
+                "textures/items/custom/cautious_armor/boots"
+            ]
         }
     }
 }

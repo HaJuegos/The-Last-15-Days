@@ -167,6 +167,7 @@
             },
             "minecraft:is_hidden_when_invisible": { },
             "minecraft:nameable": { },
+            // mc-disable-next-line behaviorpack.entity.component.missing
             "minecraft:offspring": {
                 "offspring_pairs": {
                     "minecraft:dolphin": "minecraft:dolphin"

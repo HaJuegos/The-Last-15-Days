@@ -468,6 +468,7 @@
             },
             "minecraft:nameable": {
             },
+            // mc-disable-next-line behaviorpack.entity.component.missing
             "minecraft:offspring": {
                 "offspring_pairs": {
                     "minecraft:happy_ghast": "minecraft:happy_ghast"

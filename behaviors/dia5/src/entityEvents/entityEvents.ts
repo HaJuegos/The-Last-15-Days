@@ -240,8 +240,20 @@ class EntityEventsManager extends TL15DBaseManager {
                 case vanilla.MinecraftEntityTypes.LightningBolt: {
                     const coords = entity.location;
                     const dime = entity.dimension;
-                    const block = dime.getBlock(coords);
-                    const blockDown = dime.getBlockBelow(coords);
+
+                    let block;
+                    let blockDown;
+
+                    try {
+                        block = dime.getBlock(coords);
+                        blockDown = dime.getBlockBelow(coords);
+                    } catch (e) {
+                        if (e instanceof Error && e.message.includes("outside of the world boundaries")) {
+                            break;
+                        }
+
+                        throw e;
+                    }
 
                     if ((block && block.typeId.includes(vanilla.MinecraftBlockTypes.LightningRod)) || (blockDown && blockDown.typeId.includes(vanilla.MinecraftBlockTypes.LightningRod))) {
                         dime.createExplosion(coords, 3, { allowUnderwater: true, breaksBlocks: true });

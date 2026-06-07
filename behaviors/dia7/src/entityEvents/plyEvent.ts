@@ -391,7 +391,7 @@ class PlyEventsManager extends TL15DBaseManager {
 
         afterEventsSimplified.onHealthEntityChange((args) => {
             const entity = args.entity;
-            const newValue = args.newValue;
+            const newValue = Math.floor(args.newValue);
 
             if (entity instanceof mc.Player) {
                 this.setCustomRank(entity, newValue, undefined, true);
@@ -405,7 +405,9 @@ class PlyEventsManager extends TL15DBaseManager {
      * @private
      */
     private totemSystem(): void {
-        customEventsManager.onPlayerUseTotem((ply) => {
+        customEventsManager.onEntityUseTotem((ply) => {
+            if (!(ply instanceof mc.Player)) return;
+
             const dime = ply.dimension;
             const plys = dime.getPlayers();
 

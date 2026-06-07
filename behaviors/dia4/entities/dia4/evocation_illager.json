@@ -9,7 +9,6 @@
             "is_spawnable": true,
             "is_summonable": true
         },
-
         "component_groups": {
             "ha:magic_mode": {
                 "minecraft:spell_effects": {
@@ -211,7 +210,6 @@
                 }
             }
         },
-
         "components": {
             "minecraft:damage_sensor": {
                 "triggers": [
@@ -406,7 +404,6 @@
             "minecraft:conditional_bandwidth_optimization": {
             }
         },
-
         "events": {
             "ha:become_magic": {
                 "remove": {

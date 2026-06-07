@@ -125,14 +125,16 @@ class EntityEventsManager extends TL15DBaseManager {
             const projectile = args.projectile;
 
             if (hitEntity && sourceEntity) {
-                switch (sourceEntity.typeId) {
+                switch (projectile.typeId) {
                     case 'ha:slime_pearl': {
-                        if (!sourceEntity.isValid || !hitEntity.isValid) return;
+                        if (!sourceEntity.isValid || !hitEntity.isValid || !projectile.isValid) return;
 
                         const coords = hitEntity.location;
                         const dime = hitEntity.dimension;
 
                         sourceEntity.tryTeleport(coords, { dimension: dime });
+
+                        hitEntity.applyDamage(2, { damagingEntity: sourceEntity, damagingProjectile: projectile, cause: mc.EntityDamageCause.projectile });
                         projectile.remove();
                         sourceEntity.runCommand(`playsound ui.slime_pearl.hit @a ${coords.x} ${coords.y} ${coords.z}`);
                     } break;
@@ -162,7 +164,7 @@ class EntityEventsManager extends TL15DBaseManager {
                     case 'ha:slime_pearl': {
                         const hitBlock = args.getBlockHit().block;
 
-                        if (!sourceEntity.isValid || !hitBlock.isValid) return;
+                        if (!sourceEntity.isValid || !hitBlock.isValid || !projectile.isValid) return;
 
                         const dime = hitBlock.dimension;
                         const face = hitInfo.face;
@@ -383,8 +385,20 @@ class EntityEventsManager extends TL15DBaseManager {
                 case vanilla.MinecraftEntityTypes.LightningBolt: {
                     const coords = entity.location;
                     const dime = entity.dimension;
-                    const block = dime.getBlock(coords);
-                    const blockDown = dime.getBlockBelow(coords);
+
+                    let block;
+                    let blockDown;
+
+                    try {
+                        block = dime.getBlock(coords);
+                        blockDown = dime.getBlockBelow(coords);
+                    } catch (e) {
+                        if (e instanceof Error && e.message.includes("outside of the world boundaries")) {
+                            break;
+                        }
+
+                        throw e;
+                    }
 
                     if ((block && block.typeId.includes(vanilla.MinecraftBlockTypes.LightningRod)) || (blockDown && blockDown.typeId.includes(vanilla.MinecraftBlockTypes.LightningRod))) {
                         dime.createExplosion(coords, 3, { allowUnderwater: true, breaksBlocks: true });

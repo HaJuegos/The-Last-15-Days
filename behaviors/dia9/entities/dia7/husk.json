@@ -476,6 +476,7 @@
                 "is_amphibious": true,
                 "can_pass_doors": true
             },
+            // mc-disable-next-line behaviorpack.entity.component.missing
             "minecraft:offspring": {
                 "offspring_pairs": {
                     "minecraft:husk": "minecraft:husk"

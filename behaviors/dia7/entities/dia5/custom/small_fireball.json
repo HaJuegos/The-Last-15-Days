@@ -5,7 +5,7 @@
     "minecraft:entity": {
         "description": {
             "identifier": "minecraft:small_fireball",
-            "is_summonable": false,
+            "is_summonable": true,
             "is_spawnable": false
         },
         "component_groups": {
@@ -43,7 +43,7 @@
             },
             "ha:start_explode": {
                 "minecraft:explode": {
-                    "power": 1,
+                    "power": 2,
                     "fuse_length": [ 0, 0 ],
                     "fuse_lit": true,
                     "breaks_blocks": true,
@@ -51,7 +51,8 @@
                     "causes_fire": false,
                     "destroy_affected_by_griefing": true,
                     "fire_affected_by_griefing": true,
-                    "toggles_blocks": true
+                    "toggles_blocks": true,
+                    "max_resistance": 4
                 }
             }
         },

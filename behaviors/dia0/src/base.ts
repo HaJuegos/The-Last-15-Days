@@ -98,7 +98,7 @@ export class TL15DBaseManager {
      * @protected
      */
     protected setCustomRank(targetEntity: mc.Player | mc.Entity, currentH?: number, maxH?: number, isTakingDamage?: boolean): void {
-        const name = (targetEntity instanceof mc.Player) ? targetEntity.name : targetEntity.typeId;
+        const name = (targetEntity instanceof mc.Player) ? targetEntity.name : targetEntity.typeId.split(':').pop()!.split('_').map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(' ');
         const healthComponent = targetEntity.getComponent(mc.EntityComponentTypes.Health) as mc.EntityHealthComponent;
         const currentVal = Math.floor(healthComponent.currentValue);
         const maxVal = healthComponent.defaultValue;

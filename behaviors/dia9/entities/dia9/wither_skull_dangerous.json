@@ -5,7 +5,7 @@
     "minecraft:entity": {
         "description": {
             "identifier": "minecraft:wither_skull_dangerous",
-            "is_summonable": false,
+            "is_summonable": true,
             "is_spawnable": false
         },
         "component_groups": {
@@ -13,7 +13,7 @@
                 "minecraft:explode": {
                     "causes_fire": false,
                     "fuse_lit": true,
-                    "power": 5,
+                    "power": 8,
                     "destroy_affected_by_griefing": true,
                     "fuse_length": 0,
                     "max_resistance": 4.0
@@ -50,7 +50,7 @@
                             "target": "self"
                         }
                     },
-                    "impact_damage": null,
+                    "impact_damage": { },
                     "mob_effect": {
                         "amplifier": 1,
                         "durationhard": 800,

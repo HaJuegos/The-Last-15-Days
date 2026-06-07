@@ -1,0 +1,36 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.8.0",
+    "minecraft:spawn_rules": {
+        "description": {
+            "identifier": "minecraft:hoglin",
+            "population_control": "animal"
+        },
+        "conditions": [
+            {
+                "minecraft:spawns_underground": { },
+                "minecraft:spawns_on_block_prevented_filter": [
+                    "minecraft:nether_wart_block",
+                    "minecraft:shroomlight"
+                ],
+                "minecraft:difficulty_filter": {
+                    "min": "peaceful",
+                    "max": "hard"
+                },
+                "minecraft:weight": {
+                    "default": 5
+                },
+                "minecraft:herd": {
+                    "min_size": 1,
+                    "max_size": 2
+                },
+                "minecraft:biome_filter": {
+                    "test": "has_biome_tag",
+                    "operator": "==",
+                    "value": "crimson_forest"
+                }
+            }
+        ]
+    }
+}

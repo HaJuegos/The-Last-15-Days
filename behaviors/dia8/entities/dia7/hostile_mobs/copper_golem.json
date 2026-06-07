@@ -100,8 +100,8 @@
 					}
 				]
 			},
-			"minecraft:annotation.open_door": {},
-			"minecraft:balloonable": {},
+			"minecraft:annotation.open_door": { },
+			"minecraft:balloonable": { },
 			"minecraft:behavior.look_at_player": {
 				"look_time": {
 					"min": 1,
@@ -183,12 +183,12 @@
 				"place_strategy": "with_matching_or_empty",
 				"priority": 3
 			},
-			"minecraft:can_climb": {},
+			"minecraft:can_climb": { },
 			"minecraft:collision_box": {
 				"height": 0.98,
 				"width": 0.6
 			},
-			"minecraft:conditional_bandwidth_optimization": {},
+			"minecraft:conditional_bandwidth_optimization": { },
 			"minecraft:damage_sensor": {
 				"triggers": [
 					{
@@ -423,18 +423,18 @@
 					}
 				]
 			},
-			"minecraft:is_hidden_when_invisible": {},
-			"minecraft:jump.static": {},
-			"minecraft:leashable": {},
-			"minecraft:leashable_to": {},
+			"minecraft:is_hidden_when_invisible": { },
+			"minecraft:jump.static": { },
+			"minecraft:leashable": { },
+			"minecraft:leashable_to": { },
 			"minecraft:loot": {
 				"table": "loot_tables/entities/copper_golem.json"
 			},
 			"minecraft:movement": {
 				"value": 0.2
 			},
-			"minecraft:movement.basic": {},
-			"minecraft:nameable": {},
+			"minecraft:movement.basic": { },
+			"minecraft:nameable": { },
 			"minecraft:navigation.walk": {
 				"avoid_damage_blocks": true,
 				"can_pass_doors": true,
@@ -442,8 +442,8 @@
 				"can_open_doors": true,
 				"using_door_annotation": true
 			},
-			"minecraft:persistent": {},
-			"minecraft:physics": {},
+			"minecraft:persistent": { },
+			"minecraft:physics": { },
 			"minecraft:pushable": {
 				"is_pushable": true,
 				"is_pushable_by_piston": true
@@ -475,7 +475,7 @@
 				}
 			},
 			"minecraft:became_statue": {
-				"minecraft:instant_despawn": {},
+				"minecraft:instant_despawn": { },
 				"minecraft:spawn_entity": {
 					"entities": {
 						"filters": {
@@ -490,6 +490,7 @@
 				}
 			},
 			"minecraft:becoming_statue": {
+				// mc-disable-next-line diagnostics.components.internal.error
 				"minecraft:behavior.place_block": {
 					"affected_by_griefing_rule": false,
 					"randomly_placeable_blocks": [

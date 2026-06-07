@@ -281,6 +281,7 @@
                 ],
                 "priority": 2
             },
+            // mc-disable-next-line diagnostics.components.internal.error
             "minecraft:behavior.pickup_items": {
                 "can_pickup_any_item": true,
                 "excluded_items": [

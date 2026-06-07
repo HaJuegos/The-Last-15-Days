@@ -98,8 +98,6 @@ chat.system.abyss_text.void_text_combo5=§u§l>> Void Claws: Your items are now 
 
 chat.system.debuff_total_changed=§7>> The total number of global debuffs in the world has been changed to %1. (Previously, there were %2 debuffs in total.)
 
-chat.system.debuff_end_timer=§7>> Debuff %1 has ended.
-
 chat.system.debuff_name.abyssal=§1Abyssal Eyes§7
 chat.system.debuff_name.colossus=§6Colossus Trick§7
 chat.system.debuff_name.hunger=§2Endless Hunger§7
@@ -107,6 +105,14 @@ chat.system.debuff_name.shadows=§bRavenous Shadows§7
 chat.system.debuff_name.decay=§nSoul Decay§7
 chat.system.debuff_name.fury=§cUnhinged Fury§7
 chat.system.debuff_name.void=§uVoid Claws§7
+
+chat.system.debuff_end_timer=§7>> Debuff %1 has ended.
+
+chat.system.ui.no_debuffs_timers=§7>> You don't have any pending timers to review.
+
+chat.system.eat_iron_apple=§i>> %1 has eaten an %2
+
+chat.system.get_cautious_item=§w>> %1 has obtained the %2§r§7 | (%3/5)
 
 
 ## Entity Names
@@ -191,6 +197,30 @@ item.ha:void_item.name=§sVoid§r
 item.ha:knowledge_book=§aKnowledge Book§r
 item.ha:knowledge_book.name=§aKnowledge Book§r
 
+item.ha:fake_netherite_helmet=Netherite Helmet
+item.ha:fake_netherite_helmet.name=Netherite Helmet
+
+item.ha:fake_netherite_chestplate=Netherite Chestplate
+item.ha:fake_netherite_chestplate.name=Netherite Chestplate
+
+item.ha:fake_netherite_leggings=Netherite Leggings
+item.ha:fake_netherite_leggings.name=Netherite Leggings
+
+item.ha:fake_netherite_boots=Netherite Boots
+item.ha:fake_netherite_boots.name=Netherite Boots
+
+item.ha:cautious_helmet=§h§lCautious Helmet Armor§r
+item.ha:cautious_helmet.name=§h§lCautious Helmet Armor§r
+
+item.ha:cautious_chestplate=§h§lCautious Chestplate Armor§r
+item.ha:cautious_chestplate.name=§h§lCautious Chestplate Armor§r
+
+item.ha:cautious_leggings=§h§lCautious Leggings Armor§r
+item.ha:cautious_leggings.name=§h§lCautious Leggings Armor§r
+
+item.ha:cautious_boots=§h§lCautious Boots Armor§r
+item.ha:cautious_boots.name=§h§lCautious Boots Armor§r
+
 
 ## Item Catalog
 ha:itemGroup.name.nether_items=§4Nether's Stuff§r
@@ -260,6 +290,7 @@ advacement.axolotl=The Cutest Predator
 advacement.all_frogs=With Our Powers Combined!
 advacement.infernal_crown=Conquering the Nether
 advacement.hoglin_tusk=The Alpha Predator
+advacement.cautious_armor=Overcoming Caution
 
 
 ## Subtitle Texts

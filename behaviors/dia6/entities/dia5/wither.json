@@ -1594,6 +1594,7 @@
             },
             "minecraft:type_family": {
                 "family": [
+                    "wither_boss",
                     "wither",
                     "skeleton",
                     "monster",

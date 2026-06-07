@@ -400,7 +400,7 @@
             ]
         },
         "ambient.soul_link": {
-            "category": "ambient",
+            "category": "ui",
             "max_distance": null,
             "min_distance": null,
             "subtitle": "ui.subtitle_custom.ambient_soullink",

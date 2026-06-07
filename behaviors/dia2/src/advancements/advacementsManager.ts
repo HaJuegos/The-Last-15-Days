@@ -329,7 +329,9 @@ class AdvancementManager extends TL15DBaseManager {
             }
         });
 
-        customEventsManager.onPlayerUseTotem((ply) => {
+        customEventsManager.onEntityUseTotem((ply) => {
+            if (!(ply instanceof mc.Player)) return;
+
             this.executeAdvan(ply, 35);
         });
 

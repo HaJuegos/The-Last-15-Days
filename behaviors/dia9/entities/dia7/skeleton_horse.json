@@ -182,6 +182,7 @@
             "minecraft:movement.basic": { },
             "minecraft:jump.static": { },
             "minecraft:nameable": { },
+            // mc-disable-next-line behaviorpack.entity.component.missing
             "minecraft:offspring": {
                 "offspring_pairs": {
                     "minecraft:skeleton_horse": "minecraft:skeleton_horse"

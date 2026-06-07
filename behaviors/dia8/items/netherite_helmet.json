@@ -6,6 +6,7 @@
         "description": {
             "identifier": "minecraft:netherite_helmet"
         },
+        // mc-disable-next-line behaviorpack.item.components.icon
         "components": {
             "minecraft:durability": {
                 "damage_chance": {

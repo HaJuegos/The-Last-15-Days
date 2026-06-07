@@ -108,6 +108,12 @@ chat.system.debuff_name.void=§uGarras del Vacío§7
 
 chat.system.debuff_end_timer=§7>> El Debuff %1 ha terminado.
 
+chat.system.ui.no_debuffs_timers=§7>> No tienes timers pendientes por revisar.
+
+chat.system.eat_iron_apple=§i>> %1 ha consumido una %2
+
+chat.system.get_cautious_item=§w>> %1 ha conseguido el item %2.§r§7 | (%3/5)
+
 
 ## Entity Names
 entity.ha:player_ghost.name=Fantasma de un Jugador
@@ -191,6 +197,30 @@ item.ha:void_item.name=§sVacio§r
 item.ha:knowledge_book=§aEnciclopedia§r
 item.ha:knowledge_book.name=§aEnciclopedia§r
 
+item.ha:fake_netherite_helmet=Casco de Netherita
+item.ha:fake_netherite_helmet.name=Casco de Netherita
+
+item.ha:fake_netherite_chestplate=Pechera de Netherita
+item.ha:fake_netherite_chestplate.name=Pechera de Netherita
+
+item.ha:fake_netherite_leggings=Mallas de Netherita
+item.ha:fake_netherite_leggings.name=Mallas de Netherita
+
+item.ha:fake_netherite_boots=Botas de Netherita
+item.ha:fake_netherite_boots.name=Botas de Netherita
+
+item.ha:cautious_helmet=§h§lCasco Cauteloso§r
+item.ha:cautious_helmet.name=§h§lCasco Cauteloso§r
+
+item.ha:cautious_chestplate=§h§lPechera Cautelosa§r
+item.ha:cautious_chestplate.name=§h§lPechera Cautelosa§r
+
+item.ha:cautious_leggings=§h§lPantalones Cautelosos§r
+item.ha:cautious_leggings.name=§h§lPantalones Cautelosos§r
+
+item.ha:cautious_boots=§h§lBotas Cautelosas§r
+item.ha:cautious_boots.name=§h§lBotas Cautelosas§r
+
 
 ## Item Catalog
 ha:itemGroup.name.nether_items=§4Cosas del Nether§r
@@ -260,6 +290,7 @@ advacement.axolotl=El depredador más adorable
 advacement.all_frogs=¡Uniendo nuestras fuerzas!
 advacement.infernal_crown=Domando al Nether
 advacement.hoglin_tusk=El Depredador Alfa
+advacement.cautious_armor=Domando la Cautela
 
 
 ## Subtitle Texts

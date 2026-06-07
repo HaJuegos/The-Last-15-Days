@@ -151,6 +151,7 @@
 				"can_path_over_water": true,
 				"can_sink": false
 			},
+            // mc-disable-next-line behaviorpack.entity.component.missing
 			"minecraft:offspring": {
 				"offspring_pairs": {
 					"minecraft:squid": "minecraft:squid"

@@ -19,7 +19,8 @@
                     "fuse_lit": true,
                     "power": 5,
                     "destroy_affected_by_griefing": true,
-                    "fuse_length": 0
+                    "fuse_length": 0,
+                    "max_resistance": 4.0
                 }
             }
         },
@@ -52,13 +53,7 @@
                 "ignored_entities": [
                     "boat",
                     "chest_boat",
-                    "minecart",
-                    "illager",
-                    "ravager",
-                    "pillager",
-                    "ravager",
-                    "witch",
-                    "vex"
+                    "minecart"
                 ]
             },
             "minecraft:health": {

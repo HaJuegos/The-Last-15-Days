@@ -161,7 +161,8 @@
                     "lingering_potion",
                     "llama_spit",
                     "fireworks_rocket",
-                    "fishing_hook"
+                    "fishing_hook",
+                    "ha:dynamite"
                 ],
                 "azimuth_angle": "180.0 + Math.random(-20.0, 20.0)",
                 "reflection_scale": "0.5"

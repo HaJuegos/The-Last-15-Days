@@ -60,6 +60,7 @@
                 "controller.render.bomber_pillager"
             ],
             "spawn_egg": {
+                // mc-disable-next-line behaviorpack.item.components.texture_not_found
                 "texture": "spawn_egg_pillager"
             },
             "enable_attachables": true,

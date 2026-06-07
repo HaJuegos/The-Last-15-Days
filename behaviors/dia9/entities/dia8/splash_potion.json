@@ -39,7 +39,7 @@
                             }
                         },
                         "douse_fire": { },
-                        "impact_damage": null,
+                        "impact_damage": { },
                         "thrown_potion_effect": { }
                     },
                     "gravity": 0.05,
@@ -65,7 +65,7 @@
                 "angle_offset": -20.0,
                 "on_hit": {
                     "douse_fire": { },
-                    "impact_damage": null,
+                    "impact_damage": { },
                     "remove_on_hit": { },
                     "thrown_potion_effect": { }
                 },

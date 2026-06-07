@@ -38,8 +38,8 @@
             },
             "scripts": {
                 "pre_animation": [
-					"v.fly_blend = v.fly_blend ?? 0.0;",
-					"v.fly_blend = math.lerp(v.fly_blend, q.is_moving, q.delta_time * 4.0);"
+                    "v.fly_blend = v.fly_blend ?? 0.0;",
+                    "v.fly_blend = math.lerp(v.fly_blend, q.is_moving, q.delta_time * 4.0);"
                 ],
                 "animate": [
                     {
@@ -59,6 +59,7 @@
                 "controller.render.sheep.v2"
             ],
             "spawn_egg": {
+                // mc-disable-next-line behaviorpack.item.components.texture_not_found
                 "texture": "spawn_egg_sheep"
             }
         }

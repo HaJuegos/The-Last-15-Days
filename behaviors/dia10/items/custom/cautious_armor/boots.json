@@ -1,0 +1,45 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.26.0",
+    "minecraft:item": {
+        "description": {
+            "identifier": "ha:cautious_boots",
+            "menu_category": {
+                "category": "equipment",
+                "group": "minecraft:itemGroup.name.boots"
+            }
+        },
+        "components": {
+            "minecraft:allow_off_hand": false,
+            "minecraft:can_destroy_in_creative": true,
+            "minecraft:display_name": {
+                "value": "item.ha:cautious_boots.name"
+            },
+            "minecraft:enchantable": {
+                "slot": "armor_feet",
+                "value": 15
+            },
+            "minecraft:fire_resistant": {
+                "value": true
+            },
+            "minecraft:icon": "cautious_boots",
+            "minecraft:max_stack_size": 1,
+            "minecraft:rarity": "rare",
+            "minecraft:should_despawn": false,
+            "minecraft:wearable": {
+                "slot": "slot.armor.feet",
+                "hides_player_location": false,
+                "protection": 3
+            },
+            "minecraft:tags": {
+                "tags": [
+                    "minecraft:is_armor",
+                    "ha:cautious_tier",
+                    "minecraft:netherite_tier",
+                    "minecraft:trimmable_armors"
+                ]
+            }
+        }
+    }
+}

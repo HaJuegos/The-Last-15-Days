@@ -1,3 +1,4 @@
+// mc-disable behaviorpack.items.missing
 {
   "tiers": [
     {
@@ -7,8 +8,8 @@
           "num_to_select": 1,
           "trades": [
             {
-              "wants": [{ "item": "minecraft:paper", "quantity": 24, "price_multiplier": 0.05}],
-              "gives": [{ "item": "minecraft:emerald", "quantity": 1}],
+              "wants": [ { "item": "minecraft:paper", "quantity": 24, "price_multiplier": 0.05 } ],
+              "gives": [ { "item": "minecraft:emerald", "quantity": 1 } ],
               "trader_exp": 2,
               "max_uses": 16,
               "reward_exp": true
@@ -19,16 +20,16 @@
           "num_to_select": 1,
           "trades": [
             {
-              "wants": [{ "item": "minecraft:emerald", "quantity": 9, "price_multiplier": 0.05}],
-              "gives": [{"item": "minecraft:bookshelf", "quantity": 1}],
+              "wants": [ { "item": "minecraft:emerald", "quantity": 9, "price_multiplier": 0.05 } ],
+              "gives": [ { "item": "minecraft:bookshelf", "quantity": 1 } ],
               "trader_exp": 1,
               "max_uses": 12,
               "reward_exp": true
             },
             {
               "wants": [
-                {"item": "minecraft:emerald", "price_multiplier": 0.2},
-                {"item": "minecraft:book", "quantity": 1, "price_multiplier": 0.2}
+                { "item": "minecraft:emerald", "price_multiplier": 0.2 },
+                { "item": "minecraft:book", "quantity": 1, "price_multiplier": 0.2 }
               ],
               "gives": [
                 {
@@ -36,7 +37,7 @@
                     {
                       "item": "minecraft:book",
                       "quantity": 1,
-                      "biomes": ["desert"],
+                      "biomes": [ "desert" ],
                       "functions": [
                         {
                           "function": "enchant_book_for_trading",
@@ -45,9 +46,9 @@
                           "per_level_random_cost": 10,
                           "per_level_cost": 3,
                           "enchantments": [
-                            {"name": "fire_protection"},
-                            {"name": "thorns"},
-                            {"name": "infinity"}
+                            { "name": "fire_protection" },
+                            { "name": "thorns" },
+                            { "name": "infinity" }
                           ]
                         }
                       ]
@@ -55,7 +56,7 @@
                     {
                       "item": "minecraft:book",
                       "quantity": 1,
-                      "biomes": ["jungle"],
+                      "biomes": [ "jungle" ],
                       "functions": [
                         {
                           "function": "enchant_book_for_trading",
@@ -64,9 +65,9 @@
                           "per_level_random_cost": 10,
                           "per_level_cost": 3,
                           "enchantments": [
-                            {"name": "projectile_protection"},
-                            {"name": "feather_falling"},
-                            {"name": "power"}
+                            { "name": "projectile_protection" },
+                            { "name": "feather_falling" },
+                            { "name": "power" }
                           ]
                         }
                       ]
@@ -74,7 +75,7 @@
                     {
                       "item": "minecraft:book",
                       "quantity": 1,
-                      "biomes": ["plains"],
+                      "biomes": [ "plains" ],
                       "functions": [
                         {
                           "function": "enchant_book_for_trading",
@@ -83,9 +84,9 @@
                           "per_level_random_cost": 10,
                           "per_level_cost": 3,
                           "enchantments": [
-                            {"name": "punch"},
-                            {"name": "smite"},
-                            {"name": "bane_of_arthropods"}
+                            { "name": "punch" },
+                            { "name": "smite" },
+                            { "name": "bane_of_arthropods" }
                           ]
                         }
                       ]
@@ -93,7 +94,7 @@
                     {
                       "item": "minecraft:book",
                       "quantity": 1,
-                      "biomes": ["savannah"],
+                      "biomes": [ "savannah" ],
                       "functions": [
                         {
                           "function": "enchant_book_for_trading",
@@ -102,8 +103,8 @@
                           "per_level_random_cost": 10,
                           "per_level_cost": 3,
                           "enchantments": [
-                            {"name": "knockback"},
-                            {"name": "binding"}
+                            { "name": "knockback" },
+                            { "name": "binding" }
                           ]
                         }
                       ]
@@ -111,7 +112,7 @@
                     {
                       "item": "minecraft:book",
                       "quantity": 1,
-                      "biomes": ["snow"],
+                      "biomes": [ "snow" ],
                       "functions": [
                         {
                           "function": "enchant_book_for_trading",
@@ -120,9 +121,9 @@
                           "per_level_random_cost": 10,
                           "per_level_cost": 3,
                           "enchantments": [
-                            {"name": "aqua_affinity"},
-                            {"name": "looting"},
-                            {"name": "frost_walker"}
+                            { "name": "aqua_affinity" },
+                            { "name": "looting" },
+                            { "name": "frost_walker" }
                           ]
                         }
                       ]
@@ -130,7 +131,7 @@
                     {
                       "item": "minecraft:book",
                       "quantity": 1,
-                      "biomes": ["swamp"],
+                      "biomes": [ "swamp" ],
                       "functions": [
                         {
                           "function": "enchant_book_for_trading",
@@ -139,9 +140,9 @@
                           "per_level_random_cost": 10,
                           "per_level_cost": 3,
                           "enchantments": [
-                            {"name": "depth_strider"},
-                            {"name": "respiration"},
-                            {"name": "vanishing"}
+                            { "name": "depth_strider" },
+                            { "name": "respiration" },
+                            { "name": "vanishing" }
                           ]
                         }
                       ]
@@ -149,7 +150,7 @@
                     {
                       "item": "minecraft:book",
                       "quantity": 1,
-                      "biomes": ["taiga"],
+                      "biomes": [ "taiga" ],
                       "functions": [
                         {
                           "function": "enchant_book_for_trading",
@@ -158,9 +159,9 @@
                           "per_level_random_cost": 10,
                           "per_level_cost": 3,
                           "enchantments": [
-                            {"name": "blast_protection"},
-                            {"name": "fire_aspect"},
-                            {"name": "flame"}
+                            { "name": "blast_protection" },
+                            { "name": "fire_aspect" },
+                            { "name": "flame" }
                           ]
                         }
                       ]
@@ -183,8 +184,8 @@
           "num_to_select": 1,
           "trades": [
             {
-              "wants": [{"item": "minecraft:book","quantity": 4,"price_multiplier": 0.05}],
-              "gives": [{"item": "minecraft:emerald", "quantity": 1}],
+              "wants": [ { "item": "minecraft:book", "quantity": 4, "price_multiplier": 0.05 } ],
+              "gives": [ { "item": "minecraft:emerald", "quantity": 1 } ],
               "trader_exp": 10,
               "max_uses": 12,
               "reward_exp": true
@@ -195,16 +196,16 @@
           "num_to_select": 1,
           "trades": [
             {
-              "wants": [{"item": "minecraft:emerald", "quantity": 1, "price_multiplier": 0.05}],
-              "gives": [{"item": "minecraft:lantern", "quantity": 1}],
+              "wants": [ { "item": "minecraft:emerald", "quantity": 1, "price_multiplier": 0.05 } ],
+              "gives": [ { "item": "minecraft:lantern", "quantity": 1 } ],
               "trader_exp": 5,
               "max_uses": 12,
               "reward_exp": true
             },
             {
               "wants": [
-                {"item": "minecraft:emerald", "price_multiplier": 0.2},
-                {"item": "minecraft:book", "quantity": 1, "price_multiplier": 0.2}
+                { "item": "minecraft:emerald", "price_multiplier": 0.2 },
+                { "item": "minecraft:book", "quantity": 1, "price_multiplier": 0.2 }
               ],
               "gives": [
                 {
@@ -212,7 +213,7 @@
                     {
                       "item": "minecraft:book",
                       "quantity": 1,
-                      "biomes": ["desert"],
+                      "biomes": [ "desert" ],
                       "functions": [
                         {
                           "function": "enchant_book_for_trading",
@@ -221,9 +222,9 @@
                           "per_level_random_cost": 10,
                           "per_level_cost": 3,
                           "enchantments": [
-                            {"name": "fire_protection"},
-                            {"name": "thorns"},
-                            {"name": "infinity"}
+                            { "name": "fire_protection" },
+                            { "name": "thorns" },
+                            { "name": "infinity" }
                           ]
                         }
                       ]
@@ -231,7 +232,7 @@
                     {
                       "item": "minecraft:book",
                       "quantity": 1,
-                      "biomes": ["jungle"],
+                      "biomes": [ "jungle" ],
                       "functions": [
                         {
                           "function": "enchant_book_for_trading",
@@ -240,9 +241,9 @@
                           "per_level_random_cost": 10,
                           "per_level_cost": 3,
                           "enchantments": [
-                            {"name": "projectile_protection"},
-                            {"name": "feather_falling"},
-                            {"name": "power"}
+                            { "name": "projectile_protection" },
+                            { "name": "feather_falling" },
+                            { "name": "power" }
                           ]
                         }
                       ]
@@ -250,7 +251,7 @@
                     {
                       "item": "minecraft:book",
                       "quantity": 1,
-                      "biomes": ["plains"],
+                      "biomes": [ "plains" ],
                       "functions": [
                         {
                           "function": "enchant_book_for_trading",
@@ -259,9 +260,9 @@
                           "per_level_random_cost": 10,
                           "per_level_cost": 3,
                           "enchantments": [
-                            {"name": "punch"},
-                            {"name": "smite"},
-                            {"name": "bane_of_arthropods"}
+                            { "name": "punch" },
+                            { "name": "smite" },
+                            { "name": "bane_of_arthropods" }
                           ]
                         }
                       ]
@@ -269,7 +270,7 @@
                     {
                       "item": "minecraft:book",
                       "quantity": 1,
-                      "biomes": ["savannah"],
+                      "biomes": [ "savannah" ],
                       "functions": [
                         {
                           "function": "enchant_book_for_trading",
@@ -278,8 +279,8 @@
                           "per_level_random_cost": 10,
                           "per_level_cost": 3,
                           "enchantments": [
-                            {"name": "knockback"},
-                            {"name": "binding"}
+                            { "name": "knockback" },
+                            { "name": "binding" }
                           ]
                         }
                       ]
@@ -287,7 +288,7 @@
                     {
                       "item": "minecraft:book",
                       "quantity": 1,
-                      "biomes": ["snow"],
+                      "biomes": [ "snow" ],
                       "functions": [
                         {
                           "function": "enchant_book_for_trading",
@@ -296,9 +297,9 @@
                           "per_level_random_cost": 10,
                           "per_level_cost": 3,
                           "enchantments": [
-                            {"name": "aqua_affinity"},
-                            {"name": "looting"},
-                            {"name": "frost_walker"}
+                            { "name": "aqua_affinity" },
+                            { "name": "looting" },
+                            { "name": "frost_walker" }
                           ]
                         }
                       ]
@@ -306,7 +307,7 @@
                     {
                       "item": "minecraft:book",
                       "quantity": 1,
-                      "biomes": ["swamp"],
+                      "biomes": [ "swamp" ],
                       "functions": [
                         {
                           "function": "enchant_book_for_trading",
@@ -315,9 +316,9 @@
                           "per_level_random_cost": 10,
                           "per_level_cost": 3,
                           "enchantments": [
-                            {"name": "depth_strider"},
-                            {"name": "respiration"},
-                            {"name": "vanishing"}
+                            { "name": "depth_strider" },
+                            { "name": "respiration" },
+                            { "name": "vanishing" }
                           ]
                         }
                       ]
@@ -325,7 +326,7 @@
                     {
                       "item": "minecraft:book",
                       "quantity": 1,
-                      "biomes": ["taiga"],
+                      "biomes": [ "taiga" ],
                       "functions": [
                         {
                           "function": "enchant_book_for_trading",
@@ -334,9 +335,9 @@
                           "per_level_random_cost": 10,
                           "per_level_cost": 3,
                           "enchantments": [
-                            {"name": "blast_protection"},
-                            {"name": "fire_aspect"},
-                            {"name": "flame"}
+                            { "name": "blast_protection" },
+                            { "name": "fire_aspect" },
+                            { "name": "flame" }
                           ]
                         }
                       ]
@@ -359,8 +360,8 @@
           "num_to_select": 1,
           "trades": [
             {
-              "wants": [{ "item": "minecraft:dye:0", "quantity": 5, "price_multiplier": 0.05}],
-              "gives": [{"item": "minecraft:emerald", "quantity": 1}],
+              "wants": [ { "item": "minecraft:dye:0", "quantity": 5, "price_multiplier": 0.05 } ],
+              "gives": [ { "item": "minecraft:emerald", "quantity": 1 } ],
               "trader_exp": 20,
               "max_uses": 12,
               "reward_exp": true
@@ -371,16 +372,16 @@
           "num_to_select": 1,
           "trades": [
             {
-              "wants": [{"item": "minecraft:emerald", "quantity": 1, "price_multiplier": 0.05}],
-              "gives": [{"item": "minecraft:glass", "quantity": 4}],
+              "wants": [ { "item": "minecraft:emerald", "quantity": 1, "price_multiplier": 0.05 } ],
+              "gives": [ { "item": "minecraft:glass", "quantity": 4 } ],
               "trader_exp": 10,
               "max_uses": 12,
               "reward_exp": true
             },
             {
               "wants": [
-                {"item": "minecraft:emerald", "price_multiplier": 0.2},
-                {"item": "minecraft:book", "quantity": 1, "price_multiplier": 0.2}
+                { "item": "minecraft:emerald", "price_multiplier": 0.2 },
+                { "item": "minecraft:book", "quantity": 1, "price_multiplier": 0.2 }
               ],
               "gives": [
                 {
@@ -388,7 +389,7 @@
                     {
                       "item": "minecraft:book",
                       "quantity": 1,
-                      "biomes": ["desert"],
+                      "biomes": [ "desert" ],
                       "functions": [
                         {
                           "function": "enchant_book_for_trading",
@@ -397,9 +398,9 @@
                           "per_level_random_cost": 10,
                           "per_level_cost": 3,
                           "enchantments": [
-                            {"name": "fire_protection"},
-                            {"name": "thorns"},
-                            {"name": "infinity"}
+                            { "name": "fire_protection" },
+                            { "name": "thorns" },
+                            { "name": "infinity" }
                           ]
                         }
                       ]
@@ -407,7 +408,7 @@
                     {
                       "item": "minecraft:book",
                       "quantity": 1,
-                      "biomes": ["jungle"],
+                      "biomes": [ "jungle" ],
                       "functions": [
                         {
                           "function": "enchant_book_for_trading",
@@ -416,9 +417,9 @@
                           "per_level_random_cost": 10,
                           "per_level_cost": 3,
                           "enchantments": [
-                            {"name": "projectile_protection"},
-                            {"name": "feather_falling"},
-                            {"name": "power"}
+                            { "name": "projectile_protection" },
+                            { "name": "feather_falling" },
+                            { "name": "power" }
                           ]
                         }
                       ]
@@ -426,7 +427,7 @@
                     {
                       "item": "minecraft:book",
                       "quantity": 1,
-                      "biomes": ["plains"],
+                      "biomes": [ "plains" ],
                       "functions": [
                         {
                           "function": "enchant_book_for_trading",
@@ -435,9 +436,9 @@
                           "per_level_random_cost": 10,
                           "per_level_cost": 3,
                           "enchantments": [
-                            {"name": "punch"},
-                            {"name": "smite"},
-                            {"name": "bane_of_arthropods"}
+                            { "name": "punch" },
+                            { "name": "smite" },
+                            { "name": "bane_of_arthropods" }
                           ]
                         }
                       ]
@@ -445,7 +446,7 @@
                     {
                       "item": "minecraft:book",
                       "quantity": 1,
-                      "biomes": ["savannah"],
+                      "biomes": [ "savannah" ],
                       "functions": [
                         {
                           "function": "enchant_book_for_trading",
@@ -454,8 +455,8 @@
                           "per_level_random_cost": 10,
                           "per_level_cost": 3,
                           "enchantments": [
-                            {"name": "knockback"},
-                            {"name": "binding"}
+                            { "name": "knockback" },
+                            { "name": "binding" }
                           ]
                         }
                       ]
@@ -463,7 +464,7 @@
                     {
                       "item": "minecraft:book",
                       "quantity": 1,
-                      "biomes": ["snow"],
+                      "biomes": [ "snow" ],
                       "functions": [
                         {
                           "function": "enchant_book_for_trading",
@@ -472,9 +473,9 @@
                           "per_level_random_cost": 10,
                           "per_level_cost": 3,
                           "enchantments": [
-                            {"name": "aqua_affinity"},
-                            {"name": "looting"},
-                            {"name": "frost_walker"}
+                            { "name": "aqua_affinity" },
+                            { "name": "looting" },
+                            { "name": "frost_walker" }
                           ]
                         }
                       ]
@@ -482,7 +483,7 @@
                     {
                       "item": "minecraft:book",
                       "quantity": 1,
-                      "biomes": ["swamp"],
+                      "biomes": [ "swamp" ],
                       "functions": [
                         {
                           "function": "enchant_book_for_trading",
@@ -491,9 +492,9 @@
                           "per_level_random_cost": 10,
                           "per_level_cost": 3,
                           "enchantments": [
-                            {"name": "depth_strider"},
-                            {"name": "respiration"},
-                            {"name": "vanishing"}
+                            { "name": "depth_strider" },
+                            { "name": "respiration" },
+                            { "name": "vanishing" }
                           ]
                         }
                       ]
@@ -501,7 +502,7 @@
                     {
                       "item": "minecraft:book",
                       "quantity": 1,
-                      "biomes": ["taiga"],
+                      "biomes": [ "taiga" ],
                       "functions": [
                         {
                           "function": "enchant_book_for_trading",
@@ -510,9 +511,9 @@
                           "per_level_random_cost": 10,
                           "per_level_cost": 3,
                           "enchantments": [
-                            {"name": "blast_protection"},
-                            {"name": "fire_aspect"},
-                            {"name": "flame"}
+                            { "name": "blast_protection" },
+                            { "name": "fire_aspect" },
+                            { "name": "flame" }
                           ]
                         }
                       ]
@@ -537,10 +538,10 @@
             {
               // Book and quill can only have a single item per stack
               "wants": [
-                {"item": "minecraft:writable_book", "quantity": 1, "price_multiplier": 0.05},
-                {"item": "minecraft:writable_book", "quantity": 1, "price_multiplier": 0.05}
+                { "item": "minecraft:writable_book", "quantity": 1, "price_multiplier": 0.05 },
+                { "item": "minecraft:writable_book", "quantity": 1, "price_multiplier": 0.05 }
               ],
-              "gives": [{"item": "minecraft:emerald", "quantity": 1}],
+              "gives": [ { "item": "minecraft:emerald", "quantity": 1 } ],
               "trader_exp": 30,
               "max_uses": 12,
               "reward_exp": true
@@ -551,23 +552,23 @@
           "num_to_select": 1,
           "trades": [
             {
-              "wants": [{"item": "minecraft:emerald", "quantity": 4, "price_multiplier": 0.05}],
-              "gives": [{"item": "minecraft:compass", "quantity": 1}],
+              "wants": [ { "item": "minecraft:emerald", "quantity": 4, "price_multiplier": 0.05 } ],
+              "gives": [ { "item": "minecraft:compass", "quantity": 1 } ],
               "trader_exp": 15,
               "max_uses": 12,
               "reward_exp": true
             },
             {
-              "wants": [{"item": "minecraft:emerald", "quantity": 5, "price_multiplier": 0.05}],
-              "gives": [{"item": "minecraft:clock", "quantity": 1}],
+              "wants": [ { "item": "minecraft:emerald", "quantity": 5, "price_multiplier": 0.05 } ],
+              "gives": [ { "item": "minecraft:clock", "quantity": 1 } ],
               "trader_exp": 15,
               "max_uses": 12,
               "reward_exp": true
             },
             {
               "wants": [
-                {"item": "minecraft:emerald", "price_multiplier": 0.2},
-                {"item": "minecraft:book", "quantity": 1, "price_multiplier": 0.2}
+                { "item": "minecraft:emerald", "price_multiplier": 0.2 },
+                { "item": "minecraft:book", "quantity": 1, "price_multiplier": 0.2 }
               ],
               "gives": [
                 {
@@ -575,7 +576,7 @@
                     {
                       "item": "minecraft:book",
                       "quantity": 1,
-                      "biomes": ["desert"],
+                      "biomes": [ "desert" ],
                       "functions": [
                         {
                           "function": "enchant_book_for_trading",
@@ -584,9 +585,9 @@
                           "per_level_random_cost": 10,
                           "per_level_cost": 3,
                           "enchantments": [
-                            {"name": "fire_protection"},
-                            {"name": "thorns"},
-                            {"name": "infinity"}
+                            { "name": "fire_protection" },
+                            { "name": "thorns" },
+                            { "name": "infinity" }
                           ]
                         }
                       ]
@@ -594,7 +595,7 @@
                     {
                       "item": "minecraft:book",
                       "quantity": 1,
-                      "biomes": ["jungle"],
+                      "biomes": [ "jungle" ],
                       "functions": [
                         {
                           "function": "enchant_book_for_trading",
@@ -603,9 +604,9 @@
                           "per_level_random_cost": 10,
                           "per_level_cost": 3,
                           "enchantments": [
-                            {"name": "projectile_protection"},
-                            {"name": "feather_falling"},
-                            {"name": "power"}
+                            { "name": "projectile_protection" },
+                            { "name": "feather_falling" },
+                            { "name": "power" }
                           ]
                         }
                       ]
@@ -613,7 +614,7 @@
                     {
                       "item": "minecraft:book",
                       "quantity": 1,
-                      "biomes": ["plains"],
+                      "biomes": [ "plains" ],
                       "functions": [
                         {
                           "function": "enchant_book_for_trading",
@@ -622,9 +623,9 @@
                           "per_level_random_cost": 10,
                           "per_level_cost": 3,
                           "enchantments": [
-                            {"name": "punch"},
-                            {"name": "smite"},
-                            {"name": "bane_of_arthropods"}
+                            { "name": "punch" },
+                            { "name": "smite" },
+                            { "name": "bane_of_arthropods" }
                           ]
                         }
                       ]
@@ -632,7 +633,7 @@
                     {
                       "item": "minecraft:book",
                       "quantity": 1,
-                      "biomes": ["savannah"],
+                      "biomes": [ "savannah" ],
                       "functions": [
                         {
                           "function": "enchant_book_for_trading",
@@ -641,8 +642,8 @@
                           "per_level_random_cost": 10,
                           "per_level_cost": 3,
                           "enchantments": [
-                            {"name": "knockback"},
-                            {"name": "binding"}
+                            { "name": "knockback" },
+                            { "name": "binding" }
                           ]
                         }
                       ]
@@ -650,7 +651,7 @@
                     {
                       "item": "minecraft:book",
                       "quantity": 1,
-                      "biomes": ["snow"],
+                      "biomes": [ "snow" ],
                       "functions": [
                         {
                           "function": "enchant_book_for_trading",
@@ -659,9 +660,9 @@
                           "per_level_random_cost": 10,
                           "per_level_cost": 3,
                           "enchantments": [
-                            {"name": "aqua_affinity"},
-                            {"name": "looting"},
-                            {"name": "frost_walker"}
+                            { "name": "aqua_affinity" },
+                            { "name": "looting" },
+                            { "name": "frost_walker" }
                           ]
                         }
                       ]
@@ -669,7 +670,7 @@
                     {
                       "item": "minecraft:book",
                       "quantity": 1,
-                      "biomes": ["swamp"],
+                      "biomes": [ "swamp" ],
                       "functions": [
                         {
                           "function": "enchant_book_for_trading",
@@ -678,9 +679,9 @@
                           "per_level_random_cost": 10,
                           "per_level_cost": 3,
                           "enchantments": [
-                            {"name": "depth_strider"},
-                            {"name": "respiration"},
-                            {"name": "vanishing"}
+                            { "name": "depth_strider" },
+                            { "name": "respiration" },
+                            { "name": "vanishing" }
                           ]
                         }
                       ]
@@ -688,7 +689,7 @@
                     {
                       "item": "minecraft:book",
                       "quantity": 1,
-                      "biomes": ["taiga"],
+                      "biomes": [ "taiga" ],
                       "functions": [
                         {
                           "function": "enchant_book_for_trading",
@@ -697,9 +698,9 @@
                           "per_level_random_cost": 10,
                           "per_level_cost": 3,
                           "enchantments": [
-                            {"name": "blast_protection"},
-                            {"name": "fire_aspect"},
-                            {"name": "flame"}
+                            { "name": "blast_protection" },
+                            { "name": "fire_aspect" },
+                            { "name": "flame" }
                           ]
                         }
                       ]
@@ -722,16 +723,16 @@
           "num_to_select": 2,
           "trades": [
             {
-              "wants": [{"item": "minecraft:emerald", "quantity": 20, "price_multiplier": 0.05}],
-              "gives": [{"item": "minecraft:nametag", "quantity": 1}],
+              "wants": [ { "item": "minecraft:emerald", "quantity": 20, "price_multiplier": 0.05 } ],
+              "gives": [ { "item": "minecraft:nametag", "quantity": 1 } ],
               "trader_exp": 30,
               "max_uses": 12,
               "reward_exp": true
             },
             {
               "wants": [
-                {"item": "minecraft:emerald", "price_multiplier": 0.2},
-                {"item": "minecraft:book", "quantity": 1, "price_multiplier": 0.2}
+                { "item": "minecraft:emerald", "price_multiplier": 0.2 },
+                { "item": "minecraft:book", "quantity": 1, "price_multiplier": 0.2 }
               ],
               "gives": [
                 {
@@ -739,7 +740,7 @@
                     {
                       "item": "minecraft:book",
                       "quantity": 1,
-                      "biomes": ["desert"],
+                      "biomes": [ "desert" ],
                       "functions": [
                         {
                           "function": "enchant_book_for_trading",
@@ -747,14 +748,14 @@
                           "base_random_cost": 5,
                           "per_level_random_cost": 10,
                           "per_level_cost": 3,
-                          "enchantments": [{"name": "efficiency", "min": 3, "max": 3}]
+                          "enchantments": [ { "name": "efficiency", "min": 3, "max": 3 } ]
                         }
                       ]
                     },
                     {
                       "item": "minecraft:book",
                       "quantity": 1,
-                      "biomes": ["jungle"],
+                      "biomes": [ "jungle" ],
                       "functions": [
                         {
                           "function": "enchant_book_for_trading",
@@ -762,14 +763,14 @@
                           "base_random_cost": 5,
                           "per_level_random_cost": 10,
                           "per_level_cost": 3,
-                          "enchantments": [{"name": "unbreaking", "min": 2, "max": 2}]
+                          "enchantments": [ { "name": "unbreaking", "min": 2, "max": 2 } ]
                         }
                       ]
                     },
                     {
                       "item": "minecraft:book",
                       "quantity": 1,
-                      "biomes": ["plains"],
+                      "biomes": [ "plains" ],
                       "functions": [
                         {
                           "function": "enchant_book_for_trading",
@@ -777,14 +778,14 @@
                           "base_random_cost": 5,
                           "per_level_random_cost": 10,
                           "per_level_cost": 3,
-                          "enchantments": [{"name": "protection", "min": 3, "max": 3}]
+                          "enchantments": [ { "name": "protection", "min": 3, "max": 3 } ]
                         }
                       ]
                     },
                     {
                       "item": "minecraft:book",
                       "quantity": 1,
-                      "biomes": ["savannah"],
+                      "biomes": [ "savannah" ],
                       "functions": [
                         {
                           "function": "enchant_book_for_trading",
@@ -792,14 +793,14 @@
                           "base_random_cost": 5,
                           "per_level_random_cost": 10,
                           "per_level_cost": 3,
-                          "enchantments": [{"name": "sharpness", "min": 3, "max": 3}]
+                          "enchantments": [ { "name": "sharpness", "min": 3, "max": 3 } ]
                         }
                       ]
                     },
                     {
                       "item": "minecraft:book",
                       "quantity": 1,
-                      "biomes": ["snow"],
+                      "biomes": [ "snow" ],
                       "functions": [
                         {
                           "function": "enchant_book_for_trading",
@@ -807,14 +808,14 @@
                           "base_random_cost": 5,
                           "per_level_random_cost": 10,
                           "per_level_cost": 3,
-                          "enchantments": [{"name": "silk_touch"}]
+                          "enchantments": [ { "name": "silk_touch" } ]
                         }
                       ]
                     },
                     {
                       "item": "minecraft:book",
                       "quantity": 1,
-                      "biomes": ["swamp"],
+                      "biomes": [ "swamp" ],
                       "functions": [
                         {
                           "function": "enchant_book_for_trading",
@@ -822,14 +823,14 @@
                           "base_random_cost": 5,
                           "per_level_random_cost": 10,
                           "per_level_cost": 3,
-                          "enchantments": [{"name": "mending"}]
+                          "enchantments": [ { "name": "mending" } ]
                         }
                       ]
                     },
                     {
                       "item": "minecraft:book",
                       "quantity": 1,
-                      "biomes": ["taiga"],
+                      "biomes": [ "taiga" ],
                       "functions": [
                         {
                           "function": "enchant_book_for_trading",
@@ -837,7 +838,7 @@
                           "base_random_cost": 5,
                           "per_level_random_cost": 10,
                           "per_level_cost": 3,
-                          "enchantments": [{"name": "fortune", "min": 2, "max": 2}]
+                          "enchantments": [ { "name": "fortune", "min": 2, "max": 2 } ]
                         }
                       ]
                     }

@@ -35,6 +35,7 @@
                 "controller.render.lord_blaze"
             ],
             "spawn_egg": {
+                // mc-disable-next-line behaviorpack.item.components.texture_not_found
                 "texture": "spawn_egg_blaze"
             }
         }

@@ -29,6 +29,6 @@
         "@minecraft/server-net": "^1.0.0-beta.1.26.20-stable",
         "@minecraft/server-ui": "^2.1.0-beta.1.26.20-stable",
         "@minecraft/vanilla-data": "^1.26.2",
-        "simplified-mojang-api": "^0.0.43"
+        "simplified-mojang-api": "^0.0.44"
     }
 }
