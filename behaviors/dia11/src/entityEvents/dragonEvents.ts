@@ -153,6 +153,7 @@ class DragonEvents extends TL15DBaseManager {
                             entity.runCommand(`loot spawn ~ ~25 ~ loot "entities/custom/dragon_drops/totem_rain"`);
 
                             entity.runCommand(`fill ~3 ~-1 ~3 ~-3 ~-10 ~-3 emerald_block replace end_stone`);
+                            entity.runCommand(`fill ~3 ~-1 ~3 ~-3 ~-10 ~-3 emerald_block replace end_bricks`);
                             entity.runCommand(`fill ~3 ~-1 ~3 ~-3 ~-10 ~-3 emerald_block replace gold_block`);
                             entity.runCommand(`fill ~3 ~-1 ~3 ~-3 ~-10 ~-3 emerald_block replace obsidian`);
                             entity.runCommand(`fill ~3 ~-1 ~3 ~-3 ~-10 ~-3 emerald_block replace bedrock`);
@@ -172,6 +173,7 @@ class DragonEvents extends TL15DBaseManager {
                             entity.runCommand(`loot spawn ~ ~25 ~ loot "entities/custom/dragon_drops/items_rain"`);
 
                             entity.runCommand(`fill ~3 ~-1 ~3 ~-3 ~-10 ~-3 gold_block replace end_stone`);
+                            entity.runCommand(`fill ~3 ~-1 ~3 ~-3 ~-10 ~-3 gold_block replace end_bricks`);
                             entity.runCommand(`fill ~3 ~-1 ~3 ~-3 ~-10 ~-3 gold_block replace emerald_block`);
                             entity.runCommand(`fill ~3 ~-1 ~3 ~-3 ~-10 ~-3 gold_block replace obsidian`);
                             entity.runCommand(`fill ~3 ~-1 ~3 ~-3 ~-10 ~-3 gold_block replace bedrock`);

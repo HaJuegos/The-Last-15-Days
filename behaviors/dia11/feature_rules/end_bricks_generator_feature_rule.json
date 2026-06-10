@@ -1,0 +1,37 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.13.0",
+    "minecraft:feature_rules": {
+        "description": {
+            "identifier": "ha:end_bricks_generator_feature_rule",
+            "places_feature": "ha:end_bricks_feature"
+        },
+        "conditions": {
+            "placement_pass": "underground_pass",
+            "minecraft:biome_filter": [
+                {
+                    "test": "has_biome_tag",
+                    "operator": "==",
+                    "value": "the_end"
+                }
+            ]
+        },
+        "distribution": {
+            "iterations": "(math.abs(v.originx) <= 300 && math.abs(v.originz) <= 300) * 35",
+            "coordinate_eval_order": "zyx",
+            "x": {
+                "distribution": "uniform",
+                "extent": [ 0, 15 ]
+            },
+            "y": {
+                "distribution": "uniform",
+                "extent": [ 10, 70 ]
+            },
+            "z": {
+                "distribution": "uniform",
+                "extent": [ 0, 15 ]
+            }
+        }
+    }
+}
