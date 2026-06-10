@@ -4,7 +4,7 @@
 
 ## Manifest texts
 pack.name=§l§4The Last 15 Days§r | Created By §gRosherRandom§r
-pack.description=Resources needed for the add-on | Developed by: HaJuegos y Convex!
+pack.description=Resources needed for the add-on | Developed by HaJuegos & Convex!
 
 
 ## Other texts
@@ -30,17 +30,17 @@ disconnect.removed.reason=Game Over! You can't keep playing anymore.
 disconnectionScreen.title.bannedByHost=You've died and can't keep playing.
 disconnectionScreen.title.kickedFromWorld=You've died and can't keep playing.
 
-gamepad_disconnect=Your batteries ran out or the controller turned off!
-gamepad_disconnect.reconnectController=RoyerBot has intervened in your system and now we don't recognize your controller. Quick! Turn it on or connect it again to continue.
+gamepad_disconnect=Your batteries died or the controller shut off!
+gamepad_disconnect.reconnectController=RoyerBot hijacked your system, and we don't recognize your controller anymore. Quick! Power it back on or reconnect it to keep going.
 
-pauseScreen.xboxLiveDisconnect=Your Xbox account has been disconnected. Or are you in a local world or how the hell are you seeing this? Anyway, re-enter the world.
+pauseScreen.xboxLiveDisconnect=Your Xbox account got disconnected. Are you in a local world, or how the hell are you even seeing this? Either way, get back into the world.
 
 
 ## Title texts
 ui.game_over_title=§cGame Over?§r
-ui.fast_items.title=§gQuick Items system activated!
-ui.fast_items.sub1=Now, using your interaction key, you can quickly
-ui.fast_items.sub2=switch between items like the totem in your other hand.
+ui.fast_items.title=§gQuick item switching is active!
+ui.fast_items.sub1=Now, use your interaction key to quickly
+ui.fast_items.sub2=switch between items like the totem in your off-hand.
 ui.watermak.title=§4The Last 15 Days
 ui.watermak.version=§7v0.0.12-beta
 ui.credits_panel.title=Credits:
@@ -61,6 +61,12 @@ ui.form_timers.main_text=\nHere are your active debuffs:\n\n
 ui.form_timers.time_remain=§7Time left.§r
 ui.form_timers.final_title_form=§o§7Time doesn't update in real time. Check this book whenever you want.
 
+ui.system.dragon_damage_nausea.title=§cYOU MUST BEND DOWN
+ui.system.dragon_damage_nausea.subtitle=Next time, crouch down when the effect ends
+
+ui.dragon_death.title=§e§lROYERBOT DEFEATED!
+ui.dragon_death.subtitle=Congratulations, player, you managed to survive this battle. Well done!
+
 
 ## Chat texts
 chat.system.resquicio_start=§c§l>>§r§c ¡%1 caused a §4§lHellish Rift§r!
@@ -70,14 +76,15 @@ chat.system.error_no_perms=§7§l>> You can't do that yet.
 chat.system.use_totem=§7>> %1 used a totem.
 chat.system.day_addon=§a§l>> It's Day %1.
 chat.system.damage_biome=§4§l>> You're taking temperature damage. Get out of there!
-chat.system.get_debuff_wither1=§c§l>> You have received a random negative effect from the Wither.
-chat.system.get_debuff_wither2=§m§l>> Your inventory has been altered by the Wither.
-chat.system.get_infernal_item=§4>> %1 has obtained the %2§r§7 | (%3/5)
-chat.system.get_infernal_crown=§4§l>> %1 has obtained the %2§4§l.
-chat.system.hit_by_dolphin=§e§lYou've been hit by a dolphin; you can't hold your breath underwater for %1 minutes. Try not to get hit again!
-chat.system.soul_link.no_plys_deaths=§7§l>> There are no players to revive, so there's no point in using the item right now.
-chat.system.soul_link.alr_used=§7§l>> You've already used this item; you can't revive any more players.
-chat.system.soul_link.select_player=§7§l>> §cThrough the Soul Link pact, §e%2 §cjust bound their fate to §e%1§c. §7Two bodies, one shared life. §4If one goes down, it's game over for both. There's no saving you now.
+chat.system.get_debuff_wither1=§c§l>> The Wither just slapped you with a random negative effect.
+chat.system.get_debuff_wither2=§m§l>> The Wither just messed with your inventory.
+chat.system.get_infernal_item=§4>> %1 has obtained %2§r§7 | (%3/5)
+chat.system.get_infernal_crown=§4§l>> %1 has obtained %2.§r
+chat.system.hit_by_dolphin=§e§lYou got hit by a dolphin, so you can't hold your breath underwater for %1 minutes. Try not to get hit again!
+chat.system.soul_link.no_plys_deaths=§7§l>> There are no players to revive, so don't bother using the item right now.
+chat.system.soul_link.alr_used=§7§l>> You've already used this item, so you can't revive any more players.
+chat.system.soul_link.select_player=§7§l>> §cThrough the Soul Link pact, §e%2 §cjust tied their fate to §e%1§c. §7Two bodies, one shared life. §4If one goes down, it's game over for both.
+
 
 chat.system.abyss_text.abyssal_text_combo1=§1§l>> Abyssal Eyes: You feel a dark presence snatching slots from your inventory. Don't panic—your items are just chilling on the floor now. Tough luck!
 chat.system.abyss_text.abyssal_text_combo2=§1§l>> Abyssal Eyes: Since you got cursed again, another random inventory slot is gone. Watch your back... and your items! Bad luck!
@@ -96,7 +103,7 @@ chat.system.abyss_text.void_text_combo1=§u§l>> Void Claws: Your items are lock
 chat.system.abyss_text.void_text_combo2=§u§l>> Void Claws: Even more items are bound to your inventory. You're slowly losing the ability to move or use anything. Tough luck!
 chat.system.abyss_text.void_text_combo5=§u§l>> Void Claws: Your items are now completely sealed and stuck. You can't use or move them anymore—your inventory is totally locked down. What a nightmare!
 
-chat.system.debuff_total_changed=§7>> The total number of global debuffs in the world has been changed to %1. (Previously, there were %2 debuffs in total.)
+chat.system.debuff_total_changed=§7>> Global debuff count is now %1. (It was %2 before.)
 
 chat.system.debuff_name.abyssal=§1Abyssal Eyes§7
 chat.system.debuff_name.colossus=§6Colossus Trick§7
@@ -110,9 +117,17 @@ chat.system.debuff_end_timer=§7>> Debuff %1 has ended.
 
 chat.system.ui.no_debuffs_timers=§7>> You don't have any pending timers to review.
 
-chat.system.eat_iron_apple=§i>> %1 has eaten an %2
+chat.system.eat_iron_apple=§i>> %1 has eaten %2
 
-chat.system.get_cautious_item=§w>> %1 has obtained the %2§r§7 | (%3/5)
+chat.system.get_cautious_item=§w>> %1 has obtained %2§r§7 | (%3/5)
+
+chat.system.dragon_attack_finished.nausea=§7>> The Nauseas effect has ended.
+chat.system.dragon_attack_finished.conduit=§7>> The Conduit effect has ended.
+chat.system.timer_bear_trap.starts=§7>> You were hit by a bear trap. You cannot move for %1 seconds.
+chat.system.ender_crystal_explodes=§4§l>> An EnderCrystal explodes at %1. Llamas will now appear in the arena.
+chat.system.no_end_islands=§7>> You're not allowed to go to the End Islands yet. Come back tomorrow and/or finish fighting the dragon.
+chat.system.spawn_items_rain=§d>> An item rain has occurred in %1.
+chat.system.spawn_totems_rain=§e>> A totem rain has occurred in %1.
 
 
 ## Entity Names
@@ -124,6 +139,10 @@ entity.ha:lord_blaze.name=§pLord Blaze§r
 entity.ha:armorer_piglin.name=Armorer Piglin Brute
 entity.ha:socrates_npc.name=Socrates. Yes, that's right.
 entity.ha:custom_damage_area.name=A toxic cloud from a Creeper
+entity.ender_dragon.name=§g§lRoyerBot§r
+entity.ha:bear_trap.name=Bear Trap
+entity.ha:spawned_trader_llama.name=End Llama Generator
+entity.ha:crystal_llama_generator.name=End Debuff Controller
 
 
 ## Spawn egg names
@@ -209,21 +228,21 @@ item.ha:fake_netherite_leggings.name=Netherite Leggings
 item.ha:fake_netherite_boots=Netherite Boots
 item.ha:fake_netherite_boots.name=Netherite Boots
 
-item.ha:cautious_helmet=§h§lCautious Helmet Armor§r
-item.ha:cautious_helmet.name=§h§lCautious Helmet Armor§r
+item.ha:cautious_helmet=§h§lCautious Helmet§r
+item.ha:cautious_helmet.name=§h§lCautious Helmet§r
 
-item.ha:cautious_chestplate=§h§lCautious Chestplate Armor§r
-item.ha:cautious_chestplate.name=§h§lCautious Chestplate Armor§r
+item.ha:cautious_chestplate=§h§lCautious Chestplate§r
+item.ha:cautious_chestplate.name=§h§lCautious Chestplate§r
 
-item.ha:cautious_leggings=§h§lCautious Leggings Armor§r
-item.ha:cautious_leggings.name=§h§lCautious Leggings Armor§r
+item.ha:cautious_leggings=§h§lCautious Leggings§r
+item.ha:cautious_leggings.name=§h§lCautious Leggings§r
 
-item.ha:cautious_boots=§h§lCautious Boots Armor§r
-item.ha:cautious_boots.name=§h§lCautious Boots Armor§r
+item.ha:cautious_boots=§h§lCautious Boots§r
+item.ha:cautious_boots.name=§h§lCautious Boots§r
 
 
 ## Item Catalog
-ha:itemGroup.name.nether_items=§4Nether's Stuff§r
+ha:itemGroup.name.nether_items=§4Nether Stuff§r
 
 
 ## Block names
@@ -294,24 +313,24 @@ advacement.cautious_armor=Overcoming Caution
 
 
 ## Subtitle Texts
-ui.subtitle_custom.click_btn_ha=§6Click the Ha button in credits§r
-ui.subtitle_custom.click_btn_astral=§dClick the Astral button in credits§r
-ui.subtitle_custom.click_btn_royer=§eClick the Royer button in credits§r
+ui.subtitle_custom.click_btn_ha=§6Click the Ha button in the credits§r
+ui.subtitle_custom.click_btn_astral=§dClick the Astral button in the credits§r
+ui.subtitle_custom.click_btn_royer=§eClick the Royer button in the credits§r
 
 ui.subtitle_custom.get_normal_advancement=Got an achievement
 ui.subtitle_custom.get_rare_advancement=Got a rare achievement
 ui.subtitle_custom.intro_sound=Welcome!
 ui.subtitle_custom.game_over=§cGame Over!§r
 ui.subtitle_custom.death_ply=§cA player just died§r
-ui.subtitle_custom.no_perms=You can’t do that
-ui.subtitle_custom.get_wither_debuff=You got a debuff from King Wither
-ui.subtitle_custom.slime_pearl_used=Slime Pearl was used
-ui.subtitle_custom.no_perms_item=You can’t use this item
-ui.subtitle_custom.soul_linked=§3Soul link done right§r
+ui.subtitle_custom.no_perms=You can't do that yet
+ui.subtitle_custom.get_wither_debuff=You got a debuff from King Wither.
+ui.subtitle_custom.slime_pearl_used=Slime Pearl has been used.
+ui.subtitle_custom.no_perms_item=You can't use this item.
+ui.subtitle_custom.soul_linked=§3Soul Link done right§r
 ui.subtitle_custom.abyss_attack=You got a nasty debuff
 ui.subtitle_custom.abyss_desc=Debuff explanation
-ui.subtitle_custom.player_ghost_death=A player’s ghost just died
-ui.subtitle_custom.soul_ghast_charging=Soul Ghast charging its attack
+ui.subtitle_custom.player_ghost_death=A player's ghost just died.
+ui.subtitle_custom.soul_ghast_charging=Soul Ghast is charging its attack
 ui.subtitle_custom.lord_piglin_gem=Lord Piglin skill activated
 ui.subtitle_custom.piglin_get_armor=A piglin swapped armor
 ui.subtitle_custom.magmacopter_start=A MagmaCopter is flying
@@ -321,3 +340,6 @@ ui.subtitle_custom.mob_betray=A tamed mob just turned
 ui.subtitle_custom.mob_summon_attack=A mob spawned more mobs
 ui.subtitle_custom.ply_respawned_soul=A player respawned
 ui.subtitle_custom.ambient_soullink=§4Pick your victim§r
+ui.subtitle_custom.ambient_dragon_attack.nausea=§2Nauseas' attack begins§r
+ui.subtitle_custom.ambient_dragon_attack.conduit=§bThe Conduit's attack begins§r
+ui.subtitle_custom.bear_trap.attacks=A bear trap strikes

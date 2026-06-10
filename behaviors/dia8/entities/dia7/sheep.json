@@ -206,11 +206,6 @@
                 "cooldown_after_being_attacked": 0,
                 "speed_multiplier": 2
             },
-            "minecraft:shareables": {
-                "all_items": true,
-                "all_items_max_amount": -1,
-                "singular_pickup": false
-            },
             "minecraft:behavior.hurt_by_target": {
                 "priority": 2
             },

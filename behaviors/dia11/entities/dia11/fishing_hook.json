@@ -1,0 +1,95 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.26.0",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "minecraft:fishing_hook",
+            "is_summonable": false,
+            "is_spawnable": false
+        },
+        "component_groups": {
+            "ha:spawn_goat": {
+                "minecraft:spawn_entity": {
+                    "entities": [
+                        {
+                            "min_wait_time": 0,
+                            "max_wait_time": 0.1,
+                            "num_to_spawn": 1,
+                            "single_use": true,
+                            "should_leash": false,
+                            "spawn_entity": "minecraft:goat",
+                            "spawn_event": "minecraft:entity_spawned"
+                        }
+                    ]
+                }
+            },
+            "loot_jungle": {
+                "minecraft:loot": {
+                    "table": "loot_tables/gameplay/jungle_fishing.json"
+                }
+            }
+        },
+        "components": {
+            "minecraft:collision_box": {
+                "height": 0.15,
+                "width": 0.15
+            },
+            "minecraft:conditional_bandwidth_optimization": {
+                "default_values": {
+                    "max_dropped_ticks": 7,
+                    "max_optimized_distance": 80.0,
+                    "use_motion_prediction_hints": true
+                }
+            },
+            "minecraft:dimension_bound": { },
+            "minecraft:loot": {
+                "table": "loot_tables/gameplay/fishing.json"
+            },
+            "minecraft:physics": { },
+            "minecraft:projectile": {
+                "on_hit": {
+                    "impact_damage": null,
+                    "stick_in_ground": { }
+                }
+            },
+            "minecraft:pushable": {
+                "is_pushable": false,
+                "is_pushable_by_piston": true
+            },
+            "minecraft:transient": { }
+        },
+        "events": {
+            "minecraft:entity_spawned": {
+                "sequence": [
+                    {
+                        "filters": {
+                            "test": "is_biome",
+                            "value": "jungle"
+                        },
+                        "add": {
+                            "component_groups": [
+                                "loot_jungle"
+                            ]
+                        }
+                    },
+                    {
+                        "randomize": [
+                            {
+                                "weight": 50
+                            },
+                            {
+                                "weight": 50,
+                                "add": {
+                                    "component_groups": [
+                                        "ha:spawn_goat"
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}

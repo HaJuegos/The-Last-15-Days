@@ -1,0 +1,63 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+	"format_version": "1.26.10",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "minecraft:donkey",
+			"spawn_category": "creature",
+			"is_spawnable": true,
+			"is_summonable": true
+		},
+		"component_groups": {
+			"ha:become_zombie_horse": {
+				"minecraft:transformation": {
+					"into": "minecraft:zombie_horse<minecraft:entity_spawned>",
+					"delay": {
+						"value": 0.1
+					}
+				}
+			},
+			"ha:become_skeleton_horse": {
+				"minecraft:transformation": {
+					"into": "minecraft:skeleton_horse<minecraft:entity_spawned>",
+					"delay": {
+						"value": 0.1
+					}
+				}
+			}
+		},
+		"components": {
+			"minecraft:timer": {
+				"time": [ 0.1, 0.1 ],
+				"looping": true,
+				"time_down_event": {
+					"event": "minecraft:entity_spawned",
+					"target": "self"
+				}
+			}
+		},
+		"events": {
+			"minecraft:entity_spawned": {
+				"randomize": [
+					{
+						"weight": 1,
+						"add": {
+							"component_groups": [
+								"ha:become_zombie_horse"
+							]
+						}
+					},
+					{
+						"weight": 1,
+						"add": {
+							"component_groups": [
+								"ha:become_skeleton_horse"
+							]
+						}
+					}
+				]
+			}
+		}
+	}
+}

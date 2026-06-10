@@ -1,0 +1,47 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+	"format_version": "1.10.0",
+	"particle_effect": {
+		"description": {
+			"identifier": "ha:conduit_attack",
+			"basic_render_parameters": {
+				"material": "particles_alpha",
+				"texture": "textures/particle/conduit_attack_particle"
+			}
+		},
+		"components": {
+			"minecraft:emitter_initialization": {
+				"creation_expression": "variable.player_count = 1;"
+			},
+			"minecraft:emitter_rate_instant": {
+				"num_particles": "30 + math.min(variable.player_count, 10) * 5"
+			},
+			"minecraft:emitter_lifetime_once": {
+				"active_time": 1
+			},
+			"minecraft:emitter_shape_box": {
+				"offset": [ 0, 0.5, 0 ],
+				"half_dimensions": [ "0.5 + math.random(-0.65, 0.65)", "0.1 + math.random(0.0, 0.8)", "0.5 + math.random(-0.65, 0.65)" ],
+				"direction": [ 0, 1, 0 ]
+			},
+			"minecraft:particle_lifetime_expression": {
+				"max_lifetime": "variable.lifetime = math.ceil(8.0 / math.random(0.75, 1.5));return math.max(variable.lifetime, 1.0) / 15.0;"
+			},
+			"minecraft:particle_initial_speed": "math.random(1,4)",
+			"minecraft:particle_motion_dynamic": {
+				"linear_acceleration": [ 0, "math.random(1.0,1.5)", 0 ]
+			},
+			"minecraft:particle_appearance_billboard": {
+				"size": [ 0.2, 0.2 ],
+				"facing_camera_mode": "rotate_xyz",
+				"uv": {
+					"texture_width": 18,
+					"texture_height": 18,
+					"uv": [ 0, 0 ],
+					"uv_size": [ 18, 18 ]
+				}
+			}
+		}
+	}
+}

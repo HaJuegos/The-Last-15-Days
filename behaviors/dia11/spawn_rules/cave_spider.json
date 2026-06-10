@@ -1,0 +1,39 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.8.0",
+    "minecraft:spawn_rules": {
+        "description": {
+            "identifier": "minecraft:cave_spider",
+            "population_control": "monster"
+        },
+        "conditions": [
+            {
+                "minecraft:spawns_on_surface": {
+                },
+
+                "minecraft:spawns_underground": {
+                },
+
+                "minecraft:brightness_filter": {
+                    "min": 0,
+                    "max": 7,
+                    "adjust_for_weather": true
+                },
+
+                "minecraft:difficulty_filter": {
+                    "min": "easy",
+                    "max": "hard"
+                },
+
+                "minecraft:weight": {
+                    "default": 100
+                },
+
+                "minecraft:biome_filter": {
+                    "test": "has_biome_tag", "operator": "==", "value": "monster"
+                }
+            }
+        ]
+    }
+}

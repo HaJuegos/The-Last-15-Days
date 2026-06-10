@@ -1,0 +1,146 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.26.0",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "ha:debuff_timer",
+            "spawn_category": "ambient",
+            "is_experimental": false,
+            "is_spawnable": false,
+            "is_summonable": true
+        },
+        "component_groups": {
+            "ha:despawn": {
+                "minecraft:instant_despawn": { }
+            },
+            "ha:nausea_variant": {
+                "minecraft:variant": {
+                    "value": 0
+                }
+            },
+            "ha:conduit_variant": {
+                "minecraft:variant": {
+                    "value": 1
+                }
+            },
+            "ha:totem_variant": {
+                "minecraft:variant": {
+                    "value": 2
+                }
+            },
+            "ha:items_variant": {
+                "minecraft:variant": {
+                    "value": 3
+                }
+            }
+        },
+        "components": {
+            "minecraft:type_family": {
+                "family": [
+                    "debuff_mob",
+                    "pacified",
+                    "inanimate",
+                    "mob"
+                ]
+            },
+            "minecraft:health": {
+                "value": 1,
+                "max": 1,
+                "min": 1
+            },
+            "minecraft:damage_sensor": {
+                "triggers": [
+                    {
+                        "cause": "all",
+                        "deals_damage": "no"
+                    }
+                ]
+            },
+            "minecraft:collision_box": {
+                "height": 0.5,
+                "width": 0.5
+            },
+            "minecraft:physics": {
+                "has_collision": false,
+                "has_gravity": false
+            },
+            "minecraft:persistent": { },
+            "minecraft:tick_world": {
+                "never_despawn": true,
+                "radius": 4
+            },
+            "minecraft:knockback_resistance": {
+                "value": 99999
+            },
+            "minecraft:cannot_be_attacked": { },
+            "minecraft:conditional_bandwidth_optimization": {
+                "default_values": {
+                    "max_dropped_ticks": 7,
+                    "max_optimized_distance": 80.0,
+                    "use_motion_prediction_hints": true
+                }
+            },
+            "minecraft:dimension_bound": { }
+        },
+        "events": {
+            "minecraft:entity_spawned": {
+                "randomize": [
+                    {
+                        "weight": 1,
+                        "trigger": "ha:spawn_nauseas_debuff"
+                    },
+                    {
+                        "weight": 1,
+                        "trigger": "ha:spawn_conduit_debuff"
+                    },
+                    {
+                        "weight": 1,
+                        "trigger": "ha:spawn_totem_debuff"
+                    },
+                    {
+                        "weight": 1,
+                        "trigger": "ha:spawn_items_debuff"
+                    }
+                ]
+            },
+
+            "ha:start_despawn": {
+                "add": {
+                    "component_groups": [
+                        "ha:despawn"
+                    ]
+                }
+            },
+
+            "ha:spawn_nauseas_debuff": {
+                "add": {
+                    "component_groups": [
+                        "ha:nausea_variant"
+                    ]
+                }
+            },
+            "ha:spawn_conduit_debuff": {
+                "add": {
+                    "component_groups": [
+                        "ha:conduit_variant"
+                    ]
+                }
+            },
+            "ha:spawn_totem_debuff": {
+                "add": {
+                    "component_groups": [
+                        "ha:totem_variant"
+                    ]
+                }
+            },
+            "ha:spawn_items_debuff": {
+                "add": {
+                    "component_groups": [
+                        "ha:items_variant"
+                    ]
+                }
+            }
+        }
+    }
+}

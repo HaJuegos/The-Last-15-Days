@@ -1,0 +1,132 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.26.0",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "ha:crystal_llama_generator",
+            "spawn_category": "ambient",
+            "is_experimental": false,
+            "is_spawnable": false,
+            "is_summonable": true
+        },
+        "component_groups": {
+            "ha:despawn": {
+                "minecraft:instant_despawn": { }
+            },
+            "ha:spawned_llama": {
+                "minecraft:spawn_entity": {
+                    "entities": [
+                        {
+                            "min_wait_time": 90,
+                            "max_wait_time": 120,
+                            "num_to_spawn": 1,
+                            "single_use": false,
+                            "should_leash": true,
+                            "spawn_entity": "minecraft:llama",
+                            "spawn_event": "minecraft:entity_spawned"
+                        }
+                    ]
+                }
+            },
+            "ha:spawned_trader_llama": {
+                "minecraft:spawn_entity": {
+                    "entities": [
+                        {
+                            "min_wait_time": 90,
+                            "max_wait_time": 120,
+                            "num_to_spawn": 1,
+                            "single_use": false,
+                            "should_leash": true,
+                            "spawn_entity": "minecraft:trader_llama",
+                            "spawn_event": "minecraft:entity_spawned"
+                        }
+                    ]
+                }
+            }
+        },
+        "components": {
+            "minecraft:type_family": {
+                "family": [
+                    "crystal_generator",
+                    "pacified",
+                    "inanimate",
+                    "mob"
+                ]
+            },
+            "minecraft:health": {
+                "value": 1,
+                "max": 1,
+                "min": 1
+            },
+            "minecraft:damage_sensor": {
+                "triggers": [
+                    {
+                        "cause": "all",
+                        "deals_damage": "no"
+                    }
+                ]
+            },
+            "minecraft:collision_box": {
+                "height": 0.5,
+                "width": 0.5
+            },
+            "minecraft:physics": {
+                "has_collision": true,
+                "has_gravity": false
+            },
+            "minecraft:persistent": { },
+            "minecraft:tick_world": {
+                "never_despawn": true,
+                "radius": 4
+            },
+            "minecraft:knockback_resistance": {
+                "value": 99999
+            },
+            "minecraft:cannot_be_attacked": { },
+            "minecraft:conditional_bandwidth_optimization": {
+                "default_values": {
+                    "max_dropped_ticks": 7,
+                    "max_optimized_distance": 80.0,
+                    "use_motion_prediction_hints": true
+                }
+            },
+            "minecraft:dimension_bound": { }
+        },
+        "events": {
+            "minecraft:entity_spawned": {
+                "randomize": [
+                    {
+                        "weight": 1,
+                        "add": {
+                            "component_groups": [
+                                "ha:spawned_llama"
+                            ]
+                        }
+                    },
+                    {
+                        "weight": 1,
+                        "add": {
+                            "component_groups": [
+                                "ha:spawned_trader_llama"
+                            ]
+                        }
+                    }
+                ]
+            },
+            "ha:start_despawn": {
+                "remove": {
+                    "component_groups": [
+                        "ha:spawned_llama",
+                        "ha:spawned_trader_llama"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
+                        "ha:despawn"
+                    ]
+                }
+            }
+        }
+    }
+}

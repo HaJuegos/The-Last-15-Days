@@ -228,6 +228,18 @@
             "minecraft:shareables": {
                 "items": [
                     {
+                        "item": "ha:hoglin_fang",
+                        "want_amount": 1,
+                        "surplus_amount": 1,
+                        "priority": 0
+                    },
+                    {
+                        "item": "ha:piglin_mace",
+                        "want_amount": 1,
+                        "surplus_amount": 1,
+                        "priority": 0
+                    },
+                    {
                         "item": "minecraft:netherite_sword",
                         "priority": 0,
                         "surplus_amount": 1,

@@ -208,6 +208,7 @@
             "subtitle": "ui.subtitle_custom.abyss_attack",
             "sounds": [
                 {
+                    "load_on_low_memory": true,
                     "is3D": false,
                     "name": "sounds/ui/abyss_sounds/attack",
                     "stream": true,
@@ -222,6 +223,7 @@
             "subtitle": "ui.subtitle_custom.abyss_desc",
             "sounds": [
                 {
+                    "load_on_low_memory": true,
                     "weight": 1,
                     "is3D": false,
                     "name": "sounds/ui/abyss_sounds/text_desc1",
@@ -229,11 +231,57 @@
                     "volume": 2
                 },
                 {
+                    "load_on_low_memory": true,
                     "weight": 1,
                     "is3D": false,
                     "name": "sounds/ui/abyss_sounds/text_desc2",
                     "stream": true,
                     "volume": 2
+                }
+            ]
+        },
+        "ui.dragon_attack_nausea.start": {
+            "category": "ui",
+            "min_distance": null,
+            "max_distance": null,
+            "subtitle": "",
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": false,
+                    "name": "sounds/ambient/nausea_attack_started",
+                    "stream": true,
+                    "volume": 1
+                }
+            ]
+        },
+        "ui.dragon_attack_conduit.start": {
+            "category": "ui",
+            "min_distance": null,
+            "max_distance": null,
+            "subtitle": "",
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": false,
+                    "name": "sounds/ambient/conduit_attack_started",
+                    "stream": true,
+                    "volume": 1
+                }
+            ]
+        },
+        "ui.dragon_attack.damage_nausea": {
+            "category": "ui",
+            "min_distance": null,
+            "max_distance": null,
+            "subtitle": "",
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": false,
+                    "name": "sounds/mob/player_ghost/rare_death",
+                    "stream": true,
+                    "volume": 1
                 }
             ]
         },
@@ -246,6 +294,7 @@
             "subtitle": "ui.subtitle_custom.player_ghost_death",
             "sounds": [
                 {
+                    "load_on_low_memory": true,
                     "is3D": true,
                     "name": "sounds/mob/player_ghost/ded",
                     "stream": true,
@@ -377,6 +426,21 @@
                     "load_on_low_memory": true,
                     "is3D": true,
                     "name": "sounds/ui/summon_mob",
+                    "volume": 1,
+                    "stream": false
+                }
+            ]
+        },
+        "mob.bear_trap.start_attack": {
+            "__use_legacy_max_distance": "true",
+            "min_distance": null,
+            "max_distance": null,
+            "subtitle": "ui.subtitle_custom.bear_trap.attacks",
+            "category": "hostile",
+            "sounds": [
+                {
+                    "is3D": true,
+                    "name": "sounds/mob/bear_trap/start_trap",
                     "volume": 1,
                     "stream": false
                 }

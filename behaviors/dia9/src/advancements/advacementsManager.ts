@@ -87,10 +87,6 @@ class AdvancementManager extends TL15DBaseManager {
     constructor () {
         super();
 
-        worldToolsSimplified.setRun(() => {
-            this.dime = mc.world.getDimension('overworld');
-        });
-
         this.loopCheckItems();
         this.actionAdvancements();
     }
@@ -104,7 +100,7 @@ class AdvancementManager extends TL15DBaseManager {
         const itemAdvancements = this.listOfAdvancements.filter(adv => !adv.isAction);
 
         worldToolsSimplified.setLoop(() => {
-            const plys = this.dime.getPlayers();
+            const plys = mc.world.getAllPlayers();
 
             for (const ply of plys) {
                 for (const adv of itemAdvancements) {
