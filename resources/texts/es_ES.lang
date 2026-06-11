@@ -127,6 +127,7 @@ chat.system.ender_crystal_explodes=§4§l>> Un EnderCrystal fue explotado en %1.
 chat.system.no_end_islands=§7>> Aún no tienes permitido ir a las islas del End. Regresa al día siguiente y/o termina de pelear con el dragón.
 chat.system.spawn_items_rain=§d>> Una lluvia de ítems ha ocurrido en %1.
 chat.system.spawn_totems_rain=§e>> Una lluvia de tótems ha ocurrido en %1.
+chat.system.banned_items_end=§c>> No usarás eso contra mí en esta batalla. El ítem se ha eliminado de tu inventario.
 
 
 ## Entity Names

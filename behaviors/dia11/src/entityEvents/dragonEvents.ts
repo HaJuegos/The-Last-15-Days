@@ -199,6 +199,8 @@ class DragonEvents extends TL15DBaseManager {
             const maxDistance = 150;
 
             for (const ply of plys) {
+                this.checkHasMace(ply);
+
                 const dx = ply.location.x - center.x;
                 const dz = ply.location.z - center.z;
 
@@ -419,6 +421,56 @@ class DragonEvents extends TL15DBaseManager {
 
             dime.spawnParticle('minecraft:knockback_roar_particle', randomLoc);
             dime.playSound('mob.wither.break_block', randomLoc);
+        }
+    }
+
+    /**
+     * Metodo auxiliar que banea items en concreto en el End.
+     * @param {mc.Player} ply Jugador en concreto a considerar.
+     * @returns {void}
+     * @author HaJuegos - 10-06-2026
+     * @private
+     */
+    private checkHasMace(ply: mc.Player): void {
+        const inv = ply.getComponent(mc.EntityComponentTypes.Inventory)?.container as mc.Container;
+        const armorInv = ply.getComponent(mc.EntityComponentTypes.Equippable) as mc.EntityEquippableComponent;
+        const mainHandItem = armorInv.getEquipment(mc.EquipmentSlot.Mainhand);
+
+        const bannedItems = ['spear', 'mace'];
+        const whitelistItems = 'ha:piglin_mace';
+        let deleted = false;
+
+        /**
+         * Funcion auxiliar que verifica si el item es valido y si se puede eliminar o no para su respectivo baneo.
+         * @param {(mc.ItemStack | undefined)} item Item en concreto a analizar.
+         * @returns {boolean} Devuelve true si el item se debe banear, false si no es valido o no es para banear.
+         * @author HaJuegos - 10-06-2026
+         */
+        const isBan = (item: mc.ItemStack | undefined): boolean => {
+            if (!item) return false;
+
+            if (item.typeId == whitelistItems) return false;
+
+            return bannedItems.some(ban => item.typeId.includes(ban));
+        };
+
+        for (let i = 0; i < inv.size; i++) {
+            const item = inv.getItem(i);
+
+            if (isBan(item)) {
+                inv.setItem(i, undefined);
+                deleted = true;
+            }
+        }
+
+        if (isBan(mainHandItem)) {
+            armorInv.setEquipment(mc.EquipmentSlot.Mainhand, undefined);
+            deleted = true;
+        }
+
+        if (deleted) {
+            ply.sendMessage({ rawtext: [{ translate: 'chat.system.banned_items_end' }] });
+            ply.playSound('ui.error_item');
         }
     }
 }
