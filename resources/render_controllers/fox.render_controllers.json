@@ -16,7 +16,8 @@
             "part_visibility": [
                 { "leg*": "!query.is_sleeping" },
                 { "head": "!query.is_sleeping" },
-                { "head_sleeping": "query.is_sleeping" }
+                { "head_sleeping": "query.is_sleeping" },
+                { "chest": "q.is_pregnant" }
             ],
             "materials": [ { "*": "Material.default" } ],
             "textures": [ "Array.skins[query.variant]" ]

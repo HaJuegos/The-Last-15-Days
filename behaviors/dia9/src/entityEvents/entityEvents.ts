@@ -41,6 +41,12 @@ class EntityEventsManager extends TL15DBaseManager {
                     case vanilla.MinecraftEntityTypes.Fox: {
                         if (hitEntity instanceof mc.Player) {
                             this.stealItemsSystem(hitEntity, sourceEntity);
+
+                            const noDropItems = sourceEntity.getComponent(mc.EntityComponentTypes.IsCharged);
+
+                            if (!noDropItems) {
+                                sourceEntity.triggerEvent('ha:set_persistance_items');
+                            }
                         }
                     } break;
                     case vanilla.MinecraftEntityTypes.Hoglin: {
@@ -381,6 +387,8 @@ class EntityEventsManager extends TL15DBaseManager {
         afterEventsSimplified.onEntitySpawns((args) => {
             const entity = args.entity;
 
+            if (!entity.isValid) return;
+
             switch (entity.typeId) {
                 case vanilla.MinecraftEntityTypes.LightningBolt: {
                     const coords = entity.location;
@@ -409,8 +417,6 @@ class EntityEventsManager extends TL15DBaseManager {
                     entity.addEffect('strength', worldToolsSimplified.convertSecondsToTicks(9999), { amplifier: 1 });
                 } break;
                 case 'minecraft:item': {
-                    if (!entity.isValid) return;
-
                     const hasNameEN = entity.runCommand(`testfor @s[name="§bSoul Fire§r"]`);
                     const hasNameES = entity.runCommand(`testfor @s[name="§bAlma de Fuego§r"]`);
 

@@ -42,6 +42,12 @@ class EntityEventsManager extends TL15DBaseManager {
                     case vanilla.MinecraftEntityTypes.Fox: {
                         if (hitEntity instanceof mc.Player) {
                             this.stealItemsSystem(hitEntity, sourceEntity);
+
+                            const noDropItems = sourceEntity.getComponent(mc.EntityComponentTypes.IsCharged);
+
+                            if (!noDropItems) {
+                                sourceEntity.triggerEvent('ha:set_persistance_items');
+                            }
                         }
                     } break;
                     case vanilla.MinecraftEntityTypes.Hoglin: {
@@ -128,7 +134,7 @@ class EntityEventsManager extends TL15DBaseManager {
                     case 'ha:bear_trap': {
                         sourceEntity.triggerEvent('ha:start_despawn');
 
-                        worldToolsSimplified.changePlyScoreInObj(hitEntity as mc.Player, 'timerBearTrap', 'add', 30);
+                        worldToolsSimplified.changePlyScoreInObj(hitEntity as mc.Player, 'timerBearTrap', 'add', 5);
 
                         hitEntity.triggerEvent('ha:set_in_trap_mode');
                         hitEntity.addTag('hasBearTrap');
@@ -410,6 +416,8 @@ class EntityEventsManager extends TL15DBaseManager {
         afterEventsSimplified.onEntitySpawns((args) => {
             const entity = args.entity;
 
+            if (!entity.isValid) return;
+
             switch (entity.typeId) {
                 case vanilla.MinecraftEntityTypes.LightningBolt: {
                     const coords = entity.location;
@@ -434,8 +442,6 @@ class EntityEventsManager extends TL15DBaseManager {
                     }
                 } break;
                 case 'minecraft:item': {
-                    if (!entity.isValid) return;
-
                     const namesEN = [
                         `testfor @s[name="§bSoul Fire§r"]`,
                         `testfor @s[name="§bAlma de Fuego§r"]`,

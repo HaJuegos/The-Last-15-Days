@@ -1,0 +1,130 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "pools": [
+        {
+            "rolls": {
+                "min": 3,
+                "max": 8
+            },
+            "entries": [
+                {
+                    "type": "item",
+                    "functions": [
+                        {
+                            "function": "set_count",
+                            "count": {
+                                "min": 1,
+                                "max": 5
+                            }
+                        }
+                    ],
+                    "name": "minecraft:iron_nugget"
+                },
+                {
+                    "type": "item",
+                    "weight": 2,
+                    "name": "minecraft:fern"
+                },
+                {
+                    "type": "item",
+                    "weight": 2,
+                    "name": "minecraft:large_fern"
+                },
+                {
+                    "type": "item",
+                    "weight": 10,
+                    "functions": [
+                        {
+                            "function": "set_count",
+                            "count": {
+                                "min": 1,
+                                "max": 4
+                            }
+                        }
+                    ],
+                    "name": "minecraft:bread"
+                },
+                {
+                    "type": "item",
+                    "weight": 5,
+                    "functions": [
+                        {
+                            "function": "set_count",
+                            "count": {
+                                "min": 1,
+                                "max": 5
+                            }
+                        }
+                    ],
+                    "name": "minecraft:pumpkin_seeds"
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:pumpkin_pie"
+                },
+                {
+                    "type": "item",
+                    "weight": 2,
+                    "functions": [
+                        {
+                            "function": "set_count",
+                            "count": {
+                                "min": 1,
+                                "max": 4
+                            }
+                        }
+                    ],
+                    "name": "minecraft:emerald"
+                },
+                {
+                    "type": "item",
+                    "weight": 5,
+                    "functions": [
+                        {
+                            "function": "set_count",
+                            "count": {
+                                "min": 1,
+                                "max": 5
+                            }
+                        }
+                    ],
+                    "name": "minecraft:spruce_sapling"
+                },
+                {
+                    "type": "item",
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 1
+                        }
+                    ],
+                    "name": "minecraft:sign"
+                },
+                {
+                    "type": "item",
+                    "weight": 10,
+                    "functions": [
+                        {
+                            "function": "set_count",
+                            "count": {
+                                "min": 1,
+                                "max": 5
+                            }
+                        }
+                    ],
+                    "name": "minecraft:spruce_log"
+                }
+            ]
+        },
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "loot_table",
+                    "name": "loot_tables/chests/village/village_bundle.json"
+                }
+            ]
+        }
+    ]
+}

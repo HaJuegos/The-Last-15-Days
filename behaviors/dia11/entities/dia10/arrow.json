@@ -275,21 +275,25 @@
                 "sequence": [
                     {
                         "filters": {
-                            "subject": "other",
-                            "test": "is_family",
-                            "value": "evocation_illager"
+                            "test": "is_difficulty",
+                            "value": "hard"
                         },
                         "add": {
                             "component_groups": [
-                                "ha:evoker_arrow"
+                                "minecraft:hard_arrow"
                             ]
                         }
                     },
-                    {
+					{
                         "filters": {
                             "subject": "other",
                             "test": "is_family",
                             "value": "pillager"
+                        },
+						"remove": {
+                            "component_groups": [
+                                "minecraft:hard_arrow"
+                            ]
                         },
                         "add": {
                             "component_groups": [
@@ -303,24 +307,25 @@
                             "test": "is_family",
                             "value": "player"
                         },
+						"remove": {
+                            "component_groups": [
+                                "minecraft:hard_arrow"
+                            ]
+                        },
                         "add": {
                             "component_groups": [
                                 "minecraft:player_arrow"
                             ]
                         }
-                    },
-                    {
-                        "filters": {
-                            "test": "is_difficulty",
-                            "value": "hard"
-                        },
-                        "add": {
-                            "component_groups": [
-                                "minecraft:hard_arrow"
-                            ]
-                        }
                     }
                 ]
+            },
+            "ha:evoker_arrow": {
+                "add": {
+                    "component_groups": [
+                        "ha:evoker_arrow"
+                    ]
+                }
             }
         }
     }

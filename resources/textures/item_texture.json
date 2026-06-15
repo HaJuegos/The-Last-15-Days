@@ -148,6 +148,26 @@
             "textures": [
                 "textures/items/custom/cautious_armor/boots"
             ]
+        },
+        "dragon_disc": {
+            "textures": [
+                "textures/items/custom/disks_randoms/dragon_disc"
+            ]
+        },
+        "final_disc": {
+            "textures": [
+                "textures/items/custom/disks_randoms/final_disc"
+            ]
+        },
+        "party_disc": {
+            "textures": [
+                "textures/items/custom/disks_randoms/party_disc"
+            ]
+        },
+        "silla_disc": {
+            "textures": [
+                "textures/items/custom/disks_randoms/silla_disc"
+            ]
         }
     }
 }

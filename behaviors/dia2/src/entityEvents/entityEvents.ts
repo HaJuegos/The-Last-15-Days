@@ -33,6 +33,12 @@ class EntityEventsManager extends TL15DBaseManager {
 
             if (sourceEntity.typeId == vanilla.MinecraftEntityTypes.Fox && (hitEntity instanceof mc.Player)) {
                 this.stealItemsSystem(hitEntity, sourceEntity);
+
+                const noDropItems = sourceEntity.getComponent(mc.EntityComponentTypes.IsCharged);
+
+                if (!noDropItems) {
+                    sourceEntity.triggerEvent('ha:set_persistance_items');
+                }
             }
         });
     }
@@ -45,6 +51,8 @@ class EntityEventsManager extends TL15DBaseManager {
     private onSpawnEntitysSystem(): void {
         afterEventsSimplified.onEntitySpawns((args) => {
             const entity = args.entity;
+
+            if (!entity.isValid) return;
 
             if (entity.typeId == vanilla.MinecraftEntityTypes.LightningBolt) {
                 const coords = entity.location;

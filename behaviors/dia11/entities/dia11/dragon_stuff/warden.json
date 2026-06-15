@@ -12,6 +12,46 @@
         },
         "component_groups": {
             "ha:become_dragon": {
+                "minecraft:follow_range": {
+                    "value": 9999
+                },
+                "minecraft:environment_sensor": {
+                    "triggers": [
+                        {
+                            "filters": {
+                                "any_of": [
+                                    {
+                                        "test": "has_target",
+                                        "subject": "self",
+                                        "value": false
+                                    },
+                                    {
+                                        "all_of": [
+                                            {
+                                                "test": "has_target",
+                                                "subject": "self",
+                                                "value": true
+                                            },
+                                            {
+                                                "test": "is_family",
+                                                "subject": "target",
+                                                "operator": "not",
+                                                "value": "player"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            "event": "ha:set_random_target_ply",
+                            "target": "self"
+                        }
+                    ]
+                },
+                "minecraft:persistent": { },
+                "minecraft:tick_world": {
+                    "never_despawn": true,
+                    "radius": 4
+                },
                 "minecraft:health": {
                     "max": 100,
                     "value": 100
@@ -264,6 +304,13 @@
             "minecraft:vibration_listener": { }
         },
         "events": {
+            "ha:set_random_target_ply": {
+                "queue_command": {
+                    "command": [
+                        "damage @s 0 entity_attack entity @r[r=1000,tag=isSurvival,c=1]"
+                    ]
+                }
+            },
             "ha:spawn_from_dragon": {
                 "add": {
                     "component_groups": [

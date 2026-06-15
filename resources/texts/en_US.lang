@@ -67,6 +67,12 @@ ui.system.dragon_damage_nausea.subtitle=Next time, crouch down when the effect e
 ui.dragon_death.title=§e§lROYERBOT DEFEATED!
 ui.dragon_death.subtitle=Congratulations, player, you managed to survive this battle. Well done!
 
+ui.system.end_addon.thanks=§d Thanks for playing! 
+ui.system.end_addon.header_thanks=§e§lCongratulations on surviving the journey!
+ui.system.end_addon.body_thanks=§fCanonically, the series' development wrapped up on §c§lDay 12§r§f. So, this is the end of your adventure in this add-on.\n\nHowever, you still have some changes to check out and explore in the §dEnd§f. Be careful not to die this time! Nobody wants to see the irony of surviving all the final days just to die in this one, haha!\n\nAnyway, I have nothing left to say but... §athank you so much for playing!§f Huge thanks to you, the player, for this opportunity.
+ui.system.end_addon.label_team=§b§lThe Team:§r §7Royer, Convex!, Astral, and HaJuegos.§r\n\n§eRemember to leave us a star on GitHub and drop any feedback on the page. Thanks a lot :3!
+ui.system.end_addon.button_ok=§a§lContinue
+
 
 ## Chat texts
 chat.system.resquicio_start=§c§l>>§r§c ¡%1 caused a §4§lHellish Rift§r!
@@ -119,7 +125,7 @@ chat.system.ui.no_debuffs_timers=§7>> You don't have any pending timers to revi
 
 chat.system.eat_iron_apple=§i>> %1 has eaten %2
 
-chat.system.get_cautious_item=§w>> %1 has obtained %2§r§7 | (%3/5)
+chat.system.get_cautious_item=§w>> %1 has obtained %2§r§7 | (%3/4)
 
 chat.system.dragon_attack_finished.nausea=§7>> The Nauseas effect has ended.
 chat.system.dragon_attack_finished.conduit=§7>> The Conduit effect has ended.
@@ -241,6 +247,18 @@ item.ha:cautious_leggings.name=§h§lCautious Leggings§r
 item.ha:cautious_boots=§h§lCautious Boots§r
 item.ha:cautious_boots.name=§h§lCautious Boots§r
 
+item.ha:dragon_disc=Battle of the Dragon
+item.ha:dragon_disc.name=Battle of the Dragon
+
+item.ha:final_disc=Credits Music
+item.ha:final_disc.name=Credits Music
+
+item.ha:party_disc=Upbeat Music
+item.ha:party_disc.name=Upbeat Music
+
+item.ha:silla_disc=A Chair Remix
+item.ha:silla_disc.name=A Chair Remix
+
 
 ## Item Catalog
 ha:itemGroup.name.nether_items=§4Nether Stuff§r
@@ -249,6 +267,13 @@ ha:itemGroup.name.nether_items=§4Nether Stuff§r
 ## Block names
 tile.ha:dynamite_block.name=Throwable Dynamite Block
 tile.ha:toxic_puddle.name=Toxic Puddle
+
+
+## Music Desc
+item.record_click.desc=Akira Yamaoka - Otherside (Silent Hill) 
+item.record_nodamage.desc=Escape - Kiss
+item.record_break.desc=Aphex Twin - Alberto Balsam (Half Life)
+item.record_attach.desc=EZHALT - Athazagoraphobia (FNF: The Trollge Files)
 
 
 ## Advacements texts
@@ -344,3 +369,9 @@ ui.subtitle_custom.ambient_soullink=§4Pick your victim§r
 ui.subtitle_custom.ambient_dragon_attack.nausea=§2Nauseas' attack begins§r
 ui.subtitle_custom.ambient_dragon_attack.conduit=§bThe Conduit's attack begins§r
 ui.subtitle_custom.bear_trap.attacks=A bear trap strikes
+ui.subtitle_custom.ambient_dragon_attack.nausea.damaged=§cYou didn't bend down this time§r
+
+ui.music_start.dragon_fight=Dragon music playing
+ui.music_start.final_music=Credits music playing
+ui.music_start.party_starts=Party music playing
+ui.music_start.remix_de_una_silla=A CHAIR REMIX!?!?!?

@@ -61,13 +61,16 @@ class DragonEvents extends TL15DBaseManager {
                                 },
                                 onTimerEnds: (entity: mc.Entity) => {
                                     const sneakingPlys = mc.world.getAllPlayers().filter(p => (p.dimension.id == 'minecraft:the_end' && !p.isSneaking));
-                                    const allPlys = mc.world.getAllPlayers().filter(p => (p.dimension.id == 'minecraft:the_end' && p.isSneaking));
+                                    const allPlys = mc.world.getAllPlayers().filter(p => (
+                                        p.dimension.id == 'minecraft:the_end' && p.isSneaking && (p.getGameMode() == mc.GameMode.Survival || p.getGameMode() == mc.GameMode.Adventure)
+                                    ));
+
                                     const dragon = mc.world.getDimension('minecraft:the_end').getEntities().find(e => (e.typeId == vanilla.MinecraftEntityTypes.EnderDragon));
 
                                     if (!dragon || !dragon.isValid) return;
 
                                     for (const ply of sneakingPlys) {
-                                        const takenDamage = ply.applyDamage(999, { cause: mc.EntityDamageCause.entityAttack, damagingEntity: dragon });
+                                        const takenDamage = ply.applyDamage(999, { cause: mc.EntityDamageCause.sonicBoom, damagingEntity: dragon });
 
                                         if (takenDamage) {
                                             ply.camera.fade({ fadeColor: worldToolsSimplified.convertHexToRGB('#000000'), fadeTime: { fadeInTime: 0, holdTime: 1, fadeOutTime: 0.15 } });
@@ -122,6 +125,8 @@ class DragonEvents extends TL15DBaseManager {
                                     });
 
                                     for (const entity of allEntitiesEnd) {
+                                        if ((entity instanceof mc.Player) && !(entity.getGameMode() == mc.GameMode.Survival || entity.getGameMode() == mc.GameMode.Adventure)) continue;
+
                                         const radius = 50 * Math.sqrt(Math.random());
                                         const theta = Math.random() * 2 * Math.PI;
                                         const randomX = radius * Math.cos(theta);
@@ -221,14 +226,79 @@ class DragonEvents extends TL15DBaseManager {
             }
         }, worldToolsSimplified.convertSecondsToTicks(1));
 
+        afterEventsSimplified.onEntitySpawns((args) => {
+            const entity = args.entity;
+
+            if (entity.isValid && entity.typeId == vanilla.MinecraftEntityTypes.EnderDragon) {
+                const dime = entity.dimension;
+                const plys = dime.getPlayers();
+
+                if (plys.length > 0) {
+                    for (const ply of plys) {
+                        ply.playMusic('music.athazagoraphobia.dragon_fight', { loop: true });
+                    }
+                }
+            }
+        });
+
+        afterEventsSimplified.onPlayerSpawns((args) => {
+            const ply = args.player;
+            const dime = ply.dimension;
+            const respawned = args.initialSpawn;
+
+            if (dime.id == vanilla.MinecraftDimensionTypes.TheEnd) {
+                const hasDragonYet = dime.getEntities().find(e => (e.typeId == vanilla.MinecraftEntityTypes.EnderDragon && e.isValid));
+
+                if (hasDragonYet) {
+                    ply.playMusic('music.athazagoraphobia.dragon_fight', { loop: true });
+                }
+            }
+
+            if (!respawned) {
+                ply.stopMusic();
+            }
+        });
+
+        afterEventsSimplified.onChangeDimension((args) => {
+            const ply = args.player;
+            const fromDime = args.fromDimension;
+            const toDime = args.toDimension;
+
+            if (toDime.id == vanilla.MinecraftDimensionTypes.TheEnd) {
+                const hasDragonYet = toDime.getEntities().find(e => (e.typeId == vanilla.MinecraftEntityTypes.EnderDragon && e.isValid));
+
+                if (hasDragonYet) {
+                    ply.playMusic('music.athazagoraphobia.dragon_fight', { loop: true });
+                }
+            }
+
+            if (toDime.id != vanilla.MinecraftDimensionTypes.TheEnd && fromDime.id == vanilla.MinecraftDimensionTypes.TheEnd) {
+                ply.stopMusic();
+            }
+        });
+
         afterEventsSimplified.onHurtEntity((args) => {
             const source = args.damageSource;
             const sourceEntity = source.damagingEntity;
             const hitEntity = args.hurtEntity;
             const damage = args.damage;
 
-            if ((sourceEntity && sourceEntity.isValid) && (hitEntity.isValid && hitEntity.typeId == vanilla.MinecraftEntityTypes.EnderDragon)) {
-                sourceEntity.applyDamage(damage, { cause: mc.EntityDamageCause.entityAttack, damagingEntity: hitEntity });
+            if ((sourceEntity && sourceEntity.isValid) && (hitEntity && hitEntity.isValid)) {
+                if (hitEntity.typeId == vanilla.MinecraftEntityTypes.EnderDragon) {
+                    sourceEntity.applyDamage(damage, { cause: mc.EntityDamageCause.sonicBoom, damagingEntity: hitEntity });
+                }
+
+                if (hitEntity instanceof mc.Player && sourceEntity.typeId == vanilla.MinecraftEntityTypes.EnderDragon && source.cause == mc.EntityDamageCause.entityAttack) {
+                    const dx = hitEntity.location.x - sourceEntity.location.x;
+                    const dz = hitEntity.location.z - sourceEntity.location.z;
+                    const distance = Math.sqrt(dx * dx + dz * dz);
+                    const dirX = distance > 0 ? (dx / distance) : (Math.random() - 0.5);
+                    const dirZ = distance > 0 ? (dz / distance) : (Math.random() - 0.5);
+                    const horizontalForce = (Math.random() * (3.5 - 1.5)) + 1.5;
+                    const verticalForce = (Math.random() * (2.5 - 1.0)) + 1.0;
+
+                    hitEntity.applyKnockback({ x: dirX * horizontalForce, z: dirZ * horizontalForce }, verticalForce);
+                }
             }
         });
 
@@ -297,34 +367,31 @@ class DragonEvents extends TL15DBaseManager {
 
             if (entity.isValid && entity.typeId == vanilla.MinecraftEntityTypes.EnderDragon) {
                 const dime = entity.dimension;
-                const llamaEntities = dime.getEntities({ type: 'ha:crystal_llama_generator' });
-                const debuffEntities = dime.getEntities({ type: 'ha:debuff_timer' });
-                const crystalEntities = dime.getEntities({ type: 'minecraft:ender_crystal' });
+                const remainEntities: string[] | vanilla.MinecraftEntityTypes[] = [
+                    'ha:crystal_llama_generator',
+                    'ha:debuff_timer',
+                    'ha:bear_trap',
+                    vanilla.MinecraftEntityTypes.EnderCrystal,
+                ];
+
+                const dragonEntitiesRemain = dime.getEntities({ excludeTypes: ['minecraft:player'] }).filter(e => remainEntities.includes(e.typeId));
                 const plys = dime.getPlayers();
 
-                if (llamaEntities.length > 0) {
-                    for (const entity of llamaEntities) {
-                        entity.triggerEvent('ha:start_despawn');
-                    }
-                }
+                for (const targetEntity of dragonEntitiesRemain) {
+                    if (!targetEntity.isValid) continue;
 
-                if (debuffEntities.length > 0) {
-                    for (const entity of llamaEntities) {
-                        entity.triggerEvent('ha:start_despawn');
-                    }
-                }
-
-                if (crystalEntities.length > 0) {
-                    for (const entity of crystalEntities) {
-                        const variant = entity.getComponent(mc.EntityComponentTypes.Variant);
+                    if (targetEntity.typeId == vanilla.MinecraftEntityTypes.EnderCrystal) {
+                        const variant = targetEntity.getComponent(mc.EntityComponentTypes.Variant);
 
                         if (!variant) continue;
 
                         if (variant.value == 1) {
-                            this.crystalExplode(entity.location, dime, true);
+                            this.crystalExplode(targetEntity.location, dime, true);
 
-                            entity.kill();
+                            targetEntity.kill();
                         }
+                    } else {
+                        targetEntity.triggerEvent('ha:start_despawn');
                     }
                 }
 
@@ -333,10 +400,16 @@ class DragonEvents extends TL15DBaseManager {
                         if (ply.isValid) {
                             ply.onScreenDisplay.setTitle({ rawtext: [{ translate: 'ui.dragon_death.title' }] });
                             ply.onScreenDisplay.updateSubtitle({ rawtext: [{ translate: 'ui.dragon_death.subtitle' }] });
+
                             ply.playSound('ui.advancements.rare');
+                            ply.stopMusic();
                         }
                     }, worldToolsSimplified.convertSecondsToTicks(3.5));
                 }
+
+                const item = new mc.ItemStack('ha:dragon_disc');
+
+                dime.spawnItem(item, entity.location);
             }
         });
     }
@@ -364,8 +437,32 @@ class DragonEvents extends TL15DBaseManager {
         }
 
         const rad = 7;
-        const edgeBlock = dime.getTopmostBlock({ x: coords.x + rad + 1, z: coords.z });
-        const surfaceY = edgeBlock ? edgeBlock.y : 62;
+        let surfaceY = 62;
+        let highestEndStoneY = -1;
+
+        const checkOffsets = [
+            { x: rad + 2, z: 0 },
+            { x: -(rad + 2), z: 0 },
+            { x: 0, z: rad + 2 },
+            { x: 0, z: -(rad + 2) }
+        ];
+
+        for (const offset of checkOffsets) {
+            for (let y = Math.floor(coords.y); y >= 40; y--) {
+                const block = dime.getBlock({ x: coords.x + offset.x, y: y, z: coords.z + offset.z });
+
+                if (block && block.typeId == vanilla.MinecraftBlockTypes.EndStone) {
+                    if (y > highestEndStoneY) highestEndStoneY = y;
+                    break;
+                }
+            }
+        }
+
+        if (highestEndStoneY !== -1) {
+            surfaceY = highestEndStoneY;
+        }
+
+        surfaceY = Math.min(surfaceY, Math.floor(coords.y) - 2);
 
         const minCoordsAir = {
             x: Math.floor(coords.x - rad),

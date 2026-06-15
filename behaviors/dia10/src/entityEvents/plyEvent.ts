@@ -32,6 +32,7 @@ class PlyEventsManager extends TL15DBaseManager {
         this.breakBlocks();
         this.itemsSystem();
         this.loopTimerDolphin();
+        this.customMusicBox();
     }
 
     /**
@@ -167,6 +168,49 @@ class PlyEventsManager extends TL15DBaseManager {
             }
         });
     };
+
+    /**
+     * Metodo privado auxiliar que controla las musicas custom en la jukebox por items custom para evitar errores.
+     * @returns {void}
+     * @author HaJuegos - 13-06-2026
+     * @private
+     */
+    private customMusicBox(): void {
+        beforeEventsSimplified.onInteractBlock((args) => {
+            const block = args.block;
+            const item = args.itemStack;
+            const oneUse = args.isFirstEvent;
+            const validDiscs: Record<string, string> = {
+                'ha:dragon_disc': 'record.athazagoraphobia.dragon_fight',
+                'ha:final_disc': 'record.final_music',
+                'ha:party_disc': 'record.party_starts',
+                'ha:silla_disc': 'record.remix_de_una_silla'
+            };
+
+            if (block.isValid && block.typeId == vanilla.MinecraftBlockTypes.Jukebox) {
+                const coords = block.location;
+                const dime = block.dimension;
+                const record = block.getComponent(mc.BlockComponentTypes.RecordPlayer) as mc.BlockRecordPlayerComponent;
+
+                if (!record.getRecord()) {
+                    if (item && oneUse && validDiscs[item.typeId]) {
+                        worldToolsSimplified.setRun(() => {
+                            const soundId = validDiscs[item.typeId];
+
+                            dime.runCommand(`playsound ${soundId} @a ${coords.x} ${coords.y} ${coords.z}`);
+                        });
+                    }
+                } else {
+                    const itemRecord = record.getRecord() as mc.ItemStack;
+                    const actualMusic = validDiscs[itemRecord.typeId];
+
+                    worldToolsSimplified.setRun(() => {
+                        dime.runCommand(`execute positioned ${coords.x} ${coords.y} ${coords.z} run stopsound @a[r=64] ${actualMusic}`);
+                    });
+                }
+            }
+        });
+    }
 
     /**
      * Metodo auxiliar que controla el bloqueo de los portales, de forma temporal. 

@@ -150,7 +150,7 @@
                     "table": "loot_tables/entities/custom/evoker_ranged_equipment.json"
                 },
                 "minecraft:shooter": {
-                    "def": "minecraft:arrow",
+                    "def": "minecraft:arrow<ha:evoker_arrow>",
                     "aux_val": 25
                 },
                 "minecraft:behavior.ranged_attack": {

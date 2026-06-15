@@ -4,3 +4,9 @@
 scoreboard objectives add dayAddon dummy dayAddon
 
 clear @a ominous_bottle
+
+tag @a[m=s] add isSurvival
+tag @a[m=a] add isSurvival
+
+tag @a[m=spectator] remove isSurvival
+tag @a[m=c] remove isSurvival

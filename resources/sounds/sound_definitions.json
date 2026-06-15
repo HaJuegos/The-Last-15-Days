@@ -244,7 +244,7 @@
             "category": "ui",
             "min_distance": null,
             "max_distance": null,
-            "subtitle": "",
+            "subtitle": "ui.subtitle_custom.ambient_dragon_attack.nausea",
             "sounds": [
                 {
                     "load_on_low_memory": true,
@@ -259,7 +259,7 @@
             "category": "ui",
             "min_distance": null,
             "max_distance": null,
-            "subtitle": "",
+            "subtitle": "ui.subtitle_custom.ambient_dragon_attack.conduit",
             "sounds": [
                 {
                     "load_on_low_memory": true,
@@ -274,7 +274,7 @@
             "category": "ui",
             "min_distance": null,
             "max_distance": null,
-            "subtitle": "",
+            "subtitle": "ui.subtitle_custom.ambient_dragon_attack.nausea.damaged",
             "sounds": [
                 {
                     "load_on_low_memory": true,
@@ -443,6 +443,110 @@
                     "name": "sounds/mob/bear_trap/start_trap",
                     "volume": 1,
                     "stream": false
+                }
+            ]
+        },
+
+        "record.athazagoraphobia.dragon_fight": {
+            "__use_legacy_max_distance": "true",
+            "category": "record",
+            "min_distance": null,
+            "max_distance": 64.0,
+            "subtitle": "ui.music_start.dragon_fight",
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": true,
+                    "name": "sounds/music/athazagoraphobia",
+                    "volume": 1,
+                    "stream": true
+                }
+            ]
+        },
+        "record.final_music": {
+            "__use_legacy_max_distance": "true",
+            "category": "record",
+            "min_distance": null,
+            "max_distance": 64.0,
+            "subtitle": "ui.music_start.final_music",
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": true,
+                    "name": "sounds/music/goodbye_music",
+                    "volume": 1,
+                    "stream": true
+                }
+            ]
+        },
+        "record.party_starts": {
+            "__use_legacy_max_distance": "true",
+            "category": "record",
+            "min_distance": null,
+            "max_distance": 64.0,
+            "subtitle": "ui.music_start.party_starts",
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": true,
+                    "name": "sounds/music/omg",
+                    "volume": 1,
+                    "stream": true
+                }
+            ]
+        },
+        "record.remix_de_una_silla": {
+            "__use_legacy_max_distance": "true",
+            "category": "record",
+            "min_distance": null,
+            "max_distance": 64.0,
+            "subtitle": "ui.music_start.remix_de_una_silla",
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": true,
+                    "name": "sounds/music/remix_de_una_silla",
+                    "volume": 1,
+                    "stream": true
+                }
+            ]
+        },
+
+        "music.athazagoraphobia.dragon_fight": {
+            "__use_legacy_max_distance": "true",
+            "category": "music",
+            "min_distance": null,
+            "max_distance": null,
+            "subtitle": "ui.music_start.dragon_fight",
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": false,
+                    "name": "sounds/music/athazagoraphobia",
+                    "volume": 0.75,
+                    "stream": true
+                }
+            ]
+        },
+        "music.game.end": {
+            "__use_legacy_max_distance": "true",
+            "category": "music",
+            "max_distance": null,
+            "min_distance": null,
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "weight": 1,
+                    "name": "sounds/music/game/end/end",
+                    "stream": true,
+                    "volume": 0.20
+                },
+                {
+                    "load_on_low_memory": true,
+                    "weight": 1,
+                    "name": "sounds/music/end_ambient",
+                    "stream": true,
+                    "volume": 0.20
                 }
             ]
         },

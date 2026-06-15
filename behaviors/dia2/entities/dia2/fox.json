@@ -10,8 +10,10 @@
             "is_spawnable": true,
             "is_summonable": true
         },
-
         "component_groups": {
+            "ha:has_items": {
+                "minecraft:persistent": { }
+            },
             "ha:normal_inv": {
                 "minecraft:inventory": {
                     "inventory_size": 70,
@@ -22,6 +24,7 @@
                 }
             },
             "ha:rare_inv": {
+                "minecraft:is_charged": { },
                 "minecraft:inventory": {
                     "inventory_size": 70,
                     "private": true,
@@ -60,7 +63,6 @@
                     "speed_multiplier": 1.1
                 }
             },
-
             "minecraft:fox_adult": {
                 "minecraft:experience_reward": {
                     "on_bred": "Math.Random(1,7)",
@@ -83,7 +85,6 @@
                     }
                 }
             },
-
             "minecraft:fox_with_item": {
                 "minecraft:equipment": {
                     "table": "loot_tables/entities/fox_equipment.json",
@@ -95,7 +96,6 @@
                     ]
                 }
             },
-
             "minecraft:fox_red": {
                 "minecraft:variant": {
                     "value": 0
@@ -181,7 +181,6 @@
                     ]
                 }
             },
-
             "minecraft:fox_arctic": {
                 "minecraft:variant": {
                     "value": 1
@@ -267,7 +266,6 @@
                     ]
                 }
             },
-
             "minecraft:fox_thunderstorm": {
                 "minecraft:environment_sensor": {
                     "triggers": [
@@ -306,7 +304,6 @@
                     "cooldown_time": 0.0
                 }
             },
-
             "minecraft:fox_day": {
                 "minecraft:environment_sensor": {
                     "triggers": [
@@ -386,7 +383,6 @@
                     "cooldown_time": 5.0
                 }
             },
-
             "minecraft:fox_night": {
                 "minecraft:environment_sensor": {
                     "triggers": [
@@ -412,19 +408,16 @@
                     "start_chance": 0.005
                 }
             },
-
             "minecraft:fox_ambient_normal": {
                 "minecraft:ambient_sound_interval": {
                     "event_name": "ambient"
                 }
             },
-
             "minecraft:fox_ambient_sleep": {
                 "minecraft:ambient_sound_interval": {
                     "event_name": "sleep"
                 }
             },
-
             "minecraft:fox_ambient_night": {
                 "minecraft:ambient_sound_interval": {
                     "event_name": "screech",
@@ -432,14 +425,12 @@
                     "range": 160
                 }
             },
-
             "minecraft:fox_ambient_defending_target": {
                 "minecraft:ambient_sound_interval": {
                     "event_name": "mad"
                 }
             }
         },
-
         "components": {
             "minecraft:on_target_acquired": {
                 "target": "self",
@@ -702,8 +693,14 @@
             },
             "minecraft:block_climber": { }
         },
-
         "events": {
+            "ha:set_persistance_items": {
+                "add": {
+                    "component_groups": [
+                        "ha:has_items"
+                    ]
+                }
+            },
             "ha:remove_mask": {
                 "remove": {
                     "component_groups": [

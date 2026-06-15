@@ -12,6 +12,9 @@
         },
 
         "component_groups": {
+            "ha:has_items": {
+                "minecraft:persistent": { }
+            },
             "ha:normal_inv": {
                 "minecraft:inventory": {
                     "inventory_size": 70,
@@ -704,6 +707,13 @@
         },
 
         "events": {
+            "ha:set_persistance_items": {
+                "add": {
+                    "component_groups": [
+                        "ha:has_items"
+                    ]
+                }
+            },
             "ha:remove_mask": {
                 "remove": {
                     "component_groups": [

@@ -1,0 +1,93 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.26.0",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "minecraft:snowball",
+            "is_experimental": false,
+            "is_summonable": true,
+            "is_spawnable": false,
+            "spawn_category": "misc"
+        },
+        "component_groups": {
+            "ha:snowman_end": {
+                "minecraft:projectile": {
+                    "on_hit": {
+                        "impact_damage": {
+                            "apply_knockback_to_blocking_targets": true,
+                            "damage": 90,
+                            "knockback": true
+                        },
+                        "particle_on_hit": {
+                            "num_particles": 6,
+                            "on_other_hit": true,
+                            "on_entity_hit": true,
+                            "particle_type": "snowballpoof"
+                        },
+                        "remove_on_hit": { }
+                    },
+                    "anchor": 1,
+                    "angle_offset": 0.0,
+                    "offset": [ 0, -0.1, 0 ],
+                    "gravity": 0.02,
+                    "power": 4
+                }
+            }
+        },
+        "components": {
+            "minecraft:collision_box": {
+                "height": 0.25,
+                "width": 0.25
+            },
+            "minecraft:conditional_bandwidth_optimization": {
+                "default_values": {
+                    "max_dropped_ticks": 7,
+                    "max_optimized_distance": 100.0,
+                    "use_motion_prediction_hints": true
+                }
+            },
+            "minecraft:physics": { },
+            "minecraft:projectile": {
+                "anchor": 1,
+                "angle_offset": 0.0,
+                "offset": [
+                    0,
+                    -0.1,
+                    0
+                ],
+                "on_hit": {
+                    "impact_damage": {
+                        "apply_knockback_to_blocking_targets": true,
+                        "damage": 3,
+                        "knockback": true,
+                        "filter": "blaze"
+                    },
+                    "particle_on_hit": {
+                        "num_particles": 6,
+                        "on_other_hit": true,
+                        "on_entity_hit": true,
+                        "particle_type": "snowballpoof"
+                    },
+                    "remove_on_hit": { }
+                },
+                "gravity": 0.03,
+                "power": 1.5
+            },
+            "minecraft:pushable": {
+                "is_pushable": true,
+                "is_pushable_by_piston": true
+            }
+        },
+        "events": {
+            "minecraft:entity_spawned": { },
+            "ha:variant_end": {
+                "add": {
+                    "component_groups": [
+                        "ha:snowman_end"
+                    ]
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,29 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.26.0",
+    "minecraft:item": {
+        "description": {
+            "identifier": "ha:infernal_crown",
+            "menu_category": {
+                "category": "items",
+                "group": "ha:itemGroup.name.nether_items"
+            }
+        },
+        "components": {
+            "minecraft:display_name": {
+                "value": "item.ha:infernal_crown"
+            },
+            "minecraft:allow_off_hand": false,
+            "minecraft:can_destroy_in_creative": true,
+            "minecraft:fire_resistant": {
+                "value": true
+            },
+            "minecraft:glint": true,
+            "minecraft:icon": "infernal_crown",
+            "minecraft:max_stack_size": 1,
+            "minecraft:rarity": "rare",
+            "minecraft:should_despawn": false
+        }
+    }
+}

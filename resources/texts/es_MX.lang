@@ -67,6 +67,12 @@ ui.system.dragon_damage_nausea.subtitle=La próxima vez, agáchate cuando termin
 ui.dragon_death.title=§e§l¡ROYERBOT DERROTADO!
 ui.dragon_death.subtitle=Felicidades, jugador, has logrado sobrevivir en esta batalla. ¡Muy bien!
 
+ui.system.end_addon.thanks=§d ¡Gracias por Jugar! 
+ui.system.end_addon.header_thanks=§e§l¡Felicidades por sobrevivir al viaje!
+ui.system.end_addon.body_thanks=§fCanónicamente, el desarrollo de la serie concluyó en el §c§lDía 12§r§f. Por ende, este es el fin de tu aventura en este add-on.\n\nIgualmente, tienes algunos cambios por revisar y explorar en el §dEnd§f. ¡Ten cuidado de no morir esta vez! Nadie quiere ver la ironía de aguantar todos los días finales y que mueras justo en este, jajaja!\n\nEn fin, no me queda más que decirte que... §a¡muchas gracias por jugar!§f Agradezco a ti, jugador, por esta oportunidad.
+ui.system.end_addon.label_team=§b§lEl Equipo:§r §7Royer, Convex!, Astral y HaJuegos.§r\n\n§eRecuerda dejarnos una estrella en GitHub y cualquier retroalimentación en la página. ¡Muchas gracias :3!
+ui.system.end_addon.button_ok=§a§lContinuar
+
 
 ## Chat texts
 chat.system.resquicio_start=§c§l>>§r§c ¡%1 ha causado un §4§lResquicio Infernal§r!
@@ -118,7 +124,7 @@ chat.system.ui.no_debuffs_timers=§7>> No tienes timers pendientes por revisar.
 
 chat.system.eat_iron_apple=§i>> %1 ha consumido una %2
 
-chat.system.get_cautious_item=§w>> %1 ha conseguido el ítem %2.§r§7 | (%3/5)
+chat.system.get_cautious_item=§w>> %1 ha conseguido el ítem %2.§r§7 | (%3/4)
 
 chat.system.dragon_attack_finished.nausea=§7>> Se ha terminado el efecto de Nauseas.
 chat.system.dragon_attack_finished.conduit=§7>> Se ha terminado el efecto del Conduit.
@@ -240,6 +246,18 @@ item.ha:cautious_leggings.name=§h§lPantalones Cautelosos§r
 item.ha:cautious_boots=§h§lBotas Cautelosas§r
 item.ha:cautious_boots.name=§h§lBotas Cautelosas§r
 
+item.ha:dragon_disc=Batalla del Dragon
+item.ha:dragon_disc.name=Batalla del Dragon
+
+item.ha:final_disc=Musica de Creditos
+item.ha:final_disc.name=Musica de Creditos
+
+item.ha:party_disc=Musica movida
+item.ha:party_disc.name=Musica movida
+
+item.ha:silla_disc=Un remix de una silla
+item.ha:silla_disc.name=Un remix de una silla
+
 
 ## Item Catalog
 ha:itemGroup.name.nether_items=§4Cosas del Nether§r
@@ -248,6 +266,13 @@ ha:itemGroup.name.nether_items=§4Cosas del Nether§r
 ## Block names
 tile.ha:dynamite_block.name=Bloque de Dinamita Lanzable.
 tile.ha:toxic_puddle.name=Charco Tóxico
+
+
+## Music Desc
+item.record_click.desc=Akira Yamaoka - Otherside (Silent Hill) 
+item.record_nodamage.desc=Escape - Kiss
+item.record_break.desc=Aphex Twin - Alberto Balsam (Half Life)
+item.record_attach.desc=EZHALT - Athazagoraphobia (FNF: The Trollge Files)
 
 
 ## Advacements texts
@@ -343,3 +368,9 @@ ui.subtitle_custom.ambient_soullink=§4Elige a tu víctima§r
 ui.subtitle_custom.ambient_dragon_attack.nausea=§2Inicia el ataque de Nauseas§r
 ui.subtitle_custom.ambient_dragon_attack.conduit=§bInicia el ataque del Conduit§r
 ui.subtitle_custom.bear_trap.attacks=Una trampa de oso ataca
+ui.subtitle_custom.ambient_dragon_attack.nausea.damaged=§cNo te agachaste esta vez§r
+
+ui.music_start.dragon_fight=Música del dragón sonando
+ui.music_start.final_music=Música de los créditos sonando
+ui.music_start.party_starts=Música de fiesta sonando
+ui.music_start.remix_de_una_silla=¡¡¡REMIX DE UNA SILLA!?!?!?
