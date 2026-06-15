@@ -1,23 +1,24 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/v0.0.11-beta/.github/icon_template/pack_icon.png" alt="Addon Icon" width=450>
-  <h3 align="center">The Last 15 Days (Version 0.0.11-beta)</h3>
+  <img src="https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/main/comportamientos/dia0/pack_icon.png" alt="Addon Icon" width=450>
+  <h3 align="center">The Last 15 Days</h3>
   
  <p align="center">
  Una Serie Hardcore creada por RosherRandom en Colaboracion con Convex! y HaJuegosCat. ¿Sobreviviras los 15 Dias?</p>
 </p>
 
 <p align="center">
-  <a href="https://discord.gg/WH9KpNWXUz"><img src="https://img.shields.io/discord/782053401281429504?style=plastic&color=red&logo=discord&label=Discord%20Server%20Support" alt="Discord Server "/></a>
-  <a href="https://ko-fi.com/hajuegos0710"><img src="https://img.shields.io/npm/v/express?url=https://ko-fi.com/hajuegos0710&style=plastic&logo=kofi&label=Donations&color=inactive" alt="HaJuegos Ko-Fi "/></a>
-  <a href="https://github.com/HaJuegos/The-Last-15-Days"><img src="https://img.shields.io/github/stars/HaJuegos/The-Last-15-Days?label=GitHub%20Stars&style=plastic&logo=github&color=blueviolet" alt="GitHub Stars "/></a>
-</p>
-<p align="center">
-  <a href="https://twitter.com/TheLast15Days"><img src="https://img.shields.io/twitter/follow/TheLast15Days?style=plastic&color=success&logo=twitter&label=RosherRandom%20Twitter" alt="Royer Twitter "/></a>
-  <a href="https://twitter.com/convex__"><img src="https://img.shields.io/twitter/follow/convex__?style=plastic&color=success&logo=twitter&label=Convex!%20Twitter" alt="Convex Twitter"/></a>
-  <a href="https://twitter.com/Ha_Juegos"><img src="https://img.shields.io/twitter/follow/Ha_Juegos?style=plastic&color=success&logo=twitter&label=HaJuegos%20Cat!%20Twitter" alt="HaJuegos Twitter"/></a>
+	<a href="https://discord.gg/WH9KpNWXUz"> <img src="https://img.shields.io/discord/782053401281429504?style=plastic&color=red&logo=discord&label=Discord%20Server%20Support" alt="Discord Server "/> </a>
+	<a href="https://ko-fi.com/hajuegos0710"> <img src="https://img.shields.io/npm/v/express?url=https://ko-fi.com/hajuegos0710&style=plastic&logo=kofi&label=Donations&color=inactive" alt="HaJuegos Ko-Fi "/> </a>
+	<a href="https://github.com/HaJuegos/The-Last-15-Days"> <img src="https://img.shields.io/github/stars/HaJuegos/The-Last-15-Days?label=GitHub%20Stars&style=plastic&logo=github&color=blueviolet" alt="GitHub Stars "/> </a>
 </p>
 
-## CRÉDITOS Y ACLARACIONES  
+<p align="center">
+	<a href="https://twitter.com/TheLast15Days"> <img src="https://img.shields.io/twitter/follow/TheLast15Days?style=plastic&color=success&logo=twitter&label=RosherRandom%20Twitter" alt="Royer Twitter "/> </a>
+	<a href="https://twitter.com/convex__"> <img src="https://img.shields.io/twitter/follow/convex__?style=plastic&color=success&logo=twitter&label=Convex!%20Twitter" alt="Convex Twitter"/> </a>
+	<a href="https://twitter.com/Ha_Juegos"> <img src="https://img.shields.io/twitter/follow/Ha_Juegos?style=plastic&color=success&logo=twitter&label=HaJuegos%20Cat!%20Twitter" alt="HaJuegos Twitter"/> </a>
+</p>
+
+## CRÉDITOS Y ACLARACIONES
 
 Este Add-on fue desarrollado como una comisión pagada para [RosherRandom](https://twitter.com/TheLast15Days), en colaboración con:
 
@@ -74,15 +75,17 @@ Si utilizas o editas este Add-on, por favor, asegúrate de dar el debido crédit
 
 ## LINKS DE DESCARGAS
 
-- **Link para descargar TODO:** [Aun no disponible]
+### Nota: Estos links estan vinculados a Ko-Fi, posiblemente requieras de una cuenta en dicha pagina. Estos archivos no son ni seran de pago, todo es opcional y gratuito para quien quiera disfrutarlo.
 
-- **Link para descargar el Add-on por separado:** [Aun no disponible]
- 
-- **Link para descargar el Add-on junto:** [Aun no disponible]
+- **Link para descargar TODO:** https://ko-fi.com/s/99d0f76a86
 
-- **Link para descargar el Mundo Pre-configurado:** [Aun no disponible]
+- **Link para descargar el Add-on por separado:** https://ko-fi.com/s/337192d9f7
 
-- **Link para descargar la version en ZIP:** [Aun no disponible]
+- **Link para descargar el Add-on junto:** https://ko-fi.com/s/352d521c51
+
+- **Link para descargar el Mundo Pre-configurado:** https://ko-fi.com/s/5346118ec9
+
+- **Link para descargar la version en ZIP:** https://ko-fi.com/s/dfe3e6a3e9
 
 ## MINIGUIA DE USO
 
@@ -90,20 +93,13 @@ Si utilizas o editas este Add-on, por favor, asegúrate de dar el debido crédit
 - **Este Add-on utilizar Scipts, asi que puede no funcionar en algunos host gratuitos como Aternos.**
 - Toda instalacion y configuracion del Add-on es automatico.
 - Si descargaste el Mundo PreConfigurado y no sabes que hacer con el, mira esta imagen tutorial: https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/main/.github/exmple.png
-- Comandos para Administradores (Solo con OP):
-	- !offban:
-		- Cuando este comando se ponga en el chat, el sistema automatico de ban al morir se apagara y revivira a todos los jugadores que entren y hayan muerto.
-		
-	- !onban:
-		- Cuando este comando se ponga en el chat, el sistema automatico de ban al morir se encendera y baneara nuevamente a los jugadores que ya esten muertos.
-	
-	- !mute @"[nombre]"
-		- Este comando sirve para silenciar jugadores del chat.
-		
-	- !unmute @"[nombre]"
-		- Este comando sirve para de-silenciar jugadores del chat.
+- Para revivir a algun Jugador, debes hacer este proceso:
+  >     - En el Juego, pon este comando: "!settings timerBan off". (Si te marca error, procura poner este comando antes: "/tag @s add admin")
+  >     - Luego de poner el comando, cuando entre el Jugador muerto, este sera revivido automaticamente.
+  >     - Cuando ya este revivido el Jugador, pon este otro comando: "!settings timerBan on" y listo.
 
 ## OPCIONES EXPERIMENTALES NECESARIAS
+
 - _El Add-on requiere funciones experimentales para que funcione correctamente, procura tenerlos activados en el mundo antes de poner el add-on._
 
 ![esp](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/v0.0.11-beta/.github/esp.png)
@@ -136,100 +132,37 @@ Lista de Cambios:
 - El mundo está en Modo Hardcore, pero con la diferencia de que si mueres, serás baneado del servidor de forma permanente.
 - Cualquier jugador, al morir, activará el "Resquicio Infernal":
 	- Resquicio Infernal:
-		- Al activarse, otorgará Ceguera y Náusea durante 10 segundos.
-		- Generará un rayo que caerá sobre un jugador aleatorio del juego.
+		- Al activarse, dara Ceguera y Nausea por 10 segundos.
+		- Generar un Rayo a un Jugador aleatorio del Juego.
 
-- Al dormir, en lugar de que la noche pase instantáneamente, se acelerará considerablemente.
-- Los jugadores tienen el rango llamado "Sobreviviente", visible en su nombre y en el chat.
-- Cualquier jugador que utilice un Totem de la Inmortalidad aparecerá en el chat.
-- Se añade una nueva mecánica llamada "Fast Items" (o Ítems Rápidos):
-	- Esta función consiste en que, al usar algún ítem permitido en la mano secundaria con la tecla de interacción, se transferirá rápidamente a dicha mano.
+- Al dormir, en vez de que la noche pase instantaneamente, se pasara mucho mas rapido.
+- Los Jugadores tienen el rango llamado "Sobreviviente" y es visible en el nombre y en el chat.
+- Cualquier Jugador que Utilize un Totem de la Inmortalidad, aparecera en el chat.
+- Se agrega una nueva mecanica, llamada "Items Rapidos":
+	- Items Rapidos:
+		- Esta caracteriztica consiste en que cuando usas un item de la mano secundaria con tu tecla o boton de interaccion, se pondra en el slot de la segunda mano.
 
-- Se ha eliminado la visibilidad de la semilla del mundo.
-- A partir de este día, se indicará el número de días actuales.
-- Ahora la vida de los jugadores es visible en su nombre.
-- La generación de diamantes ha sido modificada para que aparezcan con mayor frecuencia.
-- Al entrar por primera vez al mundo, se otorgará un kit que consiste en:
-	- 1 Totem de la Inmortalidad.
-	- 15 Zanahorias de Oro.
-	- 1 Cubeta de Agua.
+- Se quito la visibilidad de la semilla del mundo.
+- Apartir de este Dia, se indicara el numero de Dias actuales.
+- Ahora la vida de los Jugadores es visible en su nombre.
+- La generacion de Diamantes fue modificada para que apareciera mas frecuentemente.
+- Los Jugadores nuevos reciben un Kit especial para su supervivencia:
+	- 1 totem de la inmortalidad.
+	- 15 Zanahorias de oro.
+	- 1 Cubeta de agua.
 
-- En este día y los siguientes, los portales del Nether y del End no se pueden activar manualmente.
-- Ahora todos los cofres de las estructuras y las bóvedas de las Trial Chambers vienen con:
-	- Un libro encantado con Reparación e Irrompibilidad III (con un 90% de probabilidad de aparecer).
+- Por el momento, los portales del Nether y del End, estan bloqueados.
+- Ahora, en todos los cofres, vaules y trial spawners, hay una posibilidad alta de encontrar:
+	- Libro encantado con Reparacion y Irrompibilidad III. (90% de Posibilidad)
 
-- Los aldeanos ya no tomarán el trabajo de librero de forma permanente.
-- Ya no pueden aparecer Zombies Aldeanos Libreros.
-- Los aldeanos ahora son mobs neutrales (es decir, son pacíficos si no los atacas).
-- Ya no se puede obtener botellas Ominosas, y si tienes una, desaparecerá.
-- Aparece una nueva variante de Pillager llamada "Pillager Bombardero":
-	- Tiene 100 de vida.
-	- Puede lanzar dinamita desde una distancia considerable.
-	- La dinamita explota en 0.75 o 1 segundo, causando una explosión menor.
-	- Al llegar a 50 de vida, se convierte en su versión cuerpo a cuerpo, acercándose para causar una explosión enorme.
-	- Si te ataca a melee, te puede matar de una explosion.
-	- Tiene un 8.33% de probabilidad de explotar solo en su fase melee al ser golpeado.
-	- La dinamita puede explotar bajo el agua y hacer daño.
+- Ahora los Aldeanos dejaron el trabajo de libreros, permanente.
+- Ahora los Aldeanos son mobs neutros.
 
-- Se añadieron algunos logros que aparecen en el chat, tales como:
-	- La Edad de Piedra
-	- Mejorando herramientas
-	- La Edad de Hierro
-	- Vístete
-	- ¡La cosa está que arde!
-	- ¿No es hierrónico?
-	- Hoy no, gracias
-	- Mente fría
-	- ¡Diamantes!
-	- Plus ultra
-	- Cúbreme de diamantes
-	- Zombiólogo
-	- ¿Se acabó?
-	- Devolver al remitente
-	- Escondido en las profundidades
-	- ¿Quién está cortando cebollas?
-	- Falsa alianza
-	- Magnetita, llévame a casita
-	- Cúbreme de netherita
-	- Por una cabeza
-	- Jugando con fuego
-	- Dr. Witherstein
-	- Mezcla explosiva
-	- Faroneitor
-	- ¿Cómo llegamos hasta aquí?
-	- Libera el End
-	- La nueva generación
-	- ¡Qué mal aliento!
-	- La ciudad al final del juego
-	- Hasta el infinito... ¡y más allá!
-	- Exilio voluntario
-	- Monster Hunter
-	- Dulces sueños
-	- Héroe de la aldea
-	- Jugada maestra
-	- ¡Diana!
-	- Post mortem
-	- El saqueador saqueado
-	- Francocazadores
-	- En el blanco
-	- Desarmadillo
-	- Bajo llave
-	- Caja de pandora
-	- ¡A tomar viento!
-	- Abelante, esta es tu casa
-	- Renacuajo al cubo
-	- Huele interesante
-	- Malos hábitos
-	- El depredador más adorable
+• Dia 1:
 
-- Cada logro te dará 10 niveles, y los logros de desafío te darán 20 niveles.
-
-• Día 1:
-
-- Ahora los Peces Globo aparecen en todos los cuerpos de agua.
-- Las Cabras, Abejas, Osos Polares y Ocelotes ahora son hostiles.
-- Se añade el daño por temperatura:
-	- Consiste en que si permaneces más de 5 minutos en un bioma cálido o frío, comenzarás a recibir daño hasta que salgas de ese bioma.
+- Ahora los Peces Globos tienen mas zonas para spawnear, desde la capa mas baja, hasta la mas alta.
+- Ahora las Cabras, Abejas, Oso Polares y Ocelotes seran agresivos siempre con el Jugador.
+- Si estas mas de 5 minutos en un bioma calido o frio, empezaras a recibir daño hasta salir de ese bioma.
 
 • Día 2:
 
@@ -268,7 +201,7 @@ Lista de Cambios:
 - Se añaden nuevos ítems: "Slime Derretido" y "Perla Viscosa":
 	- Slime Derretido:
 		- Se obtiene cocinando una bola de Slime en un Horno, Ahumador o cualquiera de las dos Fogatas.
-	
+
 	- Perla Viscosa:
 		- En ciertas ocasiones, puede generar un Slime al teletransportarse.
 		- Es más rápida que una Ender Pearl.
@@ -293,104 +226,52 @@ Lista de Cambios:
 - Aparecen nuevos ítems: "Calavera de Piedra", "Calavera de Invocación", "Dinamita" y "Dinamita Apagada":
 	- Calavera de Piedra:
 		- Se fabrica con 2 Piedra Lisa, 3 Piedra y 3 Roca (Cobblestone).
-	
+
 	- Calavera de Invocación:
 		- Se fabrica con 2 Bloques de Esmeralda, 3 Esmeraldas, 2 Ballestas y 1 Libro Encantado.
 		- Al usarlo con la tecla de interacción, te otorgará Trial Omen durante 5 minutos de cualquier nivel y Raid Omen durante 10 segundos de cualquier nivel. Al usarlo, perderás media vida.
-		
+
 	- Dinamita Apagada:
 		- Es un ítem y a la vez un bloque.
 		- Se obtiene con probabilidad al matar Pillagers Bombarderos (su probabilidad aumenta un 2% por cada nivel de Looting/Saqueo).
 		- Se puede encender con un Mechero.
 		- Al encenderla, se convierte en su versión encendida. Si se rompe en esta versión, soltará el ítem Dinamita.
 		- Al encenderla, explotará en 7 segundos.
-	
+
 	- Dinamita:
 		- Es un ítem lanzable.
 		- Funciona igual que la dinamita del Pillager Bombardero.
 		- Se puede obtener al encender una Dinamita Apagada.
-		
+
 • Día 5:
 
-- A partir de este día y en los posteriores, el Nether estará permitido y abierto para todos.
-- La Netherite aún no es obtenible.
-- Los Phantoms ahora rompen bloques y aparecerán, como máximo, una noche si no duermes.
-- Los Ghast se han convertido en "Soul Ghast":
-- Solo aparecen en el Soul Sand Valley.
-- Si te golpea una de sus bolas de fuego, recibirás Lentitud II, una pantalla azul durante unos segundos y un fuerte movimiento de cámara.
-- Los Blaze ahora se han convertido en "Lord Blaze":
-	- Pueden generar hasta 4 Blaze normales.
-	- Lanzan bolas de fuego que explotan con un radio pequeño.
+- El Nether esta abierto para todos.
+- Ahora los Blaze, Magma Cube, Piglins y Ghast hacen x5 de daño y se duplican al spawnear.
+- Ahora los Wither Boos tienen Velocidad II y al recibir daño a melee de este, te dara Levitacion X por 30 segundos.
+- Aparecen nuevos items: "Reliquia Infernal" y "Fragmento Ígneo"
+	- Reliquia Infernal:
+		- Se craftea con 4 Fragmento Ígneos y una Estrella del Nether.
+		- Al tenerla en el inventario, te evita cualquier daño por temperatura y te dara Resistencia, Fuerza y Resistencia al Fuego II, pero solo aplica para el Nether.
+		- Son inumnes al fuego y lava.
 
-- Aparece un nuevo Piglin, llamado "Armorer Piglin Brute":
-	- Cada 20 segundos, se activará un evento que hará que este mob equipe aleatoriamente a los Piglins cercanos en un radio de 11 bloques.
-	- La espada aleatoria que porten los Piglins puede estar encantada con Filo II hasta IV.
-	- Este Piglin puede atacar cuerpo a cuerpo con el "Martillo de Piglin".
+	- Fragmento Ígneo:
+		- Se consigue matando Blaze, MagmaCubes, Piglins y Ghast con un 10% de posibilidad de drop.
+		- Son inumnes al fuego y lava.
 
-- Los Magma Cube ahora son "MagmaCopters":
-	- Pueden volar y/o saltar cuando lo deseen.
-	- Si están cerca de otro MagmaCopter, pueden fusionarse para volverse más grandes, con más vida y daño.
+• Dia 6:
 
-- Los Wither ahora son "King Wither":
-	- Portan la "Corona Infernal", que genera uno de los siguientes efectos cada 20 segundos:
-		- Espíritu Rojo: Regenera la vida del Wither.
-		- Espíritu Azul: Puede destruir cualquier bloque.
-		- Espíritu Amarillo: Aplica un efecto negativo aleatorio a los mobs cercanos. La duración y el nivel del efecto varían entre 1 y 5 minutos, y entre nivel I y III.
-		- Espíritu Naranja: Revuelve el inventario de los jugadores cercanos.
-	
-- Los Lord Blaze, Piglin, Piglin Brute y Soul Ghast se duplican al aparecer y tienen x5 de daño, lo que puede resultar en un OneShot incluso con buen equipo.
-- Al ser golpeado por un King Wither, recibirás Levitación X durante 30 segundos. El King Wither tiene Velocidad II de forma permanente.
-- Se añaden nuevos ítems: "Gema Infernal", "Alma de Fuego" y "Corona Infernal".
-	- Corona Infernal:
-		- Se fabrica con 3 Gemas Infernales, 1 Alma de Fuego y una Corona de Wither Vacía.
-		- Al tenerla en el inventario, te protege del daño por temperatura, otorga Fuerza II, Resistencia II en el Nether y Resistencia al Fuego en cualquier lugar.
-		- Estos ítems no se pueden quemar.
-		- Los Piglins pueden comerciar con este ítem.
-		
-	- Corona Infernal Vacía:
-		- Se obtiene al matar a un Wither Boss, con un 60% de probabilidad base (aumenta un 5% por cada nivel de Looting/Saqueo).
-		- Este ítem no se puede quemar.
-		- Los Piglins pueden comerciar con él.
-	
-	- Gema Infernal:
-		- Son ítems individuales, lo que significa que los mobs no sueltan el mismo ítem, sino diferentes.
-		- Se obtienen al matar a los siguientes mobs con las siguientes probabilidades:
-			- Lord Blaze: 30% de probabilidad base (aumenta un 2% por cada nivel de Looting/Saqueo).
-			- Piglins: 30% de probabilidad base (aumenta un 2% por cada nivel de Looting/Saqueo).
-			- MagmaCopters: 30% de probabilidad base (aumenta un 2% por cada nivel de Looting/Saqueo).
-			- Este ítem no se puede quemar.
-			- Algunos Piglins pueden comerciar con él.
-			
-	- Alma de Fuego:
-		- Se obtiene al matar a un Soul Ghast, con un 50% de probabilidad base (aumenta un 5% por cada nivel de Looting/Saqueo).
-		- Este ítem no se puede quemar.
-		
-	- Martillo de Piglin:
-		- Hace 8 de daño base y puede tener encantamientos de espada.
-		- No tiene durabilidad.
-
-- Se han añadido nuevos logros:
-	- "Rey del Nether | The Blazing Monarch": Consigue la Corona Infernal.
-
-• Día 6:
-
-- La Netherite ya es obtenible.
-- La Armadura de Netherite ahora es Irrompible.
-- El daño por Lava te quitará 5 corazones por tick.
-- El daño por Fuego te hace 3 corazones por tick.
-- Al minar Ancient Debris, aparecerá Lava en su lugar y un Silverfish.
-- Los Endermites y Silverfish ahora tienen las siguientes características:
-	- Tienen resistencia al fuego.
-	- Hacen 6 corazones de daño.
-	- Son más rápidos.
-
-- Los Hoglins ahora tienen las siguientes características:
-	- Ahora aparecen con menos frecuencia.
-	- Tienen Fuerza, Resistencia y Velocidad III de forma permanente.
-	- Tienen un alcance de ataque aumentado.
-	- No pueden recibir daño de proyectiles.
-	- Pueden romper barcos cercanos si te golpean.
-	- Al morir, tienen un 30% de probabilidad de soltar un "Colmillo de Hoglin". Este viene con encantamientos como Daño a Artrópodos, Castigo y Filo V.
+- Se desbloquea todo lo relacionado a la netherite.
+- La Armadura de Netherite ahora es irrompible.
+- Ahora el daño por Lava te hace 5 corazones de daño y por Fuego te hace 3 corazones de daño.
+- Al picar Ancient Debris, se colocara lava en su lugar y generara un Silverfish.
+- Ahora los Silverfish y Endermites tienen resistencia al fuego y hacen 2 corazones de daño base.
+- Los Hoglins han cambiado drasticamente y ahora tienen estas modificaciones:
+	- Su rate de spawn ha disminuido.
+	- Tienen Fuerza, Resistencia y Velocidad III.
+	- Al morir, tiene un 15% de posibilidad de dropear un "Colmillo de Hoglin", con encantamientos ya incluidos tales como Daño de Artropodos, Castigo y Filo V.
+	- Ahora su reach aumento y te puede atacar mas lejos.
+	- No recibe daños de todo tipo de proyectiles.
+	- Pueden romper botes cercanos.
 
 - Aparece un nuevo ítem: "Colmillo de Hoglin":
 	- Hace 10 corazones de daño.
@@ -451,21 +332,21 @@ Lista de Cambios:
 		- Puede dejar un rastro de "Charco de Acido":
 			- Al ponerte encima de este bloque o romper este bloque, tendras Fatal Posion IV permanente.
 			- Este bloque se podra propagar aleatoriamente. Consumiendo los bloques que encuentre.
-	
+
 	- "Creeper Obsidiana":
 		- Al explotar, genera un cubo enorme de obsidiana de 10x10. Que se llevara todo a su paso.
-	
+
 	- "Creeper Debuff":
 		- Al explotar y recibir daño de la explosión, recibirás todos los efectos negativos del juego durante 10 segundos.
-	
+
 	- "Creeper Mommy":
 		- Tiene un radio de explosión de 15 bloques. Al explotar, generará Creeper Bebés de la misma variante con Velocidad V y Resistencia III de forma permanente. Estos explotan normalmente.
-	
+
 	- "Creeper Ninja":
 		- Te puede detectar desde muy lejos.
 		- Tiene Velocidad III y Invisibilidad de forma permanente. Se le quitara la Invisibilidad si esta cerca de ti.
 		- Puede generar una explosion grande.
-		
+
 	- Cada variante puede explotar bajo el agua y hacer daño.
 
 - Los Aldeanos ya no son mobs neutrales, sino hostiles.
@@ -487,11 +368,11 @@ Lista de Cambios:
 		- Al consumirlo, te dara Levitacion I por 15 segundos.
 		- Se puede cocinar.
 		- Al concinarse en un horno, Humador o Fogata, se volvera carbon natural.
-		
+
 	- Esencia de Allay:
 		- Se consigue por medio del Soporte para pociones con el Polvo de Allay y una Poción rara.
 		- Al consumirlo, te dara Resistencia IV por 10 segundos y Velocidad VI por 10 segundos, pero demorara un poco mas en consumirse.
-	
+
 	-- (ESTE CAMBIO NO ES CANON EN EL ADD-ON, POR ENDE, NO ESTA DISPONIBLE) --
 	- Soul link:
 		- Permite revivir a un Jugador muerto o ido por AFK. Pero con la condicion de que si alguno de los dos muere, los dos seran baneados permanentemente.
@@ -501,97 +382,52 @@ Lista de Cambios:
 
 • Día 9:
 
-- Los Pandas empujan igual que las Vacas.
-- Los Gatos pueden generar Creepers al su alrededor. Lo haran en la noche mientras te trackean. Se generaran en el espacio libre mas cercano cada 15 segundos.
-- Los Phantoms tienen un Esqueleto del Wither encima. Estos son persistentes y se duplican al spawnear.
-- Las Abejas tendrán un Esqueleto o un Esqueleto Errante encima. Estos son persistentes.
-- Los Esqueletos y Esqueletos Errantes pueden lanzar Bolas de Fuego de Nivel 3 hasta 10, tambien pueden hacer daño bajo el agua y romper bloques con agua.
-- Los Esqueletos del Wither ahora atacan a distancia y disparan Cabezas del Wither con Nivel de explosión 3 hasta 10, tambien pueden hacer daño bajo el agua y romper bloques con agua.
-- Los Zombis ahora tienen Hachas de Diamante con Filo X y, al golpearte, desordenan tu inventario, cambiando la posición de los ítems de forma aleatoria. El daño de este puede variar.
-- Los Piglins, al aparecer, tienen un 1% de probabilidad de convertirse en Piglin Bruto.
-- Los Vex, cada 30 segundos, se convierten en Allay.
-- Las Cabezas del Wither tienen Nivel de explosión de 10, tambien pueden hacer daño bajo el agua y romper bloques con agua.
-- Los Esqueletos y Esqueletos Errantes tienen un 10% de probabilidad de soltar un Arco con Poder XI, Reparación e Irrompibilidad III.
-- El Sistema del Resquicio Infernal ha cambiado y ahora:
-	- Además de todo lo anteriormente mencionado, al morir un jugador:
-		- Se ejecutan "La Marca del Abismo" en todos los jugadores, ya sea en el juego o fuera de línea.
+- Ahora los Pandas tienen el mismo Knockback de las vacas.
+- Ahora los Gatos pueden summonear Creepers cada 2 minutos si te trackean. (Su spawn se basa en los espacios libres)
+- Ahora los Phantoms spawnean con Esqueletos del Wither.
+- Ahora las Abejas spawnean con Esqueletos o Errantes.
+- Ahora los Esqueletos y Errantes disparan Bolas de Fuego de nivel 3 hasta 10.
+- Ahora los Esqueletos del Wither atacan a distancia y disparan Cabezas del Wither Boss con un nivel de 3 hasta 10.
+- Ahora los Zombies llevan Hachas de Diamante con Filo X y al golpearte, te desorganizan el inventario.
+- Ahora hay un 1% de posibilidad de que al spawnear un Piglin, se convierta en un Piglin Brute.
+- Los Vex ahora se pueden convertir en un Allay, su tiempo de transformacion es de 30 segundos.
+- Ahora las Cabezas del Wither Boss tienen nivel 10 de explosion.
+- Ahora los Esqueletos y Errantes tienen un 10% de posibilidad de dropear un Arco con Poder XI.
 
-- Nueva mecánica: "La Marca del Abismo":
-	- Todos estos efectos duran 3 minutos y el tiempo se puede extender por muerte.
-	- Maleficios del Abismo:
-		- "Garras del Vacío": Una fuerza oscura se aferra a tus objetos, impidiendo que los puedas usar o soltar y el vacio se lleva la mitad de tus items stackeados.
-		- "Erosión del Alma": Tu cuerpo se debilita. La saturación cae más rápido y moverte se vuelve una tarea agotadora.
-		- "Sombras Voraces": Criaturas hostiles sienten tu presencia con una intensidad aterradora y te cazan con mucha intensidad.
-		- "Engaño del Coloso": El Abismo infla tu cuerpo con un poder inestable, volviéndote más grande y torpe.
-		- "Insaciable Hambre": Sientes una necesidad incontrolable de devorar comida, sin importar si la necesitas o no. Incluso empiezas a comer sin darte cuenta.
-		- "Ojos del Abismo": El Abismo te arrebata lo que más deseas, obligándote a soltar parte de tu inventario en el suelo. (Una fila entera de tu inventario)
-		- "Furia Desquiciada": La corrupción te ciega de ira, poniendo roja tu visión, reduciendola poco a poco y haciendo que los enemigos a tu alrededor se vuelvan más fuertes.
-		
-		- Esta mecánica es acumulable, y cuantos más efectos te afecten, peor será el combo:
-			- "Garras del Vacío": La fuerza oscura se aferra a mas objectos y se lleva cada vez mas items stackeados.
-			- "Erosión del Alma": Tu saturación cae completamente y te vuelves extremadamente lento y progresivamente ya no podrias minar.
-			- "Sombras Voraces": Los mobs hostiles duplican su velocidad hacia ti.
-			- "Engaño del Coloso": Tu tamaño aumenta tanto que apenas puedes moverte o realizar acciones.
-			- "Insaciable Hambre": Comes sin parar, perdiendo el control. Los items que empiezas a comer son cada vez mas grandes.
-			- "Ojos del Abismo": Más partes de tu inventario desaparecen, incluso objetos equipados.
-			- "Furia Desquiciada": La visión se vuelve aún más limitada y los mobs te atacan con fuerza descomunal.
+• Dia 10:
 
-• Día 10:
+- Las Llamas han cambiado mucho y ahora sus proyectiles hacen Oneshot, te pueden trackear y disparar desde muy lejos y tienen Resistencia IV.
+- Ahora los Ravagers tienen Fuerza X, Salto y Resistencia III.
+- Ahora los Endermans son inmunes al fuego, lava y Agua, tambien tienen Fuerza V, Resistencia y Velocidad II y son hostiles.
+- Ahora los Piglins tienen un 15% de posibilidad de ser un Piglin Brute.
+- Los Piglins Brute cambiaron drasticamente y ahora tienen esas caracteristicas:
+	- Si estas muy lejos, usaran EnderPearls para llegar hacia ti.
+	- Si estas minimamente lejos, spamearan Flechas con Daño II.
+	- Si estas muy cerca, Te atacara a Melee con un Hacha de Netherite Filo V.
+	- Si te escapas, mueres o tiene poca vida, intentaran comer y regenerarse.
+	- En ciertas ocaciones, puede llegar a romper bloques.
+	- Al atacar, rompera cualquier barco cercano.
+	- Hay una probabilidad de que al regenerarse o spawnear, tenga un totem en la segunda mano.
+	- Tiene 30 corazones. (60 de vida)
+	- Tiene Fuerza III.
+	- Son hostiles con cualquier mob, menos con su propia familia.
+	- Solo reciben daño de explosiones
+	- Tiene Armadura completa de Diamante.
 
-- Las Llamas ahora son hostiles, hacen muchísimo daño y te pueden disparar desde muy lejos. Tienen Resistencia IV permanente. Si estas muy cerca de ella, puede explotar. (Al explotar, puede romper bloques bajo el agua y hacer daño)
-- Los Ravagers tienen Fuerza X, Impulso de Salto I y Resistencia III permanente, además de los efectos anteriores. Ya no reciben daño de proyectiles, los repelan y pueden romper TODOS los bloques.
-- Los Endermans ahora son resistentes al fuego y al agua, y pueden flotar en ella. Tienen Fuerza V, Resistencia y Velocidad II permanente. También se vuelven hostiles.
-- Los Piglins tienen un 15% de probabilidad de convertirse en un Piglin Bruto.
-- Los Piglins Brutos cambiaron totalmente con las siguientes características:
-	- Pueden usar Ender Pearls para teletransportarse.
-	- Pueden regenerarse en caso de tener poca vida.
-	- Tiene Armadura de Netherite Completa, con probabilidad de que alguna tenga Proteccion contra Explosiones entre I a V.
-	- Pueden atacar cuerpo a cuerpo de dos formas:
-		- Con un hacha de Netherite con Filo V, que puede hacer críticos aumentando aún más el daño. (90% de probabilidad).
-		- Con un Mazo con Wind Burst I, que puede hacer combos en el aire. (10% de probabilidad).
-	
-	- Pueden atacar a distancia con un Arco que aplica los siguientes efectos:
-		- Lentitud.
-		- Náusea.
-		- Veneno.
-		- Wither.
-		- Infestación.
-		- Daño Instantáneo II.
-	
-	- Pueden romper bloques si no pueden alcanzarte o si pasas mucho tiempo AFK o bajo tierra.
-	- Solo pueden recibir daño por explosiones.
-	- Tienen 100 corazones de vida.
-	- Pueden aparecer con un Totem en su mano secundaria.
-	
-- Las Manzanas de Hierro cambiaron y ahora te otorgan lo siguiente:
-	- Health Boost V durante 30 segundos.
-	- Vida Instantánea I durante 5 segundos.
-	- Resistencia III durante 30 segundos.
-	- Regeneración III durante 5 segundos.
+- Las Manzanas de Hierro han cambiado y ahora al consumirlas, te dara Health Boost I por 30 segundos y Vida Instantanea I por 10 segundos, tambien Regeneracion III por 30 segundos. Ya no se pueden craftear.
+- Aparece una nueva Armadura: "Cautious Astronaut Armor o Armadura del Astronauta Cauteloso"
+	- Al tener el Casco puesto, los Endermans no seran hostiles contra ti.
+	- Al tener la Pechera puesta, te dara Resistencia II y tu Knockback se reduce.
+	- Al tener los Pantalones puestos, te dara Prisa III, pero si no lo tienes puesto, te dara Fatiga Minera I.
+	- Al tener las Botas puestas, te dara Velocidad II, pero si no lo tienes puesto, te dara Lentitud II.
+	- Al tener todo el set puesto, te agrega Health Boost III. Si no tienes el Set completo, te dara Fatal Poison en el End.
+	- Para obtener la Armadura, debes conseguirlo al matar estos mobs:
+		- Llama (30%)
+		- Enderman (10%)
+		- Piglin Brute (15%)
+		- Ravager (30%)
 
-- Ya no se pueden fabricar Manzanas de Hierro.
-- Aparecen nuevos ítems:
-	- "Armadura Cautelosa":
-		- Al tener el casco puesto: Los Endermans no te atacarán.
-		- Al tener la pechera puesta: Te otorgará Resistencia II y mayor resistencia al empuje. En caso contrario, tendras Debilidad II.
-		- Al tener el pantalón puesto: Te otorgará Prisa Minera III. Pero si no lo tienes puesto, tendrás Fatiga Minera I.
-		- Al tener las botas puestas: Te otorgará Velocidad II. Pero si no las tienes puestas, tendrás Lentitud II.
-		- Al completar toda la Armadura: Tendrás Health Boost III. Pero si no la completas, tendrás Fatal Poison I en el End.
-		- Es irrompible.
-		- No se quema.
-
-- Para obtener la Armadura Cautelosa, debes matar los siguientes mobs con las siguientes probabilidades:
-	- Llama con 50% de probabilidad base. (Su probabilidad aumenta un 5% por cada nivel de Looting/Saqueo).
-	- Enderman con 30% de probabilidad base. (Su probabilidad aumenta un 5% por cada nivel de Looting/Saqueo).
-	- Piglin Bruto con 55% de probabilidad.
-	- Ravager con 40% de probabilidad base. (Su probabilidad aumenta un 5% por cada nivel de Looting/Saqueo).
-	
-- El Sistema del Resquicio Infernal ha cambiado y ahora:
-	- Además de todo lo anteriormente mencionado, al morir un jugador:
-		- El tiempo de La Marca del Abismo pasa a ser de 5 minutos.
-
-- Se añadieron nuevos logros:
-	- "Full Sneaky | Full Cauteloso" - Consigue la Armadura Cautelosa.
+	- La Armadura es irrompible y resistente al fuego y lava.
 
 • Día 11:
 
@@ -613,7 +449,7 @@ Lista de Cambios:
 			- Generar Wardens.
 			- Generar Arañas con Zombies.
 			- Generar Trampas para Osos.
-			
+
 		- En la Fase 2°, cambia a:
 			- Nube de daño vanilla.
 			- Genera a Warden.
@@ -624,7 +460,7 @@ Lista de Cambios:
 			- Genera Piglins Brutes.
 			- Genera Pollys.
 			- Genera Trampas de Osos.
-			
+
 		- En la Fase 3°, cambia a:
 			- Todos los ataques de la fase 2° pero totalmente aleatorios.
 
@@ -636,7 +472,7 @@ Lista de Cambios:
 			- Su daño base disminuye.
 			- Puede ser más constante al atacar.
 			- No aplicará el efecto de Oscuridad.
-		
+
 		- Inicia un ataque de Efecto del Conducto. Cuando termine este efecto, teletransportará a todas las entidades aleatoriamente al centro de la Isla.
 		- Si explota un EnderCrystal, generará una Llama o Llama de un Mercader Ambulante. Cada cierto tiempo, la volverá a generar en esa posición.
 		- Puede generar Arañas de Cueva en el centro de la isla.
@@ -646,19 +482,19 @@ Lista de Cambios:
 			- Manzanas Encantadas.
 			- Ender Pearls.
 			- Manzanas de Hierro.
-		
+
 		- Puede generar un Piglin Brute.
 		- Puede generar Pollys.
 		- Puede generar una Trampa para Osos:
 			- Si estás cerca de este mob, se te pegará al cuerpo, desactivará tu movimiento durante 5 segundos y te hará daño progresivamente.
 			- Puede aparecer en el End.
-		
+
 		- Puede generar Pillagers Bombarderos.
-	
+
 - El Sistema del Resquicio Infernal ha cambiado y ahora:
 	- Además de todo lo anteriormente mencionado, al morir un jugador:
 		- El tiempo de La Marca del Abismo pasa a ser de 10 minutos.
-		
+
 • Día 12:
 
 - Las Papas y Papas Cocidas ya no se pueden obtener.
@@ -683,7 +519,7 @@ Lista de Cambios:
 	- Las bolas de nieve, si te golpean, te teletransportarán a ellos.
 	- Las bolas de nieve te hacen muchísimo daño.
 	- Tienen Resistencia V.
-	
+
 - El Sistema del Resquicio Infernal ha cambiado y ahora:
 	- Además de todo lo anteriormente mencionado, al morir un jugador:
 		- El tiempo de La Marca del Abismo pasa a ser de 15 minutos.
@@ -705,17 +541,17 @@ Lista de Cambios:
 		- Corona Infernal.
 		- "Reliquia Anti-Agonia".
 		- "Reliquia Post-Apocaliptica".
-		
+
 - Se añaden nuevos items: "Reliquia Hidrodinamica", "Reliquia Anti-Agonia" y "Reliquia Post-Apocaliptica":
 	- Reliquia Hidrodinamica:
 		- Se consigue crafteandolo con 16 diferentes tipos de peces, 1 esponja, 64 de Prismarina y 1 Manzana Encantada.
-	
+
 	- Reliquia Anti-Agonia:
 		- Se consigue crafteandolo con 4 EnderCrystals, 4 Stacks de EnderPearls, 1 Huevo del Dragon y 1 Manzana Encantada.
-		
+
 	- Reliquia Post-Apocaliptica:
 		- Se consigue crafteandolo con 4 Elytras, 64 Shulker Shells, 64 Bloques de Diamante y 1 Manzana Encantada.
-		
+
 • Dia 15: (Este Dia no viene incluido en el producto final, debido a que la serie termino en el Dia 12, pero ya estaba hecho una idea conceptual)
 
 - Los Participantes finales deben sobrevivir al apocalipsis. El mundo empieza su caos final.
@@ -734,7 +570,7 @@ Lista de Cambios:
 	- Ghast
 	- Polly
 	- Zorros
-	
+
 - Vuelve el spawn natural de Abejas.
 - Ahora es mas contante el spawn natural de Phantoms.
 - Todos los mobs se duplican al spawnear.
@@ -742,7 +578,7 @@ Lista de Cambios:
 	- Hambre
 	- Infeccion
 	- Fatiga
-	
+
 - Los Silverfish hace muchisimo daño, atacan mas rapido, rompen bloques y tienen mas vida.
 - Los Zorros tienen killaura y no tienen cooldown de ataque.
 - Ahogarte te matara instantaneamente.
@@ -750,6 +586,6 @@ Lista de Cambios:
 - Todas las explosiones afectan los bloques bajo el agua.
 - Los Totems ya no son obtenibles de ninguna forma.
 - Tienes bloqueado la mano secundaria.
-	
+
 Documentacion oficial hecha por: HaJuegos.
 ```
