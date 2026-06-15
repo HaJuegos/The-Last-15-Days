@@ -1,0 +1,214 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+	"format_version": "1.10.0",
+	"animations": {
+		"animation.soul_ghast.chargin": {
+			"loop": "hold_on_last_frame",
+			"animation_length": 3,
+			"bones": {
+				"body": {
+					"position": [ "math.sin(query.anim_time * 90) * 0.4", "math.sin(query.anim_time * 60) * 0.25", "math.cos(query.anim_time * 75) * 0.2" ]
+				},
+				"CabezaSuperior": {
+					"rotation": {
+						"0.0": [ 0, 0, 0 ],
+						"3.0": [ -25, 0, 0 ]
+					},
+					"position": {
+						"0.0": [ 0, 0, 0 ],
+						"3.0": [ 0, 4, -3 ]
+					}
+				},
+				"CabezaInferior": {
+					"rotation": {
+						"0.0": [ 0, 0, 0 ],
+						"1.5": [ 20, 0, 0 ],
+						"3.0": [ 50, 0, 0 ]
+					},
+					"position": {
+						"0.0": [ 0, 0, 0 ],
+						"1.5": [ 0, 0, 1 ]
+					}
+				},
+				"Cejas": {
+					"position": {
+						"0.0": [ 0, 0, 0 ],
+						"0.5": [ 0, 1.5, 0 ],
+						"1.5": [ 0, 1.5, 0 ]
+					}
+				},
+				"OrbeDeAlmas": {
+					"rotation": [ "query.anim_time * 240", 0, 0 ],
+					"position": {
+						"0.0": [ 0, -3, 4 ],
+						"3.0": [ 0, -2, 1 ]
+					},
+					"scale": {
+						"0.0": [ 0.5, 0.5, 0.5 ],
+						"0.5": [ 0.4, 0.4, 0.4 ],
+						"1.0": [ 0.5, 0.5, 0.5 ],
+						"1.5": [ 0.4, 0.4, 0.4 ],
+						"2.0": [ 0.5, 0.5, 0.5 ],
+						"2.5": [ 0.4, 0.4, 0.4 ],
+						"3.0": [ 0.4, 0.4, 0.4 ]
+					}
+				},
+				"Tentaculos": {
+					"rotation": {
+						"0.0": [ 0, 0, 0 ],
+						"3.0": [ 50, 0, 0 ]
+					},
+					"position": {
+						"0.0": [ 0, 0, 0 ],
+						"3.0": [ 0, -2, 1 ]
+					}
+				},
+				"OrbeDeAlmas2": {
+					"rotation": [ 0, 0, "query.anim_time * 240" ],
+					"position": {
+						"0.0": [ 0, -3, 4 ],
+						"3.0": [ 0, -2, 1 ]
+					},
+					"scale": {
+						"0.0": [ 0.1, 0.1, 0.1 ],
+						"0.5": [ 0.2, 0.2, 0.2 ],
+						"1.0": [ 0.3, 0.3, 0.3 ],
+						"1.5": [ 0.4, 0.4, 0.4 ],
+						"2.0": [ 0.5, 0.5, 0.5 ],
+						"2.5": [ 0.4, 0.4, 0.4 ],
+						"3.0": [ 0.4, 0.4, 0.4 ]
+					}
+				},
+				"OrbeDeAlmas3": {
+					"rotation": [ 0, "query.anim_time * 240", 0 ],
+					"position": {
+						"0.0": [ 0, -3, 4 ],
+						"3.0": [ 0, -2, 1 ]
+					},
+					"scale": {
+						"0.0": [ 0.1, 0.1, 0.1 ],
+						"0.5": [ 0.2, 0.2, 0.2 ],
+						"1.0": [ 0.3, 0.3, 0.3 ],
+						"1.5": [ 0.4, 0.4, 0.4 ],
+						"2.0": [ 0.5, 0.5, 0.5 ],
+						"2.5": [ 0.4, 0.4, 0.4 ],
+						"3.0": [ 0.4, 0.4, 0.4 ]
+					}
+				}
+			},
+			"sound_effects": {
+				"0.3": {
+					"effect": "charge"
+				}
+			},
+			"particle_effects": {
+				"0.3": {
+					"effect": "loop",
+					"locator": "particula"
+				}
+			}
+		},
+		"animation.soul_ghast.shoot": {
+			"animation_length": 3,
+			"override_previous_animation": true,
+			"bones": {
+				"body": {
+					"position": {
+						"0.0": [ 0, 0, 0 ],
+						"0.25": [ 0, 3, 5 ],
+						"1.0": [ 0, 0, 0 ],
+						"2.0": [ 0, 0, 0 ]
+					}
+				},
+				"CabezaSuperior": {
+					"rotation": {
+						"0.0": [ -25, 0, 0 ],
+						"0.2083": [ -2.5, 0, 0 ],
+						"1.0": [ -25, 0, 0 ],
+						"2.0": [ 0, 0, 0 ]
+					},
+					"position": {
+						"0.0": [ 0, 4, -3 ],
+						"1.0": [ 0, 4, -3 ],
+						"2.0": [ 0, 0, 0 ]
+					}
+				},
+				"CabezaInferior": {
+					"rotation": {
+						"0.0": [ 50, 0, 0 ],
+						"1.0": [ 50, 0, 0 ],
+						"2.0": [ 0, 0, 0 ]
+					},
+					"position": {
+						"0.0": [ 0, 0, 1 ],
+						"1.0": [ 0, 0, 1 ],
+						"2.0": [ 0, 0, 0 ]
+					}
+				},
+				"Cejas": {
+					"position": {
+						"0.0": [ 0, 1.5, 0 ],
+						"1.0": [ 0, 1.5, 0 ],
+						"2.0": [ 0, 0, 0 ]
+					}
+				},
+				"OrbeDeAlmas": {
+					"rotation": [ "query.anim_time * 240", 0, 0 ]
+				},
+				"Tentaculos": {
+					"rotation": {
+						"0.0": [ 50, 0, 0 ],
+						"1.0": [ 50, 0, 0 ],
+						"2.0": [ 0, 0, 0 ]
+					},
+					"position": {
+						"0.0": [ 0, -2, 1 ],
+						"0.25": [ 0, 1, 6 ],
+						"1.0": [ 0, -2, 1 ],
+						"2.0": [ 0, 0, 0 ]
+					}
+				},
+				"OrbeDeAlmas2": {
+					"rotation": [ 0, 0, "query.anim_time * 240" ]
+				},
+				"OrbeDeAlmas3": {
+					"rotation": [ 0, "query.anim_time * 240", 0 ]
+				},
+				"orbe": {
+					"position": {
+						"0.0": {
+							"post": [ 0, 0, 0 ],
+							"lerp_mode": "catmullrom"
+						},
+						"0.85": {
+							"post": [ 0, 0, -7 ],
+							"lerp_mode": "catmullrom"
+						}
+					},
+					"scale": {
+						"0.0": {
+							"post": [ 0.5, 0.5, 0.5 ],
+							"lerp_mode": "catmullrom"
+						},
+						"0.65": {
+							"post": [ 0, 0, 0 ],
+							"lerp_mode": "catmullrom"
+						}
+					}
+				}
+			}
+		},
+		"animation.soul_ghast.scale": {
+			"loop": true,
+			"bones": {
+				"body": {
+					"scale": 4.5
+				},
+				"Tentaculos": {
+					"scale": 4.5
+				}
+			}
+		}
+	}
+}

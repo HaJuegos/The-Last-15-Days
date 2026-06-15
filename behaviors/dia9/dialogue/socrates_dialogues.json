@@ -1,0 +1,57 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.17.0",
+    "minecraft:npc_dialogue": {
+        "scenes": [
+            {
+                "scene_tag": "socrates_bullshit1",
+                "npc_name": {
+                    "rawtext": [ { "translate": "entity.ha:socrates_npc.name" } ]
+                },
+                "text": {
+                    "rawtext": [ { "translate": "dialogue.socrates.bullshit1" } ]
+                },
+                "on_close_commands": [
+                    "/event entity @s ha:remove_npc_mode"
+                ]
+            },
+            {
+                "scene_tag": "socrates_bullshit2",
+                "npc_name": {
+                    "rawtext": [ { "translate": "entity.ha:socrates_npc.name" } ]
+                },
+                "text": {
+                    "rawtext": [ { "translate": "dialogue.socrates.bullshit2" } ]
+                },
+                "on_close_commands": [
+                    "/event entity @s ha:remove_npc_mode"
+                ]
+            },
+            {
+                "scene_tag": "socrates_bullshit3",
+                "npc_name": {
+                    "rawtext": [ { "translate": "entity.ha:socrates_npc.name" } ]
+                },
+                "text": {
+                    "rawtext": [ { "translate": "dialogue.socrates.bullshit3" } ]
+                },
+                "on_close_commands": [
+                    "/event entity @s ha:remove_npc_mode"
+                ]
+            },
+            {
+                "scene_tag": "socrates_bullshit4",
+                "npc_name": {
+                    "rawtext": [ { "translate": "entity.ha:socrates_npc.name" } ]
+                },
+                "text": {
+                    "rawtext": [ { "translate": "dialogue.socrates.bullshit4" } ]
+                },
+                "on_close_commands": [
+                    "/event entity @s ha:remove_npc_mode"
+                ]
+            }
+        ]
+    }
+}

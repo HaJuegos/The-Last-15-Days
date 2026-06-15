@@ -1,0 +1,38 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.10.0",
+    "minecraft:attachable": {
+        "description": {
+            "identifier": "ha:piglin_mace",
+            "geometry": {
+                "default": "geometry.hammer_piglin"
+            },
+            "materials": {
+                "default": "item_in_hand_entity_alphatest",
+                "enchanted": "item_in_hand_glint"
+            },
+            "textures": {
+                "default": "textures/models/items/custom/hammer_piglin",
+				"enchanted": "textures/misc/enchanted_item_glint"
+            },
+            "animations": {
+                "fp_anim": "animation.piglin_mace.fp",
+                "tp_anim": "animation.piglin_mace.tp"
+            },
+            "scripts": {
+                "animate": [
+                    {
+                        "fp_anim": "c.is_first_person"
+                    },
+                    {
+                        "tp_anim": "!c.is_first_person"
+                    }
+                ]
+            },
+            "render_controllers": [
+                "controller.render.piglin_mace"
+            ]
+        }
+    }
+}

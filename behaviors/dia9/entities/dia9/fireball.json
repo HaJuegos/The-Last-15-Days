@@ -1,0 +1,160 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.26.0",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "minecraft:fireball",
+            "is_summonable": true,
+            "is_spawnable": false
+        },
+        "component_groups": {
+            "ha:normal_fireball": {
+                "minecraft:projectile": {
+                    "on_hit": {
+                        "definition_event": {
+                            "affect_projectile": true,
+                            "event_trigger": {
+                                "event": "minecraft:explode",
+                                "target": "self"
+                            }
+                        },
+                        "impact_damage": {
+                            "apply_knockback_to_blocking_targets": true,
+                            "damage": 6,
+                            "knockback": false,
+                            "semi_random_diff_damage": false
+                        },
+                        "arrow_effect": {
+                            "apply_effect_to_blocking_targets": true
+                        },
+                        "catch_fire": true
+                    },
+                    "anchor": 2,
+                    "gravity": 0.0,
+                    "catch_fire": true,
+                    "inertia": 1,
+                    "liquid_inertia": 1,
+                    "offset": [ 0, -1.5, 0 ],
+                    "power": 2,
+                    "is_dangerous": true,
+                    "multiple_targets": true,
+                    "should_bounce": false,
+                    "stop_on_hurt": true,
+                    "uncertainty_base": 0,
+                    "uncertainty_multiplier": 0
+                }
+            },
+            "ha:skeleton_fireball": {
+                "minecraft:projectile": {
+                    "on_hit": {
+                        "definition_event": {
+                            "affect_projectile": true,
+                            "event_trigger": {
+                                "event": "ha:skeleton_explode",
+                                "target": "self"
+                            }
+                        },
+                        "impact_damage": {
+                            "apply_knockback_to_blocking_targets": true,
+                            "damage": 6,
+                            "knockback": false,
+                            "semi_random_diff_damage": false
+                        },
+                        "arrow_effect": {
+                            "apply_effect_to_blocking_targets": true
+                        },
+                        "catch_fire": true
+                    },
+                    "anchor": 2,
+                    "gravity": 0.0,
+                    "catch_fire": true,
+                    "inertia": 1,
+                    "liquid_inertia": 1,
+                    "offset": [ 0, -1.5, 0 ],
+                    "power": 2,
+                    "is_dangerous": true,
+                    "multiple_targets": true,
+                    "should_bounce": false,
+                    "stop_on_hurt": true,
+                    "uncertainty_base": 0,
+                    "uncertainty_multiplier": 0
+                }
+            },
+            "minecraft:exploding": {
+                "minecraft:explode": {
+                    "causes_fire": true,
+                    "fire_affected_by_griefing": true,
+                    "fuse_lit": true,
+                    "power": 1,
+                    "destroy_affected_by_griefing": true,
+                    "fuse_length": 0,
+                    "knockback_scaling": 2.5
+                }
+            },
+            "ha:skeleton_exploding": {
+                "minecraft:explode": {
+                    "causes_fire": false,
+                    "fire_affected_by_griefing": true,
+                    "fuse_lit": true,
+                    "power": 3,
+                    "destroy_affected_by_griefing": true,
+                    "fuse_length": 0,
+                    "allow_underwater": true,
+                    "breaks_blocks": true,
+                    "toggles_blocks": true,
+                    "knockback_scaling": 2.5
+                }
+            }
+        },
+        "components": {
+            "minecraft:collision_box": {
+                "height": 1.0,
+                "width": 1.0
+            },
+            "minecraft:conditional_bandwidth_optimization": {
+                "default_values": {
+                    "max_dropped_ticks": 7,
+                    "max_optimized_distance": 80.0,
+                    "use_motion_prediction_hints": true
+                }
+            },
+            "minecraft:dimension_bound": { },
+            "minecraft:physics": { },
+            "minecraft:pushable": {
+                "is_pushable": true,
+                "is_pushable_by_piston": true
+            }
+        },
+        "events": {
+            "minecraft:entity_spawned": {
+                "add": {
+                    "component_groups": [
+                        "ha:normal_fireball"
+                    ]
+                }
+            },
+            "ha:from_skeleton_bee": {
+                "add": {
+                    "component_groups": [
+                        "ha:skeleton_fireball"
+                    ]
+                }
+            },
+            "ha:skeleton_explode": {
+                "add": {
+                    "component_groups": [
+                        "ha:skeleton_exploding"
+                    ]
+                }
+            },
+            "minecraft:explode": {
+                "add": {
+                    "component_groups": [
+                        "minecraft:exploding"
+                    ]
+                }
+            }
+        }
+    }
+}

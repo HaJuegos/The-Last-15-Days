@@ -1,0 +1,116 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.26.0",
+    "minecraft:block": {
+        "description": {
+            "identifier": "ha:dynamite_block",
+            "menu_category": {
+                "category": "construction"
+            },
+            "traits": {
+                "minecraft:placement_direction": {
+                    "enabled_states": [
+                        "minecraft:cardinal_direction"
+                    ]
+                }
+            },
+            "states": {
+                "ha:is_on": [ false, true ]
+            }
+        },
+        "permutations": [
+            {
+                "condition": "q.block_state('minecraft:cardinal_direction') == 'north'",
+                "components": {
+                    "minecraft:transformation": { "rotation": [ 0, 0, 0 ] }
+                }
+            },
+            {
+                "condition": "q.block_state('minecraft:cardinal_direction') == 'south'",
+                "components": {
+                    "minecraft:transformation": { "rotation": [ 0, 180, 0 ] }
+                }
+            },
+            {
+                "condition": "q.block_state('minecraft:cardinal_direction') == 'east'",
+                "components": {
+                    "minecraft:transformation": { "rotation": [ 0, 90, 0 ] }
+                }
+            },
+            {
+                "condition": "q.block_state('minecraft:cardinal_direction') == 'west'",
+                "components": {
+                    "minecraft:transformation": { "rotation": [ 0, -90, 0 ] }
+                }
+            },
+            {
+                "condition": "!q.block_state('ha:is_on')",
+                "components": {
+                    "minecraft:light_emission": 0,
+                    "minecraft:loot": "loot_tables/blocks/dynamite_off_drop.json",
+                    "minecraft:material_instances": {
+                        "*": {
+                            "texture": "dynamite_off",
+                            "render_method": "alpha_test",
+                            "ambient_occlusion": true,
+                            "face_dimming": true
+                        }
+                    }
+                }
+            },
+            {
+                "condition": "q.block_state('ha:is_on')",
+                "components": {
+                    "minecraft:light_emission": 5,
+                    "minecraft:loot": "loot_tables/blocks/dynamite_on_drop.json",
+                    "minecraft:material_instances": {
+                        "*": {
+                            "texture": "dynamite_on",
+                            "render_method": "alpha_test",
+                            "ambient_occlusion": true,
+                            "face_dimming": true
+                        }
+                    }
+                }
+            }
+        ],
+        "components": {
+            "minecraft:display_name": "tile.ha:dynamite_block.name",
+            "minecraft:liquid_detection": {
+                "detection_rules": [
+                    {
+                        "liquid_type": "water",
+                        "can_contain_liquid": true,
+                        "on_liquid_touches": "no_reaction",
+                        "stops_liquid_flowing_from_direction": [ ]
+                    }
+                ]
+            },
+            "minecraft:material_instances": {
+                "*": {
+                    "texture": "dynamite_off",
+                    "render_method": "alpha_test",
+                    "ambient_occlusion": true,
+                    "face_dimming": true
+                }
+            },
+            "ha:dynamite_interactions": { },
+            "minecraft:collision_box": {
+                "origin": [ -1.1, 0, -1.1 ],
+                "size": [ 2.2, 8, 2.2 ]
+            },
+            "minecraft:selection_box": {
+                "origin": [ -1.1, 0, -1.1 ],
+                "size": [ 2.2, 8, 2.2 ]
+            },
+            "minecraft:destructible_by_explosion": true,
+            "minecraft:destructible_by_mining": true,
+            "minecraft:geometry": "geometry.dynamite.block",
+            "minecraft:light_dampening": 0,
+            "minecraft:movable": {
+                "movement_type": "push_pull"
+            }
+        }
+    }
+}

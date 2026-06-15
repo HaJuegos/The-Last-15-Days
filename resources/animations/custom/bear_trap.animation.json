@@ -1,0 +1,53 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.10.0",
+    "animations": {
+        "animation.bear_trap.spawned": {
+            "loop": true,
+            "bones": {
+                "bone": {
+                    "position": [
+                        0,
+                        "Math.clamp(q.life_time * v.anim_speed, 0, 0.875) < 0.5 ? Math.lerp(20, 0, Math.clamp(q.life_time * v.anim_speed, 0, 0.5) * 2) : Math.clamp(q.life_time * v.anim_speed, 0.5, 0.875) < 0.625 ? Math.lerp(0, 2, (Math.clamp(q.life_time * v.anim_speed, 0.5, 0.625) - 0.5) * 8) : Math.lerp(2, 0, (Math.clamp(q.life_time * v.anim_speed, 0.625, 0.875) - 0.625) * 4)",
+                        0
+                    ]
+                },
+                "bone2": {
+                    "rotation": [
+                        "Math.clamp(q.life_time * v.anim_speed, 0, 0.875) < 0.5 ? Math.lerp(60, 0, Math.clamp(q.life_time * v.anim_speed, 0, 0.5) * 2) : Math.clamp(q.life_time * v.anim_speed, 0.5, 0.625) < 0.625 ? Math.lerp(0, -20, (Math.clamp(q.life_time * v.anim_speed, 0.5, 0.625) - 0.5) * 8) : Math.clamp(q.life_time * v.anim_speed, 0.625, 0.75) < 0.75 ? Math.lerp(-20, 15, (Math.clamp(q.life_time * v.anim_speed, 0.625, 0.75) - 0.625) * 8) : Math.lerp(15, 0, (Math.clamp(q.life_time * v.anim_speed, 0.75, 0.875) - 0.75) * 8)",
+                        0,
+                        0
+                    ]
+                },
+                "bone3": {
+                    "rotation": [
+                        "Math.clamp(q.life_time * v.anim_speed, 0, 0.875) < 0.5 ? Math.lerp(-60, 0, Math.clamp(q.life_time * v.anim_speed, 0, 0.5) * 2) : Math.clamp(q.life_time * v.anim_speed, 0.5, 0.625) < 0.625 ? Math.lerp(0, 20, (Math.clamp(q.life_time * v.anim_speed, 0.5, 0.625) - 0.5) * 8) : Math.clamp(q.life_time * v.anim_speed, 0.625, 0.75) < 0.75? Math.lerp(20, -15, (Math.clamp(q.life_time * v.anim_speed, 0.625, 0.75) - 0.625) * 8): Math.lerp(-15, 0, (Math.clamp(q.life_time * v.anim_speed, 0.75, 0.875) - 0.75) * 8)",
+                        0,
+                        0
+                    ]
+                }
+            }
+        },
+        "animation.bear_trap.scale_loop": {
+            "loop": true,
+            "bones": {
+                "bone": {
+                    "scale": 3
+                }
+            }
+        },
+        "animation.bear_trap.init_trap": {
+            "loop": true,
+            "override_previous_animation": true,
+            "bones": {
+                "bone2": {
+                    "rotation": [ "Math.lerp(0, 90, Math.clamp(q.life_time * v.anim_speed, 0, 0.125) * 8)", 0, 0 ]
+                },
+                "bone3": {
+                    "rotation": [ "Math.lerp(0, -90, Math.clamp(q.life_time * v.anim_speed, 0, 0.125) * 8)", 0, 0 ]
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,34 @@
+{
+    "name": "tl15d-repo",
+    "version": "0.0.12",
+    "description": "El repositorio de TL15D con el contenido de desarrollo del add-on.",
+    "homepage": "https://github.com/HaJuegos/The-Last-15-Days#readme",
+    "bugs": {
+        "url": "https://github.com/HaJuegos/The-Last-15-Days/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/HaJuegos/The-Last-15-Days.git"
+    },
+    "license": "ISC",
+    "author": "HaJuegos",
+    "type": "commonjs",
+    "main": "main.ts",
+    "devDependencies": {
+        "@types/node": "^25.4.0",
+        "esbuild": "^0.27.3",
+        "nodemon": "^3.1.14",
+        "typescript": "^5.9.3"
+    },
+    "dependencies": {
+        "@minecraft/debug-utilities": "^1.0.0-beta.1.26.20-stable",
+        "@minecraft/gameplay-utilities": "1.3.0",
+        "@minecraft/server": "^2.8.0-beta.1.26.20-stable",
+        "@minecraft/server-gametest": "^1.0.0-beta.1.26.20-stable",
+        "@minecraft/server-graphics": "^1.0.0-beta.1.26.20-stable",
+        "@minecraft/server-net": "^1.0.0-beta.1.26.20-stable",
+        "@minecraft/server-ui": "^2.1.0-beta.1.26.20-stable",
+        "@minecraft/vanilla-data": "^1.26.2",
+        "simplified-mojang-api": "^0.0.44"
+    }
+}

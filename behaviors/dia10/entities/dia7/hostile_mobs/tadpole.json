@@ -1,0 +1,231 @@
+// mc-disable resourcepack.sounds.missing
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+	"format_version": "1.26.10",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "minecraft:tadpole",
+			"spawn_category": "creature",
+			"is_spawnable": true,
+			"is_summonable": true
+		},
+		"component_groups": {
+			"ha:explode": {
+				"minecraft:damage_sensor": { },
+				"minecraft:explode": {
+					"power": 4,
+					"fuse_length": [
+						0.7,
+						0.7
+					],
+					"fuse_lit": true,
+					"allow_underwater": true,
+					"breaks_blocks": true,
+					"causes_fire": false,
+					"destroy_affected_by_griefing": true,
+					"fire_affected_by_griefing": true,
+					"toggles_blocks": true,
+					"knockback_scaling": 3
+				}
+			},
+			"grow_up": {
+				"minecraft:transformation": {
+					"into": "minecraft:frog",
+					"transformation_sound": "convert_to_frog"
+				}
+			}
+		},
+		"components": {
+			"minecraft:damage_sensor": {
+				"triggers": [
+					{
+						"on_damage": {
+							"filters": {
+								"test": "has_component",
+								"subject": "self",
+								"operator": "!=",
+								"value": "minecraft:explode"
+							},
+							"target": "self",
+							"event": "ha:start_explode"
+						},
+						"cause": "all",
+						"deals_damage": "yes"
+					}
+				]
+			},
+			"minecraft:attack": {
+				"damage": 6
+			},
+			"minecraft:behavior.melee_box_attack": {
+				"priority": 0,
+				"can_spread_on_fire": true,
+				"horizontal_reach": 1.15,
+				"melee_fov": 360,
+				"track_target": true,
+				"speed_multiplier": 1.35,
+				"on_attack": {
+					"filters": {
+						"test": "has_component",
+						"subject": "self",
+						"operator": "!=",
+						"value": "minecraft:explode"
+					},
+					"target": "self",
+					"event": "ha:start_explode"
+				}
+			},
+			"minecraft:behavior.hurt_by_target": {
+				"priority": 1
+			},
+			"minecraft:behavior.nearest_attackable_target": {
+				"priority": 2,
+				"must_see": true,
+				"reselect_targets": true,
+				"entity_types": [
+					{
+						"filters": {
+							"any_of": [
+								{
+									"test": "is_family",
+									"subject": "other",
+									"value": "player"
+								},
+								{
+									"test": "is_family",
+									"subject": "other",
+									"value": "irongolem"
+								},
+								{
+									"test": "is_family",
+									"subject": "other",
+									"value": "snowgolem"
+								}
+							]
+						},
+						"max_dist": 30
+					}
+				]
+			},
+			"minecraft:is_hidden_when_invisible": { },
+			"minecraft:type_family": {
+				"family": [
+					"aquatic",
+					"tadpole",
+					"mob"
+				]
+			},
+			"minecraft:collision_box": {
+				"width": 0.8,
+				"height": 0.6
+			},
+			"minecraft:breathable": {
+				"total_supply": 8,
+				"suffocate_time": 0,
+				"breathes_water": true,
+				"breathes_air": false,
+				"generates_bubbles": false
+			},
+			"minecraft:nameable": { },
+			"minecraft:health": {
+				"value": 6
+			},
+			"minecraft:hurt_on_condition": {
+				"damage_conditions": [
+					{
+						"filters": {
+							"test": "in_lava",
+							"subject": "self",
+							"operator": "==",
+							"value": true
+						},
+						"cause": "lava",
+						"damage_per_tick": 4
+					}
+				]
+			},
+			"minecraft:navigation.generic": {
+				"can_path_over_water": true,
+				"can_swim": true,
+				"can_walk": false,
+				"can_sink": false,
+				"avoid_damage_blocks": true
+			},
+			"minecraft:movement.sway": {
+				"sway_amplitude": 0.0
+			},
+			"minecraft:movement": {
+				"value": 0.1
+			},
+			"minecraft:underwater_movement": {
+				"value": 0.1
+			},
+			"minecraft:physics": { },
+			"minecraft:pushable_by_entity": { },
+			"minecraft:pushable_by_block": { },
+			"minecraft:despawn": {
+				"despawn_from_distance": { }
+			},
+			"minecraft:is_baby": { },
+			"minecraft:ageable": {
+				"duration": 1200,
+				"feed_items": [
+					"slime_ball"
+				],
+				"pause_growth_items": [
+					"golden_dandelion"
+				],
+				"reset_growth_items": [
+					"golden_dandelion"
+				],
+				"grow_up": {
+					"event": "ageable_grow_up",
+					"target": "self"
+				}
+			},
+			"minecraft:behavior.tempt": {
+				"priority": 5,
+				"speed_multiplier": 1.25,
+				"can_tempt_vertically": true,
+				"items": [
+					"slime_ball"
+				]
+			},
+			"minecraft:behavior.random_swim": {
+				"priority": 2,
+				"interval": 100
+			},
+			"minecraft:behavior.look_at_player": {
+				"priority": 3,
+				"look_distance": 6.0,
+				"probability": 0.02
+			}
+		},
+		"events": {
+			"ha:start_explode": {
+				"queue_command": {
+					"command": [
+						"playsound mob.start_exploding.sound @a ~~~"
+					]
+				},
+				"add": {
+					"component_groups": [
+						"ha:explode"
+					]
+				}
+			},
+			"ageable_grow_up": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"grow_up"
+							]
+						}
+					}
+				]
+			}
+		}
+	}
+}

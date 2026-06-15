@@ -1,0 +1,243 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.21.50",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "ha:player_ghost",
+            "spawn_category": "creature",
+            "is_experimental": false,
+            "is_spawnable": false,
+            "is_summonable": true
+        },
+        "component_groups": {
+            "start_go_home": {
+                "minecraft:timer": {
+                    "randomInterval": true,
+                    "random_time_choices": [
+                        {
+                            "weight": 1,
+                            "value": 5
+                        },
+                        {
+                            "weight": 1,
+                            "value": 6
+                        },
+                        {
+                            "weight": 1,
+                            "value": 7
+                        },
+                        {
+                            "weight": 1,
+                            "value": 14
+                        }
+                    ],
+                    "looping": true,
+                    "time_down_event": {
+                        "event": "ha:go_home",
+                        "target": "self"
+                    }
+                }
+            },
+            "go_home": {
+                "minecraft:behavior.go_home": {
+                    "priority": 0,
+                    "interval": 200,
+                    "speed_multiplier": 1,
+                    "goal_radius": 1.0,
+                    "on_failed": [
+                        {
+                            "event": "ha:end_home",
+                            "target": "self"
+                        }
+                    ],
+                    "on_home": [
+                        {
+                            "event": "ha:end_home",
+                            "target": "self"
+                        }
+                    ]
+                }
+            }
+        },
+        "components": {
+            "minecraft:experience_reward": {
+                "on_death": "Math.Min(query.player_level * 7, 100)"
+            },
+            "minecraft:persistent": { },
+            "minecraft:type_family": {
+                "family": [
+                    "player_ghost",
+                    "inanimate",
+                    "undead",
+                    "mob"
+                ]
+            },
+            "minecraft:collision_box": {
+                "height": 1.65,
+                "width": 0.75
+            },
+            "minecraft:nameable": {
+                "allow_name_tag_renaming": false,
+                "always_show": true
+            },
+            "minecraft:leashable": {
+                "can_be_stolen": true,
+                "hard_distance": 6,
+                "max_distance": 10,
+                "soft_distance": 4
+            },
+            "minecraft:leashable_to": { },
+            "minecraft:health": {
+                "value": 1,
+                "max": 1
+            },
+            "minecraft:movement": {
+                "value": 0
+            },
+            "minecraft:flying_speed": {
+                "value": 0.1
+            },
+            "minecraft:navigation.hover": {
+                "can_path_over_water": true,
+                "can_sink": false,
+                "can_pass_doors": false,
+                "can_open_doors": true,
+                "can_open_iron_doors": true,
+                "can_path_from_air": true,
+                "avoid_portals": true,
+                "avoid_damage_blocks": true,
+                "can_path_over_lava": true,
+                "can_walk_in_lava": true
+            },
+            "minecraft:movement.hover": { },
+            "minecraft:follow_range": {
+                "value": 1024
+            },
+            "minecraft:jump.static": { },
+            "minecraft:can_fly": { },
+            "minecraft:pushable": {
+                "is_pushable": false,
+                "is_pushable_by_piston": true
+            },
+            "minecraft:game_event_movement_tracking": {
+                "emit_flap": true
+            },
+            "minecraft:inventory": {
+                "container_type": "inventory",
+                "inventory_size": 70,
+                "can_be_siphoned_from": false,
+                "private": false,
+                "restrict_to_owner": true
+            },
+            "minecraft:physics": {
+                "has_collision": true,
+                "has_gravity": true
+            },
+            "minecraft:balloonable": {
+                "max_distance": 10,
+                "soft_distance": 2,
+                "mass": 0.5
+            },
+            "minecraft:tick_world": {
+                "never_despawn": true,
+                "radius": 4
+            },
+            "minecraft:reflect_projectiles": {
+                "reflected_projectiles": [
+                    "xp_bottle",
+                    "thrown_trident",
+                    "shulker_bullet",
+                    "dragon_fireball",
+                    "arrow",
+                    "snowball",
+                    "egg",
+                    "fireball",
+                    "splash_potion",
+                    "ender_pearl",
+                    "wither_skull",
+                    "wither_skull_dangerous",
+                    "small_fireball",
+                    "lingering_potion",
+                    "llama_spit",
+                    "fireworks_rocket",
+                    "fishing_hook",
+                    "ha:dynamite",
+                    "ha:slime_pearl"
+                ],
+                "azimuth_angle": "180.0 + Math.random(-20.0, 20.0)",
+                "reflection_scale": "0.5"
+            },
+            "minecraft:renders_when_invisible": { },
+            "minecraft:mob_effect_immunity": { },
+            "minecraft:home": { },
+            "minecraft:knockback_resistance": {
+                "value": 9999
+            },
+            "minecraft:body_rotation_blocked": { },
+            "minecraft:cannot_be_attacked": { },
+            "minecraft:dimension_bound": { },
+            "minecraft:fire_immune": { },
+            "minecraft:can_climb": { },
+            "minecraft:block_climber": { },
+            "minecraft:conditional_bandwidth_optimization": { },
+            "minecraft:behavior.float": {
+                "priority": 1,
+                "sink_with_passengers": true
+            },
+            "minecraft:damage_sensor": {
+                "triggers": [
+                    {
+                        "cause": "all",
+                        "on_damage": {
+                            "filters": {
+                                "all_of": [
+                                    {
+                                        "test": "is_family",
+                                        "subject": "damager",
+                                        "operator": "!=",
+                                        "value": "player"
+                                    }
+                                ]
+                            }
+                        },
+                        "deals_damage": "no"
+                    }
+                ]
+            }
+        },
+        "events": {
+            "minecraft:entity_spawned": {
+                "add": {
+                    "component_groups": [
+                        "start_go_home"
+                    ]
+                }
+            },
+            "ha:go_home": {
+                "remove": {
+                    "component_groups": [
+                        "start_go_home"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
+                        "go_home"
+                    ]
+                }
+            },
+            "ha:end_home": {
+                "remove": {
+                    "component_groups": [
+                        "go_home"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
+                        "start_go_home"
+                    ]
+                }
+            }
+        }
+    }
+}

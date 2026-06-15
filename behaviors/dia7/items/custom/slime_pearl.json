@@ -1,0 +1,34 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.26.0",
+    "minecraft:item": {
+        "description": {
+            "identifier": "ha:slime_pearl",
+            "menu_category": {
+                "category": "equipment"
+            }
+        },
+        "components": {
+            "minecraft:display_name": {
+                "value": "item.ha:slime_pearl"
+            },
+            "minecraft:allow_off_hand": false,
+            "minecraft:can_destroy_in_creative": true,
+            "minecraft:icon": "slime_pearl",
+            "minecraft:max_stack_size": 16,
+            "minecraft:projectile": {
+                "minimum_critical_power": 1.25,
+                "projectile_entity": "ha:slime_pearl"
+            },
+            "minecraft:rarity": "common",
+            "minecraft:throwable": {
+                "do_swing_animation": true
+            },
+            "minecraft:cooldown": {
+                "category": "slime_pearl",
+                "duration": 0.95
+            }
+        }
+    }
+}

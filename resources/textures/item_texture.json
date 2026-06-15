@@ -1,0 +1,173 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "resource_pack_name": "vanilla",
+    "texture_name": "atlas.items",
+    "texture_data": {
+        "dynamite_on": {
+            "textures": [
+                "textures/items/custom/dynamite"
+            ]
+        },
+        "dynamite_off": {
+            "textures": [
+                "textures/items/custom/dynamite_off"
+            ]
+        },
+        "iron_apple": {
+            "textures": [
+                "textures/items/custom/iron_apple"
+            ]
+        },
+        "stone_skull": {
+            "textures": [
+                "textures/items/custom/skull_stone"
+            ]
+        },
+        "invocation_skull": {
+            "textures": [
+                "textures/items/custom/skull_invocation"
+            ]
+        },
+        "soul_fire": {
+            "textures": [
+                "textures/items/custom/nether_items/soul_fire"
+            ]
+        },
+        "piglin_mace": {
+            "textures": [
+                "textures/items/custom/hammer_piglin"
+            ]
+        },
+        "infernal_crown": {
+            "textures": [
+                "textures/items/custom/nether_items/infernal_crown_full"
+            ]
+        },
+        "infernal_crown_off": {
+            "textures": [
+                "textures/items/custom/nether_items/infernal_crown_empty"
+            ]
+        },
+        "infernal_gem_blaze": {
+            "textures": [
+                "textures/items/custom/nether_items/blaze"
+            ]
+        },
+        "infernal_gem_piglin": {
+            "textures": [
+                "textures/items/custom/nether_items/piglin"
+            ]
+        },
+        "infernal_gem_magma": {
+            "textures": [
+                "textures/items/custom/nether_items/magma"
+            ]
+        },
+        "melted_slime": {
+            "textures": [
+                "textures/items/custom/melted_slime"
+            ]
+        },
+        "slime_pearl": {
+            "textures": [
+                "textures/items/custom/viscous_pearl"
+            ]
+        },
+        "hoglin_fang": {
+            "textures": [
+                "textures/items/custom/hoglin_tusk"
+            ]
+        },
+        "surprise_bundle": {
+            "textures": [
+                "textures/items/custom/surprise_bundle"
+            ]
+        },
+        "allay_dust": {
+            "textures": [
+                "textures/items/custom/allay_dust"
+            ]
+        },
+        "allay_essence": {
+            "textures": [
+                "textures/items/custom/allay_essence"
+            ]
+        },
+        "soul_link": {
+            "textures": [
+                "textures/items/custom/soul_link"
+            ]
+        },
+        "void_item": {
+            "textures": [
+                "textures/items/custom/void_item"
+            ]
+        },
+        "knowledge_book": {
+            "textures": [
+                "textures/items/knowledge_book"
+            ]
+        },
+        "fake_n_helmet": {
+            "textures": [
+                "textures/items/netherite_helmet"
+            ]
+        },
+        "fake_n_chestplate": {
+            "textures": [
+                "textures/items/netherite_chestplate"
+            ]
+        },
+        "fake_n_leggings": {
+            "textures": [
+                "textures/items/netherite_leggings"
+            ]
+        },
+        "fake_n_boots": {
+            "textures": [
+                "textures/items/netherite_boots"
+            ]
+        },
+        "cautious_helmet": {
+            "textures": [
+                "textures/items/custom/cautious_armor/helmet"
+            ]
+        },
+        "cautious_chestplate": {
+            "textures": [
+                "textures/items/custom/cautious_armor/chestplate"
+            ]
+        },
+        "cautious_leggings": {
+            "textures": [
+                "textures/items/custom/cautious_armor/leggings"
+            ]
+        },
+        "cautious_boots": {
+            "textures": [
+                "textures/items/custom/cautious_armor/boots"
+            ]
+        },
+        "dragon_disc": {
+            "textures": [
+                "textures/items/custom/disks_randoms/dragon_disc"
+            ]
+        },
+        "final_disc": {
+            "textures": [
+                "textures/items/custom/disks_randoms/final_disc"
+            ]
+        },
+        "party_disc": {
+            "textures": [
+                "textures/items/custom/disks_randoms/party_disc"
+            ]
+        },
+        "silla_disc": {
+            "textures": [
+                "textures/items/custom/disks_randoms/silla_disc"
+            ]
+        }
+    }
+}

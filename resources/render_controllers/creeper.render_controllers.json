@@ -1,0 +1,36 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.10.0",
+    "render_controllers": {
+        "controller.render.creeper": {
+            "arrays": {
+                "textures": {
+                    "Array.skins": [
+                        "Texture.default",
+                        "Texture.radioactive",
+                        "Texture.obsidian",
+                        "Texture.debuff",
+                        "Texture.mommy",
+                        "Texture.ninja"
+                    ]
+                }
+            },
+            "geometry": "q.variant == 1 ? Geometry.radioactive : Geometry.default",
+            "materials": [
+                {
+                    "*": "q.variant == 1 ? Material.radioactive : Material.default"
+                }
+            ],
+            "textures": [
+                "q.variant ? Array.skins[q.variant] : Texture.default"
+            ],
+            "overlay_color": {
+                "r": "((variable.flash == 0.0) || (query.swelling_dir < 0.0)) ? this : 1.0",
+                "g": "((variable.flash == 0.0) || (query.swelling_dir < 0.0)) ? this : 1.0",
+                "b": "((variable.flash == 0.0) || (query.swelling_dir < 0.0)) ? this : 1.0",
+                "a": "((variable.flash == 0.0) || (query.swelling_dir < 0.0)) ? this : 0.5"
+            }
+        }
+    }
+}

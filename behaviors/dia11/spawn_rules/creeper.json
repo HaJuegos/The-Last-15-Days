@@ -1,0 +1,51 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.10.0",
+    "minecraft:spawn_rules": {
+        "description": {
+            "identifier": "minecraft:creeper",
+            "population_control": "monster"
+        },
+        "conditions": [
+            {
+                "minecraft:spawns_on_surface": { },
+                "minecraft:weight": {
+                    "default": 10
+                },
+                "minecraft:herd": {
+                    "event": "ha:creeper_end_spawned",
+                    "min_size": 1,
+                    "max_size": 2
+                },
+                "minecraft:biome_filter": {
+                    "test": "has_biome_tag",
+                    "value": "the_end"
+                }
+            },
+            {
+                "minecraft:spawns_on_surface": { },
+                "minecraft:spawns_underground": { },
+                "minecraft:brightness_filter": {
+                    "min": 0,
+                    "max": 7,
+                    "adjust_for_weather": true
+                },
+                "minecraft:difficulty_filter": {
+                    "min": "easy",
+                    "max": "hard"
+                },
+                "minecraft:weight": {
+                    "default": 100
+                },
+                "minecraft:density_limit": {
+                    "surface": 5
+                },
+
+                "minecraft:biome_filter": {
+                    "test": "has_biome_tag", "operator": "==", "value": "monster"
+                }
+            }
+        ]
+    }
+}

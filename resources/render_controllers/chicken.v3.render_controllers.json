@@ -1,0 +1,46 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.10.0",
+    "render_controllers": {
+        "controller.render.chicken.v3": {
+            "arrays": {
+                "textures": {
+                    "Array.textures": [
+                        "Texture.default",
+                        "Texture.warm",
+                        "Texture.cold"
+                    ],
+                    "Array.baby_textures": [
+                        "Texture.baby_default",
+                        "Texture.baby_warm",
+                        "Texture.baby_cold"
+                    ],
+                    "Array.skuartu_mode": [
+                        "Texture.skuartu",
+                        "Texture.skuartu_baby"
+                    ]
+                },
+                "geometries": {
+                    "Array.geos": [
+                        "Geometry.default",
+                        "Geometry.warm",
+                        "Geometry.cold"
+                    ],
+                    "Array.skuartu_geo": [
+                        "Geometry.skuartu",
+                        "Geometry.skuartu_baby"
+                    ]
+                }
+            },
+            "geometry": "query.skin_id == 1 ? Array.skuartu_geo[query.is_baby ? 1 : 0] : (query.is_baby ? Geometry.baby : Array.geos[v.index])",
+            "materials": [
+                { "*": "query.skin_id == 1 ? Material.skuartu : (v.is_cold ? Material.cold : Material.default)" },
+                { "leg*": "Material.legs" }
+            ],
+            "textures": [
+                "query.skin_id == 1 ? Array.skuartu_mode[query.is_baby ? 1 : 0] : (query.is_baby ? Array.baby_textures[v.index] : Array.textures[v.index])"
+            ]
+        }
+    }
+}

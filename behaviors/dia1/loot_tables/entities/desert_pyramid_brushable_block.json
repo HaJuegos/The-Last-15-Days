@@ -1,0 +1,59 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "pools": [
+        {
+            "rolls": {
+                "min": 1,
+                "max": 1
+            },
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "minecraft:archer_pottery_sherd",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:miner_pottery_sherd",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:prize_pottery_sherd",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:skull_pottery_sherd",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:gunpowder",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:tnt",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:diamond",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:emerald",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "name": "ha:surprise_bundle",
+                    "weight": 1
+                }
+            ]
+        }
+    ]
+}

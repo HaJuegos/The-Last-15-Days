@@ -1,0 +1,237 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.26.0",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "minecraft:ender_dragon",
+            "is_summonable": true,
+            "is_spawnable": true,
+            "spawn_category": "monster"
+        },
+        "component_groups": {
+            "ha:normal_balls": {
+                "minecraft:boss": {
+                    "name": "§g§lRoyerBot§r",
+                    "hud_range": 500,
+                    "should_darken_sky": true
+                },
+                "minecraft:shooter": {
+                    "def": "minecraft:dragon_fireball<ha:normal_balls>"
+                }
+            },
+            "ha:enraged_balls": {
+                "minecraft:boss": {
+                    "name": "§p§lTHE ROYER BOT§r",
+                    "hud_range": 500,
+                    "should_darken_sky": true
+                },
+                "minecraft:shooter": {
+                    "def": "minecraft:dragon_fireball<ha:enraged_balls>"
+                }
+            },
+            "ha:landing_mode": {
+                "minecraft:behavior.dragonflaming": {
+                    "priority": 1,
+                    "cooldown_time": 6,
+                    "flame_time": 1.25,
+                    "roar_time": 1.2,
+                    "ground_flame_count": 5
+                },
+                "minecraft:behavior.dragonlanding": {
+                    "priority": 0
+                },
+                "minecraft:behavior.dragonscanning": {
+                    "priority": 2
+                },
+                "minecraft:timer": {
+                    "random_time_choices": [
+                        { "weight": 1, "value": 7 },
+                        { "weight": 1, "value": 8 },
+                        { "weight": 1, "value": 10 },
+                        { "weight": 1, "value": 20 }
+                    ],
+                    "randomInterval": true,
+                    "looping": false,
+                    "time_down_event": {
+                        "event": "ha:start_flying",
+                        "target": "self"
+                    }
+                }
+            },
+            "ha:flying_mode": {
+                "minecraft:behavior.dragonchargeplayer": {
+                    "priority": 1,
+                    "active_speed": 4.3,
+                    "flight_speed": 1.1,
+                    "target_zone": {
+                        "min": 3,
+                        "max": 110
+                    },
+                    "continue_charge_threshold_time": 0.35
+                },
+                "minecraft:behavior.dragonholdingpattern": {
+                    "priority": 3
+                },
+                "minecraft:behavior.dragonstrafeplayer": {
+                    "priority": 2,
+                    "active_speed": 0.9,
+                    "flight_speed": 0.9,
+                    "fireball_range": 65,
+                    "target_zone": {
+                        "min": 7,
+                        "max": 110
+                    },
+                    "turn_speed": 0.8,
+                    "view_angle": 20,
+                    "target_in_range_and_in_view_time": 0.25,
+                    "switch_direction_probability": 0.25
+                },
+                "minecraft:behavior.dragontakeoff": {
+                    "priority": 0
+                },
+                "minecraft:timer": {
+                    "random_time_choices": [
+                        { "weight": 1, "value": 18 },
+                        { "weight": 1, "value": 20 },
+                        { "weight": 1, "value": 22 },
+                        { "weight": 1, "value": 24 }
+                    ],
+                    "randomInterval": true,
+                    "looping": false,
+                    "time_down_event": {
+                        "event": "ha:start_landing",
+                        "target": "self"
+                    }
+                }
+            },
+            "ha:death_mode": {
+                "minecraft:behavior.dragondeath": {
+                    "priority": 0
+                }
+            }
+        },
+        "components": {
+            "minecraft:on_death": {
+                "target": "self",
+                "event": "ha:start_death_mode"
+            },
+            "minecraft:attack": {
+                "damage": 3
+            },
+            "minecraft:collision_box": {
+                "height": 4,
+                "width": 13
+            },
+            "minecraft:damage_sensor": {
+                "triggers": {
+                    "cause": "fall",
+                    "deals_damage": "no"
+                }
+            },
+            "minecraft:dimension_bound": { },
+            "minecraft:fire_immune": { },
+            "minecraft:flying_speed": {
+                "value": 0.6
+            },
+            "minecraft:game_event_movement_tracking": {
+                "emit_flap": true
+            },
+            "minecraft:health": {
+                "max": 3500,
+                "value": 3500
+            },
+            "minecraft:is_hidden_when_invisible": { },
+            "minecraft:knockback_resistance": {
+                "max": 100,
+                "value": 100
+            },
+            "minecraft:movement": {
+                "value": 0.3
+            },
+            "minecraft:persistent": { },
+            "minecraft:physics": {
+                "has_collision": false,
+                "has_gravity": false
+            },
+            "minecraft:type_family": {
+                "family": [
+                    "dragon",
+                    "mob"
+                ]
+            }
+        },
+        "events": {
+            "minecraft:entity_spawned": {
+                "add": {
+                    "component_groups": [
+                        "ha:flying_mode",
+                        "ha:normal_balls"
+                    ]
+                }
+            },
+            "ha:start_normal_mode": {
+                "remove": {
+                    "component_groups": [
+                        "ha:enraged_balls"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
+                        "ha:normal_balls"
+                    ]
+                }
+            },
+            "ha:start_enraged_mode": {
+                "remove": {
+                    "component_groups": [
+                        "ha:normal_balls"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
+                        "ha:enraged_balls"
+                    ]
+                }
+            },
+
+            "ha:start_flying": {
+                "remove": {
+                    "component_groups": [
+                        "ha:landing_mode"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
+                        "ha:flying_mode"
+                    ]
+                }
+            },
+            "ha:start_landing": {
+                "remove": {
+                    "component_groups": [
+                        "ha:flying_mode"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
+                        "ha:landing_mode"
+                    ]
+                }
+            },
+            "ha:start_death_mode": {
+                "remove": {
+                    "component_groups": [
+                        "ha:landing_mode",
+                        "ha:flying_mode"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
+                        "ha:death_mode"
+                    ]
+                }
+            }
+        }
+    }
+}

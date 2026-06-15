@@ -1,0 +1,14 @@
+{
+    "ui_defs": [
+        "ui/custom/abyss_icons.json",
+        "ui/custom/custom_credits.json",
+        "ui/custom/fast_items.json",
+        "ui/custom/water_mark.json",
+
+        "uibt/brewing_guide.ui",
+        "uibt/brewing_icons.ui",
+        "uibt/numbered_hotbar.ui",
+        "uibt/quick_crafting.ui",
+        "uibt/chat_tweaks.ui"
+    ]
+}

@@ -1,0 +1,1095 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.21.0",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "minecraft:player",
+            "spawn_category": "creature",
+            "is_spawnable": false,
+            "is_summonable": false,
+            "scripts": {
+                "animate": [
+                    "spawn_system"
+                ]
+            },
+            "animations": {
+                "spawn_system": "controller.animation.player.spawned_day"
+            }
+        },
+        "component_groups": {
+            "ha:colossus_normal": {
+                "minecraft:movement": {
+                    "value": 0.1
+                },
+                "minecraft:scale": {
+                    "value": 1
+                }
+            },
+            "ha:colossus_one": {
+                "minecraft:scale": {
+                    "value": 1.25
+                },
+                "minecraft:movement": {
+                    "value": 0.095
+                }
+            },
+            "ha:colossus_two": {
+                "minecraft:scale": {
+                    "value": 1.5
+                },
+                "minecraft:movement": {
+                    "value": 0.09
+                }
+            },
+            "ha:colossus_three": {
+                "minecraft:scale": {
+                    "value": 1.75
+                },
+                "minecraft:movement": {
+                    "value": 0.085
+                }
+            },
+            "ha:colossus_four": {
+                "minecraft:scale": {
+                    "value": 2.0
+                },
+                "minecraft:movement": {
+                    "value": 0.08
+                }
+            },
+            "ha:colossus_five": {
+                "minecraft:scale": {
+                    "value": 2.25
+                },
+                "minecraft:movement": {
+                    "value": 0.075
+                }
+            },
+            "ha:colossus_six": {
+                "minecraft:scale": {
+                    "value": 2.5
+                },
+                "minecraft:movement": {
+                    "value": 0.07
+                }
+            },
+
+            "ha:soul_normal": {
+                "minecraft:exhaustion_values": {
+                    "heal": 6.0,
+                    "jump": 0.05,
+                    "sprint_jump": 0.2,
+                    "mine": 0.005,
+                    "attack": 0.1,
+                    "damage": 0.1,
+                    "walk": 0.0,
+                    "sprint": 0.1,
+                    "swim": 0.01,
+                    "lunge": 4.0
+                }
+            },
+            "ha:soul_one": {
+                "minecraft:exhaustion_values": {
+                    "heal": 9.0,
+                    "jump": 0.075,
+                    "sprint_jump": 0.3,
+                    "mine": 0.0075,
+                    "attack": 0.15,
+                    "damage": 0.15,
+                    "walk": 0.0,
+                    "sprint": 0.15,
+                    "swim": 0.015,
+                    "lunge": 6.0
+                }
+            },
+            "ha:soul_two": {
+                "minecraft:exhaustion_values": {
+                    "heal": 12.0,
+                    "jump": 0.1,
+                    "sprint_jump": 0.4,
+                    "mine": 0.01,
+                    "attack": 0.2,
+                    "damage": 0.2,
+                    "walk": 0.005,
+                    "sprint": 0.2,
+                    "swim": 0.02,
+                    "lunge": 8.0
+                }
+            },
+            "ha:soul_three": {
+                "minecraft:exhaustion_values": {
+                    "heal": 18.0,
+                    "jump": 0.15,
+                    "sprint_jump": 0.6,
+                    "mine": 0.015,
+                    "attack": 0.3,
+                    "damage": 0.3,
+                    "walk": 0.01,
+                    "sprint": 0.3,
+                    "swim": 0.03,
+                    "lunge": 12.0
+                }
+            },
+            "ha:soul_four": {
+                "minecraft:exhaustion_values": {
+                    "heal": 27.0,
+                    "jump": 0.225,
+                    "sprint_jump": 0.9,
+                    "mine": 0.0225,
+                    "attack": 0.45,
+                    "damage": 0.45,
+                    "walk": 0.015,
+                    "sprint": 0.45,
+                    "swim": 0.045,
+                    "lunge": 18.0
+                }
+            },
+            "ha:soul_five": {
+                "minecraft:exhaustion_values": {
+                    "heal": 36.0,
+                    "jump": 0.3,
+                    "sprint_jump": 1.2,
+                    "mine": 0.03,
+                    "attack": 0.6,
+                    "damage": 0.6,
+                    "walk": 0.02,
+                    "sprint": 0.6,
+                    "swim": 0.06,
+                    "lunge": 24.0
+                }
+            },
+            "ha:soul_six": {
+                "minecraft:exhaustion_values": {
+                    "heal": 48.0,
+                    "jump": 0.4,
+                    "sprint_jump": 1.6,
+                    "mine": 0.04,
+                    "attack": 0.8,
+                    "damage": 0.8,
+                    "walk": 0.03,
+                    "sprint": 0.8,
+                    "swim": 0.08,
+                    "lunge": 32.0
+                }
+            },
+
+            "ha:normal_breath": {
+                "minecraft:breathable": {
+                    "total_supply": 15,
+                    "suffocate_time": -1,
+                    "inhale_time": 3.75,
+                    "generates_bubbles": false
+                }
+            },
+            "ha:remove_breath": {
+                "minecraft:breathable": {
+                    "total_supply": 0,
+                    "suffocate_time": -1,
+                    "inhale_time": 3.75,
+                    "generates_bubbles": false
+                }
+            },
+
+            "ha:start_biome_damage_cooldown": {
+                "minecraft:timer": {
+                    "time": [ 120, 120 ],
+                    "looping": false,
+                    "time_down_event": {
+                        "event": "ha:start_damage_biome",
+                        "target": "self"
+                    }
+                }
+            },
+            "ha:damage_biome": {
+                "minecraft:damage_over_time": {
+                    "damage_per_hurt": 8,
+                    "time_between_hurt": 1
+                }
+            },
+
+            "minecraft:add_raid_omen": {
+                "minecraft:spell_effects": {
+                    "add_effects": [
+                        {
+                            "effect": "raid_omen",
+                            "duration": 10,
+                            "display_on_screen_animation": true
+                        }
+                    ],
+                    "remove_effects": "bad_omen"
+                },
+                "minecraft:timer": {
+                    "time": [ 0.0, 0.0 ],
+                    "looping": false,
+                    "time_down_event": {
+                        "event": "minecraft:clear_add_raid_omen",
+                        "target": "self"
+                    }
+                }
+            },
+            "minecraft:clear_raid_omen_spell_effect": {
+                "minecraft:spell_effects": {
+                }
+            },
+            "minecraft:raid_trigger": {
+                "minecraft:raid_trigger": {
+                    "triggered_event": {
+                        "event": "minecraft:remove_raid_trigger",
+                        "target": "self"
+                    }
+                }
+            }
+        },
+        "components": {
+            "minecraft:experience_reward": {
+                "on_death": "Math.Min(query.player_level * 7, 100)"
+            },
+            "minecraft:type_family": {
+                "family": [ "player" ]
+            },
+            "minecraft:is_hidden_when_invisible": {
+            },
+            "minecraft:loot": {
+                "table": "loot_tables/empty.json"
+            },
+            "minecraft:collision_box": {
+                "width": 0.6,
+                "height": 1.8
+            },
+            "minecraft:can_climb": {
+            },
+            "minecraft:movement": {
+                "value": 0.1
+            },
+            "minecraft:hurt_on_condition": {
+                "damage_conditions": [
+                    {
+                        "filters": {
+                            "test": "in_lava",
+                            "subject": "self",
+                            "value": true
+                        },
+                        "cause": "lava",
+                        "damage_per_tick": 10
+                    }
+                ]
+            },
+            "minecraft:attack": {
+                "damage": 1
+            },
+            "minecraft:exhaustion_values": {
+                "heal": 6.0,
+                "jump": 0.05,
+                "sprint_jump": 0.2,
+                "mine": 0.005,
+                "attack": 0.1,
+                "damage": 0.1,
+                "walk": 0.0,
+                "sprint": 0.1,
+                "swim": 0.01,
+                "lunge": 4.0
+            },
+            "minecraft:player.saturation": {
+                "value": 5,
+                "max": 20
+            },
+            "minecraft:player.exhaustion": {
+                "value": 0,
+                "max": 20
+            },
+            "minecraft:player.level": {
+                "value": 0,
+                "max": 24791
+            },
+            "minecraft:player.experience": {
+                "value": 0,
+                "max": 1
+            },
+            "minecraft:nameable": {
+                "always_show": true,
+                "allow_name_tag_renaming": false
+            },
+            "minecraft:physics": {
+                "push_towards_closest_space": true
+            },
+            "minecraft:pushable": {
+                "is_pushable": false,
+                "is_pushable_by_piston": true
+            },
+            "minecraft:insomnia": {
+                "days_until_insomnia": 1
+            },
+            "minecraft:rideable": {
+                "seat_count": 2,
+                "family_types": [
+                    "parrot_tame"
+                ],
+                "pull_in_entities": true,
+                "seats": [
+                    {
+                        "position": [ 0.4, -0.2, -0.1 ],
+                        "min_rider_count": 0,
+                        "max_rider_count": 0,
+                        "lock_rider_rotation": 0
+                    },
+                    {
+                        "position": [ -0.4, -0.2, -0.1 ],
+                        "min_rider_count": 1,
+                        "max_rider_count": 2,
+                        "lock_rider_rotation": 0
+                    }
+                ]
+            },
+            "minecraft:conditional_bandwidth_optimization": {
+            },
+            "minecraft:block_climber": { },
+            "minecraft:environment_sensor": {
+                "triggers": [
+                    {
+                        "filters": {
+                            "all_of": [
+                                {
+                                    "test": "has_mob_effect",
+                                    "subject": "self",
+                                    "value": "bad_omen"
+                                },
+                                {
+                                    "test": "is_in_village",
+                                    "subject": "self",
+                                    "value": true
+                                }
+                            ]
+                        },
+                        "event": "minecraft:gain_raid_omen"
+                    },
+                    // Sensor de cuando duerme
+                    {
+                        "filters": {
+                            "test": "is_sleeping",
+                            "value": true
+                        },
+                        "event": "ha:player_in_bed",
+                        "target": "self"
+                    },
+                    {
+                        "filters": [
+                            {
+                                "all_of": [
+                                    {
+                                        "test": "is_sleeping",
+                                        "value": false
+                                    },
+                                    {
+                                        "test": "has_tag",
+                                        "value": "inBed"
+                                    }
+                                ]
+                            }
+                        ],
+                        "event": "ha:player_off_bed",
+                        "target": "self"
+                    },
+                    // Sensor de temperatura
+                    {
+                        "filters": {
+                            "all_of": [
+                                {
+                                    "test": "has_tag",
+                                    "operator": "!=",
+                                    "value": "hasDamageBiome"
+                                },
+                                {
+                                    "test": "has_tag",
+                                    "operator": "!=",
+                                    "value": "crownInInv"
+                                },
+                                {
+                                    "any_of": [
+                                        {
+                                            "test": "is_temperature_type",
+                                            "subject": "self",
+                                            "value": "cold"
+                                        },
+                                        {
+                                            "test": "is_temperature_type",
+                                            "subject": "self",
+                                            "value": "ocean"
+                                        },
+                                        {
+                                            "test": "is_temperature_type",
+                                            "subject": "self",
+                                            "value": "warm"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "event": "ha:start_cooldown_biome_damage",
+                        "target": "self"
+                    },
+                    {
+                        "filters": {
+                            "any_of": [
+                                {
+                                    "test": "has_tag",
+                                    "value": "crownInInv"
+                                },
+                                {
+                                    "all_of": [
+                                        {
+                                            "test": "has_tag",
+                                            "value": "hasDamageBiome"
+                                        },
+                                        {
+                                            "test": "has_tag",
+                                            "operator": "!=",
+                                            "value": "crownInInv"
+                                        },
+                                        {
+                                            "none_of": [
+                                                {
+                                                    "test": "is_temperature_type",
+                                                    "subject": "self",
+                                                    "value": "cold"
+                                                },
+                                                {
+                                                    "test": "is_temperature_type",
+                                                    "subject": "self",
+                                                    "value": "ocean"
+                                                },
+                                                {
+                                                    "test": "is_temperature_type",
+                                                    "subject": "self",
+                                                    "value": "warm"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "event": "ha:remove_biome_damage",
+                        "target": "self"
+                    },
+                    // Sensores de Armadura
+                    {
+                        "filters": {
+                            "test": "has_equipment",
+                            "subject": "self",
+                            "domain": "torso",
+                            "value": "ha:cautious_chestplate"
+                        },
+                        "event": "ha:has_cautious_chestplate",
+                        "target": "self"
+                    },
+                    {
+                        "filters": {
+                            "test": "has_equipment",
+                            "subject": "self",
+                            "domain": "torso",
+                            "operator": "not",
+                            "value": "ha:cautious_chestplate"
+                        },
+                        "event": "ha:remove_cautious_chestplate",
+                        "target": "self"
+                    },
+
+                    {
+                        "filters": {
+                            "test": "has_equipment",
+                            "subject": "self",
+                            "domain": "leg",
+                            "value": "ha:cautious_leggings"
+                        },
+                        "event": "ha:has_cautious_leggings",
+                        "target": "self"
+                    },
+                    {
+                        "filters": {
+                            "test": "has_equipment",
+                            "subject": "self",
+                            "domain": "leg",
+                            "operator": "not",
+                            "value": "ha:cautious_leggings"
+                        },
+                        "event": "ha:remove_cautious_leggings",
+                        "target": "self"
+                    },
+
+                    {
+                        "filters": {
+                            "test": "has_equipment",
+                            "subject": "self",
+                            "domain": "feet",
+                            "value": "ha:cautious_boots"
+                        },
+                        "event": "ha:has_cautious_boots",
+                        "target": "self"
+                    },
+                    {
+                        "filters": {
+                            "test": "has_equipment",
+                            "subject": "self",
+                            "domain": "feet",
+                            "operator": "not",
+                            "value": "ha:cautious_boots"
+                        },
+                        "event": "ha:remove_cautious_boots",
+                        "target": "self"
+                    },
+
+                    {
+                        "filters": {
+                            "all_of": [
+                                {
+                                    "test": "has_equipment",
+                                    "subject": "self",
+                                    "domain": "head",
+                                    "value": "ha:cautious_helmet"
+                                },
+                                {
+                                    "test": "has_equipment",
+                                    "subject": "self",
+                                    "domain": "torso",
+                                    "value": "ha:cautious_chestplate"
+                                },
+                                {
+                                    "test": "has_equipment",
+                                    "subject": "self",
+                                    "domain": "leg",
+                                    "value": "ha:cautious_leggings"
+                                },
+                                {
+                                    "test": "has_equipment",
+                                    "subject": "self",
+                                    "domain": "feet",
+                                    "value": "ha:cautious_boots"
+                                }
+                            ]
+                        },
+                        "event": "ha:has_full_cautious_armor",
+                        "target": "self"
+                    },
+                    {
+                        "filters": {
+                            "any_of": [
+                                {
+                                    "test": "has_equipment",
+                                    "subject": "self",
+                                    "domain": "head",
+                                    "operator": "not",
+                                    "value": "ha:cautious_helmet"
+                                },
+                                {
+                                    "test": "has_equipment",
+                                    "subject": "self",
+                                    "domain": "torso",
+                                    "operator": "not",
+                                    "value": "ha:cautious_chestplate"
+                                },
+                                {
+                                    "test": "has_equipment",
+                                    "subject": "self",
+                                    "domain": "leg",
+                                    "operator": "not",
+                                    "value": "ha:cautious_leggings"
+                                },
+                                {
+                                    "test": "has_equipment",
+                                    "subject": "self",
+                                    "domain": "feet",
+                                    "operator": "not",
+                                    "value": "ha:cautious_boots"
+                                }
+                            ]
+                        },
+                        "event": "ha:remove_full_cautious_armor",
+                        "target": "self"
+                    }
+                ]
+            },
+            "minecraft:damage_sensor": {
+                "triggers": [
+                    {
+                        "cause": "fire",
+                        "damage_modifier": 6
+                    },
+                    {
+                        "cause": "fire_tick",
+                        "damage_modifier": 6
+                    },
+                    {
+                        "on_damage": {
+                            "filters": {
+                                "any_of": [
+                                    {
+                                        "test": "is_block",
+                                        "subject": "block",
+                                        "value": "minecraft:cactus"
+                                    },
+                                    {
+                                        "test": "is_block",
+                                        "subject": "block",
+                                        "value": "minecraft:sweet_berry_bush"
+                                    }
+                                ]
+                            },
+                            "event": "ha:add_effects_blocks",
+                            "target": "self"
+                        },
+                        "cause": "all",
+                        "deals_damage": "yes"
+                    }
+                ]
+            }
+        },
+        "events": {
+            "minecraft:entity_spawned": {
+                "sequence": [
+                    {
+                        "trigger": "ha:set_normal_breath"
+                    },
+                    {
+                        "trigger": "ha:set_colossus_normal"
+                    },
+                    {
+                        "trigger": "ha:set_soul_normal"
+                    }
+                ]
+            },
+
+            "ha:has_cautious_chestplate": {
+                "queue_command": {
+                    "command": [
+                        "effect @s resistance 5 1 true"
+                    ]
+                }
+            },
+            "ha:remove_cautious_chestplate": {
+                "queue_command": {
+                    "command": [
+                        "effect @s weakness 5 1 true"
+                    ]
+                }
+            },
+
+            "ha:has_cautious_leggings": {
+                "queue_command": {
+                    "command": [
+                        "effect @s haste 5 2 true"
+                    ]
+                }
+            },
+            "ha:remove_cautious_leggings": {
+                "queue_command": {
+                    "command": [
+                        "effect @s mining_fatigue 5 2 true"
+                    ]
+                }
+            },
+
+            "ha:has_cautious_boots": {
+                "queue_command": {
+                    "command": [
+                        "effect @s speed 5 1 true"
+                    ]
+                }
+            },
+            "ha:remove_cautious_boots": {
+                "queue_command": {
+                    "command": [
+                        "effect @s slowness 5 1 true"
+                    ]
+                }
+            },
+
+            "ha:has_full_cautious_armor": {
+                "queue_command": {
+                    "command": [
+                        "effect @s health_boost 5 2 true"
+                    ]
+                }
+            },
+            "ha:remove_full_cautious_armor": {
+                "sequence": [
+                    {
+                        "filters": {
+                            "test": "has_biome_tag",
+                            "subject": "self",
+                            "value": "the_end"
+                        },
+                        "queue_command": {
+                            "command": [
+                                "effect @s fatal_poison 5 0 true"
+                            ]
+                        }
+                    }
+                ]
+            },
+
+            "ha:set_colossus_normal": {
+                "remove": {
+                    "component_groups": [
+                        "ha:colossus_one",
+                        "ha:colossus_two",
+                        "ha:colossus_three",
+                        "ha:colossus_four",
+                        "ha:colossus_five",
+                        "ha:colossus_six"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
+                        "ha:colossus_normal"
+                    ]
+                }
+            },
+            "ha:set_colossus_one": {
+                "remove": {
+                    "component_groups": [
+                        "ha:colossus_normal",
+                        "ha:colossus_two",
+                        "ha:colossus_three",
+                        "ha:colossus_four",
+                        "ha:colossus_five",
+                        "ha:colossus_six"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
+                        "ha:colossus_one"
+                    ]
+                }
+            },
+            "ha:set_colossus_two": {
+                "remove": {
+                    "component_groups": [
+                        "ha:colossus_normal",
+                        "ha:colossus_one",
+                        "ha:colossus_three",
+                        "ha:colossus_four",
+                        "ha:colossus_five",
+                        "ha:colossus_six"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
+                        "ha:colossus_two"
+                    ]
+                }
+            },
+            "ha:set_colossus_three": {
+                "remove": {
+                    "component_groups": [
+                        "ha:colossus_normal",
+                        "ha:colossus_one",
+                        "ha:colossus_two",
+                        "ha:colossus_four",
+                        "ha:colossus_five",
+                        "ha:colossus_six"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
+                        "ha:colossus_three"
+                    ]
+                }
+            },
+            "ha:set_colossus_four": {
+                "remove": {
+                    "component_groups": [
+                        "ha:colossus_normal",
+                        "ha:colossus_one",
+                        "ha:colossus_two",
+                        "ha:colossus_three",
+                        "ha:colossus_five",
+                        "ha:colossus_six"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
+                        "ha:colossus_four"
+                    ]
+                }
+            },
+            "ha:set_colossus_five": {
+                "remove": {
+                    "component_groups": [
+                        "ha:colossus_normal",
+                        "ha:colossus_one",
+                        "ha:colossus_two",
+                        "ha:colossus_three",
+                        "ha:colossus_four",
+                        "ha:colossus_six"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
+                        "ha:colossus_five"
+                    ]
+                }
+            },
+            "ha:set_colossus_six": {
+                "remove": {
+                    "component_groups": [
+                        "ha:colossus_normal",
+                        "ha:colossus_one",
+                        "ha:colossus_two",
+                        "ha:colossus_three",
+                        "ha:colossus_four",
+                        "ha:colossus_five"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
+                        "ha:colossus_six"
+                    ]
+                }
+            },
+
+            "ha:set_soul_normal": {
+                "remove": {
+                    "component_groups": [
+                        "ha:soul_one",
+                        "ha:soul_two",
+                        "ha:soul_three",
+                        "ha:soul_four",
+                        "ha:soul_five",
+                        "ha:soul_six"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
+                        "ha:soul_normal"
+                    ]
+                }
+            },
+            "ha:set_soul_one": {
+                "remove": {
+                    "component_groups": [
+                        "ha:soul_normal",
+                        "ha:soul_two",
+                        "ha:soul_three",
+                        "ha:soul_four",
+                        "ha:soul_five",
+                        "ha:soul_six"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
+                        "ha:soul_one"
+                    ]
+                }
+            },
+            "ha:set_soul_two": {
+                "remove": {
+                    "component_groups": [
+                        "ha:soul_normal",
+                        "ha:soul_one",
+                        "ha:soul_three",
+                        "ha:soul_four",
+                        "ha:soul_five",
+                        "ha:soul_six"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
+                        "ha:soul_two"
+                    ]
+                }
+            },
+            "ha:set_soul_three": {
+                "remove": {
+                    "component_groups": [
+                        "ha:soul_normal",
+                        "ha:soul_one",
+                        "ha:soul_two",
+                        "ha:soul_four",
+                        "ha:soul_five",
+                        "ha:soul_six"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
+                        "ha:soul_three"
+                    ]
+                }
+            },
+            "ha:set_soul_four": {
+                "remove": {
+                    "component_groups": [
+                        "ha:soul_normal",
+                        "ha:soul_one",
+                        "ha:soul_two",
+                        "ha:soul_three",
+                        "ha:soul_five",
+                        "ha:soul_six"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
+                        "ha:soul_four"
+                    ]
+                }
+            },
+            "ha:set_soul_five": {
+                "remove": {
+                    "component_groups": [
+                        "ha:soul_normal",
+                        "ha:soul_one",
+                        "ha:soul_two",
+                        "ha:soul_three",
+                        "ha:soul_four",
+                        "ha:soul_six"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
+                        "ha:soul_five"
+                    ]
+                }
+            },
+            "ha:set_soul_six": {
+                "remove": {
+                    "component_groups": [
+                        "ha:soul_normal",
+                        "ha:soul_one",
+                        "ha:soul_two",
+                        "ha:soul_three",
+                        "ha:soul_four",
+                        "ha:soul_five"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
+                        "ha:soul_six"
+                    ]
+                }
+            },
+
+            "ha:set_normal_breath": {
+                "remove": {
+                    "component_groups": [
+                        "ha:remove_breath"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
+                        "ha:normal_breath"
+                    ]
+                }
+            },
+            "ha:set_remove_breath": {
+                "remove": {
+                    "component_groups": [
+                        "ha:normal_breath"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
+                        "ha:remove_breath"
+                    ]
+                }
+            },
+
+            "ha:player_in_bed": {
+                "queue_command": {
+                    "command": "function system/sleeping_events"
+                }
+            },
+            "ha:player_off_bed": {
+                "queue_command": {
+                    "command": "tag @s remove inBed"
+                }
+            },
+
+            "ha:start_cooldown_biome_damage": {
+                "queue_command": {
+                    "command": [
+                        "tag @s add hasDamageBiome"
+                    ]
+                },
+                "remove": {
+                    "component_groups": [
+                        "ha:damage_biome"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
+                        "ha:start_biome_damage_cooldown"
+                    ]
+                }
+            },
+            "ha:start_damage_biome": {
+                "queue_command": {
+                    "command": [
+                        "function damage_biome"
+                    ]
+                },
+                "remove": {
+                    "component_groups": [
+                        "ha:start_biome_damage_cooldown"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
+                        "ha:damage_biome"
+                    ]
+                }
+            },
+            "ha:remove_biome_damage": {
+                "queue_command": {
+                    "command": [
+                        "tag @s remove hasDamageBiome"
+                    ]
+                },
+                "remove": {
+                    "component_groups": [
+                        "ha:start_biome_damage_cooldown",
+                        "ha:damage_biome"
+                    ]
+                }
+            },
+
+            "ha:add_effects_blocks": {
+                "queue_command": {
+                    "command": [
+                        "effect @s fatal_poison 10",
+                        "effect @s slowness 10"
+                    ]
+                }
+            },
+
+            "minecraft:gain_raid_omen": {
+                "add": {
+                    "component_groups": [
+                        "minecraft:add_raid_omen"
+                    ]
+                }
+            },
+            "minecraft:clear_add_raid_omen": {
+                "remove": {
+                    "component_groups": [
+                        "minecraft:add_raid_omen"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
+                        "minecraft:clear_raid_omen_spell_effect"
+                    ]
+                }
+            },
+            "minecraft:trigger_raid": {
+                "add": {
+                    "component_groups": [ "minecraft:raid_trigger" ]
+                }
+            },
+            "minecraft:remove_raid_trigger": {
+                "remove": {
+                    "component_groups": [ "minecraft:raid_trigger" ]
+                }
+            }
+        }
+    }
+}

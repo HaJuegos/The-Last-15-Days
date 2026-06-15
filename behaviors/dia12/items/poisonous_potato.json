@@ -1,0 +1,33 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.10",
+    "minecraft:item": {
+        "description": {
+            "identifier": "minecraft:poisonous_potato"
+        },
+
+        "components": {
+            "minecraft:use_duration": 32,
+            "minecraft:food": {
+                "nutrition": 2,
+                "saturation_modifier": "low",
+                "can_always_eat": true,
+                "effects": [
+                    {
+                        "name": "resistance",
+                        "chance": 1,
+                        "duration": 5,
+                        "amplifier": 4
+                    },
+                    {
+                        "name": "poison",
+                        "chance": 0.6,
+                        "duration": 5,
+                        "amplifier": 0
+                    }
+                ]
+            }
+        }
+    }
+}

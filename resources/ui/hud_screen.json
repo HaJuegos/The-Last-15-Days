@@ -1,0 +1,65 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "namespace": "hud",
+
+    "hud_title_text/title_frame/title": {
+        "modifications": [
+            {
+                "array_name": "bindings",
+                "operation": "insert_back",
+                "value": {
+                    "binding_type": "view",
+                    "source_property_name": "(not (('%.7s' * #text) = 'abyssal' or ('%.8s' * #text) = 'colossus' or ('%.6s' * #text) = 'hunger' or ('%.7s' * #text) = 'shadows' or ('%.4s' * #text) = 'soul' or ('%.4s' * #text) = 'fury' or ('%.4s' * #text) = 'void'))",
+                    "target_property_name": "#visible"
+                }
+            }
+        ]
+    },
+
+    "hud_title_text/title_frame/title_background": {
+        "bindings": [
+            {
+                "binding_name": "#hud_title_text_string",
+                "binding_name_override": "#text",
+                "binding_type": "global"
+            },
+            {
+                "binding_type": "view",
+                "source_property_name": "(not (('%.7s' * #text) = 'abyssal' or ('%.8s' * #text) = 'colossus' or ('%.6s' * #text) = 'hunger' or ('%.7s' * #text) = 'shadows' or ('%.4s' * #text) = 'soul' or ('%.4s' * #text) = 'fury' or ('%.4s' * #text) = 'void'))",
+                "target_property_name": "#visible"
+            }
+        ]
+    },
+
+    "hotbar_panel": {
+        "modifications": [
+            {
+                "array_name": "controls",
+                "operation": "insert_front",
+                "value": {
+                    "numbered_hotbar@bt_numbered_hotbar.numbered_hotbar_panel": { }
+                }
+            }
+        ]
+    },
+
+    "root_panel": {
+        "modifications": [
+            {
+                "array_name": "controls",
+                "operation": "insert_front",
+                "value": {
+                    "debuff_root_factory@abyss_icons.debuff_root_factory": { }
+                }
+            },
+            {
+                "array_name": "controls",
+                "operation": "insert_front",
+                "value": {
+                    "watermark@watermarktld.watermark_panel": { }
+                }
+            }
+        ]
+    }
+}

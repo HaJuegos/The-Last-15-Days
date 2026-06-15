@@ -1,0 +1,180 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.10.0",
+    "animations": {
+        "animation.iron_polly.start_flying": {
+            "loop": false,
+            "animation_length": 1,
+            "bones": {
+                "leg0": {
+                    "rotation": {
+                        "0.0": [ 0, 0, 0 ],
+                        "0.5": [ 0, 0, 10 ],
+                        "1.0": [ 35, 0, 10 ]
+                    },
+                    "position": {
+                        "0.0": [ 0, 0, 0 ],
+                        "0.5": [ 0, 4, 0 ],
+                        "1.0": [ 0, 2, 0 ]
+                    }
+                },
+                "leg1": {
+                    "rotation": {
+                        "0.0": [ 0, 0, 0 ],
+                        "0.5": [ 0, 0, -10 ],
+                        "1.0": [ 35, 0, -10 ]
+                    },
+                    "position": {
+                        "0.0": [ 0, 0, 0 ],
+                        "0.5": [ 0, 4, 0 ],
+                        "1.0": [ 0, 2, 0 ]
+                    }
+                },
+                "leg2": {
+                    "rotation": {
+                        "0.0": [ 0, 0, 0 ],
+                        "0.5": [ 0, 0, 10 ],
+                        "1.0": [ 35, 0, 10 ]
+                    },
+                    "position": {
+                        "0.0": [ 0, 0, 0 ],
+                        "0.5": [ 0, 4, 0 ],
+                        "1.0": [ 0, 2, 0 ]
+                    }
+                },
+                "leg3": {
+                    "rotation": {
+                        "0.0": [ 0, 0, 0 ],
+                        "0.5": [ 0, 0, -10 ],
+                        "1.0": [ 35, 0, -10 ]
+                    },
+                    "position": {
+                        "0.0": [ 0, 0, 0 ],
+                        "0.5": [ 0, 4, 0 ],
+                        "1.0": [ 0, 2, 0 ]
+                    }
+                },
+                "bone4": {
+                    "position": {
+                        "0.0": [ 0, 2, 0 ],
+                        "0.1": [ 0, 3, 0 ],
+                        "0.3": [ 0, 0, 0 ],
+                        "0.4": [ 0, 1, 0 ],
+                        "0.5": [ 0, 2, 0 ],
+                        "0.6": [ 0, 0, 0 ],
+                        "1.0": [ 0, 0, 0 ]
+                    },
+                    "scale": {
+                        "0.0": [ 0.95, 1, 0.95 ],
+                        "0.8": [ 0.95, 0.9, 0.95 ],
+                        "0.9": [ 0.95, 1, 0.95 ],
+                        "1.0": [ 0.95, 0.9, 0.95 ]
+                    }
+                },
+                "bone": {
+                    "position": {
+                        "0.0": [ 0, 2, 0 ],
+                        "0.1": [ 0, 3, 0 ],
+                        "0.3": [ 0, 0, 0 ],
+                        "0.4": [ 0, 1, 0 ],
+                        "0.5": [ 0, 2, 0 ],
+                        "0.6": [ 0, 0, 0 ]
+                    },
+                    "scale": {
+                        "0.0": [ 0.95, 1, 0.95 ],
+                        "0.8": [ 0.95, 0.9, 0.95 ],
+                        "0.9": [ 0.95, 1, 0.95 ],
+                        "1.0": [ 0.95, 0.9, 0.95 ]
+                    }
+                },
+                "bone2": {
+                    "position": {
+                        "0.0": [ 0, 2, 0 ],
+                        "0.1": [ 0, 3, 0 ],
+                        "0.3": [ 0, 0, 0 ],
+                        "0.4": [ 0, 1, 0 ],
+                        "0.5": [ 0, 2, 0 ],
+                        "0.6": [ 0, 0, 0 ]
+                    },
+                    "scale": {
+                        "0.0": [ 0.95, 1, 0.95 ],
+                        "0.8": [ 0.95, 0.9, 0.95 ],
+                        "0.9": [ 0.95, 1, 0.95 ],
+                        "1.0": [ 0.95, 0.9, 0.95 ]
+                    }
+                },
+                "bone3": {
+                    "position": {
+                        "0.0": [ 0, 2, 0 ],
+                        "0.1": [ 0, 3, 0 ],
+                        "0.3": [ 0, 0, 0 ],
+                        "0.4": [ 0, 1, 0 ],
+                        "0.5": [ 0, 2, 0 ],
+                        "0.6": [ 0, 0, 0 ]
+                    },
+                    "scale": {
+                        "0.0": [ 0.95, 1, 0.95 ],
+                        "0.8": [ 0.95, 0.9, 0.95 ],
+                        "0.9": [ 0.95, 1, 0.95 ],
+                        "1.0": [ 0.95, 0.9, 0.95 ]
+                    }
+                }
+            }
+        },
+        "animation.iron_polly.flying": {
+            "loop": true,
+			"anim_time_update": "q.modified_distance_moved",
+            "bones": {
+                "leg0": {
+                    "rotation": {
+                        "0.0": {
+                            "post": [ "math.lerp(0, 35 + math.cos(q.anim_time * 36) * 2, v.fly_blend)", 0, 10 ],
+                            "lerp_mode": "catmullrom"
+                        }
+                    }
+                },
+                "leg1": {
+                    "rotation": {
+                        "0.0": {
+                            "post": [ "math.lerp(0, 35 + math.cos(q.anim_time * 36) * 2, v.fly_blend)", 0, -10 ],
+                            "lerp_mode": "catmullrom"
+                        }
+                    }
+                },
+                "leg2": {
+                    "rotation": {
+                        "0.0": {
+                            "post": [ "math.lerp(0, 35 + math.cos(q.anim_time * 36) * 2, v.fly_blend)", 0, 10 ],
+                            "lerp_mode": "catmullrom"
+                        }
+                    }
+                },
+                "leg3": {
+                    "rotation": {
+                        "0.0": {
+                            "post": [ "math.lerp(0, 35 + math.cos(q.anim_time * 36) * 2, v.fly_blend)", 0, -10 ],
+                            "lerp_mode": "catmullrom"
+                        }
+                    }
+                },
+                "bone4": {
+                    "position": [ 0, "2 + math.cos(q.life_time * 900) * 0.85", 0 ],
+                    "scale": [ 0.95, "1 + math.sin(q.life_time * 900) * 0.1", 0.95 ]
+                },
+                "bone": {
+                    "position": [ 0, "2 + math.cos(q.life_time * 900) * 0.85", 0 ],
+                    "scale": [ 0.95, "1 + math.sin(q.life_time * 900) * 0.1", 0.95 ]
+                },
+                "bone2": {
+                    "position": [ 0, "2 + math.cos(q.life_time * 900) * 0.85", 0 ],
+                    "scale": [ 0.95, "1 + math.sin(q.life_time * 900) * 0.1", 0.95 ]
+                },
+                "bone3": {
+                    "position": [ 0, "2 + math.cos(q.life_time * 900) * 0.85", 0 ],
+                    "scale": [ 0.95, "1 + math.sin(q.life_time * 900) * 0.1", 0.95 ]
+                }
+            }
+        }
+    }
+}

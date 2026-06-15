@@ -1,0 +1,42 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.20.10",
+    "minecraft:recipe_shaped": {
+        "description": {
+            "identifier": "ha:infernal_crown_recipe"
+        },
+        "tags": [ "crafting_table" ],
+        "pattern": [
+            " B ",
+            "PCM",
+            " S "
+        ],
+        "key": {
+            "B": {
+                "item": "ha:infernal_gem_blaze"
+            },
+            "P": {
+                "item": "ha:infernal_gem_piglin"
+            },
+            "C": {
+                "item": "ha:soul_fire"
+            },
+            "M": {
+                "item": "ha:infernal_gem_magma"
+            },
+            "S": {
+                "item": "ha:infernal_crown_empty"
+            }
+        },
+        "unlock": [
+            {
+                "tag": "ha:infernal_items"
+            }
+        ],
+        "result": {
+            "item": "ha:infernal_crown",
+            "count": 1
+        }
+    }
+}

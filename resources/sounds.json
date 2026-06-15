@@ -1,0 +1,209 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+	"individual_event_sounds": {
+		"events": {
+			"fire": {
+				"volume": [
+					0.05,
+					0.1
+				]
+			},
+			"extinguish.fire": {
+				"volume": 0.025
+			},
+			"ignite": {
+				"volume": 0.05
+			},
+			"block.blastfurnace.fire_crackle": {
+				"volume": 0.15
+			},
+			"block.campfire.crackle": {
+				"volume": [
+					0.025,
+					0.075
+				]
+			},
+			"block.furnace.lit": {
+				"volume": 0.15
+			},
+			"mob.player.hurt_on_fire": {
+				"volume": 0.05
+			}
+		}
+	},
+	"entity_sounds": {
+		"entities": {
+			"ha:player_ghost": {
+				"events": {
+					"death": "mob.player_ghost.death_sound",
+					"reflect": {
+						"pitch": 1.0,
+						"sound": "mob.breeze.deflect",
+						"volume": 1.0
+					}
+				},
+				"pitch": [ 0.80, 1.20 ],
+				"volume": 1.0
+			},
+			"ha:bomber_pillager": {
+				"events": {
+					"ambient": "mob.pillager.idle",
+					"ambient.in.raid": {
+						"pitch": [ 0.80, 1.20 ],
+						"sound": "mob.pillager.idle",
+						"volume": 3.0
+					},
+					"celebrate": "mob.pillager.celebrate",
+					"death": "mob.pillager.death",
+					"hurt": "mob.pillager.hurt"
+				},
+				"pitch": [ 0.80, 1.20 ],
+				"variants": {
+					"key": null
+				},
+				"volume": 1.0
+			},
+			"ha:soul_ghast": {
+				"events": {
+					"ambient": "mob.ghast.moan",
+					"death": "mob.ghast.death",
+					"hurt": "mob.ghast.scream",
+					"shoot": {
+						"sound": "mob.ghast.fireball",
+						"volume": 0.70
+					}
+				},
+				"pitch": [ 0.2, 0.35 ],
+				"variants": {
+					"key": null
+				},
+				"volume": 5.0
+			},
+			"ha:lord_blaze": {
+				"events": {
+					"ambient": "mob.blaze.breathe",
+					"death": {
+						"sound": "mob.blaze.death",
+						"pitch": [ 0.80, 1.20 ]
+					},
+					"hurt": "mob.blaze.hit",
+					"shoot": "mob.blaze.shoot"
+				},
+				"pitch": [ 0.45, 0.55 ],
+				"variants": {
+					"key": null
+				},
+				"volume": 2.0
+			},
+			"ha:armorer_piglin": {
+				"events": {
+					"ambient": "mob.piglin_brute.ambient",
+					"angry": "mob.piglin_brute.angry",
+					"death": "mob.piglin_brute.death",
+					"hurt": "mob.piglin_brute.hurt",
+					"step": {
+						"sound": "mob.piglin_brute.step",
+						"volume": 0.350
+					}
+				},
+				"pitch": [ 0.80, 0.95 ],
+				"variants": {
+					"key": null
+				},
+				"volume": 1.0
+			},
+			"magma_cube": {
+				"__molang_version": 13,
+				"events": {
+					"ambient": "",
+					"attack": {
+						"pitch": [ 0.80, 1.20 ],
+						"sound": "mob.attack"
+					},
+					"death": "mob.magmacube.small",
+					"hurt": "mob.magmacube.small",
+					"squish.big": {
+						"pitch": [ 0.640, 0.960 ],
+						"sound": "mob.magmacube.big"
+					},
+					"squish.small": {
+						"pitch": [ 0.640, 0.960 ],
+						"sound": "mob.magmacube.small"
+					}
+				},
+				"pitch": [ 0.80, 1.20 ],
+				"variants": {
+					"key": "q.skin_id == 1 ? 'copter' : 'default'",
+					"map": {
+						"default": { },
+						"copter": {
+							"events": {
+								"ambient": "mob.magma_copter.fly"
+							},
+							"pitch": [ 0.80, 1.20 ],
+							"volume": 1.0
+						}
+					}
+				},
+				"volume": 1.0
+			},
+			"ha:socrates_npc": {
+				"events": {
+					"ambient": "mob.villager.idle",
+					"death": "mob.villager.death",
+					"haggle": "mob.villager.haggle",
+					"haggle.no": "mob.villager.no",
+					"haggle.yes": "mob.villager.yes"
+				},
+				"pitch": [ 0.80, 1.20 ],
+				"variants": {
+					"key": null
+				},
+				"volume": 1.0
+			},
+			"creeper": {
+				"events": {
+					"death": "mob.creeper.death",
+					"fuse": {
+						"pitch": 0.50,
+						"sound": "random.fuse",
+						"volume": 1.0
+					},
+					"hurt": "mob.creeper.say"
+				},
+				"pitch": [ 0.80, 1.20 ],
+				"volume": 1.0,
+				"variants": {
+					"key": "q.property('ha:creeper_variant')",
+					"map": {
+						"is_baby": {
+							"events": {
+								"ambient": "mob.creeper.say",
+								"death": "mob.creeper.death",
+								"fuse": {
+									"pitch": 0.50,
+									"sound": "random.fuse",
+									"volume": 1.0
+								},
+								"hurt": "mob.creeper.say"
+							},
+							"pitch": [ 0.65, 1 ],
+							"volume": 1.0
+						},
+						"is_ninja": {
+							"events": {
+								"ambient": "",
+								"death": "mob.creeper.death",
+								"fuse": "",
+								"hurt": ""
+							},
+							"pitch": [ 0.80, 1.20 ],
+							"volume": 1.0
+						}
+					}
+				}
+			}
+		}
+	}
+}

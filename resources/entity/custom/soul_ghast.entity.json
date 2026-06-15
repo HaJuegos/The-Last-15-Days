@@ -1,0 +1,50 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "ha:soul_ghast",
+            "materials": {
+                "default": "soul_ghast_body",
+                "brillant": "soul_ghast_brillant"
+            },
+            "textures": {
+                "default": "textures/entity/soul_ghast/soul_ghast_body",
+                "brillant": "textures/entity/soul_ghast/soul_ghast_billant"
+            },
+            "geometry": {
+                "default": "geometry.soul_ghast"
+            },
+            "spawn_egg": {
+                // mc-disable-next-line behaviorpack.item.components.texture_not_found
+                "texture": "spawn_egg_ghast"
+            },
+            "scripts": {
+                "animate": [
+                    "controller_root",
+                    "move",
+                    "scale"
+                ]
+            },
+            "animations": {
+                "controller_root": "controller.animation.soul_ghast.root",
+                "chargin": "animation.soul_ghast.chargin",
+                "shoot": "animation.soul_ghast.shoot",
+
+                "move": "animation.ghast.move",
+                "scale": "animation.soul_ghast.scale"
+            },
+            "render_controllers": [
+                "controller.render.soul_ghast",
+                "controller.render.soul_ghast.glow"
+            ],
+            "sound_effects": {
+                "charge": "mob.soul_ghast.charge_and_shot"
+            },
+            "particle_effects": {
+                "loop": "ha:soul_fireball_particle_large"
+            }
+        }
+    }
+}

@@ -1,0 +1,142 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+	"format_version": "1.10.0",
+	"animations": {
+		"animation.king_wither.scale_spirits_spawn": {
+			"loop": "hold_on_last_frame",
+			"animation_length": 1.35,
+			"bones": {
+				"root_red": {
+					"scale": {
+						"0.0": [0, 0, 0],
+						"1.35": [0.35, 0.35, 0.35]
+					}
+				},
+				"root_blue": {
+					"scale": {
+						"0.0": [0, 0, 0],
+						"1.35": [0.35, 0.35, 0.35]
+					}
+				},
+				"root_yellow": {
+					"scale": {
+						"0.0": [0, 0, 0],
+						"1.35": [0.35, 0.35, 0.35]
+					}
+				},
+				"root_orange": {
+					"scale": {
+						"0.0": [0, 0, 0],
+						"1.35": [0.35, 0.35, 0.35]
+					}
+				}
+			}
+		},
+		"animation.king_wither.hide_spirits": {
+			"loop": true,
+			"bones": {
+				"root_red": {
+					"scale": 0
+				},
+				"root_orange": {
+					"scale": 0
+				},
+				"root_blue": {
+					"scale": 0
+				},
+				"root_yellow": {
+					"scale": 0
+				}
+			}
+		},
+		"animation.king_wither.scale_spirits_loop": {
+			"loop": true,
+			"bones": {
+				"root_red": {
+					"scale": 0.35
+				},
+				"root_orange": {
+					"scale": 0.35
+				},
+				"root_blue": {
+					"scale": 0.35
+				},
+				"root_yellow": {
+					"scale": 0.35
+				}
+			}
+		},
+		"animation.king_wither.spirits.positions": {
+			"loop": true,
+			"bones": {
+				"root_orange": {
+					"position": [-11, 24, -1]
+				},
+				"root_red": {
+					"position": [11, 24, -1]
+				},
+				"root_blue": {
+					"position": [-6, 27, -1]
+				},
+				"root_yellow": {
+					"position": [6, 27, -1]
+				}
+			}
+		},
+		"animation.king_wither.spirits_despawn": {
+			"loop": "hold_on_last_frame",
+			"animation_length": 1.35,
+			"bones": {
+				"root_red": {
+					"scale": {
+						"0.0": {
+							"post": [0.35, 0.35, 0.35],
+							"lerp_mode": "catmullrom"
+						},
+						"1.35": {
+							"post": [0, 0, 0],
+							"lerp_mode": "catmullrom"
+						}
+					}
+				},
+				"root_blue": {
+					"scale": {
+						"0.0": {
+							"post": [0.35, 0.35, 0.35],
+							"lerp_mode": "catmullrom"
+						},
+						"1.35": {
+							"post": [0, 0, 0],
+							"lerp_mode": "catmullrom"
+						}
+					}
+				},
+				"root_orange": {
+					"scale": {
+						"0.0": {
+							"post": [0.35, 0.35, 0.35],
+							"lerp_mode": "catmullrom"
+						},
+						"1.35": {
+							"post": [0, 0, 0],
+							"lerp_mode": "catmullrom"
+						}
+					}
+				},
+				"root_yellow": {
+					"scale": {
+						"0.0": {
+							"post": [0.35, 0.35, 0.35],
+							"lerp_mode": "catmullrom"
+						},
+						"1.35": {
+							"post": [0, 0, 0],
+							"lerp_mode": "catmullrom"
+						}
+					}
+				}
+			}
+		}
+	}
+}

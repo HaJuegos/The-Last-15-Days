@@ -1,0 +1,376 @@
+## Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days.
+## Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days.
+
+
+## Manifest texts
+pack.name=§l§4The Last 15 Days§r | Creado por §gRosherRandom§r
+pack.description=Recursos necesarios para el add-on | Desarrollado por: HaJuegos y Convex!
+
+
+## Other texts
+bt.bg.splash.potion=Poción de salpicadura
+bt.bg.lingering.potion=Poción de efecto prolongado
+bt.bg.extended.potion=Poción de efecto prolongado
+bt.bg.level_2.potion=Poción de nivel II
+bt.bg.effect.potion=Efecto de poción
+
+
+dialogue.socrates.bullshit1=Si eres lo que comes, ¿qué eres si te comes una Manzana Dorada Encantada pero igual te caes al vacío en Hardcore? Solo un fantasma muy brillante y costoso, amigo mío.
+dialogue.socrates.bullshit2=Si se supone que dormir restaura tu energía y sana tu alma, ¿qué eres si intentas dormir en el Nether? Un espectáculo de fuegos artificiales con un final bastante trágico, supongo.
+dialogue.socrates.bullshit3=Si las herramientas definen al constructor, ¿qué eres si guardas tu primer pico de madera hasta llegar al Dragón del End? ¿Un verdadero visionario, o solo un tipo que realmente odia la eficiencia?
+dialogue.socrates.bullshit4=Si la muerte en TL15D es el final definitivo, ¿qué eres si mueres sosteniendo un Tótem de Inmortalidad? ¿Un tramposo del destino, o solo un tonto retrasando la inevitable explosión de un Creeper?
+
+
+## System Texts
+disconnect.kicked=¡Game Over! Ya no puedes seguir jugando.
+disconnect.kicked.reason=¡Game Over! Ya no puedes seguir jugando.
+disconnect.removed=¡Game Over! Ya no puedes seguir jugando.
+disconnect.removed.reason=¡Game Over! Ya no puedes seguir jugando.
+
+disconnectionScreen.title.bannedByHost=Has muerto y ya no puedes seguir jugando.
+disconnectionScreen.title.kickedFromWorld=Has muerto y ya no puedes seguir jugando.
+
+gamepad_disconnect=¡Se te acabaron las pilas o el mando se apagó!
+gamepad_disconnect.reconnectController=RoyerBot ha intervenido en tu sistema y ahora no reconocemos tu mando. ¡Rápido! Enciéndelo o conéctalo de nuevo para continuar.
+
+pauseScreen.xboxLiveDisconnect=Se te ha desconectado la cuenta de Xbox. ¿O estás en un mundo local o cómo carajos estás viendo esto? En fin, entra de nuevo al mundo.
+
+
+## Title texts
+ui.game_over_title=§c¿Game Over?§r
+ui.fast_items.title=§g¡Sistema de ítems rápidos activado!
+ui.fast_items.sub1=Ahora con tu tecla de interacción, puedes cambiar
+ui.fast_items.sub2=rápidamente entre ítems como el tótem en tu otra mano.
+ui.watermak.title=§4The Last 15 Days
+ui.watermak.version=§7v0.0.12-beta
+ui.credits_panel.title=Créditos principales:
+ui.credits_panel.rolecreator=Creador
+ui.credits_panel.dev=Programador
+ui.credits_panel.artist=Artista
+ui.other_credits.title=Créditos adicionales:
+ui.other_credits.role1=Texturas utilizadas en el add-on
+ui.fist_intro.title=§a§l[ Bienvenido a TL15D ]§r
+ui.fist_intro.subtitle=§4Recibiste un Kit inicial. ¡Suerte!
+ui.system.dolphin_timer=§7Puedes volver a respirar bajo el agua en %1
+
+ui.list_players_death.title= §4§lElige a tu víctima§r 
+ui.list_players_death.body=§i§oElige a un jugador fallecido para revivirlo y unir tu alma con él para continuar en esta aventura.§r
+
+ui.form_timers.title_form=§7§oTemporizadores pendientes§r
+ui.form_timers.main_text=\nTus debuffs activos son los siguientes:\n\n
+ui.form_timers.time_remain=§7Tiempo restante.§r
+ui.form_timers.final_title_form=§o§7El tiempo no se actualiza en tiempo real. Consulta este libro cuando quieras.
+
+ui.system.dragon_damage_nausea.title=§cDEBES AGACHARTE
+ui.system.dragon_damage_nausea.subtitle=La próxima vez, agáchate cuando termine el efecto
+
+ui.dragon_death.title=§e§l¡ROYERBOT DERROTADO!
+ui.dragon_death.subtitle=Felicidades, jugador, has logrado sobrevivir en esta batalla. ¡Muy bien!
+
+ui.system.end_addon.thanks=§d ¡Gracias por Jugar! 
+ui.system.end_addon.header_thanks=§e§l¡Felicidades por sobrevivir al viaje!
+ui.system.end_addon.body_thanks=§fCanónicamente, el desarrollo de la serie concluyó en el §c§lDía 12§r§f. Por ende, este es el fin de tu aventura en este add-on.\n\nIgualmente, tienes algunos cambios por revisar y explorar en el §dEnd§f. ¡Ten cuidado de no morir esta vez! Nadie quiere ver la ironía de aguantar todos los días finales y que mueras justo en este, jajaja!\n\nEn fin, no me queda más que decirte que... §a¡muchas gracias por jugar!§f Agradezco a ti, jugador, por esta oportunidad.
+ui.system.end_addon.label_team=§b§lEl Equipo:§r §7Royer, Convex!, Astral y HaJuegos.§r\n\n§eRecuerda dejarnos una estrella en GitHub y cualquier retroalimentación en la página. ¡Muchas gracias :3!
+ui.system.end_addon.button_ok=§a§lContinuar
+
+
+## Chat texts
+chat.system.resquicio_start=§c§l>>§r§c ¡%1 ha causado un §4§lResquicio Infernal§r!
+chat.system.last_location_player=§l§b[§eRoyerBot§b]§r §7§l>>§r§7 %1 ha muerto en %2 en la Dimensión %3.
+chat.system.player_in_bed=§e>> %1 está durmiendo. ¡Buenas noches!
+chat.system.error_no_perms=§7§l>> Aún no puedes realizar esta acción.
+chat.system.use_totem=§7>> %1 ha utilizado un tótem.
+chat.system.day_addon=§a§l>> Es el Día %1.
+chat.system.damage_biome=§4§l>> Estás recibiendo daño por temperatura. ¡Sal de allí!
+chat.system.get_debuff_wither1=§c§l>> Recibiste un efecto negativo aleatorio del Wither.
+chat.system.get_debuff_wither2=§m§l>> Tu inventario ha cambiado por culpa del Wither.
+chat.system.get_infernal_item=§4>> %1 ha conseguido el ítem %2.§r§7 | (%3/5)
+chat.system.get_infernal_crown=§4§l>> %1 ha conseguido %2.
+chat.system.hit_by_dolphin=§e§lTe ha golpeado un delfín, ya no puedes respirar bajo el agua durante %1 minutos. ¡Intenta que no te golpeen nuevamente!
+chat.system.soul_link.no_plys_deaths=§7§l>> No hay jugadores por revivir, es inútil utilizar el ítem en este momento.
+chat.system.soul_link.alr_used=§7§l>> Ya has utilizado este ítem previamente, no puedes revivir a más jugadores.
+chat.system.soul_link.select_player=§7§l>> §cPor el pacto del Soul Link, §e%2 §cha atado su destino al de §e%1§c. §7Son dos cuerpos, pero una sola vida. §4La muerte de uno será la condena absoluta del otro. Ya no hay salvación.
+
+chat.system.abyss_text.abyssal_text_combo1=§1§l>> Ojos del Abismo: Sientes que una presencia oscura te arrebata varios espacios del inventario. Tranquilo, tus cosas están ahora mismo en el suelo. ¡Mala suerte!
+chat.system.abyss_text.abyssal_text_combo2=§1§l>> Ojos del Abismo: Por caer de nuevo en esta maldición, pierdes un espacio aleatorio de tu inventario. ¡Qué mala suerte! Ten cuidado con lo que guardas.
+
+chat.system.abyss_text.colossus_text_combo1=§6§l>> Engaño del Coloso: Te has vuelto enorme y pesado. Tu cuerpo se siente lento y te cuesta moverte. Ahora los enemigos te alcanzarán antes y será difícil adaptarte al entorno. ¡Mala suerte!
+
+chat.system.abyss_text.hunger_text_combo1=§2§l>> Insaciable Hambre: Tu cuerpo exige comida a gritos, haciendo que, sin querer, empieces a devorar tus propios objetos al azar. ¡Qué mala suerte!
+
+chat.system.abyss_text.shadows_text_combo1=§b§l>> Sombras Voraces: Las sombras te acechan. Ahora los monstruos que te ataquen tendrán Velocidad y Fuerza, y el efecto será más potente cada vez que te toque de nuevo. ¡Mala suerte!
+
+chat.system.abyss_text.decay_text_combo1=§n§l>> Erosión del Alma: El abismo drena tu saturación. Tu energía caerá de golpe y tu cuerpo se debilitará mucho más rápido. ¡Vaya mala suerte!
+
+chat.system.abyss_text.fury_text_combo1=§c§l>> Furia Desquiciada: La ira te consume. Puedes atacar a otros jugadores y tienes Fuerza, pero el desgaste de tus objetos será mayor cada vez que sufras este efecto. ¡Qué mala suerte!
+
+chat.system.abyss_text.void_text_combo1=§u§l>> Garras del Vacío: Tus objetos se han quedado bloqueados. No podrás soltarlos ni usarlos mientras dure el efecto. ¡Mala suerte!
+chat.system.abyss_text.void_text_combo2=§u§l>> Garras del Vacío: Más objetos quedan atados a tu inventario. Poco a poco pierdes la capacidad de mover o usar tus cosas. ¡Qué mala suerte!
+chat.system.abyss_text.void_text_combo5=§u§l>> Garras del Vacío: Tus objetos están totalmente sellados. Ya no puedes usarlos ni moverlos; el inventario está completamente bloqueado. ¡Pésima suerte!
+
+chat.system.debuff_total_changed=§7>> Se ha cambiado el total de debuffs globales del mundo a %1. (Previamente había %2 debuffs en total)
+
+chat.system.debuff_name.abyssal=§1Ojos del Abismo§7
+chat.system.debuff_name.colossus=§6Engaño del Coloso§7
+chat.system.debuff_name.hunger=§2Insaciable Hambre§7
+chat.system.debuff_name.shadows=§bSombras Voraces§7
+chat.system.debuff_name.decay=§nErosión del Alma§7
+chat.system.debuff_name.fury=§cFuria Desquiciada§7
+chat.system.debuff_name.void=§uGarras del Vacío§7
+
+chat.system.debuff_end_timer=§7>> El Debuff %1 ha terminado.
+
+chat.system.ui.no_debuffs_timers=§7>> No tienes timers pendientes por revisar.
+
+chat.system.eat_iron_apple=§i>> %1 ha consumido una %2
+
+chat.system.get_cautious_item=§w>> %1 ha conseguido el ítem %2.§r§7 | (%3/4)
+
+chat.system.dragon_attack_finished.nausea=§7>> Se ha terminado el efecto de Nauseas.
+chat.system.dragon_attack_finished.conduit=§7>> Se ha terminado el efecto del Conduit.
+chat.system.timer_bear_trap.starts=§7>> Fuiste atacado por una trampa de osos. No puedes moverte durante %1 segundos.
+chat.system.ender_crystal_explodes=§4§l>> Un EnderCrystal fue explotado en %1. Ahora apareceran Llamas en la arena.
+chat.system.no_end_islands=§7>> Aún no tienes permitido ir a las islas del End. Regresa al día siguiente y/o termina de pelear con el dragón.
+chat.system.spawn_items_rain=§d>> Una lluvia de ítems ha ocurrido en %1.
+chat.system.spawn_totems_rain=§e>> Una lluvia de tótems ha ocurrido en %1.
+chat.system.banned_items_end=§c>> No usarás eso contra mí en esta batalla. El ítem se ha eliminado de tu inventario.
+
+
+## Entity Names
+entity.ha:player_ghost.name=Fantasma de un Jugador
+entity.ha:bomber_pillager.name=Saqueador Bombardero
+entity.ha:soul_ghast.name=§3Soul Ghast§r
+entity.ha:soul_fireball.name=Soul Fireball
+entity.ha:lord_blaze.name=§pLord Blaze§r
+entity.ha:armorer_piglin.name=Piglin Bruto Armado
+entity.ha:socrates_npc.name=Sócrates, sí, ese mismo.
+entity.ha:custom_damage_area.name=Una nube tóxica de un Creeper
+entity.ender_dragon.name=§g§lRoyerBot§r
+entity.ha:bear_trap.name=Trampa de Oso
+entity.ha:spawned_trader_llama.name=Generador de Llamas del End
+entity.ha:crystal_llama_generator.name=Controlador de Debuffos del End
+
+
+## Spawn egg names
+item.spawn_egg.entity.ha:bomber_pillager.name=Generador de Saqueador Bombardero
+item.spawn_egg.entity.ha:soul_ghast.name=Generador de §3Soul Ghast§r
+item.spawn_egg.entity.ha:lord_blaze.name=Generador de §pLord Blaze§r
+item.spawn_egg.entity.ha:armorer_piglin.name=Generador de Piglin Bruto Armado
+
+
+## Items names
+item.ha:surprise_bundle=Saco Sorpresa
+item.ha:surprise_bundle.name=Saco Sorpresa
+
+item.ha:dynamite_off_item=Dinamita Arrojadiza Apagada
+item.ha:dynamite_off_item.name=Dinamita Arrojadiza Apagada
+
+item.ha:dynamite_item=Dinamita Arrojadiza
+item.ha:dynamite_item.name=Dinamita Arrojadiza
+
+item.ha:iron_apple=§iManzana de Hierro§r
+item.ha:iron_apple.name=§iManzana de Hierro§r
+
+item.ha:invocation_skull=§7§lCalavera de Invocación§r
+item.ha:invocation_skull.name=§7§lCalavera de Invocación§r
+
+item.ha:stone_skull=Calavera de Piedra
+item.ha:stone_skull.name=Calavera de Piedra
+
+item.ha:soul_fire=§bAlma de Fuego§r
+item.ha:soul_fire.name=§bAlma de Fuego§r
+
+item.ha:piglin_mace=§gPiglin Mace§r
+item.ha:piglin_mace.name=§gPiglin Mace§r
+
+item.ha:infernal_gem_blaze=§6§lGema Infernal (Blaze)§r
+item.ha:infernal_gem_blaze.name=§6§lGema Infernal (Blaze)§r
+
+item.ha:infernal_gem_piglin=§6§lGema Infernal (Piglin)§r
+item.ha:infernal_gem_piglin.name=§6§lGema Infernal (Piglin)§r
+
+item.ha:infernal_gem_magma=§6§lGema Infernal (Magma)§r
+item.ha:infernal_gem_magma.name=§6§lGema Infernal (Magma)§r
+
+item.ha:infernal_crown=§v§lCorona Infernal§r
+item.ha:infernal_crown.name=§v§lCorona Infernal§r
+
+item.ha:infernal_crown_empty=§vCorona Infernal Vacía§r
+item.ha:infernal_crown_empty.name=§vCorona Infernal Vacía§r
+
+item.ha:slime_pearl=Perla Viscosa
+item.ha:slime_pearl.name=Perla Viscosa
+
+item.ha:melted_slime=Slime Derretido
+item.ha:melted_slime.name=Slime Derretido
+
+item.ha:hoglin_fang=§n§lColmillo de Hoglin§r
+item.ha:hoglin_fang.name=§n§lColmillo de Hoglin§r
+
+item.ha:allay_dust=§bPolvo de Allay§r
+item.ha:allay_dust.name=§bPolvo de Allay§r
+
+item.ha:allay_essence=§b§lEsencia de Allay§r
+item.ha:allay_essence.name=§b§lEsencia de Allay§r
+
+item.ha:soul_link=§s§lUnión de Almas§r
+item.ha:soul_link.name=§s§lUnión de Almas§r
+
+item.ha:void_item=§sVacío§r
+item.ha:void_item.name=§sVacío§r
+
+item.ha:knowledge_book=§aEnciclopedia§r
+item.ha:knowledge_book.name=§aEnciclopedia§r
+
+item.ha:fake_netherite_helmet=Casco de Netherita
+item.ha:fake_netherite_helmet.name=Casco de Netherita
+
+item.ha:fake_netherite_chestplate=Pechera de Netherita
+item.ha:fake_netherite_chestplate.name=Pechera de Netherita
+
+item.ha:fake_netherite_leggings=Mallas de Netherita
+item.ha:fake_netherite_leggings.name=Mallas de Netherita
+
+item.ha:fake_netherite_boots=Botas de Netherita
+item.ha:fake_netherite_boots.name=Botas de Netherita
+
+item.ha:cautious_helmet=§h§lCasco Cauteloso§r
+item.ha:cautious_helmet.name=§h§lCasco Cauteloso§r
+
+item.ha:cautious_chestplate=§h§lPechera Cautelosa§r
+item.ha:cautious_chestplate.name=§h§lPechera Cautelosa§r
+
+item.ha:cautious_leggings=§h§lPantalones Cautelosos§r
+item.ha:cautious_leggings.name=§h§lPantalones Cautelosos§r
+
+item.ha:cautious_boots=§h§lBotas Cautelosas§r
+item.ha:cautious_boots.name=§h§lBotas Cautelosas§r
+
+item.ha:dragon_disc=Batalla del Dragon
+item.ha:dragon_disc.name=Batalla del Dragon
+
+item.ha:final_disc=Musica de Creditos
+item.ha:final_disc.name=Musica de Creditos
+
+item.ha:party_disc=Musica movida
+item.ha:party_disc.name=Musica movida
+
+item.ha:silla_disc=Un remix de una silla
+item.ha:silla_disc.name=Un remix de una silla
+
+
+## Item Catalog
+ha:itemGroup.name.nether_items=§4Cosas del Nether§r
+
+
+## Block names
+tile.ha:dynamite_block.name=Bloque de Dinamita Lanzable.
+tile.ha:toxic_puddle.name=Charco Tóxico
+
+
+## Music Desc
+item.record_click.desc=Akira Yamaoka - Otherside (Silent Hill) 
+item.record_nodamage.desc=Escape - Kiss
+item.record_break.desc=Aphex Twin - Alberto Balsam (Half Life)
+item.record_attach.desc=EZHALT - Athazagoraphobia (FNF: The Trollge Files)
+
+
+## Advacements texts
+chat.advan.normal_base=%1 ha conseguido el progreso §a[%2]§r
+chat.advan.rare_base=%1 ha completado el desafío §5[%2]§r
+
+advacement.wood_pick=La Edad de Piedra
+advacement.stone_pick=Mejorando herramientas
+advacement.iron_ingot=La Edad de Hierro
+advacement.suit_up=Vístete
+advacement.hot_stuff=¡La cosa está que arde!
+advacement.iron_pick=¿No es hierrónico?
+advacement.not_today=Hoy no, gracias
+advacement.obsidian=Mente fría
+advacement.diamonds=¡Diamantes!
+advacement.nether=Plus ultra
+advacement.diamods_armor=Cúbreme de diamantes
+advacement.zombie_doctor=Zombiólogo
+advacement.the_end=¿Se acabó?
+advacement.return_sender=Devolver al remitente
+advacement.debris=Escondido en las profundidades
+advacement.crying_obsi=¿Quién está cortando cebollas?
+advacement.ghast_over=Falsa alianza
+advacement.netherite=Cúbreme de netherita
+advacement.wither_skull=Por una cabeza
+advacement.blaze=Jugando con fuego
+advacement.wither=Dr. Witherstein
+advacement.beacon=Faroneitor
+advacement.all_effects=Mezcla explosiva
+advacement.free_end=Libera el End
+advacement.next_generation=La nueva generación
+advacement.mint=¡Qué mal aliento!
+advacement.shulker=La ciudad al final del juego
+advacement.elytra=Hasta el infinito... ¡y más allá!
+advacement.bad_omen=Exilio voluntario
+advacement.compass_block=Magnetita, llévame a casita
+advacement.monster_hunter=Monster Hunter
+advacement.betsy=La vieja Betsy
+advacement.dreams=Dulces sueños
+advacement.hero_village=Héroe de la aldea
+advacement.trident=Jugada maestra
+advacement.bow=¡Diana!
+advacement.totem=Post mortem
+advacement.pillager_now=El saqueador saqueado
+advacement.sniper_duel=Francocazadores
+advacement.bullseye=En el blanco
+advacement.under_lock=Bajo llave
+advacement.revault=La caja de Pandora
+advacement.blowback=Contrarresto
+advacement.hydrated=¡Mantente hidratado!
+advacement.bee_guest=Abelante, está es tu casa
+advacement.bukki=Renacuajo al cubo
+advacement.sniffer=Huele interesante
+advacement.tactical_fish=Pesca táctica
+advacement.little_sniffs=Little Sniffs
+advacement.serius_dedication=Pequeños olfateos
+advacement.wax_off=Pulir cera
+advacement.axolotl=El depredador más adorable
+advacement.all_frogs=¡Uniendo nuestras fuerzas!
+advacement.infernal_crown=Domando al Nether
+advacement.hoglin_tusk=El Depredador Alfa
+advacement.cautious_armor=Domando la Cautela
+
+
+## Subtitle Texts
+ui.subtitle_custom.click_btn_ha=§6Clic en el botón de Ha en los créditos§r
+ui.subtitle_custom.click_btn_astral=§dClic en el botón de Astral en los créditos§r
+ui.subtitle_custom.click_btn_royer=§eClic en el botón de Royer en los créditos§r
+
+ui.subtitle_custom.get_normal_advancement=Se obtiene un logro
+ui.subtitle_custom.get_rare_advancement=Se obtiene un logro raro
+ui.subtitle_custom.intro_sound=¡Bienvenido!
+ui.subtitle_custom.game_over=§c¡Fin del juego!§r
+ui.subtitle_custom.death_ply=§cUn jugador ha muerto§r
+ui.subtitle_custom.no_perms=No puedes hacer eso
+ui.subtitle_custom.get_wither_debuff=Obtienes un debuff de un King Wither
+ui.subtitle_custom.slime_pearl_used=Se ha usado una Slime Pearl
+ui.subtitle_custom.no_perms_item=No puedes usar este ítem
+ui.subtitle_custom.soul_linked=§3Vinculación de almas correcta§r
+ui.subtitle_custom.abyss_attack=Recibiste un debuff malo
+ui.subtitle_custom.abyss_desc=Explicación del debuff
+ui.subtitle_custom.player_ghost_death=Un fantasma de jugador ha muerto
+ui.subtitle_custom.soul_ghast_charging=Soul Ghast cargando su ataque
+ui.subtitle_custom.lord_piglin_gem=Habilidad de Lord Piglin ejecutada
+ui.subtitle_custom.piglin_get_armor=Un piglin ha cambiado de armadura
+ui.subtitle_custom.magmacopter_start=Un MagmaCopter está volando
+ui.subtitle_custom.wither_king_start=King Wither ha cambiado de habilidad
+ui.subtitle_custom.mob_explodes=Un mob está a punto de explotar
+ui.subtitle_custom.mob_betray=Un mob domesticado ha cambiado
+ui.subtitle_custom.mob_summon_attack=Un mob ha generado otros mobs
+ui.subtitle_custom.ply_respawned_soul=Un jugador ha revivido
+ui.subtitle_custom.ambient_soullink=§4Elige a tu víctima§r
+ui.subtitle_custom.ambient_dragon_attack.nausea=§2Inicia el ataque de Nauseas§r
+ui.subtitle_custom.ambient_dragon_attack.conduit=§bInicia el ataque del Conduit§r
+ui.subtitle_custom.bear_trap.attacks=Una trampa de oso ataca
+ui.subtitle_custom.ambient_dragon_attack.nausea.damaged=§cNo te agachaste esta vez§r
+
+ui.music_start.dragon_fight=Música del dragón sonando
+ui.music_start.final_music=Música de los créditos sonando
+ui.music_start.party_starts=Música de fiesta sonando
+ui.music_start.remix_de_una_silla=¡¡¡REMIX DE UNA SILLA!?!?!?

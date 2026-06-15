@@ -1,0 +1,55 @@
+// mc-disable resourcepack.anim_or_controller.missing
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "minecraft:fox",
+            "materials": {
+                "default": "fox",
+                "mask": "mask_fox"
+            },
+            "textures": {
+                "red": "textures/entity/fox/fox",
+                "arctic": "textures/entity/fox/arctic_fox",
+                "mask": "textures/entity/fox/mask_fox"
+            },
+            "geometry": {
+                "default": "geometry.fox"
+            },
+            "animations": {
+                "walk": "animation.quadruped.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "baby_transform": "animation.fox.baby_transform",
+                "crouch": "animation.fox.crouch",
+                "sleep": "animation.fox.sleep",
+                "setup": "animation.fox.setup",
+                "sit": "animation.fox.sit",
+                "wiggle": "animation.fox.wiggle",
+                "stuck": "animation.fox.stuck",
+                "pounce": "animation.fox.pounce",
+                "move": "controller.animation.fox.move"
+            },
+            "scripts": {
+                "animate": [
+                    "setup",
+                    {
+                        "baby_transform": "query.is_baby"
+                    },
+                    "move"
+                ]
+            },
+            "render_controllers": [
+                "controller.render.fox",
+                {
+                    "controller.render.mask_fox": "q.skin_id == 1"
+                }
+            ],
+            "spawn_egg": {
+                // mc-disable-next-line behaviorpack.item.components.texture_not_found
+                "texture": "spawn_egg_fox"
+            }
+        }
+    }
+}

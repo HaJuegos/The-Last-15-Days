@@ -1,0 +1,61 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.26.0",
+    "minecraft:block": {
+        "description": {
+            "identifier": "ha:toxic_puddle",
+            "menu_category": {
+                "category": "construction"
+            }
+        },
+        "components": {
+            "minecraft:display_name": "tile.ha:toxic_puddle.name",
+            "minecraft:placement_filter": {
+                "conditions": [
+                    {
+                        "allowed_faces": [
+                            "up"
+                        ]
+                    }
+                ]
+            },
+            "minecraft:destructible_by_explosion": false,
+            "minecraft:destructible_by_mining": {
+                "seconds_to_destroy": 0
+            },
+            "minecraft:collision_box": false,
+            "minecraft:selection_box": {
+                "origin": [ -8, 0, -8 ],
+                "size": [ 16, 1, 16 ]
+            },
+            "minecraft:geometry": "geometry.acid_pool_block",
+            "minecraft:material_instances": {
+                "*": {
+                    "texture": "toxic_puddle",
+                    "ambient_occlusion": true,
+                    "face_dimming": true,
+                    "render_method": "alpha_test"
+                }
+            },
+            "minecraft:light_dampening": 0,
+            "minecraft:light_emission": 5,
+            "minecraft:replaceable": { },
+            "minecraft:liquid_detection": {
+                "detection_rules": [
+                    {
+                        "liquid_type": "water",
+                        "can_contain_liquid": true,
+                        "on_liquid_touches": "no_reaction",
+                        "stops_liquid_flowing_from_direction": [ ]
+                    }
+                ]
+            },
+            "ha:toxic_puddle_events": { },
+            "minecraft:tick": {
+                "looping": true,
+                "interval_range": [ 5, 10 ]
+            }
+        }
+    }
+}

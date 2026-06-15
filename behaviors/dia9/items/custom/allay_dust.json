@@ -1,0 +1,42 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.26.0",
+    "minecraft:item": {
+        "description": {
+            "identifier": "ha:allay_dust",
+            "menu_category": {
+                "category": "items"
+            }
+        },
+        "components": {
+            "ha:allay_dust_events": { },
+            "minecraft:can_destroy_in_creative": true,
+            "minecraft:allow_off_hand": false,
+            "minecraft:food": {
+                "can_always_eat": true,
+                "nutrition": 1,
+                "saturation_modifier": 0.6
+            },
+            "minecraft:display_name": {
+                "value": "item.ha:allay_dust"
+            },
+            "minecraft:glint": false,
+            "minecraft:icon": "allay_dust",
+            "minecraft:max_stack_size": 64,
+            "minecraft:rarity": "rare",
+            "minecraft:use_animation": "eat",
+            "minecraft:use_modifiers": {
+                "emit_vibrations": true,
+                "use_duration": 1.6,
+                "movement_modifier": 0.35
+            },
+            "minecraft:tags": {
+                "tags": [
+                    "minecraft:is_cooked",
+                    "minecraft:is_food"
+                ]
+            }
+        }
+    }
+}

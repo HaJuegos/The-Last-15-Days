@@ -1,0 +1,15 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.16.100",
+    "minecraft:fog_settings": {
+        "description": {
+            "identifier": "ha:fury_fog_lvl_six"
+        },
+        "distance": {
+            "air": { "fog_start": 0.0, "fog_end": 6.0, "fog_color": "#2B0202", "render_distance_type": "fixed" },
+            "water": { "fog_start": 0.0, "fog_end": 2.0, "fog_color": "#1A0101", "render_distance_type": "fixed" },
+            "weather": { "fog_start": 0.0, "fog_end": 4.0, "fog_color": "#1F0101", "render_distance_type": "fixed" }
+        }
+    }
+}

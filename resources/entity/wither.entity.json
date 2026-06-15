@@ -1,0 +1,115 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "minecraft:wither",
+            "min_engine_version": "1.8.0",
+            "materials": {
+                "default": "wither_boss",
+                "armor": "wither_boss_armor",
+
+                "spirit_normal": "entity_alphatest",
+                "spirit_trans": "entity_alphablend"
+            },
+            "textures": {
+                "default": "textures/entity/wither_boss/wither",
+                "armor_white": "textures/entity/wither_boss/wither_armor_white",
+                "armor_blue": "textures/entity/wither_boss/wither_armor_blue",
+                "invulnerable": "textures/entity/wither_boss/wither_invulnerable",
+
+                "king": "textures/entity/king_wither/king_wither_boss",
+
+                "spirit_orange": "textures/entity/king_wither/spirits/orange",
+                "spirit_orange_trans": "textures/entity/king_wither/spirits/orange_transparent",
+
+                "spirit_red": "textures/entity/king_wither/spirits/red",
+                "spirit_red_trans": "textures/entity/king_wither/spirits/red_transparent",
+
+                "spirit_blue": "textures/entity/king_wither/spirits/blue",
+                "spirit_blue_trans": "textures/entity/king_wither/spirits/blue_transparent",
+
+                "spirit_yellow": "textures/entity/king_wither/spirits/yellow",
+                "spirit_yellow_trans": "textures/entity/king_wither/spirits/yellow_transparent"
+            },
+            "geometry": {
+                "default": "geometry.witherBoss",
+                "armor": "geometry.witherBoss.armor.v1.8",
+
+                "king": "geometry.king_wither",
+
+                "spirit_orange": "geometry.orange_spirit",
+                "spirit_blue": "geometry.blue_spirit",
+                "spirit_yellow": "geometry.yellow_spirit",
+                "spirit_red": "geometry.red_spirit"
+            },
+            "scripts": {
+                "pre_animation": [
+                    "variable.base_scale = 2;",
+                    "variable.swell_clamped = Math.clamp(query.swell_amount, 0.0, 1.0);",
+                    "variable.wobble = 1.0 + Math.sin(query.swell_amount * 5730) * query.swell_amount * 0.01;",
+                    "variable.swell_adjustment = Math.pow(variable.swell_clamped, 4);",
+                    "variable.scale_xz = (1.0 + variable.swell_adjustment * 0.4) * variable.wobble;",
+                    "variable.scale_y = (1.0 + variable.swell_adjustment * 0.1) / variable.wobble;",
+                    "variable.body_base_rotation = Math.cos(query.life_time * 114.6);",
+                    "variable.upper_body_rotation = (0.065 + 0.05 * variable.body_base_rotation) * 180 + query.target_x_rotation;",
+                    "variable.is_invulnerable = query.invulnerable_ticks > 0.0;",
+                    "variable.display_normal_skin = (query.invulnerable_ticks <= 0) || ((query.invulnerable_ticks <= 80) && (Math.mod(query.invulnerable_ticks / 5, 2) == 1));"
+                ],
+                "animate": [
+                    "move_controller",
+                    {
+                        "root_spirits_controller": "q.skin_id == 1"
+                    }
+                ],
+                "scalex": "variable.scale_xz * variable.base_scale",
+                "scaley": "variable.scale_y * variable.base_scale",
+                "scalez": "variable.scale_xz * variable.base_scale"
+            },
+            "animations": {
+                // Spirits controller
+                "root_spirits_controller": "controller.animation.king_wither.spawned",
+
+                "hide_spirits": "animation.king_wither.hide_spirits",
+                "show_spirits": "animation.king_wither.scale_spirits_spawn",
+                "scale_spirits": "animation.king_wither.scale_spirits_loop",
+                "positions_spirits": "animation.king_wither.spirits.positions",
+                "look_target_spirits": "animation.spirit.look_at_target",
+                "despawn_spirits": "animation.king_wither.spirits_despawn",
+
+                "red_spirit_starts": "animation.spirit.start_summon.red",
+                "yellow_spirit_starts": "animation.spirit.start_summon.yellow",
+                "blue_spirit_starts": "animation.spirit.start_summon.blue",
+                "orange_spirit_starts": "animation.spirit.start_summon.orange",
+
+                // Vanilla stuff
+                "move_controller": "controller.animation.wither_boss.move",
+                "scale": "animation.wither_boss.scale",
+                "move": "animation.wither_boss.move",
+                "look_at_target": "animation.wither_boss.look_at_target"
+            },
+            "render_controllers": [
+                "controller.render.wither_boss",
+                "controller.render.wither_boss_armor_white",
+                "controller.render.wither_boss_armor_blue",
+                {
+                    "controller.render.king_wither.spirit_red": "q.skin_id == 1"
+                },
+                {
+                    "controller.render.king_wither.spirit_blue": "q.skin_id == 1"
+                },
+                {
+                    "controller.render.king_wither.spirit_yellow": "q.skin_id == 1"
+                },
+                {
+                    "controller.render.king_wither.spirit_orange": "q.skin_id == 1"
+                }
+            ],
+            "spawn_egg": {
+                // mc-disable-next-line behaviorpack.item.components.texture_not_found
+                "texture": "spawn_egg_wither"
+            }
+        }
+    }
+}

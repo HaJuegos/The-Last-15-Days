@@ -1,0 +1,42 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.26.0",
+    "minecraft:item": {
+        "description": {
+            "identifier": "ha:allay_essence",
+            "menu_category": {
+                "category": "items"
+            }
+        },
+        "components": {
+            "ha:allay_essence_events": { },
+            "minecraft:allow_off_hand": false,
+            "minecraft:can_destroy_in_creative": true,
+            "minecraft:food": {
+                "can_always_eat": true,
+                "nutrition": 2,
+                "saturation_modifier": 0.6,
+                "using_converts_to": "glass_bottle"
+            },
+            "minecraft:display_name": {
+                "value": "item.ha:allay_essence"
+            },
+            "minecraft:glint": true,
+            "minecraft:icon": "allay_essence",
+            "minecraft:max_stack_size": 1,
+            "minecraft:rarity": "rare",
+            "minecraft:use_animation": "drink",
+            "minecraft:use_modifiers": {
+                "emit_vibrations": true,
+                "use_duration": 1.75,
+                "movement_modifier": 0.35
+            },
+            "minecraft:tags": {
+                "tags": [
+                    "minecraft:is_food"
+                ]
+            }
+        }
+    }
+}

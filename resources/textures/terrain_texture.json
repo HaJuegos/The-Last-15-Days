@@ -1,0 +1,25 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "resource_pack_name": "vanilla",
+    "texture_name": "atlas.terrain",
+    "padding": 8,
+    "num_mip_levels": 4,
+    "texture_data": {
+        "dynamite_off": {
+            "textures": [
+                "textures/entity/dynamite_off"
+            ]
+        },
+        "dynamite_on": {
+            "textures": [
+                "textures/entity/dynamite"
+            ]
+        },
+        "toxic_puddle": {
+            "textures": [
+                "textures/blocks/custom/acid_pool"
+            ]
+        }
+    }
+}

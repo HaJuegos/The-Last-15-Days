@@ -1,0 +1,149 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.26.0",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "minecraft:ender_crystal",
+            "is_experimental": false,
+            "is_summonable": true,
+            "is_spawnable": false,
+            "spawn_category": "misc"
+        },
+        "component_groups": {
+            "ha:normal_crystal": {
+                "minecraft:variant": {
+                    "value": 0
+                },
+                "minecraft:on_hurt": {
+                    "event": "minecraft:crystal_explode",
+                    "target": "self"
+                }
+            },
+            "ha:end_crystal": {
+                "minecraft:variant": {
+                    "value": 1
+                },
+                "minecraft:damage_sensor": {
+                    "triggers": [
+                        {
+                            "on_damage": {
+                                "filters": {
+                                    "test": "is_family",
+                                    "subject": "other",
+                                    "value": "player"
+                                },
+                                "target": "self",
+                                "event": "ha:crystal_explode_end"
+                            },
+                            "deals_damage": "yes"
+                        },
+                        {
+                            "on_damage": {
+                                "filters": {
+                                    "test": "is_family",
+                                    "subject": "other",
+                                    "operator": "not",
+                                    "value": "player"
+                                }
+                            },
+                            "deals_damage": "no"
+                        }
+                    ]
+                }
+            },
+            "crystal_exploding": {
+                "minecraft:explode": {
+                    "causes_fire": false,
+                    "fuse_lit": true,
+                    "power": 6,
+                    "destroy_affected_by_griefing": true,
+                    "fuse_length": 0
+                }
+            },
+            "ha:end_crystal_exploding": {
+                "minecraft:explode": {
+                    "allow_underwater": true,
+                    "breaks_blocks": true,
+                    "causes_fire": false,
+                    "destroy_affected_by_griefing": true,
+                    "fire_affected_by_griefing": true,
+                    "fuse_length": [ 0, 0 ],
+                    "fuse_lit": true,
+                    "knockback_scaling": 4,
+                    "power": 8,
+                    "toggles_blocks": true
+                }
+            }
+        },
+        "components": {
+            "minecraft:collision_box": {
+                "height": 2,
+                "width": 2
+            },
+            "minecraft:conditional_bandwidth_optimization": { },
+            "minecraft:fire_immune": { },
+            "minecraft:health": {
+                "max": 1,
+                "value": 1
+            },
+            "minecraft:physics": { },
+            "minecraft:pushable": {
+                "is_pushable": true,
+                "is_pushable_by_piston": true
+            }
+        },
+        "events": {
+            "minecraft:entity_spawned": {
+                "sequence": [
+                    {
+                        "add": {
+                            "component_groups": [
+                                "ha:end_crystal"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "is_family",
+                            "subject": "other",
+                            "value": "player"
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "ha:end_crystal"
+                            ]
+                        },
+                        "add": {
+                            "component_groups": [
+                                "ha:normal_crystal"
+                            ]
+                        }
+                    }
+                ]
+            },
+            "ha:from_sheep": {
+                "add": {
+                    "component_groups": [
+                        "ha:normal_crystal"
+                    ]
+                }
+            },
+
+            "ha:crystal_explode_end": {
+                "add": {
+                    "component_groups": [
+                        "ha:end_crystal_exploding"
+                    ]
+                }
+            },
+            "minecraft:crystal_explode": {
+                "add": {
+                    "component_groups": [
+                        "crystal_exploding"
+                    ]
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,42 @@
+{
+	"namespace": "pause",
+
+	"menu_background": {
+		"modifications": [
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "store_button_panel"
+			},
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "store_button_panel_padding"
+			}
+		]
+	},
+
+	"smaller_buttons_panel": {
+		"modifications": [
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "small_achievements_button"
+			},
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "small_achievements_padding"
+			}
+		]
+	},
+
+	"skin_panel": {
+		"size": [
+			"30% - 40px",
+			"100%"
+		],
+		"anchor_from": "bottom_left",
+		"anchor_to": "bottom_left"
+	}
+}

@@ -1,13 +1,3 @@
+manifest.json
 
-## Carpetas
-**/behavior_packs/
-**/resource_packs/
-
-## Archivos
-**/manifest.json
-**/level.dat_old
-**/tsconfig.json
-**/*.mcaddon
-**/*.mcpack
-**/*.mcworld
-**/*.mctemplate
+scripts/

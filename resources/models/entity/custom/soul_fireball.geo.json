@@ -1,0 +1,52 @@
+{
+	"format_version": "1.21.20",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.soul_fireball",
+				"texture_width": 128,
+				"texture_height": 128,
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 2.5,
+				"visible_bounds_offset": [ 0, 0.75, 0 ]
+			},
+			"bones": [
+				{
+					"name": "particle",
+					"pivot": [ 0, 0, 0 ],
+					"locators": {
+						"particula": [ 0, 5, 0 ]
+					}
+				},
+				{
+					"name": "center",
+					"pivot": [ 0, 0, 0 ]
+				},
+				{
+					"name": "OrbeDeAlmas",
+					"parent": "center",
+					"pivot": [ 0.1, 6.60921, -0.23776 ],
+					"cubes": [
+						{ "origin": [ -6.4, 0.10921, -6.73776 ], "size": [ 13, 13, 13 ], "uv": [ 0, 0 ] }
+					]
+				},
+				{
+					"name": "OrbeDeAlmas2",
+					"parent": "center",
+					"pivot": [ 0.1, 6.60921, -0.23776 ],
+					"cubes": [
+						{ "origin": [ -6.4, 0.10921, -6.73776 ], "size": [ 13, 13, 13 ], "uv": [ 0, 26 ] }
+					]
+				},
+				{
+					"name": "OrbeDeAlmas3",
+					"parent": "center",
+					"pivot": [ 0.1, 6.60921, -0.23776 ],
+					"cubes": [
+						{ "origin": [ -6.4, 0.10921, -6.73776 ], "size": [ 13, 13, 13 ], "uv": [ 0, 52 ] }
+					]
+				}
+			]
+		}
+	]
+}

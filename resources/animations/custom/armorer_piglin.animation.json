@@ -1,0 +1,104 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+	"format_version": "1.10.0",
+	"animations": {
+		"animation.armorer_pigin.start_gem": {
+			"loop": false,
+			"animation_length": 2.25,
+			"override_previous_animation": true,
+			"bones": {
+				"head": {
+					"rotation": {
+						"0.0": {
+							"post": [ 0, 0, 0 ],
+							"lerp_mode": "catmullrom"
+						},
+						"0.25": {
+							"post": [ 20, 0, 0 ],
+							"lerp_mode": "catmullrom"
+						},
+						"0.5": {
+							"post": [ 20, 0, 0 ],
+							"lerp_mode": "catmullrom"
+						},
+						"1.0": {
+							"post": [ 0, 0, 0 ],
+							"lerp_mode": "catmullrom"
+						}
+					}
+				},
+				"leftarm": {
+					"rotation": {
+						"0.0": {
+							"post": [ 0, 0, 0 ],
+							"lerp_mode": "catmullrom"
+						},
+						"0.5": {
+							"post": [ -22.64395, 17.05316, 39.00354 ],
+							"lerp_mode": "catmullrom"
+						},
+						"1.0": {
+							"post": [ -178.82197, 8.52658, 19.50177 ],
+							"lerp_mode": "catmullrom"
+						},
+						"1.75": {
+							"post": [ -178.82197, 8.52658, 19.50177 ],
+							"lerp_mode": "catmullrom"
+						},
+						"2.25": {
+							"post": [ 0, 0, 0 ],
+							"lerp_mode": "catmullrom"
+						}
+					},
+					"position": {
+						"0.0": {
+							"post": [ 0, 0, 0 ],
+							"lerp_mode": "catmullrom"
+						},
+						"2.25": {
+							"post": [ 0, 0, 0 ],
+							"lerp_mode": "catmullrom"
+						}
+					}
+				},
+				"bone3": {
+					"position": {
+						"0.0": {
+							"post": [ 0, 6, 0 ],
+							"lerp_mode": "catmullrom"
+						},
+						"0.5": {
+							"post": [ 0, 6, 0 ],
+							"lerp_mode": "catmullrom"
+						},
+						"1.0": {
+							"post": [ 0, 0, 0 ],
+							"lerp_mode": "catmullrom"
+						},
+						"1.5": {
+							"post": [ 0, 0, 0 ],
+							"lerp_mode": "catmullrom"
+						}
+					}
+				},
+				"bone4": {
+					"position": {
+						"0.0": {
+							"post": [ 0, 0, 0 ],
+							"lerp_mode": "catmullrom"
+						},
+						"0.4583": {
+							"post": [ 0, 0, 0 ],
+							"lerp_mode": "catmullrom"
+						},
+						"0.5": {
+							"post": [ 0, 0, 1 ],
+							"lerp_mode": "catmullrom"
+						}
+					}
+				}
+			}
+		}
+	}
+}

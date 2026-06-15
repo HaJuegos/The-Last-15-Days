@@ -1,0 +1,50 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.20.10",
+    "minecraft:recipe_shaped": {
+        "description": {
+            "identifier": "ha:invocation_skull_recipe"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "pattern": [
+            "EEE",
+            "LDL",
+            "B B"
+        ],
+        "key": {
+            "E": {
+                "item": "minecraft:emerald"
+            },
+            "L": {
+                "item": "minecraft:crossbow"
+            },
+            "D": {
+                "item": "minecraft:diamond_block"
+            },
+            "B": {
+                "item": "minecraft:emerald_block"
+            }
+        },
+        "unlock": [
+            {
+                "item": "minecraft:emerald"
+            },
+            {
+                "item": "minecraft:crossbow"
+            },
+            {
+                "item": "minecraft:diamond_block"
+            },
+            {
+                "item": "minecraft:emerald_block"
+            }
+        ],
+        "result": {
+            "item": "ha:invocation_skull",
+            "count": 1
+        }
+    }
+}

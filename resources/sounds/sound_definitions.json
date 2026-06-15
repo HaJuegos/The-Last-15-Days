@@ -1,0 +1,607 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.20.20",
+    "sound_definitions": {
+        "credits.click.ha": {
+            "category": "ui",
+            "max_distance": null,
+            "min_distance": null,
+            "subtitle": "ui.subtitle_custom.click_btn_ha",
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": false,
+                    "name": "sounds/ui/miau",
+                    "stream": false,
+                    "volume": 3.0
+                }
+            ]
+        },
+        "credits.click.astral": {
+            "category": "ui",
+            "max_distance": null,
+            "min_distance": null,
+            "subtitle": "ui.subtitle_custom.click_btn_astral",
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": false,
+                    "name": "sounds/ui/pipe_sound",
+                    "stream": false,
+                    "volume": 0.35
+                }
+            ]
+        },
+        "credits.click.royer": {
+            "category": "ui",
+            "max_distance": null,
+            "min_distance": null,
+            "subtitle": "ui.subtitle_custom.click_btn_royer",
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": false,
+                    "name": "sounds/ui/royercredits",
+                    "stream": false,
+                    "volume": 0.35
+                }
+            ]
+        },
+
+        "ui.advancements.normal": {
+            "category": "ui",
+            "min_distance": null,
+            "max_distance": null,
+            "subtitle": "ui.subtitle_custom.get_normal_advancement",
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": false,
+                    "name": "sounds/ui/advancements/normal",
+                    "volume": 3.0,
+                    "stream": false
+                }
+            ]
+        },
+        "ui.advancements.rare": {
+            "category": "ui",
+            "min_distance": null,
+            "max_distance": null,
+            "subtitle": "ui.subtitle_custom.get_rare_advancement",
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": false,
+                    "name": "sounds/ui/advancements/challenge",
+                    "volume": 0.85,
+                    "stream": false
+                }
+            ]
+        },
+        "ui.login_first_time": {
+            "category": "ui",
+            "min_distance": null,
+            "max_distance": null,
+            "subtitle": "ui.subtitle_custom.intro_sound",
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": false,
+                    "name": "sounds/ui/intro_sound",
+                    "stream": false,
+                    "volume": 1.0
+                }
+            ]
+        },
+        "ui.player.death_sound": {
+            "category": "ui",
+            "min_distance": null,
+            "max_distance": null,
+            "subtitle": "ui.subtitle_custom.game_over",
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": false,
+                    "name": "sounds/ui/death_sounds/player_death",
+                    "volume": 4.5,
+                    "stream": false
+                }
+            ]
+        },
+        "ui.player.death_sound_global": {
+            "category": "ui",
+            "min_distance": null,
+            "max_distance": null,
+            "subtitle": "ui.subtitle_custom.death_ply",
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": false,
+                    "name": "sounds/ui/death_sounds/player_death_global",
+                    "volume": 0.75,
+                    "stream": true
+                }
+            ]
+        },
+        "ui.error_sound": {
+            "category": "ui",
+            "min_distance": null,
+            "max_distance": null,
+            "subtitle": "ui.subtitle_custom.no_perms",
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": false,
+                    "name": "sounds/ui/errorsound",
+                    "volume": 2.0,
+                    "stream": false
+                }
+            ]
+        },
+        "ui.get_debuff.wither": {
+            "category": "ui",
+            "min_distance": null,
+            "max_distance": null,
+            "subtitle": "ui.subtitle_custom.get_wither_debuff",
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": false,
+                    "name": "sounds/mob/king_wither/get_debuff",
+                    "volume": 1,
+                    "stream": true
+                }
+            ]
+        },
+        "ui.slime_pearl.hit": {
+            "__use_legacy_max_distance": "true",
+            "category": "player",
+            "min_distance": null,
+            "max_distance": null,
+            "subtitle": "ui.subtitle_custom.slime_pearl_used",
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": false,
+                    "name": "sounds/ui/slimepearl",
+                    "volume": 2,
+                    "stream": true
+                }
+            ]
+        },
+        "ui.error_item": {
+            "category": "ui",
+            "min_distance": null,
+            "max_distance": null,
+            "subtitle": "ui.subtitle_custom.no_perms_item",
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": false,
+                    "name": "sounds/ui/error_item",
+                    "volume": 1.5,
+                    "stream": false
+                }
+            ]
+        },
+        "ui.soul_linked_used": {
+            "__use_legacy_max_distance": "true",
+            "category": "player",
+            "min_distance": null,
+            "max_distance": null,
+            "subtitle": "ui.subtitle_custom.soul_linked",
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": true,
+                    "name": "sounds/ui/soul_linked",
+                    "volume": 2,
+                    "stream": false
+                }
+            ]
+        },
+        "ui.abyss_attack.start": {
+            "category": "ui",
+            "min_distance": null,
+            "max_distance": null,
+            "subtitle": "ui.subtitle_custom.abyss_attack",
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": false,
+                    "name": "sounds/ui/abyss_sounds/attack",
+                    "stream": true,
+                    "volume": 2
+                }
+            ]
+        },
+        "ui.abyss_attack.text_desc": {
+            "category": "ui",
+            "min_distance": null,
+            "max_distance": null,
+            "subtitle": "ui.subtitle_custom.abyss_desc",
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "weight": 1,
+                    "is3D": false,
+                    "name": "sounds/ui/abyss_sounds/text_desc1",
+                    "stream": true,
+                    "volume": 2
+                },
+                {
+                    "load_on_low_memory": true,
+                    "weight": 1,
+                    "is3D": false,
+                    "name": "sounds/ui/abyss_sounds/text_desc2",
+                    "stream": true,
+                    "volume": 2
+                }
+            ]
+        },
+        "ui.dragon_attack_nausea.start": {
+            "category": "ui",
+            "min_distance": null,
+            "max_distance": null,
+            "subtitle": "ui.subtitle_custom.ambient_dragon_attack.nausea",
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": false,
+                    "name": "sounds/ambient/nausea_attack_started",
+                    "stream": true,
+                    "volume": 1
+                }
+            ]
+        },
+        "ui.dragon_attack_conduit.start": {
+            "category": "ui",
+            "min_distance": null,
+            "max_distance": null,
+            "subtitle": "ui.subtitle_custom.ambient_dragon_attack.conduit",
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": false,
+                    "name": "sounds/ambient/conduit_attack_started",
+                    "stream": true,
+                    "volume": 1
+                }
+            ]
+        },
+        "ui.dragon_attack.damage_nausea": {
+            "category": "ui",
+            "min_distance": null,
+            "max_distance": null,
+            "subtitle": "ui.subtitle_custom.ambient_dragon_attack.nausea.damaged",
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": false,
+                    "name": "sounds/mob/player_ghost/rare_death",
+                    "stream": true,
+                    "volume": 1
+                }
+            ]
+        },
+
+        "mob.player_ghost.death_sound": {
+            "__use_legacy_max_distance": "true",
+            "category": "neutral",
+            "min_distance": null,
+            "max_distance": null,
+            "subtitle": "ui.subtitle_custom.player_ghost_death",
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": true,
+                    "name": "sounds/mob/player_ghost/ded",
+                    "stream": true,
+                    "volume": 1
+                }
+            ]
+        },
+        "mob.soul_ghast.charge_and_shot": {
+            "__use_legacy_max_distance": "true",
+            "category": "hostile",
+            "min_distance": null,
+            "max_distance": 50,
+            "subtitle": "ui.subtitle_custom.soul_ghast_charging",
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": true,
+                    "name": "sounds/mob/soul_ghast/laser_start_change",
+                    "stream": false,
+                    "volume": 0.95,
+                    "pitch": 1.0
+                }
+            ]
+        },
+        "mob.lord_piglin.start_gem": {
+            "__use_legacy_max_distance": "true",
+            "category": "hostile",
+            "min_distance": null,
+            "max_distance": null,
+            "subtitle": "ui.subtitle_custom.lord_piglin_gem",
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": true,
+                    "name": "sounds/mob/piglin/start_gem",
+                    "stream": false,
+                    "volume": 2
+                }
+            ]
+        },
+        "mob.piglin.get_armor": {
+            "__use_legacy_max_distance": "true",
+            "category": "hostile",
+            "min_distance": null,
+            "max_distance": null,
+            "subtitle": "ui.subtitle_custom.piglin_get_armor",
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": true,
+                    "name": "sounds/mob/piglin/get_armor",
+                    "stream": false,
+                    "volume": 0.65
+                }
+            ]
+        },
+        "mob.magma_copter.fly": {
+            "__use_legacy_max_distance": "true",
+            "min_distance": null,
+            "max_distance": null,
+            "category": "hostile",
+            "subtitle": "ui.subtitle_custom.magmacopter_start",
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": true,
+                    "name": "sounds/mob/magma_copter/copter_start",
+                    "stream": false,
+                    "volume": 1.35
+                }
+            ]
+        },
+        "mob.king_wither.start_spirit": {
+            "__use_legacy_max_distance": "true",
+            "min_distance": null,
+            "max_distance": 65,
+            "category": "hostile",
+            "subtitle": "ui.subtitle_custom.wither_king_start",
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": true,
+                    "name": "sounds/mob/king_wither/start_spirit",
+                    "volume": 1.5,
+                    "stream": false
+                }
+            ]
+        },
+        "mob.start_exploding.sound": {
+            "__use_legacy_max_distance": "true",
+            "min_distance": null,
+            "max_distance": null,
+            "category": "hostile",
+            "subtitle": "ui.subtitle_custom.mob_explodes",
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": true,
+                    "name": "sounds/mob/start_explode",
+                    "volume": 3,
+                    "stream": false
+                }
+            ]
+        },
+        "mob.betray_tamed.start": {
+            "__use_legacy_max_distance": "true",
+            "min_distance": null,
+            "max_distance": 30,
+            "category": "hostile",
+            "subtitle": "ui.subtitle_custom.mob_betray",
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": true,
+                    "name": "sounds/mob/betray_tamed",
+                    "volume": 1.55,
+                    "stream": false
+                }
+            ]
+        },
+        "mob.cat.start_summon": {
+            "category": "hostile",
+            "min_distance": null,
+            "max_distance": 25,
+            "__use_legacy_max_distance": "true",
+            "subtitle": "ui.subtitle_custom.mob_summon_attack",
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": true,
+                    "name": "sounds/ui/summon_mob",
+                    "volume": 1,
+                    "stream": false
+                }
+            ]
+        },
+        "mob.bear_trap.start_attack": {
+            "__use_legacy_max_distance": "true",
+            "min_distance": null,
+            "max_distance": null,
+            "subtitle": "ui.subtitle_custom.bear_trap.attacks",
+            "category": "hostile",
+            "sounds": [
+                {
+                    "is3D": true,
+                    "name": "sounds/mob/bear_trap/start_trap",
+                    "volume": 1,
+                    "stream": false
+                }
+            ]
+        },
+
+        "record.athazagoraphobia.dragon_fight": {
+            "__use_legacy_max_distance": "true",
+            "category": "record",
+            "min_distance": null,
+            "max_distance": 64.0,
+            "subtitle": "ui.music_start.dragon_fight",
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": true,
+                    "name": "sounds/music/athazagoraphobia",
+                    "volume": 1,
+                    "stream": true
+                }
+            ]
+        },
+        "record.final_music": {
+            "__use_legacy_max_distance": "true",
+            "category": "record",
+            "min_distance": null,
+            "max_distance": 64.0,
+            "subtitle": "ui.music_start.final_music",
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": true,
+                    "name": "sounds/music/goodbye_music",
+                    "volume": 1,
+                    "stream": true
+                }
+            ]
+        },
+        "record.party_starts": {
+            "__use_legacy_max_distance": "true",
+            "category": "record",
+            "min_distance": null,
+            "max_distance": 64.0,
+            "subtitle": "ui.music_start.party_starts",
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": true,
+                    "name": "sounds/music/omg",
+                    "volume": 1,
+                    "stream": true
+                }
+            ]
+        },
+        "record.remix_de_una_silla": {
+            "__use_legacy_max_distance": "true",
+            "category": "record",
+            "min_distance": null,
+            "max_distance": 64.0,
+            "subtitle": "ui.music_start.remix_de_una_silla",
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": true,
+                    "name": "sounds/music/remix_de_una_silla",
+                    "volume": 1,
+                    "stream": true
+                }
+            ]
+        },
+
+        "music.athazagoraphobia.dragon_fight": {
+            "__use_legacy_max_distance": "true",
+            "category": "music",
+            "min_distance": null,
+            "max_distance": null,
+            "subtitle": "ui.music_start.dragon_fight",
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": false,
+                    "name": "sounds/music/athazagoraphobia",
+                    "volume": 0.75,
+                    "stream": true
+                }
+            ]
+        },
+        "music.game.end": {
+            "__use_legacy_max_distance": "true",
+            "category": "music",
+            "max_distance": null,
+            "min_distance": null,
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "weight": 1,
+                    "name": "sounds/music/game/end/end",
+                    "stream": true,
+                    "volume": 0.20
+                },
+                {
+                    "load_on_low_memory": true,
+                    "weight": 1,
+                    "name": "sounds/music/end_ambient",
+                    "stream": true,
+                    "volume": 0.20
+                }
+            ]
+        },
+
+        "ambient.respawned_ply": {
+            "category": "player",
+            "__use_legacy_max_distance": "true",
+            "max_distance": 45,
+            "min_distance": null,
+            "subtitle": "ui.subtitle_custom.ply_respawned_soul",
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": true,
+                    "name": "sounds/ambient/respawned_player",
+                    "volume": 2,
+                    "stream": false
+                }
+            ]
+        },
+        "ambient.soul_link": {
+            "category": "ui",
+            "max_distance": null,
+            "min_distance": null,
+            "subtitle": "ui.subtitle_custom.ambient_soullink",
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": false,
+                    "name": "sounds/ambient/choose_soullink",
+                    "volume": 0.76,
+                    "stream": false
+                }
+            ]
+        },
+        "ambient.weather.rain": {
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "name": "sounds/ambient/weather/rain1",
+                    "volume": 0.001
+                },
+                {
+                    "name": "sounds/ambient/weather/rain2",
+                    "volume": 0.001
+                },
+                {
+                    "name": "sounds/ambient/weather/rain3",
+                    "volume": 0.001
+                },
+                {
+                    "name": "sounds/ambient/weather/rain4",
+                    "volume": 0.001
+                }
+            ]
+        }
+    }
+}

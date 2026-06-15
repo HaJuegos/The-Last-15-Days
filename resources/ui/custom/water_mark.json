@@ -1,0 +1,105 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "namespace": "watermarktld",
+
+    "slide_in": {
+        "anim_type": "offset",
+        "easing": "out_expo",
+        "from": [ 0, 100 ],
+        "to": [ 0, 0 ],
+        "duration": 2.0,
+        "next": "@watermarktld.wait_before_fade"
+    },
+    "wait_before_fade": {
+        "anim_type": "alpha",
+        "from": 1.0,
+        "to": 1.0,
+        "duration": 1.5,
+        "next": "@watermarktld.fade_to_transparent"
+    },
+    "fade_to_transparent": {
+        "anim_type": "alpha",
+        "from": 1.0,
+        "to": 0.35,
+        "duration": 0.5,
+        "next": "@watermarktld.stay_transparent"
+    },
+    "stay_transparent": {
+        "anim_type": "alpha",
+        "from": 0.35,
+        "to": 0.35,
+        "duration": 99999.0
+    },
+
+    "watermark_panel": {
+        "type": "stack_panel",
+        "orientation": "horizontal",
+        "anchor_from": "bottom_right",
+        "anchor_to": "bottom_right",
+        "offset": [ -3, -3 ],
+        "size": [ "100%c", 16 ],
+        "controls": [
+            {
+                "text_container": {
+                    "type": "panel",
+                    "size": [ "100%c", 19 ],
+                    "controls": [
+                        {
+                            "title": {
+                                "type": "label",
+                                "text": "ui.watermak.title",
+                                "font_size": "small",
+                                "shadow": true,
+                                "anchor_from": "top_right",
+                                "anchor_to": "top_right",
+                                "size": [ "default", 8 ],
+                                "anims": [
+                                    "@watermarktld.slide_in"
+                                ]
+                            }
+                        },
+                        {
+                            "version": {
+                                "type": "label",
+                                "text": "ui.watermak.version",
+                                "font_size": "small",
+                                "shadow": true,
+                                "anchor_from": "bottom_right",
+                                "anchor_to": "bottom_right",
+                                "size": [ "default", 11 ],
+                                "anims": [
+                                    "@watermarktld.slide_in"
+                                ]
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "padding": {
+                    "type": "panel",
+                    "size": [ 3, 16 ]
+                }
+            },
+            {
+                "icon_container": {
+                    "type": "panel",
+                    "size": [ 16, 16 ],
+                    "controls": [
+                        {
+                            "icon": {
+                                "type": "image",
+                                "texture": "textures/ui/fast_alert/pack_icon",
+                                "size": [ "100%", "100%" ],
+                                "anims": [
+                                    "@watermarktld.slide_in"
+                                ]
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

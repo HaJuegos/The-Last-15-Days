@@ -1,0 +1,401 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.26.0",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "minecraft:dragon_fireball",
+            "spawn_category": "ambient",
+            "is_summonable": false,
+            "is_spawnable": true
+        },
+        "component_groups": {
+            "ha:normal_fireball": {
+                "minecraft:projectile": {
+                    "on_hit": {
+                        "spawn_aoe_cloud": {
+                            "affect_owner": false,
+                            "color": [ 220, 0, 239 ],
+                            "duration": 30,
+                            "particle": "dragonbreath",
+                            "potion": 24,
+                            "reapplication_delay": 20,
+                            "radius": 6.0,
+                            "radius_on_use": 0
+                        },
+                        "impact_damage": { },
+                        "remove_on_hit": { }
+                    },
+                    "anchor": 2,
+                    "gravity": 0.05,
+                    "hit_sound": "explode",
+                    "power": 2.4,
+                    "inertia": 1,
+                    "reflect_on_hurt": true,
+                    "knockback": true,
+                    "is_dangerous": true,
+                    "offset": [ 0, 0.5, 0 ],
+                    "semi_random_diff_damage": true,
+                    "uncertainty_base": 10.0,
+                    "should_bounce": false
+                }
+            },
+            "ha:nausea_fireball": {
+                "minecraft:projectile": {
+                    "on_hit": {
+                        "spawn_chance": {
+                            "spawn_definition": "ha:debuff_timer<ha:spawn_nauseas_debuff>",
+                            "first_spawn_percent_chance": 100,
+                            "first_spawn_count": 1
+                        },
+                        "impact_damage": { },
+                        "remove_on_hit": { }
+                    },
+                    "anchor": 2,
+                    "gravity": 0.05,
+                    "hit_sound": "explode",
+                    "power": 2.4,
+                    "inertia": 1,
+                    "reflect_on_hurt": true,
+                    "knockback": true,
+                    "is_dangerous": true,
+                    "offset": [ 0, 0.5, 0 ],
+                    "semi_random_diff_damage": true,
+                    "uncertainty_base": 10.0,
+                    "should_bounce": false
+                }
+            },
+            "ha:warden_fireball": {
+                "minecraft:projectile": {
+                    "on_hit": {
+                        "spawn_chance": {
+                            "spawn_definition": "minecraft:warden<ha:spawn_from_dragon>",
+                            "first_spawn_percent_chance": 100,
+                            "first_spawn_count": 1
+                        },
+                        "impact_damage": { },
+                        "remove_on_hit": { }
+                    },
+                    "anchor": 2,
+                    "gravity": 0.05,
+                    "hit_sound": "explode",
+                    "power": 2.4,
+                    "inertia": 1,
+                    "reflect_on_hurt": true,
+                    "knockback": true,
+                    "is_dangerous": true,
+                    "offset": [ 0, 0.5, 0 ],
+                    "semi_random_diff_damage": true,
+                    "uncertainty_base": 10.0,
+                    "should_bounce": false
+                }
+            },
+            "ha:spider_fireball": {
+                "minecraft:projectile": {
+                    "on_hit": {
+                        "spawn_chance": {
+                            "spawn_definition": "minecraft:cave_spider<ha:from_end>",
+                            "first_spawn_percent_chance": 100,
+                            "first_spawn_count": 3
+                        },
+                        "impact_damage": { },
+                        "remove_on_hit": { }
+                    },
+                    "anchor": 2,
+                    "gravity": 0.05,
+                    "hit_sound": "explode",
+                    "power": 2.4,
+                    "inertia": 1,
+                    "reflect_on_hurt": true,
+                    "knockback": true,
+                    "is_dangerous": true,
+                    "offset": [ 0, 0.5, 0 ],
+                    "semi_random_diff_damage": true,
+                    "uncertainty_base": 10.0,
+                    "should_bounce": false
+                }
+            },
+            "ha:bear_fireball": {
+                "minecraft:projectile": {
+                    "on_hit": {
+                        "spawn_chance": {
+                            "spawn_definition": "ha:bear_trap<minecraft:entity_spawned>",
+                            "first_spawn_percent_chance": 100,
+                            "first_spawn_count": 1
+                        },
+                        "impact_damage": { },
+                        "remove_on_hit": { }
+                    },
+                    "anchor": 2,
+                    "gravity": 0.05,
+                    "hit_sound": "explode",
+                    "power": 2.4,
+                    "inertia": 1,
+                    "reflect_on_hurt": true,
+                    "knockback": true,
+                    "is_dangerous": true,
+                    "offset": [ 0, 0.5, 0 ],
+                    "semi_random_diff_damage": true,
+                    "uncertainty_base": 10.0,
+                    "should_bounce": false
+                }
+            },
+
+            "ha:conduit_fireball": {
+                "minecraft:projectile": {
+                    "on_hit": {
+                        "spawn_chance": {
+                            "spawn_definition": "ha:debuff_timer<ha:spawn_conduit_debuff>",
+                            "first_spawn_percent_chance": 100,
+                            "first_spawn_count": 1
+                        },
+                        "impact_damage": { },
+                        "remove_on_hit": { }
+                    },
+                    "anchor": 2,
+                    "gravity": 0.05,
+                    "hit_sound": "explode",
+                    "power": 2.4,
+                    "inertia": 1,
+                    "reflect_on_hurt": true,
+                    "knockback": true,
+                    "is_dangerous": true,
+                    "offset": [ 0, 0.5, 0 ],
+                    "semi_random_diff_damage": true,
+                    "uncertainty_base": 10.0,
+                    "should_bounce": false
+                }
+            },
+            "ha:totem_fireball": {
+                "minecraft:projectile": {
+                    "on_hit": {
+                        "spawn_chance": {
+                            "spawn_definition": "ha:debuff_timer<ha:spawn_totem_debuff>",
+                            "first_spawn_percent_chance": 100,
+                            "first_spawn_count": 1
+                        },
+                        "impact_damage": { },
+                        "remove_on_hit": { }
+                    },
+                    "anchor": 2,
+                    "gravity": 0.05,
+                    "hit_sound": "explode",
+                    "power": 2.4,
+                    "inertia": 1,
+                    "reflect_on_hurt": true,
+                    "knockback": true,
+                    "is_dangerous": true,
+                    "offset": [ 0, 0.5, 0 ],
+                    "semi_random_diff_damage": true,
+                    "uncertainty_base": 10.0,
+                    "should_bounce": false
+                }
+            },
+            "ha:items_fireball": {
+                "minecraft:projectile": {
+                    "on_hit": {
+                        "spawn_chance": {
+                            "spawn_definition": "ha:debuff_timer<ha:spawn_items_debuff>",
+                            "first_spawn_percent_chance": 100,
+                            "first_spawn_count": 1
+                        },
+                        "impact_damage": { },
+                        "remove_on_hit": { }
+                    },
+                    "anchor": 2,
+                    "gravity": 0.05,
+                    "hit_sound": "explode",
+                    "power": 2.4,
+                    "inertia": 1,
+                    "reflect_on_hurt": true,
+                    "knockback": true,
+                    "is_dangerous": true,
+                    "offset": [ 0, 0.5, 0 ],
+                    "semi_random_diff_damage": true,
+                    "uncertainty_base": 10.0,
+                    "should_bounce": false
+                }
+            },
+            "ha:brute_fireball": {
+                "minecraft:projectile": {
+                    "on_hit": {
+                        "spawn_chance": {
+                            "spawn_definition": "minecraft:piglin_brute<minecraft:entity_spawned>",
+                            "first_spawn_percent_chance": 100,
+                            "first_spawn_count": 1
+                        },
+                        "impact_damage": { },
+                        "remove_on_hit": { }
+                    },
+                    "anchor": 2,
+                    "gravity": 0.05,
+                    "hit_sound": "explode",
+                    "power": 2.4,
+                    "inertia": 1,
+                    "reflect_on_hurt": true,
+                    "knockback": true,
+                    "is_dangerous": true,
+                    "offset": [ 0, 0.5, 0 ],
+                    "semi_random_diff_damage": true,
+                    "uncertainty_base": 10.0,
+                    "should_bounce": false
+                }
+            },
+            "ha:polly_fireball": {
+                "minecraft:projectile": {
+                    "on_hit": {
+                        "spawn_chance": {
+                            "spawn_definition": "minecraft:sheep<ha:become_iron>",
+                            "first_spawn_percent_chance": 100,
+                            "first_spawn_count": 4
+                        },
+                        "impact_damage": { },
+                        "remove_on_hit": { }
+                    },
+                    "anchor": 2,
+                    "gravity": 0.05,
+                    "hit_sound": "explode",
+                    "power": 2.4,
+                    "inertia": 1,
+                    "reflect_on_hurt": true,
+                    "knockback": true,
+                    "is_dangerous": true,
+                    "offset": [ 0, 0.5, 0 ],
+                    "semi_random_diff_damage": true,
+                    "uncertainty_base": 10.0,
+                    "should_bounce": false
+                }
+            }
+        },
+        "components": {
+            "minecraft:collision_box": {
+                "height": 0.31,
+                "width": 0.31
+            },
+            "minecraft:conditional_bandwidth_optimization": {
+                "default_values": {
+                    "max_dropped_ticks": 7,
+                    "max_optimized_distance": 80.0,
+                    "use_motion_prediction_hints": true
+                }
+            },
+            "minecraft:dimension_bound": { },
+            "minecraft:physics": { },
+            "minecraft:pushable": {
+                "is_pushable": true,
+                "is_pushable_by_piston": true
+            }
+        },
+        "events": {
+            "minecraft:entity_spawned": {
+                "randomize": [
+                    {
+                        "weight": 1,
+                        "trigger": "ha:normal_balls"
+                    },
+                    {
+                        "weight": 1,
+                        "trigger": "ha:enraged_balls"
+                    }
+                ]
+            },
+            "ha:normal_balls": {
+                "randomize": [
+                    {
+                        "weight": 85,
+                        "add": {
+                            "component_groups": [
+                                "ha:normal_fireball"
+                            ]
+                        }
+                    },
+                    {
+                        "weight": 10,
+                        "add": {
+                            "component_groups": [
+                                "ha:nausea_fireball"
+                            ]
+                        }
+                    },
+                    {
+                        "weight": 10,
+                        "add": {
+                            "component_groups": [
+                                "ha:warden_fireball"
+                            ]
+                        }
+                    },
+                    {
+                        "weight": 5,
+                        "add": {
+                            "component_groups": [
+                                "ha:spider_fireball"
+                            ]
+                        }
+                    },
+                    {
+                        "weight": 85,
+                        "add": {
+                            "component_groups": [
+                                "ha:bear_fireball"
+                            ]
+                        }
+                    },
+                    {
+                        "weight": 10,
+                        "add": {
+                            "component_groups": [
+                                "ha:totem_fireball"
+                            ]
+                        }
+                    }
+                ]
+            },
+            "ha:enraged_balls": {
+                "randomize": [
+                    {
+                        "weight": 1,
+                        "trigger": "ha:normal_balls"
+                    },
+                    {
+                        "weight": 1,
+                        "randomize": [
+                            {
+                                "weight": 50,
+                                "add": {
+                                    "component_groups": [
+                                        "ha:conduit_fireball"
+                                    ]
+                                }
+                            },
+                            {
+                                "weight": 10,
+                                "add": {
+                                    "component_groups": [
+                                        "ha:items_fireball"
+                                    ]
+                                }
+                            },
+                            {
+                                "weight": 5,
+                                "add": {
+                                    "component_groups": [
+                                        "ha:brute_fireball"
+                                    ]
+                                }
+                            },
+                            {
+                                "weight": 50,
+                                "add": {
+                                    "component_groups": [
+                                        "ha:polly_fireball"
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}

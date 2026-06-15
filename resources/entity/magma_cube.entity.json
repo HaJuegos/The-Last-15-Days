@@ -1,0 +1,54 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "minecraft:magma_cube",
+            "materials": {
+                "default": "magma_cube"
+            },
+            "textures": {
+                "default": "textures/entity/slime/magmacube_v2",
+                "copter": "textures/entity/magma_cube/magmacopter"
+            },
+            "geometry": {
+                "default": "geometry.magma_cube_v2",
+                "copter": "geometry.magmacopter"
+            },
+            "scripts": {
+                "pre_animation": [
+                    "variable.slime_squish_factor = (query.previous_squish_value + (query.current_squish_value - query.previous_squish_value) * query.frame_alpha);",
+                    "variable.bounce = 1 / ((variable.slime_squish_factor / (query.variant * 0.5 + 1)) + 1);",
+                    "variable.horizontal_scale_amount = variable.bounce * query.variant;",
+                    "variable.vertical_scale_amount = (1 / variable.bounce) * query.variant;"
+                ],
+                "animate": [
+                    "general_controller",
+                    {
+                        "flying": "q.skin_id == 1"
+                    }
+                ],
+                "scalex": "variable.horizontal_scale_amount",
+                "scaley": "variable.vertical_scale_amount",
+                "scalez": "variable.horizontal_scale_amount"
+            },
+            "animations": {
+                "general_controller": "controller.animation.magma_cube.general",
+                "move": "animation.magma_cube.move",
+
+                "flying": "animation.magma_copter.flying"
+            },
+            "render_controllers": [
+                "controller.render.magma_cube",
+                {
+                    "controller.render.magma_copter": "q.skin_id == 1"
+                }
+            ],
+            "spawn_egg": {
+                // mc-disable-next-line behaviorpack.item.components.texture_not_found
+                "texture": "spawn_egg_magma_cube"
+            }
+        }
+    }
+}

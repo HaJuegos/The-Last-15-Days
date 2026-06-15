@@ -1,0 +1,253 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.21.50",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "ha:dynamite",
+            "runtime_identifier": "minecraft:ender_pearl",
+            "spawn_category": "ambient",
+            "is_experimental": false,
+            "is_spawnable": false,
+            "is_summonable": true
+        },
+        "component_groups": {
+            "ha:from_player": {
+                "minecraft:projectile": {
+                    "on_hit": {
+                        "impact_damage": {
+                            "damage": 1,
+                            "destroy_on_hit": false,
+                            "destroy_on_hit_requires_damage": false,
+                            "knockback": false,
+                            "power_multiplier": 1.36,
+                            "should_bounce": false
+                        },
+                        "definition_event": {
+                            "affect_projectile": true,
+                            "event_trigger": {
+                                "event": "ha:start_explode",
+                                "target": "self"
+                            }
+                        },
+                        "stick_in_ground": { }
+                    },
+                    "reflect_immunity": 1,
+                    "reflect_on_hurt": true,
+                    "stop_on_hurt": true,
+                    "offset": [ 0, 0, 0 ],
+                    "power": 2,
+                    "uncertainty_base": 5,
+                    "uncertainty_multiplier": 2,
+                    "anchor": 1,
+                    "should_bounce": true,
+                    "inertia": 0.95,
+                    "liquid_inertia": 0.4,
+                    "is_dangerous": true,
+                    "multiple_targets": true,
+                    "destroy_on_hurt": false,
+                    "knockback": false,
+                    "ignored_entities": [
+                        "boat",
+                        "chest_boat",
+                        "minecart",
+                        "illager",
+                        "ravager",
+                        "pillager",
+                        "ravager",
+                        "witch",
+                        "vex"
+                    ]
+                }
+            },
+            "ha:explode": {
+                "minecraft:is_ignited": { },
+                "minecraft:explode": {
+                    "power": 3,
+                    "fuse_length": [ 0.75, 1 ],
+                    "fuse_lit": true,
+                    "allow_underwater": true,
+                    "breaks_blocks": true,
+                    "destroy_affected_by_griefing": true,
+                    "fire_affected_by_griefing": true,
+                    "toggles_blocks": true
+                }
+            },
+            "ha:chain_explode": {
+                "minecraft:is_ignited": { },
+                "minecraft:projectile": {
+                    "on_hit": {
+                        "impact_damage": {
+                            "damage": 1,
+                            "destroy_on_hit": false,
+                            "destroy_on_hit_requires_damage": false,
+                            "knockback": false,
+                            "power_multiplier": 1.36,
+                            "should_bounce": false
+                        },
+                        "stick_in_ground": { }
+                    },
+                    "reflect_immunity": 1,
+                    "reflect_on_hurt": true,
+                    "stop_on_hurt": true,
+                    "offset": [ 0, 1, 0 ],
+                    "power": 2,
+                    "uncertainty_base": 5,
+                    "uncertainty_multiplier": 2,
+                    "anchor": 1,
+                    "should_bounce": true,
+                    "inertia": 0.95,
+                    "liquid_inertia": 0.4,
+                    "is_dangerous": true,
+                    "multiple_targets": true,
+                    "destroy_on_hurt": false,
+                    "knockback": false,
+                    "ignored_entities": [
+                        "boat",
+                        "chest_boat",
+                        "minecart",
+                        "illager",
+                        "ravager",
+                        "pillager",
+                        "ravager",
+                        "witch",
+                        "vex"
+                    ]
+                },
+                "minecraft:explode": {
+                    "power": 3,
+                    "fuse_length": [ 0.35, 0.75 ],
+                    "fuse_lit": true,
+                    "allow_underwater": true,
+                    "breaks_blocks": true,
+                    "destroy_affected_by_griefing": true,
+                    "fire_affected_by_griefing": true,
+                    "toggles_blocks": true
+                }
+            }
+        },
+        "components": {
+            "minecraft:projectile": {
+                "on_hit": {
+                    "impact_damage": {
+                        "damage": 1,
+                        "destroy_on_hit": false,
+                        "destroy_on_hit_requires_damage": false,
+                        "knockback": false,
+                        "power_multiplier": 1.36,
+                        "should_bounce": false
+                    },
+                    "definition_event": {
+                        "affect_projectile": true,
+                        "event_trigger": {
+                            "event": "ha:start_explode",
+                            "target": "self"
+                        }
+                    },
+                    "stick_in_ground": { }
+                },
+                "reflect_immunity": 1,
+                "reflect_on_hurt": true,
+                "stop_on_hurt": true,
+                "offset": [ 0, 1, 0 ],
+                "power": 2,
+                "uncertainty_base": 5,
+                "uncertainty_multiplier": 2,
+                "anchor": 1,
+                "should_bounce": true,
+                "inertia": 0.95,
+                "liquid_inertia": 0.4,
+                "is_dangerous": true,
+                "multiple_targets": true,
+                "destroy_on_hurt": false,
+                "knockback": false,
+                "ignored_entities": [
+                    "boat",
+                    "chest_boat",
+                    "minecart",
+                    "illager",
+                    "ravager",
+                    "pillager",
+                    "ravager",
+                    "witch",
+                    "vex"
+                ]
+            },
+            "minecraft:transient": { },
+            "minecraft:mob_effect_immunity": { },
+            "minecraft:health": {
+                "value": 1,
+                "max": 1,
+                "min": 1
+            },
+            "minecraft:damage_sensor": {
+                "triggers": [
+                    {
+                        "cause": "all",
+                        "deals_damage": "no"
+                    }
+                ]
+            },
+            "minecraft:cannot_be_attacked": { },
+            "minecraft:pushable": {
+                "is_pushable": false,
+                "is_pushable_by_piston": true
+            },
+            "minecraft:dimension_bound": { },
+            "minecraft:physics": { },
+            "minecraft:collision_box": {
+                "height": 0.25,
+                "width": 0.25
+            },
+            "minecraft:conditional_bandwidth_optimization": {
+                "default_values": {
+                    "max_optimized_distance": 80.0,
+                    "max_dropped_ticks": 7,
+                    "use_motion_prediction_hints": true
+                }
+            }
+        },
+        "events": {
+            "minecraft:entity_spawned": { },
+            "ha:spawned_from_player": {
+                "add": {
+                    "component_groups": [
+                        "ha:from_player"
+                    ]
+                }
+            },
+            "ha:start_explode": {
+                "sequence": [
+                    {
+                        "filters": {
+                            "test": "has_component",
+                            "operator": "!=",
+                            "value": "minecraft:is_ignited"
+                        },
+                        "add": {
+                            "component_groups": [
+                                "ha:explode"
+                            ]
+                        }
+                    }
+                ]
+            },
+            "ha:from_chain_explodes": {
+                "sequence": [
+                    {
+                        "filters": {
+                            "test": "has_component",
+                            "operator": "!=",
+                            "value": "minecraft:is_ignited"
+                        },
+                        "add": {
+                            "component_groups": [
+                                "ha:chain_explode"
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

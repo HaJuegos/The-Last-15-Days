@@ -1,0 +1,63 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.10.0",
+    "animations": {
+        "animation.dynamite.fly": {
+            "loop": true,
+            "bones": {
+                "bone": {
+                    "relative_to": {
+                        "rotation": "entity"
+                    },
+                    "rotation": {
+                        "0.0": {
+                            "post": [ 0, "q.is_on_ground ? (-query.target_y_rotation) : 0", 0 ],
+                            "lerp_mode": "catmullrom"
+                        }
+                    },
+                    "position": {
+                        "0.0": {
+                            "post": [ 0, "q.is_on_ground ? -3.7 : 0", "q.is_on_ground ? -4 : 0" ],
+                            "lerp_mode": "catmullrom"
+                        }
+                    }
+                },
+                "bone2": {
+                    "rotation": {
+                        "0.0": {
+                            "post": [ "q.is_on_ground ? -180 : 0", "q.is_on_ground ? 0 : (-query.target_x_rotation)", "q.is_on_ground ? 90 : (q.life_time * 300)" ],
+                            "lerp_mode": "catmullrom"
+                        }
+                    },
+                    "position": {
+                        "0.0": {
+                            "post": [ "q.is_on_ground ? -3 : 0", 0, 0 ],
+                            "lerp_mode": "catmullrom"
+                        }
+                    }
+                },
+                "bone3": {
+                    "position": {
+                        "0.0": {
+                            "post": [ "math.sin(q.life_time * 500) * -1", "math.sin(q.life_time * 500) * -0.5", 0 ],
+                            "lerp_mode": "catmullrom"
+                        }
+                    }
+                }
+            }
+        },
+        "animation.dynamite.particle": {
+            "loop": true,
+            "animation_length": 0.55,
+            "particle_effects": {
+                "0.0": [
+                    {
+                        "effect": "dust",
+                        "locator": "particle"
+                    }
+                ]
+            }
+        }
+    }
+}

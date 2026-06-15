@@ -1,0 +1,24 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.10.0",
+    "render_controllers": {
+        "controller.render.bomber_pillager": {
+            "geometry": "Geometry.default",
+            "materials": [
+                {
+                    "*": "Material.default"
+                }
+            ],
+            "textures": [
+                "Texture.default"
+            ],
+            "overlay_color": {
+                "a": "q.is_pregnant * (Math.sin(query.life_time * (400 + (query.life_time * 150))) > 0 ? 0.8 : 0.0)",
+                "r": "q.is_pregnant * Math.lerp(1.0, 1.0, query.life_time)",
+                "g": "q.is_pregnant * Math.clamp(1.0 - (query.life_time * 2.0), 0.0, 1.0)",
+                "b": "q.is_pregnant * Math.clamp(1.0 - (query.life_time * 2.0), 0.0, 1.0)"
+            }
+        }
+    }
+}

@@ -1,0 +1,81 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.brute_sensors.in_fire": {
+            "initial_state": "default",
+            "states": {
+                "default": {
+                    "transitions": [
+                        {
+                            "in_fire": "q.is_on_fire"
+                        }
+                    ]
+                },
+                "in_fire": {
+                    "on_entry": [
+                        "@s ha:drink_resistance"
+                    ],
+                    "transitions": [
+                        {
+                            "default": "!q.is_on_fire"
+                        }
+                    ],
+                    "on_exit": [
+                        "@s ha:neutral_sensors"
+                    ]
+                }
+            }
+        },
+        "controller.animation.brute_sensors.critic": {
+            "initial_state": "default",
+            "states": {
+                "default": {
+                    "transitions": [
+                        {
+                            "critic": "!q.is_on_ground"
+                        }
+                    ]
+                },
+                "critic": {
+                    "on_entry": [
+                        "/tag @s add bruteCritic",
+                        "@s ha:critic_damage"
+                    ],
+                    "transitions": [
+                        {
+                            "default": "q.is_on_ground"
+                        }
+                    ],
+                    "on_exit": [
+                        "/tag @s remove bruteCritic",
+                        "@s ha:normal_damage"
+                    ]
+                }
+            }
+        },
+        "controller.animation.brute_sensors.health_sensor": {
+            "initial_state": "default",
+            "states": {
+                "default": {
+                    "transitions": [
+                        {
+                            "low_health": "q.health <= 65"
+                        }
+                    ]
+                },
+                "low_health": {
+                    "on_entry": [
+                        "@s ha:panic_event"
+                    ],
+                    "transitions": [
+                        {
+                            "default": "!q.is_sheared"
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,31 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.soul_ghast.root": {
+            "initial_state": "default",
+            "states": {
+               "default": {
+                    "transitions": [
+                        { "on_chargin": "q.facing_target_to_range_attack" }
+                    ]
+                },
+                "on_chargin": {
+                    "animations": [ "chargin" ],
+                    "transitions": [
+                        { "on_shoot": "q.is_charged && q.anim_time >= 2.8" },
+                        { "default": "!q.facing_target_to_range_attack" }
+                    ]
+                },
+                "on_shoot": {
+                    "animations": [ "shoot" ],
+                    "transitions": [
+                        { "on_chargin": "q.all_animations_finished" },
+                        { "default": "!q.facing_target_to_range_attack" }
+                    ]
+                }
+            }
+        }
+    }
+}

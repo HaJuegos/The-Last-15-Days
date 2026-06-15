@@ -1,0 +1,3355 @@
+// mc-disable resourcepack.sounds.missing
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.26.0",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "minecraft:piglin_brute",
+            "spawn_category": "monster",
+            "is_experimental": false,
+            "is_summonable": true,
+            "is_spawnable": true,
+            "scripts": {
+                "animate": [
+                    "on_fire",
+                    "critic",
+                    "health_sensor"
+                ]
+            },
+            "animations": {
+                "on_fire": "controller.animation.brute_sensors.in_fire",
+                "critic": "controller.animation.brute_sensors.critic",
+                "health_sensor": "controller.animation.brute_sensors.health_sensor"
+            }
+        },
+        "component_groups": {
+            "ha:spawn_sensors": {
+                "minecraft:target_nearby_sensor": {
+                    "outside_range": 1,
+                    "on_outside_range": {
+                        "event": "ha:start_pearl_mode",
+                        "target": "self"
+                    }
+                },
+                "minecraft:environment_sensor": {
+                    "triggers": [
+                        {
+                            "filters": {
+                                "all_of": [
+                                    {
+                                        "test": "actor_health",
+                                        "subject": "self",
+                                        "operator": "<",
+                                        "value": 350
+                                    },
+                                    {
+                                        "test": "has_target",
+                                        "subject": "self",
+                                        "value": false
+                                    },
+                                    {
+                                        "test": "has_component",
+                                        "subject": "self",
+                                        "operator": "not",
+                                        "value": "minecraft:is_sheared"
+                                    }
+                                ]
+                            },
+                            "target": "self",
+                            "event": "ha:panic_event"
+                        },
+                        {
+                            "filters": {
+                                "all_of": [
+                                    {
+                                        "test": "has_target",
+                                        "subject": "self",
+                                        "value": true
+                                    },
+                                    {
+                                        "test": "is_underground",
+                                        "subject": "target",
+                                        "value": true
+                                    },
+                                    {
+                                        "test": "random_chance",
+                                        "value": 1000
+                                    },
+                                    {
+                                        "test": "has_tag",
+                                        "subject": "self",
+                                        "operator": "!=",
+                                        "value": "mining_mode"
+                                    }
+                                ]
+                            },
+                            "target": "self",
+                            "event": "ha:start_mining"
+                        }
+                    ]
+                },
+                "minecraft:behavior.nearest_prioritized_attackable_target": {
+                    "priority": 3,
+                    "must_see": true,
+                    "reselect_targets": true,
+                    "entity_types": [
+                        {
+                            "priority": 0,
+                            "filters": {
+                                "test": "is_family",
+                                "subject": "other",
+                                "value": "player"
+                            },
+                            "max_dist": 150,
+                            "must_see": false
+                        },
+                        {
+                            "priority": 1,
+                            "filters": {
+                                "any_of": [
+                                    {
+                                        "test": "is_family",
+                                        "subject": "other",
+                                        "value": "irongolem"
+                                    },
+                                    {
+                                        "test": "is_family",
+                                        "subject": "other",
+                                        "value": "snowgolem"
+                                    }
+                                ]
+                            },
+                            "max_dist": 50
+                        },
+                        {
+                            "priority": 2,
+                            "filters": {
+                                "all_of": [
+                                    {
+                                        "test": "is_family",
+                                        "subject": "other",
+                                        "operator": "!=",
+                                        "value": "player"
+                                    },
+                                    {
+                                        "test": "is_family",
+                                        "subject": "other",
+                                        "operator": "!=",
+                                        "value": "irongolem"
+                                    },
+                                    {
+                                        "test": "is_family",
+                                        "subject": "other",
+                                        "operator": "!=",
+                                        "value": "snowgolem"
+                                    },
+                                    {
+                                        "test": "is_family",
+                                        "subject": "other",
+                                        "operator": "!=",
+                                        "value": "piglin"
+                                    }
+                                ]
+                            },
+                            "max_dist": 100,
+                            "must_see": false
+                        }
+                    ]
+                }
+            },
+
+            "ha:angry_mode": {
+                "minecraft:angry": {
+                    "angry_sound": "angry",
+                    "broadcast_anger_when_dying": true,
+                    "broadcast_anger": true,
+                    "broadcast_anger_on_attack": false,
+                    "broadcast_anger_on_being_attacked": true,
+                    "broadcast_range": 30,
+                    "duration": 30,
+                    "broadcast_targets": [ "piglin" ],
+                    "filters": {
+                        "all_of": [
+                            {
+                                "operator": "!=",
+                                "test": "is_family",
+                                "subject": "other",
+                                "value": "piglin"
+                            }
+                        ]
+                    },
+                    "sound_interval": {
+                        "range_max": 5,
+                        "range_min": 2
+                    }
+                }
+            },
+
+            "ha:melee_sensors": {
+                "minecraft:on_target_escape": {
+                    "event": "ha:neutral_sensors",
+                    "target": "self"
+                },
+                "minecraft:target_nearby_sensor": {
+                    "outside_range": 7,
+                    "on_outside_range": {
+                        "event": "ha:start_ranged_mode",
+                        "target": "self"
+                    }
+                }
+            },
+            "ha:mace_sensors": {
+                "minecraft:on_target_escape": {
+                    "event": "ha:neutral_sensors",
+                    "target": "self"
+                },
+                "minecraft:target_nearby_sensor": {
+                    "outside_range": 18,
+                    "on_outside_range": {
+                        "event": "ha:start_ranged_mode",
+                        "target": "self"
+                    }
+                }
+            },
+            "ha:spear_sensors": {
+                "minecraft:on_target_escape": {
+                    "event": "ha:neutral_sensors",
+                    "target": "self"
+                },
+                "minecraft:target_nearby_sensor": {
+                    "outside_range": 18,
+                    "on_outside_range": {
+                        "event": "ha:start_ranged_mode",
+                        "target": "self"
+                    }
+                }
+            },
+
+            "ha:ranged_sensors": {
+                "minecraft:on_target_escape": {
+                    "event": "ha:neutral_sensors",
+                    "target": "self"
+                },
+                "minecraft:target_nearby_sensor": {
+                    "inside_range": 5,
+                    "outside_range": 10,
+                    "on_inside_range": {
+                        "event": "ha:start_melee_mode",
+                        "target": "self"
+                    },
+                    "on_outside_range": {
+                        "event": "ha:start_pearl_mode",
+                        "target": "self"
+                    }
+                }
+            },
+            "ha:pearl_sensors": {
+                "minecraft:on_target_escape": {
+                    "event": "ha:neutral_sensors",
+                    "target": "self"
+                },
+                "minecraft:target_nearby_sensor": {
+                    "inside_range": 5,
+                    "on_inside_range": {
+                        "event": "ha:start_melee_mode",
+                        "target": "self"
+                    }
+                }
+            },
+
+            "ha:melee_mode": {
+                "minecraft:behavior.melee_attack": {
+                    "priority": 0,
+                    "can_spread_on_fire": true,
+                    "cooldown_time": 0.85,
+                    "melee_fov": 360,
+                    "reach_multiplier": 4.5,
+                    "track_target": true
+                },
+                "minecraft:variant": {
+                    "value": 1
+                },
+                "minecraft:equipment": {
+                    "table": "loot_tables/entities/custom/brute_gears/melee_gear.json",
+                    "slot_drop_chance": [
+                        {
+                            "slot": "slot.weapon.mainhand",
+                            "drop_chance": -1
+                        },
+                        {
+                            "slot": "slot.weapon.offhand",
+                            "drop_chance": -1
+                        },
+                        {
+                            "slot": "slot.armor.head",
+                            "drop_chance": -1
+                        },
+                        {
+                            "slot": "slot.armor.chest",
+                            "drop_chance": -1
+                        },
+                        {
+                            "slot": "slot.armor.legs",
+                            "drop_chance": -1
+                        },
+                        {
+                            "slot": "slot.armor.feet",
+                            "drop_chance": -1
+                        }
+                    ]
+                },
+                "minecraft:environment_sensor": {
+                    "triggers": [
+                        {
+                            "filters": {
+                                "all_of": [
+                                    {
+                                        "test": "has_target",
+                                        "subject": "self",
+                                        "value": true
+                                    },
+                                    {
+                                        "test": "is_underground",
+                                        "subject": "target",
+                                        "value": true
+                                    },
+                                    {
+                                        "test": "random_chance",
+                                        "value": 1000
+                                    },
+                                    {
+                                        "test": "has_tag",
+                                        "subject": "self",
+                                        "operator": "!=",
+                                        "value": "mining_mode"
+                                    }
+                                ]
+                            },
+                            "target": "self",
+                            "event": "ha:start_mining"
+                        }
+                    ]
+                }
+            },
+            "ha:spear_mode": {
+                "minecraft:behavior.use_kinetic_weapon": {
+                    "priority": 0,
+                    "approach_distance": 30,
+                    "reposition_distance": {
+                        "min": 0,
+                        "max": 15
+                    },
+                    "cooldown_distance": {
+                        "min": 0,
+                        "max": 5
+                    },
+                    "cooldown_time": 0.0,
+                    "weapon_reach_multiplier": 1.15,
+                    "melee_fov": 360,
+                    "require_complete_path": false,
+                    "weapon_min_speed_multiplier": 1.15,
+                    "reposition_speed_multiplier": 1.15,
+                    "cooldown_speed_multiplier": 1.15,
+                    "hijack_mount_navigation": true,
+                    "track_target": true
+                },
+                "minecraft:behavior.melee_attack": {
+                    "priority": 1,
+                    "can_spread_on_fire": true,
+                    "cooldown_time": 0.45,
+                    "melee_fov": 360,
+                    "reach_multiplier": 1.45,
+                    "track_target": true
+                },
+                "minecraft:equipment": {
+                    "table": "loot_tables/entities/custom/brute_gears/spear_gear.json",
+                    "slot_drop_chance": [
+                        {
+                            "slot": "slot.weapon.mainhand",
+                            "drop_chance": -1
+                        },
+                        {
+                            "slot": "slot.weapon.offhand",
+                            "drop_chance": -1
+                        },
+                        {
+                            "slot": "slot.armor.head",
+                            "drop_chance": -1
+                        },
+                        {
+                            "slot": "slot.armor.chest",
+                            "drop_chance": -1
+                        },
+                        {
+                            "slot": "slot.armor.legs",
+                            "drop_chance": -1
+                        },
+                        {
+                            "slot": "slot.armor.feet",
+                            "drop_chance": -1
+                        }
+                    ]
+                },
+                "minecraft:environment_sensor": {
+                    "triggers": [
+                        {
+                            "filters": {
+                                "all_of": [
+                                    {
+                                        "test": "has_target",
+                                        "subject": "self",
+                                        "value": true
+                                    },
+                                    {
+                                        "test": "is_underground",
+                                        "subject": "target",
+                                        "value": true
+                                    },
+                                    {
+                                        "test": "random_chance",
+                                        "value": 1000
+                                    },
+                                    {
+                                        "test": "has_tag",
+                                        "subject": "self",
+                                        "operator": "!=",
+                                        "value": "mining_mode"
+                                    }
+                                ]
+                            },
+                            "target": "self",
+                            "event": "ha:start_mining"
+                        }
+                    ]
+                }
+            },
+            "ha:mace_charged_loop": {
+                "minecraft:timer": {
+                    "time": [ 1, 1 ],
+                    "looping": true,
+                    "time_down_event": {
+                        "filters": {
+                            "test": "on_ground",
+                            "value": true
+                        },
+                        "event": "ha:summon_charged",
+                        "target": "self"
+                    }
+                }
+            },
+            "ha:mace_mode": {
+                "minecraft:behavior.melee_attack": {
+                    "priority": 0,
+                    "can_spread_on_fire": true,
+                    "cooldown_time": 0.45,
+                    "melee_fov": 360,
+                    "reach_multiplier": 7,
+                    "track_target": true
+                },
+                "minecraft:variant": {
+                    "value": 1
+                },
+                "minecraft:equipment": {
+                    "table": "loot_tables/entities/custom/brute_gears/mace_gear.json",
+                    "slot_drop_chance": [
+                        {
+                            "slot": "slot.weapon.mainhand",
+                            "drop_chance": -1
+                        },
+                        {
+                            "slot": "slot.weapon.offhand",
+                            "drop_chance": -1
+                        },
+                        {
+                            "slot": "slot.armor.head",
+                            "drop_chance": -1
+                        },
+                        {
+                            "slot": "slot.armor.chest",
+                            "drop_chance": -1
+                        },
+                        {
+                            "slot": "slot.armor.legs",
+                            "drop_chance": -1
+                        },
+                        {
+                            "slot": "slot.armor.feet",
+                            "drop_chance": -1
+                        }
+                    ]
+                },
+                "minecraft:environment_sensor": {
+                    "triggers": [
+                        {
+                            "filters": {
+                                "all_of": [
+                                    {
+                                        "test": "has_target",
+                                        "subject": "self",
+                                        "value": true
+                                    },
+                                    {
+                                        "test": "is_underground",
+                                        "subject": "target",
+                                        "value": true
+                                    },
+                                    {
+                                        "test": "random_chance",
+                                        "value": 1000
+                                    },
+                                    {
+                                        "test": "has_tag",
+                                        "subject": "self",
+                                        "operator": "!=",
+                                        "value": "mining_mode"
+                                    }
+                                ]
+                            },
+                            "target": "self",
+                            "event": "ha:start_mining"
+                        }
+                    ]
+                }
+            },
+
+            "ha:ranged_mode": {
+                "minecraft:variant": {
+                    "value": 1
+                },
+                "minecraft:behavior.ranged_attack": {
+                    "priority": 0,
+                    "attack_interval_min": 0.75,
+                    "attack_interval_max": 1.15,
+                    "attack_radius": 80,
+                    "ranged_fov": 360,
+                    "swing": false,
+                    "target_in_sight_time": 0.1,
+                    "speed_multiplier": 1.25
+                },
+                "minecraft:shooter": {
+                    "magic": true,
+                    "projectiles": [
+                        {
+                            "filters": {
+                                "test": "has_mob_effect",
+                                "subject": "target",
+                                "operator": "!=",
+                                "value": "slowness"
+                            },
+                            "def": "minecraft:arrow<ha:spawn_brute_arrow>",
+                            "aux_val": 19
+                        },
+                        {
+                            "filters": {
+                                "test": "has_mob_effect",
+                                "subject": "target",
+                                "operator": "!=",
+                                "value": "nausea"
+                            },
+                            "def": "minecraft:arrow<ha:spawn_nausea_arrow>",
+                            "aux_val": 0
+                        },
+                        {
+                            "filters": {
+                                "test": "has_mob_effect",
+                                "subject": "target",
+                                "operator": "!=",
+                                "value": "poison"
+                            },
+                            "def": "minecraft:arrow<ha:spawn_brute_arrow>",
+                            "aux_val": 28
+                        },
+                        {
+                            "filters": {
+                                "test": "has_mob_effect",
+                                "subject": "target",
+                                "operator": "!=",
+                                "value": "wither"
+                            },
+                            "def": "minecraft:arrow<ha:spawn_brute_arrow>",
+                            "aux_val": 37
+                        },
+                        {
+                            "filters": {
+                                "test": "has_mob_effect",
+                                "subject": "target",
+                                "operator": "!=",
+                                "value": "infested"
+                            },
+                            "def": "minecraft:arrow<ha:spawn_brute_arrow>",
+                            "aux_val": 47
+                        },
+                        {
+                            "def": "minecraft:arrow<ha:spawn_brute_arrow>",
+                            "aux_val": 25
+                        }
+                    ]
+                },
+                "minecraft:equipment": {
+                    "table": "loot_tables/entities/custom/brute_gears/ranged_gear.json",
+                    "slot_drop_chance": [
+                        {
+                            "slot": "slot.weapon.mainhand",
+                            "drop_chance": -1
+                        },
+                        {
+                            "slot": "slot.weapon.offhand",
+                            "drop_chance": -1
+                        },
+                        {
+                            "slot": "slot.armor.head",
+                            "drop_chance": -1
+                        },
+                        {
+                            "slot": "slot.armor.chest",
+                            "drop_chance": -1
+                        },
+                        {
+                            "slot": "slot.armor.legs",
+                            "drop_chance": -1
+                        },
+                        {
+                            "slot": "slot.armor.feet",
+                            "drop_chance": -1
+                        }
+                    ]
+                },
+                "minecraft:timer": {
+                    "time": [ 20, 20 ],
+                    "looping": false,
+                    "time_down_event": {
+                        "event": "ha:start_pearl_mode",
+                        "target": "self"
+                    }
+                },
+                "minecraft:environment_sensor": {
+                    "triggers": [
+                        {
+                            "filters": {
+                                "all_of": [
+                                    {
+                                        "test": "has_target",
+                                        "subject": "self",
+                                        "value": true
+                                    },
+                                    {
+                                        "test": "is_underground",
+                                        "subject": "target",
+                                        "value": true
+                                    },
+                                    {
+                                        "test": "random_chance",
+                                        "value": 1000
+                                    },
+                                    {
+                                        "test": "has_tag",
+                                        "subject": "self",
+                                        "operator": "!=",
+                                        "value": "mining_mode"
+                                    }
+                                ]
+                            },
+                            "target": "self",
+                            "event": "ha:start_mining"
+                        }
+                    ]
+                }
+            },
+            "ha:pearl_mode": {
+                "minecraft:variant": {
+                    "value": 1
+                },
+                "minecraft:behavior.ranged_attack": {
+                    "priority": 0,
+                    "attack_interval_min": 0.65,
+                    "attack_interval_max": 2,
+                    "attack_radius": 80,
+                    "ranged_fov": 360,
+                    "swing": true,
+                    "target_in_sight_time": 0.1,
+                    "speed_multiplier": 1.25
+                },
+                "minecraft:shooter": {
+                    "def": "ha:slime_pearl"
+                },
+                "minecraft:equipment": {
+                    "table": "loot_tables/entities/custom/brute_gears/pearl_gear.json",
+                    "slot_drop_chance": [
+                        {
+                            "slot": "slot.weapon.mainhand",
+                            "drop_chance": -1
+                        },
+                        {
+                            "slot": "slot.weapon.offhand",
+                            "drop_chance": -1
+                        },
+                        {
+                            "slot": "slot.armor.head",
+                            "drop_chance": -1
+                        },
+                        {
+                            "slot": "slot.armor.chest",
+                            "drop_chance": -1
+                        },
+                        {
+                            "slot": "slot.armor.legs",
+                            "drop_chance": -1
+                        },
+                        {
+                            "slot": "slot.armor.feet",
+                            "drop_chance": -1
+                        }
+                    ]
+                },
+                "minecraft:environment_sensor": {
+                    "triggers": [
+                        {
+                            "filters": {
+                                "all_of": [
+                                    {
+                                        "test": "has_target",
+                                        "subject": "self",
+                                        "value": true
+                                    },
+                                    {
+                                        "test": "is_underground",
+                                        "subject": "target",
+                                        "value": true
+                                    },
+                                    {
+                                        "test": "random_chance",
+                                        "value": 1000
+                                    },
+                                    {
+                                        "test": "has_tag",
+                                        "subject": "self",
+                                        "operator": "!=",
+                                        "value": "mining_mode"
+                                    }
+                                ]
+                            },
+                            "target": "self",
+                            "event": "ha:start_mining"
+                        }
+                    ]
+                }
+            },
+
+            "ha:timer_food": {
+                "minecraft:is_sheared": { },
+                "minecraft:timer": {
+                    "time": [ 2.9, 2.9 ],
+                    "looping": false,
+                    "time_down_event": {
+                        "event": "ha:neutral_sensors",
+                        "target": "self"
+                    }
+                }
+            },
+            "ha:timer_potion": {
+                "minecraft:is_sheared": { },
+                "minecraft:timer": {
+                    "time": [ 2, 2 ],
+                    "looping": false,
+                    "time_down_event": {
+                        "event": "ha:neutral_sensors",
+                        "target": "self"
+                    }
+                }
+            },
+            "ha:food_gear": {
+                "minecraft:behavior.eat_carried_item": {
+                    "priority": 0
+                },
+                "minecraft:equipment": {
+                    "table": "loot_tables/entities/custom/brute_gears/food_gear.json",
+                    "slot_drop_chance": [
+                        {
+                            "slot": "slot.weapon.mainhand",
+                            "drop_chance": -1
+                        },
+                        {
+                            "slot": "slot.weapon.offhand",
+                            "drop_chance": -1
+                        },
+                        {
+                            "slot": "slot.armor.head",
+                            "drop_chance": -1
+                        },
+                        {
+                            "slot": "slot.armor.chest",
+                            "drop_chance": -1
+                        },
+                        {
+                            "slot": "slot.armor.legs",
+                            "drop_chance": -1
+                        },
+                        {
+                            "slot": "slot.armor.feet",
+                            "drop_chance": -1
+                        }
+                    ]
+                }
+            },
+            "ha:potions_gear": {
+                "minecraft:behavior.drink_potion": {
+                    "priority": 0,
+                    "potions": [
+                        {
+                            "filters": {
+                                "test": "has_mob_effect",
+                                "subject": "self",
+                                "operator": "!=",
+                                "value": "regeneration"
+                            },
+                            "id": 28,
+                            "chance": 1
+                        },
+                        {
+                            "filters": {
+                                "test": "has_mob_effect",
+                                "subject": "self",
+                                "operator": "!=",
+                                "value": "speed"
+                            },
+                            "id": 16,
+                            "chance": 1
+                        },
+                        {
+                            "filters": {
+                                "test": "has_mob_effect",
+                                "subject": "self",
+                                "operator": "!=",
+                                "value": "jump_boost"
+                            },
+                            "id": 11,
+                            "chance": 1
+                        },
+                        {
+                            "filters": {
+                                "test": "has_mob_effect",
+                                "subject": "self",
+                                "operator": "!=",
+                                "value": "infested"
+                            },
+                            "id": 46,
+                            "chance": 1
+                        },
+                        {
+                            "filters": {
+                                "test": "has_mob_effect",
+                                "subject": "self",
+                                "operator": "!=",
+                                "value": "resistance"
+                            },
+                            "id": 39,
+                            "chance": 1
+                        },
+                        {
+                            "filters": {
+                                "any_of": [
+                                    {
+                                        "test": "is_missing_health",
+                                        "value": true
+                                    },
+                                    {
+                                        "test": "actor_health",
+                                        "subject": "self",
+                                        "operator": "<",
+                                        "value": 350
+                                    }
+                                ]
+                            },
+                            "id": 22,
+                            "chance": 1
+                        }
+                    ]
+                }
+            },
+
+            "ha:pickaxe_mode": {
+                "minecraft:target_nearby_sensor": {
+                    "inside_range": 10,
+                    "on_inside_range": {
+                        "event": "ha:neutral_sensors",
+                        "target": "self"
+                    }
+                },
+                "minecraft:behavior.melee_attack": {
+                    "priority": 0,
+                    "can_spread_on_fire": true,
+                    "melee_fov": 360,
+                    "track_target": true
+                },
+                "minecraft:variant": {
+                    "value": 1
+                },
+                "minecraft:equipment": {
+                    "table": "loot_tables/entities/custom/brute_gears/pickaxe_gear.json",
+                    "slot_drop_chance": [
+                        {
+                            "slot": "slot.weapon.mainhand",
+                            "drop_chance": -1
+                        },
+                        {
+                            "slot": "slot.weapon.offhand",
+                            "drop_chance": -1
+                        },
+                        {
+                            "slot": "slot.armor.head",
+                            "drop_chance": -1
+                        },
+                        {
+                            "slot": "slot.armor.chest",
+                            "drop_chance": -1
+                        },
+                        {
+                            "slot": "slot.armor.legs",
+                            "drop_chance": -1
+                        },
+                        {
+                            "slot": "slot.armor.feet",
+                            "drop_chance": -1
+                        }
+                    ]
+                },
+                "minecraft:behavior.nearest_prioritized_attackable_target": {
+                    "priority": 3,
+                    "must_see": false,
+                    "reselect_targets": false,
+                    "entity_types": [
+                        {
+                            "priority": 0,
+                            "filters": {
+                                "test": "is_family",
+                                "subject": "other",
+                                "value": "player"
+                            },
+                            "max_dist": 150
+                        },
+                        {
+                            "priority": 1,
+                            "filters": {
+                                "any_of": [
+                                    {
+                                        "test": "is_family",
+                                        "subject": "other",
+                                        "value": "irongolem"
+                                    },
+                                    {
+                                        "test": "is_family",
+                                        "subject": "other",
+                                        "value": "snowgolem"
+                                    }
+                                ]
+                            },
+                            "max_dist": 150
+                        },
+                        {
+                            "priority": 2,
+                            "filters": {
+                                "all_of": [
+                                    {
+                                        "test": "is_family",
+                                        "subject": "other",
+                                        "operator": "!=",
+                                        "value": "player"
+                                    },
+                                    {
+                                        "test": "is_family",
+                                        "subject": "other",
+                                        "operator": "!=",
+                                        "value": "irongolem"
+                                    },
+                                    {
+                                        "test": "is_family",
+                                        "subject": "other",
+                                        "operator": "!=",
+                                        "value": "snowgolem"
+                                    },
+                                    {
+                                        "test": "is_family",
+                                        "subject": "other",
+                                        "operator": "!=",
+                                        "value": "piglin"
+                                    }
+                                ]
+                            },
+                            "max_dist": 150
+                        }
+                    ]
+                },
+                "minecraft:break_blocks": {
+                    "breakable_blocks": [
+                        "minecraft:acacia_button",
+                        "minecraft:acacia_door",
+                        "minecraft:acacia_double_slab",
+                        "minecraft:acacia_fence",
+                        "minecraft:acacia_fence_gate",
+                        "minecraft:acacia_hanging_sign",
+                        "minecraft:acacia_leaves",
+                        "minecraft:acacia_log",
+                        "minecraft:acacia_planks",
+                        "minecraft:acacia_pressure_plate",
+                        "minecraft:acacia_sapling",
+                        "minecraft:acacia_shelf",
+                        "minecraft:acacia_slab",
+                        "minecraft:acacia_stairs",
+                        "minecraft:acacia_standing_sign",
+                        "minecraft:acacia_trapdoor",
+                        "minecraft:acacia_wall_sign",
+                        "minecraft:acacia_wood",
+                        "minecraft:activator_rail",
+                        "minecraft:allium",
+                        "minecraft:allow",
+                        "minecraft:amethyst_block",
+                        "minecraft:amethyst_cluster",
+                        "minecraft:ancient_debris",
+                        "minecraft:andesite",
+                        "minecraft:andesite_double_slab",
+                        "minecraft:andesite_slab",
+                        "minecraft:andesite_stairs",
+                        "minecraft:andesite_wall",
+                        "minecraft:anvil",
+                        "minecraft:azalea",
+                        "minecraft:azalea_leaves",
+                        "minecraft:azalea_leaves_flowered",
+                        "minecraft:azure_bluet",
+                        "minecraft:bamboo",
+                        "minecraft:bamboo_block",
+                        "minecraft:bamboo_button",
+                        "minecraft:bamboo_door",
+                        "minecraft:bamboo_double_slab",
+                        "minecraft:bamboo_fence",
+                        "minecraft:bamboo_fence_gate",
+                        "minecraft:bamboo_hanging_sign",
+                        "minecraft:bamboo_mosaic",
+                        "minecraft:bamboo_mosaic_double_slab",
+                        "minecraft:bamboo_mosaic_slab",
+                        "minecraft:bamboo_mosaic_stairs",
+                        "minecraft:bamboo_planks",
+                        "minecraft:bamboo_pressure_plate",
+                        "minecraft:bamboo_sapling",
+                        "minecraft:bamboo_shelf",
+                        "minecraft:bamboo_slab",
+                        "minecraft:bamboo_stairs",
+                        "minecraft:bamboo_standing_sign",
+                        "minecraft:bamboo_trapdoor",
+                        "minecraft:bamboo_wall_sign",
+                        "minecraft:barrel",
+                        "minecraft:barrier",
+                        "minecraft:basalt",
+                        "minecraft:beacon",
+                        "minecraft:bed",
+                        "minecraft:bee_nest",
+                        "minecraft:beehive",
+                        "minecraft:beetroot",
+                        "minecraft:bell",
+                        "minecraft:big_dripleaf",
+                        "minecraft:birch_button",
+                        "minecraft:birch_door",
+                        "minecraft:birch_double_slab",
+                        "minecraft:birch_fence",
+                        "minecraft:birch_fence_gate",
+                        "minecraft:birch_hanging_sign",
+                        "minecraft:birch_leaves",
+                        "minecraft:birch_log",
+                        "minecraft:birch_planks",
+                        "minecraft:birch_pressure_plate",
+                        "minecraft:birch_sapling",
+                        "minecraft:birch_shelf",
+                        "minecraft:birch_slab",
+                        "minecraft:birch_stairs",
+                        "minecraft:birch_standing_sign",
+                        "minecraft:birch_trapdoor",
+                        "minecraft:birch_wall_sign",
+                        "minecraft:birch_wood",
+                        "minecraft:black_candle",
+                        "minecraft:black_candle_cake",
+                        "minecraft:black_carpet",
+                        "minecraft:black_concrete",
+                        "minecraft:black_concrete_powder",
+                        "minecraft:black_glazed_terracotta",
+                        "minecraft:black_shulker_box",
+                        "minecraft:black_stained_glass",
+                        "minecraft:black_stained_glass_pane",
+                        "minecraft:black_terracotta",
+                        "minecraft:black_wool",
+                        "minecraft:blackstone",
+                        "minecraft:blackstone_double_slab",
+                        "minecraft:blackstone_slab",
+                        "minecraft:blackstone_stairs",
+                        "minecraft:blackstone_wall",
+                        "minecraft:blast_furnace",
+                        "minecraft:blue_candle",
+                        "minecraft:blue_candle_cake",
+                        "minecraft:blue_carpet",
+                        "minecraft:blue_concrete",
+                        "minecraft:blue_concrete_powder",
+                        "minecraft:blue_glazed_terracotta",
+                        "minecraft:blue_ice",
+                        "minecraft:blue_orchid",
+                        "minecraft:blue_shulker_box",
+                        "minecraft:blue_stained_glass",
+                        "minecraft:blue_stained_glass_pane",
+                        "minecraft:blue_terracotta",
+                        "minecraft:blue_wool",
+                        "minecraft:bone_block",
+                        "minecraft:bookshelf",
+                        "minecraft:brain_coral",
+                        "minecraft:brain_coral_block",
+                        "minecraft:brain_coral_fan",
+                        "minecraft:brain_coral_wall_fan",
+                        "minecraft:brewing_stand",
+                        "minecraft:brick_block",
+                        "minecraft:brick_double_slab",
+                        "minecraft:brick_slab",
+                        "minecraft:brick_stairs",
+                        "minecraft:brick_wall",
+                        "minecraft:brown_candle",
+                        "minecraft:brown_candle_cake",
+                        "minecraft:brown_carpet",
+                        "minecraft:brown_concrete",
+                        "minecraft:brown_concrete_powder",
+                        "minecraft:brown_glazed_terracotta",
+                        "minecraft:brown_mushroom",
+                        "minecraft:brown_mushroom_block",
+                        "minecraft:brown_shulker_box",
+                        "minecraft:brown_stained_glass",
+                        "minecraft:brown_stained_glass_pane",
+                        "minecraft:brown_terracotta",
+                        "minecraft:brown_wool",
+                        "minecraft:bubble_column",
+                        "minecraft:bubble_coral",
+                        "minecraft:bubble_coral_block",
+                        "minecraft:bubble_coral_fan",
+                        "minecraft:bubble_coral_wall_fan",
+                        "minecraft:budding_amethyst",
+                        "minecraft:bush",
+                        "minecraft:cactus",
+                        "minecraft:cactus_flower",
+                        "minecraft:cake",
+                        "minecraft:calcite",
+                        "minecraft:calibrated_sculk_sensor",
+                        "minecraft:camera",
+                        "minecraft:campfire",
+                        "minecraft:candle",
+                        "minecraft:candle_cake",
+                        "minecraft:carrots",
+                        "minecraft:cartography_table",
+                        "minecraft:carved_pumpkin",
+                        "minecraft:cauldron",
+                        "minecraft:cave_vines",
+                        "minecraft:cave_vines_body_with_berries",
+                        "minecraft:cave_vines_head_with_berries",
+                        "minecraft:chemical_heat",
+                        "minecraft:cherry_button",
+                        "minecraft:cherry_door",
+                        "minecraft:cherry_double_slab",
+                        "minecraft:cherry_fence",
+                        "minecraft:cherry_fence_gate",
+                        "minecraft:cherry_hanging_sign",
+                        "minecraft:cherry_leaves",
+                        "minecraft:cherry_log",
+                        "minecraft:cherry_planks",
+                        "minecraft:cherry_pressure_plate",
+                        "minecraft:cherry_sapling",
+                        "minecraft:cherry_shelf",
+                        "minecraft:cherry_slab",
+                        "minecraft:cherry_stairs",
+                        "minecraft:cherry_standing_sign",
+                        "minecraft:cherry_trapdoor",
+                        "minecraft:cherry_wall_sign",
+                        "minecraft:cherry_wood",
+                        "minecraft:chest",
+                        "minecraft:chipped_anvil",
+                        "minecraft:chiseled_bookshelf",
+                        "minecraft:chiseled_copper",
+                        "minecraft:chiseled_deepslate",
+                        "minecraft:chiseled_nether_bricks",
+                        "minecraft:chiseled_polished_blackstone",
+                        "minecraft:chiseled_quartz_block",
+                        "minecraft:chiseled_red_sandstone",
+                        "minecraft:chiseled_resin_bricks",
+                        "minecraft:chiseled_sandstone",
+                        "minecraft:chiseled_stone_bricks",
+                        "minecraft:chiseled_tuff",
+                        "minecraft:chiseled_tuff_bricks",
+                        "minecraft:chorus_flower",
+                        "minecraft:chorus_plant",
+                        "minecraft:clay",
+                        "minecraft:closed_eyeblossom",
+                        "minecraft:coal_block",
+                        "minecraft:coal_ore",
+                        "minecraft:coarse_dirt",
+                        "minecraft:cobbled_deepslate",
+                        "minecraft:cobbled_deepslate_double_slab",
+                        "minecraft:cobbled_deepslate_slab",
+                        "minecraft:cobbled_deepslate_stairs",
+                        "minecraft:cobbled_deepslate_wall",
+                        "minecraft:cobblestone",
+                        "minecraft:cobblestone_double_slab",
+                        "minecraft:cobblestone_slab",
+                        "minecraft:cobblestone_wall",
+                        "minecraft:cocoa",
+                        "minecraft:colored_torch_blue",
+                        "minecraft:colored_torch_green",
+                        "minecraft:colored_torch_purple",
+                        "minecraft:colored_torch_red",
+                        "minecraft:composter",
+                        "minecraft:compound_creator",
+                        "minecraft:conduit",
+                        "minecraft:copper_bars",
+                        "minecraft:copper_block",
+                        "minecraft:copper_bulb",
+                        "minecraft:copper_chain",
+                        "minecraft:copper_chest",
+                        "minecraft:copper_door",
+                        "minecraft:copper_golem_statue",
+                        "minecraft:copper_grate",
+                        "minecraft:copper_lantern",
+                        "minecraft:copper_ore",
+                        "minecraft:copper_torch",
+                        "minecraft:copper_trapdoor",
+                        "minecraft:cornflower",
+                        "minecraft:cracked_deepslate_bricks",
+                        "minecraft:cracked_deepslate_tiles",
+                        "minecraft:cracked_nether_bricks",
+                        "minecraft:cracked_polished_blackstone_bricks",
+                        "minecraft:cracked_stone_bricks",
+                        "minecraft:crafter",
+                        "minecraft:crafting_table",
+                        "minecraft:creaking_heart",
+                        "minecraft:creeper_head",
+                        "minecraft:crimson_button",
+                        "minecraft:crimson_door",
+                        "minecraft:crimson_double_slab",
+                        "minecraft:crimson_fence",
+                        "minecraft:crimson_fence_gate",
+                        "minecraft:crimson_fungus",
+                        "minecraft:crimson_hanging_sign",
+                        "minecraft:crimson_hyphae",
+                        "minecraft:crimson_nylium",
+                        "minecraft:crimson_planks",
+                        "minecraft:crimson_pressure_plate",
+                        "minecraft:crimson_roots",
+                        "minecraft:crimson_shelf",
+                        "minecraft:crimson_slab",
+                        "minecraft:crimson_stairs",
+                        "minecraft:crimson_standing_sign",
+                        "minecraft:crimson_stem",
+                        "minecraft:crimson_trapdoor",
+                        "minecraft:crimson_wall_sign",
+                        "minecraft:crying_obsidian",
+                        "minecraft:cut_copper",
+                        "minecraft:cut_copper_slab",
+                        "minecraft:cut_copper_stairs",
+                        "minecraft:cut_red_sandstone",
+                        "minecraft:cut_red_sandstone_double_slab",
+                        "minecraft:cut_red_sandstone_slab",
+                        "minecraft:cut_sandstone",
+                        "minecraft:cut_sandstone_double_slab",
+                        "minecraft:cut_sandstone_slab",
+                        "minecraft:cyan_candle",
+                        "minecraft:cyan_candle_cake",
+                        "minecraft:cyan_carpet",
+                        "minecraft:cyan_concrete",
+                        "minecraft:cyan_concrete_powder",
+                        "minecraft:cyan_glazed_terracotta",
+                        "minecraft:cyan_shulker_box",
+                        "minecraft:cyan_stained_glass",
+                        "minecraft:cyan_stained_glass_pane",
+                        "minecraft:cyan_terracotta",
+                        "minecraft:cyan_wool",
+                        "minecraft:damaged_anvil",
+                        "minecraft:dandelion",
+                        "minecraft:dark_oak_button",
+                        "minecraft:dark_oak_door",
+                        "minecraft:dark_oak_double_slab",
+                        "minecraft:dark_oak_fence",
+                        "minecraft:dark_oak_fence_gate",
+                        "minecraft:dark_oak_hanging_sign",
+                        "minecraft:dark_oak_leaves",
+                        "minecraft:dark_oak_log",
+                        "minecraft:dark_oak_planks",
+                        "minecraft:dark_oak_pressure_plate",
+                        "minecraft:dark_oak_sapling",
+                        "minecraft:dark_oak_shelf",
+                        "minecraft:dark_oak_slab",
+                        "minecraft:dark_oak_stairs",
+                        "minecraft:dark_oak_trapdoor",
+                        "minecraft:dark_oak_wood",
+                        "minecraft:dark_prismarine",
+                        "minecraft:dark_prismarine_double_slab",
+                        "minecraft:dark_prismarine_slab",
+                        "minecraft:dark_prismarine_stairs",
+                        "minecraft:darkoak_standing_sign",
+                        "minecraft:darkoak_wall_sign",
+                        "minecraft:daylight_detector",
+                        "minecraft:daylight_detector_inverted",
+                        "minecraft:dead_brain_coral",
+                        "minecraft:dead_brain_coral_block",
+                        "minecraft:dead_brain_coral_fan",
+                        "minecraft:dead_brain_coral_wall_fan",
+                        "minecraft:dead_bubble_coral",
+                        "minecraft:dead_bubble_coral_block",
+                        "minecraft:dead_bubble_coral_fan",
+                        "minecraft:dead_bubble_coral_wall_fan",
+                        "minecraft:dead_fire_coral",
+                        "minecraft:dead_fire_coral_block",
+                        "minecraft:dead_fire_coral_fan",
+                        "minecraft:dead_fire_coral_wall_fan",
+                        "minecraft:dead_horn_coral",
+                        "minecraft:dead_horn_coral_block",
+                        "minecraft:dead_horn_coral_fan",
+                        "minecraft:dead_horn_coral_wall_fan",
+                        "minecraft:dead_tube_coral",
+                        "minecraft:dead_tube_coral_block",
+                        "minecraft:dead_tube_coral_fan",
+                        "minecraft:dead_tube_coral_wall_fan",
+                        "minecraft:deadbush",
+                        "minecraft:decorated_pot",
+                        "minecraft:deepslate",
+                        "minecraft:deepslate_brick_double_slab",
+                        "minecraft:deepslate_brick_slab",
+                        "minecraft:deepslate_brick_stairs",
+                        "minecraft:deepslate_brick_wall",
+                        "minecraft:deepslate_bricks",
+                        "minecraft:deepslate_coal_ore",
+                        "minecraft:deepslate_copper_ore",
+                        "minecraft:deepslate_diamond_ore",
+                        "minecraft:deepslate_emerald_ore",
+                        "minecraft:deepslate_gold_ore",
+                        "minecraft:deepslate_iron_ore",
+                        "minecraft:deepslate_lapis_ore",
+                        "minecraft:deepslate_redstone_ore",
+                        "minecraft:deepslate_tile_double_slab",
+                        "minecraft:deepslate_tile_slab",
+                        "minecraft:deepslate_tile_stairs",
+                        "minecraft:deepslate_tile_wall",
+                        "minecraft:deepslate_tiles",
+                        "minecraft:deny",
+                        "minecraft:detector_rail",
+                        "minecraft:diamond_block",
+                        "minecraft:diamond_ore",
+                        "minecraft:diorite",
+                        "minecraft:diorite_double_slab",
+                        "minecraft:diorite_slab",
+                        "minecraft:diorite_stairs",
+                        "minecraft:diorite_wall",
+                        "minecraft:dirt",
+                        "minecraft:dirt_with_roots",
+                        "minecraft:dispenser",
+                        "minecraft:double_cut_copper_slab",
+                        "minecraft:dragon_egg",
+                        "minecraft:dragon_head",
+                        "minecraft:dried_ghast",
+                        "minecraft:dried_kelp_block",
+                        "minecraft:dripstone_block",
+                        "minecraft:dropper",
+                        "minecraft:element_0",
+                        "minecraft:element_1",
+                        "minecraft:element_10",
+                        "minecraft:element_100",
+                        "minecraft:element_101",
+                        "minecraft:element_102",
+                        "minecraft:element_103",
+                        "minecraft:element_104",
+                        "minecraft:element_105",
+                        "minecraft:element_106",
+                        "minecraft:element_107",
+                        "minecraft:element_108",
+                        "minecraft:element_109",
+                        "minecraft:element_11",
+                        "minecraft:element_110",
+                        "minecraft:element_111",
+                        "minecraft:element_112",
+                        "minecraft:element_113",
+                        "minecraft:element_114",
+                        "minecraft:element_115",
+                        "minecraft:element_116",
+                        "minecraft:element_117",
+                        "minecraft:element_118",
+                        "minecraft:element_12",
+                        "minecraft:element_13",
+                        "minecraft:element_14",
+                        "minecraft:element_15",
+                        "minecraft:element_16",
+                        "minecraft:element_17",
+                        "minecraft:element_18",
+                        "minecraft:element_19",
+                        "minecraft:element_2",
+                        "minecraft:element_20",
+                        "minecraft:element_21",
+                        "minecraft:element_22",
+                        "minecraft:element_23",
+                        "minecraft:element_24",
+                        "minecraft:element_25",
+                        "minecraft:element_26",
+                        "minecraft:element_27",
+                        "minecraft:element_28",
+                        "minecraft:element_29",
+                        "minecraft:element_3",
+                        "minecraft:element_30",
+                        "minecraft:element_31",
+                        "minecraft:element_32",
+                        "minecraft:element_33",
+                        "minecraft:element_34",
+                        "minecraft:element_35",
+                        "minecraft:element_36",
+                        "minecraft:element_37",
+                        "minecraft:element_38",
+                        "minecraft:element_39",
+                        "minecraft:element_4",
+                        "minecraft:element_40",
+                        "minecraft:element_41",
+                        "minecraft:element_42",
+                        "minecraft:element_43",
+                        "minecraft:element_44",
+                        "minecraft:element_45",
+                        "minecraft:element_46",
+                        "minecraft:element_47",
+                        "minecraft:element_48",
+                        "minecraft:element_49",
+                        "minecraft:element_5",
+                        "minecraft:element_50",
+                        "minecraft:element_51",
+                        "minecraft:element_52",
+                        "minecraft:element_53",
+                        "minecraft:element_54",
+                        "minecraft:element_55",
+                        "minecraft:element_56",
+                        "minecraft:element_57",
+                        "minecraft:element_58",
+                        "minecraft:element_59",
+                        "minecraft:element_6",
+                        "minecraft:element_60",
+                        "minecraft:element_61",
+                        "minecraft:element_62",
+                        "minecraft:element_63",
+                        "minecraft:element_64",
+                        "minecraft:element_65",
+                        "minecraft:element_66",
+                        "minecraft:element_67",
+                        "minecraft:element_68",
+                        "minecraft:element_69",
+                        "minecraft:element_7",
+                        "minecraft:element_70",
+                        "minecraft:element_71",
+                        "minecraft:element_72",
+                        "minecraft:element_73",
+                        "minecraft:element_74",
+                        "minecraft:element_75",
+                        "minecraft:element_76",
+                        "minecraft:element_77",
+                        "minecraft:element_78",
+                        "minecraft:element_79",
+                        "minecraft:element_8",
+                        "minecraft:element_80",
+                        "minecraft:element_81",
+                        "minecraft:element_82",
+                        "minecraft:element_83",
+                        "minecraft:element_84",
+                        "minecraft:element_85",
+                        "minecraft:element_86",
+                        "minecraft:element_87",
+                        "minecraft:element_88",
+                        "minecraft:element_89",
+                        "minecraft:element_9",
+                        "minecraft:element_90",
+                        "minecraft:element_91",
+                        "minecraft:element_92",
+                        "minecraft:element_93",
+                        "minecraft:element_94",
+                        "minecraft:element_95",
+                        "minecraft:element_96",
+                        "minecraft:element_97",
+                        "minecraft:element_98",
+                        "minecraft:element_99",
+                        "minecraft:element_constructor",
+                        "minecraft:emerald_block",
+                        "minecraft:emerald_ore",
+                        "minecraft:enchanting_table",
+                        "minecraft:end_brick_stairs",
+                        "minecraft:end_bricks",
+                        "minecraft:end_portal",
+                        "minecraft:end_portal_frame",
+                        "minecraft:end_rod",
+                        "minecraft:end_stone",
+                        "minecraft:end_stone_brick_double_slab",
+                        "minecraft:end_stone_brick_slab",
+                        "minecraft:end_stone_brick_wall",
+                        "minecraft:ender_chest",
+                        "minecraft:exposed_chiseled_copper",
+                        "minecraft:exposed_copper",
+                        "minecraft:exposed_copper_bars",
+                        "minecraft:exposed_copper_bulb",
+                        "minecraft:exposed_copper_chain",
+                        "minecraft:exposed_copper_chest",
+                        "minecraft:exposed_copper_door",
+                        "minecraft:exposed_copper_golem_statue",
+                        "minecraft:exposed_copper_grate",
+                        "minecraft:exposed_copper_lantern",
+                        "minecraft:exposed_copper_trapdoor",
+                        "minecraft:exposed_cut_copper",
+                        "minecraft:exposed_cut_copper_slab",
+                        "minecraft:exposed_cut_copper_stairs",
+                        "minecraft:exposed_double_cut_copper_slab",
+                        "minecraft:exposed_lightning_rod",
+                        "minecraft:farmland",
+                        "minecraft:fence_gate",
+                        "minecraft:fern",
+                        "minecraft:fire",
+                        "minecraft:fire_coral",
+                        "minecraft:fire_coral_block",
+                        "minecraft:fire_coral_fan",
+                        "minecraft:fire_coral_wall_fan",
+                        "minecraft:firefly_bush",
+                        "minecraft:fletching_table",
+                        "minecraft:flower_pot",
+                        "minecraft:flowering_azalea",
+                        "minecraft:frame",
+                        "minecraft:frog_spawn",
+                        "minecraft:frosted_ice",
+                        "minecraft:furnace",
+                        "minecraft:gilded_blackstone",
+                        "minecraft:glass",
+                        "minecraft:glass_pane",
+                        "minecraft:glow_frame",
+                        "minecraft:glow_lichen",
+                        "minecraft:glowstone",
+                        "minecraft:gold_block",
+                        "minecraft:gold_ore",
+                        "minecraft:golden_rail",
+                        "minecraft:granite",
+                        "minecraft:granite_double_slab",
+                        "minecraft:granite_slab",
+                        "minecraft:granite_stairs",
+                        "minecraft:granite_wall",
+                        "minecraft:grass_block",
+                        "minecraft:grass_path",
+                        "minecraft:gravel",
+                        "minecraft:gray_candle",
+                        "minecraft:gray_candle_cake",
+                        "minecraft:gray_carpet",
+                        "minecraft:gray_concrete",
+                        "minecraft:gray_concrete_powder",
+                        "minecraft:gray_glazed_terracotta",
+                        "minecraft:gray_shulker_box",
+                        "minecraft:gray_stained_glass",
+                        "minecraft:gray_stained_glass_pane",
+                        "minecraft:gray_terracotta",
+                        "minecraft:gray_wool",
+                        "minecraft:green_candle",
+                        "minecraft:green_candle_cake",
+                        "minecraft:green_carpet",
+                        "minecraft:green_concrete",
+                        "minecraft:green_concrete_powder",
+                        "minecraft:green_glazed_terracotta",
+                        "minecraft:green_shulker_box",
+                        "minecraft:green_stained_glass",
+                        "minecraft:green_stained_glass_pane",
+                        "minecraft:green_terracotta",
+                        "minecraft:green_wool",
+                        "minecraft:grindstone",
+                        "minecraft:hanging_roots",
+                        "minecraft:hard_black_stained_glass",
+                        "minecraft:hard_black_stained_glass_pane",
+                        "minecraft:hard_blue_stained_glass",
+                        "minecraft:hard_blue_stained_glass_pane",
+                        "minecraft:hard_brown_stained_glass",
+                        "minecraft:hard_brown_stained_glass_pane",
+                        "minecraft:hard_cyan_stained_glass",
+                        "minecraft:hard_cyan_stained_glass_pane",
+                        "minecraft:hard_glass",
+                        "minecraft:hard_glass_pane",
+                        "minecraft:hard_gray_stained_glass",
+                        "minecraft:hard_gray_stained_glass_pane",
+                        "minecraft:hard_green_stained_glass",
+                        "minecraft:hard_green_stained_glass_pane",
+                        "minecraft:hard_light_blue_stained_glass",
+                        "minecraft:hard_light_blue_stained_glass_pane",
+                        "minecraft:hard_light_gray_stained_glass",
+                        "minecraft:hard_light_gray_stained_glass_pane",
+                        "minecraft:hard_lime_stained_glass",
+                        "minecraft:hard_lime_stained_glass_pane",
+                        "minecraft:hard_magenta_stained_glass",
+                        "minecraft:hard_magenta_stained_glass_pane",
+                        "minecraft:hard_orange_stained_glass",
+                        "minecraft:hard_orange_stained_glass_pane",
+                        "minecraft:hard_pink_stained_glass",
+                        "minecraft:hard_pink_stained_glass_pane",
+                        "minecraft:hard_purple_stained_glass",
+                        "minecraft:hard_purple_stained_glass_pane",
+                        "minecraft:hard_red_stained_glass",
+                        "minecraft:hard_red_stained_glass_pane",
+                        "minecraft:hard_white_stained_glass",
+                        "minecraft:hard_white_stained_glass_pane",
+                        "minecraft:hard_yellow_stained_glass",
+                        "minecraft:hard_yellow_stained_glass_pane",
+                        "minecraft:hardened_clay",
+                        "minecraft:hay_block",
+                        "minecraft:heavy_core",
+                        "minecraft:heavy_weighted_pressure_plate",
+                        "minecraft:honey_block",
+                        "minecraft:honeycomb_block",
+                        "minecraft:hopper",
+                        "minecraft:horn_coral",
+                        "minecraft:horn_coral_block",
+                        "minecraft:horn_coral_fan",
+                        "minecraft:horn_coral_wall_fan",
+                        "minecraft:ice",
+                        "minecraft:infested_chiseled_stone_bricks",
+                        "minecraft:infested_cobblestone",
+                        "minecraft:infested_cracked_stone_bricks",
+                        "minecraft:infested_deepslate",
+                        "minecraft:infested_mossy_stone_bricks",
+                        "minecraft:infested_stone",
+                        "minecraft:infested_stone_bricks",
+                        "minecraft:iron_bars",
+                        "minecraft:iron_block",
+                        "minecraft:iron_chain",
+                        "minecraft:iron_door",
+                        "minecraft:iron_ore",
+                        "minecraft:iron_trapdoor",
+                        "minecraft:jigsaw",
+                        "minecraft:jukebox",
+                        "minecraft:jungle_button",
+                        "minecraft:jungle_door",
+                        "minecraft:jungle_double_slab",
+                        "minecraft:jungle_fence",
+                        "minecraft:jungle_fence_gate",
+                        "minecraft:jungle_hanging_sign",
+                        "minecraft:jungle_leaves",
+                        "minecraft:jungle_log",
+                        "minecraft:jungle_planks",
+                        "minecraft:jungle_pressure_plate",
+                        "minecraft:jungle_sapling",
+                        "minecraft:jungle_shelf",
+                        "minecraft:jungle_slab",
+                        "minecraft:jungle_stairs",
+                        "minecraft:jungle_standing_sign",
+                        "minecraft:jungle_trapdoor",
+                        "minecraft:jungle_wall_sign",
+                        "minecraft:jungle_wood",
+                        "minecraft:kelp",
+                        "minecraft:lab_table",
+                        "minecraft:ladder",
+                        "minecraft:lantern",
+                        "minecraft:lapis_block",
+                        "minecraft:lapis_ore",
+                        "minecraft:large_amethyst_bud",
+                        "minecraft:large_fern",
+                        "minecraft:leaf_litter",
+                        "minecraft:lectern",
+                        "minecraft:lever",
+                        "minecraft:light_block_0",
+                        "minecraft:light_block_1",
+                        "minecraft:light_block_10",
+                        "minecraft:light_block_11",
+                        "minecraft:light_block_12",
+                        "minecraft:light_block_13",
+                        "minecraft:light_block_14",
+                        "minecraft:light_block_15",
+                        "minecraft:light_block_2",
+                        "minecraft:light_block_3",
+                        "minecraft:light_block_4",
+                        "minecraft:light_block_5",
+                        "minecraft:light_block_6",
+                        "minecraft:light_block_7",
+                        "minecraft:light_block_8",
+                        "minecraft:light_block_9",
+                        "minecraft:light_blue_candle",
+                        "minecraft:light_blue_candle_cake",
+                        "minecraft:light_blue_carpet",
+                        "minecraft:light_blue_concrete",
+                        "minecraft:light_blue_concrete_powder",
+                        "minecraft:light_blue_glazed_terracotta",
+                        "minecraft:light_blue_shulker_box",
+                        "minecraft:light_blue_stained_glass",
+                        "minecraft:light_blue_stained_glass_pane",
+                        "minecraft:light_blue_terracotta",
+                        "minecraft:light_blue_wool",
+                        "minecraft:light_gray_candle",
+                        "minecraft:light_gray_candle_cake",
+                        "minecraft:light_gray_carpet",
+                        "minecraft:light_gray_concrete",
+                        "minecraft:light_gray_concrete_powder",
+                        "minecraft:light_gray_shulker_box",
+                        "minecraft:light_gray_stained_glass",
+                        "minecraft:light_gray_stained_glass_pane",
+                        "minecraft:light_gray_terracotta",
+                        "minecraft:light_gray_wool",
+                        "minecraft:light_weighted_pressure_plate",
+                        "minecraft:lightning_rod",
+                        "minecraft:lilac",
+                        "minecraft:lily_of_the_valley",
+                        "minecraft:lime_candle",
+                        "minecraft:lime_candle_cake",
+                        "minecraft:lime_carpet",
+                        "minecraft:lime_concrete",
+                        "minecraft:lime_concrete_powder",
+                        "minecraft:lime_glazed_terracotta",
+                        "minecraft:lime_shulker_box",
+                        "minecraft:lime_stained_glass",
+                        "minecraft:lime_stained_glass_pane",
+                        "minecraft:lime_terracotta",
+                        "minecraft:lime_wool",
+                        "minecraft:lit_blast_furnace",
+                        "minecraft:lit_deepslate_redstone_ore",
+                        "minecraft:lit_furnace",
+                        "minecraft:lit_pumpkin",
+                        "minecraft:lit_redstone_lamp",
+                        "minecraft:lit_redstone_ore",
+                        "minecraft:lit_smoker",
+                        "minecraft:lodestone",
+                        "minecraft:loom",
+                        "minecraft:magenta_candle",
+                        "minecraft:magenta_candle_cake",
+                        "minecraft:magenta_carpet",
+                        "minecraft:magenta_concrete",
+                        "minecraft:magenta_concrete_powder",
+                        "minecraft:magenta_glazed_terracotta",
+                        "minecraft:magenta_shulker_box",
+                        "minecraft:magenta_stained_glass",
+                        "minecraft:magenta_stained_glass_pane",
+                        "minecraft:magenta_terracotta",
+                        "minecraft:magenta_wool",
+                        "minecraft:magma",
+                        "minecraft:mangrove_button",
+                        "minecraft:mangrove_door",
+                        "minecraft:mangrove_double_slab",
+                        "minecraft:mangrove_fence",
+                        "minecraft:mangrove_fence_gate",
+                        "minecraft:mangrove_hanging_sign",
+                        "minecraft:mangrove_leaves",
+                        "minecraft:mangrove_log",
+                        "minecraft:mangrove_planks",
+                        "minecraft:mangrove_pressure_plate",
+                        "minecraft:mangrove_propagule",
+                        "minecraft:mangrove_roots",
+                        "minecraft:mangrove_shelf",
+                        "minecraft:mangrove_slab",
+                        "minecraft:mangrove_stairs",
+                        "minecraft:mangrove_standing_sign",
+                        "minecraft:mangrove_trapdoor",
+                        "minecraft:mangrove_wall_sign",
+                        "minecraft:mangrove_wood",
+                        "minecraft:material_reducer",
+                        "minecraft:medium_amethyst_bud",
+                        "minecraft:melon_block",
+                        "minecraft:melon_stem",
+                        "minecraft:mob_spawner",
+                        "minecraft:moss_block",
+                        "minecraft:moss_carpet",
+                        "minecraft:mossy_cobblestone",
+                        "minecraft:mossy_cobblestone_double_slab",
+                        "minecraft:mossy_cobblestone_slab",
+                        "minecraft:mossy_cobblestone_stairs",
+                        "minecraft:mossy_cobblestone_wall",
+                        "minecraft:mossy_stone_brick_double_slab",
+                        "minecraft:mossy_stone_brick_slab",
+                        "minecraft:mossy_stone_brick_stairs",
+                        "minecraft:mossy_stone_brick_wall",
+                        "minecraft:mossy_stone_bricks",
+                        "minecraft:mud",
+                        "minecraft:mud_brick_double_slab",
+                        "minecraft:mud_brick_slab",
+                        "minecraft:mud_brick_stairs",
+                        "minecraft:mud_brick_wall",
+                        "minecraft:mud_bricks",
+                        "minecraft:muddy_mangrove_roots",
+                        "minecraft:mushroom_stem",
+                        "minecraft:mycelium",
+                        "minecraft:nether_brick",
+                        "minecraft:nether_brick_double_slab",
+                        "minecraft:nether_brick_fence",
+                        "minecraft:nether_brick_slab",
+                        "minecraft:nether_brick_stairs",
+                        "minecraft:nether_brick_wall",
+                        "minecraft:nether_gold_ore",
+                        "minecraft:nether_sprouts",
+                        "minecraft:nether_wart",
+                        "minecraft:nether_wart_block",
+                        "minecraft:netherite_block",
+                        "minecraft:netherrack",
+                        "minecraft:normal_stone_double_slab",
+                        "minecraft:normal_stone_slab",
+                        "minecraft:normal_stone_stairs",
+                        "minecraft:noteblock",
+                        "minecraft:oak_double_slab",
+                        "minecraft:oak_fence",
+                        "minecraft:oak_hanging_sign",
+                        "minecraft:oak_leaves",
+                        "minecraft:oak_log",
+                        "minecraft:oak_planks",
+                        "minecraft:oak_sapling",
+                        "minecraft:oak_shelf",
+                        "minecraft:oak_slab",
+                        "minecraft:oak_stairs",
+                        "minecraft:oak_wood",
+                        "minecraft:observer",
+                        "minecraft:obsidian",
+                        "minecraft:ochre_froglight",
+                        "minecraft:open_eyeblossom",
+                        "minecraft:orange_candle",
+                        "minecraft:orange_candle_cake",
+                        "minecraft:orange_carpet",
+                        "minecraft:orange_concrete",
+                        "minecraft:orange_concrete_powder",
+                        "minecraft:orange_glazed_terracotta",
+                        "minecraft:orange_shulker_box",
+                        "minecraft:orange_stained_glass",
+                        "minecraft:orange_stained_glass_pane",
+                        "minecraft:orange_terracotta",
+                        "minecraft:orange_tulip",
+                        "minecraft:orange_wool",
+                        "minecraft:oxeye_daisy",
+                        "minecraft:oxidized_chiseled_copper",
+                        "minecraft:oxidized_copper",
+                        "minecraft:oxidized_copper_bars",
+                        "minecraft:oxidized_copper_bulb",
+                        "minecraft:oxidized_copper_chain",
+                        "minecraft:oxidized_copper_chest",
+                        "minecraft:oxidized_copper_door",
+                        "minecraft:oxidized_copper_golem_statue",
+                        "minecraft:oxidized_copper_grate",
+                        "minecraft:oxidized_copper_lantern",
+                        "minecraft:oxidized_copper_trapdoor",
+                        "minecraft:oxidized_cut_copper",
+                        "minecraft:oxidized_cut_copper_slab",
+                        "minecraft:oxidized_cut_copper_stairs",
+                        "minecraft:oxidized_double_cut_copper_slab",
+                        "minecraft:oxidized_lightning_rod",
+                        "minecraft:packed_ice",
+                        "minecraft:packed_mud",
+                        "minecraft:pale_hanging_moss",
+                        "minecraft:pale_moss_block",
+                        "minecraft:pale_moss_carpet",
+                        "minecraft:pale_oak_button",
+                        "minecraft:pale_oak_door",
+                        "minecraft:pale_oak_double_slab",
+                        "minecraft:pale_oak_fence",
+                        "minecraft:pale_oak_fence_gate",
+                        "minecraft:pale_oak_hanging_sign",
+                        "minecraft:pale_oak_leaves",
+                        "minecraft:pale_oak_log",
+                        "minecraft:pale_oak_planks",
+                        "minecraft:pale_oak_pressure_plate",
+                        "minecraft:pale_oak_sapling",
+                        "minecraft:pale_oak_shelf",
+                        "minecraft:pale_oak_slab",
+                        "minecraft:pale_oak_stairs",
+                        "minecraft:pale_oak_standing_sign",
+                        "minecraft:pale_oak_trapdoor",
+                        "minecraft:pale_oak_wall_sign",
+                        "minecraft:pale_oak_wood",
+                        "minecraft:pearlescent_froglight",
+                        "minecraft:peony",
+                        "minecraft:petrified_oak_double_slab",
+                        "minecraft:petrified_oak_slab",
+                        "minecraft:piglin_head",
+                        "minecraft:pink_candle",
+                        "minecraft:pink_candle_cake",
+                        "minecraft:pink_carpet",
+                        "minecraft:pink_concrete",
+                        "minecraft:pink_concrete_powder",
+                        "minecraft:pink_glazed_terracotta",
+                        "minecraft:pink_petals",
+                        "minecraft:pink_shulker_box",
+                        "minecraft:pink_stained_glass",
+                        "minecraft:pink_stained_glass_pane",
+                        "minecraft:pink_terracotta",
+                        "minecraft:pink_tulip",
+                        "minecraft:pink_wool",
+                        "minecraft:piston",
+                        "minecraft:piston_arm_collision",
+                        "minecraft:pitcher_crop",
+                        "minecraft:pitcher_plant",
+                        "minecraft:player_head",
+                        "minecraft:podzol",
+                        "minecraft:pointed_dripstone",
+                        "minecraft:polished_andesite",
+                        "minecraft:polished_andesite_double_slab",
+                        "minecraft:polished_andesite_slab",
+                        "minecraft:polished_andesite_stairs",
+                        "minecraft:polished_basalt",
+                        "minecraft:polished_blackstone",
+                        "minecraft:polished_blackstone_brick_double_slab",
+                        "minecraft:polished_blackstone_brick_slab",
+                        "minecraft:polished_blackstone_brick_stairs",
+                        "minecraft:polished_blackstone_brick_wall",
+                        "minecraft:polished_blackstone_bricks",
+                        "minecraft:polished_blackstone_button",
+                        "minecraft:polished_blackstone_double_slab",
+                        "minecraft:polished_blackstone_pressure_plate",
+                        "minecraft:polished_blackstone_slab",
+                        "minecraft:polished_blackstone_stairs",
+                        "minecraft:polished_blackstone_wall",
+                        "minecraft:polished_deepslate",
+                        "minecraft:polished_deepslate_double_slab",
+                        "minecraft:polished_deepslate_slab",
+                        "minecraft:polished_deepslate_stairs",
+                        "minecraft:polished_deepslate_wall",
+                        "minecraft:polished_diorite",
+                        "minecraft:polished_diorite_double_slab",
+                        "minecraft:polished_diorite_slab",
+                        "minecraft:polished_diorite_stairs",
+                        "minecraft:polished_granite",
+                        "minecraft:polished_granite_double_slab",
+                        "minecraft:polished_granite_slab",
+                        "minecraft:polished_granite_stairs",
+                        "minecraft:polished_tuff",
+                        "minecraft:polished_tuff_double_slab",
+                        "minecraft:polished_tuff_slab",
+                        "minecraft:polished_tuff_stairs",
+                        "minecraft:polished_tuff_wall",
+                        "minecraft:poppy",
+                        "minecraft:portal",
+                        "minecraft:potatoes",
+                        "minecraft:powder_snow",
+                        "minecraft:powered_comparator",
+                        "minecraft:powered_repeater",
+                        "minecraft:prismarine",
+                        "minecraft:prismarine_brick_double_slab",
+                        "minecraft:prismarine_brick_slab",
+                        "minecraft:prismarine_bricks",
+                        "minecraft:prismarine_bricks_stairs",
+                        "minecraft:prismarine_double_slab",
+                        "minecraft:prismarine_slab",
+                        "minecraft:prismarine_stairs",
+                        "minecraft:prismarine_wall",
+                        "minecraft:pumpkin",
+                        "minecraft:pumpkin_stem",
+                        "minecraft:purple_candle",
+                        "minecraft:purple_candle_cake",
+                        "minecraft:purple_carpet",
+                        "minecraft:purple_concrete",
+                        "minecraft:purple_concrete_powder",
+                        "minecraft:purple_glazed_terracotta",
+                        "minecraft:purple_shulker_box",
+                        "minecraft:purple_stained_glass",
+                        "minecraft:purple_stained_glass_pane",
+                        "minecraft:purple_terracotta",
+                        "minecraft:purple_wool",
+                        "minecraft:purpur_block",
+                        "minecraft:purpur_double_slab",
+                        "minecraft:purpur_pillar",
+                        "minecraft:purpur_slab",
+                        "minecraft:purpur_stairs",
+                        "minecraft:quartz_block",
+                        "minecraft:quartz_bricks",
+                        "minecraft:quartz_double_slab",
+                        "minecraft:quartz_ore",
+                        "minecraft:quartz_pillar",
+                        "minecraft:quartz_slab",
+                        "minecraft:quartz_stairs",
+                        "minecraft:rail",
+                        "minecraft:raw_copper_block",
+                        "minecraft:raw_gold_block",
+                        "minecraft:raw_iron_block",
+                        "minecraft:red_candle",
+                        "minecraft:red_candle_cake",
+                        "minecraft:red_carpet",
+                        "minecraft:red_concrete",
+                        "minecraft:red_concrete_powder",
+                        "minecraft:red_glazed_terracotta",
+                        "minecraft:red_mushroom",
+                        "minecraft:red_mushroom_block",
+                        "minecraft:red_nether_brick",
+                        "minecraft:red_nether_brick_double_slab",
+                        "minecraft:red_nether_brick_slab",
+                        "minecraft:red_nether_brick_stairs",
+                        "minecraft:red_nether_brick_wall",
+                        "minecraft:red_sand",
+                        "minecraft:red_sandstone",
+                        "minecraft:red_sandstone_double_slab",
+                        "minecraft:red_sandstone_slab",
+                        "minecraft:red_sandstone_stairs",
+                        "minecraft:red_sandstone_wall",
+                        "minecraft:red_shulker_box",
+                        "minecraft:red_stained_glass",
+                        "minecraft:red_stained_glass_pane",
+                        "minecraft:red_terracotta",
+                        "minecraft:red_tulip",
+                        "minecraft:red_wool",
+                        "minecraft:redstone_block",
+                        "minecraft:redstone_lamp",
+                        "minecraft:redstone_ore",
+                        "minecraft:redstone_torch",
+                        "minecraft:redstone_wire",
+                        "minecraft:reeds",
+                        "minecraft:reinforced_deepslate",
+                        "minecraft:resin_block",
+                        "minecraft:resin_brick_double_slab",
+                        "minecraft:resin_brick_slab",
+                        "minecraft:resin_brick_stairs",
+                        "minecraft:resin_brick_wall",
+                        "minecraft:resin_bricks",
+                        "minecraft:resin_clump",
+                        "minecraft:respawn_anchor",
+                        "minecraft:rose_bush",
+                        "minecraft:sand",
+                        "minecraft:sandstone",
+                        "minecraft:sandstone_double_slab",
+                        "minecraft:sandstone_slab",
+                        "minecraft:sandstone_stairs",
+                        "minecraft:sandstone_wall",
+                        "minecraft:scaffolding",
+                        "minecraft:sculk",
+                        "minecraft:sculk_catalyst",
+                        "minecraft:sculk_sensor",
+                        "minecraft:sculk_shrieker",
+                        "minecraft:sculk_vein",
+                        "minecraft:sea_lantern",
+                        "minecraft:sea_pickle",
+                        "minecraft:seagrass",
+                        "minecraft:short_dry_grass",
+                        "minecraft:short_grass",
+                        "minecraft:shroomlight",
+                        "minecraft:silver_glazed_terracotta",
+                        "minecraft:skeleton_skull",
+                        "minecraft:slime",
+                        "minecraft:small_amethyst_bud",
+                        "minecraft:small_dripleaf_block",
+                        "minecraft:smithing_table",
+                        "minecraft:smoker",
+                        "minecraft:smooth_basalt",
+                        "minecraft:smooth_quartz",
+                        "minecraft:smooth_quartz_double_slab",
+                        "minecraft:smooth_quartz_slab",
+                        "minecraft:smooth_quartz_stairs",
+                        "minecraft:smooth_red_sandstone",
+                        "minecraft:smooth_red_sandstone_double_slab",
+                        "minecraft:smooth_red_sandstone_slab",
+                        "minecraft:smooth_red_sandstone_stairs",
+                        "minecraft:smooth_sandstone",
+                        "minecraft:smooth_sandstone_double_slab",
+                        "minecraft:smooth_sandstone_slab",
+                        "minecraft:smooth_sandstone_stairs",
+                        "minecraft:smooth_stone",
+                        "minecraft:smooth_stone_double_slab",
+                        "minecraft:smooth_stone_slab",
+                        "minecraft:sniffer_egg",
+                        "minecraft:snow",
+                        "minecraft:snow_layer",
+                        "minecraft:soul_campfire",
+                        "minecraft:soul_fire",
+                        "minecraft:soul_lantern",
+                        "minecraft:soul_sand",
+                        "minecraft:soul_soil",
+                        "minecraft:soul_torch",
+                        "minecraft:sponge",
+                        "minecraft:spore_blossom",
+                        "minecraft:spruce_button",
+                        "minecraft:spruce_door",
+                        "minecraft:spruce_double_slab",
+                        "minecraft:spruce_fence",
+                        "minecraft:spruce_fence_gate",
+                        "minecraft:spruce_hanging_sign",
+                        "minecraft:spruce_leaves",
+                        "minecraft:spruce_log",
+                        "minecraft:spruce_planks",
+                        "minecraft:spruce_pressure_plate",
+                        "minecraft:spruce_sapling",
+                        "minecraft:spruce_shelf",
+                        "minecraft:spruce_slab",
+                        "minecraft:spruce_stairs",
+                        "minecraft:spruce_standing_sign",
+                        "minecraft:spruce_trapdoor",
+                        "minecraft:spruce_wall_sign",
+                        "minecraft:spruce_wood",
+                        "minecraft:standing_banner",
+                        "minecraft:standing_sign",
+                        "minecraft:sticky_piston",
+                        "minecraft:sticky_piston_arm_collision",
+                        "minecraft:stone",
+                        "minecraft:stone_brick_double_slab",
+                        "minecraft:stone_brick_slab",
+                        "minecraft:stone_brick_stairs",
+                        "minecraft:stone_brick_wall",
+                        "minecraft:stone_bricks",
+                        "minecraft:stone_button",
+                        "minecraft:stone_pressure_plate",
+                        "minecraft:stone_stairs",
+                        "minecraft:stonecutter_block",
+                        "minecraft:stripped_acacia_log",
+                        "minecraft:stripped_acacia_wood",
+                        "minecraft:stripped_bamboo_block",
+                        "minecraft:stripped_birch_log",
+                        "minecraft:stripped_birch_wood",
+                        "minecraft:stripped_cherry_log",
+                        "minecraft:stripped_cherry_wood",
+                        "minecraft:stripped_crimson_hyphae",
+                        "minecraft:stripped_crimson_stem",
+                        "minecraft:stripped_dark_oak_log",
+                        "minecraft:stripped_dark_oak_wood",
+                        "minecraft:stripped_jungle_log",
+                        "minecraft:stripped_jungle_wood",
+                        "minecraft:stripped_mangrove_log",
+                        "minecraft:stripped_mangrove_wood",
+                        "minecraft:stripped_oak_log",
+                        "minecraft:stripped_oak_wood",
+                        "minecraft:stripped_pale_oak_log",
+                        "minecraft:stripped_pale_oak_wood",
+                        "minecraft:stripped_spruce_log",
+                        "minecraft:stripped_spruce_wood",
+                        "minecraft:stripped_warped_hyphae",
+                        "minecraft:stripped_warped_stem",
+                        "minecraft:structure_block",
+                        "minecraft:structure_void",
+                        "minecraft:sunflower",
+                        "minecraft:suspicious_gravel",
+                        "minecraft:suspicious_sand",
+                        "minecraft:sweet_berry_bush",
+                        "minecraft:tall_dry_grass",
+                        "minecraft:tall_grass",
+                        "minecraft:target",
+                        "minecraft:tinted_glass",
+                        "minecraft:tnt",
+                        "minecraft:torch",
+                        "minecraft:torchflower",
+                        "minecraft:torchflower_crop",
+                        "minecraft:trapdoor",
+                        "minecraft:trapped_chest",
+                        "minecraft:trial_spawner",
+                        "minecraft:trip_wire",
+                        "minecraft:tripwire_hook",
+                        "minecraft:tube_coral",
+                        "minecraft:tube_coral_block",
+                        "minecraft:tube_coral_fan",
+                        "minecraft:tube_coral_wall_fan",
+                        "minecraft:tuff",
+                        "minecraft:tuff_brick_double_slab",
+                        "minecraft:tuff_brick_slab",
+                        "minecraft:tuff_brick_stairs",
+                        "minecraft:tuff_brick_wall",
+                        "minecraft:tuff_bricks",
+                        "minecraft:tuff_double_slab",
+                        "minecraft:tuff_slab",
+                        "minecraft:tuff_stairs",
+                        "minecraft:tuff_wall",
+                        "minecraft:turtle_egg",
+                        "minecraft:twisting_vines",
+                        "minecraft:underwater_tnt",
+                        "minecraft:underwater_torch",
+                        "minecraft:undyed_shulker_box",
+                        "minecraft:unknown",
+                        "minecraft:unlit_redstone_torch",
+                        "minecraft:unpowered_comparator",
+                        "minecraft:unpowered_repeater",
+                        "minecraft:vault",
+                        "minecraft:verdant_froglight",
+                        "minecraft:vine",
+                        "minecraft:wall_banner",
+                        "minecraft:wall_sign",
+                        "minecraft:warped_button",
+                        "minecraft:warped_door",
+                        "minecraft:warped_double_slab",
+                        "minecraft:warped_fence",
+                        "minecraft:warped_fence_gate",
+                        "minecraft:warped_fungus",
+                        "minecraft:warped_hanging_sign",
+                        "minecraft:warped_hyphae",
+                        "minecraft:warped_nylium",
+                        "minecraft:warped_planks",
+                        "minecraft:warped_pressure_plate",
+                        "minecraft:warped_roots",
+                        "minecraft:warped_shelf",
+                        "minecraft:warped_slab",
+                        "minecraft:warped_stairs",
+                        "minecraft:warped_standing_sign",
+                        "minecraft:warped_stem",
+                        "minecraft:warped_trapdoor",
+                        "minecraft:warped_wall_sign",
+                        "minecraft:warped_wart_block",
+                        "minecraft:waterlily",
+                        "minecraft:waxed_chiseled_copper",
+                        "minecraft:waxed_copper",
+                        "minecraft:waxed_copper_bars",
+                        "minecraft:waxed_copper_bulb",
+                        "minecraft:waxed_copper_chain",
+                        "minecraft:waxed_copper_chest",
+                        "minecraft:waxed_copper_door",
+                        "minecraft:waxed_copper_golem_statue",
+                        "minecraft:waxed_copper_grate",
+                        "minecraft:waxed_copper_lantern",
+                        "minecraft:waxed_copper_trapdoor",
+                        "minecraft:waxed_cut_copper",
+                        "minecraft:waxed_cut_copper_slab",
+                        "minecraft:waxed_cut_copper_stairs",
+                        "minecraft:waxed_double_cut_copper_slab",
+                        "minecraft:waxed_exposed_chiseled_copper",
+                        "minecraft:waxed_exposed_copper",
+                        "minecraft:waxed_exposed_copper_bars",
+                        "minecraft:waxed_exposed_copper_bulb",
+                        "minecraft:waxed_exposed_copper_chain",
+                        "minecraft:waxed_exposed_copper_chest",
+                        "minecraft:waxed_exposed_copper_door",
+                        "minecraft:waxed_exposed_copper_golem_statue",
+                        "minecraft:waxed_exposed_copper_grate",
+                        "minecraft:waxed_exposed_copper_lantern",
+                        "minecraft:waxed_exposed_copper_trapdoor",
+                        "minecraft:waxed_exposed_cut_copper",
+                        "minecraft:waxed_exposed_cut_copper_slab",
+                        "minecraft:waxed_exposed_cut_copper_stairs",
+                        "minecraft:waxed_exposed_double_cut_copper_slab",
+                        "minecraft:waxed_exposed_lightning_rod",
+                        "minecraft:waxed_lightning_rod",
+                        "minecraft:waxed_oxidized_chiseled_copper",
+                        "minecraft:waxed_oxidized_copper",
+                        "minecraft:waxed_oxidized_copper_bars",
+                        "minecraft:waxed_oxidized_copper_bulb",
+                        "minecraft:waxed_oxidized_copper_chain",
+                        "minecraft:waxed_oxidized_copper_chest",
+                        "minecraft:waxed_oxidized_copper_door",
+                        "minecraft:waxed_oxidized_copper_golem_statue",
+                        "minecraft:waxed_oxidized_copper_grate",
+                        "minecraft:waxed_oxidized_copper_lantern",
+                        "minecraft:waxed_oxidized_copper_trapdoor",
+                        "minecraft:waxed_oxidized_cut_copper",
+                        "minecraft:waxed_oxidized_cut_copper_slab",
+                        "minecraft:waxed_oxidized_cut_copper_stairs",
+                        "minecraft:waxed_oxidized_double_cut_copper_slab",
+                        "minecraft:waxed_oxidized_lightning_rod",
+                        "minecraft:waxed_weathered_chiseled_copper",
+                        "minecraft:waxed_weathered_copper",
+                        "minecraft:waxed_weathered_copper_bars",
+                        "minecraft:waxed_weathered_copper_bulb",
+                        "minecraft:waxed_weathered_copper_chain",
+                        "minecraft:waxed_weathered_copper_chest",
+                        "minecraft:waxed_weathered_copper_door",
+                        "minecraft:waxed_weathered_copper_golem_statue",
+                        "minecraft:waxed_weathered_copper_grate",
+                        "minecraft:waxed_weathered_copper_lantern",
+                        "minecraft:waxed_weathered_copper_trapdoor",
+                        "minecraft:waxed_weathered_cut_copper",
+                        "minecraft:waxed_weathered_cut_copper_slab",
+                        "minecraft:waxed_weathered_cut_copper_stairs",
+                        "minecraft:waxed_weathered_double_cut_copper_slab",
+                        "minecraft:waxed_weathered_lightning_rod",
+                        "minecraft:weathered_chiseled_copper",
+                        "minecraft:weathered_copper",
+                        "minecraft:weathered_copper_bars",
+                        "minecraft:weathered_copper_bulb",
+                        "minecraft:weathered_copper_chain",
+                        "minecraft:weathered_copper_chest",
+                        "minecraft:weathered_copper_door",
+                        "minecraft:weathered_copper_golem_statue",
+                        "minecraft:weathered_copper_grate",
+                        "minecraft:weathered_copper_lantern",
+                        "minecraft:weathered_copper_trapdoor",
+                        "minecraft:weathered_cut_copper",
+                        "minecraft:weathered_cut_copper_slab",
+                        "minecraft:weathered_cut_copper_stairs",
+                        "minecraft:weathered_double_cut_copper_slab",
+                        "minecraft:weathered_lightning_rod",
+                        "minecraft:web",
+                        "minecraft:weeping_vines",
+                        "minecraft:wet_sponge",
+                        "minecraft:wheat",
+                        "minecraft:white_candle",
+                        "minecraft:white_candle_cake",
+                        "minecraft:white_carpet",
+                        "minecraft:white_concrete",
+                        "minecraft:white_concrete_powder",
+                        "minecraft:white_glazed_terracotta",
+                        "minecraft:white_shulker_box",
+                        "minecraft:white_stained_glass",
+                        "minecraft:white_stained_glass_pane",
+                        "minecraft:white_terracotta",
+                        "minecraft:white_tulip",
+                        "minecraft:white_wool",
+                        "minecraft:wildflowers",
+                        "minecraft:wither_rose",
+                        "minecraft:wither_skeleton_skull",
+                        "minecraft:wooden_button",
+                        "minecraft:wooden_door",
+                        "minecraft:wooden_pressure_plate",
+                        "minecraft:yellow_candle",
+                        "minecraft:yellow_candle_cake",
+                        "minecraft:yellow_carpet",
+                        "minecraft:yellow_concrete",
+                        "minecraft:yellow_concrete_powder",
+                        "minecraft:yellow_glazed_terracotta",
+                        "minecraft:yellow_shulker_box",
+                        "minecraft:yellow_stained_glass",
+                        "minecraft:yellow_stained_glass_pane",
+                        "minecraft:yellow_terracotta",
+                        "minecraft:yellow_wool",
+                        "minecraft:zombie_head"
+                    ]
+                }
+            },
+
+            "ha:fire_potion_gear": {
+                "minecraft:behavior.drink_potion": {
+                    "priority": 0,
+                    "speed_multiplier": 1.35,
+                    "potions": [
+                        {
+                            "id": 13,
+                            "chance": 1,
+                            "filters": {
+                                "test": "has_mob_effect",
+                                "operator": "!=",
+                                "subject": "self",
+                                "value": "fire_resistance"
+                            }
+                        }
+                    ]
+                }
+            },
+            "ha:scare_brute": {
+                "minecraft:behavior.avoid_mob_type": {
+                    "priority": 1,
+                    "remove_target": true,
+                    "walk_speed_multiplier": 2,
+                    "sprint_speed_multiplier": 2,
+                    "sprint_distance": 10,
+                    "max_dist": 64,
+                    "ignore_visibility": false,
+                    "entity_types": {
+                        "filters": {
+                            "test": "is_family",
+                            "subject": "other",
+                            "operator": "!=",
+                            "value": "piglin"
+                        }
+                    }
+                }
+            },
+
+            "ha:normal_damage": {
+                "minecraft:attack": {
+                    "damage": 5
+                }
+            },
+            "ha:critic_damage": {
+                "minecraft:attack": {
+                    "damage": 9
+                }
+            }
+        },
+        "components": {
+            "minecraft:damage_sensor": {
+                "triggers": [
+                    {
+                        "on_damage": {
+                            "filters": {
+                                "any_of": [
+                                    {
+                                        "test": "has_damage",
+                                        "value": "block_explosion"
+                                    },
+                                    {
+                                        "test": "has_damage",
+                                        "value": "entity_explosion"
+                                    }
+                                ]
+                            }
+                        },
+                        "deals_damage": "yes"
+                    },
+                    {
+                        "on_damage": {
+                            "filters": {
+                                "none_of": [
+                                    {
+                                        "test": "has_damage",
+                                        "value": "block_explosion"
+                                    },
+                                    {
+                                        "test": "has_damage",
+                                        "value": "entity_explosion"
+                                    }
+                                ]
+                            }
+                        },
+                        "deals_damage": "no"
+                    }
+                ]
+            },
+            "minecraft:equip_item": { },
+            "minecraft:behavior.pickup_items": {
+                "priority": 4,
+                "can_pickup_any_item": true,
+                "can_pickup_to_hand_or_equipment": true,
+                "cooldown_after_being_attacked": 20,
+                "goal_radius": 1.5,
+                "max_dist": 60,
+                "pickup_based_on_chance": false,
+                "search_height": 3,
+                "speed_multiplier": 1,
+                "track_target": true
+            },
+            "minecraft:behavior.equip_item": {
+                "priority": 4
+            },
+            "minecraft:healable": {
+                "force_use": false,
+                "items": [
+                    {
+                        "item": "minecraft:porkchop",
+                        "heal_amount": 2
+                    },
+                    {
+                        "item": "minecraft:cooked_porkchop",
+                        "heal_amount": 2
+                    },
+                    {
+                        "item": "minecraft:golden_apple",
+                        "heal_amount": 4
+                    },
+                    {
+                        "item": "minecraft:enchanted_golden_apple",
+                        "heal_amount": 4
+                    },
+                    {
+                        "item": "ha:iron_apple",
+                        "heal_amount": 4
+                    }
+                ]
+            },
+            "minecraft:inventory": {
+                "can_be_siphoned_from": false,
+                "container_type": "inventory",
+                "inventory_size": 64,
+                "restrict_to_owner": true
+            },
+            "minecraft:shareables": {
+                "items": [
+                    {
+                        "item": "ha:cautious_helmet",
+                        "want_amount": 1,
+                        "surplus_amount": 1,
+                        "priority": 0
+                    },
+                    {
+                        "item": "ha:cautious_chestplate",
+                        "want_amount": 1,
+                        "surplus_amount": 1,
+                        "priority": 0
+                    },
+                    {
+                        "item": "ha:cautious_leggings",
+                        "want_amount": 1,
+                        "surplus_amount": 1,
+                        "priority": 0
+                    },
+                    {
+                        "item": "ha:cautious_boots",
+                        "want_amount": 1,
+                        "surplus_amount": 1,
+                        "priority": 0
+                    },
+
+                    {
+                        "item": "ha:fake_netherite_helmet",
+                        "want_amount": 1,
+                        "surplus_amount": 1,
+                        "priority": 0
+                    },
+                    {
+                        "item": "ha:fake_netherite_chestplate",
+                        "want_amount": 1,
+                        "surplus_amount": 1,
+                        "priority": 0
+                    },
+                    {
+                        "item": "ha:fake_netherite_leggings",
+                        "want_amount": 1,
+                        "surplus_amount": 1,
+                        "priority": 0
+                    },
+                    {
+                        "item": "ha:fake_netherite_boots",
+                        "want_amount": 1,
+                        "surplus_amount": 1,
+                        "priority": 0
+                    },
+
+                    {
+                        "item": "ha:hoglin_fang",
+                        "want_amount": 1,
+                        "surplus_amount": 1,
+                        "priority": 0
+                    },
+                    {
+                        "item": "ha:piglin_mace",
+                        "want_amount": 1,
+                        "surplus_amount": 1,
+                        "priority": 0
+                    },
+
+                    {
+                        "item": "minecraft:netherite_helmet",
+                        "priority": 1,
+                        "stored_in_inventory": true,
+                        "max_amount": 1
+                    },
+                    {
+                        "item": "minecraft:netherite_chestplate",
+                        "priority": 1,
+                        "stored_in_inventory": true,
+                        "max_amount": 1
+                    },
+                    {
+                        "item": "minecraft:netherite_leggings",
+                        "priority": 1,
+                        "stored_in_inventory": true,
+                        "max_amount": 1
+                    },
+                    {
+                        "item": "minecraft:netherite_boots",
+                        "priority": 1,
+                        "stored_in_inventory": true,
+                        "max_amount": 1
+                    },
+                    {
+                        "item": "minecraft:netherite_sword",
+                        "priority": 1,
+                        "stored_in_inventory": true,
+                        "max_amount": 1
+                    },
+                    {
+                        "item": "ha:hoglin_fang",
+                        "priority": 1,
+                        "stored_in_inventory": true,
+                        "max_amount": 1
+                    },
+                    {
+                        "item": "ha:piglin_mace",
+                        "priority": 1,
+                        "stored_in_inventory": true,
+                        "max_amount": 1
+                    },
+                    {
+                        "item": "minecraft:netherite_spear",
+                        "priority": 1,
+                        "stored_in_inventory": true,
+                        "max_amount": 1
+                    },
+                    {
+                        "item": "minecraft:netherite_axe",
+                        "priority": 1,
+                        "stored_in_inventory": true,
+                        "max_amount": 1
+                    },
+                    {
+                        "item": "minecraft:mace",
+                        "priority": 1,
+                        "stored_in_inventory": true,
+                        "max_amount": 1
+                    },
+                    {
+                        "item": "minecraft:trident",
+                        "priority": 1,
+                        "stored_in_inventory": true,
+                        "max_amount": 1
+                    },
+                    {
+                        "item": "minecraft:bow",
+                        "priority": 1,
+                        "stored_in_inventory": true,
+                        "max_amount": 1
+                    },
+                    {
+                        "item": "minecraft:crossbow",
+                        "priority": 1,
+                        "stored_in_inventory": true,
+                        "max_amount": 1
+                    },
+                    {
+                        "item": "minecraft:shield",
+                        "priority": 1,
+                        "stored_in_inventory": true,
+                        "max_amount": 1
+                    },
+                    {
+                        "item": "minecraft:wind_charge",
+                        "priority": 2,
+                        "stored_in_inventory": true,
+                        "max_amount": 64
+                    },
+                    {
+                        "item": "minecraft:elytra",
+                        "priority": 1,
+                        "stored_in_inventory": true,
+                        "max_amount": 1
+                    },
+                    {
+                        "item": "minecraft:totem_of_undying",
+                        "priority": 1,
+                        "stored_in_inventory": true,
+                        "max_amount": 1
+                    },
+                    {
+                        "item": "ha:slime_pearl",
+                        "priority": 2,
+                        "stored_in_inventory": true,
+                        "max_amount": 64
+                    },
+                    {
+                        "item": "ha:allay_essence",
+                        "priority": 2,
+                        "stored_in_inventory": true,
+                        "max_amount": 1
+                    },
+                    {
+                        "item": "ha:allay_dust",
+                        "priority": 2,
+                        "stored_in_inventory": true,
+                        "max_amount": 64
+                    },
+                    {
+                        "item": "minecraft:porkchop",
+                        "priority": 2,
+                        "stored_in_inventory": true,
+                        "max_amount": 64
+                    },
+                    {
+                        "item": "minecraft:cooked_porkchop",
+                        "priority": 2,
+                        "stored_in_inventory": true,
+                        "max_amount": 64
+                    },
+                    {
+                        "item": "minecraft:golden_apple",
+                        "priority": 2,
+                        "stored_in_inventory": true,
+                        "max_amount": 64
+                    },
+                    {
+                        "item": "minecraft:enchanted_golden_apple",
+                        "priority": 2,
+                        "stored_in_inventory": true,
+                        "max_amount": 64
+                    },
+                    {
+                        "item": "ha:iron_apple",
+                        "priority": 2,
+                        "stored_in_inventory": true,
+                        "max_amount": 64
+                    }
+                ]
+            },
+            "minecraft:group_size": {
+                "radius": 20,
+                "filters": {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "piglin"
+                }
+            },
+            "minecraft:attack": {
+                "damage": 5
+            },
+            "minecraft:equipment": {
+                "table": "loot_tables/entities/custom/brute_gears/armor_gear.json",
+                "slot_drop_chance": [
+                    {
+                        "slot": "slot.weapon.mainhand",
+                        "drop_chance": -1
+                    },
+                    {
+                        "slot": "slot.weapon.offhand",
+                        "drop_chance": -1
+                    },
+                    {
+                        "slot": "slot.armor.head",
+                        "drop_chance": -1
+                    },
+                    {
+                        "slot": "slot.armor.chest",
+                        "drop_chance": -1
+                    },
+                    {
+                        "slot": "slot.armor.legs",
+                        "drop_chance": -1
+                    },
+                    {
+                        "slot": "slot.armor.feet",
+                        "drop_chance": -1
+                    }
+                ]
+            },
+            "minecraft:behavior.hurt_by_target": {
+                "priority": 2,
+                "alert_same_type": true,
+                "hurt_owner": true,
+                "entity_types": {
+                    "filters": {
+                        "all_of": [
+                            {
+                                "test": "is_family",
+                                "subject": "other",
+                                "operator": "!=",
+                                "value": "piglin"
+                            }
+                        ]
+                    }
+                }
+            },
+            "minecraft:behavior.nearest_prioritized_attackable_target": {
+                "priority": 3,
+                "must_see": true,
+                "reselect_targets": true,
+                "entity_types": [
+                    {
+                        "priority": 0,
+                        "filters": {
+                            "test": "is_family",
+                            "subject": "other",
+                            "value": "player"
+                        },
+                        "max_dist": 150,
+                        "must_see": false
+                    },
+                    {
+                        "priority": 1,
+                        "filters": {
+                            "any_of": [
+                                {
+                                    "test": "is_family",
+                                    "subject": "other",
+                                    "value": "irongolem"
+                                },
+                                {
+                                    "test": "is_family",
+                                    "subject": "other",
+                                    "value": "snowgolem"
+                                }
+                            ]
+                        },
+                        "max_dist": 50
+                    },
+                    {
+                        "priority": 2,
+                        "filters": {
+                            "all_of": [
+                                {
+                                    "test": "is_family",
+                                    "subject": "other",
+                                    "operator": "!=",
+                                    "value": "player"
+                                },
+                                {
+                                    "test": "is_family",
+                                    "subject": "other",
+                                    "operator": "!=",
+                                    "value": "irongolem"
+                                },
+                                {
+                                    "test": "is_family",
+                                    "subject": "other",
+                                    "operator": "!=",
+                                    "value": "snowgolem"
+                                },
+                                {
+                                    "test": "is_family",
+                                    "subject": "other",
+                                    "operator": "!=",
+                                    "value": "piglin"
+                                }
+                            ]
+                        },
+                        "max_dist": 100,
+                        "must_see": false
+                    }
+                ]
+            },
+            "minecraft:annotation.open_door": { },
+            "minecraft:annotation.break_door": {
+                "break_time": 5,
+                "min_difficulty": "hard"
+            },
+            "minecraft:behavior.break_door": { },
+            "minecraft:behavior.door_interact": { },
+            "minecraft:behavior.open_door": {
+                "priority": 6,
+                "close_door_after": false
+            },
+            "minecraft:movement": {
+                "value": 0.35
+            },
+            "minecraft:jump.static": { },
+            "minecraft:movement.basic": { },
+            "minecraft:navigation.walk": {
+                "avoid_water": false,
+                "can_swim": true,
+                "can_path_over_water": true,
+                "can_walk_in_lava": true,
+                "can_path_over_lava": true,
+                "is_amphibious": true,
+                "can_break_doors": true,
+                "can_open_doors": true,
+                "can_open_iron_doors": true,
+                "can_pass_doors": true,
+                "can_sink": false
+            },
+            "minecraft:floats_in_liquid": { },
+            "minecraft:physics": { },
+            "minecraft:health": {
+                "value": 350,
+                "max": 350
+            },
+            "minecraft:follow_range": {
+                "value": 100
+            },
+            "minecraft:hurt_on_condition": {
+                "damage_conditions": [
+                    {
+                        "cause": "lava",
+                        "damage_per_tick": 4,
+                        "filters": {
+                            "operator": "==",
+                            "test": "in_lava",
+                            "subject": "self",
+                            "value": true
+                        }
+                    }
+                ]
+            },
+            "minecraft:behavior.float": {
+                "priority": 3
+            },
+            "minecraft:underwater_movement": {
+                "value": 0.02
+            },
+            "minecraft:lava_movement": {
+                "value": 0.02
+            },
+            "minecraft:can_climb": { },
+            "minecraft:game_event_movement_tracking": {
+                "emit_move": true,
+                "emit_swim": true
+            },
+            "minecraft:preferred_path": {
+                "max_fall_blocks": 100
+            },
+            "minecraft:behavior.look_at_player": {
+                "look_time": {
+                    "min": 1,
+                    "max": 2
+                },
+                "priority": 9
+            },
+            "minecraft:behavior.random_look_around": {
+                "priority": 10
+            },
+            "minecraft:behavior.random_stroll": {
+                "priority": 11,
+                "speed_multiplier": 0.6
+            },
+            "minecraft:breathable": {
+                "suffocate_time": 0,
+                "total_supply": 15
+            },
+            "minecraft:collision_box": {
+                "height": 1.9,
+                "width": 0.6
+            },
+            "minecraft:conditional_bandwidth_optimization": { },
+            "minecraft:despawn": {
+                "filters": {
+                    "any_of": [
+                        {
+                            "all_of": [
+                                {
+                                    "test": "is_persistent",
+                                    "value": false
+                                },
+                                {
+                                    "operator": ">",
+                                    "test": "distance_to_nearest_player",
+                                    "value": 54
+                                }
+                            ]
+                        },
+                        {
+                            "all_of": [
+                                {
+                                    "test": "is_persistent",
+                                    "value": false
+                                },
+                                {
+                                    "subject": "self",
+                                    "test": "inactivity_timer",
+                                    "value": 30
+                                },
+                                {
+                                    "test": "random_chance",
+                                    "value": 800
+                                },
+                                {
+                                    "operator": ">",
+                                    "test": "distance_to_nearest_player",
+                                    "value": 32
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            "minecraft:experience_reward": {
+                "on_death": "query.last_hit_by_player ? 20 : 0"
+            },
+            "minecraft:home": { },
+            "minecraft:is_hidden_when_invisible": { },
+            "minecraft:loot": {
+                "table": "loot_tables/entities/custom/cautious_drops/piglin_brute.json"
+            },
+            "minecraft:nameable": {
+                "allow_name_tag_renaming": false,
+                "always_show": true
+            },
+            "minecraft:pushable_by_block": { },
+            "minecraft:pushable_by_entity": { },
+            "minecraft:type_family": {
+                "family": [
+                    "piglin",
+                    "adult_piglin",
+                    "piglin_brute",
+                    "monster"
+                ]
+            },
+            "minecraft:reflect_projectiles": {
+                "reflected_projectiles": [
+                    "xp_bottle",
+                    "thrown_trident",
+                    "shulker_bullet",
+                    "dragon_fireball",
+                    "arrow",
+                    "snowball",
+                    "egg",
+                    "fireball",
+                    "splash_potion",
+                    "ender_pearl",
+                    "wither_skull",
+                    "wither_skull_dangerous",
+                    "small_fireball",
+                    "lingering_potion",
+                    "llama_spit",
+                    "fireworks_rocket",
+                    "fishing_hook",
+                    "ha:dynamite",
+                    "ha:slime_pearl"
+                ],
+                "azimuth_angle": "180.0 + Math.random(-20.0, 20.0)",
+                "reflection_scale": "0.5"
+            }
+        },
+        "events": {
+            "minecraft:entity_spawned": {
+                "sequence": [
+                    {
+                        "randomize": [
+                            {
+                                "weight": 90
+                            },
+                            {
+                                "weight": 10,
+                                "queue_command": {
+                                    "command": [
+                                        "replaceitem entity @s slot.weapon.offhand 0 totem"
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "add": {
+                            "component_groups": [
+                                "ha:spawn_sensors",
+                                "ha:potions_gear"
+                            ]
+                        }
+                    }
+                ]
+            },
+            "ha:summon_charged": {
+                "queue_command": {
+                    "command": [
+                        "summon wind_charge_projectile ~~~"
+                    ]
+                }
+            },
+            "ha:start_melee_mode": {
+                "sequence": [
+                    {
+                        "remove": {
+                            "component_groups": [
+                                "ha:spawn_sensors",
+
+                                "ha:ranged_sensors",
+                                "ha:pearl_sensors",
+
+                                "ha:ranged_mode",
+                                "ha:pearl_mode",
+
+                                "ha:fire_potion_gear",
+                                "ha:scare_brute",
+
+                                "ha:potions_gear"
+                            ]
+                        },
+                        "add": {
+                            "component_groups": [
+                                "ha:angry_mode"
+                            ]
+                        }
+                    },
+                    {
+                        "randomize": [
+                            {
+                                "weight": 90,
+                                "remove": {
+                                    "component_groups": [
+                                        "ha:mace_sensors",
+                                        "ha:spear_sensors",
+
+                                        "ha:spear_mode",
+                                        "ha:mace_mode",
+                                        "ha:mace_charged_loop"
+                                    ]
+                                },
+                                "add": {
+                                    "component_groups": [
+                                        "ha:melee_sensors",
+
+                                        "ha:melee_mode"
+                                    ]
+                                }
+                            },
+                            {
+                                "weight": 10,
+                                "sequence": [
+                                    {
+                                        "remove": {
+                                            "component_groups": [
+                                                "ha:melee_sensors",
+                                                "ha:spear_sensors",
+
+                                                "ha:spear_mode",
+                                                "ha:melee_mode"
+                                            ]
+                                        },
+                                        "add": {
+                                            "component_groups": [
+                                                "ha:mace_sensors",
+
+                                                "ha:mace_mode",
+                                                "ha:mace_charged_loop"
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "trigger": "ha:summon_charged"
+                                    }
+                                ]
+                            },
+                            {
+                                "weight": 10,
+                                "remove": {
+                                    "component_groups": [
+                                        "ha:mace_sensors",
+                                        "ha:melee_sensors",
+
+                                        "ha:melee_mode",
+                                        "ha:mace_mode"
+                                    ]
+                                },
+                                "add": {
+                                    "component_groups": [
+                                        "ha:spear_sensors",
+
+                                        "ha:spear_mode"
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            "ha:start_ranged_mode": {
+                "remove": {
+                    "component_groups": [
+                        "ha:spawn_sensors",
+                        "ha:melee_sensors",
+                        "ha:mace_sensors",
+                        "ha:mace_charged_loop",
+                        "ha:spear_sensors",
+                        "ha:pearl_sensors",
+
+                        "ha:melee_mode",
+                        "ha:spear_mode",
+                        "ha:mace_mode",
+
+                        "ha:pearl_mode",
+
+                        "ha:fire_potion_gear",
+                        "ha:scare_brute"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
+                        "ha:ranged_sensors",
+                        "ha:ranged_mode",
+                        "ha:angry_mode"
+                    ]
+                }
+            },
+            "ha:start_pearl_mode": {
+                "remove": {
+                    "component_groups": [
+                        "ha:spawn_sensors",
+                        "ha:melee_sensors",
+                        "ha:mace_sensors",
+                        "ha:mace_charged_loop",
+                        "ha:spear_sensors",
+                        "ha:ranged_sensors",
+
+                        "ha:melee_mode",
+                        "ha:spear_mode",
+                        "ha:mace_mode",
+
+                        "ha:ranged_mode",
+
+                        "ha:fire_potion_gear",
+                        "ha:scare_brute"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
+                        "ha:pearl_sensors",
+                        "ha:pearl_mode",
+                        "ha:angry_mode"
+                    ]
+                }
+            },
+            "ha:neutral_sensors": {
+                "sequence": [
+                    {
+                        "queue_command": {
+                            "command": [
+                                "tag @s remove mining_mode"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "ha:melee_sensors",
+                                "ha:mace_sensors",
+                                "ha:mace_charged_loop",
+                                "ha:spear_sensors",
+                                "ha:ranged_sensors",
+                                "ha:pearl_sensors",
+
+                                "ha:angry_mode",
+
+                                "ha:melee_mode",
+                                "ha:spear_mode",
+                                "ha:mace_mode",
+
+                                "ha:ranged_mode",
+                                "ha:pearl_mode",
+
+                                "ha:timer_food",
+                                "ha:timer_potion",
+
+                                "ha:food_gear",
+                                "ha:potions_gear",
+                                "ha:pickaxe_mode",
+
+                                "ha:fire_potion_gear",
+                                "ha:scare_brute"
+                            ]
+                        },
+                        "add": {
+                            "component_groups": [
+                                "ha:spawn_sensors"
+                            ]
+                        }
+                    }
+                ]
+            },
+            "ha:critic_damage": {
+                "remove": {
+                    "component_groups": [
+                        "ha:normal_damage"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
+                        "ha:critic_damage"
+                    ]
+                }
+            },
+            "ha:normal_damage": {
+                "remove": {
+                    "component_groups": [
+                        "ha:critic_damage"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
+                        "ha:normal_damage"
+                    ]
+                }
+            },
+            "ha:drink_resistance": {
+                "queue_command": {
+                    "command": [
+                        "replaceitem entity @s slot.weapon.mainhand 0 air"
+                    ]
+                },
+                "remove": {
+                    "component_groups": [
+                        "ha:spawn_sensors",
+
+                        "ha:melee_sensors",
+                        "ha:mace_sensors",
+                        "ha:spear_sensors",
+
+                        "ha:ranged_sensors",
+                        "ha:pearl_sensors",
+
+                        "ha:angry_mode",
+
+                        "ha:melee_mode",
+                        "ha:spear_mode",
+                        "ha:mace_charged_loop",
+                        "ha:mace_mode",
+
+                        "ha:ranged_mode",
+                        "ha:pearl_mode",
+
+                        "ha:food_gear",
+                        "ha:potions_gear"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
+                        "ha:fire_potion_gear",
+                        "ha:scare_brute"
+                    ]
+                }
+            },
+            "ha:start_eat_event": {
+                "sequence": [
+                    {
+                        "queue_command": {
+                            "command": [
+                                "replaceitem entity @s slot.weapon.mainhand 0 air"
+                            ]
+                        },
+                        "randomize": [
+                            {
+                                "weight": 1,
+                                "add": {
+                                    "component_groups": [
+                                        "ha:timer_food",
+                                        "ha:food_gear"
+                                    ]
+                                }
+                            },
+                            {
+                                "weight": 1,
+                                "add": {
+                                    "component_groups": [
+                                        "ha:timer_potion",
+                                        "ha:potions_gear"
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "add": {
+                            "component_groups": [
+                                "ha:scare_brute"
+                            ]
+                        }
+                    }
+                ]
+            },
+            "ha:panic_event": {
+                "sequence": [
+                    {
+                        "remove": {
+                            "component_groups": [
+                                "ha:spawn_sensors",
+                                "ha:melee_sensors",
+                                "ha:mace_sensors",
+                                "ha:spear_sensors",
+                                "ha:ranged_sensors",
+                                "ha:pearl_sensors",
+
+                                "ha:angry_mode",
+
+                                "ha:melee_mode",
+                                "ha:spear_mode",
+                                "ha:mace_charged_loop",
+                                "ha:mace_mode",
+
+                                "ha:ranged_mode",
+                                "ha:pearl_mode",
+
+                                "ha:fire_potion_gear",
+                                "ha:normal_damage",
+                                "ha:critic_damage"
+                            ]
+                        }
+                    },
+                    {
+                        "trigger": "ha:start_eat_event"
+                    }
+                ]
+            },
+            "ha:start_mining": {
+                "queue_command": {
+                    "command": [
+                        "tag @s add mining_mode",
+                        "setblock ~~1~ air destroy",
+                        "setblock ~~-1~ air destroy"
+                    ]
+                },
+                "remove": {
+                    "component_groups": [
+                        "ha:spawn_sensors",
+
+                        "ha:melee_sensors",
+                        "ha:mace_sensors",
+                        "ha:spear_sensors",
+
+                        "ha:ranged_sensors",
+                        "ha:pearl_sensors",
+
+                        "ha:melee_mode",
+                        "ha:spear_mode",
+                        "ha:mace_charged_loop",
+                        "ha:mace_mode",
+
+                        "ha:ranged_mode",
+                        "ha:pearl_mode",
+
+                        "ha:timer_food",
+                        "ha:timer_potion",
+                        "ha:food_gear",
+                        "ha:potions_gear",
+
+                        "ha:fire_potion_gear",
+                        "ha:scare_brute"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
+                        "ha:angry_mode",
+                        "ha:pickaxe_mode"
+                    ]
+                }
+            }
+        }
+    }
+}
