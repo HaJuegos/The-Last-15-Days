@@ -41,7 +41,7 @@
                 "on_hit": {
                     "spawn_chance": {
                         "first_spawn_count": 1,
-                        "first_spawn_percent_chance": 5.0,
+                        "first_spawn_percent_chance": 30,
                         "spawn_definition": "minecraft:slime"
                     },
                     "stick_in_ground": { }

@@ -7,7 +7,7 @@
             "entries": [
                 {
                     "type": "loot_table",
-                    "name": "loot_tables/entities/full_diamond_armor_set.json"
+                    "name": "loot_tables/entities/custom/full_diamond_armor_set.json"
                 }
             ]
         },

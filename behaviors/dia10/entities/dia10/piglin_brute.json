@@ -41,7 +41,7 @@
                                         "test": "actor_health",
                                         "subject": "self",
                                         "operator": "<",
-                                        "value": 350
+                                        "value": 80
                                     },
                                     {
                                         "test": "has_target",
@@ -74,7 +74,12 @@
                                     },
                                     {
                                         "test": "random_chance",
-                                        "value": 1000
+                                        "value": 100
+                                    },
+                                    {
+                                        "test": "is_moving",
+                                        "subject": "self",
+                                        "value": false
                                     },
                                     {
                                         "test": "has_tag",
@@ -869,6 +874,18 @@
             },
 
             "ha:pickaxe_mode": {
+                "minecraft:on_target_escape": {
+                    "event": "ha:neutral_sensors",
+                    "target": "self"
+                },
+                "minecraft:timer": {
+                    "time": [ 12, 12 ],
+                    "looping": false,
+                    "time_down_event": {
+                        "event": "ha:neutral_sensors",
+                        "target": "self"
+                    }
+                },
                 "minecraft:target_nearby_sensor": {
                     "inside_range": 10,
                     "on_inside_range": {
@@ -2323,12 +2340,12 @@
 
             "ha:normal_damage": {
                 "minecraft:attack": {
-                    "damage": 5
+                    "damage": 10
                 }
             },
             "ha:critic_damage": {
                 "minecraft:attack": {
-                    "damage": 9
+                    "damage": 16
                 }
             }
         },

@@ -90,6 +90,8 @@ chat.system.hit_by_dolphin=§e§lTe ha golpeado un delfín, ya no puedes respira
 chat.system.soul_link.no_plys_deaths=§7§l>> No hay jugadores por revivir, es inútil utilizar el ítem en este momento.
 chat.system.soul_link.alr_used=§7§l>> Ya has utilizado este ítem previamente, no puedes revivir a más jugadores.
 chat.system.soul_link.select_player=§7§l>> §cPor el pacto del Soul Link, §e%2 §cha atado su destino al de §e%1§c. §7Son dos cuerpos, pero una sola vida. §4La muerte de uno será la condena absoluta del otro. Ya no hay salvación.
+chat.system.block_explorer=§c§l>> No puedes pasar del límite de exploración de 500 bloques de esta dimensión.
+
 
 chat.system.abyss_text.abyssal_text_combo1=§1§l>> Ojos del Abismo: Sientes que una presencia oscura te arrebata varios espacios del inventario. Tranquilo, tus cosas están ahora mismo en el suelo. ¡Mala suerte!
 chat.system.abyss_text.abyssal_text_combo2=§1§l>> Ojos del Abismo: Por caer de nuevo en esta maldición, pierdes un espacio aleatorio de tu inventario. ¡Qué mala suerte! Ten cuidado con lo que guardas.

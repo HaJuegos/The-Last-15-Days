@@ -7,6 +7,23 @@
             "conditions": [
                 {
                     "condition": "random_chance_with_looting",
+                    "chance": 0.35,
+                    "looting_multiplier": 0.1
+                }
+            ],
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "ha:cautious_chestplate",
+                    "weight": 1
+                }
+            ]
+        },
+        {
+            "rolls": 1,
+            "conditions": [
+                {
+                    "condition": "random_chance_with_looting",
                     "chance": 0.2,
                     "looting_multiplier": 0.1
                 }

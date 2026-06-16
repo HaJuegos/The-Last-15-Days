@@ -16,7 +16,7 @@
         ],
         "key": {
             "I": {
-                "item": "minecraft:iron_ingot"
+                "item": "minecraft:iron_block"
             },
             "A": {
                 "item": "minecraft:apple"
@@ -24,7 +24,7 @@
         },
         "unlock": [
             {
-                "item": "minecraft:iron_ingot"
+                "item": "minecraft:iron_block"
             },
             {
                 "item": "minecraft:apple"

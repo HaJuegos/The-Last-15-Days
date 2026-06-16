@@ -90,6 +90,7 @@ chat.system.hit_by_dolphin=§e§lYou got hit by a dolphin, so you can't hold you
 chat.system.soul_link.no_plys_deaths=§7§l>> There are no players to revive, so don't bother using the item right now.
 chat.system.soul_link.alr_used=§7§l>> You've already used this item, so you can't revive any more players.
 chat.system.soul_link.select_player=§7§l>> §cThrough the Soul Link pact, §e%2 §cjust tied their fate to §e%1§c. §7Two bodies, one shared life. §4If one goes down, it's game over for both.
+chat.system.block_explorer=§c§l>> You cannot go beyond this dimension's 500-block exploration limit.
 
 
 chat.system.abyss_text.abyssal_text_combo1=§1§l>> Abyssal Eyes: You feel a dark presence snatching slots from your inventory. Don't panic—your items are just chilling on the floor now. Tough luck!

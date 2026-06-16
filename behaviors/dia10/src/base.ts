@@ -13,7 +13,7 @@ export class TL15DBaseManager {
     * @protected
     */
     protected customRanks: { namePly: string | string[]; rank: string; colorCode: string; }[] = [
-        { namePly: ['Ha Juegos', 'Convex!'], rank: 'DEV', colorCode: '§l§g' },
+        { namePly: ['Ha Juegos', 'Convex!', 'BigRoyer'], rank: 'DEV', colorCode: '§l§g' },
         { namePly: 'XChitoX3083', rank: 'Diresito Lover', colorCode: '§c' },
         { namePly: 'Dyaerl', rank: 'DaoLover', colorCode: '§a' },
         { namePly: 'Mattols7886', rank: 'Rey grasoso', colorCode: '§e' },
@@ -26,6 +26,11 @@ export class TL15DBaseManager {
         { namePly: 'Diresito', rank: 'nyaowodirepene', colorCode: '§l§a' },
         { namePly: 'E S D I 1 0', rank: 'Bendies2', colorCode: '§a' },
         { namePly: 'ShedowXDYT', rank: 'ElFurro', colorCode: '§1' },
+        { namePly: 'fede p5959', rank: 'MvpBtw', colorCode: '§e' },
+        { namePly: 'GEOKILLER', rank: 'GeoPerro', colorCode: '§u' },
+        { namePly: 'zVicX9198', rank: 'The Lagger', colorCode: '§u' },
+        { namePly: 'CopyCat Mc', rank: 'Tan sexoso', colorCode: '§e' },
+        { namePly: 'Iam4ndrew', rank: 'SoSneaky SpeedRunner', colorCode: '§u§l' },
     ];
 
     /**
