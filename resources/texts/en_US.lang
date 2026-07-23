@@ -20,6 +20,37 @@ dialogue.socrates.bullshit2=If sleeping is supposed to restore your energy and h
 dialogue.socrates.bullshit3=If tools define the builder, what are you if you keep your very first wooden pickaxe all the way to the Ender Dragon? A true visionary, or just a guy who really hates efficiency?
 dialogue.socrates.bullshit4=If death in Hardcore is the ultimate end, what are you if you die holding a Totem of Undying? A cheater of fate, or just a fool delaying the inevitable Creeper explosion?
 
+dialogue.nurse.regenerated=§7>> Thanks, here's what you're looking for. Come back later if you need my help.
+dialogue.nurse.error_regenerated=§7>> First, give me a diamond so I can give you an upgrade if you need it. I'll be waiting for you!
+
+interact.btn.nurse=Restore your life for 1 diamond.
+
+
+dialogue.royerbot.intro_txt=Hey there! I've got something important to tell you. Wanna hear my stories?
+
+dialogue.royerbot.dia0.txt=Welcome to TL15D, a pretty tough add-on and server packed with changes for players who want to face incredible challenges. Remember, the changes are daily, so watch your back!
+dialogue.royerbot.dia1.txt=A new day to explore, huh? It's pretty refreshing to just breathe for a moment. Sorry you got your exploration restricted.
+dialogue.royerbot.dia2.txt=Those foxes are super annoying, don't you think? Be really careful when you're exploring the world. And when mining, too.
+dialogue.royerbot.dia3.txt=Don't underestimate iron apples, they'll actually come in pretty handy, believe it or not. Stay safe out there, my friend.
+dialogue.royerbot.dia4.txt=Raids have been pretty dangerous lately. Be super careful if you decide to take the lead and face one all by yourself.
+dialogue.royerbot.dia5.txt=The Wither is the hardest mob in Bedrock edition. What do you think of the buff I gave them? Do you like it? What do you mean, no? Guess I won't give you their crown then.
+dialogue.royerbot.dia6.txt=You know a guy named "Socrates"? Don't tell him you saw me, I can't stand him. The other day he showed up with his llamas to offer me pure trash. Only his pearls were useful.
+dialogue.royerbot.dia7.txt=I have a pet Polly, she's really cute, I actually like her a lot. They're the best mob out there, but watch out if a cow hurts them... nobody can stop them after that.
+dialogue.royerbot.dia8.txt=Don't underestimate the Soul Link. It's actually really helpful to have some company for the end. Let's just hope that "help" isn't useless and ends up getting you into trouble.
+dialogue.royerbot.dia9.txt=Debuffs are the best change they've added; they really mess with your gameplay in the most annoying way. Just stay at your base to be on the safe side.
+dialogue.royerbot.dia10.txt=See you tomorrow. Hope you're ready, bring your best armor to the ring.
+dialogue.royerbot.dia11.txt=....
+
+dialogue.royerbot.dia0.btn1.txt=Here you go, buddy. Take this item, you might need it on your adventure. Be careful out there, and come back tomorrow for another reward!
+dialogue.royerbot.dia0.btn1.txt.alr=I already gave you today's item! Come back tomorrow for another reward. Chill out!
+
+dialogue.royerbot.dia0.btn2.txt=If you need more info, remember you can find everything you want on GitHub. Just copy and paste this link into your browser: https://github.com/HaJuegos/The-Last-15-Days/wiki/Cambios-de-Dificultad. Oh, and while you're at it, how about leaving us a star? ;)
+
+dialogue.royerbot.btns.btnintro=Sure!
+
+dialogue.royerbot.dia0.btn1=Get Gift
+dialogue.royerbot.dia0.btn2=Anything else?
+
 
 ## System Texts
 disconnect.kicked=Game Over! You can't keep playing anymore.
@@ -34,6 +65,9 @@ gamepad_disconnect=Your batteries died or the controller shut off!
 gamepad_disconnect.reconnectController=RoyerBot hijacked your system, and we don't recognize your controller anymore. Quick! Power it back on or reconnect it to keep going.
 
 pauseScreen.xboxLiveDisconnect=Your Xbox account got disconnected. Are you in a local world, or how the hell are you even seeing this? Either way, get back into the world.
+
+hbui.Bedtime.sleepingNotPossibleNotWorldOwner=The night will gradually pass. Don't worry. It's not like you have anything else to do, right?
+hbui.Bedtime.sleepingNotPossibleWorldOwner=The night will gradually pass. Don't worry. It's not like you have anything else to do, right?
 
 
 ## Title texts
@@ -73,6 +107,15 @@ ui.system.end_addon.body_thanks=§fCanonically, the series' development wrapped 
 ui.system.end_addon.label_team=§b§lThe Team:§r §7Royer, Convex!, Astral, and HaJuegos.§r\n\n§eRemember to leave us a star on GitHub and drop any feedback on the page. Thanks a lot :3!
 ui.system.end_addon.button_ok=§a§lContinue
 
+ui.scoreboard.obj.title=§g§lTotal Participants§r
+ui.scoreboard.scores.lives=§a§lAlive§r
+ui.scoreboard.scores.deaths=§4§lDead§r
+
+ui.form_deaths.no_plys_deaths=§7>> No player deaths have been recorded. Yet.
+ui.form_deaths.no_plys_valid=§7>> An error occurred while trying to retrieve the recorded player deaths; either there are none, or the data is incorrect.
+ui.form_deaths.title.plys_deaths=§p§l Dead Players §r
+ui.form_deaths.subtitle.plys_deaths=§o§iAll players registered in the world since Day 0. Primarily, data used for the soul link.§r
+
 
 ## Chat texts
 chat.system.resquicio_start=§c§l>>§r§c ¡%1 caused a §4§lHellish Rift§r!
@@ -90,7 +133,7 @@ chat.system.hit_by_dolphin=§e§lYou got hit by a dolphin, so you can't hold you
 chat.system.soul_link.no_plys_deaths=§7§l>> There are no players to revive, so don't bother using the item right now.
 chat.system.soul_link.alr_used=§7§l>> You've already used this item, so you can't revive any more players.
 chat.system.soul_link.select_player=§7§l>> §cThrough the Soul Link pact, §e%2 §cjust tied their fate to §e%1§c. §7Two bodies, one shared life. §4If one goes down, it's game over for both.
-chat.system.block_explorer=§c§l>> You cannot go beyond this dimension's 500-block exploration limit.
+chat.system.block_explorer=§c§l>> You cannot go beyond this dimension's exploration limit.
 
 
 chat.system.abyss_text.abyssal_text_combo1=§1§l>> Abyssal Eyes: You feel a dark presence snatching slots from your inventory. Don't panic—your items are just chilling on the floor now. Tough luck!
@@ -137,6 +180,22 @@ chat.system.spawn_items_rain=§d>> An item rain has occurred in %1.
 chat.system.spawn_totems_rain=§e>> A totem rain has occurred in %1.
 chat.system.banned_items_end=§c>> You won't be using that against me in this battle. The item has been removed from your inventory.
 
+chat.system.nowitheryet=§c>> You can't summon this mob yet.
+chat.system.block_items.wither=§4>> I won't let you use that item on me. Fight fair. Draw your sword and face me.
+
+chat.system.autoban.disabled=§7>> Autoban is now disabled. Players who die or are dead can freely enter the world.
+chat.system.autoban.enabled=§7>> Autoban is now enabled. Players who die or are dead will be kicked from the world and will not be able to re-enter.
+
+chat.system.hitboxes_system.error.nothing=§c>> The selected player was not found.
+chat.system.hitboxes_system.error.noply=§c>> The player "%1" was not found.
+chat.system.hitboxes_system.error.same_state=§c>> No changes were made to "%1"; it was already in that state.
+chat.system.hitboxes_system.enabled=§7>> Hitboxes have been enabled for "%1".
+chat.system.hitboxes_system.disabled=§7>> Hitboxes have been disabled for "%1".
+
+chat.system.fastitems_system.items_changed=§7>> The items in the quick-items system have been changed.
+
+chat.system.banana_eated=§g§l>> %1 ate a banana.
+
 
 ## Entity Names
 entity.ha:player_ghost.name=Player Ghost
@@ -151,6 +210,8 @@ entity.ender_dragon.name=§g§lRoyerBot§r
 entity.ha:bear_trap.name=Bear Trap
 entity.ha:spawned_trader_llama.name=End Llama Generator
 entity.ha:crystal_llama_generator.name=End Debuff Controller
+entity.ha:nurse_npc.name=Shimmered Nurse
+entity.ha:data_world.name=World Data
 
 
 ## Spawn egg names
@@ -260,6 +321,9 @@ item.ha:party_disc.name=Upbeat Music
 item.ha:silla_disc=A Chair Remix
 item.ha:silla_disc.name=A Chair Remix
 
+item.ha:banana=Banana
+item.ha:banana.name=Banana
+
 
 ## Item Catalog
 ha:itemGroup.name.nether_items=§4Nether Stuff§r
@@ -268,6 +332,7 @@ ha:itemGroup.name.nether_items=§4Nether Stuff§r
 ## Block names
 tile.ha:dynamite_block.name=Throwable Dynamite Block
 tile.ha:toxic_puddle.name=Toxic Puddle
+tile.ha:generator_mobs_nurse.name=End Mob Generator
 
 
 ## Music Desc
@@ -337,6 +402,7 @@ advacement.all_frogs=With Our Powers Combined!
 advacement.infernal_crown=Conquering the Nether
 advacement.hoglin_tusk=The Alpha Predator
 advacement.cautious_armor=Overcoming Caution
+advacement.backrooms=A Tour of the Backrooms
 
 
 ## Subtitle Texts
@@ -371,6 +437,9 @@ ui.subtitle_custom.ambient_dragon_attack.nausea=§2Nauseas' attack begins§r
 ui.subtitle_custom.ambient_dragon_attack.conduit=§bThe Conduit's attack begins§r
 ui.subtitle_custom.bear_trap.attacks=A bear trap strikes
 ui.subtitle_custom.ambient_dragon_attack.nausea.damaged=§cYou didn't bend down this time§r
+ui.subtitle_custom.nurse_npc.idle=A Shimmered Nurse complaining
+ui.subtitle_custom.nurse_npc.hurt=A Shimmered Nurse getting hurt
+ui.subtitle_custom.nurse_npc.purchased=Someone bought something for a Shimmered Nurse
 
 ui.music_start.dragon_fight=Dragon music playing
 ui.music_start.final_music=Credits music playing

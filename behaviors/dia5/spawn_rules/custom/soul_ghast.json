@@ -17,16 +17,13 @@
                 "minecraft:weight": {
                     "default": 25
                 },
-                "minecraft:density_limit": {
-                    "surface": 0,
-                    "underground": 2
+                "minecraft:herd": {
+                    "min_size": 1,
+                    "max_size": 1
                 },
                 "minecraft:biome_filter": {
-                    "any_of": [
-                        { "test": "has_biome_tag", "operator": "==", "value": "nether" },
-                        { "test": "has_biome_tag", "operator": "==", "value": "spawn_ghast" },
-                        { "test": "has_biome_tag", "operator": "==", "value": "soulsand_valley" }
-                    ]
+                    "test": "has_biome_tag",
+                    "value": "soulsand_valley"
                 }
             }
         ]

@@ -11,10 +11,13 @@
         ],
         "pattern": [
             "EEE",
-            "LDL",
-            "B B"
+            "LSL",
+            "BDB"
         ],
         "key": {
+            "S": {
+                "item": "ha:stone_skull"
+            },
             "E": {
                 "item": "minecraft:emerald"
             },
@@ -29,6 +32,9 @@
             }
         },
         "unlock": [
+            {
+                "item": "ha:stone_skull"
+            },
             {
                 "item": "minecraft:emerald"
             },

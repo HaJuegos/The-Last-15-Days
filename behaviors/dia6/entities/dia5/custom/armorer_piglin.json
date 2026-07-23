@@ -136,12 +136,6 @@
             "minecraft:shareables": {
                 "items": [
                     {
-                        "item": "ha:hoglin_fang",
-                        "want_amount": 1,
-                        "surplus_amount": 1,
-                        "priority": 0
-                    },
-                    {
                         "item": "ha:piglin_mace",
                         "want_amount": 1,
                         "surplus_amount": 1,
@@ -427,7 +421,7 @@
                 "singular_pickup": true
             },
             "minecraft:attack": {
-                "damage": 9
+                "damage": 45
             },
             "minecraft:behavior.melee_box_attack": {
                 "priority": 0,

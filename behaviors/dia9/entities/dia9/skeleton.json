@@ -11,22 +11,6 @@
             "is_summonable": true
         },
         "component_groups": {
-            "ha:bee_ranged_mode": {
-                "minecraft:behavior.ranged_attack": {
-                    "priority": 0,
-                    "speed_multiplier": 1.25,
-                    "attack_interval_min": 0.85,
-                    "attack_interval_max": 1.75,
-                    "attack_radius": 40,
-                    "ranged_fov": 360,
-                    "swing": true,
-                    "target_in_sight_time": 0.1
-                },
-                "minecraft:shooter": {
-                    "def": "minecraft:fireball<ha:from_skeleton_bee>",
-                    "sound": "bow"
-                }
-            },
             "ha:rider_sensors": {
                 "minecraft:behavior.hurt_by_target": {
                     "priority": 1,
@@ -54,20 +38,6 @@
                                     }
                                 ]
                             }
-                        }
-                    ]
-                },
-                "minecraft:damage_sensor": {
-                    "triggers": [
-                        {
-                            "on_damage": {
-                                "filters": {
-                                    "test": "is_family",
-                                    "subject": "other",
-                                    "value": "skeleton"
-                                }
-                            },
-                            "deals_damage": "no"
                         }
                     ]
                 },
@@ -238,93 +208,48 @@
                     "drop_inventory": true,
                     "preserve_equipment": true
                 }
-            },
-            "minecraft:ranged_attack": {
-                "minecraft:behavior.ranged_attack": {
-                    "priority": 0,
-                    "attack_interval_min": 1.0,
-                    "attack_interval_max": 3.0,
-                    "attack_radius": 15.0
-                },
-                "minecraft:shooter": {
-                    "def": "minecraft:arrow",
-                    "sound": "bow"
-                },
-                "minecraft:environment_sensor": {
-                    "triggers": [
-                        {
-                            "filters": {
-                                "test": "is_underwater"
-                            },
-                            "event": "minecraft:melee_mode"
-                        },
-                        {
-                            "filters": {
-                                "test": "has_ranged_weapon",
-                                "value": false
-                            },
-                            "event": "minecraft:melee_mode"
-                        },
-                        {
-                            "filters": {
-                                "test": "in_block",
-                                "subject": "self",
-                                "value": "minecraft:powder_snow"
-                            },
-                            "event": "got_in_powder_snow"
-                        }
-                    ]
-                }
-            },
-            "minecraft:melee_attack": {
-                "minecraft:behavior.melee_box_attack": {
-                    "priority": 4,
-                    "track_target": true,
-                    "speed_multiplier": 1.25
-                },
-                "minecraft:attack": {
-                    "damage": 2
-                },
-                "minecraft:environment_sensor": {
-                    "triggers": [
-                        {
-                            "filters": {
-                                "all_of": [
-                                    {
-                                        "test": "in_water",
-                                        "value": false
-                                    },
-                                    {
-                                        "test": "has_ranged_weapon"
-                                    }
-                                ]
-                            },
-                            "event": "minecraft:ranged_mode"
-                        },
-                        {
-                            "filters": {
-                                "test": "in_block",
-                                "value": "minecraft:powder_snow"
-                            },
-                            "event": "got_in_powder_snow"
-                        }
-                    ]
-                }
             }
         },
         "components": {
-            "minecraft:on_death": {
-                "target": "self",
-                "event": "ha:random_drop_bow"
+            "minecraft:damage_sensor": {
+                "triggers": [
+                    {
+                        "cause": "entity_explosion",
+                        "deals_damage": "no"
+                    },
+                    {
+                        "cause": "block_explosion",
+                        "deals_damage": "no"
+                    },
+                    {
+                        "on_damage": {
+                            "filters": {
+                                "test": "is_family",
+                                "subject": "other",
+                                "value": "skeleton"
+                            }
+                        },
+                        "deals_damage": "no"
+                    }
+                ]
             },
             "minecraft:behavior.ranged_attack": {
                 "priority": 0,
-                "attack_interval_min": 1.0,
-                "attack_interval_max": 3.0,
-                "attack_radius": 15.0
+                "speed_multiplier": 1.25,
+                "attack_interval_min": 1.05,
+                "attack_interval_max": 1.65,
+                "attack_radius": 40,
+                "ranged_fov": 360,
+                "swing": true,
+                "target_in_sight_time": 0.1
             },
             "minecraft:shooter": {
-                "def": "minecraft:arrow"
+                "def": "minecraft:fireball<ha:from_skeleton_bee>",
+                "sound": "bow"
+            },
+            "minecraft:on_death": {
+                "target": "self",
+                "event": "ha:random_drop_bow"
             },
             "minecraft:is_hidden_when_invisible": {
             },
@@ -803,84 +728,62 @@
                 ]
             },
             "minecraft:entity_spawned": {
-                "sequence": [
+                "randomize": [
                     {
-                        "randomize": [
-                            {
-                                "weight": 85
-                            },
-                            {
-                                "weight": 15,
-                                "add": {
-                                    "component_groups": [
-                                        "ha:become_bogged"
-                                    ]
-                                }
-                            },
-                            {
-                                "weight": 15,
-                                "add": {
-                                    "component_groups": [
-                                        "ha:become_stray"
-                                    ]
-                                }
-                            },
-                            {
-                                "weight": 15,
-                                "add": {
-                                    "component_groups": [
-                                        "ha:become_parched"
-                                    ]
-                                }
-                            }
-                        ]
+                        "weight": 85
                     },
                     {
+                        "weight": 15,
                         "add": {
                             "component_groups": [
-                                "minecraft:ranged_attack"
+                                "ha:become_bogged"
+                            ]
+                        }
+                    },
+                    {
+                        "weight": 15,
+                        "add": {
+                            "component_groups": [
+                                "ha:become_stray"
+                            ]
+                        }
+                    },
+                    {
+                        "weight": 15,
+                        "add": {
+                            "component_groups": [
+                                "ha:become_parched"
                             ]
                         }
                     }
                 ]
             },
             "ha:is_normal_rider": {
-                "sequence": [
+                "randomize": [
                     {
-                        "randomize": [
-                            {
-                                "weight": 85
-                            },
-                            {
-                                "weight": 15,
-                                "add": {
-                                    "component_groups": [
-                                        "ha:become_bogged"
-                                    ]
-                                }
-                            },
-                            {
-                                "weight": 15,
-                                "add": {
-                                    "component_groups": [
-                                        "ha:become_stray"
-                                    ]
-                                }
-                            },
-                            {
-                                "weight": 15,
-                                "add": {
-                                    "component_groups": [
-                                        "ha:become_parched"
-                                    ]
-                                }
-                            }
-                        ]
+                        "weight": 85
                     },
                     {
+                        "weight": 15,
                         "add": {
                             "component_groups": [
-                                "minecraft:ranged_attack"
+                                "ha:become_bogged"
+                            ]
+                        }
+                    },
+                    {
+                        "weight": 15,
+                        "add": {
+                            "component_groups": [
+                                "ha:become_stray"
+                            ]
+                        }
+                    },
+                    {
+                        "weight": 15,
+                        "add": {
+                            "component_groups": [
+                                "ha:become_parched"
                             ]
                         }
                     }
@@ -889,7 +792,6 @@
             "ha:spawned_from_bee": {
                 "add": {
                     "component_groups": [
-                        "ha:bee_ranged_mode",
                         "ha:rider_sensors",
                         "ha:persistance"
                     ]
@@ -932,32 +834,6 @@
                 "add": {
                     "component_groups": [
                         "minecraft:lightning_immune"
-                    ]
-                }
-            },
-            "minecraft:melee_mode": {
-                "remove": {
-                    "component_groups": [
-                        "minecraft:ranged_attack",
-                        "got_out_of_powder_snow_environment_sensor"
-                    ]
-                },
-                "add": {
-                    "component_groups": [
-                        "minecraft:melee_attack"
-                    ]
-                }
-            },
-            "minecraft:ranged_mode": {
-                "remove": {
-                    "component_groups": [
-                        "minecraft:melee_attack",
-                        "got_out_of_powder_snow_environment_sensor"
-                    ]
-                },
-                "add": {
-                    "component_groups": [
-                        "minecraft:ranged_attack"
                     ]
                 }
             }

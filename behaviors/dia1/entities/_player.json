@@ -179,6 +179,20 @@
             "minecraft:conditional_bandwidth_optimization": {
             },
             "minecraft:block_climber": { },
+            "minecraft:damage_sensor": {
+                "triggers": [
+                    {
+                        "cause": "block_explosion",
+                        "deals_damage": "yes",
+                        "damage_multiplier": 2.0
+                    },
+                    {
+                        "cause": "entity_explosion",
+                        "deals_damage": "yes",
+                        "damage_multiplier": 2.0
+                    }
+                ]
+            },
             "minecraft:environment_sensor": {
                 "triggers": [
                     {

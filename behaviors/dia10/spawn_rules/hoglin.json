@@ -15,11 +15,11 @@
                     "minecraft:shroomlight"
                 ],
                 "minecraft:difficulty_filter": {
-                    "min": "peaceful",
+                    "min": "easy",
                     "max": "hard"
                 },
                 "minecraft:weight": {
-                    "default": 5
+                    "default": 3
                 },
                 "minecraft:herd": {
                     "min_size": 1,

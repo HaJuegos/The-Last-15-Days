@@ -284,11 +284,11 @@ class DragonEvents extends TL15DBaseManager {
             const damage = args.damage;
 
             if ((sourceEntity && sourceEntity.isValid) && (hitEntity && hitEntity.isValid)) {
-                if (hitEntity.typeId == vanilla.MinecraftEntityTypes.EnderDragon) {
+                if (hitEntity.typeId == vanilla.MinecraftEntityTypes.EnderDragon && Math.random() <= 0.25) {
                     sourceEntity.applyDamage(damage, { cause: mc.EntityDamageCause.sonicBoom, damagingEntity: hitEntity });
                 }
 
-                if (hitEntity instanceof mc.Player && sourceEntity.typeId == vanilla.MinecraftEntityTypes.EnderDragon && source.cause == mc.EntityDamageCause.entityAttack) {
+                if (hitEntity instanceof mc.Player && sourceEntity.typeId == vanilla.MinecraftEntityTypes.EnderDragon && source.cause == mc.EntityDamageCause.entityAttack && Math.random() <= 0.40) {
                     const dx = hitEntity.location.x - sourceEntity.location.x;
                     const dz = hitEntity.location.z - sourceEntity.location.z;
                     const distance = Math.sqrt(dx * dx + dz * dz);

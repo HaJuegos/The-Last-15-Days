@@ -285,6 +285,21 @@
                 }
             ]
         },
+        "ui.banana_eated": {
+            "category": "ui",
+            "min_distance": null,
+            "max_distance": null,
+            "subtitle": "",
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": false,
+                    "name": "sounds/ui/banana_sound",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
 
         "mob.player_ghost.death_sound": {
             "__use_legacy_max_distance": "true",
@@ -443,6 +458,86 @@
                     "name": "sounds/mob/bear_trap/start_trap",
                     "volume": 1,
                     "stream": false
+                }
+            ]
+        },
+
+        "mob.nurse_npc.idle": {
+            "__use_legacy_max_distance": "true",
+            "category": "neutral",
+            "min_distance": null,
+            "max_distance": null,
+            "subtitle": "ui.subtitle_custom.nurse_npc.idle",
+            "sounds": [
+                {
+                    "weight": 90,
+                    "is3D": true,
+                    "name": "sounds/mob/nurse_npc/idle_v1",
+                    "stream": false,
+                    "volume": 1
+                },
+                {
+                    "weight": 90,
+                    "is3D": true,
+                    "name": "sounds/mob/nurse_npc/idle_v2",
+                    "stream": false,
+                    "volume": 1
+                },
+                {
+                    "weight": 90,
+                    "is3D": true,
+                    "name": "sounds/mob/nurse_npc/idle_v3",
+                    "stream": false,
+                    "volume": 1
+                },
+                {
+                    "weight": 10,
+                    "is3D": true,
+                    "name": "sounds/mob/nurse_npc/idle_v4",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "mob.nurse_npc.hurt": {
+            "__use_legacy_max_distance": "true",
+            "category": "neutral",
+            "min_distance": null,
+            "max_distance": null,
+            "subtitle": "ui.subtitle_custom.nurse_npc.hurt",
+            "sounds": [
+                {
+                    "is3D": true,
+                    "name": "sounds/mob/nurse_npc/death_v1",
+                    "stream": false,
+                    "volume": 1
+                },
+                {
+                    "is3D": true,
+                    "name": "sounds/mob/nurse_npc/death_v2",
+                    "stream": false,
+                    "volume": 1
+                },
+                {
+                    "is3D": true,
+                    "name": "sounds/mob/nurse_npc/death_v3",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "mob.nurse_npc.purchased": {
+            "__use_legacy_max_distance": "true",
+            "min_distance": null,
+            "max_distance": null,
+            "category": "neutral",
+            "subtitle": "ui.subtitle_custom.nurse_npc.purchased",
+            "sounds": [
+                {
+                    "is3D": true,
+                    "name": "sounds/mob/purched_nurse",
+                    "stream": false,
+                    "volume": 1
                 }
             ]
         },

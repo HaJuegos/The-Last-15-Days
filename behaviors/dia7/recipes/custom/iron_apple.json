@@ -19,7 +19,7 @@
                 "item": "minecraft:iron_block"
             },
             "A": {
-                "item": "minecraft:apple"
+                "item": "minecraft:golden_apple"
             }
         },
         "unlock": [
@@ -27,7 +27,7 @@
                 "item": "minecraft:iron_block"
             },
             {
-                "item": "minecraft:apple"
+                "item": "minecraft:golden_apple"
             }
         ],
         "result": {

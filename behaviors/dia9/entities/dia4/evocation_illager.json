@@ -9,21 +9,190 @@
             "is_spawnable": true,
             "is_summonable": true
         },
-
         "component_groups": {
-            "ha:magic_mode": {
+            "ha:angry_mode": {
                 "minecraft:spell_effects": {
-                    "remove_effects": [ "levitation" ]
+                    "add_effects": [
+                        {
+                            "effect": "resistance",
+                            "duration": 99999,
+                            "amplifier": 1,
+                            "visible": true,
+                            "ambient": false
+                        },
+                        {
+                            "effect": "levitation",
+                            "duration": 1,
+                            "amplifier": 10,
+                            "ambient": false,
+                            "visible": false
+                        },
+                        {
+                            "effect": "slow_falling",
+                            "duration": 6,
+                            "amplifier": 0,
+                            "visible": false,
+                            "ambient": false
+                        }
+                    ]
+                },
+                "minecraft:equipment": {
+                    "table": "loot_tables/entities/custom/evoker_ranged_equipment.json"
+                },
+                "minecraft:shooter": {
+                    "def": "minecraft:arrow<ha:evoker_arrow_angry>",
+                    "aux_val": 25
+                },
+                "minecraft:behavior.ranged_attack": {
+                    "priority": 0,
+                    "attack_interval_min": 0.35,
+                    "attack_interval_max": 0.35,
+                    "attack_radius": 350,
+                    "ranged_fov": 360,
+                    "speed_multiplier": 1.15
+                },
+                "minecraft:follow_range": {
+                    "value": 351
+                },
+                "minecraft:behavior.nearest_attackable_target": {
+                    "priority": 2,
+                    "must_see": true,
+                    "reselect_targets": true,
+                    "entity_types": [
+                        {
+                            "filters": {
+                                "any_of": [
+                                    { "test": "is_family", "subject": "other", "value": "player" },
+                                    { "test": "is_family", "subject": "other", "value": "snowgolem" },
+                                    { "test": "is_family", "subject": "other", "value": "irongolem" },
+                                    { "test": "is_family", "subject": "other", "value": "wandering_trader" }
+                                ]
+                            },
+                            "max_dist": 360
+                        },
+                        {
+                            "filters": {
+                                "all_of": [
+                                    { "test": "is_family", "subject": "other", "value": "villager" },
+                                    { "test": "has_component", "subject": "other", "operator": "!=", "value": "minecraft:is_baby" }
+                                ]
+                            },
+                            "max_dist": 20
+                        }
+                    ]
+                }
+            },
+
+            "ha:angry_mode_damage": {
+                "minecraft:on_target_acquired": {
+                    "target": "self",
+                    "event": "ha:start_fly"
+                },
+                "minecraft:on_target_escape": {
+                    "target": "self",
+                    "event": "ha:remove_fly"
+                },
+                "minecraft:target_nearby_sensor": {
+                    "inside_range": 20,
+                    "outside_range": 21,
+                    "on_inside_range": {
+                        "event": "ha:start_fly",
+                        "target": "self"
+                    },
+                    "on_outside_range": {
+                        "event": "ha:remove_fly",
+                        "target": "self"
+                    }
+                },
+                "minecraft:damage_sensor": {
+                    "triggers": [
+                        {
+                            "on_damage": {
+                                "filters": {
+                                    "test": "is_family",
+                                    "subject": "other",
+                                    "value": "bomber_pillager"
+                                }
+                            },
+                            "cause": "all",
+                            "deals_damage": "no"
+                        }
+                    ]
+                }
+            },
+            "ha:normal_mode_damage": {
+                "minecraft:on_target_acquired": {
+                    "target": "self",
+                    "event": "ha:start_fly"
+                },
+                "minecraft:on_target_escape": {
+                    "target": "self",
+                    "event": "ha:remove_fly"
+                },
+                "minecraft:target_nearby_sensor": {
+                    "inside_range": 20,
+                    "outside_range": 21,
+                    "on_inside_range": {
+                        "event": "ha:start_fly",
+                        "target": "self"
+                    },
+                    "on_outside_range": {
+                        "event": "ha:remove_fly",
+                        "target": "self"
+                    }
+                },
+                "minecraft:damage_sensor": {
+                    "triggers": [
+                        {
+                            "on_damage": {
+                                "target": "self",
+                                "event": "ha:angry_mode"
+                            },
+                            "cause": "all",
+                            "deals_damage": "no"
+                        },
+                        {
+                            "on_damage": {
+                                "filters": {
+                                    "test": "is_family",
+                                    "subject": "other",
+                                    "value": "bomber_pillager"
+                                }
+                            },
+                            "cause": "all",
+                            "deals_damage": "no"
+                        }
+                    ]
+                }
+            },
+
+            "ha:magic_mode": {
+                "minecraft:follow_range": {
+                    "value": 64
+                },
+                "minecraft:environment_sensor": {
+                    "triggers": [
+                        {
+                            "filters": {
+                                "test": "target_distance",
+                                "subject": "self",
+                                "operator": "<=",
+                                "value": 15
+                            },
+                            "event": "ha:become_ranged",
+                            "target": "self"
+                        }
+                    ]
                 },
                 "minecraft:behavior.summon_entity": {
                     "priority": 2,
                     "summon_choices": [
                         {
-                            "min_activation_range": 0.0,
-                            "max_activation_range": 3.0,
-                            "cooldown_time": 5.0,
+                            "min_activation_range": 0,
+                            "max_activation_range": 30,
+                            "cooldown_time": 5,
                             "weight": 3,
-                            "cast_duration": 2.0,
+                            "cast_duration": 1.0,
                             "particle_color": "#FF664D59",
                             "start_sound_event": "cast.spell",
                             "sequence": [
@@ -51,10 +220,11 @@
                             ]
                         },
                         {
-                            "min_activation_range": 3.0,
+                            "min_activation_range": 0,
+                            "max_activation_range": 100,
                             "weight": 3,
-                            "cooldown_time": 5.0,
-                            "cast_duration": 2.0,
+                            "cooldown_time": 5,
+                            "cast_duration": 1,
                             "particle_color": "#FF664D59",
                             "start_sound_event": "cast.spell",
                             "sequence": [
@@ -72,8 +242,10 @@
                         },
                         {
                             "weight": 1,
-                            "cooldown_time": 17.0,
-                            "cast_duration": 5.0,
+                            "min_activation_range": 0,
+                            "max_activation_range": 100,
+                            "cooldown_time": 15,
+                            "cast_duration": 1.5,
                             "particle_color": "#FFB3B3CC",
                             "sequence": [
                                 {
@@ -86,14 +258,17 @@
                                     "summon_cap_radius": 16.0,
                                     "size": 1.0,
                                     "sound_event": "prepare.summon",
-                                    "summon_event": "minecraft:add_damage_timer"
+                                    "summon_event": "minecraft:add_damage_timer",
+                                    "entity_lifespan": 260
                                 }
                             ]
                         },
                         {
                             "weight": 1,
-                            "cooldown_time": 10.0,
-                            "cast_duration": 3.0,
+                            "min_activation_range": 0,
+                            "max_activation_range": 100,
+                            "cooldown_time": 10,
+                            "cast_duration": 2,
                             "particle_color": "#1d1919",
                             "sequence": [
                                 {
@@ -105,7 +280,7 @@
                                     "size": 1.15,
                                     "sound_event": "prepare.summon",
                                     "summon_event": "minecraft:entity_spawned",
-                                    "entity_lifespan": 70
+                                    "entity_lifespan": 160
                                 }
                             ]
                         }
@@ -126,24 +301,50 @@
                             "sprint_speed_multiplier": 1.2
                         }
                     ]
+                },
+                "minecraft:behavior.nearest_attackable_target": {
+                    "priority": 2,
+                    "must_see": false,
+                    "reselect_targets": false,
+                    "entity_types": [
+                        {
+                            "filters": {
+                                "any_of": [
+                                    { "test": "is_family", "subject": "other", "value": "player" },
+                                    { "test": "is_family", "subject": "other", "value": "snowgolem" },
+                                    { "test": "is_family", "subject": "other", "value": "irongolem" },
+                                    { "test": "is_family", "subject": "other", "value": "wandering_trader" }
+                                ]
+                            },
+                            "max_dist": 100
+                        },
+                        {
+                            "filters": {
+                                "all_of": [
+                                    { "test": "is_family", "subject": "other", "value": "villager" },
+                                    { "test": "has_component", "subject": "other", "operator": "!=", "value": "minecraft:is_baby" }
+                                ]
+                            },
+                            "max_dist": 20
+                        }
+                    ]
                 }
             },
             "ha:ranged_mode": {
-                "minecraft:spell_effects": {
-                    "add_effects": [
+                "minecraft:follow_range": {
+                    "value": 64
+                },
+                "minecraft:environment_sensor": {
+                    "triggers": [
                         {
-                            "effect": "levitation",
-                            "duration": 1,
-                            "amplifier": 9,
-                            "ambient": false,
-                            "visible": false
-                        },
-                        {
-                            "effect": "slow_falling",
-                            "duration": 5,
-                            "amplifier": 0,
-                            "visible": false,
-                            "ambient": false
+                            "filters": {
+                                "test": "target_distance",
+                                "subject": "self",
+                                "operator": ">=",
+                                "value": 16
+                            },
+                            "event": "ha:become_magic",
+                            "target": "self"
                         }
                     ]
                 },
@@ -161,8 +362,78 @@
                     "attack_radius": 30,
                     "ranged_fov": 360,
                     "speed_multiplier": 1.23
+                },
+                "minecraft:behavior.nearest_attackable_target": {
+                    "priority": 2,
+                    "must_see": true,
+                    "reselect_targets": true,
+                    "entity_types": [
+                        {
+                            "filters": {
+                                "any_of": [
+                                    { "test": "is_family", "subject": "other", "value": "player" },
+                                    { "test": "is_family", "subject": "other", "value": "snowgolem" },
+                                    { "test": "is_family", "subject": "other", "value": "irongolem" },
+                                    { "test": "is_family", "subject": "other", "value": "wandering_trader" }
+                                ]
+                            },
+                            "max_dist": 40
+                        },
+                        {
+                            "filters": {
+                                "all_of": [
+                                    { "test": "is_family", "subject": "other", "value": "villager" },
+                                    { "test": "has_component", "subject": "other", "operator": "!=", "value": "minecraft:is_baby" }
+                                ]
+                            },
+                            "max_dist": 20
+                        }
+                    ]
                 }
             },
+
+            "ha:remove_fly_mode": {
+                "minecraft:spell_effects": {
+                    "add_effects": [
+                        {
+                            "effect": "resistance",
+                            "duration": 99999,
+                            "amplifier": 1,
+                            "visible": true,
+                            "ambient": false
+                        }
+                    ],
+                    "remove_effects": [ "levitation" ]
+                }
+            },
+            "ha:start_fly_mode": {
+                "minecraft:spell_effects": {
+                    "add_effects": [
+                        {
+                            "effect": "resistance",
+                            "duration": 99999,
+                            "amplifier": 1,
+                            "visible": true,
+                            "ambient": false
+                        },
+                        {
+                            "effect": "levitation",
+                            "duration": 1,
+                            "amplifier": 9,
+                            "ambient": false,
+                            "visible": false
+                        },
+                        {
+                            "effect": "slow_falling",
+                            "duration": 5,
+                            "amplifier": 0,
+                            "visible": false,
+                            "ambient": false
+                        }
+                    ]
+                }
+            },
+
             "minecraft:celebrate": {
                 "minecraft:behavior.celebrate": {
                     "priority": 5,
@@ -211,8 +482,18 @@
                 }
             }
         },
-
         "components": {
+            "minecraft:spell_effects": {
+                "add_effects": [
+                    {
+                        "effect": "resistance",
+                        "duration": 99999,
+                        "amplifier": 1,
+                        "visible": true,
+                        "ambient": false
+                    }
+                ]
+            },
             "minecraft:damage_sensor": {
                 "triggers": [
                     {
@@ -227,19 +508,6 @@
                         "deals_damage": "no"
                     }
                 ]
-            },
-            "minecraft:target_nearby_sensor": {
-                "must_see": false,
-                "inside_range": 7,
-                "outside_range": 8,
-                "on_inside_range": {
-                    "event": "ha:become_ranged",
-                    "target": "self"
-                },
-                "on_outside_range": {
-                    "event": "ha:become_magic",
-                    "target": "self"
-                }
             },
             "minecraft:equip_item": {
             },
@@ -336,32 +604,6 @@
                 "priority": 8,
                 "speed_multiplier": 0.6
             },
-            "minecraft:behavior.nearest_attackable_target": {
-                "priority": 2,
-                "entity_types": [
-                    {
-                        "filters": {
-                            "any_of": [
-                                { "test": "is_family", "subject": "other", "value": "player" },
-                                { "test": "is_family", "subject": "other", "value": "snowgolem" },
-                                { "test": "is_family", "subject": "other", "value": "irongolem" },
-                                { "test": "is_family", "subject": "other", "value": "wandering_trader" }
-                            ]
-                        },
-                        "max_dist": 20
-                    },
-                    {
-                        "filters": {
-                            "all_of": [
-                                { "test": "is_family", "subject": "other", "value": "villager" },
-                                { "test": "has_component", "subject": "other", "operator": "!=", "value": "minecraft:is_baby" }
-                            ]
-                        },
-                        "max_dist": 20
-                    }
-                ],
-                "must_see": true
-            },
             "minecraft:behavior.look_at_player": {
                 "priority": 9,
                 "look_distance": 3.0,
@@ -398,20 +640,33 @@
                 "is_pushable": true,
                 "is_pushable_by_piston": true
             },
-            "minecraft:follow_range": {
-                "value": 64
-            },
             "minecraft:can_join_raid": {
             },
             "minecraft:conditional_bandwidth_optimization": {
             }
         },
-
         "events": {
+            "ha:angry_mode": {
+                "remove": {
+                    "component_groups": [
+                        "ha:ranged_mode",
+                        "ha:magic_mode",
+                        "ha:normal_mode_damage"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
+                        "ha:angry_mode_damage",
+                        "ha:angry_mode"
+                    ]
+                }
+            },
+
             "ha:become_magic": {
                 "remove": {
                     "component_groups": [
-                        "ha:ranged_mode"
+                        "ha:ranged_mode",
+                        "ha:angry_mode"
                     ]
                 },
                 "add": {
@@ -421,14 +676,10 @@
                 }
             },
             "ha:become_ranged": {
-                "queue_command": {
-                    "command": [
-                        "particle minecraft:knockback_roar_particle"
-                    ]
-                },
                 "remove": {
                     "component_groups": [
-                        "ha:magic_mode"
+                        "ha:magic_mode",
+                        "ha:angry_mode"
                     ]
                 },
                 "add": {
@@ -437,17 +688,51 @@
                     ]
                 }
             },
+
+            "ha:remove_fly": {
+                "remove": {
+                    "component_groups": [
+                        "ha:start_fly_mode"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
+                        "ha:remove_fly_mode"
+                    ]
+                }
+            },
+            "ha:start_fly": {
+                "queue_command": {
+                    "command": [
+                        "particle minecraft:knockback_roar_particle"
+                    ]
+                },
+                "remove": {
+                    "component_groups": [
+                        "ha:remove_fly_mode"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
+                        "ha:start_fly_mode"
+                    ]
+                }
+            },
+
             "minecraft:entity_spawned": {
                 "add": {
                     "component_groups": [
-                        "ha:ranged_attack"
+                        "ha:magic_mode",
+                        "ha:normal_mode_damage"
                     ]
                 }
             },
             "minecraft:spawn_for_raid": {
                 "add": {
                     "component_groups": [
-                        "ha:ranged_attack",
+                        "ha:magic_mode",
+                        "ha:normal_mode_damage",
+
                         "minecraft:raid_configuration",
                         "minecraft:raid_despawn",
                         "minecraft:raid_persistence"

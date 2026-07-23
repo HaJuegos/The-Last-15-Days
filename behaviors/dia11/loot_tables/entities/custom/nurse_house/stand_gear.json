@@ -1,0 +1,158 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "pools": [
+        {
+            "rolls": {
+                "min": 2,
+                "max": 4
+            },
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "minecraft:diamond_helmet",
+                    "weight": 10,
+                    "functions": [
+                        {
+                            "function": "enchant_with_levels",
+                            "levels": 350,
+                            "treasure": true
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:diamond_chestplate",
+                    "weight": 10,
+                    "functions": [
+                        {
+                            "function": "enchant_with_levels",
+                            "levels": 350,
+                            "treasure": true
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:diamond_leggings",
+                    "weight": 10,
+                    "functions": [
+                        {
+                            "function": "enchant_with_levels",
+                            "levels": 350,
+                            "treasure": true
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:diamond_boots",
+                    "weight": 10,
+                    "functions": [
+                        {
+                            "function": "enchant_with_levels",
+                            "levels": 350,
+                            "treasure": true
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:iron_helmet",
+                    "weight": 15,
+                    "functions": [
+                        {
+                            "function": "enchant_with_levels",
+                            "levels": 350,
+                            "treasure": true
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:iron_chestplate",
+                    "weight": 15,
+                    "functions": [
+                        {
+                            "function": "enchant_with_levels",
+                            "levels": 350,
+                            "treasure": true
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:iron_leggings",
+                    "weight": 15,
+                    "functions": [
+                        {
+                            "function": "enchant_with_levels",
+                            "levels": 350,
+                            "treasure": true
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:iron_boots",
+                    "weight": 15,
+                    "functions": [
+                        {
+                            "function": "enchant_with_levels",
+                            "levels": 350,
+                            "treasure": true
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "ha:cautious_helmet",
+                    "weight": 5,
+                    "functions": [
+                        {
+                            "function": "enchant_with_levels",
+                            "levels": 350,
+                            "treasure": true
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "ha:cautious_chestplate",
+                    "weight": 5,
+                    "functions": [
+                        {
+                            "function": "enchant_with_levels",
+                            "levels": 350,
+                            "treasure": true
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "ha:cautious_leggings",
+                    "weight": 5,
+                    "functions": [
+                        {
+                            "function": "enchant_with_levels",
+                            "levels": 350,
+                            "treasure": true
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "ha:cautious_boots",
+                    "weight": 5,
+                    "functions": [
+                        {
+                            "function": "enchant_with_levels",
+                            "levels": 350,
+                            "treasure": true
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

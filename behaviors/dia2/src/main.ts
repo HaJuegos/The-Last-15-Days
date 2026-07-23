@@ -1,10 +1,6 @@
-import './worldEvents/initialCmds';
-import './worldEvents/globalEvents';
-
+// Entidades
 import './entityEvents/plyEvent';
 import './entityEvents/entityEvents';
 
-import './itemEvents/itemsCCEvent';
-import './itemEvents/blocksCCEvent';
-
-import './advancements/advacementsManager';
+// Mundo 
+import './worldEvents/globalEvents';

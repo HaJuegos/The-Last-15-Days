@@ -27,16 +27,18 @@
                 }
             },
             "ha:become_bomber_raid": {
-                "minecraft:transformation": {
-                    "into": "ha:bomber_pillager<minecraft:spawn_for_raid>",
-                    "delay": {
-                        "value": 0.1
-                    },
-                    "drop_equipment": false,
-                    "drop_inventory": false,
-                    "preserve_equipment": false,
-                    "keep_owner": true,
-                    "keep_level": true
+                "minecraft:spawn_entity": {
+                    "entities": [
+                        {
+                            "min_wait_time": 0,
+                            "max_wait_time": 0,
+                            "num_to_spawn": 1,
+                            "should_leash": false,
+                            "single_use": true,
+                            "spawn_entity": "ha:bomber_pillager",
+                            "spawn_event": "minecraft:spawn_for_raid"
+                        }
+                    ]
                 }
             },
             "ha:spawn_bomber_patron": {
@@ -55,17 +57,18 @@
                 }
             },
             "ha:become_bomber_captain": {
-                "minecraft:is_shaking": { },
-                "minecraft:transformation": {
-                    "into": "ha:bomber_pillager<minecraft:spawn_as_illager_captain>",
-                    "delay": {
-                        "value": 0.1
-                    },
-                    "drop_equipment": false,
-                    "drop_inventory": false,
-                    "preserve_equipment": false,
-                    "keep_owner": true,
-                    "keep_level": true
+                "minecraft:spawn_entity": {
+                    "entities": [
+                        {
+                            "min_wait_time": 0,
+                            "max_wait_time": 0,
+                            "num_to_spawn": 1,
+                            "should_leash": false,
+                            "single_use": true,
+                            "spawn_entity": "ha:bomber_pillager",
+                            "spawn_event": "minecraft:spawn_as_illager_captain"
+                        }
+                    ]
                 }
             },
             "minecraft:celebrate": {

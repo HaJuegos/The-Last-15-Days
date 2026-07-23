@@ -20,7 +20,7 @@
             },
             "melee_mode": {
                 "minecraft:attack": {
-                    "damage": 6
+                    "damage": 30
                 },
                 "minecraft:behavior.melee_box_attack": {
                     "priority": 3
@@ -65,14 +65,10 @@
                 "priority": 1,
                 "entity_types": {
                     "filters": {
-                        "any_of": [
-                            {
-                                "test": "is_family",
-                                "subject": "other",
-                                "operator": "not",
-                                "value": "blaze"
-                            }
-                        ]
+                        "test": "is_family",
+                        "subject": "other",
+                        "operator": "!=",
+                        "value": "blaze"
                     }
                 }
             },
@@ -120,19 +116,18 @@
             "minecraft:damage_sensor": {
                 "triggers": [
                     {
-                        "cause": "fall",
-                        "deals_damage": "no"
-                    },
-                    {
                         "on_damage": {
                             "filters": {
                                 "test": "is_family",
                                 "subject": "other",
-                                "operator": "not",
                                 "value": "blaze"
                             }
                         },
                         "cause": "all",
+                        "deals_damage": "no"
+                    },
+                    {
+                        "cause": "fall",
                         "deals_damage": "no"
                     }
                 ]

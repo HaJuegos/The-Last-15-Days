@@ -13,42 +13,53 @@
             "minecraft:silverfish_angry": {
                 "minecraft:angry": {
                     "broadcast_anger": true,
-                    "broadcast_anger_when_dying": false,
-                    "broadcast_range": 20,
+                    "broadcast_anger_on_attack": true,
+                    "broadcast_anger_on_being_attacked": true,
+                    "broadcast_anger_when_dying": true,
+                    "broadcast_targets": [ "silverfish" ],
+                    "broadcast_range": 40,
                     "calm_event": {
                         "event": "minecraft:on_calm",
                         "target": "self"
                     },
-                    "duration": 60
+                    "duration": 1200
                 },
                 "minecraft:behavior.silverfish_wake_up_friends": {
                     "priority": 1
                 }
-            },
-            "minecraft:silverfish_calm": {
-                "minecraft:on_target_acquired": {
-                    "event": "minecraft:become_angry",
-                    "target": "self"
-                }
             }
         },
         "components": {
+            "minecraft:behavior.rise_to_liquid_level": {
+                "priority": 3,
+                "liquid_y_offset": 0.01,
+                "rise_delta": 0.1,
+                "sink_delta": 0.1
+            },
+            "minecraft:underwater_movement": {
+                "value": 0.2
+            },
+            "minecraft:lava_movement": {
+                "value": 0.2
+            },
+            "minecraft:on_target_acquired": {
+                "event": "minecraft:become_angry",
+                "target": "self"
+            },
             "minecraft:behavior.melee_box_attack": {
-                "track_target": true,
+                "priority": 0,
                 "can_spread_on_fire": true,
-                "cooldown_time": 0.86,
-                "horizontal_reach": 1.15,
+                "horizontal_reach": 0.45,
                 "melee_fov": 360,
-                "priority": 0
+                "track_target": true
             },
             "minecraft:attack": {
-                "damage": 12
+                "damage": 20
             },
             "minecraft:behavior.float": {
-                "priority": 1
+                "priority": 5
             },
             "minecraft:behavior.hurt_by_target": {
-                "alert_same_type": true,
                 "priority": 1
             },
             "minecraft:behavior.nearest_attackable_target": {
@@ -101,8 +112,8 @@
                 "on_death": "query.last_hit_by_player ? 5 : 0"
             },
             "minecraft:health": {
-                "max": 20,
-                "value": 20
+                "max": 120,
+                "value": 120
             },
             "minecraft:is_hidden_when_invisible": { },
             "minecraft:jump.static": { },
@@ -122,6 +133,8 @@
             "minecraft:nameable": { },
             "minecraft:navigation.walk": {
                 "can_path_over_water": true,
+                "can_walk_in_lava": true,
+                "can_path_over_lava": true,
                 "using_door_annotation": true
             },
             "minecraft:physics": { },
@@ -145,29 +158,16 @@
                     "component_groups": [
                         "minecraft:silverfish_angry"
                     ]
-                },
-                "remove": {
-                    "minecraft:silverfish_calm": { }
                 }
-            },
-            "minecraft:entity_spawned": {
-                "add": {
-                    "component_groups": [
-                        "minecraft:silverfish_calm"
-                    ]
-                },
-                "remove": { }
             },
             "minecraft:on_calm": {
-                "add": {
-                    "component_groups": [
-                        "minecraft:silverfish_calm"
-                    ]
-                },
                 "remove": {
-                    "minecraft:silverfish_angry": { }
+                    "component_groups": [
+                        "minecraft:silverfish_angry"
+                    ]
                 }
-            }
+            },
+            "minecraft:entity_spawned": { }
         }
     }
 }

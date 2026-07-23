@@ -12,20 +12,35 @@
         },
         "component_groups": { },
         "components": {
+            "minecraft:behavior.rise_to_liquid_level": {
+                "priority": 3,
+                "liquid_y_offset": 0.01,
+                "rise_delta": 0.1,
+                "sink_delta": 0.1
+            },
+            "minecraft:underwater_movement": {
+                "value": 0.2
+            },
+            "minecraft:lava_movement": {
+                "value": 0.2
+            },
             "minecraft:fire_immune": { },
             "minecraft:attack": {
-                "damage": 2
+                "damage": 20
             },
             "minecraft:behavior.float": {
                 "priority": 5
             },
             "minecraft:behavior.melee_box_attack": {
-                "track_target": true,
-                "priority": 0
+                "priority": 0,
+                "can_spread_on_fire": true,
+                "cooldown_time": 0.45,
+                "melee_fov": 360,
+                "horizontal_reach": 2,
+                "track_target": true
             },
             "minecraft:behavior.hurt_by_target": {
-                "priority": 1,
-                "alert_same_type": true
+                "priority": 1
             },
             "minecraft:behavior.nearest_attackable_target": {
                 "priority": 2,
@@ -73,8 +88,8 @@
                 "on_death": "query.last_hit_by_player ? 3 : 0"
             },
             "minecraft:health": {
-                "max": 20,
-                "value": 20
+                "max": 120,
+                "value": 120
             },
             "minecraft:is_hidden_when_invisible": { },
             "minecraft:jump.static": { },
@@ -85,6 +100,8 @@
             "minecraft:nameable": { },
             "minecraft:navigation.walk": {
                 "can_path_over_water": true,
+                "can_walk_in_lava": true,
+                "can_path_over_lava": true,
                 "using_door_annotation": true
             },
             "minecraft:physics": { },
@@ -102,6 +119,8 @@
                 ]
             }
         },
-        "events": { }
+        "events": {
+            "minecraft:entity_spawned": { }
+        }
     }
 }

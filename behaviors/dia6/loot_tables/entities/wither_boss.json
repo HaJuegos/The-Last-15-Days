@@ -7,11 +7,6 @@
             "conditions": [
                 {
                     "condition": "killed_by_player_or_pets"
-                },
-                {
-                    "condition": "random_chance_with_looting",
-                    "chance": 0.55,
-                    "looting_multiplier": 0.1
                 }
             ],
             "entries": [

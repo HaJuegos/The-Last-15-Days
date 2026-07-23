@@ -79,7 +79,8 @@
                     "fuse_lit": true,
                     "power": 6,
                     "destroy_affected_by_griefing": true,
-                    "fuse_length": 1.5
+                    "fuse_length": 1.5,
+                    "allow_underwater": true
                 }
             },
             "ha:mommy_explodes_charged": {
@@ -88,7 +89,8 @@
                     "fuse_lit": true,
                     "power": 20,
                     "destroy_affected_by_griefing": true,
-                    "fuse_length": 1.5
+                    "fuse_length": 1.5,
+                    "allow_underwater": true
                 }
             },
             "ha:mommy_forced_explodes": {
@@ -97,7 +99,8 @@
                     "fuse_lit": true,
                     "power": 6,
                     "destroy_affected_by_griefing": true,
-                    "fuse_length": 1.5
+                    "fuse_length": 1.5,
+                    "allow_underwater": true
                 },
                 "minecraft:on_target_escape": { },
                 "minecraft:target_nearby_sensor": { }
@@ -108,7 +111,8 @@
                     "fuse_lit": true,
                     "power": 20,
                     "destroy_affected_by_griefing": true,
-                    "fuse_length": 1.5
+                    "fuse_length": 1.5,
+                    "allow_underwater": true
                 },
                 "minecraft:on_target_escape": { },
                 "minecraft:target_nearby_sensor": { }
@@ -176,7 +180,8 @@
                     "fuse_lit": true,
                     "power": 3,
                     "destroy_affected_by_griefing": true,
-                    "fuse_length": 1.5
+                    "fuse_length": 1.5,
+                    "allow_underwater": true
                 }
             },
             "ha:baby_mommy_explodes_charged": {
@@ -185,7 +190,8 @@
                     "fuse_lit": true,
                     "power": 10,
                     "destroy_affected_by_griefing": true,
-                    "fuse_length": 1.5
+                    "fuse_length": 1.5,
+                    "allow_underwater": true
                 }
             },
             "ha:baby_mommy_forced_explodes": {
@@ -194,7 +200,8 @@
                     "fuse_lit": true,
                     "power": 3,
                     "destroy_affected_by_griefing": true,
-                    "fuse_length": 1.5
+                    "fuse_length": 1.5,
+                    "allow_underwater": true
                 },
                 "minecraft:on_target_escape": { },
                 "minecraft:target_nearby_sensor": { }
@@ -205,7 +212,8 @@
                     "fuse_lit": true,
                     "power": 10,
                     "destroy_affected_by_griefing": true,
-                    "fuse_length": 1.5
+                    "fuse_length": 1.5,
+                    "allow_underwater": true
                 },
                 "minecraft:on_target_escape": { },
                 "minecraft:target_nearby_sensor": { }
@@ -307,7 +315,6 @@
                         "event": "minecraft:stop_exploding",
                         "target": "self"
                     },
-                    "must_see": true,
                     "on_outside_range": {
                         "event": "minecraft:stop_exploding",
                         "target": "self"
@@ -358,7 +365,6 @@
                         "event": "ha:mommy_stop_exploding",
                         "target": "self"
                     },
-                    "must_see": true,
                     "on_outside_range": {
                         "event": "ha:mommy_stop_exploding",
                         "target": "self"
@@ -409,7 +415,6 @@
                         "event": "ha:baby_mommy_stop_exploding",
                         "target": "self"
                     },
-                    "must_see": true,
                     "on_outside_range": {
                         "event": "ha:baby_mommy_stop_exploding",
                         "target": "self"
@@ -459,7 +464,8 @@
                     "fuse_lit": true,
                     "power": 6,
                     "destroy_affected_by_griefing": true,
-                    "fuse_length": 1.5
+                    "fuse_length": 1.5,
+                    "allow_underwater": true
                 }
             },
             "minecraft:exploding": {
@@ -468,7 +474,8 @@
                     "fuse_lit": true,
                     "power": 3,
                     "destroy_affected_by_griefing": true,
-                    "fuse_length": 1.5
+                    "fuse_length": 1.5,
+                    "allow_underwater": true
                 }
             },
             "minecraft:forced_charged_exploding": {
@@ -477,7 +484,8 @@
                     "fuse_lit": true,
                     "power": 6,
                     "destroy_affected_by_griefing": true,
-                    "fuse_length": 1.5
+                    "fuse_length": 1.5,
+                    "allow_underwater": true
                 },
                 "minecraft:on_target_escape": { },
                 "minecraft:target_nearby_sensor": { }
@@ -488,7 +496,8 @@
                     "fuse_lit": true,
                     "power": 3,
                     "destroy_affected_by_griefing": true,
-                    "fuse_length": 1.5
+                    "fuse_length": 1.5,
+                    "allow_underwater": true
                 },
                 "minecraft:on_target_escape": { },
                 "minecraft:target_nearby_sensor": { }

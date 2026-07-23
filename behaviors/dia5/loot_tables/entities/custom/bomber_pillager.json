@@ -6,25 +6,9 @@
             "rolls": 1,
             "entries": [
                 {
-                    "type": "empty"
-                }
-            ]
-        },
-        {
-            "rolls": 1,
-            "entries": [
-                {
                     "type": "item",
                     "name": "ha:dynamite_off_item",
-                    "weight": 1,
                     "functions": [
-                        {
-                            "function": "set_count",
-                            "count": {
-                                "min": 0,
-                                "max": 2
-                            }
-                        },
                         {
                             "function": "looting_enchant",
                             "count": {

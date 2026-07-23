@@ -13,16 +13,6 @@
             "is_summonable": true
         },
         "component_groups": {
-            "ha:convert_to_brute": {
-                "minecraft:is_shaking": { },
-                "minecraft:transformation": {
-                    "into": "minecraft:piglin_brute<minecraft:entity_spawned>",
-                    "delay": {
-                        "value": 3
-                    },
-                    "transformation_sound": "converted_to_zombified"
-                }
-            },
             "ha:cooldown_gem": {
                 "minecraft:timer": {
                     "time": [ 25, 25 ],
@@ -146,68 +136,11 @@
             "minecraft:shareables": {
                 "items": [
                     {
-                        "item": "ha:cautious_helmet",
-                        "want_amount": 1,
-                        "surplus_amount": 1,
-                        "priority": 0
-                    },
-                    {
-                        "item": "ha:cautious_chestplate",
-                        "want_amount": 1,
-                        "surplus_amount": 1,
-                        "priority": 0
-                    },
-                    {
-                        "item": "ha:cautious_leggings",
-                        "want_amount": 1,
-                        "surplus_amount": 1,
-                        "priority": 0
-                    },
-                    {
-                        "item": "ha:cautious_boots",
-                        "want_amount": 1,
-                        "surplus_amount": 1,
-                        "priority": 0
-                    },
-
-                    {
-                        "item": "ha:fake_netherite_helmet",
-                        "want_amount": 1,
-                        "surplus_amount": 1,
-                        "priority": 0
-                    },
-                    {
-                        "item": "ha:fake_netherite_chestplate",
-                        "want_amount": 1,
-                        "surplus_amount": 1,
-                        "priority": 0
-                    },
-                    {
-                        "item": "ha:fake_netherite_leggings",
-                        "want_amount": 1,
-                        "surplus_amount": 1,
-                        "priority": 0
-                    },
-                    {
-                        "item": "ha:fake_netherite_boots",
-                        "want_amount": 1,
-                        "surplus_amount": 1,
-                        "priority": 0
-                    },
-
-                    {
-                        "item": "ha:hoglin_fang",
-                        "want_amount": 1,
-                        "surplus_amount": 1,
-                        "priority": 0
-                    },
-                    {
                         "item": "ha:piglin_mace",
                         "want_amount": 1,
                         "surplus_amount": 1,
                         "priority": 0
                     },
-
                     {
                         "item": "minecraft:netherite_sword",
                         "priority": 0,
@@ -488,7 +421,7 @@
                 "singular_pickup": true
             },
             "minecraft:attack": {
-                "damage": 9
+                "damage": 45
             },
             "minecraft:behavior.melee_box_attack": {
                 "priority": 0,
@@ -686,32 +619,13 @@
         },
         "events": {
             "minecraft:entity_spawned": {
-                "sequence": [
-                    {
-                        "add": {
-                            "component_groups": [
-                                "ha:cooldown_gem",
-                                "zombification_sensor",
-                                "go_back_to_spawn"
-                            ]
-                        }
-                    },
-                    {
-                        "randomize": [
-                            {
-                                "weight": 1,
-                                "add": {
-                                    "component_groups": [
-                                        "ha:convert_to_brute"
-                                    ]
-                                }
-                            },
-                            {
-                                "weight": 99
-                            }
-                        ]
-                    }
-                ]
+                "add": {
+                    "component_groups": [
+                        "ha:cooldown_gem",
+                        "zombification_sensor",
+                        "go_back_to_spawn"
+                    ]
+                }
             },
             "ha:start_gem_event": {
                 "queue_command": {

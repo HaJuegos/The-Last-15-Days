@@ -1,2 +1,27 @@
 *.json linguist-detectable=true
-test/**/*.json linguist-vendored=true
+**/*.json linguist-detectable=true
+*.js linguist-detectable=true
+**/*.js linguist-detectable=true
+*.ts linguist-detectable=true
+**/*.ts linguist-detectable=true
+*.mcfunction linguist-detectable=true
+**/*.mcfunction linguist-detectable=true
+*.material linguist-detectable=true
+**/*.material linguist-detectable=true
+
+*.html linguist-detectable=true
+*.css linguist-detectable=true
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.ogg binary
+*.mp3 binary
+*.fsb binary
+*.ttf binary
+
+dist/* linguist-generated
+build/* linguist-generated
+node_modules/* linguist-vendored
+vendor/* linguist-vendored

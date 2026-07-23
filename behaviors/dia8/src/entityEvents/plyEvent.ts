@@ -17,21 +17,12 @@ class PlyEventsManager extends TL15DBaseManager {
     constructor () {
         super();
 
-        customEventsManager.fastItemsSystem([
-            'totem',
-            'shield',
-            'arrow',
-            'firework',
-        ]);
-
         this.plySpawnEvents();
         this.deathEvents();
         this.blockPortals();
-        this.chatManager();
-        this.totemSystem();
         this.breakBlocks();
         this.itemsSystem();
-        this.loopTimerDolphin();
+        this.dolphinSystem();
     }
 
     /**
@@ -39,54 +30,31 @@ class PlyEventsManager extends TL15DBaseManager {
      * @author HaJuegos - 05-04-2026
      * @private
      */
-    private loopTimerDolphin(): void {
+    private dolphinSystem(): void {
+        afterEventsSimplified.onPlayerSpawns((args) => {
+            const ply = args.player;
+            const mns = (worldToolsSimplified.getScoreInObj(ply, 'dolphinTimer') as number ?? 0);
+
+            if (mns > 0) {
+                this.timerDolphinSystem(ply, mns, false);
+            }
+        });
+
         worldToolsSimplified.setLoop(() => {
             const plys = mc.world.getAllPlayers();
 
             for (const ply of plys) {
-                const minutes = (worldToolsSimplified.getPlyScoreInObj(ply, 'dolphinTimer') as number ?? 0);
-                const hasTag = ply.hasTag('hasDolphinDamage');
+                if (ply.hasTag('hasDolphinDamage')) {
 
-                if (!hasTag && minutes <= 0) continue;
-
-                let restart = false;
-
-                if (hasTag) {
                     ply.removeTag('hasDolphinDamage');
                     ply.setDynamicProperty('ha:timer_dolphin', undefined);
-                    restart = true;
+
+                    const mns = (worldToolsSimplified.getScoreInObj(ply, 'dolphinTimer') as number ?? 0);
+
+                    this.timerDolphinSystem(ply, mns, true);
                 }
-
-                customEventsManager.startTimerLocal({
-                    sourcePly: ply,
-                    timerId: 'ha:timer_dolphin',
-                    initialMns: minutes ?? 0,
-                    forceRestart: restart,
-                    onTimerStarts: (ply) => {
-                        ply.sendMessage({ rawtext: [{ translate: 'chat.system.hit_by_dolphin', with: { rawtext: [{ text: `${minutes}` }] } }] });
-                    },
-                    onSecondPass: (ply, timer) => {
-                        ply.onScreenDisplay.setActionBar({
-                            rawtext: [
-                                {
-                                    translate: 'ui.system.dolphin_timer',
-                                    with: { rawtext: [{ text: `${timer}` }] }
-                                }
-                            ]
-                        });
-
-                        ply.playSound('random.click', { pitch: 1.5 });
-                        ply.triggerEvent('ha:set_remove_breath');
-                    },
-                    onMinutePass: (ply) => {
-                        worldToolsSimplified.changePlyScoreInObj(ply, 'dolphinTimer', 'add', -1);
-                    },
-                    onTimerEnds: (ply) => {
-                        ply.triggerEvent('ha:set_normal_breath');
-                    }
-                });
             }
-        }, 10);
+        }, worldToolsSimplified.convertSecondsToTicks(1));
     }
 
     /**
@@ -97,23 +65,43 @@ class PlyEventsManager extends TL15DBaseManager {
     private plySpawnEvents(): void {
         afterEventsSimplified.onPlayerSpawns((args) => {
             const ply = args.player;
-            const deathCounter = mc.world.getDynamicProperty('ha:death_counter') as number | undefined;
-            const pendingDeath = mc.world.getDynamicProperty(`ha:pending_death_${ply.id}`);
+            const objPendingRevive = worldToolsSimplified.getOrCreateScorebordObj('ha:pending_revive') as mc.ScoreboardObjective;
+            const objLinkeds = worldToolsSimplified.getOrCreateScorebordObj('ha:plys_linkeds') as mc.ScoreboardObjective;
+            const participantsRevive = objPendingRevive.getParticipants().map(data => data.displayName);
+            const participantsDeaths = objLinkeds.getParticipants().map(data => data.displayName);
 
-            this.setCustomRank(ply);
             ply.triggerEvent('ha:set_normal_breath');
 
-            if (pendingDeath) {
-                mc.world.setDynamicProperty(`ha:pending_death_${ply.id}`, undefined);
+            if (participantsDeaths.length > 0) {
+                let finalScore: string = "";
+                let isMe: boolean = false;
 
-                worldToolsSimplified.setRun(() => {
+                for (const data of participantsDeaths) {
+                    const [namePlt1, idPly1, isDeath1, namePlt2, idPly2, isDeath2] = data.split(':');
+
+                    if (idPly1 == ply.id && isDeath1 != 'true' && isDeath2 == 'true') {
+                        finalScore = `${namePlt1}:${idPly1}:true:${namePlt2}:${idPly2}:${isDeath2}`;
+                        objLinkeds.removeParticipant(data);
+                        isMe = true;
+                        break;
+                    }
+
+                    if (idPly2 == ply.id && isDeath2 != 'true' && isDeath1 == 'true') {
+                        finalScore = `${namePlt1}:${idPly1}:${isDeath1}:${namePlt2}:${idPly2}:true`;
+                        objLinkeds.removeParticipant(data);
+                        isMe = true;
+                        break;
+                    }
+                }
+
+                if (isMe) {
+                    worldToolsSimplified.changeScoreInObj(finalScore, 'ha:plys_linkeds', 'set', 1);
+
                     worldToolsSimplified.setDelay(() => {
                         ply.runCommand(`function system/death_linked`);
                         ply.kill();
-                    }, worldToolsSimplified.convertSecondsToTicks(0.5));
-                });
-
-                return;
+                    }, worldToolsSimplified.convertSecondsToTicks(2));
+                }
             }
 
             if (ply.hasTag('banned')) {
@@ -121,49 +109,20 @@ class PlyEventsManager extends TL15DBaseManager {
 
                 ply.removeTag('isLinked');
 
-                if (deathCounter) {
-                    for (let i = 1; i <= deathCounter; i++) {
-                        const propKey = `ha:player_death_data_${i}`;
-                        const dataPlys = mc.world.getDynamicProperty(propKey) as string | undefined;
+                if (participantsRevive.length > 0) {
+                    for (const data of participantsRevive) {
+                        const [name, id] = data.split(':');
 
-                        if (dataPlys) {
-                            const [name, id, linked] = dataPlys.split(':');
-
-                            if (id == ply.id) {
-                                if (linked == 'linked') {
-                                    isLinked = true;
-                                    mc.world.setDynamicProperty(propKey, undefined);
-                                    break;
-                                }
-                            }
+                        if (id == ply.id) {
+                            isLinked = true;
+                            objPendingRevive.removeParticipant(data);
                         }
                     }
                 }
 
                 if (isLinked) {
                     ply.runCommand(`function system/revive_ply_system`);
-                } else {
-                    ply.runCommand(`kick "${ply.name}" `);
                 }
-            }
-
-            if (!ply.hasTag('kit')) {
-                const plyInv = ply.getComponent(mc.EntityComponentTypes.Inventory)?.container as mc.Container;
-                const listOfItems: mc.ItemStack[] = [
-                    new mc.ItemStack(vanilla.MinecraftItemTypes.TotemOfUndying),
-                    new mc.ItemStack(vanilla.MinecraftItemTypes.GoldenCarrot, 15),
-                    new mc.ItemStack(vanilla.MinecraftItemTypes.WaterBucket)
-                ];
-
-                for (const item of listOfItems) {
-                    item.lockMode = mc.ItemLockMode.inventory;
-                    item.keepOnDeath = true;
-
-                    plyInv.addItem(item);
-                }
-
-                ply.addTag('kit');
-                ply.addEffect(vanilla.MinecraftEffectTypes.Resistance, worldToolsSimplified.convertSecondsToTicks(60), { amplifier: 100, showParticles: true });
             }
         });
     };
@@ -207,7 +166,9 @@ class PlyEventsManager extends TL15DBaseManager {
             switch (block.typeId) {
                 case vanilla.MinecraftBlockTypes.DeepslateDiamondOre:
                 case vanilla.MinecraftBlockTypes.DiamondOre: {
-                    ply.applyDamage(4, { cause: mc.EntityDamageCause.sonicBoom, damagingEntity: ply });
+                    worldToolsSimplified.setRun(() => {
+                        ply.applyDamage(4, { cause: mc.EntityDamageCause.sonicBoom });
+                    });
                 } break;
                 case vanilla.MinecraftBlockTypes.AncientDebris: {
                     const dime = block.dimension;
@@ -228,6 +189,11 @@ class PlyEventsManager extends TL15DBaseManager {
      * @private
      */
     private itemsSystem(): void {
+        /**
+        * Lista de items infernales a conseguir.
+        * @type {Record<string, string>}
+        * @author HaJuegos - 26-06-2026
+        */
         const infernalItems: Record<string, string> = {
             'ha:infernal_gem_blaze': 'hasBlaze',
             'ha:infernal_gem_piglin': 'hasPiglin',
@@ -242,13 +208,19 @@ class PlyEventsManager extends TL15DBaseManager {
 
             switch (item.typeId) {
                 case vanilla.MinecraftItemTypes.EnderPearl: {
+                    const health = ply.getComponent(mc.EntityComponentTypes.Health);
+
+                    if (!health) return;
+
+                    const actualH = health.currentValue;
+
                     worldToolsSimplified.setRun(() => {
                         const cooldownCompo = item.getComponent('cooldown') as mc.ItemCooldownComponent;
                         const remainsColdown = cooldownCompo.getCooldownTicksRemaining(ply);
 
-                        if (remainsColdown > 0) return;
+                        if (remainsColdown < 18) return;
 
-                        ply.applyDamage(4, { cause: mc.EntityDamageCause.fall });
+                        ply.applyDamage(actualH / 2, { cause: mc.EntityDamageCause.sonicBoom });
                     });
                 } break;
                 case 'ha:invocation_skull': {
@@ -268,50 +240,67 @@ class PlyEventsManager extends TL15DBaseManager {
             }
         });
 
+        afterEventsSimplified.onPlyInvChange((args) => {
+            const ply = args.player;
+            const newItem = args.itemStack;
+
+            if (!newItem) return;
+
+            const infernalTag = infernalItems[newItem.typeId];
+
+            if (infernalTag && !ply.hasTag(infernalTag)) {
+                const score = worldToolsSimplified.changeScoreInObj(ply, 'infernalCount', 'add', 1);
+
+                ply.addTag(infernalTag);
+
+                worldToolsSimplified.sendMessageGlobal({
+                    rawtext: [{
+                        translate: 'chat.system.get_infernal_item', with: {
+                            rawtext: [
+                                { text: `${ply.name}` },
+                                { translate: `item.${newItem.typeId}.name` },
+                                { text: `${score}` }
+                            ]
+                        }
+                    }]
+                });
+
+                ply.runCommand(`execute as @a at @s run playsound random.orb @s ~~~ 1 0.85`);
+            }
+
+            if (newItem.typeId == 'ha:infernal_crown' && !ply.hasTag('hasCrown')) {
+                ply.addTag('hasCrown');
+
+                worldToolsSimplified.sendMessageGlobal({
+                    rawtext: [{
+                        translate: 'chat.system.get_infernal_crown',
+                        with: { rawtext: [{ text: `${ply.name}` }, { translate: `item.ha:infernal_crown.name` }] }
+                    }]
+                });
+
+                ply.runCommand(`execute as @a at @s run playsound mob.guardian.death`);
+            }
+        });
+
         worldToolsSimplified.setLoop(() => {
             const plys = mc.world.getAllPlayers();
 
             for (const ply of plys) {
-                const dime = ply.dimension;
-
-                for (const [item, tag] of Object.entries(infernalItems)) {
-                    if (customEventsManager.plyHasItems(ply, item, true) && !ply.hasTag(tag)) {
-                        const score = worldToolsSimplified.changePlyScoreInObj(ply, 'infernalCount', 'add', 1);
-
-                        ply.addTag(tag);
-
-                        worldToolsSimplified.sendMessageGlobal({
-                            rawtext: [{
-                                translate: 'chat.system.get_infernal_item', with: {
-                                    rawtext: [
-                                        { text: `${ply.name}` },
-                                        { translate: `item.${item}.name` },
-                                        { text: `${score}` }
-                                    ]
-                                }
-                            }]
-                        });
-
-                        ply.runCommand(`execute as @a at @s run playsound random.orb @s ~~~ 1 0.85`);
-                    }
-                }
-
                 if (customEventsManager.plyHasItems(ply, 'ha:infernal_crown', true)) {
-                    if (!ply.hasTag('hasCrown')) {
-                        ply.addTag('hasCrown');
-                        worldToolsSimplified.sendMessageGlobal({ rawtext: [{ translate: 'chat.system.get_infernal_crown', with: { rawtext: [{ text: `${ply.name}` }, { translate: `item.ha:infernal_crown.name` }] } }] });
-                        ply.runCommand(`execute as @a at @s run playsound mob.guardian.death`);
+                    if (!ply.hasTag('crownInInv')) {
+                        ply.addTag('crownInInv');
                     }
 
-                    if (dime.id == 'minecraft:nether') {
-                        ply.addEffect('resistance', worldToolsSimplified.convertSecondsToTicks(5), { amplifier: 1 });
-                    }
+                    ply.addEffect('strength', worldToolsSimplified.convertSecondsToTicks(15), { amplifier: 1 });
+                    ply.addEffect('fire_resistance', worldToolsSimplified.convertSecondsToTicks(15), { amplifier: 1 });
 
-                    ply.addTag('crownInInv');
-                    ply.addEffect('strength', worldToolsSimplified.convertSecondsToTicks(5), { amplifier: 1 });
-                    ply.addEffect('fire_resistance', worldToolsSimplified.convertSecondsToTicks(5), { amplifier: 1 });
+                    if (ply.dimension.id == 'minecraft:nether') {
+                        ply.addEffect('resistance', worldToolsSimplified.convertSecondsToTicks(15), { amplifier: 1 });
+                    }
                 } else {
-                    ply.removeTag('crownInInv');
+                    if (ply.hasTag('crownInInv')) {
+                        ply.removeTag('crownInInv');
+                    };
                 }
             }
         }, worldToolsSimplified.convertSecondsToTicks(1));
@@ -322,253 +311,110 @@ class PlyEventsManager extends TL15DBaseManager {
      * @private
      */
     private deathEvents(): void {
-        let lastLocation: mc.Vector3;
-        let lastDimension: mc.Dimension;
-        let lastViewDirection: mc.Vector3;
-
         afterEventsSimplified.onEntityDie((args) => {
             const plyEntity = args.deadEntity;
 
             if (plyEntity.typeId == 'minecraft:player' && !plyEntity.hasTag('death')) {
-                lastLocation = plyEntity.location;
-                lastDimension = plyEntity.dimension;
-                lastViewDirection = plyEntity.getViewDirection();
-
-                plyEntity.runCommand(`scriptevent ha:tp_spawn`);
-                plyEntity.runCommand(`function system/death_effects`);
-
-                this.spawnInventory(plyEntity as mc.Player, lastLocation, lastDimension);
-
-                if (!plyEntity.hasTag('isLinked')) {
-                    this.savePlyID(plyEntity as mc.Player);
-                } else {
+                if (plyEntity.hasTag('isLinked')) {
                     this.soulLinkedEvents(plyEntity as mc.Player);
                 }
-            }
-        });
-
-        afterEventsSimplified.onPlayerSpawns((args) => {
-            const plyEntity = args.player;
-            const isFirstSpawn = args.initialSpawn;
-
-            if (isFirstSpawn == false && (plyEntity.hasTag('death') && !plyEntity.hasTag('banned'))) {
-                worldToolsSimplified.sendMessageGlobal(
-                    {
-                        rawtext: [
-                            {
-                                translate: "chat.system.last_location_player", with: {
-                                    rawtext: [
-                                        { text: `${plyEntity.name}` },
-                                        { text: `${this.simplifiedCoords(lastLocation)}` },
-                                        { text: `${this.simplifiedDimension(lastDimension)}` }
-                                    ]
-                                }
-                            }
-                        ]
-                    }
-                );
-
-                plyEntity.tryTeleport(lastLocation, { dimension: lastDimension });
-
-                worldToolsSimplified.setDelay(() => {
-                    const knockbackForce = 1.35;
-                    const horizontalVector = { x: lastViewDirection.x * knockbackForce, z: lastViewDirection.z * knockbackForce };
-                    const verticalStrength = lastViewDirection.y * knockbackForce;
-
-                    plyEntity.applyKnockback(horizontalVector, verticalStrength);
-
-                    worldToolsSimplified.setDelay(() => {
-                        plyEntity.addTag('banned');
-                        plyEntity.runCommand(`kick "${plyEntity.name}"`);
-                    }, 1);
-                }, worldToolsSimplified.convertSecondsToTicks(0.75));
             }
         });
     };
 
     /**
-     * Metodo auxiliar que guarda los datos del jugador muerto en el mundo, esto con el fin de usarse para futuros dias.
-     * @param {mc.Player} ply Jugador en concreto a guardar datos.
-     * @author HaJuegos - 15-04-2026
-     * @private
-     */
-    private savePlyID(ply: mc.Player): void {
-        let currentIndex = mc.world.getDynamicProperty('ha:death_counter') as number | undefined;
-
-        if (currentIndex == undefined) {
-            currentIndex = 0;
-        }
-
-        const newIndex = currentIndex + 1;
-
-        mc.world.setDynamicProperty('ha:death_counter', newIndex);
-
-        const propertyId = `ha:player_death_data_${newIndex}`;
-        const propertyValue = `${ply.name}:${ply.id}`;
-
-        mc.world.setDynamicProperty(propertyId, propertyValue);
-    }
-
-    /**
      * Metodo auxiliar que revisa y ejecuta la logica para matar a un jugador cuando el otro jugador muere y estan linkeados.
      * @param {mc.Player} ply Jugador en concreto cuando muere.
+     * @returns {void}
      * @author HaJuegos - 19-04-2026
      * @private
      */
     private soulLinkedEvents(ply: mc.Player): void {
         ply.removeTag('isLinked');
 
-        const currentSoulLinkeds = mc.world.getDynamicProperty('ha:linkeds_counter') as number | undefined;
+        const objLinkeds = worldToolsSimplified.getOrCreateScorebordObj('ha:plys_linkeds') as mc.ScoreboardObjective;
+        const participants = objLinkeds.getParticipants().map(data => data.displayName);
 
-        if (currentSoulLinkeds) {
-            for (let i = 1; i <= currentSoulLinkeds; i++) {
-                const propKey = `ha:soul_linkeds_${i}`;
-                const dataPlys = mc.world.getDynamicProperty(propKey) as string | undefined;
+        if (participants.length <= 0) return;
 
-                if (dataPlys) {
-                    const [sourcePly, targetPly] = dataPlys.split(':');
-                    let partnerId: string | undefined = undefined;
+        let finalScore: string = "";
+        let targetPlyID: string = "";
+        let found: boolean = false;
 
-                    if (sourcePly && sourcePly.includes(ply.id)) {
-                        partnerId = targetPly.split('_').pop();
-                    } else if (targetPly && targetPly.includes(ply.id)) {
-                        partnerId = sourcePly.split('_').pop();
-                    }
+        for (const data of participants) {
+            const [namePlt1, idPly1, isDeath1, namePlt2, idPly2, isDeath2] = data.split(':');
 
-                    if (partnerId) {
-                        mc.world.setDynamicProperty(propKey, undefined);
-
-                        const deathCounter = mc.world.getDynamicProperty('ha:death_counter') as number | undefined;
-
-                        if (deathCounter) {
-                            for (let j = 1; j <= deathCounter; j++) {
-                                const deathKey = `ha:player_death_data_${j}`;
-                                const deathData = mc.world.getDynamicProperty(deathKey) as string | undefined;
-
-                                if (deathData) {
-                                    const [, id] = deathData.split(':');
-
-                                    if (id == ply.id || id == partnerId) {
-                                        mc.world.setDynamicProperty(deathKey, undefined);
-                                    }
-                                }
-                            }
-                        }
-
-                        const plys = mc.world.getAllPlayers();
-                        const partnerPly = plys.find(p => p.id == partnerId);
-
-                        if (partnerPly) {
-                            worldToolsSimplified.setRun(() => {
-                                worldToolsSimplified.setDelay(() => {
-                                    partnerPly.runCommand(`function system/death_linked`);
-                                    partnerPly.kill();
-                                }, worldToolsSimplified.convertSecondsToTicks(0.5));
-                            });
-                        } else {
-                            mc.world.setDynamicProperty(`ha:pending_death_${partnerId}`, true);
-                        }
-
-                        break;
-                    }
-                }
+            if (idPly1 == ply.id && isDeath1 != 'true') {
+                targetPlyID = idPly2;
+                finalScore = `${namePlt1}:${idPly1}:true:${namePlt2}:${idPly2}:${isDeath2}`;
+                objLinkeds.removeParticipant(data);
+                found = true;
+                break;
             }
+
+            if (idPly2 == ply.id && isDeath2 != 'true') {
+                targetPlyID = idPly1;
+                finalScore = `${namePlt1}:${idPly1}:${isDeath1}:${namePlt2}:${idPly2}:true`;
+                objLinkeds.removeParticipant(data);
+                found = true;
+                break;
+            }
+        }
+
+        if (!found) return;
+
+        worldToolsSimplified.changeScoreInObj(finalScore, 'ha:plys_linkeds', 'set', 1);
+
+        const targetPly = mc.world.getPlayers().find(p => p.id == targetPlyID);
+
+        if (targetPly && targetPly.hasTag('isLinked')) {
+            targetPly.removeTag('isLinked');
+
+            worldToolsSimplified.setDelay(() => {
+                targetPly.runCommand(`function system/death_linked`);
+                targetPly.kill();
+            }, worldToolsSimplified.convertSecondsToTicks(2));
         }
     }
 
     /**
-     * Metodo principal que controla los eventos del chat cuando un usuario envia un mensaje.
-     * @author HaJuegos - 19-03-2026
+     * Metodo auxiliar que controla la logica del timer del delfin en estado de loop para cada jugador.
+     * @param {mc.Player} ply Jugador en concreto a analizar.
+     * @param {number} mns Minutos a tener en cuenta.
+     * @param {boolean} restart Si requiere o no un reinicio forzado para empezar desde un nuevo punto de partida.
+     * @returns {void}
      * @private
+     * @author HaJuegos - 26-06-2026
      */
-    private chatManager(): void {
-        beforeEventsSimplified.chatManager((args) => {
-            const msg = args.message;
-            const ply = args.sender;
-
-            args.cancel = true;
-
-            worldToolsSimplified.setRun(() => {
-                const name = ply.name;
-                const rankData = this.customRanks.find((data) => {
-                    if (Array.isArray(data.namePly)) {
-                        return data.namePly.includes(name);
-                    }
-
-                    return data.namePly == name;
+    private timerDolphinSystem(ply: mc.Player, mns: number, restart: boolean): void {
+        customEventsManager.startTimerLocal({
+            sourcePly: ply,
+            timerId: 'ha:timer_dolphin',
+            initialMns: mns,
+            forceRestart: restart,
+            onTimerStarts: (ply) => {
+                ply.sendMessage({ rawtext: [{ translate: 'chat.system.hit_by_dolphin', with: { rawtext: [{ text: `${mns}` }] } }] });
+            },
+            onSecondPass: (ply, timer) => {
+                ply.onScreenDisplay.setActionBar({
+                    rawtext: [
+                        {
+                            translate: 'ui.system.dolphin_timer',
+                            with: { rawtext: [{ text: `${timer}` }] }
+                        }
+                    ]
                 });
 
-                const isLinked = ply.hasTag('isLinked');
-                const displayRank = rankData ? `${rankData.colorCode}${rankData.rank}` : `§4§lSobreviviente`;
-
-                worldToolsSimplified.sendMessageGlobal(`§7§l[§r${displayRank}§7§l]§r${isLinked ? '' : ''} ${name} §7§l>>§r ${msg}`);
-            });
-        });
-
-        afterEventsSimplified.onHealthEntityChange((args) => {
-            const entity = args.entity;
-            const newValue = Math.floor(args.newValue);
-
-            if (entity instanceof mc.Player) {
-                this.setCustomRank(entity, newValue, undefined, true);
+                ply.playSound('random.click', { pitch: 1.5 });
+                ply.triggerEvent('ha:set_remove_breath');
+            },
+            onMinutePass: (ply) => {
+                worldToolsSimplified.changeScoreInObj(ply, 'dolphinTimer', 'add', -1);
+            },
+            onTimerEnds: (ply) => {
+                ply.triggerEvent('ha:set_normal_breath');
             }
         });
-    }
-
-    /**
-     * Metodo que maneja el sistema del uso de totems.
-     * @author HaJuegos - 19-03-2026
-     * @private
-     */
-    private totemSystem(): void {
-        customEventsManager.onEntityUseTotem((ply) => {
-            if (!(ply instanceof mc.Player)) return;
-
-            const dime = ply.dimension;
-            const plys = dime.getPlayers();
-
-            worldToolsSimplified.sendMessageGlobal({ rawtext: [{ translate: 'chat.system.use_totem', with: { rawtext: [{ text: `${ply.name}` }] } }] });
-
-            for (const ply of plys) {
-                ply.playSound('random.totem', { volume: 0.65 });
-            }
-        });
-    }
-
-    /**
-     * Metodo auxiliar que prepara el spawneo de la entidad que reemplaza al jugador al morir con su inventario.
-     * @param {(mc.Player | mc.Entity)} ply Jugador o entidad que murio a considerar. 
-     * @param {mc.Vector3} coords Ultima localizacion a considerar.
-     * @param {mc.Dimension} dime Ultima dimension a considerar.
-     * @author HaJuegos - 13-03-2026
-     * @private
-     */
-    private spawnInventory(ply: mc.Player, coords: mc.Vector3, dime: mc.Dimension): void {
-        const ghostEntity = dime.spawnEntity('ha:player_ghost' as mc.VanillaEntityIdentifier, coords, { spawnEvent: 'minecraft:entity_spawned' });
-        const plyInvContainer = ply.getComponent(mc.EntityComponentTypes.Inventory)?.container as mc.Container;
-        const plyArmorContainer = ply.getComponent(mc.EntityComponentTypes.Equippable) as mc.EntityEquippableComponent;
-        const ghostInvContainer = ghostEntity.getComponent(mc.EntityComponentTypes.Inventory)?.container as mc.Container;
-        const armorSlots = [mc.EquipmentSlot.Head, mc.EquipmentSlot.Chest, mc.EquipmentSlot.Legs, mc.EquipmentSlot.Feet, mc.EquipmentSlot.Offhand];
-        const nameGhost = `§g§l${ply.name}'s Inventory§r`;
-
-        for (let i = 0; i < plyInvContainer.size; i++) {
-            const item = plyInvContainer.getItem(i);
-
-            if (item) {
-                ghostInvContainer.addItem(item);
-            }
-        }
-
-        for (const slot of armorSlots) {
-            const item = plyArmorContainer.getEquipment(slot);
-
-            if (item) {
-                ghostInvContainer.addItem(item);
-            }
-        }
-
-        ghostEntity.nameTag = nameGhost;
-        ply.runCommand(`clear @s`);
     }
 }
 

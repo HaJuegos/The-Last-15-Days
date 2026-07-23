@@ -13,8 +13,8 @@
             "minecraft:slime_aggressive": {
                 "minecraft:movement.jump": {
                     "jump_delay": [
-                        0.16,
-                        0.5
+                        0.1,
+                        0.15
                     ]
                 }
             },
@@ -29,8 +29,8 @@
             "minecraft:slime_large": {
                 "minecraft:area_attack": {
                     "cause": "entity_attack",
-                    "damage_cooldown": 0.5,
-                    "damage_per_tick": 10,
+                    "damage_cooldown": 0.35,
+                    "damage_per_tick": 15,
                     "damage_range": 0.15,
                     "entity_filter": {
                         "any_of": [
@@ -53,7 +53,7 @@
                     }
                 },
                 "minecraft:attack": {
-                    "damage": 10
+                    "damage": 15
                 },
                 "minecraft:collision_box": {
                     "height": 2.08,
@@ -115,8 +115,33 @@
                 }
             },
             "minecraft:slime_small": {
+                "minecraft:area_attack": {
+                    "cause": "entity_attack",
+                    "damage_cooldown": 0.5,
+                    "damage_per_tick": 5,
+                    "damage_range": 0.15,
+                    "entity_filter": {
+                        "any_of": [
+                            {
+                                "subject": "other",
+                                "test": "is_family",
+                                "value": "player"
+                            },
+                            {
+                                "subject": "other",
+                                "test": "is_family",
+                                "value": "irongolem"
+                            },
+                            {
+                                "subject": "other",
+                                "test": "is_family",
+                                "value": "snowgolem"
+                            }
+                        ]
+                    }
+                },
                 "minecraft:attack": {
-                    "damage": 10
+                    "damage": 5
                 },
                 "minecraft:collision_box": {
                     "height": 0.52,
@@ -138,6 +163,24 @@
             }
         },
         "components": {
+            "minecraft:spell_effects": {
+                "add_effects": [
+                    {
+                        "effect": "speed",
+                        "duration": 99999,
+                        "amplifier": 1,
+                        "ambient": false,
+                        "visible": true
+                    },
+                    {
+                        "effect": "jump_boost",
+                        "duration": 99999,
+                        "amplifier": 1,
+                        "ambient": false,
+                        "visible": true
+                    }
+                ]
+            },
             "minecraft:behavior.nearest_attackable_target": {
                 "must_see": true,
                 "entity_types": [

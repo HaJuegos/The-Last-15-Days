@@ -127,9 +127,10 @@
             "minecraft:ranged_attack": {
                 "minecraft:behavior.ranged_attack": {
                     "priority": 0,
-                    "attack_interval_min": 1.0,
-                    "attack_interval_max": 3.0,
-                    "attack_radius": 15.0
+                    "attack_interval_min": 1,
+                    "attack_interval_max": 3,
+                    "attack_radius": 20,
+                    "ranged_fov": 360
                 },
                 "minecraft:shooter": {
                     "def": "minecraft:arrow",
@@ -554,9 +555,10 @@
             },
             "minecraft:behavior.ranged_attack": {
                 "priority": 0,
-                "attack_interval_min": 1.0,
-                "attack_interval_max": 3.0,
-                "attack_radius": 15.0
+                "attack_interval_min": 0.65,
+                "attack_interval_max": 1.25,
+                "attack_radius": 20,
+                "ranged_fov": 360
             },
             "minecraft:behavior.hurt_by_target": {
                 "priority": 1,

@@ -7,11 +7,11 @@
             "identifier": "ha:furnace_melted_slime"
         },
         "tags": [ "furnace", "campfire", "soul_campfire" ],
-        "input": "minecraft:slime",
+        "input": "minecraft:slime_ball",
         "output": "ha:melted_slime",
         "unlock": [
             {
-                "item": "minecraft:slime"
+                "item": "minecraft:slime_ball"
             }
         ]
     }

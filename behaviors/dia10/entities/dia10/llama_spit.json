@@ -36,9 +36,9 @@
                         "apply_effect_to_blocking_targets": true
                     }
                 },
+                "liquid_inertia": -1,
                 "anchor": 1,
                 "gravity": 0.06,
-                "uncertainty_base": 10,
                 "inertia": 1,
                 "offset": [ 0, -0.1, 0 ],
                 "is_dangerous": true,
@@ -46,8 +46,7 @@
                 "multiple_targets": true,
                 "should_bounce": false,
                 "stop_on_hurt": true,
-                "power": 4,
-                "uncertainty_multiplier": 4
+                "power": 4
             },
             "minecraft:pushable": {
                 "is_pushable": true,

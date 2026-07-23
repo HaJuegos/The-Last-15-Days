@@ -16,7 +16,6 @@
                 }
             }
         },
-
         "component_groups": {
             "bee_baby": {
                 "minecraft:is_baby": { },
@@ -110,10 +109,13 @@
             },
             "angry_bee": {
                 "minecraft:angry": {
-                    "duration": 25,
-                    "broadcastAnger": true,
-                    "broadcastRange": 20,
-                    "broadcast_anger_when_dying": false
+                    "duration": 150,
+                    "broadcast_anger": true,
+                    "broadcast_range": 30,
+                    "broadcast_anger_on_being_attacked": true,
+                    "broadcast_targets": [ "bee" ],
+                    "broadcast_anger_on_attack": true,
+                    "broadcast_anger_when_dying": true
                 }
             },
             "look_for_food": {
@@ -417,14 +419,17 @@
                 }
             }
         },
-
         "components": {
             "minecraft:behavior.hurt_by_target": {
                 "priority": 1
             },
             "minecraft:behavior.melee_box_attack": {
                 "priority": 0,
-                "speed_multiplier": 1.4
+                "speed_multiplier": 3,
+                "can_spread_on_fire": true,
+                "horizontal_reach": 2,
+                "melee_fov": 360,
+                "track_target": true
             },
             "minecraft:behavior.nearest_attackable_target": {
                 "priority": 2,
@@ -653,7 +658,6 @@
                 ]
             }
         },
-
         "events": {
             "minecraft:entity_spawned": {
                 "sequence": [

@@ -63,7 +63,7 @@
 					}
 				]
 			},
-			"minecraft:balloonable": {},
+			"minecraft:balloonable": { },
 			"minecraft:behavior.float": {
 				"priority": 1
 			},
@@ -71,12 +71,12 @@
 				"suffocate_time": 0,
 				"total_supply": 15
 			},
-			"minecraft:can_fly": {},
+			"minecraft:can_fly": { },
 			"minecraft:collision_box": {
 				"height": 1,
 				"width": 0.5
 			},
-			"minecraft:conditional_bandwidth_optimization": {},
+			"minecraft:conditional_bandwidth_optimization": { },
 			"minecraft:damage_sensor": {
 				"triggers": [
 					{
@@ -100,7 +100,7 @@
 				]
 			},
 			"minecraft:despawn": {
-				"despawn_from_distance": {}
+				"despawn_from_distance": { }
 			},
 			"minecraft:game_event_movement_tracking": {
 				"emit_flap": true
@@ -145,19 +145,19 @@
 					}
 				]
 			},
-			"minecraft:is_hidden_when_invisible": {},
-			"minecraft:jump.static": {},
-			"minecraft:leashable": {},
+			"minecraft:is_hidden_when_invisible": { },
+			"minecraft:jump.static": { },
+			"minecraft:leashable": { },
 			"minecraft:movement": {
 				"value": 0.4
 			},
-			"minecraft:movement.fly": {},
-			"minecraft:nameable": {},
+			"minecraft:movement.fly": { },
+			"minecraft:nameable": { },
 			"minecraft:navigation.fly": {
 				"can_path_from_air": true,
 				"can_path_over_water": true
 			},
-			"minecraft:physics": {},
+			"minecraft:physics": { },
 			"minecraft:pushable": {
 				"is_pushable": true,
 				"is_pushable_by_piston": true
@@ -189,7 +189,7 @@
 						"version": 12
 					}
 				},
-				"minecraft:leashable_to": {},
+				"minecraft:leashable_to": { },
 				"minecraft:loot": {
 					"table": "loot_tables/entities/parrot.json"
 				}
@@ -319,8 +319,8 @@
 					},
 					"priority": 0
 				},
-				"minecraft:is_tamed": {},
-				"minecraft:sittable": {},
+				"minecraft:is_tamed": { },
+				"minecraft:sittable": { },
 				"minecraft:type_family": {
 					"family": [
 						"parrot_tame",
@@ -368,6 +368,18 @@
 			}
 		},
 		"events": {
+			"ha:start_explode": {
+				"queue_command": {
+					"command": [
+						"playsound mob.start_exploding.sound @a ~~~"
+					]
+				},
+				"add": {
+					"component_groups": [
+						"ha:explode"
+					]
+				}
+			},
 			"minecraft:entity_spawned": {
 				"randomize": [
 					{

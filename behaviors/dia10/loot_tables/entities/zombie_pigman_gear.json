@@ -8,23 +8,18 @@
                 {
                     "type": "item",
                     "name": "minecraft:netherite_axe",
-                    "weight": 50,
+                    "weight": 1,
                     "functions": [
                         {
                             "function": "enchant_random_gear",
                             "chance": 0.25
                         }
                     ]
-                }
-            ]
-        },
-        {
-            "rolls": 1,
-            "entries": [
+                },
                 {
                     "type": "item",
                     "name": "minecraft:netherite_axe",
-                    "weight": 50,
+                    "weight": 1,
                     "functions": [
                         {
                             "function": "enchant_with_levels",

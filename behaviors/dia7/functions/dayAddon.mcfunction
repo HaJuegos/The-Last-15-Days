@@ -13,3 +13,5 @@ execute as @s[tag=!"intro"] at @s run playsound ui.login_first_time
 titleraw @s reset
 
 tag @s add intro
+
+scriptevent ha:chance_backrooms

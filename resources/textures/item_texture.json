@@ -168,6 +168,11 @@
             "textures": [
                 "textures/items/custom/disks_randoms/silla_disc"
             ]
+        },
+        "banana": {
+            "textures": [
+                "textures/items/custom/banana"
+            ]
         }
     }
 }

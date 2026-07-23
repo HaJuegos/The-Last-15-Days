@@ -1,24 +1,17 @@
 import * as mc from "@minecraft/server";
 
-import { beforeEventsSimplified, debugToolsSimplified, fakePlysSimplified, worldToolsSimplified } from "simplified-mojang-api";
-import { TL15DBaseManager } from "../base";
+import { beforeEventsSimplified, worldToolsSimplified } from "simplified-mojang-api";
 
 /**
  * Clase hijo que se encarga de los eventos globales del mundo.
- * @extends {TL15DBaseManager}
  * @author HaJuegos - 14-03-2026
  */
-class GlobalWorldEventsManager extends TL15DBaseManager {
+class GlobalWorldEventsManager {
     /**
      * Eventos principales de la clase cuando es inicialiada o llamada.
      * @constructor
      */
     constructor () {
-        super();
-
-        debugToolsSimplified.watchDogState(false);
-
-        this.staticEvents();
         this.blockExploration();
     }
 
@@ -29,7 +22,7 @@ class GlobalWorldEventsManager extends TL15DBaseManager {
      * @private
      */
     private blockExploration(): void {
-        const limitExplorer = 510;
+        const limitExplorer = 3000;
         const limitExplorerY = 120;
 
         /**
@@ -61,7 +54,7 @@ class GlobalWorldEventsManager extends TL15DBaseManager {
         };
 
         beforeEventsSimplified.onInteractBlock((args) => {
-            if (isOutOfBounds(args.block.location) && args.isFirstEvent) {
+            if (isOutOfBounds(args.block.location)) {
                 denyAction(args, args.player);
             }
         });
@@ -84,56 +77,6 @@ class GlobalWorldEventsManager extends TL15DBaseManager {
 
             if (targetEntity && targetEntity.isValid && isOutOfBounds(targetEntity.location)) {
                 denyAction(args, ply);
-            }
-        });
-    }
-
-    /**
-     * Metodo auxiliar que escucha los eventos estaticos del comando scriptevent.
-     * @author HaJuegos - 14-03-2026
-     * @private
-     */
-    private staticEvents(): void {
-        worldToolsSimplified.listenerScriptEvents(async (args) => {
-            const id = args.id;
-            const source = args.sourceEntity as mc.Player;
-            const msg = args.message;
-
-            if (!source) return;
-
-            switch (id) {
-                case 'ha:set_total_debuffs': {
-                    const previusTotal = mc.world.getDynamicProperty('ha:stack_debuffs') as number | undefined;
-                    const newTotal = Number(msg);
-
-                    mc.world.setDynamicProperty('ha:stack_debuffs', newTotal);
-                    source.setDynamicProperty('ha:stack_debuffs', 0);
-                    source.playSound('random.click');
-                    source.sendMessage({ rawtext: [{ translate: 'chat.system.debuff_total_changed', with: { rawtext: [{ text: `${newTotal}` }, { text: `${previusTotal}` }] } }] });
-                } break;
-                case 'ha:spawn_fake': {
-                    const item = new mc.ItemStack('ha:infernal_crown');
-
-                    for (let i = 0; i < 1; i++) {
-                        const ply = await fakePlysSimplified.createFakePly(`test_${i}`, mc.GameMode.Survival);
-
-                        if (ply) {
-                            ply.addItem(item);
-                        }
-                    }
-                } break;
-                case 'ha:tp_spawn': {
-                    const spawnCoords = mc.world.getDefaultSpawnLocation();
-                    const over = mc.world.getDimension('overworld');
-
-                    source.tryTeleport(spawnCoords, { checkForBlocks: true, dimension: over });
-                } break;
-                case 'ha:hitboxeson': {
-                    debugToolsSimplified.showHitboxes(source);
-                } break;
-                case 'ha:hitboxesoff': {
-                    debugToolsSimplified.stopHitboxes();
-                } break;
             }
         });
     }

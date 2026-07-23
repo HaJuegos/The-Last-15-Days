@@ -86,10 +86,10 @@
                     "causes_fire": true,
                     "fire_affected_by_griefing": true,
                     "fuse_lit": true,
-                    "power": 1,
+                    "power": 3,
                     "destroy_affected_by_griefing": true,
                     "fuse_length": 0,
-                    "knockback_scaling": 2.5
+                    "knockback_scaling": 3
                 }
             },
             "ha:skeleton_exploding": {

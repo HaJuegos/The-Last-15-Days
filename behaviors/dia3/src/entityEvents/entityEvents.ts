@@ -1,22 +1,18 @@
 import * as mc from "@minecraft/server";
 import * as vanilla from "@minecraft/vanilla-data";
 
-import { TL15DBaseManager } from "../base";
 import { afterEventsSimplified, worldToolsSimplified } from "simplified-mojang-api";
 
 /**
  * Clase hijo que maneja los eventos principales o mecanicas de las entidades.
- * @extends {TL15DBaseManager}
  * @author HaJuegos - 22-03-2026
  */
-class EntityEventsManager extends TL15DBaseManager {
+class EntityEventsManager {
     /**
      * Eventos iniciales de la clase cuando es llamada o inicializada.
      * @constructor
      */
     constructor () {
-        super();
-
         this.onHitSystem();
         this.onSpawnEntitysSystem();
     }
@@ -58,7 +54,7 @@ class EntityEventsManager extends TL15DBaseManager {
             if (hitEntity && sourceEntity) {
                 switch (sourceEntity.typeId) {
                     case vanilla.MinecraftEntityTypes.Slime: {
-                        hitEntity.addEffect('oozing', worldToolsSimplified.convertSecondsToTicks(30), { amplifier: 3, showParticles: true });
+                        hitEntity.addEffect('poison', worldToolsSimplified.convertSecondsToTicks(30), { amplifier: 3, showParticles: true });
                     } break;
                     case vanilla.MinecraftEntityTypes.MagmaCube: {
                         hitEntity.setOnFire(30);
@@ -101,10 +97,22 @@ class EntityEventsManager extends TL15DBaseManager {
             if (entity.typeId == vanilla.MinecraftEntityTypes.LightningBolt) {
                 const coords = entity.location;
                 const dime = entity.dimension;
-                const block = dime.getBlock(coords);
-                const blockDown = dime.getBlockBelow(coords);
 
-                if ((block && block.typeId.includes(vanilla.MinecraftBlockTypes.LightningRod)) || (blockDown && blockDown.typeId.includes(vanilla.MinecraftBlockTypes.LightningRod))) {
+                let block;
+                let blockDown;
+
+                try {
+                    block = dime.getBlock(coords);
+                    blockDown = dime.getBlockBelow(coords);
+                } catch (e) {
+                    if (e instanceof Error && e.message.includes("outside of the world boundaries")) {
+                        return;
+                    }
+
+                    throw e;
+                }
+
+                if ((block && block.typeId.includes('lightning_rod')) || (blockDown && blockDown.typeId.includes('lightning_rod'))) {
                     dime.createExplosion(coords, 3, { allowUnderwater: true, breaksBlocks: true });
                 }
             }
@@ -121,27 +129,27 @@ class EntityEventsManager extends TL15DBaseManager {
     private stealItemsSystem(ply: mc.Player, entitySteal: mc.Entity): void {
         const dime = entitySteal.dimension;
         const otherEntity = entitySteal.getComponent(mc.EntityComponentTypes.Inventory)?.container as mc.Container;
-        const invPly = ply.getComponent(mc.EntityComponentTypes.Inventory)?.container as mc.Container;
-        const armorPly = ply.getComponent(mc.EntityComponentTypes.Equippable) as mc.EntityEquippableComponent;
-        const armorSlots = [mc.EquipmentSlot.Head, mc.EquipmentSlot.Chest, mc.EquipmentSlot.Legs, mc.EquipmentSlot.Feet, mc.EquipmentSlot.Offhand];
-        const validSlotsEntity = otherEntity.emptySlotsCount;
+        const invPly = ply.getComponent(mc.EntityComponentTypes.Inventory)?.container;
+        const armorPly = ply.getComponent(mc.EntityComponentTypes.Equippable);
+
+        if (!invPly || !armorPly) return;
+
+        const validSlotsEntity = otherEntity ? otherEntity.emptySlotsCount : 0;
 
         const validInvSlots: number[] = [];
         for (let i = 0; i < invPly.size; i++) {
-            const item = invPly.getItem(i);
-
-            if (item) {
+            if (invPly.getItem(i)) {
                 validInvSlots.push(i);
-            }
+            };
         }
+
+        const armorSlots = [mc.EquipmentSlot.Head, mc.EquipmentSlot.Chest, mc.EquipmentSlot.Legs, mc.EquipmentSlot.Feet, mc.EquipmentSlot.Offhand];
 
         const validArmorSlots: mc.EquipmentSlot[] = [];
         for (const slot of armorSlots) {
-            const item = armorPly.getEquipment(slot);
-
-            if (item) {
+            if (armorPly.getEquipment(slot)) {
                 validArmorSlots.push(slot);
-            }
+            };
         }
 
         if (validInvSlots.length == 0 && validArmorSlots.length == 0) {
@@ -149,7 +157,6 @@ class EntityEventsManager extends TL15DBaseManager {
         }
 
         let targetInventory = Math.random() < 0.5;
-
         if (validInvSlots.length == 0) targetInventory = false;
         if (validArmorSlots.length == 0) targetInventory = true;
 
@@ -161,8 +168,12 @@ class EntityEventsManager extends TL15DBaseManager {
 
                 invPly.setItem(slotSelect, undefined);
 
-                if (validSlotsEntity > 0) {
-                    otherEntity.addItem(item);
+                if (otherEntity && validSlotsEntity > 0) {
+                    const leftover = otherEntity.addItem(item);
+
+                    if (leftover) {
+                        dime.spawnItem(leftover, entitySteal.location);
+                    }
                 } else {
                     dime.spawnItem(item, entitySteal.location);
                 }
@@ -175,12 +186,15 @@ class EntityEventsManager extends TL15DBaseManager {
 
                 armorPly.setEquipment(slotSelect, undefined);
 
-                if (validSlotsEntity > 0) {
-                    otherEntity.addItem(item);
+                if (otherEntity && validSlotsEntity > 0) {
+                    const leftover = otherEntity.addItem(item);
+
+                    if (leftover) {
+                        dime.spawnItem(leftover, entitySteal.location);
+                    }
                 } else {
                     dime.spawnItem(item, entitySteal.location);
                 }
-
             }
         }
     }

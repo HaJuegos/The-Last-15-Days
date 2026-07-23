@@ -527,6 +527,20 @@ class AbbysDebuffsEvents extends TL15DBaseManager {
     ];
 
     /**
+     * Todas las comidas vanillas disponibles en el juego.
+     * @private
+     * @readonly
+     * @type {string[]}
+     * @author HaJuegos - 28-06-2026
+     */
+    private readonly vanillaFoods = [
+        'apple', 'potato', 'beetroot', 'bread', 'carrot', 'chorus',
+        'chicken', 'cod', 'mutton', 'porkchop', 'rabbit', 'salmon',
+        'cookie', 'kelp', 'berries', 'honey', 'pufferfish', 'pumpkin_pie',
+        'rotten_flesh', 'spider_eye', 'beef', 'melon', 'stew', 'soup'
+    ];
+
+    /**
      * Eventos iniciales de la clase cuando es llamada o inicializada.
      * @constructor
      */
@@ -541,36 +555,26 @@ class AbbysDebuffsEvents extends TL15DBaseManager {
             }
         });
 
-        worldToolsSimplified.setLoop(() => {
-            for (const ply of mc.world.getAllPlayers()) {
-                this.checkNetheriteArmor(ply);
-                this.shadowsSystem(ply);
-                this.furySystem(ply, true);
-            }
-        }, 1);
-
-        worldToolsSimplified.setLoop(() => {
-            for (const ply of mc.world.getAllPlayers()) {
-                this.hungerSystem(ply);
-            }
-        }, worldToolsSimplified.convertSecondsToTicks(10));
+        this.loopsSystem();
 
         // Eventos para asignar y detectar los debuffs.
 
-        afterEventsSimplified.onEntityDie((args) => {
+        afterEventsSimplified.onEntityDie(async (args) => {
             const ply = args.deadEntity;
+            const entityWorldData = await this.getEntityDataWorld();
 
             if (ply instanceof mc.Player) {
-                this.changeTotalDebuff();
+                this.changeTotalDebuff(entityWorldData);
             }
         });
 
-        afterEventsSimplified.onPlayerSpawns((args) => {
+        afterEventsSimplified.onPlayerSpawns(async (args) => {
             const ply = args.player;
+            const entityWorldData = await this.getEntityDataWorld();
 
             if (!ply.hasTag('death')) {
                 worldToolsSimplified.setDelay(() => {
-                    this.checkPendingDebuffs(ply);
+                    this.checkPendingDebuffs(entityWorldData, ply);
                 }, worldToolsSimplified.convertSecondsToTicks(3));
             }
         });
@@ -581,7 +585,9 @@ class AbbysDebuffsEvents extends TL15DBaseManager {
             const sourceEntity = args.damagingEntity;
 
             if (sourceEntity.typeId == 'minecraft:player') {
-                this.furySystem(sourceEntity as mc.Player);
+                const tags = sourceEntity.getTags();
+
+                this.furySystem(sourceEntity as mc.Player, tags);
             }
         });
 
@@ -589,7 +595,9 @@ class AbbysDebuffsEvents extends TL15DBaseManager {
             const sourceEntity = args.damageSource.damagingEntity;
 
             if (sourceEntity && sourceEntity.typeId == 'minecraft:player') {
-                this.furySystem(sourceEntity as mc.Player);
+                const tags = sourceEntity.getTags();
+
+                this.furySystem(sourceEntity as mc.Player, tags);
             }
         });
 
@@ -597,9 +605,37 @@ class AbbysDebuffsEvents extends TL15DBaseManager {
             const sourceEntity = args.damageSource.damagingEntity;
 
             if (sourceEntity && sourceEntity.typeId == 'minecraft:player') {
-                this.furySystem(sourceEntity as mc.Player);
+                const tags = sourceEntity.getTags();
+
+                this.furySystem(sourceEntity as mc.Player, tags);
             }
         });
+    }
+
+    /**
+     * Metodo auxiliar principal que controla el looping de los efectos abismales de los jugadores.
+     * @returns {void}
+     * @private
+     * @author HaJuegos - 26-06-2026
+     */
+    private loopsSystem(): void {
+        let tickCount = 0;
+
+        worldToolsSimplified.setLoop(() => {
+            const plys = mc.world.getAllPlayers();
+
+            for (const ply of plys) {
+                const tags = ply.getTags();
+
+                this.checkNetheriteArmor(ply, tags);
+                this.shadowsSystem(ply, tags);
+                this.furySystem(ply, tags, false);
+
+                if (tickCount % 10 == 0) {
+                    this.hungerSystem(ply, tags);
+                }
+            }
+        }, worldToolsSimplified.convertSecondsToTicks(1));
     }
 
     /**
@@ -611,7 +647,7 @@ class AbbysDebuffsEvents extends TL15DBaseManager {
      */
     private loopTimersDebuff(ply: mc.Player): void {
         for (const debuff of this.possibleDebuffs) {
-            const totalMinutes = worldToolsSimplified.getPlyScoreInObj(ply, debuff.timerScoreboard);
+            const totalMinutes = worldToolsSimplified.getScoreInObj(ply, debuff.timerScoreboard);
             const realTimer = ply.getDynamicProperty(`ha:debuff_timer_${debuff.id}`) as number | undefined;
 
             if (totalMinutes <= 0 && (!realTimer || (realTimer - Date.now()) <= 0)) {
@@ -642,20 +678,20 @@ class AbbysDebuffsEvents extends TL15DBaseManager {
                 initialMns: totalMinutes,
                 forceRestart: forceSync,
                 onMinutePass: (ply) => {
-                    const actualTime = worldToolsSimplified.getPlyScoreInObj(ply, debuff.timerScoreboard);
+                    const actualTime = worldToolsSimplified.getScoreInObj(ply, debuff.timerScoreboard);
 
                     if (actualTime > 0) {
-                        worldToolsSimplified.changePlyScoreInObj(ply, debuff.timerScoreboard, 'add', -1);
+                        worldToolsSimplified.changeScoreInObj(ply, debuff.timerScoreboard, 'add', -1);
                     }
                 },
                 onTimerEnds: (ply) => {
-                    const finalTime = worldToolsSimplified.getPlyScoreInObj(ply, debuff.timerScoreboard);
+                    const finalTime = worldToolsSimplified.getScoreInObj(ply, debuff.timerScoreboard);
 
                     if (finalTime <= 0) {
                         debuff.eventsEndTimer(ply);
 
-                        worldToolsSimplified.changePlyScoreInObj(ply, debuff.timerScoreboard, 'set', 0);
-                        worldToolsSimplified.changePlyScoreInObj(ply, debuff.comboScoreboard, 'set', 0);
+                        worldToolsSimplified.changeScoreInObj(ply, debuff.timerScoreboard, 'set', 0);
+                        worldToolsSimplified.changeScoreInObj(ply, debuff.comboScoreboard, 'set', 0);
 
                         ply.sendMessage({ rawtext: [{ translate: 'chat.system.debuff_end_timer', with: { rawtext: [{ translate: `${debuff.translationKey}` }] } }] });
                         ply.playSound('mob.guardian.death');
@@ -667,72 +703,53 @@ class AbbysDebuffsEvents extends TL15DBaseManager {
 
     /**
      * Metodo auxiliar que asigna el nuevo total de debuffs asignados al mundo y a los jugadores online y offline.
+     * @param {mc.Entity} entityWorldData La entidad global con los datos del mundo.
      * @returns {void}
      * @author HaJuegos - 18-05-2026
      * @private
      */
-    private changeTotalDebuff(): void {
-        const debuffStacks = mc.world.getDynamicProperty('ha:stack_debuffs') as number | undefined;
+    private changeTotalDebuff(entityWorldData: mc.Entity): void {
+        const debuffStacks = worldToolsSimplified.getScoreInObj(entityWorldData, 'ha:stack_debuffs');
         const plys = mc.world.getAllPlayers().filter(p => !p.hasTag('death'));
 
-        if (debuffStacks) {
-            mc.world.setDynamicProperty('ha:stack_debuffs', debuffStacks + 1);
+        if (debuffStacks > 0) {
+            worldToolsSimplified.changeScoreInObj(entityWorldData, 'ha:stack_debuffs', 'add', 1);
         } else {
-            mc.world.setDynamicProperty('ha:stack_debuffs', 1);
+            worldToolsSimplified.changeScoreInObj(entityWorldData, 'ha:stack_debuffs', 'set', 1);
         }
 
         for (const ply of plys) {
-            this.checkPendingDebuffs(ply);
+            this.checkPendingDebuffs(entityWorldData, ply);
         }
     }
 
     /**
      * Metodo principal que calcula los debuffs de un jugador en concreto para asignarle todos los pendientes que tenga respecto a estos mismos. De forma asincrona.
+     * @param {mc.Entity} entityWorldData La entidad global con los datos del mundo. 
      * @param {mc.Player} ply Jugador en concreto a analizar si tiene todos los debuffs pendientes. 
      * @returns {void}
      * @author HaJuegos - 18-05-2026
      * @private
      */
-    private checkPendingDebuffs(ply: mc.Player): void {
-        const totalDebuffsGlobal = mc.world.getDynamicProperty('ha:stack_debuffs') as number | undefined;
-        const totalDebuffsPly = (ply.getDynamicProperty('ha:stack_debuffs') as number | undefined) ?? 0;
-        const deathCounter = mc.world.getDynamicProperty('ha:death_counter') as number | undefined;
-        let isLinked = false;
+    private checkPendingDebuffs(entityWorldData: mc.Entity, ply: mc.Player): void {
+        const totalDebuffsGlobal = worldToolsSimplified.getScoreInObj(entityWorldData, 'ha:stack_debuffs');
+        const totalDebuffsPly = worldToolsSimplified.getScoreInObj(ply, 'ha:stack_debuffs');
 
-        this.loopTimersDebuff(ply);
-
-        if (!totalDebuffsGlobal || (totalDebuffsGlobal == totalDebuffsPly)) return;
-
-        if (deathCounter && !ply.hasTag('linkedDebuffSaved')) {
-            for (let i = 1; i <= deathCounter; i++) {
-                const propKey = `ha:player_death_data_${i}`;
-                const dataPlys = mc.world.getDynamicProperty(propKey) as string | undefined;
-
-                if (dataPlys) {
-                    const [name, id, linked] = dataPlys.split(':');
-
-                    if (id == ply.id) {
-                        if (linked == 'linked') {
-                            isLinked = true;
-                            break;
-                        }
-                    }
-                }
-            }
-        }
-
-        if (isLinked) return;
+        if (totalDebuffsGlobal == 0 || (totalDebuffsGlobal == totalDebuffsPly)) {
+            this.loopTimersDebuff(ply);
+            return;
+        };
 
         const totalNewDebuffs = totalDebuffsGlobal - totalDebuffsPly;
 
-        ply.setDynamicProperty('ha:stack_debuffs', totalDebuffsGlobal);
+        worldToolsSimplified.changeScoreInObj(ply, 'ha:stack_debuffs', 'set', totalDebuffsGlobal);
 
         for (let i = 1; i <= totalNewDebuffs; i++) {
             const randomDebuffI = Math.floor(Math.random() * this.possibleDebuffs.length);
             const randomDebuff = this.possibleDebuffs[randomDebuffI];
-            const finalCombo = worldToolsSimplified.changePlyScoreInObj(ply, randomDebuff.comboScoreboard, 'add', 1) as number;
+            const finalCombo = worldToolsSimplified.changeScoreInObj(ply, randomDebuff.comboScoreboard, 'add', 1) as number;
 
-            worldToolsSimplified.changePlyScoreInObj(ply, randomDebuff.timerScoreboard, 'add', 4);
+            worldToolsSimplified.changeScoreInObj(ply, randomDebuff.timerScoreboard, 'add', 10);
 
             const baseDelay = worldToolsSimplified.convertSecondsToTicks(1);
             const constantDelay = i == 1 ? baseDelay : baseDelay + worldToolsSimplified.convertSecondsToTicks(i - 1);
@@ -746,6 +763,8 @@ class AbbysDebuffsEvents extends TL15DBaseManager {
                 }, worldToolsSimplified.convertSecondsToTicks(1));
             }, constantDelay);
         }
+
+        this.loopTimersDebuff(ply);
     }
 
     /**
@@ -885,92 +904,88 @@ class AbbysDebuffsEvents extends TL15DBaseManager {
      * @author HaJuegos - 20-05-2026
      * @private
      */
-    private hungerSystem(ply: mc.Player): void {
-        const hungerTag = ply.getTags().find(tag => tag.startsWith('hungerDebuff'));
+    private hungerSystem(ply: mc.Player, tags: string[]): void {
+        const hungerTag = tags.find(tag => tag.startsWith('hungerDebuff'));
 
-        if (hungerTag) {
-            const combo = parseInt(hungerTag.replace('hungerDebuff', ''));
+        if (!hungerTag) return;
 
-            /**
-             * Funcion auxiliar que controla los eventos para que un jugador consuma sus items de su inventario aleatoriamente.
-             * @param {mc.Player} ply Jugador en concreto.
-             * @param {number} [totalItems] (Opcional, por defecto: 1) Si se establece, sera el total de items a conciderar.
-             * @param {number} [totalToConsume] (Opcional, por defecto: 1) Si se establece, sera el total de items a eliminar de un stack.
-             * @returns {void}
-             * @author HaJuegos - 20-05-2026
-             */
-            const eatRandomItem = (ply: mc.Player, totalItems: number = 1, totalToConsume: number = 1): void => {
-                const inv = ply.getComponent(mc.EntityComponentTypes.Inventory)?.container as mc.Container;
-                const vanillaFoods = [
-                    'apple', 'potato', 'beetroot', 'bread', 'carrot', 'chorus',
-                    'chicken', 'cod', 'mutton', 'porkchop', 'rabbit', 'salmon',
-                    'cookie', 'kelp', 'berries', 'honey', 'pufferfish', 'pumpkin_pie',
-                    'rotten_flesh', 'spider_eye', 'beef', 'melon', 'stew', 'soup'
-                ];
+        const combo = parseInt(hungerTag.replace('hungerDebuff', ''));
 
-                let selectSlots = [];
+        /**
+         * Funcion auxiliar que controla los eventos para que un jugador consuma sus items de su inventario aleatoriamente.
+         * @param {mc.Player} ply Jugador en concreto.
+         * @param {number} [totalItems] (Opcional, por defecto: 1) Si se establece, sera el total de items a conciderar.
+         * @param {number} [totalToConsume] (Opcional, por defecto: 1) Si se establece, sera el total de items a eliminar de un stack.
+         * @returns {void}
+         * @author HaJuegos - 20-05-2026
+         */
+        const eatRandomItem = (ply: mc.Player, totalItems: number = 1, totalToConsume: number = 1): void => {
+            const inv = ply.getComponent(mc.EntityComponentTypes.Inventory)?.container;
 
-                for (let i = 0; i < inv.size; i++) {
-                    const item = inv.getItem(i);
+            if (!inv) return;
 
-                    if (item) {
-                        const isCustomFood = item.hasComponent(mc.ItemComponentTypes.Food);
-                        const isVanillaFood = vanillaFoods.some(food => item.typeId.includes(food));
+            let selectSlots: number[] = [];
 
-                        if (isCustomFood || isVanillaFood) {
-                            selectSlots.push(i);
-                        }
+            for (let i = 0; i < inv.size; i++) {
+                const item = inv.getItem(i);
+
+                if (item) {
+                    const isCustomFood = item.hasComponent(mc.ItemComponentTypes.Food);
+                    const isVanillaFood = this.vanillaFoods.some(food => item.typeId.includes(food));
+
+                    if (isCustomFood || isVanillaFood) {
+                        selectSlots.push(i);
                     }
                 }
-
-                if (selectSlots.length == 0) return;
-
-                selectSlots.sort(() => Math.random() - 0.5);
-
-                const finalSlots = selectSlots.slice(0, totalItems);
-
-                for (const slot of finalSlots) {
-                    const item = inv.getItem(slot);
-
-                    if (!item) continue;
-
-                    customEventsManager.manualDamageItem({
-                        ply: ply,
-                        item: item,
-                        specificInv: 'inv',
-                        specificSlot: slot,
-                        specificAmount: totalToConsume
-                    });
-                }
-
-                ply.playSound('random.eat');
-                ply.playSound('random.burp');
-            };
-
-            switch (combo) {
-                case 1: {
-                    ply.addEffect('hunger', worldToolsSimplified.convertSecondsToTicks(60));
-                } break;
-                case 2: {
-                    ply.addEffect('hunger', worldToolsSimplified.convertSecondsToTicks(300));
-                } break;
-                case 3: {
-                    eatRandomItem(ply);
-                    ply.addEffect('hunger', worldToolsSimplified.convertSecondsToTicks(600), { amplifier: 1 });
-                } break;
-                case 4: {
-                    eatRandomItem(ply, 2);
-                    ply.addEffect('hunger', worldToolsSimplified.convertSecondsToTicks(900), { amplifier: 1 });
-                } break;
-                case 5: {
-                    eatRandomItem(ply, 3, 2);
-                    ply.addEffect('hunger', worldToolsSimplified.convertSecondsToTicks(1200), { amplifier: 2 });
-                } break;
-                case 6: {
-                    eatRandomItem(ply, 4, 3);
-                    ply.addEffect('hunger', worldToolsSimplified.convertSecondsToTicks(1500), { amplifier: 3 });
-                } break;
             }
+
+            if (selectSlots.length == 0) return;
+
+            selectSlots.sort(() => Math.random() - 0.5);
+
+            const finalSlots = selectSlots.slice(0, totalItems);
+
+            for (const slot of finalSlots) {
+                const item = inv.getItem(slot);
+
+                if (!item) continue;
+
+                customEventsManager.manualDamageItem({
+                    ply: ply,
+                    item: item,
+                    specificInv: 'inv',
+                    specificSlot: slot,
+                    specificAmount: totalToConsume
+                });
+            }
+
+            ply.playSound('random.eat');
+            ply.playSound('random.burp');
+        };
+
+        switch (combo) {
+            case 1: {
+                ply.addEffect('hunger', worldToolsSimplified.convertSecondsToTicks(60));
+            } break;
+            case 2: {
+                ply.addEffect('hunger', worldToolsSimplified.convertSecondsToTicks(300));
+            } break;
+            case 3: {
+                eatRandomItem(ply);
+                ply.addEffect('hunger', worldToolsSimplified.convertSecondsToTicks(600), { amplifier: 1 });
+            } break;
+            case 4: {
+                eatRandomItem(ply, 2);
+                ply.addEffect('hunger', worldToolsSimplified.convertSecondsToTicks(900), { amplifier: 1 });
+            } break;
+            case 5: {
+                eatRandomItem(ply, 3, 2);
+                ply.addEffect('hunger', worldToolsSimplified.convertSecondsToTicks(1200), { amplifier: 2 });
+            } break;
+            case 6: {
+                eatRandomItem(ply, 4, 3);
+                ply.addEffect('hunger', worldToolsSimplified.convertSecondsToTicks(1500), { amplifier: 3 });
+            } break;
         }
     }
 
@@ -981,17 +996,15 @@ class AbbysDebuffsEvents extends TL15DBaseManager {
      * @author HaJuegos - 20-05-2026
      * @private
      */
-    private shadowsSystem(ply: mc.Player): void {
-        const shedowsTag = ply.getTags().find(tag => tag.startsWith('shedowsDebuff'));
+    private shadowsSystem(ply: mc.Player, tags: string[]): void {
+        const shedowsTag = tags.find(tag => tag.startsWith('shedowsDebuff'));
 
         if (!shedowsTag) return;
 
         const combo = parseInt(shedowsTag.replace('shedowsDebuff', ''));
         const effectAmp = Math.max(0, combo - 1);
         const effectDuration = worldToolsSimplified.convertSecondsToTicks(1);
-        const dime = ply.dimension;
-        const coords = ply.location;
-        const nearEntities = dime.getEntities({ location: coords, maxDistance: 15, excludeFamilies: ['player'] });
+        const nearEntities = ply.dimension.getEntities({ location: ply.location, maxDistance: 15, excludeFamilies: ['player'] });
 
         for (const entity of nearEntities) {
             if (!entity.isValid) continue;
@@ -1013,7 +1026,7 @@ class AbbysDebuffsEvents extends TL15DBaseManager {
      * @author HaJuegos - 20-05-2026
      * @private
      */
-    private furySystem(ply: mc.Player, onlyEffect: boolean = false): void {
+    private furySystem(ply: mc.Player, tags: string[], onlyEffect: boolean = false): void {
         if (this.globalFurySystem.has(ply.id)) return;
 
         this.globalFurySystem.add(ply.id);
@@ -1022,7 +1035,7 @@ class AbbysDebuffsEvents extends TL15DBaseManager {
             this.globalFurySystem.delete(ply.id);
         });
 
-        const furyTag = ply.getTags().find(tag => tag.startsWith('furyDebuff'));
+        const furyTag = tags.find(tag => tag.startsWith('furyDebuff'));
 
         if (!furyTag) return;
 
@@ -1170,19 +1183,16 @@ class AbbysDebuffsEvents extends TL15DBaseManager {
      * @author HaJuegos - 22-05-2026
      * @private
      */
-    private checkNetheriteArmor(ply: mc.Player): void {
-        const inv = ply.getComponent(mc.EntityComponentTypes.Inventory)?.container as mc.Container;
-        const armorInv = ply.getComponent(mc.EntityComponentTypes.Equippable) as mc.EntityEquippableComponent;
-        const furyTag = ply.getTags().find(tag => tag.startsWith('furyDebuff'));
+    private checkNetheriteArmor(ply: mc.Player, tags: string[]): void {
+        const furyTag = tags.find(tag => tag.startsWith('furyDebuff'));
 
         if (furyTag) return;
 
-        const netheriteItemsArmor = [
-            'minecraft:netherite_helmet',
-            'minecraft:netherite_chestplate',
-            'minecraft:netherite_leggings',
-            'minecraft:netherite_boots'
-        ];
+        const inv = ply.getComponent(mc.EntityComponentTypes.Inventory)?.container;
+        const armorInv = ply.getComponent(mc.EntityComponentTypes.Equippable);
+
+        if (!inv || !armorInv) return;
+
         const equipSlots = [mc.EquipmentSlot.Head, mc.EquipmentSlot.Chest, mc.EquipmentSlot.Legs, mc.EquipmentSlot.Feet];
 
         /**
@@ -1191,31 +1201,35 @@ class AbbysDebuffsEvents extends TL15DBaseManager {
          * @returns {(mc.ItemStack | undefined)} Devuelve el item con la irrompibilidad integrada en caso de que todo sea correcto.
          * @author HaJuegos - 22-05-2026
          */
-        const addUnbreak = (item: mc.ItemStack | undefined): mc.ItemStack | undefined => {
-            if (!item || !netheriteItemsArmor.includes(item.typeId)) return undefined;
+        const addUnbreak = (item: mc.ItemStack | undefined): boolean => {
+            if (!item) return false;
 
-            const durability = item.getComponent(mc.ItemComponentTypes.Durability);
+            if (item.typeId == 'minecraft:netherite_helmet' || item.typeId == 'minecraft:netherite_chestplate' || item.typeId == 'minecraft:netherite_leggings' || item.typeId == 'minecraft:netherite_boots') {
+                const durability = item.getComponent(mc.ItemComponentTypes.Durability);
 
-            if (!durability) return undefined;
+                if (durability && !durability.unbreakable) {
+                    durability.unbreakable = true;
 
-            durability.unbreakable = true;
+                    return true;
+                }
+            }
 
-            return item;
+            return false;
         };
 
         for (let i = 0; i < inv.size; i++) {
-            const newItem = addUnbreak(inv.getItem(i));
+            const item = inv.getItem(i);
 
-            if (newItem) {
-                inv.setItem(i, newItem);
+            if (addUnbreak(item)) {
+                inv.setItem(i, item);
             }
         }
 
         for (const slot of equipSlots) {
-            const newItem = addUnbreak(armorInv.getEquipment(slot));
+            const item = armorInv.getEquipment(slot);
 
-            if (newItem) {
-                armorInv.setEquipment(slot, newItem);
+            if (addUnbreak(item)) {
+                armorInv.setEquipment(slot, item);
             }
         }
     }

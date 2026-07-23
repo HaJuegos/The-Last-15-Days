@@ -1,7 +1,5 @@
 import * as mc from '@minecraft/server';
-import * as vanilla from '@minecraft/vanilla-data';
 
-import { TL15DBaseManager } from "../base";
 import { beforeEventsSimplified, worldToolsSimplified } from "simplified-mojang-api";
 
 /**
@@ -9,71 +7,54 @@ import { beforeEventsSimplified, worldToolsSimplified } from "simplified-mojang-
  * @extends {TL15DBaseManager}
  * @author HaJuegos - 23-03-2026
  */
-class ItemCustomComponentsManager extends TL15DBaseManager {
+class ItemCustomComponentsManager {
+    /**
+     * Lista de todos los componentes custom a añadir respecto a items.
+     * @type {ItemCustomCTemplate[]}
+     * @author HaJuegos - 09-07-2026
+     * @private
+     * @readonly
+     */
+    private readonly listOfComponents: ItemCustomCTemplate[] = [
+        // Iron Apple Events
+        {
+            idComponent: 'ha:iron_apple_events',
+            events: {
+                onConsume(args) {
+                    const entity = args.source;
+                    const effects: Record<string, number> = {
+                        'resistance': 2,
+                        'regeneration': 0,
+                        'absorption': 0,
+                    };
+
+                    for (const [effect, level] of Object.entries(effects)) {
+                        entity.addEffect(effect, worldToolsSimplified.convertSecondsToTicks(30), { amplifier: level, showParticles: true });
+                    }
+                }
+            }
+        }
+    ];
+
     /**
      * Eventos principales de la clase cuando es inicializada o llamada.
      * @constructor
      */
     constructor () {
-        super();
-
-        this.surpriseBundle();
-        this.ironAppleEvents();
+        this.registerComponents();
     }
 
     /**
-    * Metodo principal que controla los eventos principales de los componentes custom del surpriseBundle.
-    * @author HaJuegos - 23-03-2026
-    * @private
-    */
-    private surpriseBundle(): void {
-        const bundleComponent: mc.ItemCustomComponent = {
-            onUse: (args) => {
-                const sourcePly = args.source;
-                const item = args.itemStack;
-
-                if (item) {
-                    sourcePly.playSound(`armor.equip_generic`);
-                    sourcePly.runCommand(`structure load ha:books ~~1~`);
-
-                    worldToolsSimplified.setRun(() => {
-                        const bundle = new mc.ItemStack('minecraft:bundle');
-                        const inv = sourcePly.getComponent(mc.EntityComponentTypes.Inventory)?.container as mc.Container;
-                        const slot = sourcePly.selectedSlotIndex;
-
-                        inv.setItem(slot, undefined);
-                        inv.addItem(bundle);
-                    });
-                }
-            }
-        };
-
-        beforeEventsSimplified.createItemComponent('ha:surprise_bundle_events', bundleComponent);
-    };
-
-    /**
-     * Metodo principal que controla los eventos principales de los componentes custom de la iron apple.
-     * @author HaJuegos - 23-03-2026
+     * Metodo principal que registra los componentes custom de items especificos guardados en la variable.
+     * @returns {void}
+     * @author HaJuegos - 08-07-2026
      * @private
      */
-    private ironAppleEvents(): void {
-        const ironComponents: mc.ItemCustomComponent = {
-            onConsume(args) {
-                const entity = args.source;
-                const effects: Record<string, number> = {
-                    'resistance': 2,
-                    'regeneration': 0,
-                    'absorption': 0,
-                };
-
-                for (const [effect, level] of Object.entries(effects)) {
-                    entity.addEffect(effect, worldToolsSimplified.convertSecondsToTicks(30), { amplifier: level, showParticles: true });
-                }
-            }
-        };
-
-        beforeEventsSimplified.createItemComponent('ha:iron_apple_events', ironComponents);
-    };
+    private registerComponents(): void {
+        for (const component of this.listOfComponents) {
+            beforeEventsSimplified.createItemComponent(component.idComponent, component.events);
+        }
+    }
 }
 
 new ItemCustomComponentsManager();

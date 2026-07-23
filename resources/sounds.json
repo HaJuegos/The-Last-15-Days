@@ -203,6 +203,15 @@
 						}
 					}
 				}
+			},
+			"ha:nurse_npc": {
+				"events": {
+					"ambient": "mob.nurse_npc.idle",
+					"hurt": "mob.nurse_npc.hurt",
+					"death": "mob.nurse_npc.hurt"
+				},
+				"pitch": [ 0.75, 1 ],
+				"volume": 1.0
 			}
 		}
 	}

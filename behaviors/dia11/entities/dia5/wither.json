@@ -44,23 +44,11 @@
                     "random_time_choices": [
                         {
                             "weight": 1,
-                            "value": 5
-                        },
-                        {
-                            "weight": 1,
                             "value": 15
                         },
                         {
                             "weight": 1,
-                            "value": 17
-                        },
-                        {
-                            "weight": 1,
                             "value": 20
-                        },
-                        {
-                            "weight": 1,
-                            "value": 10
                         }
                     ],
                     "randomInterval": true,
@@ -87,7 +75,7 @@
                     "value": 1
                 },
                 "minecraft:timer": {
-                    "time": [ 15, 15 ],
+                    "time": [ 5, 5 ],
                     "looping": false,
                     "time_down_event": {
                         "event": "ha:start_cooldown",
@@ -100,7 +88,7 @@
                     "value": 3
                 },
                 "minecraft:timer": {
-                    "time": [ 15, 15 ],
+                    "time": [ 9, 9 ],
                     "looping": false,
                     "time_down_event": {
                         "event": "ha:start_cooldown",
@@ -113,7 +101,7 @@
                     "value": 4
                 },
                 "minecraft:timer": {
-                    "time": [ 15, 15 ],
+                    "time": [ 9, 9 ],
                     "looping": false,
                     "time_down_event": {
                         "event": "ha:start_cooldown",
@@ -126,7 +114,7 @@
                     "value": 2
                 },
                 "minecraft:timer": {
-                    "time": [ 15, 25 ],
+                    "time": [ 9, 15 ],
                     "looping": false,
                     "time_down_event": {
                         "event": "ha:start_cooldown",

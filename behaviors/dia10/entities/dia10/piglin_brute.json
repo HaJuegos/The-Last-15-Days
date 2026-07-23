@@ -10,6 +10,13 @@
             "is_experimental": false,
             "is_summonable": true,
             "is_spawnable": true,
+            "properties": {
+                "ha:is_new_brute": {
+                    "client_sync": true,
+                    "default": false,
+                    "type": "bool"
+                }
+            },
             "scripts": {
                 "animate": [
                     "on_fire",
@@ -24,16 +31,39 @@
             }
         },
         "component_groups": {
+            "ha:become_new": {
+                "minecraft:spawn_entity": {
+                    "entities": [
+                        {
+                            "min_wait_time": 0.1,
+                            "max_wait_time": 0.1,
+                            "num_to_spawn": 1,
+                            "single_use": true,
+                            "should_leash": false,
+                            "spawn_entity": "minecraft:piglin_brute",
+                            "spawn_event": "minecraft:entity_spawned"
+                        }
+                    ]
+                },
+                "minecraft:instant_despawn": { }
+            },
             "ha:spawn_sensors": {
-                "minecraft:target_nearby_sensor": {
-                    "outside_range": 1,
-                    "on_outside_range": {
-                        "event": "ha:start_pearl_mode",
-                        "target": "self"
-                    }
+                "minecraft:on_target_acquired": {
+                    "event": "ha:start_pearl_mode",
+                    "target": "self"
                 },
                 "minecraft:environment_sensor": {
                     "triggers": [
+                        {
+                            "filters": {
+                                "test": "bool_property",
+                                "subject": "self",
+                                "domain": "ha:is_new_brute",
+                                "value": false
+                            },
+                            "target": "self",
+                            "event": "ha:remove_old_version"
+                        },
                         {
                             "filters": {
                                 "all_of": [
@@ -74,10 +104,15 @@
                                     },
                                     {
                                         "test": "random_chance",
-                                        "value": 100
+                                        "value": 150
                                     },
                                     {
                                         "test": "is_moving",
+                                        "subject": "target",
+                                        "value": false
+                                    },
+                                    {
+                                        "test": "in_lava",
                                         "subject": "self",
                                         "value": false
                                     },
@@ -154,6 +189,12 @@
                                         "subject": "other",
                                         "operator": "!=",
                                         "value": "piglin"
+                                    },
+                                    {
+                                        "test": "is_family",
+                                        "subject": "other",
+                                        "operator": "!=",
+                                        "value": "sulfur_cube"
                                     }
                                 ]
                             },
@@ -193,73 +234,353 @@
 
             "ha:melee_sensors": {
                 "minecraft:on_target_escape": {
-                    "event": "ha:neutral_sensors",
-                    "target": "self"
+                    "target": "self",
+                    "event": "ha:neutral_sensors"
                 },
-                "minecraft:target_nearby_sensor": {
-                    "outside_range": 7,
-                    "on_outside_range": {
-                        "event": "ha:start_ranged_mode",
-                        "target": "self"
-                    }
+                "minecraft:environment_sensor": {
+                    "triggers": [
+                        {
+                            "filters": {
+                                "test": "bool_property",
+                                "subject": "self",
+                                "domain": "ha:is_new_brute",
+                                "value": false
+                            },
+                            "target": "self",
+                            "event": "ha:remove_old_version"
+                        },
+                        {
+                            "filters": {
+                                "test": "target_distance",
+                                "subject": "self",
+                                "operator": ">=",
+                                "value": 14
+                            },
+                            "target": "self",
+                            "event": "ha:start_ranged_mode"
+                        },
+                        {
+                            "filters": {
+                                "all_of": [
+                                    {
+                                        "test": "has_target",
+                                        "subject": "self",
+                                        "value": true
+                                    },
+                                    {
+                                        "test": "is_underground",
+                                        "subject": "target",
+                                        "value": true
+                                    },
+                                    {
+                                        "test": "random_chance",
+                                        "value": 150
+                                    },
+                                    {
+                                        "test": "is_moving",
+                                        "subject": "target",
+                                        "value": false
+                                    },
+                                    {
+                                        "test": "in_lava",
+                                        "subject": "self",
+                                        "value": false
+                                    },
+                                    {
+                                        "test": "has_tag",
+                                        "subject": "self",
+                                        "operator": "!=",
+                                        "value": "mining_mode"
+                                    }
+                                ]
+                            },
+                            "target": "self",
+                            "event": "ha:start_mining"
+                        }
+                    ]
                 }
             },
             "ha:mace_sensors": {
                 "minecraft:on_target_escape": {
-                    "event": "ha:neutral_sensors",
-                    "target": "self"
+                    "target": "self",
+                    "event": "ha:neutral_sensors"
                 },
-                "minecraft:target_nearby_sensor": {
-                    "outside_range": 18,
-                    "on_outside_range": {
-                        "event": "ha:start_ranged_mode",
-                        "target": "self"
-                    }
+                "minecraft:environment_sensor": {
+                    "triggers": [
+                        {
+                            "filters": {
+                                "test": "bool_property",
+                                "subject": "self",
+                                "domain": "ha:is_new_brute",
+                                "value": false
+                            },
+                            "target": "self",
+                            "event": "ha:remove_old_version"
+                        },
+                        {
+                            "filters": {
+                                "test": "target_distance",
+                                "subject": "self",
+                                "operator": ">=",
+                                "value": 17
+                            },
+                            "target": "self",
+                            "event": "ha:start_ranged_mode"
+                        },
+                        {
+                            "filters": {
+                                "all_of": [
+                                    {
+                                        "test": "has_target",
+                                        "subject": "self",
+                                        "value": true
+                                    },
+                                    {
+                                        "test": "is_underground",
+                                        "subject": "target",
+                                        "value": true
+                                    },
+                                    {
+                                        "test": "random_chance",
+                                        "value": 150
+                                    },
+                                    {
+                                        "test": "is_moving",
+                                        "subject": "target",
+                                        "value": false
+                                    },
+                                    {
+                                        "test": "in_lava",
+                                        "subject": "self",
+                                        "value": false
+                                    },
+                                    {
+                                        "test": "has_tag",
+                                        "subject": "self",
+                                        "operator": "!=",
+                                        "value": "mining_mode"
+                                    }
+                                ]
+                            },
+                            "target": "self",
+                            "event": "ha:start_mining"
+                        }
+                    ]
                 }
             },
             "ha:spear_sensors": {
                 "minecraft:on_target_escape": {
-                    "event": "ha:neutral_sensors",
-                    "target": "self"
+                    "target": "self",
+                    "event": "ha:neutral_sensors"
                 },
-                "minecraft:target_nearby_sensor": {
-                    "outside_range": 18,
-                    "on_outside_range": {
-                        "event": "ha:start_ranged_mode",
-                        "target": "self"
-                    }
+                "minecraft:environment_sensor": {
+                    "triggers": [
+                        {
+                            "filters": {
+                                "test": "bool_property",
+                                "subject": "self",
+                                "domain": "ha:is_new_brute",
+                                "value": false
+                            },
+                            "target": "self",
+                            "event": "ha:remove_old_version"
+                        },
+                        {
+                            "filters": {
+                                "test": "target_distance",
+                                "subject": "self",
+                                "operator": ">=",
+                                "value": 14
+                            },
+                            "target": "self",
+                            "event": "ha:start_ranged_mode"
+                        },
+                        {
+                            "filters": {
+                                "all_of": [
+                                    {
+                                        "test": "has_target",
+                                        "subject": "self",
+                                        "value": true
+                                    },
+                                    {
+                                        "test": "is_underground",
+                                        "subject": "target",
+                                        "value": true
+                                    },
+                                    {
+                                        "test": "random_chance",
+                                        "value": 150
+                                    },
+                                    {
+                                        "test": "is_moving",
+                                        "subject": "target",
+                                        "value": false
+                                    },
+                                    {
+                                        "test": "in_lava",
+                                        "subject": "self",
+                                        "value": false
+                                    },
+                                    {
+                                        "test": "has_tag",
+                                        "subject": "self",
+                                        "operator": "!=",
+                                        "value": "mining_mode"
+                                    }
+                                ]
+                            },
+                            "target": "self",
+                            "event": "ha:start_mining"
+                        }
+                    ]
                 }
             },
 
             "ha:ranged_sensors": {
                 "minecraft:on_target_escape": {
-                    "event": "ha:neutral_sensors",
-                    "target": "self"
+                    "target": "self",
+                    "event": "ha:neutral_sensors"
                 },
-                "minecraft:target_nearby_sensor": {
-                    "inside_range": 5,
-                    "outside_range": 10,
-                    "on_inside_range": {
-                        "event": "ha:start_melee_mode",
-                        "target": "self"
-                    },
-                    "on_outside_range": {
-                        "event": "ha:start_pearl_mode",
-                        "target": "self"
-                    }
+                "minecraft:environment_sensor": {
+                    "triggers": [
+                        {
+                            "filters": {
+                                "test": "bool_property",
+                                "subject": "self",
+                                "domain": "ha:is_new_brute",
+                                "value": false
+                            },
+                            "target": "self",
+                            "event": "ha:remove_old_version"
+                        },
+                        {
+                            "filters": {
+                                "test": "target_distance",
+                                "subject": "self",
+                                "operator": ">=",
+                                "value": 22
+                            },
+                            "target": "self",
+                            "event": "ha:start_pearl_mode"
+                        },
+                        {
+                            "filters": {
+                                "test": "target_distance",
+                                "subject": "self",
+                                "operator": "<=",
+                                "value": 10
+                            },
+                            "target": "self",
+                            "event": "ha:start_melee_mode"
+                        },
+                        {
+                            "filters": {
+                                "all_of": [
+                                    {
+                                        "test": "has_target",
+                                        "subject": "self",
+                                        "value": true
+                                    },
+                                    {
+                                        "test": "is_underground",
+                                        "subject": "target",
+                                        "value": true
+                                    },
+                                    {
+                                        "test": "random_chance",
+                                        "value": 150
+                                    },
+                                    {
+                                        "test": "is_moving",
+                                        "subject": "target",
+                                        "value": false
+                                    },
+                                    {
+                                        "test": "in_lava",
+                                        "subject": "self",
+                                        "value": false
+                                    },
+                                    {
+                                        "test": "has_tag",
+                                        "subject": "self",
+                                        "operator": "!=",
+                                        "value": "mining_mode"
+                                    }
+                                ]
+                            },
+                            "target": "self",
+                            "event": "ha:start_mining"
+                        }
+                    ]
                 }
             },
             "ha:pearl_sensors": {
                 "minecraft:on_target_escape": {
-                    "event": "ha:neutral_sensors",
-                    "target": "self"
+                    "target": "self",
+                    "event": "ha:neutral_sensors"
                 },
-                "minecraft:target_nearby_sensor": {
-                    "inside_range": 5,
-                    "on_inside_range": {
-                        "event": "ha:start_melee_mode",
-                        "target": "self"
-                    }
+                "minecraft:environment_sensor": {
+                    "triggers": [
+                        {
+                            "filters": {
+                                "test": "bool_property",
+                                "subject": "self",
+                                "domain": "ha:is_new_brute",
+                                "value": false
+                            },
+                            "target": "self",
+                            "event": "ha:remove_old_version"
+                        },
+                        {
+                            "filters": {
+                                "test": "target_distance",
+                                "subject": "self",
+                                "operator": "<=",
+                                "value": 11
+                            },
+                            "target": "self",
+                            "event": "ha:start_melee_mode"
+                        },
+                        {
+                            "filters": {
+                                "all_of": [
+                                    {
+                                        "test": "has_target",
+                                        "subject": "self",
+                                        "value": true
+                                    },
+                                    {
+                                        "test": "is_underground",
+                                        "subject": "target",
+                                        "value": true
+                                    },
+                                    {
+                                        "test": "random_chance",
+                                        "value": 150
+                                    },
+                                    {
+                                        "test": "is_moving",
+                                        "subject": "target",
+                                        "value": false
+                                    },
+                                    {
+                                        "test": "in_lava",
+                                        "subject": "self",
+                                        "value": false
+                                    },
+                                    {
+                                        "test": "has_tag",
+                                        "subject": "self",
+                                        "operator": "!=",
+                                        "value": "mining_mode"
+                                    }
+                                ]
+                            },
+                            "target": "self",
+                            "event": "ha:start_mining"
+                        }
+                    ]
                 }
             },
 
@@ -301,38 +622,6 @@
                         {
                             "slot": "slot.armor.feet",
                             "drop_chance": -1
-                        }
-                    ]
-                },
-                "minecraft:environment_sensor": {
-                    "triggers": [
-                        {
-                            "filters": {
-                                "all_of": [
-                                    {
-                                        "test": "has_target",
-                                        "subject": "self",
-                                        "value": true
-                                    },
-                                    {
-                                        "test": "is_underground",
-                                        "subject": "target",
-                                        "value": true
-                                    },
-                                    {
-                                        "test": "random_chance",
-                                        "value": 1000
-                                    },
-                                    {
-                                        "test": "has_tag",
-                                        "subject": "self",
-                                        "operator": "!=",
-                                        "value": "mining_mode"
-                                    }
-                                ]
-                            },
-                            "target": "self",
-                            "event": "ha:start_mining"
                         }
                     ]
                 }
@@ -395,38 +684,6 @@
                             "drop_chance": -1
                         }
                     ]
-                },
-                "minecraft:environment_sensor": {
-                    "triggers": [
-                        {
-                            "filters": {
-                                "all_of": [
-                                    {
-                                        "test": "has_target",
-                                        "subject": "self",
-                                        "value": true
-                                    },
-                                    {
-                                        "test": "is_underground",
-                                        "subject": "target",
-                                        "value": true
-                                    },
-                                    {
-                                        "test": "random_chance",
-                                        "value": 1000
-                                    },
-                                    {
-                                        "test": "has_tag",
-                                        "subject": "self",
-                                        "operator": "!=",
-                                        "value": "mining_mode"
-                                    }
-                                ]
-                            },
-                            "target": "self",
-                            "event": "ha:start_mining"
-                        }
-                    ]
                 }
             },
             "ha:mace_charged_loop": {
@@ -483,38 +740,6 @@
                             "drop_chance": -1
                         }
                     ]
-                },
-                "minecraft:environment_sensor": {
-                    "triggers": [
-                        {
-                            "filters": {
-                                "all_of": [
-                                    {
-                                        "test": "has_target",
-                                        "subject": "self",
-                                        "value": true
-                                    },
-                                    {
-                                        "test": "is_underground",
-                                        "subject": "target",
-                                        "value": true
-                                    },
-                                    {
-                                        "test": "random_chance",
-                                        "value": 1000
-                                    },
-                                    {
-                                        "test": "has_tag",
-                                        "subject": "self",
-                                        "operator": "!=",
-                                        "value": "mining_mode"
-                                    }
-                                ]
-                            },
-                            "target": "self",
-                            "event": "ha:start_mining"
-                        }
-                    ]
                 }
             },
 
@@ -534,6 +759,8 @@
                 },
                 "minecraft:shooter": {
                     "magic": true,
+                    "def": "minecraft:arrow<ha:spawn_brute_arrow>",
+                    "aux_val": 25,
                     "projectiles": [
                         {
                             "filters": {
@@ -544,6 +771,16 @@
                             },
                             "def": "minecraft:arrow<ha:spawn_brute_arrow>",
                             "aux_val": 19
+                        },
+                        {
+                            "filters": {
+                                "test": "has_mob_effect",
+                                "subject": "target",
+                                "operator": "!=",
+                                "value": "slow_falling"
+                            },
+                            "def": "minecraft:arrow<ha:spawn_brute_arrow>",
+                            "aux_val": 42
                         },
                         {
                             "filters": {
@@ -627,38 +864,6 @@
                         "event": "ha:start_pearl_mode",
                         "target": "self"
                     }
-                },
-                "minecraft:environment_sensor": {
-                    "triggers": [
-                        {
-                            "filters": {
-                                "all_of": [
-                                    {
-                                        "test": "has_target",
-                                        "subject": "self",
-                                        "value": true
-                                    },
-                                    {
-                                        "test": "is_underground",
-                                        "subject": "target",
-                                        "value": true
-                                    },
-                                    {
-                                        "test": "random_chance",
-                                        "value": 1000
-                                    },
-                                    {
-                                        "test": "has_tag",
-                                        "subject": "self",
-                                        "operator": "!=",
-                                        "value": "mining_mode"
-                                    }
-                                ]
-                            },
-                            "target": "self",
-                            "event": "ha:start_mining"
-                        }
-                    ]
                 }
             },
             "ha:pearl_mode": {
@@ -704,38 +909,6 @@
                         {
                             "slot": "slot.armor.feet",
                             "drop_chance": -1
-                        }
-                    ]
-                },
-                "minecraft:environment_sensor": {
-                    "triggers": [
-                        {
-                            "filters": {
-                                "all_of": [
-                                    {
-                                        "test": "has_target",
-                                        "subject": "self",
-                                        "value": true
-                                    },
-                                    {
-                                        "test": "is_underground",
-                                        "subject": "target",
-                                        "value": true
-                                    },
-                                    {
-                                        "test": "random_chance",
-                                        "value": 1000
-                                    },
-                                    {
-                                        "test": "has_tag",
-                                        "subject": "self",
-                                        "operator": "!=",
-                                        "value": "mining_mode"
-                                    }
-                                ]
-                            },
-                            "target": "self",
-                            "event": "ha:start_mining"
                         }
                     ]
                 }
@@ -874,21 +1047,10 @@
             },
 
             "ha:pickaxe_mode": {
-                "minecraft:on_target_escape": {
-                    "event": "ha:neutral_sensors",
-                    "target": "self"
-                },
                 "minecraft:timer": {
                     "time": [ 12, 12 ],
                     "looping": false,
                     "time_down_event": {
-                        "event": "ha:neutral_sensors",
-                        "target": "self"
-                    }
-                },
-                "minecraft:target_nearby_sensor": {
-                    "inside_range": 10,
-                    "on_inside_range": {
                         "event": "ha:neutral_sensors",
                         "target": "self"
                     }
@@ -901,6 +1063,30 @@
                 },
                 "minecraft:variant": {
                     "value": 1
+                },
+                "minecraft:environment_sensor": {
+                    "triggers": [
+                        {
+                            "filters": {
+                                "test": "bool_property",
+                                "subject": "self",
+                                "domain": "ha:is_new_brute",
+                                "value": false
+                            },
+                            "target": "self",
+                            "event": "ha:remove_old_version"
+                        },
+                        {
+                            "filters": {
+                                "test": "target_distance",
+                                "subject": "self",
+                                "operator": "<=",
+                                "value": 3
+                            },
+                            "target": "self",
+                            "event": "ha:start_melee_mode"
+                        }
+                    ]
                 },
                 "minecraft:equipment": {
                     "table": "loot_tables/entities/custom/brute_gears/pickaxe_gear.json",
@@ -934,7 +1120,7 @@
                 "minecraft:behavior.nearest_prioritized_attackable_target": {
                     "priority": 3,
                     "must_see": false,
-                    "reselect_targets": false,
+                    "reselect_targets": true,
                     "entity_types": [
                         {
                             "priority": 0,
@@ -990,6 +1176,12 @@
                                         "subject": "other",
                                         "operator": "!=",
                                         "value": "piglin"
+                                    },
+                                    {
+                                        "test": "is_family",
+                                        "subject": "other",
+                                        "operator": "!=",
+                                        "value": "sulfur_cube"
                                     }
                                 ]
                             },
@@ -2340,16 +2532,30 @@
 
             "ha:normal_damage": {
                 "minecraft:attack": {
-                    "damage": 10
+                    "damage": 25
                 }
             },
             "ha:critic_damage": {
                 "minecraft:attack": {
-                    "damage": 16
+                    "damage": 30
                 }
             }
         },
         "components": {
+            "minecraft:environment_sensor": {
+                "triggers": [
+                    {
+                        "filters": {
+                            "test": "bool_property",
+                            "subject": "self",
+                            "domain": "ha:is_new_brute",
+                            "value": false
+                        },
+                        "target": "self",
+                        "event": "ha:remove_old_version"
+                    }
+                ]
+            },
             "minecraft:damage_sensor": {
                 "triggers": [
                     {
@@ -2661,7 +2867,7 @@
                 }
             },
             "minecraft:attack": {
-                "damage": 5
+                "damage": 25
             },
             "minecraft:equipment": {
                 "table": "loot_tables/entities/custom/brute_gears/armor_gear.json",
@@ -2694,7 +2900,6 @@
             },
             "minecraft:behavior.hurt_by_target": {
                 "priority": 2,
-                "alert_same_type": true,
                 "hurt_owner": true,
                 "entity_types": {
                     "filters": {
@@ -2769,6 +2974,12 @@
                                     "subject": "other",
                                     "operator": "!=",
                                     "value": "piglin"
+                                },
+                                {
+                                    "test": "is_family",
+                                    "subject": "other",
+                                    "operator": "!=",
+                                    "value": "sulfur_cube"
                                 }
                             ]
                         },
@@ -2793,20 +3004,13 @@
             },
             "minecraft:jump.static": { },
             "minecraft:movement.basic": { },
-            "minecraft:navigation.walk": {
-                "avoid_water": false,
-                "can_swim": true,
+            "minecraft:navigation.climb": {
                 "can_path_over_water": true,
-                "can_walk_in_lava": true,
-                "can_path_over_lava": true,
-                "is_amphibious": true,
-                "can_break_doors": true,
                 "can_open_doors": true,
-                "can_open_iron_doors": true,
-                "can_pass_doors": true,
-                "can_sink": false
+                "can_path_over_lava": true,
+                "can_sink": true,
+                "can_walk_in_lava": true
             },
-            "minecraft:floats_in_liquid": { },
             "minecraft:physics": { },
             "minecraft:health": {
                 "value": 350,
@@ -2815,28 +3019,17 @@
             "minecraft:follow_range": {
                 "value": 100
             },
-            "minecraft:hurt_on_condition": {
-                "damage_conditions": [
-                    {
-                        "cause": "lava",
-                        "damage_per_tick": 4,
-                        "filters": {
-                            "operator": "==",
-                            "test": "in_lava",
-                            "subject": "self",
-                            "value": true
-                        }
-                    }
-                ]
-            },
-            "minecraft:behavior.float": {
-                "priority": 3
+            "minecraft:behavior.rise_to_liquid_level": {
+                "priority": 3,
+                "liquid_y_offset": 0.01,
+                "rise_delta": 0.1,
+                "sink_delta": 0.1
             },
             "minecraft:underwater_movement": {
-                "value": 0.02
+                "value": 0.2
             },
             "minecraft:lava_movement": {
-                "value": 0.02
+                "value": 0.2
             },
             "minecraft:can_climb": { },
             "minecraft:game_event_movement_tracking": {
@@ -2970,13 +3163,16 @@
                                 "weight": 10,
                                 "queue_command": {
                                     "command": [
-                                        "replaceitem entity @s slot.weapon.offhand 0 totem"
+                                        "replaceitem entity @s slot.weapon.offhand 0 totem_of_undying"
                                     ]
                                 }
                             }
                         ]
                     },
                     {
+                        "set_property": {
+                            "ha:is_new_brute": true
+                        },
                         "add": {
                             "component_groups": [
                                 "ha:spawn_sensors",
@@ -2985,6 +3181,13 @@
                         }
                     }
                 ]
+            },
+            "ha:remove_old_version": {
+                "add": {
+                    "component_groups": [
+                        "ha:become_new"
+                    ]
+                }
             },
             "ha:summon_charged": {
                 "queue_command": {
@@ -3147,49 +3350,45 @@
                 }
             },
             "ha:neutral_sensors": {
-                "sequence": [
-                    {
-                        "queue_command": {
-                            "command": [
-                                "tag @s remove mining_mode"
-                            ]
-                        },
-                        "remove": {
-                            "component_groups": [
-                                "ha:melee_sensors",
-                                "ha:mace_sensors",
-                                "ha:mace_charged_loop",
-                                "ha:spear_sensors",
-                                "ha:ranged_sensors",
-                                "ha:pearl_sensors",
+                "queue_command": {
+                    "command": [
+                        "tag @s remove mining_mode"
+                    ]
+                },
+                "remove": {
+                    "component_groups": [
+                        "ha:melee_sensors",
+                        "ha:mace_sensors",
+                        "ha:mace_charged_loop",
+                        "ha:spear_sensors",
+                        "ha:ranged_sensors",
+                        "ha:pearl_sensors",
 
-                                "ha:angry_mode",
+                        "ha:angry_mode",
 
-                                "ha:melee_mode",
-                                "ha:spear_mode",
-                                "ha:mace_mode",
+                        "ha:melee_mode",
+                        "ha:spear_mode",
+                        "ha:mace_mode",
 
-                                "ha:ranged_mode",
-                                "ha:pearl_mode",
+                        "ha:ranged_mode",
+                        "ha:pearl_mode",
 
-                                "ha:timer_food",
-                                "ha:timer_potion",
+                        "ha:timer_food",
+                        "ha:timer_potion",
 
-                                "ha:food_gear",
-                                "ha:potions_gear",
-                                "ha:pickaxe_mode",
+                        "ha:food_gear",
+                        "ha:potions_gear",
+                        "ha:pickaxe_mode",
 
-                                "ha:fire_potion_gear",
-                                "ha:scare_brute"
-                            ]
-                        },
-                        "add": {
-                            "component_groups": [
-                                "ha:spawn_sensors"
-                            ]
-                        }
-                    }
-                ]
+                        "ha:fire_potion_gear",
+                        "ha:scare_brute"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
+                        "ha:spawn_sensors"
+                    ]
+                }
             },
             "ha:critic_damage": {
                 "remove": {
@@ -3327,9 +3526,7 @@
             "ha:start_mining": {
                 "queue_command": {
                     "command": [
-                        "tag @s add mining_mode",
-                        "setblock ~~1~ air destroy",
-                        "setblock ~~-1~ air destroy"
+                        "tag @s add mining_mode"
                     ]
                 },
                 "remove": {

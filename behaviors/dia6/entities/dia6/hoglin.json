@@ -7,34 +7,81 @@
             "identifier": "minecraft:hoglin",
             "spawn_category": "monster",
             "is_spawnable": true,
-            "is_summonable": true
+            "is_summonable": true,
+            "properties": {
+                "ha:new_hoglin": {
+                    "type": "bool",
+                    "client_sync": true,
+                    "default": false
+                }
+            }
         },
         "component_groups": {
+            "ha:become_new": {
+                "minecraft:spawn_entity": {
+                    "entities": [
+                        {
+                            "min_wait_time": 0.1,
+                            "max_wait_time": 0.1,
+                            "num_to_spawn": 1,
+                            "single_use": true,
+                            "should_leash": false,
+                            "spawn_entity": "minecraft:hoglin",
+                            "spawn_event": "minecraft:entity_spawned"
+                        }
+                    ]
+                },
+                "minecraft:instant_despawn": { }
+            },
             "zombification_sensor": {
                 "minecraft:environment_sensor": {
-                    "triggers": {
-                        "filters": {
-                            "test": "in_nether",
-                            "subject": "self",
-                            "operator": "==",
-                            "value": false
+                    "triggers": [
+                        {
+                            "filters": {
+                                "test": "bool_property",
+                                "subject": "self",
+                                "domain": "ha:new_hoglin",
+                                "value": false
+                            },
+                            "target": "self",
+                            "event": "ha:become_new"
                         },
-                        "event": "start_zombification_event"
-                    }
+                        {
+                            "filters": {
+                                "test": "in_nether",
+                                "subject": "self",
+                                "operator": "==",
+                                "value": false
+                            },
+                            "event": "start_zombification_event"
+                        }
+                    ]
                 }
             },
             "start_zombification": {
                 "minecraft:is_shaking": { },
                 "minecraft:environment_sensor": {
-                    "triggers": {
-                        "filters": {
-                            "test": "in_nether",
-                            "subject": "self",
-                            "operator": "==",
-                            "value": true
+                    "triggers": [
+                        {
+                            "filters": {
+                                "test": "bool_property",
+                                "subject": "self",
+                                "domain": "ha:new_hoglin",
+                                "value": false
+                            },
+                            "target": "self",
+                            "event": "ha:become_new"
                         },
-                        "event": "stop_zombification_event"
-                    }
+                        {
+                            "filters": {
+                                "test": "in_nether",
+                                "subject": "self",
+                                "operator": "==",
+                                "value": true
+                            },
+                            "event": "stop_zombification_event"
+                        }
+                    ]
                 },
                 "minecraft:timer": {
                     "looping": false,
@@ -53,9 +100,13 @@
             },
             "angry_hoglin": {
                 "minecraft:angry": {
-                    "duration": 10,
+                    "duration": 25,
                     "broadcast_anger": true,
-                    "broadcast_range": 16,
+                    "broadcast_anger_on_attack": true,
+                    "broadcast_anger_on_being_attacked": true,
+                    "broadcast_anger_when_dying": true,
+                    "broadcast_range": 40,
+                    "broadcast_targets": [ "hoglin" ],
                     "calm_event": {
                         "event": "become_calm_event",
                         "target": "self"
@@ -204,6 +255,20 @@
             }
         },
         "components": {
+            "minecraft:environment_sensor": {
+                "triggers": [
+                    {
+                        "filters": {
+                            "test": "bool_property",
+                            "subject": "self",
+                            "domain": "ha:new_hoglin",
+                            "value": false
+                        },
+                        "target": "self",
+                        "event": "ha:become_new"
+                    }
+                ]
+            },
             "minecraft:on_death": {
                 "target": "self",
                 "event": "ha:drop_chance"
@@ -215,6 +280,10 @@
                 "triggers": [
                     {
                         "cause": "projectile",
+                        "deals_damage": "no"
+                    },
+                    {
+                        "cause": "magic",
                         "deals_damage": "no"
                     }
                 ]
@@ -245,15 +314,15 @@
                 "reflection_scale": "0.5"
             },
             "minecraft:behavior.hurt_by_target": {
-                "priority": 1,
-                "alert_same_type": true
+                "priority": 1
             },
-            "minecraft:behavior.melee_box_attack": {
+            "minecraft:behavior.melee_attack": {
                 "priority": 0,
                 "can_spread_on_fire": true,
-                "horizontal_reach": 1.65,
-                "cooldown_time": 0.85,
+                "cooldown_time": 0.8,
                 "melee_fov": 360,
+                "require_complete_path": true,
+                "reach_multiplier": 2.5,
                 "track_target": true
             },
             "minecraft:attack": {
@@ -343,53 +412,6 @@
                     }
                 ]
             },
-            "minecraft:behavior.avoid_mob_type": {
-                "priority": 0,
-                "remove_target": true,
-                "entity_types": [
-                    {
-                        "filters": {
-                            "all_of": [
-                                { "test": "has_target", "subject": "other", "value": true },
-                                { "test": "is_family", "subject": "other", "value": "piglin" }
-                            ]
-                        },
-                        "check_if_outnumbered": true,
-                        "max_dist": 10,
-                        "sprint_speed_multiplier": 1.2
-                    }
-                ],
-                "avoid_mob_sound": "retreat",
-                "sound_interval": {
-                    "min": 2.0,
-                    "max": 5.0
-                }
-            },
-            "minecraft:behavior.avoid_block": {
-                "priority": 1,
-                "tick_interval": 5,
-                "search_range": 8,
-                "search_height": 4,
-                "walk_speed_modifier": 1,
-                "sprint_speed_modifier": 1,
-                "avoid_block_sound": "retreat",
-                "sound_interval": {
-                    "min": 2.0,
-                    "max": 5.0
-                },
-                "target_selection_method": "nearest",
-                "target_blocks": [
-                    "minecraft:warped_fungus",
-                    "minecraft:portal",
-                    "minecraft:respawn_anchor"
-                ],
-                "on_escape": [
-                    {
-                        "event": "escaped_event",
-                        "target": "self"
-                    }
-                ]
-            },
             "minecraft:navigation.walk": {
                 "can_path_over_water": true,
                 "avoid_water": true,
@@ -423,16 +445,23 @@
             "minecraft:conditional_bandwidth_optimization": { }
         },
         "events": {
+            "ha:become_new": {
+                "add": {
+                    "component_groups": [
+                        "ha:become_new"
+                    ]
+                }
+            },
             "minecraft:entity_spawned": {
                 "trigger": "spawn_adult"
             },
             "ha:drop_chance": {
                 "randomize": [
                     {
-                        "weight": 75
+                        "weight": 85
                     },
                     {
-                        "weight": 25,
+                        "weight": 15,
                         "queue_command": {
                             "command": [
                                 "structure load ha:hoglin_sword ~~~"
@@ -445,13 +474,22 @@
                 "trigger": "spawn_adult"
             },
             "spawn_adult": {
-                "add": {
-                    "component_groups": [
-                        "minecraft:hoglin_adult",
-                        "huntable_adult",
-                        "zombification_sensor"
-                    ]
-                }
+                "sequence": [
+                    {
+                        "set_property": {
+                            "ha:new_hoglin": true
+                        }
+                    },
+                    {
+                        "add": {
+                            "component_groups": [
+                                "minecraft:hoglin_adult",
+                                "huntable_adult",
+                                "zombification_sensor"
+                            ]
+                        }
+                    }
+                ]
             },
             "spawn_baby": {
                 "add": {

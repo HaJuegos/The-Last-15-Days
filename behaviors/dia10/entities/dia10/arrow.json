@@ -9,6 +9,36 @@
             "is_spawnable": false
         },
         "component_groups": {
+            "ha:piglin_arrow": {
+                "minecraft:projectile": {
+                    "anchor": 1,
+                    "gravity": 0.05,
+                    "power": 1.6,
+                    "hit_sound": "bow.hit",
+                    "on_hit": {
+                        "arrow_effect": {
+                            "apply_effect_to_blocking_targets": false
+                        },
+                        "impact_damage": {
+                            "damage": [ 5, 25 ],
+                            "knockback": true,
+                            "destroy_on_hit": true,
+                            "semi_random_diff_damage": false
+                        },
+                        "stick_in_ground": {
+                            "shake_time": 0.35
+                        }
+                    },
+                    "offset": [
+                        0,
+                        -0.1,
+                        0
+                    ],
+                    "should_bounce": true,
+                    "uncertainty_base": 16,
+                    "uncertainty_multiplier": 4
+                }
+            },
             "ha:nausea_arrow": {
                 "minecraft:variant": {
                     "value": 1
@@ -66,6 +96,28 @@
                     "stop_on_hurt": true,
                     "uncertainty_base": 0,
                     "uncertainty_multiplier": 0
+                }
+            },
+            "ha:evoker_arrow_angry": {
+                "minecraft:projectile": {
+                    "on_hit": {
+                        "arrow_effect": {
+                            "apply_effect_to_blocking_targets": true
+                        },
+                        "impact_damage": {
+                            "damage": [ 1, 5 ],
+                            "knockback": true,
+                            "destroy_on_hit": true,
+                            "semi_random_diff_damage": false
+                        },
+                        "remove_on_hit": { }
+                    },
+                    "anchor": 1,
+                    "gravity": 0.035,
+                    "power": 7,
+                    "hit_sound": "bow.hit",
+                    "offset": [ 0, -0.1, 0 ],
+                    "should_bounce": true
                 }
             },
             "ha:evoker_arrow": {
@@ -284,13 +336,13 @@
                             ]
                         }
                     },
-					{
+                    {
                         "filters": {
                             "subject": "other",
                             "test": "is_family",
                             "value": "pillager"
                         },
-						"remove": {
+                        "remove": {
                             "component_groups": [
                                 "minecraft:hard_arrow"
                             ]
@@ -307,7 +359,7 @@
                             "test": "is_family",
                             "value": "player"
                         },
-						"remove": {
+                        "remove": {
                             "component_groups": [
                                 "minecraft:hard_arrow"
                             ]
@@ -320,10 +372,24 @@
                     }
                 ]
             },
+            "ha:piglin_arrow": {
+                "add": {
+                    "component_groups": [
+                        "ha:piglin_arrow"
+                    ]
+                }
+            },
             "ha:evoker_arrow": {
                 "add": {
                     "component_groups": [
                         "ha:evoker_arrow"
+                    ]
+                }
+            },
+            "ha:evoker_arrow_angry": {
+                "add": {
+                    "component_groups": [
+                        "ha:evoker_arrow_angry"
                     ]
                 }
             }

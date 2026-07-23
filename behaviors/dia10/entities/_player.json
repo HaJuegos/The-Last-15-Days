@@ -612,6 +612,16 @@
             "minecraft:damage_sensor": {
                 "triggers": [
                     {
+                        "cause": "block_explosion",
+                        "deals_damage": "yes",
+                        "damage_multiplier": 2.0
+                    },
+                    {
+                        "cause": "entity_explosion",
+                        "deals_damage": "yes",
+                        "damage_multiplier": 2.0
+                    },
+                    {
                         "cause": "fire",
                         "damage_modifier": 6
                     },
@@ -662,14 +672,14 @@
             "ha:has_cautious_chestplate": {
                 "queue_command": {
                     "command": [
-                        "effect @s resistance 5 1 true"
+                        "effect @s resistance 12 1 true"
                     ]
                 }
             },
             "ha:remove_cautious_chestplate": {
                 "queue_command": {
                     "command": [
-                        "effect @s weakness 5 1 true"
+                        "effect @s weakness 12 1 true"
                     ]
                 }
             },
@@ -677,14 +687,14 @@
             "ha:has_cautious_leggings": {
                 "queue_command": {
                     "command": [
-                        "effect @s haste 5 2 true"
+                        "effect @s haste 12 2 true"
                     ]
                 }
             },
             "ha:remove_cautious_leggings": {
                 "queue_command": {
                     "command": [
-                        "effect @s mining_fatigue 5 2 true"
+                        "effect @s mining_fatigue 12 2 true"
                     ]
                 }
             },
@@ -692,14 +702,14 @@
             "ha:has_cautious_boots": {
                 "queue_command": {
                     "command": [
-                        "effect @s speed 5 1 true"
+                        "effect @s speed 12 1 true"
                     ]
                 }
             },
             "ha:remove_cautious_boots": {
                 "queue_command": {
                     "command": [
-                        "effect @s slowness 5 1 true"
+                        "effect @s slowness 12 1 true"
                     ]
                 }
             },
@@ -707,7 +717,7 @@
             "ha:has_full_cautious_armor": {
                 "queue_command": {
                     "command": [
-                        "effect @s health_boost 5 2 true"
+                        "effect @s health_boost 12 6 true"
                     ]
                 }
             },
@@ -721,7 +731,7 @@
                         },
                         "queue_command": {
                             "command": [
-                                "effect @s fatal_poison 5 0 true"
+                                "effect @s fatal_poison 12 1 true"
                             ]
                         }
                     }

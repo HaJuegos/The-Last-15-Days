@@ -18,6 +18,21 @@
             }
         },
         "component_groups": {
+            "ha:explode": {
+                "minecraft:damage_sensor": { },
+                "minecraft:explode": {
+                    "power": 4,
+                    "fuse_length": [ 0.7, 0.7 ],
+                    "fuse_lit": true,
+                    "allow_underwater": true,
+                    "breaks_blocks": true,
+                    "causes_fire": false,
+                    "destroy_affected_by_griefing": true,
+                    "fire_affected_by_griefing": true,
+                    "toggles_blocks": true,
+                    "knockback_scaling": 3
+                }
+            },
             "minecraft:horse_baby": {
                 "minecraft:is_baby": { },
                 "minecraft:scale": {
@@ -349,17 +364,7 @@
                 "horizontal_reach": 1.15,
                 "melee_fov": 360,
                 "track_target": true,
-                "speed_multiplier": 1.35,
-                "on_attack": {
-                    "filters": {
-                        "test": "has_component",
-                        "subject": "self",
-                        "operator": "!=",
-                        "value": "minecraft:explode"
-                    },
-                    "target": "self",
-                    "event": "ha:start_explode"
-                }
+                "speed_multiplier": 1.35
             },
             "minecraft:behavior.hurt_by_target": {
                 "priority": 1
@@ -410,9 +415,6 @@
                         "heal_amount": 3
                     }
                 ]
-            },
-            "minecraft:burns_in_daylight": {
-                "protection_slot": "slot.armor.body"
             },
             "minecraft:health": {
                 "value": 25,
@@ -517,6 +519,18 @@
             }
         },
         "events": {
+            "ha:start_explode": {
+                "queue_command": {
+                    "command": [
+                        "playsound mob.start_exploding.sound @a ~~~"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
+                        "ha:explode"
+                    ]
+                }
+            },
             "minecraft:entity_spawned": {
                 "randomize": [
                     {

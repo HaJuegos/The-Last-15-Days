@@ -9,6 +9,28 @@
             "is_spawnable": false
         },
         "component_groups": {
+            "ha:evoker_arrow_angry": {
+                "minecraft:projectile": {
+                    "on_hit": {
+                        "arrow_effect": {
+                            "apply_effect_to_blocking_targets": true
+                        },
+                        "impact_damage": {
+                            "damage": [ 1, 5 ],
+                            "knockback": true,
+                            "destroy_on_hit": true,
+                            "semi_random_diff_damage": false
+                        },
+                        "remove_on_hit": { }
+                    },
+                    "anchor": 1,
+                    "gravity": 0.035,
+                    "power": 7,
+                    "hit_sound": "bow.hit",
+                    "offset": [ 0, -0.1, 0 ],
+                    "should_bounce": true
+                }
+            },
             "ha:evoker_arrow": {
                 "minecraft:projectile": {
                     "on_hit": {
@@ -211,13 +233,13 @@
                             ]
                         }
                     },
-					{
+                    {
                         "filters": {
                             "subject": "other",
                             "test": "is_family",
                             "value": "pillager"
                         },
-						"remove": {
+                        "remove": {
                             "component_groups": [
                                 "minecraft:hard_arrow"
                             ]
@@ -234,7 +256,7 @@
                             "test": "is_family",
                             "value": "player"
                         },
-						"remove": {
+                        "remove": {
                             "component_groups": [
                                 "minecraft:hard_arrow"
                             ]
@@ -251,6 +273,13 @@
                 "add": {
                     "component_groups": [
                         "ha:evoker_arrow"
+                    ]
+                }
+            },
+            "ha:evoker_arrow_angry": {
+                "add": {
+                    "component_groups": [
+                        "ha:evoker_arrow_angry"
                     ]
                 }
             }

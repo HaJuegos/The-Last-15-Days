@@ -1,55 +1,24 @@
-import * as vanilla from "@minecraft/vanilla-data";
+import * as mc from "@minecraft/server";
 
 export { };
 
-declare module "@minecraft/vanilla-data" {
-    interface BlockStateSuperset {
-        "ha:is_on": boolean;
-        "ominous": boolean;
-    }
-}
-
 declare global {
     /**
-     * Los datos base para crear un logro con una estructra fija.
-     * @interface ListOfAdvs
-     * @author HaJuegos - 20-03-2026
+     * Plantilla principal para crear un nuevo componente custom a un item en especifico con una estructura fija.
+     * @interface ItemCustomCTemplate
+     * @author HaJuegos - 08-07-2026
      */
-    interface ListOfAdvs {
+    interface ItemCustomCTemplate {
         /**
-         * El texto del logro en concreto
+         * ID del componente custom a registrar.
          * @type {string}
          */
-        textAdv: string;
+        idComponent: string;
 
         /**
-         * El tag del logro para que no se repita.
-         * @type {string}
+         * Los eventos relacionados con el componente custom a registrar.
+         * @type {mc.ItemCustomComponent}
          */
-        tagAdv: string;
-
-        /**
-         * El item(s) para obtener un logro
-         * @type {(vanilla.MinecraftItemTypes[] | vanilla.MinecraftItemTypes)}
-         */
-        items: vanilla.MinecraftItemTypes[] | vanilla.MinecraftItemTypes;
-
-        /**
-         * Es un progreso o un logro? para cambiar de sonido y color.
-         * @type {boolean}
-         */
-        isRare: boolean;
-
-        /**
-         * (Opcional) Necesita todos los logros para conseguirlo?
-         * @type {?boolean}
-         */
-        allItemsRequired?: boolean;
-
-        /**
-         * (Opcional) Es un logro que se consigue haciendo algo y no por items?
-         * @type {?boolean}
-         */
-        isAction?: boolean;
+        events: mc.ItemCustomComponent;
     }
 }

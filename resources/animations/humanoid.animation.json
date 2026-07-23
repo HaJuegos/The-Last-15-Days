@@ -1,0 +1,50 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+	"format_version": "1.10.0",
+	"animations": {
+		"animation.player.no_clip.tp": {
+			"loop": false,
+			"animation_length": 2.6,
+			"override_previous_animation": true,
+			"bones": {
+				"root": {
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.2": [0, -5, 0],
+						"0.5": [0, -10, 0],
+						"0.8": [0, -15, 0],
+						"1.0": [0, -1000, 0]
+					}
+				},
+				"head": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.3": [-20, 0, 0],
+						"0.6": [-20, 0, 0],
+						"0.8": [-72.5, 0, 0]
+					},
+					"position": [0, 0, 0]
+				},
+				"leftArm": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.3": [-107.5, 0, 0],
+						"0.6": [-107.5, 0, 0],
+						"0.8": [-190, 0, 0]
+					},
+					"position": [0, 0, 0]
+				},
+				"rightArm": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.3": [-110, 0, 0],
+						"0.6": [-110, 0, 0],
+						"0.8": [-190, 0, 0]
+					},
+					"position": [0, 0, 0]
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,57 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.26.0",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "ha:data_world",
+            "spawn_category": "ambient",
+            "is_experimental": false,
+            "is_spawnable": false,
+            "is_summonable": true
+        },
+        "component_groups": { },
+        "components": {
+            "minecraft:health": {
+                "value": 1,
+                "max": 1,
+                "min": 1
+            },
+            "minecraft:damage_sensor": {
+                "triggers": [
+                    {
+                        "cause": "all",
+                        "deals_damage": "no"
+                    }
+                ]
+            },
+            "minecraft:collision_box": {
+                "height": 1,
+                "width": 1
+            },
+            "minecraft:physics": {
+                "has_collision": false,
+                "has_gravity": false
+            },
+            "minecraft:knockback_resistance": {
+                "value": 99999
+            },
+            "minecraft:tick_world": {
+                "never_despawn": true,
+                "radius": 4
+            },
+            "minecraft:conditional_bandwidth_optimization": { },
+            "minecraft:dimension_bound": { },
+            "minecraft:persistent": { }
+        },
+        "events": {
+            "minecraft:entity_spawned": {
+                "queue_command": {
+                    "command": [
+                        "tickingarea add circle ~~~ 4 data"
+                    ]
+                }
+            }
+        }
+    }
+}

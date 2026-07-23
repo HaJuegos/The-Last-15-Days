@@ -1,24 +1,67 @@
 import * as mc from "@minecraft/server";
 import * as vanilla from "@minecraft/vanilla-data";
 
-import { afterEventsSimplified, beforeEventsSimplified, customEventsManager, worldToolsSimplified } from "simplified-mojang-api";
-import { TL15DBaseManager } from "../base";
+import { beforeEventsSimplified, customEventsManager, worldToolsSimplified } from "simplified-mojang-api";
 
 /**
  * Clase hijo encargada de manejar los eventos principales de los componentes custom de bloques.
  * @extends {TL15DBaseManager}
  * @author HaJuegos - 17-03-2026
  */
-class BlocksCustomComponentsManager extends TL15DBaseManager {
+class BlocksCustomComponentsManager {
+    /**
+     * Todos los componentes custom a registrar con sus respectivos eventos relacionados.
+     * @type {BlockCustomCTemplate[]}
+     * @author HaJuegos - 09-07-2026
+     * @private
+     * @readonly
+     */
+    private readonly listOfComponents: BlockCustomCTemplate[] = [
+        // Dynamite Events
+        {
+            idComponent: 'ha:dynamite_interactions',
+            events: {
+                onPlayerInteract: (args) => {
+                    const ply = args.player as mc.Player;
+                    const block = args.block;
+                    const dime = args.dimension;
+                    const validItems: vanilla.MinecraftItemTypes[] = [vanilla.MinecraftItemTypes.FireCharge, vanilla.MinecraftItemTypes.FlintAndSteel];
+                    const invPly = ply.getComponent(mc.EntityComponentTypes.Inventory)?.container as mc.Container;
+                    const slot = ply.selectedSlotIndex;
+                    const item = invPly.getItem(slot);
+                    const isOnState = block.permutation.getState('ha:is_on');
+
+                    if (isOnState) return;
+
+                    if (item && validItems.includes(item.typeId as vanilla.MinecraftItemTypes)) {
+                        const newState = block.permutation.withState('ha:is_on', true);
+
+                        block.setPermutation(newState);
+                        dime.playSound('random.fuse', block.location);
+                        customEventsManager.manualDamageItem({ ply: ply, item: item });
+                        this.startExplosionDynamite(block, dime);
+                    }
+                }
+            }
+        }
+    ];
+
     /**
      * Eventos principales de la clase cuando es inicializada o llamada.
      * @constructor
      */
     constructor () {
-        super();
-
         this.dynamiteEvents();
+        this.registerComponents();
+    }
 
+    /**
+     * Metodo auxiliar que detecta los eventos del bloque de dinamita y sus acciones cercanas.
+     * @returns {void}
+     * @author HaJuegos - 09-07-2026
+     * @private
+     */
+    private dynamiteEvents(): void {
         beforeEventsSimplified.onExplosion((args) => {
             const dime = args.dimension;
             const blocks = args.getImpactedBlocks();
@@ -37,43 +80,10 @@ class BlocksCustomComponentsManager extends TL15DBaseManager {
     }
 
     /**
-     * Metodo que controla los eventos custom del bloque de dinamita.
-     * @author HaJuegos - 17-03-2026
-     * @private
-     */
-    private dynamiteEvents(): void {
-        const self = this;
-        const blockEvents: mc.BlockCustomComponent = {
-            onPlayerInteract(args) {
-                const ply = args.player as mc.Player;
-                const block = args.block;
-                const dime = args.dimension;
-                const validItems: vanilla.MinecraftItemTypes[] = [vanilla.MinecraftItemTypes.FireCharge, vanilla.MinecraftItemTypes.FlintAndSteel];
-                const invPly = ply.getComponent(mc.EntityComponentTypes.Inventory)?.container as mc.Container;
-                const slot = ply.selectedSlotIndex;
-                const item = invPly.getItem(slot);
-                const isOnState = block.permutation.getState('ha:is_on');
-
-                if (isOnState) return;
-
-                if (item && validItems.includes(item.typeId as vanilla.MinecraftItemTypes)) {
-                    const newState = block.permutation.withState('ha:is_on', true);
-
-                    block.setPermutation(newState);
-                    dime.playSound('random.fuse', block.location);
-                    customEventsManager.manualDamageItem({ply:ply, item:item});
-                    self.startExplosionDynamite(block, dime);
-                }
-            }
-        };
-
-        beforeEventsSimplified.createBlockComponent('ha:dynamite_interactions', blockEvents);
-    }
-
-    /**
      * Metodo auxiliar que procesa la explosion al encender la dinamita en cuestion.
      * @param {mc.Block} block Bloque de la dinamita en cuestion.
      * @param {mc.Dimension} dime Dimension a considerar.
+     * @returns {void}
      * @author HaJuegos - 17-03-2026
      * @private
      */
@@ -98,6 +108,18 @@ class BlocksCustomComponentsManager extends TL15DBaseManager {
 
             worldToolsSimplified.stopLoop(loopID);
         }, worldToolsSimplified.convertSecondsToTicks(1.2));
+    }
+
+    /**
+     * Metodo principal que registra todos los componentes guardados en la variable principal.
+     * @returns {void}
+     * @author HaJuegos - 09-07-2026
+     * @private
+     */
+    private registerComponents(): void {
+        for (const component of this.listOfComponents) {
+            beforeEventsSimplified.createBlockComponent(component.idComponent, component.events);
+        }
     }
 }
 

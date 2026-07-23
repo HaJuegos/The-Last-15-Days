@@ -1,12 +1,12 @@
-import './worldEvents/initialCmds';
-import './worldEvents/globalEvents';
-
-import './entityEvents/plyEvent';
-import './entityEvents/entityEvents';
+// Entidades
 import './entityEvents/abyssEvents';
 import './entityEvents/dragonEvents';
+import './entityEvents/plyEvent';
+import './entityEvents/entityEvents';
 
-import './itemEvents/itemsCCEvent';
+// Items
 import './itemEvents/blocksCCEvent';
+import './itemEvents/itemsCCEvent';
 
-import './advancements/advacementsManager';
+// Mundo 
+import './worldEvents/globalEvents';

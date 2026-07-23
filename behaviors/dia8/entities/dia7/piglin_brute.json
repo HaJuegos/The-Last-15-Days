@@ -70,7 +70,7 @@
                     "track_target": true
                 },
                 "minecraft:attack": {
-                    "damage": 5
+                    "damage": 25
                 },
                 "minecraft:variant": {
                     "value": 1
@@ -212,7 +212,7 @@
             },
             "melee_unit": {
                 "minecraft:attack": {
-                    "damage": 7
+                    "damage": 35
                 },
                 "minecraft:behavior.melee_box_attack": {
                     "track_target": true,

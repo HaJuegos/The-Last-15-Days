@@ -48,6 +48,19 @@
                     "minecraft:is_sword"
                 ]
             },
+            "minecraft:digger": {
+                "use_efficiency": true,
+                "destroy_speeds": [
+                    {
+                        "block": "minecraft:web",
+                        "speed": 15
+                    },
+                    {
+                        "block": "minecraft:bamboo",
+                        "speed": 10
+                    }
+                ]
+            },
             "minecraft:repairable": {
                 "repair_items": [
                     {

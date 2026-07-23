@@ -1,0 +1,48 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.16.0",
+    "minecraft:npc_dialogue": {
+        "scenes": [
+            // Dialogo inicial
+            {
+                "npc_name": "§gRoyerBot§r",
+                "scene_tag": "royerbot_dialogue",
+                "text": {
+                    "rawtext": [ { "translate": "dialogue.royerbot.dia1.txt" } ]
+                },
+                "buttons": [
+                    {
+                        "name": { "rawtext": [ { "translate": "dialogue.royerbot.dia0.btn1" } ] },
+                        "commands": [
+                            "/dialogue open @s @initiator[tag=!royer_dia1] royerbot_dialogue.dia0.btn1.dialogue",
+                            "/dialogue open @s @initiator[tag=royer_dia1] royerbot_dialogue.dia0.btn1.dialogue.alr"
+                        ]
+                    }
+                ]
+            },
+
+            // Dialogo reco
+            {
+                "npc_name": "§gRoyerBot§r",
+                "scene_tag": "royerbot_dialogue.dia0.btn1.dialogue",
+                "text": {
+                    "rawtext": [ { "translate": "dialogue.royerbot.dia0.btn1.txt" } ]
+                },
+                "on_open_commands": [
+                    "/tag @initiator add royer_dia1",
+                    "/give @initiator cookie 10"
+                ]
+            },
+
+            // Dialogo reco, ya
+            {
+                "npc_name": "§gRoyerBot§r",
+                "scene_tag": "royerbot_dialogue.dia0.btn1.dialogue.alr",
+                "text": {
+                    "rawtext": [ { "translate": "dialogue.royerbot.dia0.btn1.txt.alr" } ]
+                }
+            }
+        ]
+    }
+}

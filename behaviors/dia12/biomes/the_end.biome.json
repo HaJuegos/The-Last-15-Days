@@ -1,0 +1,38 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.26.0",
+    "minecraft:biome": {
+        "description": {
+            "identifier": "minecraft:the_end"
+        },
+        "components": {
+            "minecraft:climate": {
+                "downfall": 0.8,
+                "snow_accumulation": [ 0.125, 0.375 ],
+                "temperature": -0.5
+            },
+            "minecraft:creature_spawn_probability": {
+                "probability": 0.35
+            },
+            "minecraft:humidity": {
+                "is_humid": false
+            },
+            "minecraft:village_type": {
+                "type": "ice"
+            },
+            "minecraft:surface_builder": {
+                "builder": {
+                    "type": "minecraft:the_end"
+                }
+            },
+            "minecraft:tags": {
+                "tags": [
+                    "the_end",
+                    "spawns_cold_variant_farm_animals",
+                    "spawns_cold_variant_frogs"
+                ]
+            }
+        }
+    }
+}

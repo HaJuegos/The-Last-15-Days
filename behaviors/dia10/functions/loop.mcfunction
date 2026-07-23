@@ -4,5 +4,7 @@
 scoreboard objectives add dayAddon dummy dayAddon
 
 execute as @a at @s run fill ~5 ~5 ~-5 ~-5 ~-5 ~5 air replace end_portal
+execute as @a at @s run fill ~5 ~5 ~-5 ~-5 ~-5 ~5 air replace enchanting_table
 
 clear @a ominous_bottle
+clear @a enchanting_table

@@ -15,11 +15,12 @@
                 "minecraft:teleport": {
                     "dark_teleport_chance": 0.01,
                     "light_teleport_chance": 0.01,
-                    "max_random_teleport_time": 25,
-                    "random_teleport_cube": [ 20, 20, 20 ],
                     "random_teleports": true,
-                    "target_distance": 3,
-                    "target_teleport_chance": 0.05
+                    "random_teleport_cube": [ 12, 6, 12 ],
+                    "min_random_teleport_time": 15,
+                    "max_random_teleport_time": 30,
+                    "target_distance": 5,
+                    "target_teleport_chance": 0.45
                 }
             },
             "minecraft:celebrate": {
@@ -311,7 +312,15 @@
                 ]
             },
             "minecraft:behavior.hurt_by_target": {
-                "priority": 1
+                "priority": 1,
+                "entity_types": {
+                    "filters": {
+                        "test": "is_family",
+                        "subject": "other",
+                        "operator": "!=",
+                        "value": "witch"
+                    }
+                }
             },
             "minecraft:behavior.nearest_prioritized_attackable_target": {
                 "priority": 2,
@@ -400,6 +409,11 @@
                 }
             },
             "minecraft:spawn_for_raid": {
+                "remove": {
+                    "component_groups": [
+                        "ha:teleport_witch"
+                    ]
+                },
                 "add": {
                     "component_groups": [
                         "minecraft:raid_configuration",

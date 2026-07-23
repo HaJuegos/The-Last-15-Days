@@ -1,0 +1,243 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.26.0",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "ha:nurse_npc",
+            "spawn_category": "ambient",
+            "is_experimental": false,
+            "is_spawnable": false,
+            "is_summonable": true
+        },
+        "component_groups": {
+            "ha:spawned_in_end": {
+                "minecraft:home": {
+                    "restriction_radius": 16,
+                    "restriction_type": "random_movement"
+                },
+                "minecraft:behavior.go_home": {
+                    "priority": 1,
+                    "goal_radius": 1,
+                    "speed_multiplier": 1.05,
+                    "interval": 2400
+                }
+            }
+        },
+        "components": {
+            "minecraft:interact": {
+                "interactions": [
+                    {
+                        "on_interact": {
+                            "filters": {
+                                "all_of": [
+                                    {
+                                        "test": "is_family",
+                                        "subject": "other",
+                                        "value": "player"
+                                    },
+                                    {
+                                        "test": "has_equipment",
+                                        "subject": "other",
+                                        "domain": "hand",
+                                        "operator": "!=",
+                                        "value": "minecraft:diamond"
+                                    }
+                                ]
+                            },
+                            "event": "ha:trade_incorrect",
+                            "target": "other"
+                        }
+                    },
+                    {
+                        "on_interact": {
+                            "filters": {
+                                "all_of": [
+                                    {
+                                        "test": "is_family",
+                                        "subject": "other",
+                                        "value": "player"
+                                    },
+                                    {
+                                        "test": "has_equipment",
+                                        "subject": "other",
+                                        "domain": "hand",
+                                        "value": "minecraft:diamond"
+                                    }
+                                ]
+                            },
+                            "event": "ha:trade_correct",
+                            "target": "other"
+                        },
+                        "cooldown": 5,
+                        "interact_text": "interact.btn.nurse",
+                        "take_item": true
+                    }
+                ]
+            },
+            "minecraft:damage_sensor": {
+                "triggers": [
+                    {
+                        "on_damage": {
+                            "filters": {
+                                "test": "is_family",
+                                "subject": "other",
+                                "value": "player"
+                            }
+                        },
+                        "cause": "all",
+                        "deals_damage": "no"
+                    }
+                ]
+            },
+            "minecraft:behavior.avoid_mob_type": {
+                "priority": 0,
+                "entity_types": {
+                    "filters": {
+                        "test": "is_family",
+                        "subject": "other",
+                        "operator": "!=",
+                        "value": "player"
+                    }
+                },
+                "max_dist": 10,
+                "sprint_distance": 1,
+                "sprint_speed_multiplier": 1.15,
+                "walk_speed_multiplier": 1.15
+            },
+            "minecraft:dweller": {
+                "can_find_poi": true,
+                "dwelling_type": "village",
+                "can_migrate": true,
+                "dweller_role": "inhabitant",
+                "first_founding_reward": 5,
+                "update_interval_base": 60,
+                "update_interval_variant": 40
+            },
+            "minecraft:behavior.open_door": {
+                "close_door_after": true
+            },
+            "minecraft:annotation.open_door": { },
+            "minecraft:equipment": {
+                "table": "loot_tables/entities/custom/nurse_house/nurse_gear.json",
+                "slot_drop_chance": [
+                    {
+                        "slot": "slot.armor.head",
+                        "drop_chance": 1
+                    },
+                    {
+                        "slot": "slot.armor.chest",
+                        "drop_chance": 1
+                    },
+                    {
+                        "slot": "slot.weapon.mainhand",
+                        "drop_chance": 1
+                    }
+                ]
+            },
+            "minecraft:behavior.harvest_farm_block": {
+                "priority": 2,
+                "speed_multiplier": 0.8,
+                "search_range": 16,
+                "goal_radius": 1.5
+            },
+            "minecraft:experience_reward": {
+                "on_death": "Math.Min(query.player_level * 7, 100)"
+            },
+            "minecraft:behavior.move_towards_home_restriction": {
+                "speed_multiplier": 0.6,
+                "priority": 3
+            },
+            "minecraft:behavior.float": {
+                "priority": 4
+            },
+            "minecraft:behavior.look_at_player": {
+                "priority": 5,
+                "look_time": {
+                    "min": 1,
+                    "max": 2
+                }
+            },
+            "minecraft:behavior.random_look_around": {
+                "priority": 6
+            },
+            "minecraft:behavior.random_stroll": {
+                "priority": 7,
+                "speed_multiplier": 0.55
+            },
+            "minecraft:breathable": {
+                "suffocate_time": 0,
+                "total_supply": 15
+            },
+            "minecraft:can_climb": { },
+            "minecraft:collision_box": {
+                "height": 1.9,
+                "width": 0.6
+            },
+            "minecraft:conditional_bandwidth_optimization": { },
+            "minecraft:health": {
+                "max": 200,
+                "value": 200
+            },
+            "minecraft:hurt_on_condition": {
+                "damage_conditions": [
+                    {
+                        "cause": "lava",
+                        "damage_per_tick": 4,
+                        "filters": {
+                            "operator": "==",
+                            "test": "in_lava",
+                            "subject": "self",
+                            "value": true
+                        }
+                    }
+                ]
+            },
+            "minecraft:is_hidden_when_invisible": { },
+            "minecraft:jump.static": { },
+            "minecraft:movement": {
+                "value": 0.35
+            },
+            "minecraft:movement.basic": { },
+            "minecraft:nameable": {
+                "allow_name_tag_renaming": false,
+                "always_show": true
+            },
+            "minecraft:navigation.walk": {
+                "avoid_water": true,
+                "using_door_annotation": true,
+                "can_open_doors": true,
+                "can_pass_doors": true,
+                "can_path_over_water": true
+            },
+            "minecraft:physics": { },
+            "minecraft:pushable_by_block": { },
+            "minecraft:pushable_by_entity": { },
+            "minecraft:persistent": { },
+            "minecraft:type_family": {
+                "family": [
+                    "nurse",
+                    "player",
+                    "mob"
+                ]
+            }
+        },
+        "events": {
+            "minecraft:entity_spawned": {
+                "sequence": [
+                    {
+                        "filters": {
+                            "test": "has_biome_tag",
+                            "value": "the_end"
+                        },
+                        "add": {
+                            "component_groups": [
+                                "ha:spawned_in_end"
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

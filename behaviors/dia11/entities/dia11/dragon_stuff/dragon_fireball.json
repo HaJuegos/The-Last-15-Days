@@ -247,7 +247,7 @@
                         "spawn_chance": {
                             "spawn_definition": "minecraft:sheep<ha:become_iron>",
                             "first_spawn_percent_chance": 100,
-                            "first_spawn_count": 4
+                            "first_spawn_count": 2
                         },
                         "impact_damage": { },
                         "remove_on_hit": { }

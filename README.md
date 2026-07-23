@@ -6,7 +6,7 @@
 </p>
 
 <p align="center">
-	<a href="https://t.me/thecatclubha"><img src="https://img.shields.io/badge/Grupo%20de%20Telegram-The%20Cat's%20Club-26A5E4?style=plastic&logo=telegram&logoColor=white" alt="Grupo de Telegram"/></a>
+	<a href="https://t.me/hacattoshub"><img src="https://img.shields.io/badge/Comunidad%20de%20Telegram-Cattos%20Hub-26A5E4?style=plastic&logo=telegram&logoColor=white" alt="Comunidad de Telegram"/></a>
 	<a href="https://ko-fi.com/hajuegos0710"><img src="https://img.shields.io/badge/Donaciones-Ko--fi-FF5E5B?style=plastic&logo=kofi&logoColor=white" alt="Donaciones"/></a>
 	<a href="https://github.com/HaJuegos/The-Last-15-Days"><img src="https://img.shields.io/github/stars/HaJuegos/The-Last-15-Days?label=Estrellas%20de%20GitHub&style=plastic&logo=github&color=blueviolet" alt="Estrellas"/></a>
 </p>
@@ -40,6 +40,15 @@
 		</tr>
 	</table>
 </div>
+
+---
+
+## Informacion Importante:
+
+Este proyecto es una comision previa realizada por RosherRandom. Todos los creditos a el mismo. Igualmente a todos los sonidos o efectos de sonidos 
+
+* 📖 **[Wiki General e Información del Add-on](https://github.com/HaJuegos/The-Last-15-Days/wiki)**: Revisa guías, mecánicas y preguntas frecuentes o mas!
+* ⚔️ **[Cambios de Dificultad](https://github.com/HaJuegos/The-Last-15-Days/wiki)**: Enterate de todos los cambios que contiene este add-on consecutivo.
 
 ---
 

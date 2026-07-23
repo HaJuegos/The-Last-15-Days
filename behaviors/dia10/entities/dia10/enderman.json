@@ -64,6 +64,14 @@
             }
         },
         "components": {
+            "minecraft:damage_sensor": {
+                "triggers": [
+                    {
+                        "cause": "drowning",
+                        "deals_damage": "no"
+                    }
+                ]
+            },
             "minecraft:spell_effects": {
                 "add_effects": [
                     {
@@ -203,8 +211,7 @@
                 ]
             },
             "minecraft:navigation.walk": {
-                "can_path_over_water": false,
-                "avoid_water": true
+                "can_path_over_water": true
             },
             "minecraft:movement.basic": {
             },

@@ -319,6 +319,16 @@
             "minecraft:damage_sensor": {
                 "triggers": [
                     {
+                        "cause": "block_explosion",
+                        "deals_damage": "yes",
+                        "damage_multiplier": 2.0
+                    },
+                    {
+                        "cause": "entity_explosion",
+                        "deals_damage": "yes",
+                        "damage_multiplier": 2.0
+                    },
+                    {
                         "cause": "fire",
                         "damage_modifier": 6
                     },

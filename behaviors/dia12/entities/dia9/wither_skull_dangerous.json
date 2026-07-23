@@ -13,7 +13,8 @@
                 "minecraft:explode": {
                     "causes_fire": false,
                     "fuse_lit": true,
-                    "power": 8,
+                    "power": 4,
+                    "allow_underwater": true,
                     "destroy_affected_by_griefing": true,
                     "fuse_length": 0,
                     "max_resistance": 4.0

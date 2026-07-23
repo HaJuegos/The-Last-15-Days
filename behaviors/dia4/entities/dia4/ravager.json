@@ -9,7 +9,6 @@
             "is_spawnable": true,
             "is_summonable": true
         },
-
         "component_groups": {
             "minecraft:celebrate": {
                 "minecraft:behavior.celebrate": {
@@ -102,10 +101,9 @@
                     "track_target": true,
                     "require_complete_path": false,
                     "random_stop_interval": 0,
-                    "reach_multiplier": 1.5,
-                    "speed_multiplier": 1.0,
-                    "attack_duration": 0.75,
-                    "hit_delay_pct": 0.5
+                    "reach_multiplier": 2,
+                    "speed_multiplier": 1.15,
+                    "attack_duration": 0.75
                 },
                 "minecraft:behavior.random_stroll": {
                     "priority": 6,
@@ -139,7 +137,7 @@
                 "minecraft:behavior.nearest_attackable_target": {
                     "priority": 3,
                     "must_see": true,
-                    "within_radius": 16.0,
+                    "reselect_targets": true,
                     "entity_types": [
                         {
                             "filters": {
@@ -373,7 +371,6 @@
                 ]
             }
         },
-
         "events": {
             "minecraft:entity_spawned": {
                 "add": {

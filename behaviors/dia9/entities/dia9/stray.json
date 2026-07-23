@@ -10,19 +10,6 @@
             "spawn_category": "monster"
         },
         "component_groups": {
-            "ha:bee_ranged_mode": {
-                "minecraft:behavior.ranged_attack": {
-                    "priority": 0,
-                    "attack_interval_min": 1.0,
-                    "attack_interval_max": 3.0,
-                    "attack_radius": 15.0
-                },
-                "minecraft:shooter": {
-                    "aux_val": 19,
-                    "def": "minecraft:fireball<ha:from_skeleton_bee>",
-                    "sound": "bow"
-                }
-            },
             "ha:riding_sensor": {
                 "minecraft:behavior.hurt_by_target": {
                     "priority": 1,
@@ -50,20 +37,6 @@
                                     }
                                 ]
                             }
-                        }
-                    ]
-                },
-                "minecraft:damage_sensor": {
-                    "triggers": [
-                        {
-                            "on_damage": {
-                                "filters": {
-                                    "test": "is_family",
-                                    "subject": "other",
-                                    "value": "skeleton"
-                                }
-                            },
-                            "deals_damage": "no"
                         }
                     ]
                 },
@@ -123,84 +96,50 @@
             "ha:persistance": {
                 "minecraft:persistent": { }
             },
-            "minecraft:melee_attack": {
-                "minecraft:attack": {
-                    "damage": 3,
-                    "effect_duration": 10,
-                    "effect_name": "slowness"
-                },
-                "minecraft:behavior.melee_box_attack": {
-                    "speed_multiplier": 1.25,
-                    "track_target": true,
-                    "priority": 4
-                },
-                "minecraft:environment_sensor": {
-                    "triggers": [
-                        {
-                            "event": "minecraft:ranged_mode",
-                            "filters": {
-                                "all_of": [
-                                    {
-                                        "operator": "==",
-                                        "test": "in_water",
-                                        "subject": "self",
-                                        "value": false
-                                    },
-                                    {
-                                        "operator": "==",
-                                        "test": "has_ranged_weapon",
-                                        "subject": "self",
-                                        "value": true
-                                    }
-                                ]
-                            }
-                        }
-                    ]
-                }
-            },
             "minecraft:revert_to_skeleton": {
                 "minecraft:transformation": {
                     "delay": 0.5,
                     "into": "minecraft:skeleton"
                 }
-            },
-            "minecraft:ranged_attack": {
-                "minecraft:behavior.ranged_attack": {
-                    "attack_interval_max": 3.0,
-                    "attack_interval_min": 1.0,
-                    "attack_radius": 15.0,
-                    "priority": 0
-                },
-                "minecraft:environment_sensor": {
-                    "triggers": [
-                        {
-                            "event": "minecraft:melee_mode",
-                            "filters": {
-                                "operator": "==",
-                                "test": "is_underwater",
-                                "subject": "self",
-                                "value": true
-                            }
-                        },
-                        {
-                            "event": "minecraft:melee_mode",
-                            "filters": {
-                                "operator": "==",
-                                "test": "has_ranged_weapon",
-                                "subject": "self",
-                                "value": false
-                            }
-                        }
-                    ]
-                },
-                "minecraft:shooter": {
-                    "aux_val": 19,
-                    "def": "minecraft:arrow",
-                    "sound": "bow"
-                }
             }
         },
         "components": {
+            "minecraft:damage_sensor": {
+                "triggers": [
+                    {
+                        "cause": "entity_explosion",
+                        "deals_damage": "no"
+                    },
+                    {
+                        "cause": "block_explosion",
+                        "deals_damage": "no"
+                    },
+                    {
+                        "on_damage": {
+                            "filters": {
+                                "test": "is_family",
+                                "subject": "other",
+                                "value": "skeleton"
+                            }
+                        },
+                        "deals_damage": "no"
+                    }
+                ]
+            },
+            "minecraft:behavior.ranged_attack": {
+                "priority": 0,
+                "speed_multiplier": 1.25,
+                "attack_interval_min": 1.05,
+                "attack_interval_max": 1.65,
+                "attack_radius": 40,
+                "ranged_fov": 360,
+                "swing": true,
+                "target_in_sight_time": 0.1
+            },
+            "minecraft:shooter": {
+                "def": "minecraft:fireball<ha:from_skeleton_bee>",
+                "sound": "bow"
+            },
             "minecraft:on_death": {
                 "target": "self",
                 "event": "ha:random_drop_bow"
@@ -301,12 +240,6 @@
             "minecraft:behavior.random_stroll": {
                 "priority": 6,
                 "speed_multiplier": 1
-            },
-            "minecraft:behavior.ranged_attack": {
-                "attack_interval_max": 3.0,
-                "attack_interval_min": 1.0,
-                "attack_radius": 15.0,
-                "priority": 0
             },
             "minecraft:breathable": {
                 "breathes_water": true,
@@ -656,10 +589,6 @@
                 ],
                 "singular_pickup": true
             },
-            "minecraft:shooter": {
-                "aux_val": 19,
-                "def": "minecraft:arrow"
-            },
             "minecraft:type_family": {
                 "family": [
                     "stray",
@@ -686,17 +615,10 @@
                     }
                 ]
             },
-            "minecraft:entity_spawned": {
-                "add": {
-                    "component_groups": [
-                        "minecraft:ranged_attack"
-                    ]
-                }
-            },
+            "minecraft:entity_spawned": { },
             "ha:spawned_from_bee": {
                 "add": {
                     "component_groups": [
-                        "ha:bee_ranged_mode",
                         "ha:riding_sensor",
                         "ha:persistance"
                     ]
@@ -742,30 +664,6 @@
                         ]
                     }
                 ]
-            },
-            "minecraft:melee_mode": {
-                "add": {
-                    "component_groups": [
-                        "minecraft:melee_attack"
-                    ]
-                },
-                "remove": {
-                    "component_groups": [
-                        "minecraft:ranged_attack"
-                    ]
-                }
-            },
-            "minecraft:ranged_mode": {
-                "add": {
-                    "component_groups": [
-                        "minecraft:ranged_attack"
-                    ]
-                },
-                "remove": {
-                    "component_groups": [
-                        "minecraft:melee_attack"
-                    ]
-                }
             }
         }
     }

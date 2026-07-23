@@ -1,25 +1,56 @@
 import * as mc from "@minecraft/server";
 import * as vanilla from "@minecraft/vanilla-data";
 
-import { TL15DBaseManager } from "../base";
 import { afterEventsSimplified, beforeEventsSimplified, worldToolsSimplified, customEventsManager } from "simplified-mojang-api";
 
 /**
  * Clase hijo que maneja los eventos principales o mecanicas de las entidades.
- * @extends {TL15DBaseManager}
  * @author HaJuegos - 22-03-2026
  */
-class EntityEventsManager extends TL15DBaseManager {
+class EntityEventsManager {
+    /**
+    * Entidades que dejan una explosion al morir.
+    * @type {(string[] | vanilla.MinecraftEntityTypes[])}
+    * @private
+    * @readonly
+    * @author HaJuegos - 27-06-2026
+    */
+    private readonly explosiveEntitys: string[] | vanilla.MinecraftEntityTypes[] = [
+        vanilla.MinecraftEntityTypes.Allay,
+        vanilla.MinecraftEntityTypes.Armadillo,
+        vanilla.MinecraftEntityTypes.Axolotl,
+        vanilla.MinecraftEntityTypes.Bat,
+        vanilla.MinecraftEntityTypes.CopperGolem,
+        vanilla.MinecraftEntityTypes.Cod,
+        vanilla.MinecraftEntityTypes.Frog,
+        vanilla.MinecraftEntityTypes.GlowSquid,
+        vanilla.MinecraftEntityTypes.Mooshroom,
+        vanilla.MinecraftEntityTypes.Ocelot,
+        vanilla.MinecraftEntityTypes.Parrot,
+        vanilla.MinecraftEntityTypes.Pufferfish,
+        vanilla.MinecraftEntityTypes.Rabbit,
+        vanilla.MinecraftEntityTypes.Salmon,
+        vanilla.MinecraftEntityTypes.Sniffer,
+        vanilla.MinecraftEntityTypes.Squid,
+        vanilla.MinecraftEntityTypes.GlowSquid,
+        vanilla.MinecraftEntityTypes.Horse,
+        vanilla.MinecraftEntityTypes.SkeletonHorse,
+        vanilla.MinecraftEntityTypes.ZombieHorse,
+        vanilla.MinecraftEntityTypes.Strider,
+        vanilla.MinecraftEntityTypes.Tadpole,
+        vanilla.MinecraftEntityTypes.Tropicalfish,
+        vanilla.MinecraftEntityTypes.WanderingTrader,
+    ];
+
     /**
      * Eventos iniciales de la clase cuando es llamada o inicializada.
      * @constructor
      */
     constructor () {
-        super();
-
         this.onHitSystem();
         this.onSpawnEntitysSystem();
         this.onExplodesSystem();
+        this.onDeathSystem();
         this.staticEventsEntity();
     }
 
@@ -61,7 +92,7 @@ class EntityEventsManager extends TL15DBaseManager {
                     } break;
                     case vanilla.MinecraftEntityTypes.Dolphin: {
                         if (hitEntity instanceof mc.Player) {
-                            worldToolsSimplified.changePlyScoreInObj(hitEntity, 'dolphinTimer', 'add', 3);
+                            worldToolsSimplified.changeScoreInObj(hitEntity, 'dolphinTimer', 'add', 3);
                             hitEntity.addTag('hasDolphinDamage');
                         }
                     } break;
@@ -96,6 +127,13 @@ class EntityEventsManager extends TL15DBaseManager {
                             hitEntity.runCommand(`effect @s clear`);
                         }
                     } break;
+                    case vanilla.MinecraftEntityTypes.Zombie: {
+                        const isRiderZombie = sourceEntity.getComponent(mc.EntityComponentTypes.TypeFamily)?.hasTypeFamily('zombie_jockey');
+
+                        if (isRiderZombie) {
+                            hitEntity.runCommand(`effect @s clear`);
+                        }
+                    } break;
                 }
             }
         });
@@ -108,13 +146,35 @@ class EntityEventsManager extends TL15DBaseManager {
             if (hitEntity && sourceEntity) {
                 switch (sourceEntity.typeId) {
                     case vanilla.MinecraftEntityTypes.Slime: {
-                        hitEntity.addEffect('oozing', worldToolsSimplified.convertSecondsToTicks(30), { amplifier: 3, showParticles: true });
+                        hitEntity.addEffect('poison', worldToolsSimplified.convertSecondsToTicks(30), { amplifier: 3, showParticles: true });
                     } break;
                     case vanilla.MinecraftEntityTypes.MagmaCube: {
                         hitEntity.setOnFire(30);
                     } break;
                     case 'ha:soul_ghast': {
                         hitEntity.addEffect('slowness', worldToolsSimplified.convertSecondsToTicks(10), { amplifier: 3, showParticles: true });
+                    } break;
+                    case vanilla.MinecraftEntityTypes.Wither: {
+                        if (source.cause == mc.EntityDamageCause.entityAttack) {
+                            hitEntity.addEffect('levitation', worldToolsSimplified.convertSecondsToTicks(20), { amplifier: 0 });
+                        }
+                    } break;
+                    case vanilla.MinecraftEntityTypes.Spider:
+                    case vanilla.MinecraftEntityTypes.CaveSpider: {
+                        const isRiderZombie = sourceEntity.getComponent(mc.EntityComponentTypes.TypeFamily)?.hasTypeFamily('zombie_jockey');
+
+                        hitEntity.runCommand(`fill ~3 ~3 ~-3 ~-3 ~-3 ~3 web replace air`);
+
+                        if (isRiderZombie) {
+                            hitEntity.runCommand(`effect @s clear`);
+                        }
+                    } break;
+                    case vanilla.MinecraftEntityTypes.Zombie: {
+                        const isRiderZombie = sourceEntity.getComponent(mc.EntityComponentTypes.TypeFamily)?.hasTypeFamily('zombie_jockey');
+
+                        if (isRiderZombie) {
+                            hitEntity.runCommand(`effect @s clear`);
+                        }
                     } break;
                 }
             }
@@ -135,7 +195,7 @@ class EntityEventsManager extends TL15DBaseManager {
 
                         sourceEntity.tryTeleport(coords, { dimension: dime });
 
-                        hitEntity.applyDamage(2, { damagingEntity: sourceEntity, damagingProjectile: projectile, cause: mc.EntityDamageCause.projectile });
+                        hitEntity.applyDamage(2, { damagingEntity: sourceEntity, damagingProjectile: projectile });
                         projectile.remove();
                         sourceEntity.runCommand(`playsound ui.slime_pearl.hit @a ${coords.x} ${coords.y} ${coords.z}`);
                     } break;
@@ -211,6 +271,28 @@ class EntityEventsManager extends TL15DBaseManager {
                         worldToolsSimplified.setDelay(() => {
                             sourcePly.runCommand(`dialogue open @e[type=ha:socrates_npc,c=1] @s socrates_bullshit${randomDialogueIndex}`);
                         }, worldToolsSimplified.convertSecondsToTicks(1));
+                    });
+                }
+            }
+        });
+
+        beforeEventsSimplified.onEntityHurt((args) => {
+            const hurtEntity = args.hurtEntity;
+            const sourceEntity = args.damageSource.damagingEntity;
+
+            if (hurtEntity.typeId == vanilla.MinecraftEntityTypes.Wither && sourceEntity instanceof mc.Player) {
+                const armorInv = sourceEntity.getComponent(mc.EntityComponentTypes.Equippable);
+
+                if (!armorInv) return;
+
+                const mainItem = armorInv.getEquipment(mc.EquipmentSlot.Mainhand);
+
+                if (mainItem && (mainItem.typeId == vanilla.MinecraftItemTypes.Mace || mainItem.typeId.includes('spear'))) {
+                    args.cancel = true;
+
+                    worldToolsSimplified.setRun(() => {
+                        sourceEntity.sendMessage({ rawtext: [{ translate: 'chat.system.block_items.wither' }] });
+                        sourceEntity.playSound('ui.error_item');
                     });
                 }
             }
@@ -374,6 +456,25 @@ class EntityEventsManager extends TL15DBaseManager {
     }
 
     /**
+     * Metodo principal que controla los eventos cuando una entidad ha muerto en el mundo.
+     * @returns {void}
+     * @private
+     * @author HaJuegos - 27-06-2026
+     */
+    private onDeathSystem(): void {
+        afterEventsSimplified.onEntityDie((args) => {
+            const entity = args.deadEntity;
+
+            if (this.explosiveEntitys.includes(entity.typeId as vanilla.MinecraftEntityTypes)) {
+                const coords = entity.location;
+                const dime = entity.dimension;
+
+                dime.createExplosion(coords, 4, { allowUnderwater: true, breaksBlocks: true });
+            }
+        });
+    }
+
+    /**
      * Metodo principal que maneja las logicas de cuando una entidad spawnea en el mundo.
      * @author HaJuegos - 23-03-2026
      * @private
@@ -403,7 +504,7 @@ class EntityEventsManager extends TL15DBaseManager {
                         throw e;
                     }
 
-                    if ((block && block.typeId.includes(vanilla.MinecraftBlockTypes.LightningRod)) || (blockDown && blockDown.typeId.includes(vanilla.MinecraftBlockTypes.LightningRod))) {
+                    if ((block && block.typeId.includes('lightning_rod')) || (blockDown && blockDown.typeId.includes('lightning_rod'))) {
                         dime.createExplosion(coords, 3, { allowUnderwater: true, breaksBlocks: true });
                     }
                 } break;
@@ -561,27 +662,27 @@ class EntityEventsManager extends TL15DBaseManager {
     private stealItemsSystem(ply: mc.Player, entitySteal: mc.Entity): void {
         const dime = entitySteal.dimension;
         const otherEntity = entitySteal.getComponent(mc.EntityComponentTypes.Inventory)?.container as mc.Container;
-        const invPly = ply.getComponent(mc.EntityComponentTypes.Inventory)?.container as mc.Container;
-        const armorPly = ply.getComponent(mc.EntityComponentTypes.Equippable) as mc.EntityEquippableComponent;
-        const armorSlots = [mc.EquipmentSlot.Head, mc.EquipmentSlot.Chest, mc.EquipmentSlot.Legs, mc.EquipmentSlot.Feet, mc.EquipmentSlot.Offhand];
-        const validSlotsEntity = otherEntity.emptySlotsCount;
+        const invPly = ply.getComponent(mc.EntityComponentTypes.Inventory)?.container;
+        const armorPly = ply.getComponent(mc.EntityComponentTypes.Equippable);
+
+        if (!invPly || !armorPly) return;
+
+        const validSlotsEntity = otherEntity ? otherEntity.emptySlotsCount : 0;
 
         const validInvSlots: number[] = [];
         for (let i = 0; i < invPly.size; i++) {
-            const item = invPly.getItem(i);
-
-            if (item) {
+            if (invPly.getItem(i)) {
                 validInvSlots.push(i);
-            }
+            };
         }
+
+        const armorSlots = [mc.EquipmentSlot.Head, mc.EquipmentSlot.Chest, mc.EquipmentSlot.Legs, mc.EquipmentSlot.Feet, mc.EquipmentSlot.Offhand];
 
         const validArmorSlots: mc.EquipmentSlot[] = [];
         for (const slot of armorSlots) {
-            const item = armorPly.getEquipment(slot);
-
-            if (item) {
+            if (armorPly.getEquipment(slot)) {
                 validArmorSlots.push(slot);
-            }
+            };
         }
 
         if (validInvSlots.length == 0 && validArmorSlots.length == 0) {
@@ -589,7 +690,6 @@ class EntityEventsManager extends TL15DBaseManager {
         }
 
         let targetInventory = Math.random() < 0.5;
-
         if (validInvSlots.length == 0) targetInventory = false;
         if (validArmorSlots.length == 0) targetInventory = true;
 
@@ -601,8 +701,12 @@ class EntityEventsManager extends TL15DBaseManager {
 
                 invPly.setItem(slotSelect, undefined);
 
-                if (validSlotsEntity > 0) {
-                    otherEntity.addItem(item);
+                if (otherEntity && validSlotsEntity > 0) {
+                    const leftover = otherEntity.addItem(item);
+
+                    if (leftover) {
+                        dime.spawnItem(leftover, entitySteal.location);
+                    }
                 } else {
                     dime.spawnItem(item, entitySteal.location);
                 }
@@ -615,12 +719,15 @@ class EntityEventsManager extends TL15DBaseManager {
 
                 armorPly.setEquipment(slotSelect, undefined);
 
-                if (validSlotsEntity > 0) {
-                    otherEntity.addItem(item);
+                if (otherEntity && validSlotsEntity > 0) {
+                    const leftover = otherEntity.addItem(item);
+
+                    if (leftover) {
+                        dime.spawnItem(leftover, entitySteal.location);
+                    }
                 } else {
                     dime.spawnItem(item, entitySteal.location);
                 }
-
             }
         }
     }

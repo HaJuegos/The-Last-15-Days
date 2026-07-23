@@ -11,6 +11,14 @@
         },
         "component_groups": {
             "ha:normal_balls": {
+                "minecraft:behavior.ranged_attack": {
+                    "priority": 1,
+                    "attack_interval_min": 0.65,
+                    "attack_interval_max": 1.35,
+                    "attack_radius": 200,
+                    "ranged_fov": 360,
+                    "target_in_sight_time": 0.1
+                },
                 "minecraft:boss": {
                     "name": "§g§lRoyerBot§r",
                     "hud_range": 500,
@@ -21,6 +29,16 @@
                 }
             },
             "ha:enraged_balls": {
+                "minecraft:behavior.ranged_attack": {
+                    "priority": 1,
+                    "attack_interval_min": 0.65,
+                    "attack_interval_max": 1.35,
+                    "burst_shots": 2,
+                    "burst_interval": 3,
+                    "attack_radius": 132,
+                    "ranged_fov": 200,
+                    "target_in_sight_time": 0.1
+                },
                 "minecraft:boss": {
                     "name": "§p§lTHE ROYER BOT§r",
                     "hud_range": 500,
@@ -31,6 +49,31 @@
                 }
             },
             "ha:landing_mode": {
+                "minecraft:reflect_projectiles": {
+                    "reflected_projectiles": [
+                        "xp_bottle",
+                        "thrown_trident",
+                        "shulker_bullet",
+                        "dragon_fireball",
+                        "arrow",
+                        "snowball",
+                        "egg",
+                        "fireball",
+                        "splash_potion",
+                        "ender_pearl",
+                        "wither_skull",
+                        "wither_skull_dangerous",
+                        "small_fireball",
+                        "lingering_potion",
+                        "llama_spit",
+                        "fireworks_rocket",
+                        "fishing_hook",
+                        "ha:dynamite",
+                        "ha:slime_pearl"
+                    ],
+                    "azimuth_angle": "180.0 + Math.random(-20.0, 20.0)",
+                    "reflection_scale": "0.5"
+                },
                 "minecraft:behavior.dragonflaming": {
                     "priority": 1,
                     "cooldown_time": 6,
@@ -45,13 +88,7 @@
                     "priority": 2
                 },
                 "minecraft:timer": {
-                    "random_time_choices": [
-                        { "weight": 1, "value": 7 },
-                        { "weight": 1, "value": 8 },
-                        { "weight": 1, "value": 10 },
-                        { "weight": 1, "value": 20 }
-                    ],
-                    "randomInterval": true,
+                    "time": [ 25, 25 ],
                     "looping": false,
                     "time_down_event": {
                         "event": "ha:start_flying",
@@ -61,7 +98,7 @@
             },
             "ha:flying_mode": {
                 "minecraft:behavior.dragonchargeplayer": {
-                    "priority": 1,
+                    "priority": 2,
                     "active_speed": 4.3,
                     "flight_speed": 1.1,
                     "target_zone": {
@@ -74,30 +111,24 @@
                     "priority": 3
                 },
                 "minecraft:behavior.dragonstrafeplayer": {
-                    "priority": 2,
+                    "priority": 1,
                     "active_speed": 0.9,
                     "flight_speed": 0.9,
-                    "fireball_range": 65,
+                    "fireball_range": 200,
                     "target_zone": {
-                        "min": 7,
+                        "min": 0,
                         "max": 110
                     },
                     "turn_speed": 0.8,
-                    "view_angle": 20,
-                    "target_in_range_and_in_view_time": 0.25,
-                    "switch_direction_probability": 0.25
+                    "view_angle": 360,
+                    "target_in_range_and_in_view_time": 0.1,
+                    "switch_direction_probability": 1
                 },
                 "minecraft:behavior.dragontakeoff": {
                     "priority": 0
                 },
                 "minecraft:timer": {
-                    "random_time_choices": [
-                        { "weight": 1, "value": 18 },
-                        { "weight": 1, "value": 20 },
-                        { "weight": 1, "value": 22 },
-                        { "weight": 1, "value": 24 }
-                    ],
-                    "randomInterval": true,
+                    "time": [ 30, 30 ],
                     "looping": false,
                     "time_down_event": {
                         "event": "ha:start_landing",
@@ -157,12 +188,40 @@
             "minecraft:type_family": {
                 "family": [
                     "dragon",
+                    "arthropod",
                     "mob"
                 ]
             }
         },
         "events": {
             "minecraft:entity_spawned": {
+                "randomize": [
+                    {
+                        "weight": 10000,
+                        "add": {
+                            "component_groups": [
+                                "ha:flying_mode",
+                                "ha:normal_balls"
+                            ]
+                        }
+                    },
+                    {
+                        "weight": 1,
+                        "add": {
+                            "component_groups": [
+                                "ha:flying_mode",
+                                "ha:normal_balls"
+                            ]
+                        },
+                        "queue_command": {
+                            "command": [
+                                "summon ender_dragon ~ ~ ~ 0 0 ha:lucky_one"
+                            ]
+                        }
+                    }
+                ]
+            },
+            "ha:lucky_one": {
                 "add": {
                     "component_groups": [
                         "ha:flying_mode",

@@ -36,9 +36,6 @@
             "ha:jockey_zombie": {
                 "minecraft:type_family": {
                     "family": [ "zombie_jockey", "zombie", "undead", "monster", "mob" ]
-                },
-                "minecraft:equipment": {
-                    "table": "loot_tables/entities/full_diamond_armor_set_protect.json"
                 }
             },
             "ha:become_husk": {
@@ -243,19 +240,11 @@
                 }
             },
             "minecraft:zombie_rider": {
-                "minecraft:equipment": {
-                    "table": "loot_tables/entities/zombie_rider_equipment.json"
-                },
                 "minecraft:loot": {
                     "table": "loot_tables/entities/zombie_rider.json"
                 },
                 "minecraft:type_family": {
                     "family": [ "zombie_rider", "zombie", "undead", "monster", "mob" ]
-                }
-            },
-            "minecraft:can_have_equipment": {
-                "minecraft:equipment": {
-                    "table": "loot_tables/entities/zombie_equipment.json"
                 }
             },
             "minecraft:can_break_doors": {
@@ -306,6 +295,9 @@
             }
         },
         "components": {
+            "minecraft:equipment": {
+                "table": "loot_tables/entities/zombie_equipment.json"
+            },
             "minecraft:attack": {
                 "damage": 3
             },

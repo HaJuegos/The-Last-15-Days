@@ -1,59 +1,157 @@
 import * as mc from "@minecraft/server";
 import * as vanilla from "@minecraft/vanilla-data";
 
-import { afterEventsSimplified, beforeEventsSimplified, customEventsManager, worldToolsSimplified } from "simplified-mojang-api";
-import { TL15DBaseManager } from "../base";
+import { beforeEventsSimplified, customEventsManager, worldToolsSimplified } from "simplified-mojang-api";
 
 /**
  * Clase hijo encargada de manejar los eventos principales de los componentes custom de bloques.
  * @extends {TL15DBaseManager}
  * @author HaJuegos - 17-03-2026
  */
-class BlocksCustomComponentsManager extends TL15DBaseManager {
+class BlocksCustomComponentsManager {
+    /**
+     * Todos los componentes custom a registrar con sus respectivos eventos relacionados.
+     * @type {BlockCustomCTemplate[]}
+     * @author HaJuegos - 09-07-2026
+     * @private
+     * @readonly
+     */
+    private readonly listOfComponents: BlockCustomCTemplate[] = [
+        // Dynamite Events
+        {
+            idComponent: 'ha:dynamite_interactions',
+            events: {
+                onPlayerInteract: (args) => {
+                    const ply = args.player as mc.Player;
+                    const block = args.block;
+                    const dime = args.dimension;
+                    const validItems: vanilla.MinecraftItemTypes[] = [vanilla.MinecraftItemTypes.FireCharge, vanilla.MinecraftItemTypes.FlintAndSteel];
+                    const invPly = ply.getComponent(mc.EntityComponentTypes.Inventory)?.container as mc.Container;
+                    const slot = ply.selectedSlotIndex;
+                    const item = invPly.getItem(slot);
+                    const isOnState = block.permutation.getState('ha:is_on');
+
+                    if (isOnState) return;
+
+                    if (item && validItems.includes(item.typeId as vanilla.MinecraftItemTypes)) {
+                        const newState = block.permutation.withState('ha:is_on', true);
+
+                        block.setPermutation(newState);
+                        dime.playSound('random.fuse', block.location);
+                        customEventsManager.manualDamageItem({ ply: ply, item: item });
+                        this.startExplosionDynamite(block, dime);
+                    }
+                }
+            }
+        },
+        // Acid Poll Events
+        {
+            idComponent: 'ha:toxic_puddle_events',
+            events: {
+                onStepOn(args) {
+                    const stepEntity = args.entity;
+
+                    if (stepEntity) {
+                        worldToolsSimplified.setRun(() => {
+                            stepEntity.addEffect('fatal_poison', worldToolsSimplified.convertSecondsToTicks(99999), { amplifier: 3, showParticles: true });
+                        });
+                    }
+                },
+                onPlayerBreak: (args) => {
+                    const ply = args.player;
+
+                    if (ply) {
+                        worldToolsSimplified.setRun(() => {
+                            ply.addEffect('fatal_poison', worldToolsSimplified.convertSecondsToTicks(99999), { amplifier: 3, showParticles: true });
+                        });
+                    }
+                },
+                onRandomTick: (args) => {
+                    const block = args.block;
+
+                    if (Math.random() <= 0.5) {
+                        worldToolsSimplified.setRun(() => {
+                            const adjacentBlocks = [
+                                block.above(),
+                                block.below(),
+                                block.north(),
+                                block.east(),
+                                block.west(),
+                                block.south()
+                            ];
+
+                            const unbreakableBlocks = [
+                                'minecraft:bedrock',
+                                'minecraft:barrier',
+                                'minecraft:border_block',
+                                'minecraft:command_block'
+                            ];
+
+                            const validTargets = [];
+
+                            for (const targetBlock of adjacentBlocks) {
+                                if (targetBlock && !targetBlock.isAir && !unbreakableBlocks.includes(targetBlock.typeId) && targetBlock.typeId != block.typeId) {
+                                    validTargets.push(targetBlock);
+                                }
+                            }
+
+                            if (validTargets.length > 0) {
+                                const chosenBlock = validTargets[Math.floor(Math.random() * validTargets.length)];
+
+                                if (Math.random() <= 0.85) {
+                                    chosenBlock.setType(block.typeId);
+                                }
+
+                                block.setType(vanilla.MinecraftBlockTypes.Air);
+                            } else {
+                                block.setType(vanilla.MinecraftBlockTypes.Air);
+                            }
+                        });
+                    }
+                }
+            }
+        },
+        // Nurse Generator Events
+        {
+            idComponent: 'ha:spawner_mobs_nurse_events',
+            events: {
+                onTick: (args) => {
+                    const block = args.block;
+                    const dime = args.dimension;
+                    const state = block.permutation.getState('ha:variant_spawn');
+
+                    if (!state || state == 'null') return;
+
+                    worldToolsSimplified.setRun(() => {
+                        if (state == 'nurse') {
+                            dime.spawnEntity('ha:nurse_npc' as mc.VanillaEntityIdentifier, block.location, { spawnEvent: 'minecraft:entity_spawned' });
+                        } else {
+                            dime.spawnEntity('minecraft:armor_stand', { x: block.location.x, y: block.location.y + 1, z: block.location.z }, { spawnEvent: 'ha:spawned_from_nurse_house' });
+                        }
+
+                        dime.setBlockType(block.location, vanilla.MinecraftBlockTypes.Air);
+                    });
+                }
+            }
+        }
+    ];
+
     /**
      * Eventos principales de la clase cuando es inicializada o llamada.
      * @constructor
      */
     constructor () {
-        super();
-
         this.dynamiteEvents();
-        this.acidPoolEvents();
+        this.registerComponents();
     }
 
     /**
-     * Metodo que controla los eventos custom del bloque de dinamita.
-     * @author HaJuegos - 17-03-2026
+     * Metodo auxiliar que detecta los eventos del bloque de dinamita y sus acciones cercanas.
+     * @returns {void}
+     * @author HaJuegos - 09-07-2026
      * @private
      */
     private dynamiteEvents(): void {
-        const self = this;
-        const blockEvents: mc.BlockCustomComponent = {
-            onPlayerInteract(args) {
-                const ply = args.player as mc.Player;
-                const block = args.block;
-                const dime = args.dimension;
-                const validItems: vanilla.MinecraftItemTypes[] = [vanilla.MinecraftItemTypes.FireCharge, vanilla.MinecraftItemTypes.FlintAndSteel];
-                const invPly = ply.getComponent(mc.EntityComponentTypes.Inventory)?.container as mc.Container;
-                const slot = ply.selectedSlotIndex;
-                const item = invPly.getItem(slot);
-                const isOnState = block.permutation.getState('ha:is_on');
-
-                if (isOnState) return;
-
-                if (item && validItems.includes(item.typeId as vanilla.MinecraftItemTypes)) {
-                    const newState = block.permutation.withState('ha:is_on', true);
-
-                    block.setPermutation(newState);
-                    dime.playSound('random.fuse', block.location);
-                    customEventsManager.manualDamageItem({ ply: ply, item: item });
-                    self.startExplosionDynamite(block, dime);
-                }
-            }
-        };
-
-        beforeEventsSimplified.createBlockComponent('ha:dynamite_interactions', blockEvents);
-
         beforeEventsSimplified.onExplosion((args) => {
             const dime = args.dimension;
             const blocks = args.getImpactedBlocks();
@@ -72,82 +170,10 @@ class BlocksCustomComponentsManager extends TL15DBaseManager {
     }
 
     /**
-     * Metodo principal que controla los eventos del bloque de charco de acido.
-     * @author HaJuegos - 10-04-2026
-     * @private
-     */
-    private acidPoolEvents(): void {
-        const blockEvents: mc.BlockCustomComponent = {
-            onStepOn(args) {
-                const stepEntity = args.entity;
-
-                if (stepEntity) {
-                    worldToolsSimplified.setRun(() => {
-                        stepEntity.addEffect('fatal_poison', worldToolsSimplified.convertSecondsToTicks(99999), { amplifier: 3, showParticles: true });
-                    });
-                }
-            },
-            onPlayerBreak: (args) => {
-                const ply = args.player;
-
-                if (ply) {
-                    worldToolsSimplified.setRun(() => {
-                        ply.addEffect('fatal_poison', worldToolsSimplified.convertSecondsToTicks(99999), { amplifier: 3, showParticles: true });
-                    });
-                }
-            },
-            onRandomTick: (args) => {
-                const block = args.block;
-
-                if (Math.random() <= 0.5) {
-                    worldToolsSimplified.setRun(() => {
-                        const adjacentBlocks = [
-                            block.above(),
-                            block.below(),
-                            block.north(),
-                            block.east(),
-                            block.west(),
-                            block.south()
-                        ];
-
-                        const unbreakableBlocks = [
-                            'minecraft:bedrock',
-                            'minecraft:barrier',
-                            'minecraft:border_block',
-                            'minecraft:command_block'
-                        ];
-
-                        const validTargets = [];
-
-                        for (const targetBlock of adjacentBlocks) {
-                            if (targetBlock && !targetBlock.isAir && !unbreakableBlocks.includes(targetBlock.typeId) && targetBlock.typeId != block.typeId) {
-                                validTargets.push(targetBlock);
-                            }
-                        }
-
-                        if (validTargets.length > 0) {
-                            const chosenBlock = validTargets[Math.floor(Math.random() * validTargets.length)];
-
-                            if (Math.random() <= 0.85) {
-                                chosenBlock.setType(block.typeId);
-                            }
-
-                            block.setType(vanilla.MinecraftBlockTypes.Air);
-                        } else {
-                            block.setType(vanilla.MinecraftBlockTypes.Air);
-                        }
-                    });
-                }
-            }
-        };
-
-        beforeEventsSimplified.createBlockComponent('ha:toxic_puddle_events', blockEvents);
-    }
-
-    /**
      * Metodo auxiliar que procesa la explosion al encender la dinamita en cuestion.
      * @param {mc.Block} block Bloque de la dinamita en cuestion.
      * @param {mc.Dimension} dime Dimension a considerar.
+     * @returns {void}
      * @author HaJuegos - 17-03-2026
      * @private
      */
@@ -172,6 +198,18 @@ class BlocksCustomComponentsManager extends TL15DBaseManager {
 
             worldToolsSimplified.stopLoop(loopID);
         }, worldToolsSimplified.convertSecondsToTicks(1.2));
+    }
+
+    /**
+     * Metodo principal que registra todos los componentes guardados en la variable principal.
+     * @returns {void}
+     * @author HaJuegos - 09-07-2026
+     * @private
+     */
+    private registerComponents(): void {
+        for (const component of this.listOfComponents) {
+            beforeEventsSimplified.createBlockComponent(component.idComponent, component.events);
+        }
     }
 }
 

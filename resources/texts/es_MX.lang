@@ -20,6 +20,37 @@ dialogue.socrates.bullshit2=Si se supone que dormir restaura tu energía y sana 
 dialogue.socrates.bullshit3=Si las herramientas definen al constructor, ¿qué eres si guardas tu primer pico de madera hasta llegar al Dragón del End? ¿Un verdadero visionario, o solo un tipo que realmente odia la eficiencia?
 dialogue.socrates.bullshit4=Si la muerte en TL15D es el final definitivo, ¿qué eres si mueres sosteniendo un Tótem de Inmortalidad? ¿Un tramposo del destino, o solo un tonto retrasando la inevitable explosión de un Creeper?
 
+dialogue.nurse.regenerated=§7>> Gracias, ten lo que buscas. Regresa después si necesitas mi ayuda.
+dialogue.nurse.error_regenerated=§7>> Primero dame un diamante para poderte dar una mejora si lo necesitas. ¡Te espero!
+
+interact.btn.nurse=Regenerar tu vida por 1 diamante.
+
+
+dialogue.royerbot.intro_txt=¡Hola! Tengo algo importante que decirte. ¿Quieres escuchar mis relatos?
+
+dialogue.royerbot.dia0.txt=Bienvenido a TL15D, un add-on y servidor bastante desafiante, pensado para la gente que quiere enfrentarse a retos increíbles. ¡Recuerda que los cambios son diarios, así que cuida tu espalda!
+dialogue.royerbot.dia1.txt=¿Un nuevo día para explorar, eh? Qué refrescante es poder respirar de momento. Lamento que te hayan limitado la exploración.
+dialogue.royerbot.dia2.txt=Esos zorros son demasiado molestos, ¿no crees? Ten mucho cuidado cuando estés explorando por el mundo. Y también al minar.
+dialogue.royerbot.dia3.txt=No subestimes las manzanas de hierro, realmente te serán de mucha utilidad aunque no lo creas. Mucho cuidado por el mundo, amigo mío.
+dialogue.royerbot.dia4.txt=Las raids están peligrosas últimamente, ten mucho cuidado si decides tomar la iniciativa y enfrentarte a una tú solo.
+dialogue.royerbot.dia5.txt=Los Wither son el mob más difícil de la versión de Bedrock. ¿Qué te parece la mejora que les he implementado? ¿Te gusta? ¿Cómo que no? Entonces ya no te daré su corona. 
+dialogue.royerbot.dia6.txt=¿Conoces a un tal "Sócrates"? No le digas que me has visto. Me cae fatal. La otra vez vino con sus llamas a ofrecerme basura. Solo me fueron útiles sus perlas.
+dialogue.royerbot.dia7.txt=Tengo una Polly de mascota; es muy bonita, me agrada mucho la verdad. Son el mejor mob que hay, pero ojo cuando sean lastimadas por una vaca, que después no hay quien las detenga.
+dialogue.royerbot.dia8.txt=No subestimes el Soul Link, realmente es de mucha ayuda tener compañía para el final; solo esperemos que esa ayuda no sea tan inútil y te termine metiendo en problemas.
+dialogue.royerbot.dia9.txt=Los debuffs son el mejor cambio que se ha implementado, realmente afectan la jugabilidad de una forma muy molesta. Quédate en tu base para estar seguro por si acaso.
+dialogue.royerbot.dia10.txt=Nos vemos mañana. Espero que estés listo, lleva tu armadura perfecta al ring.
+dialogue.royerbot.dia11.txt=....
+
+dialogue.royerbot.dia0.btn1.txt=Toma, amigo, te regalo este ítem; puede que lo necesites en tu aventura. Ten cuidado ahí fuera. ¡Vuelve mañana para otra recompensa!
+dialogue.royerbot.dia0.btn1.txt.alr=Ya te entregué tu ítem diario. Regresa mañana para otra recompensa. ¡Tranquilo!
+
+dialogue.royerbot.dia0.btn2.txt=Si necesitas más información, recuerda que en GitHub puedes encontrar todo lo que buscas. Copia este enlace y pégalo en tu navegador: https://github.com/HaJuegos/The-Last-15-Days/wiki/Cambios-de-Dificultad. Y de paso, ya que estás por ahí, ¿nos regalas una estrellita, no? ;)
+
+dialogue.royerbot.btns.btnintro=¡Claro!
+
+dialogue.royerbot.dia0.btn1=Reclamar regalo
+dialogue.royerbot.dia0.btn2=Algo más
+
 
 ## System Texts
 disconnect.kicked=¡Game Over! Ya no puedes seguir jugando.
@@ -34,6 +65,9 @@ gamepad_disconnect=¡Se te acabaron las pilas o el mando se apagó!
 gamepad_disconnect.reconnectController=RoyerBot ha intervenido en tu sistema y ahora no reconocemos tu mando. ¡Rápido! Enciéndelo o conéctalo de nuevo para continuar.
 
 pauseScreen.xboxLiveDisconnect=Se te ha desconectado la cuenta de Xbox. ¿O estás en un mundo local o cómo carajos estás viendo esto? En fin, entra de nuevo al mundo.
+
+hbui.Bedtime.sleepingNotPossibleNotWorldOwner=La noche se pasará progresivamente. Tú, tranquilo. No es como que tengas algo que hacer, ¿no?
+hbui.Bedtime.sleepingNotPossibleWorldOwner=La noche se pasará progresivamente. Tú, tranquilo. No es como que tengas algo que hacer, ¿no?
 
 
 ## Title texts
@@ -73,6 +107,15 @@ ui.system.end_addon.body_thanks=§fCanónicamente, el desarrollo de la serie con
 ui.system.end_addon.label_team=§b§lEl Equipo:§r §7Royer, Convex!, Astral y HaJuegos.§r\n\n§eRecuerda dejarnos una estrella en GitHub y cualquier retroalimentación en la página. ¡Muchas gracias :3!
 ui.system.end_addon.button_ok=§a§lContinuar
 
+ui.scoreboard.obj.title=§g§lTotal de Participantes§r
+ui.scoreboard.scores.lives=§a§lVivos§r
+ui.scoreboard.scores.deaths=§4§lMuertos§r
+
+ui.form_deaths.no_plys_deaths=§7>> No hay jugadores muertos registrados. Aun.
+ui.form_deaths.no_plys_valid=§7>> Hubo un error al intentar obtener los jugadores muertos registrados, o no hay, o los datos están erróneos.
+ui.form_deaths.title.plys_deaths=§p§l Jugadores muertos §r
+ui.form_deaths.subtitle.plys_deaths=§o§iTodos los jugadores registrados en el mundo desde el Día 0. Principalmente, datos usados para el soul link.§r
+
 
 ## Chat texts
 chat.system.resquicio_start=§c§l>>§r§c ¡%1 ha causado un §4§lResquicio Infernal§r!
@@ -90,7 +133,7 @@ chat.system.hit_by_dolphin=§e§lTe ha golpeado un delfín, ya no puedes respira
 chat.system.soul_link.no_plys_deaths=§7§l>> No hay jugadores por revivir, es inútil utilizar el ítem en este momento.
 chat.system.soul_link.alr_used=§7§l>> Ya has utilizado este ítem previamente, no puedes revivir a más jugadores.
 chat.system.soul_link.select_player=§7§l>> §cPor el pacto del Soul Link, §e%2 §cha atado su destino al de §e%1§c. §7Son dos cuerpos, pero una sola vida. §4La muerte de uno será la condena absoluta del otro. Ya no hay salvación.
-chat.system.block_explorer=§c§l>> No puedes pasar del límite de exploración de 500 bloques de esta dimensión.
+chat.system.block_explorer=§c§l>> No puedes pasar del límite de exploración de esta dimensión.
 
 
 chat.system.abyss_text.abyssal_text_combo1=§1§l>> Ojos del Abismo: Sientes que una presencia oscura te arrebata varios espacios del inventario. Tranquilo, tus cosas están ahora mismo en el suelo. ¡Mala suerte!
@@ -137,6 +180,22 @@ chat.system.spawn_items_rain=§d>> Una lluvia de ítems ha ocurrido en %1.
 chat.system.spawn_totems_rain=§e>> Una lluvia de tótems ha ocurrido en %1.
 chat.system.banned_items_end=§c>> No usarás eso contra mí en esta batalla. El ítem se ha eliminado de tu inventario.
 
+chat.system.nowitheryet=§c>> No puedes invocar a este mob aún.
+chat.system.block_items.wither=§4>> No te permitiré usar ese ítem conmigo. Pelea bien. Saca tu espada y enfréntame.
+
+chat.system.autoban.disabled=§7>> El autoban ahora está desactivado. Los jugadores que mueran o estén muertos pueden entrar libremente al mundo.
+chat.system.autoban.enabled=§7>> El autoban ahora está activado. Los jugadores que mueran o estén muertos serán expulsados del mundo y no podrán entrar nuevamente.
+
+chat.system.hitboxes_system.error.nothing=§c>> No se encontró el jugador seleccionado.
+chat.system.hitboxes_system.error.noply=§c>> El jugador "%1" no fue encontrado.
+chat.system.hitboxes_system.error.same_state=§c>> No se realizaron cambios a "%1", ya estaba en ese estado.
+chat.system.hitboxes_system.enabled=§7>> Se han activado las hitboxes para "%1".
+chat.system.hitboxes_system.disabled=§7>> Se han desactivado las hitboxes para "%1".
+
+chat.system.fastitems_system.items_changed=§7>> Se han cambiado los ítems del sistema de ítems rápidos.
+
+chat.system.banana_eated=§g§l>> %1 ha consumido una Banana.
+
 
 ## Entity Names
 entity.ha:player_ghost.name=Fantasma de un Jugador
@@ -151,6 +210,8 @@ entity.ender_dragon.name=§g§lRoyerBot§r
 entity.ha:bear_trap.name=Trampa de Oso
 entity.ha:spawned_trader_llama.name=Generador de Llamas del End
 entity.ha:crystal_llama_generator.name=Controlador de Debuffos del End
+entity.ha:nurse_npc.name=Enfermera brillante
+entity.ha:data_world.name=Datos del Mundo
 
 
 ## Spawn egg names
@@ -260,6 +321,9 @@ item.ha:party_disc.name=Musica movida
 item.ha:silla_disc=Un remix de una silla
 item.ha:silla_disc.name=Un remix de una silla
 
+item.ha:banana=Banana
+item.ha:banana.name=Banana
+
 
 ## Item Catalog
 ha:itemGroup.name.nether_items=§4Cosas del Nether§r
@@ -268,6 +332,7 @@ ha:itemGroup.name.nether_items=§4Cosas del Nether§r
 ## Block names
 tile.ha:dynamite_block.name=Bloque de Dinamita Lanzable.
 tile.ha:toxic_puddle.name=Charco Tóxico
+tile.ha:generator_mobs_nurse.name=Generador de Mobs del End
 
 
 ## Music Desc
@@ -337,6 +402,7 @@ advacement.all_frogs=¡Uniendo nuestras fuerzas!
 advacement.infernal_crown=Domando al Nether
 advacement.hoglin_tusk=El Depredador Alfa
 advacement.cautious_armor=Domando la Cautela
+advacement.backrooms=Una visita a los backrooms
 
 
 ## Subtitle Texts
@@ -371,6 +437,9 @@ ui.subtitle_custom.ambient_dragon_attack.nausea=§2Inicia el ataque de Nauseas§
 ui.subtitle_custom.ambient_dragon_attack.conduit=§bInicia el ataque del Conduit§r
 ui.subtitle_custom.bear_trap.attacks=Una trampa de oso ataca
 ui.subtitle_custom.ambient_dragon_attack.nausea.damaged=§cNo te agachaste esta vez§r
+ui.subtitle_custom.nurse_npc.idle=Una enfermera brillante quejándose
+ui.subtitle_custom.nurse_npc.hurt=Una enfermera brillante siendo lastimada
+ui.subtitle_custom.nurse_npc.purchased=Alguien le compró a una enfermera brillante
 
 ui.music_start.dragon_fight=Música del dragón sonando
 ui.music_start.final_music=Música de los créditos sonando

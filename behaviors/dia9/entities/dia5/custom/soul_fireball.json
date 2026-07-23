@@ -20,7 +20,8 @@
                     "power": 5,
                     "destroy_affected_by_griefing": true,
                     "fuse_length": 0,
-                    "max_resistance": 4.0
+                    "max_resistance": 4.0,
+                    "allow_underwater": true
                 }
             }
         },

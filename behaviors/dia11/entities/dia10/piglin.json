@@ -81,7 +81,7 @@
                     "track_target": true
                 },
                 "minecraft:attack": {
-                    "damage": 5
+                    "damage": 25
                 },
                 "minecraft:variant": {
                     "value": 1
@@ -98,7 +98,7 @@
                     "target_in_sight_time": 0.1
                 },
                 "minecraft:shooter": {
-                    "def": "minecraft:arrow"
+                    "def": "minecraft:arrow<ha:piglin_arrow>"
                 },
                 "minecraft:behavior.charge_held_item": {
                     "priority": 3,
@@ -157,7 +157,7 @@
                     "target_in_sight_time": 0.1
                 },
                 "minecraft:shooter": {
-                    "def": "minecraft:arrow"
+                    "def": "minecraft:arrow<ha:piglin_arrow>"
                 },
                 "minecraft:behavior.charge_held_item": {
                     "priority": 3,
@@ -193,7 +193,7 @@
                     "track_target": true
                 },
                 "minecraft:attack": {
-                    "damage": 5
+                    "damage": 25
                 },
                 "minecraft:equipment": {
                     "table": "loot_tables/entities/piglin_gear_melee.json"

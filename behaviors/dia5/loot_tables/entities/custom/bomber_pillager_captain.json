@@ -6,7 +6,17 @@
             "rolls": 1,
             "entries": [
                 {
-                    "type": "empty"
+                    "type": "loot_table",
+                    "name": "loot_tables/entities/custom/bomber_pillager.json"
+                }
+            ]
+        },
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "loot_table",
+                    "name": "loot_tables/entities/raider_drops.json"
                 }
             ]
         }

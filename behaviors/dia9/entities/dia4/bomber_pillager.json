@@ -13,21 +13,7 @@
         },
         "component_groups": {
             "ha:explode": {
-                "minecraft:damage_sensor": {
-                    "triggers": [
-                        {
-                            "on_damage": {
-                                "filters": {
-                                    "test": "is_family",
-                                    "subject": "other",
-                                    "value": "bomber_pillager"
-                                }
-                            },
-                            "cause": "all",
-                            "deals_damage": "no"
-                        }
-                    ]
-                },
+                "minecraft:damage_sensor": { },
                 "minecraft:is_pregnant": { },
                 "minecraft:is_ignited": { },
                 "minecraft:explode": {
@@ -54,7 +40,7 @@
                     "attack_interval_min": 0.9,
                     "charge_charged_trigger": 0,
                     "charge_shoot_trigger": 0.9,
-                    "attack_radius": 30,
+                    "attack_radius": 65,
                     "ranged_fov": 360,
                     "speed_multiplier": 1.25
                 },
@@ -82,17 +68,6 @@
                                 "target": "self"
                             },
                             "deals_damage": "yes"
-                        },
-                        {
-                            "on_damage": {
-                                "filters": {
-                                    "test": "is_family",
-                                    "subject": "other",
-                                    "value": "bomber_pillager"
-                                }
-                            },
-                            "cause": "all",
-                            "deals_damage": "no"
                         }
                     ]
                 },
@@ -165,7 +140,7 @@
                     "first_founding_reward": 0
                 },
                 "minecraft:loot": {
-                    "table": "loot_tables/entities/pillager_raid.json"
+                    "table": "loot_tables/entities/custom/bomber_pillager_raid.json"
                 },
                 "minecraft:ambient_sound_interval": {
                     "value": 2.0,
@@ -187,17 +162,8 @@
                 "minecraft:variant": {
                     "value": 1
                 },
-                "minecraft:equipment": {
-                    "table": "loot_tables/entities/pillager_captain_equipment.json",
-                    "slot_drop_chance": [
-                        {
-                            "slot": "slot.armor.chest",
-                            "drop_chance": 1.0
-                        }
-                    ]
-                },
                 "minecraft:loot": {
-                    "table": "loot_tables/entities/pillager_captain.json"
+                    "table": "loot_tables/entities/custom/bomber_pillager_captain.json"
                 }
             },
             "minecraft:patrol_captain": {
@@ -206,17 +172,8 @@
                 "minecraft:variant": {
                     "value": 1
                 },
-                "minecraft:equipment": {
-                    "table": "loot_tables/entities/pillager_captain_equipment.json",
-                    "slot_drop_chance": [
-                        {
-                            "slot": "slot.armor.chest",
-                            "drop_chance": 1.0
-                        }
-                    ]
-                },
                 "minecraft:loot": {
-                    "table": "loot_tables/entities/pillager_captain.json"
+                    "table": "loot_tables/entities/custom/bomber_pillager_captain.json"
                 },
                 "minecraft:behavior.hold_ground": {
                     "priority": 5,
@@ -266,7 +223,6 @@
             },
             "minecraft:type_family": {
                 "family": [
-                    "bomber_pillager",
                     "pillager",
                     "monster",
                     "illager",

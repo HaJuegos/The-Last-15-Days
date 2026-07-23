@@ -1,17 +1,8 @@
 import * as mc from '@minecraft/server';
 
-import { TL15DBaseManager } from "../base";
 import { beforeEventsSimplified, ButtonFormBase, customEventsManager, worldToolsSimplified } from "simplified-mojang-api";
 
-/**
- * Plantilla general para regisrar un nuevo componente custom para los items.
- * @interface TemplateCustomItem
- * @author HaJuegos - 15-04-2026
- */
-interface TemplateCustomItem {
-    idComponent: string;
-    componentEvents: mc.ItemCustomComponent;
-}
+import { TL15DBaseManager } from '../base';
 
 /**
  * Clase hijo que se encarga de los eventos principales de los componentes custom de los items custom.
@@ -19,11 +10,18 @@ interface TemplateCustomItem {
  * @author HaJuegos - 23-03-2026
  */
 class ItemCustomComponentsManager extends TL15DBaseManager {
-    private itemComponents: TemplateCustomItem[] = [
+    /**
+     * Lista de todos los componentes custom a añadir respecto a items.
+     * @type {ItemCustomCTemplate[]}
+     * @author HaJuegos - 09-07-2026
+     * @private
+     * @readonly
+     */
+    private readonly listOfComponents: ItemCustomCTemplate[] = [
+        // Iron Apple Events
         {
-            // Iron Apple Events
             idComponent: 'ha:iron_apple_events',
-            componentEvents: {
+            events: {
                 onConsume(args) {
                     const entity = args.source;
                     const effects: Record<string, number> = {
@@ -38,34 +36,10 @@ class ItemCustomComponentsManager extends TL15DBaseManager {
                 }
             }
         },
+        // Allay Dust Events
         {
-            // Surprise Bundle Events
-            idComponent: 'ha:surprise_bundle_events',
-            componentEvents: {
-                onUse: (args) => {
-                    const sourcePly = args.source;
-                    const item = args.itemStack;
-
-                    if (item) {
-                        sourcePly.playSound(`armor.equip_generic`);
-                        sourcePly.runCommand(`structure load ha:books ~~1~`);
-
-                        worldToolsSimplified.setRun(() => {
-                            const bundle = new mc.ItemStack('minecraft:bundle');
-                            const inv = sourcePly.getComponent(mc.EntityComponentTypes.Inventory)?.container as mc.Container;
-                            const slot = sourcePly.selectedSlotIndex;
-
-                            inv.setItem(slot, undefined);
-                            inv.addItem(bundle);
-                        });
-                    }
-                }
-            }
-        },
-        {
-            // Allay Dust Events
             idComponent: 'ha:allay_dust_events',
-            componentEvents: {
+            events: {
                 onConsume: (args) => {
                     const sourceEntity = args.source;
 
@@ -75,10 +49,10 @@ class ItemCustomComponentsManager extends TL15DBaseManager {
                 }
             }
         },
+        // Allay Essence Events
         {
-            // Allay Essence Events
             idComponent: 'ha:allay_essence_events',
-            componentEvents: {
+            events: {
                 onConsume: (args) => {
                     const sourceEntity = args.source;
 
@@ -89,13 +63,15 @@ class ItemCustomComponentsManager extends TL15DBaseManager {
                 }
             }
         },
+        // Soul Link Events
         {
-            // Soul Link Events
             idComponent: 'ha:soul_link_events',
-            componentEvents: {
-                onUse: (args) => {
+            events: {
+                onUse: async (args) => {
                     const sourceEntity = args.source;
-                    const deathCounter = mc.world.getDynamicProperty('ha:death_counter') as number | undefined;
+                    const entityWorldData = await this.getEntityDataWorld();
+                    const totalDeaths = worldToolsSimplified.getScoreInObj(entityWorldData, 'ha:death_counter');
+                    const objDeaths = worldToolsSimplified.getOrCreateScorebordObj('ha:list_deaths') as mc.ScoreboardObjective;
 
                     if (sourceEntity.hasTag('isLinked')) {
                         worldToolsSimplified.setRun(() => {
@@ -106,7 +82,7 @@ class ItemCustomComponentsManager extends TL15DBaseManager {
                         return;
                     }
 
-                    if (!deathCounter || deathCounter <= 0) {
+                    if (!totalDeaths || totalDeaths <= 0) {
                         worldToolsSimplified.setRun(() => {
                             sourceEntity.sendMessage({ rawtext: [{ translate: 'chat.system.soul_link.no_plys_deaths' }] });
                             sourceEntity.playSound('ui.error_item');
@@ -115,17 +91,14 @@ class ItemCustomComponentsManager extends TL15DBaseManager {
                         return;
                     }
 
+                    const deathDataPre = objDeaths.getParticipants().map(data => data.displayName);
                     const uniquePlys = new Map<string, string>();
 
-                    for (let i = 1; i <= deathCounter; i++) {
-                        const dataPlys = mc.world.getDynamicProperty(`ha:player_death_data_${i}`) as string | undefined;
+                    for (const data of deathDataPre) {
+                        const [name, id, linked] = data.split(':');
 
-                        if (dataPlys) {
-                            const [name, id, linked] = dataPlys.split(':');
-
-                            if (name && id && !linked) {
-                                uniquePlys.set(id, name);
-                            }
+                        if (name && id && !linked) {
+                            uniquePlys.set(id, name);
                         }
                     }
 
@@ -163,7 +136,7 @@ class ItemCustomComponentsManager extends TL15DBaseManager {
                             onClickBtn: (ply, btn) => {
                                 const targetPlayerId = btnInds[btn];
 
-                                worldToolsSimplified.setRun(() => {
+                                worldToolsSimplified.setRun(async () => {
                                     const dime = ply.dimension;
                                     const coords = ply.location;
                                     const inv = ply.getComponent(mc.EntityComponentTypes.Inventory)?.container as mc.Container;
@@ -172,32 +145,35 @@ class ItemCustomComponentsManager extends TL15DBaseManager {
                                     const currentHealth = healthPly.currentValue;
                                     const damageAmount = Math.floor(currentHealth / 2);
 
-                                    const currentDeathCounter = mc.world.getDynamicProperty('ha:death_counter') as number | undefined;
+                                    const entityWorldData = await this.getEntityDataWorld();
+                                    const participants = objDeaths.getParticipants().map(data => data.displayName);
+                                    const objTotal = worldToolsSimplified.getOrCreateScorebordObj('totalLives', 'ui.scoreboard.obj.title') as mc.ScoreboardObjective;
+
                                     let targetName;
                                     let targetID;
 
-                                    if (currentDeathCounter) {
-                                        for (let i = 1; i <= currentDeathCounter; i++) {
-                                            const propKey = `ha:player_death_data_${i}`;
-                                            const dataPlys = mc.world.getDynamicProperty(propKey) as string | undefined;
+                                    for (const data of participants) {
+                                        const [name, id, linked] = data.split(':');
 
-                                            if (dataPlys) {
-                                                const [name, id] = dataPlys.split(':');
-
-                                                if (id == targetPlayerId) {
-                                                    mc.world.setDynamicProperty(propKey, `${name}:${id}:linked`);
-                                                    targetName = name;
-                                                    targetID = id;
-                                                }
-                                            }
+                                        if (id == targetPlayerId) {
+                                            targetName = name;
+                                            targetID = id;
+                                            break;
                                         }
                                     }
 
-                                    const currentSoulLinkeds = mc.world.getDynamicProperty('ha:linkeds_counter') as number | undefined;
-                                    const nextLinkIndex = (currentSoulLinkeds ?? 0) + 1;
+                                    const actualLinkeds = worldToolsSimplified.getScoreInObj(entityWorldData, 'ha:linkeds_counter');
+                                    const newLinkeds = (actualLinkeds <= 0) ? 1 : actualLinkeds + 1;
 
-                                    mc.world.setDynamicProperty('ha:linkeds_counter', nextLinkIndex);
-                                    mc.world.setDynamicProperty(`ha:soul_linkeds_${nextLinkIndex}`, `${ply.name}_${ply.id}:${targetName}_${targetID}`);
+                                    objDeaths.removeParticipant(`${targetName}:${targetID}`);
+
+                                    objTotal.addScore('ui.scoreboard.scores.deaths', -1);
+
+                                    worldToolsSimplified.changeScoreInObj(entityWorldData, 'ha:linkeds_counter', 'add', 1);
+                                    worldToolsSimplified.changeScoreInObj(entityWorldData, 'ha:death_counter', 'add', -1);
+
+                                    worldToolsSimplified.changeScoreInObj(`${targetName}:${targetID}`, 'ha:pending_revive', 'set', newLinkeds);
+                                    worldToolsSimplified.changeScoreInObj(`${targetName}:${targetID}:false:${ply.name}:${ply.id}:false`, 'ha:plys_linkeds', 'set', newLinkeds);
 
                                     ply.addTag('isLinked');
                                     inv.setItem(selectSlot, undefined);
@@ -212,7 +188,7 @@ class ItemCustomComponentsManager extends TL15DBaseManager {
                                     dime.runCommand(`playsound ui.soul_linked_used @a ${coords.x} ${coords.y} ${coords.z}`);
                                     dime.runCommand(`playsound random.totem @a ${coords.x} ${coords.y} ${coords.z} 0.35`);
 
-                                    ply.stopMusic();
+                                    ply.stopSound('ambient.soul_link');
                                     ply.removeEffect('slowness');
                                     ply.runCommand(`fog @s remove soullink`);
                                 });
@@ -220,7 +196,7 @@ class ItemCustomComponentsManager extends TL15DBaseManager {
                             onClose: (ply) => {
                                 worldToolsSimplified.setRun(() => {
                                     ply.playSound('random.enderchestclosed');
-                                    ply.stopMusic();
+                                    ply.stopSound('ambient.soul_link');
                                     ply.removeEffect('slowness');
                                     ply.runCommand(`fog @s remove soullink`);
                                 });
@@ -230,10 +206,10 @@ class ItemCustomComponentsManager extends TL15DBaseManager {
                 }
             }
         },
+        // Knowledge Book Events
         {
-            // Knowledge Book Events
             idComponent: 'ha:knowledge_book_events',
-            componentEvents: {
+            events: {
                 onUse: (args) => {
                     const ply = args.source;
                     const debuffMap: Record<string, string> = {
@@ -322,13 +298,14 @@ class ItemCustomComponentsManager extends TL15DBaseManager {
     }
 
     /**
-     * Metodo auxiliar que registra todos los componentes custom para items de forma automatica.
-     * @author HaJuegos - 15-04-2026
+     * Metodo principal que registra los componentes custom de items especificos guardados en la variable.
+     * @returns {void}
+     * @author HaJuegos - 08-07-2026
      * @private
      */
     private registerComponents(): void {
-        for (const itemConfig of this.itemComponents) {
-            beforeEventsSimplified.createItemComponent(itemConfig.idComponent, itemConfig.componentEvents);
+        for (const component of this.listOfComponents) {
+            beforeEventsSimplified.createItemComponent(component.idComponent, component.events);
         }
     }
 }

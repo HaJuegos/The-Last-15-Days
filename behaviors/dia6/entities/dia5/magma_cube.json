@@ -81,6 +81,15 @@
                     "has_gravity": false
                 }
             },
+            "ha:aggressive_speed_boost": {
+                "minecraft:flying_speed": {
+                    "value": 0.65
+                },
+                "minecraft:movement": {
+                    "value": 1.15
+                }
+            },
+
             "ha:target_sensor": {
                 "minecraft:target_nearby_sensor": {
                     "must_see": false,
@@ -99,8 +108,8 @@
             "minecraft:slime_aggressive": {
                 "minecraft:movement.jump": {
                     "jump_delay": [
-                        0.159,
-                        0.259
+                        0.05,
+                        0.15
                     ]
                 }
             },
@@ -115,8 +124,8 @@
             "minecraft:slime_large": {
                 "minecraft:area_attack": {
                     "cause": "entity_attack",
-                    "damage_cooldown": 0.5,
-                    "damage_per_tick": 6,
+                    "damage_cooldown": 0.35,
+                    "damage_per_tick": 12,
                     "damage_range": 0.15,
                     "entity_filter": {
                         "any_of": [
@@ -134,15 +143,15 @@
                     }
                 },
                 "minecraft:attack": {
-                    "damage": 6
+                    "damage": 12
                 },
                 "minecraft:collision_box": {
                     "height": 2.08,
                     "width": 2.08
                 },
                 "minecraft:health": {
-                    "max": 16,
-                    "value": 16
+                    "max": 100,
+                    "value": 100
                 },
                 "minecraft:loot": {
                     "table": "loot_tables/entities/magma_cube.json"
@@ -157,7 +166,46 @@
             "minecraft:slime_medium": {
                 "minecraft:area_attack": {
                     "cause": "entity_attack",
-                    "damage_cooldown": 0.5,
+                    "damage_cooldown": 0.35,
+                    "damage_per_tick": 8,
+                    "damage_range": 0.15,
+                    "entity_filter": {
+                        "any_of": [
+                            {
+                                "subject": "other",
+                                "test": "is_family",
+                                "value": "player"
+                            },
+                            {
+                                "subject": "other",
+                                "test": "is_family",
+                                "value": "irongolem"
+                            }
+                        ]
+                    }
+                },
+                "minecraft:attack": {
+                    "damage": 8
+                },
+                "minecraft:collision_box": {
+                    "height": 1.02,
+                    "width": 1.04
+                },
+                "minecraft:health": {
+                    "max": 50,
+                    "value": 50
+                },
+                "minecraft:movement": {
+                    "value": 0.66
+                },
+                "minecraft:variant": {
+                    "value": 2
+                }
+            },
+            "minecraft:slime_small": {
+                "minecraft:area_attack": {
+                    "cause": "entity_attack",
+                    "damage_cooldown": 0.35,
                     "damage_per_tick": 4,
                     "damage_range": 0.15,
                     "entity_filter": {
@@ -179,51 +227,12 @@
                     "damage": 4
                 },
                 "minecraft:collision_box": {
-                    "height": 1.02,
-                    "width": 1.04
-                },
-                "minecraft:health": {
-                    "max": 4,
-                    "value": 4
-                },
-                "minecraft:movement": {
-                    "value": 0.66
-                },
-                "minecraft:variant": {
-                    "value": 2
-                }
-            },
-            "minecraft:slime_small": {
-                "minecraft:area_attack": {
-                    "cause": "entity_attack",
-                    "damage_cooldown": 0.5,
-                    "damage_per_tick": 3,
-                    "damage_range": 0.15,
-                    "entity_filter": {
-                        "any_of": [
-                            {
-                                "subject": "other",
-                                "test": "is_family",
-                                "value": "player"
-                            },
-                            {
-                                "subject": "other",
-                                "test": "is_family",
-                                "value": "irongolem"
-                            }
-                        ]
-                    }
-                },
-                "minecraft:attack": {
-                    "damage": 3
-                },
-                "minecraft:collision_box": {
                     "height": 0.52,
                     "width": 0.52
                 },
                 "minecraft:health": {
-                    "max": 1,
-                    "value": 1
+                    "max": 25,
+                    "value": 25
                 },
                 "minecraft:movement": {
                     "value": 0.6
@@ -360,7 +369,8 @@
                     "component_groups": [
                         "ha:walk_mode",
                         "minecraft:slime_aggressive",
-                        "minecraft:slime_calm"
+                        "minecraft:slime_calm",
+                        "ha:aggressive_speed_boost"
                     ]
                 },
                 "add": {
@@ -372,15 +382,22 @@
             "minecraft:become_aggressive": {
                 "sequence": [
                     {
-                        "filters": {
-                            "test": "is_skin_id",
-                            "subject": "self",
-                            "value": 1
+                        "remove": {
+                            "component_groups": [ "minecraft:slime_calm" ]
                         },
                         "add": {
-                            "component_groups": [
-                                "minecraft:slime_aggressive"
+                            "component_groups": [ "minecraft:slime_aggressive" ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "any_of": [
+                                { "test": "is_variant", "value": 2 },
+                                { "test": "is_variant", "value": 4 }
                             ]
+                        },
+                        "add": {
+                            "component_groups": [ "ha:aggressive_speed_boost" ]
                         }
                     }
                 ]
@@ -388,19 +405,18 @@
             "minecraft:become_calm": {
                 "sequence": [
                     {
-                        "trigger": "ha:become_walk_mode"
-                    },
-                    {
-                        "filters": {
-                            "test": "is_skin_id",
-                            "subject": "self",
-                            "value": 1
+                        "remove": {
+                            "component_groups": [
+                                "minecraft:slime_aggressive",
+                                "ha:aggressive_speed_boost"
+                            ]
                         },
                         "add": {
-                            "component_groups": [
-                                "minecraft:slime_calm"
-                            ]
+                            "component_groups": [ "minecraft:slime_calm" ]
                         }
+                    },
+                    {
+                        "trigger": "ha:become_walk_mode"
                     }
                 ]
             },

@@ -38,6 +38,11 @@
                             "chance": 0.10
                         },
                         {
+                            "function": "enchant_with_levels",
+                            "treasure": true,
+                            "levels": 30
+                        },
+                        {
                             "function": "specific_enchants",
                             "enchants": [
                                 {

@@ -9,7 +9,6 @@
             "is_spawnable": true,
             "is_summonable": true
         },
-
         "component_groups": {
             "minecraft:baby_drowned": {
                 "minecraft:experience_reward": {
@@ -65,6 +64,16 @@
                     }
                 },
                 "minecraft:equipment": {
+                    "slot_drop_chance": [
+                        {
+                            "drop_chance": -1,
+                            "slot": "slot.weapon.offhand"
+                        },
+                        {
+                            "drop_chance": -1,
+                            "slot": "slot.weapon.mainhand"
+                        }
+                    ],
                     "table": "loot_tables/entities/drowned_rider_equipment.json"
                 }
             },
@@ -86,8 +95,12 @@
                     "table": "loot_tables/entities/drowned_ranged_equipment.json",
                     "slot_drop_chance": [
                         {
-                            "slot": "slot.weapon.offhand",
-                            "drop_chance": 1.0
+                            "drop_chance": -1,
+                            "slot": "slot.weapon.offhand"
+                        },
+                        {
+                            "drop_chance": -1,
+                            "slot": "slot.weapon.mainhand"
                         }
                     ]
                 }
@@ -140,7 +153,6 @@
                 }
             }
         },
-
         "components": {
             "minecraft:nameable": {
             },
@@ -582,7 +594,6 @@
             "minecraft:conditional_bandwidth_optimization": {
             }
         },
-
         "events": {
             "minecraft:entity_spawned": {
                 "sequence": [

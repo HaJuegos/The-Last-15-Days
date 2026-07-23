@@ -64,6 +64,14 @@
             }
         },
         "components": {
+            "minecraft:damage_sensor": {
+                "triggers": [
+                    {
+                        "cause": "drowning",
+                        "deals_damage": "no"
+                    }
+                ]
+            },
             "minecraft:spell_effects": {
                 "add_effects": [
                     {

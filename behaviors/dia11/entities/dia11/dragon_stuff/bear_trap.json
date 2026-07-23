@@ -22,9 +22,9 @@
             },
             "minecraft:area_attack": {
                 "cause": "entity_attack",
-                "damage_cooldown": 1,
+                "damage_cooldown": 3,
                 "damage_per_tick": 1,
-                "damage_range": 2,
+                "damage_range": 1.25,
                 "entity_filter": {
                     "test": "is_family",
                     "subject": "other",
@@ -48,6 +48,44 @@
                 "triggers": [
                     {
                         "cause": "all",
+                        "on_damage": {
+                            "filters": {
+                                "any_of": [
+                                    {
+                                        "test": "is_family",
+                                        "subject": "other",
+                                        "value": "player"
+                                    },
+                                    {
+                                        "test": "is_family",
+                                        "subject": "damager",
+                                        "value": "player"
+                                    }
+                                ]
+                            },
+                            "event": "ha:death_players",
+                            "target": "self"
+                        },
+                        "deals_damage": "no"
+                    },
+                    {
+                        "cause": "all",
+                        "on_damage": {
+                            "filters": {
+                                "none_of": [
+                                    {
+                                        "test": "is_family",
+                                        "subject": "other",
+                                        "value": "player"
+                                    },
+                                    {
+                                        "test": "is_family",
+                                        "subject": "damager",
+                                        "value": "player"
+                                    }
+                                ]
+                            }
+                        },
                         "deals_damage": "no"
                     }
                 ]
@@ -73,6 +111,18 @@
         },
         "events": {
             "minecraft:entity_spawned": { },
+            "ha:death_players": {
+                "queue_command": {
+                    "command": [
+                        "playsound mob.bear_trap.start_attack @a ~~~"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
+                        "ha:despawn"
+                    ]
+                }
+            },
             "ha:start_despawn": {
                 "add": {
                     "component_groups": [

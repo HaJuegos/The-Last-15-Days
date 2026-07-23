@@ -1,25 +1,20 @@
 import * as mc from "@minecraft/server";
+import * as vanilla from "@minecraft/vanilla-data";
 
-import { beforeEventsSimplified, debugToolsSimplified, worldToolsSimplified } from "simplified-mojang-api";
-import { TL15DBaseManager } from "../base";
+import { beforeEventsSimplified, worldToolsSimplified } from "simplified-mojang-api";
 
 /**
  * Clase hijo que se encarga de los eventos globales del mundo.
- * @extends {TL15DBaseManager}
  * @author HaJuegos - 14-03-2026
  */
-class GlobalWorldEventsManager extends TL15DBaseManager {
+class GlobalWorldEventsManager {
     /**
      * Eventos principales de la clase cuando es inicialiada o llamada.
      * @constructor
      */
     constructor () {
-        super();
-
-        debugToolsSimplified.watchDogState(false);
-
-        this.staticEvents();
         this.blockExploration();
+        this.blockSpawners();
     }
 
     /**
@@ -61,7 +56,7 @@ class GlobalWorldEventsManager extends TL15DBaseManager {
         };
 
         beforeEventsSimplified.onInteractBlock((args) => {
-            if (isOutOfBounds(args.block.location) && args.isFirstEvent) {
+            if (isOutOfBounds(args.block.location)) {
                 denyAction(args, args.player);
             }
         });
@@ -89,24 +84,38 @@ class GlobalWorldEventsManager extends TL15DBaseManager {
     }
 
     /**
-     * Metodo auxiliar que escucha los eventos estaticos del comando scriptevent.
-     * @author HaJuegos - 14-03-2026
+     * Metodo auxiliar que bloquea los spawners manuales creados por el jugador.
+     * @returns {void}
      * @private
+     * @author HaJuegos - 23-06-2026
      */
-    private staticEvents(): void {
-        worldToolsSimplified.listenerScriptEvents((args) => {
-            const id = args.id;
-            const source = args.sourceEntity as mc.Player;
+    private blockSpawners(): void {
+        beforeEventsSimplified.onPlaceBlock((args) => {
+            const ply = args.player;
+            const beforeBlock = args.block;
+            const armorInv = ply.getComponent(mc.EntityComponentTypes.Equippable);
 
-            if (!source) return;
+            if (!armorInv) return;
 
-            switch (id) {
-                case 'ha:hitboxeson': {
-                    debugToolsSimplified.showHitboxes(source);
-                } break;
-                case 'ha:hitboxesoff': {
-                    debugToolsSimplified.stopHitboxes();
-                } break;
+            const mainItem = armorInv.getEquipment(mc.EquipmentSlot.Mainhand);
+
+            if (mainItem?.typeId == vanilla.MinecraftBlockTypes.WitherSkeletonSkull) {
+                const adjacentBlocks = [
+                    beforeBlock.below(), beforeBlock.above(),
+                    beforeBlock.north(), beforeBlock.south(),
+                    beforeBlock.east(), beforeBlock.west()
+                ];
+
+                const isNearSoulBlock = adjacentBlocks.some(b => b && (b.typeId == vanilla.MinecraftBlockTypes.SoulSand || b.typeId == vanilla.MinecraftBlockTypes.SoulSoil));
+
+                if (isNearSoulBlock) {
+                    args.cancel = true;
+
+                    worldToolsSimplified.setRun(() => {
+                        ply.playSound('ui.error_sound');
+                        ply.sendMessage({ rawtext: [{ translate: 'chat.system.nowitheryet' }] });
+                    });
+                }
             }
         });
     }

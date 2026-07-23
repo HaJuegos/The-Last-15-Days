@@ -8,190 +8,10 @@
             "spawn_category": "monster",
             "is_spawnable": true,
             "is_summonable": true,
-            "is_experimental": false,
-            "properties": {
-                "ha:attack_mode": {
-                    "client_sync": true,
-                    "type": "enum",
-                    "values": [
-                        "undefined_attack",
-                        "melee_normal",
-                        "ranged_phantom"
-                    ],
-                    "default": "undefined_attack"
-                }
-            }
+            "is_experimental": false
         },
         "component_groups": {
-            "ha:melee_mode": {
-                "minecraft:attack": {
-                    "damage": 4,
-                    "effect_name": "wither",
-                    "effect_duration": 10
-                },
-                "minecraft:behavior.melee_box_attack": {
-                    "priority": 0,
-                    "track_target": true,
-                    "speed_multiplier": 1.25
-                },
-                "minecraft:behavior.nearest_attackable_target": {
-                    "priority": 2,
-                    "reselect_targets": true,
-                    "must_see": true,
-                    "entity_types": [
-                        {
-                            "filters": {
-                                "test": "is_family",
-                                "subject": "other",
-                                "value": "player"
-                            },
-                            "max_dist": 16
-                        },
-                        {
-                            "filters": {
-                                "all_of": [
-                                    {
-                                        "test": "is_family",
-                                        "subject": "other",
-                                        "value": "piglin"
-                                    },
-                                    {
-                                        "test": "is_difficulty",
-                                        "operator": "!=",
-                                        "value": "peaceful"
-                                    }
-                                ]
-                            },
-                            "max_dist": 16
-                        },
-                        {
-                            "filters": {
-                                "test": "is_family",
-                                "subject": "other",
-                                "value": "irongolem"
-                            },
-                            "max_dist": 16
-                        },
-                        {
-                            "filters": {
-                                "all_of": [
-                                    {
-                                        "test": "is_family",
-                                        "subject": "other",
-                                        "value": "baby_turtle"
-                                    },
-                                    {
-                                        "test": "in_water",
-                                        "subject": "other",
-                                        "operator": "!=",
-                                        "value": true
-                                    }
-                                ]
-                            },
-                            "max_dist": 16
-                        }
-                    ]
-                }
-            },
-            "ha:ranged_mode": {
-                "minecraft:shooter": {
-                    "def": "minecraft:wither_skull<ha:spawn_from_wither_skeleton>"
-                },
-                "minecraft:behavior.ranged_attack": {
-                    "priority": 0,
-                    "speed_multiplier": 1.25,
-                    "attack_interval_min": 1.15,
-                    "attack_interval_max": 1.75,
-                    "attack_radius": 40,
-                    "ranged_fov": 360,
-                    "swing": true,
-                    "target_in_sight_time": 0.1
-                },
-                "minecraft:behavior.nearest_attackable_target": {
-                    "priority": 2,
-                    "reselect_targets": true,
-                    "must_see": false,
-                    "entity_types": [
-                        {
-                            "filters": {
-                                "test": "is_family",
-                                "subject": "other",
-                                "value": "player"
-                            },
-                            "max_dist": 40
-                        },
-                        {
-                            "filters": {
-                                "all_of": [
-                                    {
-                                        "test": "is_family",
-                                        "subject": "other",
-                                        "value": "piglin"
-                                    },
-                                    {
-                                        "test": "is_difficulty",
-                                        "operator": "!=",
-                                        "value": "peaceful"
-                                    }
-                                ]
-                            },
-                            "max_dist": 40
-                        },
-                        {
-                            "filters": {
-                                "test": "is_family",
-                                "subject": "other",
-                                "value": "irongolem"
-                            },
-                            "max_dist": 40
-                        },
-                        {
-                            "filters": {
-                                "all_of": [
-                                    {
-                                        "test": "is_family",
-                                        "subject": "other",
-                                        "value": "baby_turtle"
-                                    },
-                                    {
-                                        "test": "in_water",
-                                        "subject": "other",
-                                        "operator": "!=",
-                                        "value": true
-                                    }
-                                ]
-                            },
-                            "max_dist": 40
-                        }
-                    ]
-                },
-                "minecraft:follow_range": {
-                    "value": 99999
-                }
-            },
             "ha:is_rider": {
-                "minecraft:damage_sensor": {
-                    "triggers": [
-                        {
-                            "cause": "entity_explosion",
-                            "deals_damage": false
-                        },
-                        {
-                            "cause": "block_explosion",
-                            "deals_damage": false
-                        },
-                        {
-                            "on_damage": {
-                                "filters": {
-                                    "test": "is_family",
-                                    "subject": "other",
-                                    "value": "skeleton"
-                                }
-                            },
-                            "deals_damage": false
-                        }
-                    ]
-                },
                 "minecraft:behavior.hurt_by_target": {
                     "priority": 1,
                     "entity_types": [
@@ -255,18 +75,101 @@
             }
         },
         "components": {
-            "minecraft:environment_sensor": {
+            "minecraft:damage_sensor": {
                 "triggers": [
                     {
-                        "filters": {
-                            "test": "enum_property",
-                            "domain": "ha:attack_mode",
-                            "value": "undefined_attack"
+                        "cause": "entity_explosion",
+                        "deals_damage": false
+                    },
+                    {
+                        "cause": "block_explosion",
+                        "deals_damage": false
+                    },
+                    {
+                        "on_damage": {
+                            "filters": {
+                                "test": "is_family",
+                                "subject": "other",
+                                "value": "skeleton"
+                            }
                         },
-                        "target": "self",
-                        "event": "ha:set_melee_mode"
+                        "deals_damage": false
                     }
                 ]
+            },
+            "minecraft:behavior.nearest_attackable_target": {
+                "priority": 2,
+                "reselect_targets": true,
+                "must_see": false,
+                "entity_types": [
+                    {
+                        "filters": {
+                            "test": "is_family",
+                            "subject": "other",
+                            "value": "player"
+                        },
+                        "max_dist": 40
+                    },
+                    {
+                        "filters": {
+                            "all_of": [
+                                {
+                                    "test": "is_family",
+                                    "subject": "other",
+                                    "value": "piglin"
+                                },
+                                {
+                                    "test": "is_difficulty",
+                                    "operator": "!=",
+                                    "value": "peaceful"
+                                }
+                            ]
+                        },
+                        "max_dist": 40
+                    },
+                    {
+                        "filters": {
+                            "test": "is_family",
+                            "subject": "other",
+                            "value": "irongolem"
+                        },
+                        "max_dist": 40
+                    },
+                    {
+                        "filters": {
+                            "all_of": [
+                                {
+                                    "test": "is_family",
+                                    "subject": "other",
+                                    "value": "baby_turtle"
+                                },
+                                {
+                                    "test": "in_water",
+                                    "subject": "other",
+                                    "operator": "!=",
+                                    "value": true
+                                }
+                            ]
+                        },
+                        "max_dist": 40
+                    }
+                ]
+            },
+            "minecraft:follow_range": {
+                "value": 99999
+            },
+            "minecraft:shooter": {
+                "def": "minecraft:wither_skull<ha:spawn_from_wither_skeleton>"
+            },
+            "minecraft:behavior.ranged_attack": {
+                "priority": 0,
+                "speed_multiplier": 1.25,
+                "attack_interval_min": 1.05,
+                "attack_interval_max": 1.65,
+                "attack_radius": 40,
+                "ranged_fov": 360,
+                "swing": true,
+                "target_in_sight_time": 0.1
             },
             "minecraft:is_hidden_when_invisible": {
             },
@@ -795,46 +698,12 @@
                     }
                 ]
             },
-            "ha:spawn_in_over": {
-                "add": {
-                    "component_groups": [
-                        "ha:wither_in_over"
-                    ]
-                }
-            },
             "ha:spawned_from_phantom": {
-                "sequence": [
-                    {
-                        "set_property": {
-                            "ha:attack_mode": "ranged_phantom"
-                        },
-                        "add": {
-                            "component_groups": [
-                                "ha:ranged_mode",
-                                "ha:is_rider",
-                                "ha:set_persistance"
-                            ]
-                        }
-                    },
-                    {
-                        "trigger": "minecraft:entity_spawned"
-                    }
-                ]
-            },
-            "ha:remove_persistance": {
-                "remove": {
-                    "component_groups": [
-                        "ha:set_persistance"
-                    ]
-                }
-            },
-            "ha:set_melee_mode": {
-                "set_property": {
-                    "ha:attack_mode": "melee_normal"
-                },
                 "add": {
                     "component_groups": [
-                        "ha:melee_mode"
+                        "ha:wither_in_over",
+                        "ha:is_rider",
+                        "ha:set_persistance"
                     ]
                 }
             }
