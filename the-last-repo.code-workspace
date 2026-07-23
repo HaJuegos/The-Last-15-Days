@@ -1,0 +1,491 @@
+{
+    "extensions": {
+        "recommendations": [
+            "destruc7i0n.vscode-bedrock-definitions",
+            "beyondbedrock.bedrock-emoji-viewer",
+            "dingsel.bedrock-ui",
+            "blockceptionltd.blockceptionvscodeminecraftbedrockdevelopmentextension",
+            "parthr2031.colorful-comments",
+            "dracula-theme.theme-dracula",
+            "usernamehw.errorlens",
+            "dbaeumer.vscode-eslint",
+            "github.vscode-github-actions",
+            "eamodio.gitlens",
+            "xabikos.javascriptsnippets",
+            "ms-vscode.vscode-typescript-next",
+            "ms-vscode.js-debug-nightly",
+            "crystal-spider.jsdoc-generator",
+            "mojang-studios.minecraft-debugger",
+            "zz5840.minecraft-lang-colorizer",
+            "ms-vscode.notepadplusplus-keybindings",
+            "christian-kohler.npm-intellisense",
+            "christian-kohler.path-intellisense",
+            "esbenp.prettier-vscode",
+            "yoavbls.pretty-ts-errors",
+            "jannisx11.snowstorm",
+            "ms-ceintl.vscode-language-pack-es",
+            "minecraftcommands.syntax-mcfunction",
+            "typescriptteam.native-preview",
+            "vscode-icons-team.vscode-icons"
+        ]
+    },
+    "folders": [
+        {
+            "name": "TL15D",
+            "path": "."
+        }
+    ],
+    "settings": {
+        "json.schemas": [
+            {
+                "fileMatch": [
+                    ".prettierrc.json"
+                ],
+                "url": "https://json.schemastore.org/prettierrc"
+            },
+            {
+                "fileMatch": [
+                    "source/**/*.json",
+                    "source/*.json"
+                ],
+                "url": "./.vscode/schema-validation.json"
+            },
+            {
+                "fileMatch": [
+                    "source/**/*.json",
+                    "source/*.json"
+                ],
+                "url": "http://json-schema.org/draft-07/schema"
+            },
+            {
+                "fileMatch": [
+                    "skins.json",
+                    "skins.jsonc"
+                ],
+                "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/skinpacks/skins.json"
+            },
+            {
+                "fileMatch": [
+                    "language_names.json",
+                    "language_names.jsonc"
+                ],
+                "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/language/language_names.json"
+            },
+            {
+                "fileMatch": [
+                    "languages.json",
+                    "languages.jsonc"
+                ],
+                "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/language/languages.json"
+            },
+            {
+                "fileMatch": [
+                    "manifest.json",
+                    "manifest.jsonc"
+                ],
+                "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/general/manifest.json"
+            },
+            {
+                "fileMatch": [
+                    "resources/**/animation_controllers/**/*.json",
+                    "resources/**/animation_controllers/**/*.jsonc"
+                ],
+                "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/resource/animation_controllers/animation_controller.json"
+            },
+            {
+                "fileMatch": [
+                    "resources/**/animations/**/*.json",
+                    "resources/**/animations/**/*.jsonc"
+                ],
+                "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/resource/animations/actor_animation.json"
+            },
+            {
+                "fileMatch": [
+                    "resources/**/block_culling/**/*.json",
+                    "resources/**/block_culling/**/*.jsonc"
+                ],
+                "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/resource/block_culling/block_culling.json"
+            },
+            {
+                "fileMatch": [
+                    "resources/**/attachables/**/*.json",
+                    "resources/**/attachables/**/*.jsonc"
+                ],
+                "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/resource/attachables/attachables.json"
+            },
+            {
+                "fileMatch": [
+                    "resources/**/biomes_client.json",
+                    "resources/**/biomes_client.jsonc"
+                ],
+                "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/resource/biomes_client.json"
+            },
+            {
+                "fileMatch": [
+                    "resources/**/blocks.json",
+                    "resources/**/blocks.jsonc"
+                ],
+                "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/resource/blocks.json"
+            },
+            {
+                "fileMatch": [
+                    "resources/**/entity/**/*.json",
+                    "resources/**/entity/**/*.jsonc"
+                ],
+                "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/resource/entity/entity.json"
+            },
+            {
+                "fileMatch": [
+                    "resources/**/fogs/**/*.json",
+                    "resources/**/fogs/**/*.jsonc"
+                ],
+                "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/resource/fog/fog.json"
+            },
+            {
+                "fileMatch": [
+                    "resources/**/textures/flipbook_textures.json",
+                    "resources/**/textures/flipbook_textures.jsonc"
+                ],
+                "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/resource/textures/flipbook_textures.json"
+            },
+            {
+                "fileMatch": [
+                    "resources/**/textures/item_texture.json",
+                    "resources/**/textures/item_texture.jsonc"
+                ],
+                "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/resource/textures/item_texture.json"
+            },
+            {
+                "fileMatch": [
+                    "resources/**/textures/textures_list.json",
+                    "resources/**/textures/textures_list.jsonc"
+                ],
+                "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/resource/textures/textures_list.json"
+            },
+            {
+                "fileMatch": [
+                    "resources/**/textures/.texture_set.json",
+                    "resources/**/textures/.texture_set.jsonc"
+                ],
+                "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/resource/textures/texture_set.json"
+            },
+            {
+                "fileMatch": [
+                    "resources/**/items/**/*.json",
+                    "resources/**/items/**/*.jsonc"
+                ],
+                "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/resource/items/items.json"
+            },
+            {
+                "fileMatch": [
+                    "resources/**/models/entity/**/*.json",
+                    "resources/**/models/entity/**/*.jsonc"
+                ],
+                "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/resource/models/entity/model_entity.json"
+            },
+            {
+                "fileMatch": [
+                    "resources/**/materials/*.material",
+                    "resources/**/materials/*.materialc"
+                ],
+                "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/resource/materials/materials.json"
+            },
+            {
+                "fileMatch": [
+                    "resources/**/sounds/music_definitions.json",
+                    "resources/**/sounds/music_definitions.jsonc"
+                ],
+                "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/resource/sounds/music_definitions.json"
+            },
+            {
+                "fileMatch": [
+                    "resources/**/particles/**/*.json",
+                    "resources/**/particles/**/*.jsonc"
+                ],
+                "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/resource/particles/particles.json"
+            },
+            {
+                "fileMatch": [
+                    "resources/**/render_controllers/**/*.json",
+                    "resources/**/render_controllers/**/*.jsonc"
+                ],
+                "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/resource/render_controllers/render_controllers.json"
+            },
+            {
+                "fileMatch": [
+                    "resources/**/sounds/sound_definitions.json",
+                    "resources/**/sounds/sound_definitions.jsonc"
+                ],
+                "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/resource/sounds/sound_definitions.json"
+            },
+            {
+                "fileMatch": [
+                    "resources/**/sounds.json",
+                    "resources/**/sounds.jsonc"
+                ],
+                "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/resource/sounds.json"
+            },
+            {
+                "fileMatch": [
+                    "resources/**/textures/terrain_texture.json",
+                    "resources/**/textures/terrain_texture.jsonc"
+                ],
+                "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/resource/textures/terrain_texture.json"
+            },
+            {
+                "fileMatch": [
+                    "behaviors/**/animation_controllers/**/*.json",
+                    "behaviors/**/animation_controllers/**/*.jsonc"
+                ],
+                "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/behavior/animation_controllers/animation_controller.json"
+            },
+            {
+                "fileMatch": [
+                    "behaviors/**/animations/**/*.json",
+                    "behaviors/**/animations/**/*.jsonc"
+                ],
+                "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/behavior/animations/animations.json"
+            },
+            {
+                "fileMatch": [
+                    "behaviors/**/biomes/**/*.json",
+                    "behaviors/**/biomes/**/*.jsonc"
+                ],
+                "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/behavior/biomes/biomes.json"
+            },
+            {
+                "fileMatch": [
+                    "behaviors/**/blocks/**/*.json",
+                    "behaviors/**/blocks/**/*.jsonc"
+                ],
+                "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/behavior/blocks/blocks.json"
+            },
+            {
+                "fileMatch": [
+                    "behaviors/**/cameras/presets/**/*.json",
+                    "behaviors/**/cameras/presets/**/*.jsonc"
+                ],
+                "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/behavior/cameras/presets/camera.json"
+            },
+            {
+                "fileMatch": [
+                    "behaviors/**/dialogue/**/*.json",
+                    "behaviors/**/dialogue/**/*.jsonc"
+                ],
+                "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/behavior/dialogue/dialogue.json"
+            },
+            {
+                "fileMatch": [
+                    "behaviors/**/entities/**/*.json",
+                    "behaviors/**/entities/**/*.jsonc"
+                ],
+                "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/behavior/entities/entities.json"
+            },
+            {
+                "fileMatch": [
+                    "behaviors/**/functions/tick.json",
+                    "behaviors/**/functions/tick.jsonc"
+                ],
+                "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/behavior/functions/tick.json"
+            },
+            {
+                "fileMatch": [
+                    "behaviors/**/features/**/*.json",
+                    "behaviors/**/features/**/*.jsonc"
+                ],
+                "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/behavior/features/features.json"
+            },
+            {
+                "fileMatch": [
+                    "behaviors/**/feature_rules/**/*.json",
+                    "behaviors/**/feature_rules/**/*.jsonc"
+                ],
+                "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/behavior/feature_rules/feature_rules.json"
+            },
+            {
+                "fileMatch": [
+                    "behaviors/**/lighting/global.json",
+                    "behaviors/**/lighting/global.jsonc"
+                ],
+                "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/behavior/lighting/global.json"
+            },
+            {
+                "fileMatch": [
+                    "behaviors/**/lighting/atmospherics.json",
+                    "behaviors/**/lighting/atmospherics.jsonc"
+                ],
+                "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/behavior/lighting/atmospherics.json"
+            },
+            {
+                "fileMatch": [
+                    "behaviors/**/item_catalog/**/*.json",
+                    "behaviors/**/item_catalog/**/*.jsonc"
+                ],
+                "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/refs/heads/main/behavior/item_catalog/crafting_item_catalog.json"
+            },
+            {
+                "fileMatch": [
+                    "behaviors/**/items/**/*.json",
+                    "behaviors/**/items/**/*.jsonc"
+                ],
+                "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/behavior/items/items.json"
+            },
+            {
+                "fileMatch": [
+                    "behaviors/**/recipes/**/*.json",
+                    "behaviors/**/recipes/**/*.jsonc"
+                ],
+                "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/behavior/recipes/recipes.json"
+            },
+            {
+                "fileMatch": [
+                    "behaviors/**/loot_tables/**/*.json",
+                    "behaviors/**/loot_tables/**/*.jsonc"
+                ],
+                "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/behavior/loot_tables/loot_tables.json"
+            },
+            {
+                "fileMatch": [
+                    "behaviors/**/spawn_rules/**/*.json",
+                    "behaviors/**/spawn_rules/**/*.jsonc"
+                ],
+                "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/behavior/spawn_rules/spawn_rules.json"
+            },
+            {
+                "fileMatch": [
+                    "behaviors/**/trading/**/*.json",
+                    "behaviors/**/trading/**/*.jsonc"
+                ],
+                "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/behavior/trading/trading.json"
+            },
+            {
+                "fileMatch": [
+                    "behaviors/**/volumes/**/*.json",
+                    "behaviors/**/volumes/**/*.jsonc"
+                ],
+                "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/behavior/volumes/volumes.json"
+            },
+            {
+                "fileMatch": [
+                    "resources/**/textures/*/**/*.json",
+                    "resources/**/textures/*/**/*.jsonc"
+                ],
+                "url": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/resource/textures/ui_texture_definition.json"
+            },
+            {
+                "url": "https://kalmemarq.github.io/Bugrock-JSON-UI-Schemas/ui.schema.json",
+                "fileMatch": [
+                    "resources/**/*.ui.json",
+                    "resources/**/*.uidx",
+                    "resources/**/ui/**/*.json",
+                    "resources/**/!_global_variables.json",
+                    "resources/**/!_ui_defs.json"
+                ]
+            },
+            {
+                "url": "https://kalmemarq.github.io/Bugrock-JSON-UI-Schemas/ui_defs.schema.json",
+                "fileMatch": [
+                    "resources/**/ui/_ui_defs.json"
+                ]
+            },
+            {
+                "url": "https://kalmemarq.github.io/Bugrock-JSON-UI-Schemas/global_variables.schema.json",
+                "fileMatch": [
+                    "resources/**/ui/_global_variables.json"
+                ]
+            }
+        ],
+        "json.schemaDownload.enable": true,
+        "files.exclude": {
+            "node_modules": true,
+            "package-lock.json": true,
+            "README.md": true,
+            "*.code-workspace": true,
+            ".vscode": false,
+            ".github": false,
+            "dist": true
+        },
+        "files.associations": {
+            "*.material": "jsonc",
+            "*.json": "jsonc",
+            "*.ui": "jsonc"
+        },
+        "[json]": {
+            "editor.defaultFormatter": "esbenp.prettier-vscode",
+            "editor.formatOnSave": true
+        },
+        "files.autoSave": "onFocusChange",
+        "editor.tabSize": 4,
+        "editor.insertSpaces": true,
+        "editor.wordWrap": "on",
+        "editor.autoClosingBrackets": "always",
+        "editor.autoClosingComments": "always",
+        "editor.autoClosingDelete": "always",
+        "editor.autoClosingOvertype": "always",
+        "editor.autoClosingQuotes": "always",
+        "editor.codeLens": true,
+        "editor.codeActionWidget.showHeaders": true,
+        "editor.codeActionWidget.includeNearbyQuickFixes": true,
+        "editor.smoothScrolling": true,
+        "editor.snippets.codeActions.enabled": true,
+        "editor.tabCompletion": "on",
+        "editor.formatOnSave": true,
+        "editor.formatOnType": true,
+        "diffEditor.codeLens": true,
+        "editor.minimap.autohide": "mouseover",
+        "editor.snippetSuggestions": "top",
+        "workbench.commandPalette.experimental.suggestCommands": true,
+        "workbench.experimental.cloudChanges.autoStore": "onShutdown",
+        "workbench.startupEditor": "none",
+        "workbench.activityBar.location": "top",
+        "workbench.colorTheme": "Dracula Theme",
+        "workbench.iconTheme": "vscode-icons",
+        "window.zoomLevel": -1,
+        "accessibility.underlineLinks": true,
+        "explorer.autoReveal": false,
+        "scm.alwaysShowActions": true,
+        "scm.alwaysShowRepositories": true,
+        "problems.defaultViewMode": "table",
+        "problems.showCurrentInStatus": true,
+        "problems.sortOrder": "position",
+        "json.format.keepLines": true,
+        "js/ts.format.insertSpaceAfterConstructor": true,
+        "js/ts.format.semicolons": "insert",
+        "js/ts.preferences.importModuleSpecifier": "relative",
+        "js/ts.referencesCodeLens.enabled": true,
+        "js/ts.referencesCodeLens.showOnAllFunctions": true,
+        "js/ts.preferGoToSourceDefinition": true,
+        "js/ts.suggest.completeFunctionCalls": true,
+        "js/ts.updateImportsOnFileMove.enabled": "always",
+        "js/ts.implicitProjectConfig.checkJs": true,
+        "js/ts.implicitProjectConfig.experimentalDecorators": true,
+        "js/ts.implicitProjectConfig.module": "ES2020",
+        "js/ts.workspaceSymbols.excludeLibrarySymbols": true,
+        "js/ts.updateImportsOnPaste.enabled": true,
+        "js/ts.implementationsCodeLens.enabled": true,
+        "js/ts.implementationsCodeLens.showOnInterfaceMethods": true,
+        "js/ts.inlayHints.enumMemberValues.enabled": true,
+        "js/ts.inlayHints.functionLikeReturnTypes.enabled": true,
+        "js/ts.locale": "es",
+        "js/ts.preferences.includePackageJsonAutoImports": "on",
+        "terminal.integrated.automationProfile.windows": {
+            "path": "C:\\Program Files\\Git\\bin\\bash.exe",
+            "args": [
+                "--login"
+            ]
+        },
+        "terminal.integrated.defaultProfile.windows": "Git Bash",
+        "BC-MC.Diagnostics.Json": true,
+        "editor.foldingImportsByDefault": true,
+        "github.copilot.nextEditSuggestions.enabled": true,
+        "github.copilot.chat.languageContext.typescript.enabled": true,
+        "editor.folding": true,
+        "editor.foldingStrategy": "auto",
+        "editor.quickSuggestions": "on",
+        "editor.suggestOnTriggerCharacters": true,
+        "editor.showFoldingControls": "always",
+        "editor.foldingHighlight": true,
+        "minecraft-debugger.reloadOnSourceChanges.enabled": true,
+        "minecraft-debugger.showDiagnosticViewOnConnect": false
+    }
+}

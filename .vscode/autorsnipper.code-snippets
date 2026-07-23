@@ -1,0 +1,8 @@
+{
+    "setautor": {
+        "scope": "javascript, typescript, json",
+        "prefix": "setautor",
+        "body": ["@author $1 - $2-$3-2026"],
+        "description": "Para poner un autor automatico con fecha",
+    },
+}

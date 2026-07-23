@@ -14,6 +14,11 @@
     "author": "HaJuegos",
     "type": "commonjs",
     "main": "main.ts",
+    "scripts": {
+        "copy:api-assets": "node -e \"const fs = require('fs'); const src = 'node_modules/simplified-mojang-api/structures'; if (fs.existsSync(src)) fs.cpSync(src, 'behaviors/YOUR_ADDON/structures', { recursive: true, force: false });\"",
+        "compile": "npm run copy:api-assets && esbuild behaviors/YOUR_ADDON/src/main.ts --bundle --format=esm --outfile=behaviors/YOUR_ADDON/scripts/main.js --target=es2020 --external:@minecraft/server --external:@minecraft/server-ui --external:@minecraft/server-gametest --external:@minecraft/server-graphics --external:@minecraft/server-net --external:@minecraft/debug-utilities --external:@minecraft/gameplay-utilities --sourcemap",
+        "watch": "npm run compile -- --watch"
+    },
     "devDependencies": {
         "@types/node": "^25.4.0",
         "adm-zip": "^0.6.0",

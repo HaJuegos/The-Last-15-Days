@@ -18,6 +18,7 @@
 </p>
 
 ## COLABORADORES INVOLUCRADOS
+
 #### Nota: Aunque el add-on sea de código abierto y libre para todos los creadores permitido por RosherRandom, igualmente nos gustaría la acreditación del mismo y el trabajo que se realizó.
 
 <div align="center">
@@ -45,10 +46,10 @@
 
 ## Informacion Importante:
 
-Este proyecto es una comision previa realizada por RosherRandom. Todos los creditos a el mismo. Igualmente a todos los sonidos o efectos de sonidos 
+Este proyecto es una comision previa realizada por RosherRandom. Todos los creditos a el mismo. Igualmente a todos los sonidos o efectos de sonidos
 
-* 📖 **[Wiki General e Información del Add-on](https://github.com/HaJuegos/The-Last-15-Days/wiki)**: Revisa guías, mecánicas y preguntas frecuentes o mas!
-* ⚔️ **[Cambios de Dificultad](https://github.com/HaJuegos/The-Last-15-Days/wiki)**: Enterate de todos los cambios que contiene este add-on consecutivo.
+- 📖 **[Wiki General e Información del Add-on](https://github.com/HaJuegos/The-Last-15-Days/wiki)**: Revisa guías, mecánicas y preguntas frecuentes o mas!
+- ⚔️ **[Cambios de Dificultad](https://github.com/HaJuegos/The-Last-15-Days/wiki)**: Enterate de todos los cambios que contiene este add-on consecutivo.
 
 ---
 
@@ -56,24 +57,61 @@ Este proyecto es una comision previa realizada por RosherRandom. Todos los credi
 
 > [!WARNING]
 > **Estado: En Desarrollo**
-> Actualmente este add-on no tiene descargas disponibles para el público en general. 
-> 
-> Si eres desarrollador o sabes cómo hacerlo, eres libre de **clonar este repositorio** o hacer un *fork* para experimentar con él.
+> Actualmente este add-on no tiene descargas disponibles para el público en general.
+>
+> Si eres desarrollador o sabes cómo hacerlo, eres libre de **clonar este repositorio** o hacer un _fork_ para experimentar con él.
 
 ---
 
-## Información Adicional y Guías
+## Musicas Utilizadas
 
-Toda la información detallada para entender y sobrevivir en este add-on ha sido organizada en nuestra Wiki oficial. Selecciona lo que necesites consultar:
+### Cualquier otro sonido utilizado pertecene a varios juegos o paginas de tercero gratuitos, igualmente todos los derechos reservados para dichas paginas de terceros o juegos correspondientes.
 
-* 📖 **[Wiki General e Información del Add-on](https://github.com/HaJuegos/The-Last-15-Days/wiki)**: Revisa guías, mecánicas y preguntas frecuentes o mas!
-* ⚔️ **[Cambios de Dificultad](https://github.com/HaJuegos/The-Last-15-Days/wiki)**: Enterate de todos los cambios que contiene este add-on consecutivo.
+<div align="center">
+	<table align="center">
+		<tr>
+			<th>Miniatura:</th>
+			<th>Nombre de la musica:</th>
+			<th>Nombre del Creador:</th>
+		</tr>
+		<tr>
+			<td align="center"><img src="https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/main/.github/icon_template/musics/athazagoraphobia.jpg" alt="Athazagoraphobia by EZHALT" width=300></td>
+			<td align="center"><a href="https://www.youtube.com/watch?v=voZdfnQq110">Athazagoraphobia - The Trollge Files</a></td>
+			<td align="center">EZHALT</td>
+		</tr>
+		<tr>
+			<td align="center"><img src="https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/main/.github/icon_template/musics/desperately_safe.jpg" alt="Desperately Safe by AliasConradColwood" width=300></td>
+			<td align="center"><a href="https://www.youtube.com/watch?v=cCDxwlM2058">Desperately Safe - OFF OST</a></td>
+			<td align="center">AliasConradColwood</td>
+		</tr>
+		<tr>
+			<td align="center"><img src="https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/main/.github/icon_template/musics/otherside.jpg" alt="Otherside by Akira Yamaoka" width=300></td>
+			<td align="center"><a href="https://www.youtube.com/watch?v=sHfEzAXN7bc">Otherside - Silent Hill</a></td>
+			<td align="center">Akira Yamaoka</td>
+		</tr>
+		<tr>
+			<td align="center"><img src="https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/main/.github/icon_template/musics/kiss.jpg" alt="Kiss by Escape" width=300></td>
+			<td align="center"><a href="https://www.youtube.com/watch?v=Wx4XFHGOqPI">Kiss - Escape</a></td>
+			<td align="center">Escape</td>
+		</tr>
+		<tr>
+			<td align="center"><img src="https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/main/.github/icon_template/musics/alberto_balsalm.jpg" alt="Alberto Balsalm by Aphex Twin" width=300></td>
+			<td align="center"><a href="https://www.youtube.com/watch?v=ulj5UJ5GHvE">Alberto Balsalm</a></td>
+			<td align="center">Aphex Twin</td>
+		</tr>
+		<tr>
+			<td align="center"><img src="https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/main/.github/icon_template/musics/soft_breeze.jpg" alt="Soft Breeze by AliasConradColwood" width=300></td>
+			<td align="center"><a href="https://www.youtube.com/watch?v=yrf6yQIkyuU">Soft Breeze - OFF OST</a></td>
+			<td align="center">AliasConradColwood</td>
+		</tr>
+	</table>
+</div>
 
 ---
 
 ## Reporte de Bugs y Sugerencias
 
-¿Encontraste algún error de código, un problema visual o tienes una idea genial para mejorar *The Last 15 Days*? ¡Nos encantaría saberlo!
+¿Encontraste algún error de código, un problema visual o tienes una idea genial para mejorar _The Last 15 Days_? ¡Nos encantaría saberlo!
 
 El desarrollo de este add-on es un proceso continuo y la ayuda de la comunidad es fundamental. Por favor, asegúrate de revisar si alguien más ya ha reportado el mismo problema antes de crear uno nuevo.
 
