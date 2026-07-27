@@ -1,0 +1,169 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "minecraft:golden_apple",
+                    "functions": [
+                        {
+                            "function": "set_count",
+                            "count": { "min": 1, "max": 64 }
+                        },
+                        {
+                            "function": "looting_enchant",
+                            "count": { "min": 0, "max": 1 }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "rolls": 1,
+            "conditions": [
+                {
+                    "condition": "random_chance_with_looting",
+                    "chance": 0.40,
+                    "looting_multiplier": 0.05
+                }
+            ],
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "minecraft:iron_block",
+                    "functions": [
+                        {
+                            "function": "set_count",
+                            "count": { "min": 1, "max": 64 }
+                        },
+                        {
+                            "function": "looting_enchant",
+                            "count": { "min": 0, "max": 1 }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "rolls": 1,
+            "conditions": [
+                {
+                    "condition": "random_chance_with_looting",
+                    "chance": 0.25,
+                    "looting_multiplier": 0.05
+                }
+            ],
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "minecraft:gold_block",
+                    "functions": [
+                        {
+                            "function": "set_count",
+                            "count": { "min": 1, "max": 64 }
+                        },
+                        {
+                            "function": "looting_enchant",
+                            "count": { "min": 0, "max": 1 }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "rolls": 1,
+            "conditions": [
+                {
+                    "condition": "random_chance_with_looting",
+                    "chance": 0.10,
+                    "looting_multiplier": 0.03
+                }
+            ],
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "minecraft:totem_of_undying",
+                    "functions": [
+                        {
+                            "function": "set_count",
+                            "count": { "min": 1, "max": 2 }
+                        },
+                        {
+                            "function": "looting_enchant",
+                            "count": { "min": 0, "max": 1 }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "rolls": 1,
+            "conditions": [
+                {
+                    "condition": "random_chance_with_looting",
+                    "chance": 0.02,
+                    "looting_multiplier": 0.01
+                }
+            ],
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "ha:iron_apple",
+                    "functions": [
+                        {
+                            "function": "set_count",
+                            "count": { "min": 1, "max": 3 }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "rolls": 1,
+            "conditions": [
+                {
+                    "condition": "random_chance_with_looting",
+                    "chance": 0.05,
+                    "looting_multiplier": 0.01
+                }
+            ],
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "ha:lasagna",
+                    "functions": [
+                        {
+                            "function": "set_count",
+                            "count": { "min": 1, "max": 1 }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "rolls": 1,
+            "conditions": [
+                {
+                    "condition": "random_chance_with_looting",
+                    "chance": 0.01,
+                    "looting_multiplier": 0.01
+                }
+            ],
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "minecraft:enchanted_golden_apple",
+                    "functions": [
+                        {
+                            "function": "set_count",
+                            "count": { "min": 1, "max": 10 }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -2,6 +2,7 @@
 import './advancements/advacementsManager';
 
 // Entidades
+import './entityEvents/entityEvents';
 import './entityEvents/plyEvent';
 
 // Items y bloques

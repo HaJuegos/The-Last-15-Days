@@ -101,7 +101,7 @@ class ItemCustomComponentsManager extends TL15DBaseManager {
                     for (const data of deathDataPre) {
                         const [name, id, linked] = data.split(':');
 
-                        if (name && id && !linked) {
+                        if ((name && id && linked == 'false') || (name && id && !linked)) {
                             uniquePlys.set(id, name);
                         }
                     }
@@ -155,13 +155,16 @@ class ItemCustomComponentsManager extends TL15DBaseManager {
 
                                     let targetName;
                                     let targetID;
+                                    let targetLink;
 
                                     for (const data of participants) {
                                         const [name, id, linked] = data.split(':');
+                                        const bugLink = linked == undefined;
 
                                         if (id == targetPlayerId) {
                                             targetName = name;
                                             targetID = id;
+                                            targetLink = bugLink ? ':false' : linked;
                                             break;
                                         }
                                     }
@@ -169,7 +172,7 @@ class ItemCustomComponentsManager extends TL15DBaseManager {
                                     const actualLinkeds = worldToolsSimplified.getScoreInObj(entityWorldData, 'ha:linkeds_counter');
                                     const newLinkeds = (actualLinkeds <= 0) ? 1 : actualLinkeds + 1;
 
-                                    objDeaths.removeParticipant(`${targetName}:${targetID}`);
+                                    objDeaths.removeParticipant(`${targetName}:${targetID}:${targetLink}`);
 
                                     objTotal.addScore('ui.scoreboard.scores.deaths', -1);
 
@@ -207,6 +210,26 @@ class ItemCustomComponentsManager extends TL15DBaseManager {
                             }
                         },
                     });
+                }
+            }
+        },
+        // Lasagna Events
+        {
+            idComponent: 'ha:lasagna_events',
+            events: {
+                onConsume: (args) => {
+                    const source = args.source;
+                    const effects: Record<string, number> = {
+                        'absorption': 4,
+                        'haste': 4,
+                        'speed': 2,
+                        'health_boost': 2,
+                        'resistance': 1
+                    };
+
+                    for (const [effect, level] of Object.entries(effects)) {
+                        source.addEffect(effect, worldToolsSimplified.convertSecondsToTicks(60), { amplifier: level });
+                    }
                 }
             }
         },

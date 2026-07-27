@@ -1,0 +1,103 @@
+import * as mc from "@minecraft/server";
+
+import { afterEventsSimplified, worldToolsSimplified } from "simplified-mojang-api";
+
+/**
+ * Clase global que controla los eventos principales del add-on respecto a entidades.
+ * @typedef {EntityEventsManager}
+ * @author HaJuegos - 26-07-2026
+ */
+class EntityEventsManager {
+    /**
+     * Eventos principales de la clase cuando es llamada o inicializada.
+     * @constructor
+     */
+    constructor () {
+        this.staticEvents();
+    }
+
+    /**
+     * Metodo principal que controla los eventos estaticos que pasen en los add-ons en general.
+     * @returns {void}
+     * @author HaJuegos - 26-07-2026
+     * @private
+     */
+    private staticEvents(): void {
+        worldToolsSimplified.listenerScriptEvents((args) => {
+            const entity = args.sourceEntity as mc.Entity;
+            const dime = entity.dimension;
+            const nearPlys = (() => { return dime.getPlayers({ location: entity.location, maxDistance: 100 }); });
+            const id = args.id;
+            const msg = Number(args.message);
+
+            if (id == 'ha:garfield_pre-dialog') {
+                const dialogs = [
+                    'dialogue.garfield.pre-dialog1',
+                    'dialogue.garfield.pre-dialog2',
+                    'dialogue.garfield.pre-dialog3',
+                    'dialogue.garfield.pre-dialog4',
+                    'dialogue.garfield.pre-dialog5',
+                    'dialogue.garfield.pre-dialogfinal',
+                ];
+
+                for (const ply of nearPlys()) {
+                    ply.sendMessage({ rawtext: [{ translate: `${dialogs[msg - 1]}` }] });
+                }
+            } else if (id == 'ha:garfield_start_fight') {
+                let musicPlys: string[] = [];
+
+                const loopId = worldToolsSimplified.setLoop(() => {
+                    if (!entity.isValid) return;
+
+                    const currentPlts = nearPlys();
+                    const idsPlys = currentPlts.map(p => p.id);
+
+                    for (let i = musicPlys.length - 1; i >= 0; i--) {
+                        if (!idsPlys.includes(musicPlys[i])) {
+                            const ply = dime.getPlayers().find(p => p.id == musicPlys[i]);
+
+                            if (ply) {
+                                ply.stopMusic();
+                            }
+
+                            musicPlys.splice(i, 1);
+                        }
+                    }
+
+                    for (const ply of currentPlts) {
+                        if (!musicPlys.includes(ply.id)) {
+                            ply.playMusic('music.garfield_boss', { loop: true });
+                            musicPlys.push(ply.id);
+                        }
+                    }
+                }, worldToolsSimplified.convertSecondsToTicks(1));
+
+                const loopExplodes = worldToolsSimplified.setLoop(() => {
+                    if (!entity.isValid) return;
+
+                    dime.createExplosion(entity.location, 4, { allowUnderwater: true, breaksBlocks: true, source: entity });
+                }, worldToolsSimplified.convertSecondsToTicks(60));
+
+                afterEventsSimplified.onEntityDie((args) => {
+                    const entity = args.deadEntity;
+
+                    if (!entity.isValid) return;
+
+                    const dime = entity.dimension;
+                    const plys = dime.getPlayers();
+
+                    if (entity.typeId == 'ha:garfield') {
+                        worldToolsSimplified.stopLoop(loopExplodes);
+                        worldToolsSimplified.stopLoop(loopId);
+
+                        for (const ply of plys) {
+                            ply.stopMusic();
+                        }
+                    }
+                });
+            }
+        });
+    }
+}
+
+new EntityEventsManager();

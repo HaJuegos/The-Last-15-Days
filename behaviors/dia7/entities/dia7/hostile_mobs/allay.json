@@ -49,6 +49,9 @@
             }
         },
         "components": {
+            "minecraft:loot": {
+                "table": "loot_tables/entities/allay_dust.json"
+            },
             "minecraft:attack": {
                 "damage": 6
             },

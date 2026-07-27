@@ -75,6 +75,7 @@ class AdvancementManager extends TL15DBaseManager {
         { textAdv: 'advacement.hoglin_tusk', tagAdv: 'advHoglinTusk', items: 'ha:hoglin_fang', isRare: true, allItemsRequired: true }, // 53
         { textAdv: 'advacement.cautious_armor', tagAdv: 'advCautiousArmor', items: ['ha:cautious_helmet', 'ha:cautious_chestplate', 'ha:cautious_leggings', 'ha:cautious_boots'], isRare: true, allItemsRequired: true }, // 54
         { textAdv: 'advacement.backrooms', tagAdv: 'advBackrooms', items: [], isRare: true, isAction: true }, // 55
+        { textAdv: 'advacement.garfield', tagAdv: 'advGarfield', items: [], isRare: true, isAction: true }, // 56
     ];
 
     /**
@@ -239,6 +240,9 @@ class AdvancementManager extends TL15DBaseManager {
                     if (projectile?.typeId == vanilla.MinecraftEntityTypes.BreezeWindChargeProjectile) {
                         this.executeAdvan(sourceEntity, 41);
                     }
+                } break;
+                case 'ha:garfield': {
+                    this.executeAdvan(sourceEntity, 56);
                 } break;
             }
 

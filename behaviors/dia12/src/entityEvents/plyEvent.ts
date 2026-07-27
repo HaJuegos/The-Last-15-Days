@@ -9,16 +9,13 @@ import { TL15DBaseManager } from "../base";
  * @extends {TL15DBaseManager}
  * @author HaJuegos - 11-03-2026
  */
-class PlyEventsManager extends TL15DBaseManager {
+class PlyEventsManager {
     /**
      * Eventos iniciales de la clase cuando es llamada o inicializada.
      * @constructor
      */
     constructor () {
-        super();
-
         this.plySpawnEvents();
-        this.deathEvents();
         this.breakBlocks();
         this.itemsSystem();
         this.onHitSystem();
@@ -143,65 +140,8 @@ class PlyEventsManager extends TL15DBaseManager {
     private plySpawnEvents(): void {
         afterEventsSimplified.onPlayerSpawns((args) => {
             const ply = args.player;
-            const objPendingRevive = worldToolsSimplified.getOrCreateScorebordObj('ha:pending_revive') as mc.ScoreboardObjective;
-            const objLinkeds = worldToolsSimplified.getOrCreateScorebordObj('ha:plys_linkeds') as mc.ScoreboardObjective;
-            const participantsRevive = objPendingRevive.getParticipants().map(data => data.displayName);
-            const participantsDeaths = objLinkeds.getParticipants().map(data => data.displayName);
 
             ply.triggerEvent('ha:set_normal_breath');
-
-            if (participantsDeaths.length > 0) {
-                let finalScore: string = "";
-                let isMe: boolean = false;
-
-                for (const data of participantsDeaths) {
-                    const [namePlt1, idPly1, isDeath1, namePlt2, idPly2, isDeath2] = data.split(':');
-
-                    if (idPly1 == ply.id && isDeath1 != 'true' && isDeath2 == 'true') {
-                        finalScore = `${namePlt1}:${idPly1}:true:${namePlt2}:${idPly2}:${isDeath2}`;
-                        objLinkeds.removeParticipant(data);
-                        isMe = true;
-                        break;
-                    }
-
-                    if (idPly2 == ply.id && isDeath2 != 'true' && isDeath1 == 'true') {
-                        finalScore = `${namePlt1}:${idPly1}:${isDeath1}:${namePlt2}:${idPly2}:true`;
-                        objLinkeds.removeParticipant(data);
-                        isMe = true;
-                        break;
-                    }
-                }
-
-                if (isMe) {
-                    worldToolsSimplified.changeScoreInObj(finalScore, 'ha:plys_linkeds', 'set', 1);
-
-                    worldToolsSimplified.setDelay(() => {
-                        ply.runCommand(`function system/death_linked`);
-                        ply.kill();
-                    }, worldToolsSimplified.convertSecondsToTicks(2));
-                }
-            }
-
-            if (ply.hasTag('banned')) {
-                let isLinked = false;
-
-                ply.removeTag('isLinked');
-
-                if (participantsRevive.length > 0) {
-                    for (const data of participantsRevive) {
-                        const [name, id] = data.split(':');
-
-                        if (id == ply.id) {
-                            isLinked = true;
-                            objPendingRevive.removeParticipant(data);
-                        }
-                    }
-                }
-
-                if (isLinked) {
-                    ply.runCommand(`function system/revive_ply_system`);
-                }
-            }
         });
     };;
 
@@ -444,77 +384,6 @@ class PlyEventsManager extends TL15DBaseManager {
                 }
             }
         });
-    }
-
-    /**
-     * Metodo auxiliar que controla los eventos relacionados con la muerte de los jugadores.
-     * @private
-     */
-    private deathEvents(): void {
-        afterEventsSimplified.onEntityDie((args) => {
-            const plyEntity = args.deadEntity;
-
-            if (plyEntity.typeId == 'minecraft:player' && !plyEntity.hasTag('death')) {
-                if (plyEntity.hasTag('isLinked')) {
-                    this.soulLinkedEvents(plyEntity as mc.Player);
-                }
-            }
-        });
-    };
-
-    /**
-     * Metodo auxiliar que revisa y ejecuta la logica para matar a un jugador cuando el otro jugador muere y estan linkeados.
-     * @param {mc.Player} ply Jugador en concreto cuando muere.
-     * @returns {void}
-     * @author HaJuegos - 19-04-2026
-     * @private
-     */
-    private soulLinkedEvents(ply: mc.Player): void {
-        ply.removeTag('isLinked');
-
-        const objLinkeds = worldToolsSimplified.getOrCreateScorebordObj('ha:plys_linkeds') as mc.ScoreboardObjective;
-        const participants = objLinkeds.getParticipants().map(data => data.displayName);
-
-        if (participants.length <= 0) return;
-
-        let finalScore: string = "";
-        let targetPlyID: string = "";
-        let found: boolean = false;
-
-        for (const data of participants) {
-            const [namePlt1, idPly1, isDeath1, namePlt2, idPly2, isDeath2] = data.split(':');
-
-            if (idPly1 == ply.id && isDeath1 != 'true') {
-                targetPlyID = idPly2;
-                finalScore = `${namePlt1}:${idPly1}:true:${namePlt2}:${idPly2}:${isDeath2}`;
-                objLinkeds.removeParticipant(data);
-                found = true;
-                break;
-            }
-
-            if (idPly2 == ply.id && isDeath2 != 'true') {
-                targetPlyID = idPly1;
-                finalScore = `${namePlt1}:${idPly1}:${isDeath1}:${namePlt2}:${idPly2}:true`;
-                objLinkeds.removeParticipant(data);
-                found = true;
-                break;
-            }
-        }
-
-        if (!found) return;
-
-        worldToolsSimplified.changeScoreInObj(finalScore, 'ha:plys_linkeds', 'set', 1);
-
-        const targetPly = mc.world.getPlayers().find(p => p.id == targetPlyID);
-
-        if (targetPly && targetPly.hasTag('isLinked')) {
-            targetPly.removeTag('isLinked');
-
-            worldToolsSimplified.setDelay(() => {
-                targetPly.runCommand(`function system/death_linked`);
-                targetPly.kill();
-            }, worldToolsSimplified.convertSecondsToTicks(2));
-        }
     }
 
     /**

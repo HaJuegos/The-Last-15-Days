@@ -34,6 +34,85 @@
 	},
 	"entity_sounds": {
 		"entities": {
+			"creeper": {
+				"__molang_version": 13,
+				"variants": {
+					"key": "q.property('ha:creeper_variant')",
+					"map": {
+						"is_baby": {
+							"events": {
+								"death": "mob.creeper.death",
+								"fuse": {
+									"pitch": 0.50,
+									"sound": "random.fuse",
+									"volume": 1.0
+								},
+								"hurt": "mob.creeper.say"
+							},
+							"pitch": [ 0.65, 1 ],
+							"volume": 1.0
+						},
+						"is_ninja": {
+							"events": {
+								"ambient": "",
+								"death": "mob.creeper.death",
+								"fuse": "",
+								"hurt": ""
+							},
+							"pitch": [ 0.80, 1.20 ],
+							"volume": 1.0
+						}
+					}
+				},
+				"events": {
+					"death": "mob.creeper.death",
+					"fuse": {
+						"pitch": 0.50,
+						"sound": "random.fuse",
+						"volume": 1.0
+					},
+					"hurt": "mob.creeper.say"
+				},
+				"pitch": [ 0.80, 1.20 ],
+				"volume": 1.0
+			},
+			"magma_cube": {
+				"__molang_version": 13,
+				"variants": {
+					"key": "q.skin_id == 1 ? 'copter' : 'default'",
+					"map": {
+						"default": { },
+						"copter": {
+							"events": {
+								"ambient": "mob.magma_copter.fly"
+							},
+							"pitch": [ 0.80, 1.20 ],
+							"volume": 1.0
+						}
+					}
+				},
+				"events": {
+					"ambient": "",
+					"attack": {
+						"pitch": [ 0.80, 1.20 ],
+						"sound": "mob.attack"
+					},
+					"death": "mob.magmacube.small",
+					"hurt": "mob.magmacube.small",
+					"squish.big": {
+						"pitch": [ 0.640, 0.960 ],
+						"sound": "mob.magmacube.big"
+					},
+					"squish.small": {
+						"pitch": [ 0.640, 0.960 ],
+						"sound": "mob.magmacube.small"
+					}
+				},
+				"pitch": [ 0.80, 1.20 ],
+				"volume": 1.0
+			},
+
+			// Custom
 			"ha:player_ghost": {
 				"events": {
 					"death": "mob.player_ghost.death_sound",
@@ -113,41 +192,6 @@
 				},
 				"volume": 1.0
 			},
-			"magma_cube": {
-				"__molang_version": 13,
-				"events": {
-					"ambient": "",
-					"attack": {
-						"pitch": [ 0.80, 1.20 ],
-						"sound": "mob.attack"
-					},
-					"death": "mob.magmacube.small",
-					"hurt": "mob.magmacube.small",
-					"squish.big": {
-						"pitch": [ 0.640, 0.960 ],
-						"sound": "mob.magmacube.big"
-					},
-					"squish.small": {
-						"pitch": [ 0.640, 0.960 ],
-						"sound": "mob.magmacube.small"
-					}
-				},
-				"pitch": [ 0.80, 1.20 ],
-				"variants": {
-					"key": "q.skin_id == 1 ? 'copter' : 'default'",
-					"map": {
-						"default": { },
-						"copter": {
-							"events": {
-								"ambient": "mob.magma_copter.fly"
-							},
-							"pitch": [ 0.80, 1.20 ],
-							"volume": 1.0
-						}
-					}
-				},
-				"volume": 1.0
-			},
 			"ha:socrates_npc": {
 				"events": {
 					"ambient": "mob.villager.idle",
@@ -162,48 +206,6 @@
 				},
 				"volume": 1.0
 			},
-			"creeper": {
-				"events": {
-					"death": "mob.creeper.death",
-					"fuse": {
-						"pitch": 0.50,
-						"sound": "random.fuse",
-						"volume": 1.0
-					},
-					"hurt": "mob.creeper.say"
-				},
-				"pitch": [ 0.80, 1.20 ],
-				"volume": 1.0,
-				"variants": {
-					"key": "q.property('ha:creeper_variant')",
-					"map": {
-						"is_baby": {
-							"events": {
-								"ambient": "mob.creeper.say",
-								"death": "mob.creeper.death",
-								"fuse": {
-									"pitch": 0.50,
-									"sound": "random.fuse",
-									"volume": 1.0
-								},
-								"hurt": "mob.creeper.say"
-							},
-							"pitch": [ 0.65, 1 ],
-							"volume": 1.0
-						},
-						"is_ninja": {
-							"events": {
-								"ambient": "",
-								"death": "mob.creeper.death",
-								"fuse": "",
-								"hurt": ""
-							},
-							"pitch": [ 0.80, 1.20 ],
-							"volume": 1.0
-						}
-					}
-				}
-			},
 			"ha:nurse_npc": {
 				"events": {
 					"ambient": "mob.nurse_npc.idle",
@@ -212,6 +214,33 @@
 				},
 				"pitch": [ 0.75, 1 ],
 				"volume": 1.0
+			},
+			"ha:garfield": {
+				"variants": {
+					"key": "q.skin_id == 0 ? 'normal' : 'angry'",
+					"map": {
+						"normal": {
+							"events": {
+								"ambient": "mob.garfield.ambient_normal"
+							},
+							"pitch": [ 0.80, 1.20 ],
+							"volume": 1
+						},
+						"angry": {
+							"events": {
+								"ambient": "mob.garfield.ambient_angry"
+							},
+							"pitch": [ 0.80, 1.20 ],
+							"volume": 1
+						}
+					}
+				},
+				"events": {
+					"death": "mob.garfield.death",
+					"hurt": "mob.garfield.hit"
+				},
+				"pitch": [ 0.80, 1.20 ],
+				"volume": 1
 			}
 		}
 	}

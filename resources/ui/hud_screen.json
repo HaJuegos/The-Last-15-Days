@@ -52,13 +52,6 @@
                 "value": {
                     "debuff_root_factory@abyss_icons.debuff_root_factory": { }
                 }
-            },
-            {
-                "array_name": "controls",
-                "operation": "insert_front",
-                "value": {
-                    "watermark@watermarktld.watermark_panel": { }
-                }
             }
         ]
     }

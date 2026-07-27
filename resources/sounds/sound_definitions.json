@@ -542,6 +542,224 @@
             ]
         },
 
+        "mob.garfield.ambient_normal": {
+            "__use_legacy_max_distance": "true",
+            "min_distance": null,
+            "max_distance": null,
+            "category": "hostile",
+            "subtitle": "ui.subtitle_custom.garfield.neutral_meow",
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": true,
+                    "name": "sounds/mob/garfield/ambient_idle",
+                    "pitch": 1,
+                    "volume": 1,
+                    "stream": false
+                }
+            ]
+        },
+        "mob.garfield.ambient_angry": {
+            "__use_legacy_max_distance": "true",
+            "min_distance": null,
+            "max_distance": null,
+            "category": "hostile",
+            "subtitle": "ui.subtitle_custom.garfield.angry_meow",
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "weight": 1,
+                    "is3D": true,
+                    "name": "sounds/mob/garfield/ambient_idle",
+                    "pitch": 1,
+                    "volume": 1,
+                    "stream": false
+                },
+                {
+                    "load_on_low_memory": true,
+                    "weight": 1,
+                    "is3D": true,
+                    "name": "sounds/mob/garfield/random_dialogs/random1",
+                    "pitch": 1,
+                    "volume": 1,
+                    "stream": false
+                },
+                {
+                    "load_on_low_memory": true,
+                    "weight": 1,
+                    "is3D": true,
+                    "name": "sounds/mob/garfield/random_dialogs/random2",
+                    "pitch": 1,
+                    "volume": 1,
+                    "stream": false
+                },
+                {
+                    "load_on_low_memory": true,
+                    "weight": 1,
+                    "is3D": true,
+                    "name": "sounds/mob/garfield/random_dialogs/random3",
+                    "pitch": 1,
+                    "volume": 1,
+                    "stream": false
+                }
+            ]
+        },
+        "mob.garfield.hit": {
+            "__use_legacy_max_distance": "true",
+            "min_distance": null,
+            "max_distance": null,
+            "category": "hostile",
+            "subtitle": "ui.subtitle_custom.garfield.damage",
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "weight": 1,
+                    "is3D": true,
+                    "name": "sounds/mob/garfield/damage_sounds/hit1",
+                    "pitch": 1,
+                    "volume": 1,
+                    "stream": false
+                },
+                {
+                    "load_on_low_memory": true,
+                    "weight": 1,
+                    "is3D": true,
+                    "name": "sounds/mob/garfield/damage_sounds/hit2",
+                    "pitch": 1,
+                    "volume": 1,
+                    "stream": false
+                },
+                {
+                    "load_on_low_memory": true,
+                    "weight": 1,
+                    "is3D": true,
+                    "name": "sounds/mob/garfield/damage_sounds/hit3",
+                    "pitch": 1,
+                    "volume": 1,
+                    "stream": false
+                }
+            ]
+        },
+        "mob.garfield.death": {
+            "__use_legacy_max_distance": "true",
+            "min_distance": null,
+            "max_distance": null,
+            "category": "hostile",
+            "subtitle": "ui.subtitle_custom.garfield.death",
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": true,
+                    "name": "sounds/mob/garfield/damage_sounds/death1",
+                    "pitch": 1,
+                    "volume": 1,
+                    "stream": false
+                }
+            ]
+        },
+        "mob.garfield.pre-dialog.dialog1": {
+            "__use_legacy_max_distance": "true",
+            "min_distance": null,
+            "max_distance": 100,
+            "category": "hostile",
+            "subtitle": "ui.subtitle_custom.garfield.pre-dialog",
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": true,
+                    "name": "sounds/mob/garfield/pre_dialogs/dialogue_1",
+                    "pitch": 1,
+                    "volume": 1,
+                    "stream": false
+                }
+            ]
+        },
+        "mob.garfield.pre-dialog.dialog2": {
+            "__use_legacy_max_distance": "true",
+            "min_distance": null,
+            "max_distance": 100,
+            "category": "hostile",
+            "subtitle": "ui.subtitle_custom.garfield.pre-dialog",
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": true,
+                    "name": "sounds/mob/garfield/pre_dialogs/dialogue_2",
+                    "pitch": 1,
+                    "volume": 1,
+                    "stream": false
+                }
+            ]
+        },
+        "mob.garfield.pre-dialog.dialog3": {
+            "__use_legacy_max_distance": "true",
+            "min_distance": null,
+            "max_distance": 100,
+            "category": "hostile",
+            "subtitle": "ui.subtitle_custom.garfield.pre-dialog",
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": true,
+                    "name": "sounds/mob/garfield/pre_dialogs/dialogue_3",
+                    "pitch": 1,
+                    "volume": 1,
+                    "stream": false
+                }
+            ]
+        },
+        "mob.garfield.pre-dialog.dialog4": {
+            "__use_legacy_max_distance": "true",
+            "min_distance": null,
+            "max_distance": 100,
+            "category": "hostile",
+            "subtitle": "ui.subtitle_custom.garfield.pre-dialog",
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": true,
+                    "name": "sounds/mob/garfield/pre_dialogs/dialogue_4",
+                    "pitch": 1,
+                    "volume": 1,
+                    "stream": false
+                }
+            ]
+        },
+        "mob.garfield.pre-dialog.dialog5": {
+            "__use_legacy_max_distance": "true",
+            "min_distance": null,
+            "max_distance": 100,
+            "category": "hostile",
+            "subtitle": "ui.subtitle_custom.garfield.pre-dialog",
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": true,
+                    "name": "sounds/mob/garfield/pre_dialogs/dialogue_5",
+                    "pitch": 1,
+                    "volume": 1,
+                    "stream": false
+                }
+            ]
+        },
+        "mob.garfield.pre-dialog.dialogfinal": {
+            "__use_legacy_max_distance": "true",
+            "min_distance": null,
+            "max_distance": 100,
+            "category": "hostile",
+            "subtitle": "ui.subtitle_custom.garfield.pre-dialog",
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": true,
+                    "name": "sounds/mob/garfield/pre_dialogs/dialogue_final",
+                    "pitch": 1,
+                    "volume": 1,
+                    "stream": false
+                }
+            ]
+        },
+
         "record.athazagoraphobia.dragon_fight": {
             "__use_legacy_max_distance": "true",
             "category": "record",
@@ -607,6 +825,22 @@
             ]
         },
 
+        "music.garfield_boss": {
+            "__use_legacy_max_distance": "true",
+            "category": "music",
+            "min_distance": null,
+            "max_distance": null,
+            "subtitle": "ui.music_start.garfield_boss",
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": false,
+                    "name": "sounds/mob/garfield/ambient_boss",
+                    "volume": 0.75,
+                    "stream": true
+                }
+            ]
+        },
         "music.athazagoraphobia.dragon_fight": {
             "__use_legacy_max_distance": "true",
             "category": "music",

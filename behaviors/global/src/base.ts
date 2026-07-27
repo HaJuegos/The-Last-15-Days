@@ -56,7 +56,7 @@ export class TL15DBaseManager {
         { plyName: 'zVicX9198', nameRank: 'The Lagger', colorCode: '§u' },
         { plyName: 'CopyCat Mc', nameRank: ['Gato', 'GatoTester'], colorCode: ['§d§l', '§9'] },
         { plyName: 'Iam4ndrew', nameRank: 'SoSneaky SpeedRunner', colorCode: '§u§l' },
-        { plyName: 'CloudMrcZ', nameRank: ['Sobreviviente', 'BetaTester'], colorCode: ['§l§4', '§9'] },
+        { plyName: 'CloudMrcZ', nameRank: ['Sobreviviente', 'CloudTester'], colorCode: ['§l§4', '§9'] },
     ];
 
     /**

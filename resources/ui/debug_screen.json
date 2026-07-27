@@ -11,6 +11,20 @@
                 "value": {
                     "fast_alert@fast_items_alert.toast_panel": { }
                 }
+            },
+            {
+                "array_name": "controls",
+                "operation": "insert_front",
+                "value": {
+                    "watermark1@watermarktld.watermark_panel": { }
+                }
+            },
+            {
+                "array_name": "controls",
+                "operation": "insert_front",
+                "value": {
+                    "watermark2@watermarktld.telegram_panel": { }
+                }
             }
         ]
     }

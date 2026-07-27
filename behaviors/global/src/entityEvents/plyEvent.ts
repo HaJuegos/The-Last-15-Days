@@ -55,16 +55,94 @@ class PlyEventsManager extends TL15DBaseManager {
      * @private
      */
     private plySpawnEvents(): void {
-        afterEventsSimplified.onPlayerSpawns((args) => {
+        afterEventsSimplified.onPlayerSpawns(async (args) => {
             const ply = args.player;
             const firstSpawn = args.initialSpawn;
             const dime = ply.dimension;
             const over = mc.world.getDimension(vanilla.MinecraftDimensionTypes.Overworld);
+            const entityWorldData = await this.getEntityDataWorld();
+
+            const objLinkeds = worldToolsSimplified.getOrCreateScorebordObj('ha:plys_linkeds') as mc.ScoreboardObjective;
+            const participantsDeaths = objLinkeds.getParticipants().map(data => data.displayName);
+
+            const objPendingRevive = worldToolsSimplified.getOrCreateScorebordObj('ha:pending_revive') as mc.ScoreboardObjective;
+            const participantsRevive = objPendingRevive.getParticipants().map(data => data.displayName);
 
             this.setCustomRank(ply);
 
+            if (participantsDeaths.length > 0) {
+                let finalScore: string = "";
+                let isMe: boolean = false;
+
+                for (const data of participantsDeaths) {
+                    const [namePlt1, idPly1, isDeath1, namePlt2, idPly2, isDeath2] = data.split(':');
+
+                    if (idPly1 == ply.id && isDeath1 != 'true' && isDeath2 == 'true') {
+                        finalScore = `${namePlt1}:${idPly1}:true:${namePlt2}:${idPly2}:${isDeath2}`;
+                        objLinkeds.removeParticipant(data);
+                        isMe = true;
+                        break;
+                    }
+
+                    if (idPly2 == ply.id && isDeath2 != 'true' && isDeath1 == 'true') {
+                        finalScore = `${namePlt1}:${idPly1}:${isDeath1}:${namePlt2}:${idPly2}:true`;
+                        objLinkeds.removeParticipant(data);
+                        isMe = true;
+                        break;
+                    }
+                }
+
+                if (isMe) {
+                    worldToolsSimplified.changeScoreInObj(finalScore, 'ha:plys_linkeds', 'set', 1);
+                    ply.runCommand(`function system/death_linked`);
+                    ply.kill();
+                }
+            }
+
             if (ply.hasTag('banned') && TL15DBaseManager.banState) {
-                ply.runCommand(`kick "${ply.name}"`);
+                let isLinked = false;
+
+                if (participantsRevive.length > 0) {
+                    for (const data of participantsRevive) {
+                        const [name, id] = data.split(':');
+
+                        if (id == ply.id) {
+                            isLinked = true;
+                            objPendingRevive.removeParticipant(data);
+                        }
+                    }
+                }
+
+                if (isLinked) {
+                    let spawnAgain!: { coords: mc.Vector3, dime: mc.Dimension; } | undefined;
+
+                    try {
+                        const plySpawn = ply.getSpawnPoint();
+
+                        if (plySpawn) {
+                            spawnAgain = { coords: { x: plySpawn.x, y: plySpawn.y, z: plySpawn.z }, dime: plySpawn.dimension };
+                        } else {
+                            const topBlock = over.getTopmostBlock({ x: 0, z: 0 });
+
+                            if (topBlock) {
+                                spawnAgain = { coords: { x: topBlock.location.x, y: topBlock.location.y + 1, z: topBlock.location.z }, dime: over };
+                            }
+                        }
+                    } catch {
+                        spawnAgain = { coords: { x: 0, y: 100, z: 0 }, dime: over };
+                    }
+
+                    if (spawnAgain) {
+                        ply.tryTeleport(spawnAgain.coords, { dimension: spawnAgain.dime });
+                    } else {
+                        ply.tryTeleport(mc.world.getDefaultSpawnLocation(), { dimension: over });
+                        ply.runCommand(`spreadplayers ~ ~ 0 10 @s ~`);
+                    }
+
+                    ply.runCommand(`function system/revive_ply_system`);
+                } else {
+                    ply.runCommand(`kick "${ply.name}"`);
+                }
             }
 
             if (!ply.hasTag('kit')) {
@@ -98,28 +176,48 @@ class PlyEventsManager extends TL15DBaseManager {
             }
 
             if ((dime.id == CustomDimensionsTypes.BackRooms && firstSpawn) || ply.hasTag('inCutSceneBackrooms')) {
-                ply.tryTeleport({ x: 0, y: 0, z: 0 }, { dimension: over });
+                if (ply.playerPermissionLevel == mc.PlayerPermissionLevel.Operator) return;
 
-                worldToolsSimplified.setDelay(() => {
-                    ply.runCommand(`spreadplayers 0 0 1 10 @s`);
-                    ply.removeTag('inCutSceneBackrooms');
-                    ply.removeEffect('fatal_poison');
-                    ply.setGameMode(mc.GameMode.Survival);
+                let spawnAgain!: { coords: mc.Vector3, dime: mc.Dimension; } | undefined;
 
-                    ply.camera.clear();
+                try {
+                    const plySpawn = ply.getSpawnPoint();
 
-                    ply.inputPermissions.setPermissionCategory(mc.InputPermissionCategory.Movement, true);
-                    ply.inputPermissions.setPermissionCategory(mc.InputPermissionCategory.Camera, true);
-                }, worldToolsSimplified.convertSecondsToTicks(2));
+                    if (plySpawn) {
+                        spawnAgain = { coords: { x: plySpawn.x, y: plySpawn.y, z: plySpawn.z }, dime: plySpawn.dimension };
+                    } else {
+                        const topBlock = over.getTopmostBlock({ x: 0, z: 0 });
+
+                        if (topBlock) {
+                            spawnAgain = { coords: { x: topBlock.location.x, y: topBlock.location.y + 1, z: topBlock.location.z }, dime: over };
+                        }
+                    }
+                } catch {
+                    spawnAgain = { coords: { x: 0, y: 100, z: 0 }, dime: over };
+                }
+
+                if (spawnAgain) {
+                    ply.tryTeleport(spawnAgain.coords, { dimension: spawnAgain.dime });
+                } else {
+                    ply.tryTeleport(mc.world.getDefaultSpawnLocation(), { dimension: over });
+                    ply.runCommand(`spreadplayers ~ ~ 0 10 @s ~`);
+                }
+
+                ply.removeTag('inCutSceneBackrooms');
+                ply.removeEffect('fatal_poison');
+                ply.setGameMode(mc.GameMode.Survival);
+                ply.camera.clear();
+                ply.inputPermissions.setPermissionCategory(mc.InputPermissionCategory.Movement, true);
+                ply.inputPermissions.setPermissionCategory(mc.InputPermissionCategory.Camera, true);
             }
 
-            const spawnedSts = mc.world.getDynamicProperty('ha:royerbot_npc_spawned') as boolean | undefined;
+            const royerBotSpawned = worldToolsSimplified.getScoreInObj(entityWorldData, 'ha:royerbot_spawned');
 
-            if (spawnedSts) return;
+            if (royerBotSpawned == 0) {
+                ply.runCommand(`structure load ha:royerbot ${ply.location.x} ${ply.location.y} ${ply.location.z}`);
+                worldToolsSimplified.changeScoreInObj(entityWorldData, 'ha:royerbot_spawned', 'set', 1);
+            }
 
-            mc.world.setDynamicProperty('ha:royerbot_npc_spawned', true);
-
-            ply.runCommand(`structure load ha:royerbot ${ply.location.x} ${ply.location.y} ${ply.location.z}`);
             this.getEntityDataWorld();
         });
     };
@@ -151,6 +249,10 @@ class PlyEventsManager extends TL15DBaseManager {
 
                 this.spawnInventory(plyEntity as mc.Player, plyEntity.location, plyEntity.dimension);
                 this.savePlyID(plyEntity as mc.Player);
+
+                if (plyEntity.hasTag('isLinked')) {
+                    this.soulLinkedEvents(plyEntity as mc.Player);
+                }
             }
         });
 
@@ -218,10 +320,60 @@ class PlyEventsManager extends TL15DBaseManager {
         const totalDeaths = worldToolsSimplified.getScoreInObj(entityWorldData, 'ha:death_counter');
         const newTotal = totalDeaths + 1;
         const isLinked = ply.hasTag('isLinked');
-        const scoreValue = `${ply.name}:${ply.id}${isLinked ? ':true' : ''}`;
+
+        const scoreValue = `${ply.name}:${ply.id}${isLinked ? ':true' : ':false'}`;
 
         worldToolsSimplified.changeScoreInObj(entityWorldData, 'ha:death_counter', 'set', newTotal);
         worldToolsSimplified.changeScoreInObj(`${scoreValue}`, 'ha:list_deaths', 'add', newTotal);
+    }
+
+    /**
+     * Metodo auxiliar que revisa y ejecuta la logica para matar a un jugador cuando el otro jugador muere y estan linkeados.
+     * @param {mc.Player} ply Jugador en concreto cuando muere.
+     * @returns {void}
+     * @author HaJuegos - 19-04-2026
+     * @private
+     */
+    private soulLinkedEvents(ply: mc.Player): void {
+        const objLinkeds = worldToolsSimplified.getOrCreateScorebordObj('ha:plys_linkeds') as mc.ScoreboardObjective;
+        const participants = objLinkeds.getParticipants().map(data => data.displayName);
+
+        if (participants.length <= 0) return;
+
+        let finalScore: string = "";
+        let targetPlyID: string = "";
+        let found: boolean = false;
+
+        for (const data of participants) {
+            const [namePlt1, idPly1, isDeath1, namePlt2, idPly2, isDeath2] = data.split(':');
+
+            if (idPly1 == ply.id && isDeath1 != 'true') {
+                targetPlyID = idPly2;
+                finalScore = `${namePlt1}:${idPly1}:true:${namePlt2}:${idPly2}:${isDeath2}`;
+                objLinkeds.removeParticipant(data);
+                found = true;
+                break;
+            }
+
+            if (idPly2 == ply.id && isDeath2 != 'true') {
+                targetPlyID = idPly1;
+                finalScore = `${namePlt1}:${idPly1}:${isDeath1}:${namePlt2}:${idPly2}:true`;
+                objLinkeds.removeParticipant(data);
+                found = true;
+                break;
+            }
+        }
+
+        if (!found) return;
+
+        worldToolsSimplified.changeScoreInObj(finalScore, 'ha:plys_linkeds', 'set', 1);
+
+        const targetPly = mc.world.getPlayers().find(p => p.id == targetPlyID);
+
+        if (targetPly && targetPly.hasTag('isLinked')) {
+            targetPly.runCommand(`function system/death_linked`);
+            targetPly.kill();
+        }
     }
 
     /**

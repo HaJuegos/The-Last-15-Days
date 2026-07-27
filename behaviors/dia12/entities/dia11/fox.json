@@ -136,6 +136,11 @@
                     "value": 1
                 }
             },
+            "ha:can_despawn": {
+                "minecraft:despawn": {
+                    "despawn_from_distance": { }
+                }
+            },
 
             "minecraft:fox_baby": {
                 "minecraft:is_baby": { },
@@ -630,9 +635,6 @@
                     }
                 ]
             },
-            "minecraft:despawn": {
-                "despawn_from_distance": { }
-            },
             "minecraft:behavior.float": {
                 "priority": 0
             },
@@ -798,6 +800,11 @@
         },
         "events": {
             "ha:set_persistance_items": {
+                "remove": {
+                    "component_groups": [
+                        "ha:can_despawn"
+                    ]
+                },
                 "add": {
                     "component_groups": [
                         "ha:has_items"
@@ -892,6 +899,9 @@
                             "value": false
                         },
                         "add": { "component_groups": [ "minecraft:fox_red" ] }
+                    },
+                    {
+                        "add": { "component_groups": [ "ha:can_despawn" ] }
                     }
                 ]
             },
@@ -925,6 +935,9 @@
                                 "minecraft:fox_with_item"
                             ]
                         }
+                    },
+                    {
+                        "add": { "component_groups": [ "ha:can_despawn" ] }
                     }
                 ]
             },

@@ -22,6 +22,14 @@ class CustomDimensionsManager extends TL15DBaseManager {
     private readonly builtedDime: Set<string> = new Set();
 
     /**
+     * Evita que generateMobsBackRooms() cree multiples loops duplicados (uno por cada jugador que hace su spawn inicial).
+     * @type {boolean}
+     * @author HaJuegos - 25-07-2026
+     * @private
+     */
+    private mobsLoopStarted: boolean = false;
+
+    /**
      * Lista de todas las dimensiones a registrar.
      * @type {DimensionCustomTemplate[]}
      * @author HaJuegos - 15-07-2026
@@ -51,24 +59,40 @@ class CustomDimensionsManager extends TL15DBaseManager {
     }
 
     /**
+     * Metodo principal que revisa si ya se ha generado previamente las dimensiones custom creadas.
+     * @param {string} customDime Dimension custom a considerar.
+     * @returns {boolean} Devuelve true o false dependiendo si ya esta generado previamente o no.
+     * @author Ha Juegos - 25-07-2026
+     * @private
+     */
+    private async isDimeBuilted(customDime: string): Promise<boolean> {
+        const builtedDimes = worldToolsSimplified.getOrCreateScorebordObj('ha:dimes_createds') as mc.ScoreboardObjective;
+
+        return builtedDimes.getParticipants().some((p) => p.displayName == customDime);
+    }
+
+    /**
      * Metodo auxiliar que regenera los datos previamente guardados en el mundo de dimensiones previamente creadas.
      * @returns {void}
      * @author HaJuegos - 15-07-2026
      * @private
      */
     private loadBuiltedDimes(): void {
-        beforeEventsSimplified.onAddonStarts(async () => {
-            await null;
+        afterEventsSimplified.onEntityLoadInWorld((args) => {
+            const entity = args.entity;
 
-            const data = mc.world.getDynamicProperty('ha:builted_dimes') as string | undefined;
+            if (!entity.isValid) return;
 
-            if (!data) return;
+            if (entity.typeId == 'ha:data_world') {
+                const builtedDimes = worldToolsSimplified.getOrCreateScorebordObj('ha:dimes_createds') as mc.ScoreboardObjective;
+                const mapDimes = builtedDimes.getParticipants().map(d => d.displayName);
 
-            try {
-                const normalData: string[] = JSON.parse(data);
-
-                normalData.forEach((id) => this.builtedDime.add(id));
-            } catch { }
+                if (mapDimes.length > 0) {
+                    for (const data of mapDimes) {
+                        this.builtedDime.add(data);
+                    }
+                }
+            }
         });
     }
 
@@ -78,8 +102,14 @@ class CustomDimensionsManager extends TL15DBaseManager {
      * @author HaJuegos - 15-07-2026
      * @private
      */
-    private saveDime(): void {
-        mc.world.setDynamicProperty('ha:builted_dimes', JSON.stringify([...this.builtedDime]));
+    private async saveDime(): Promise<void> {
+        const entityWorldData = await this.getEntityDataWorld();
+        const totalDimes = (() => { return worldToolsSimplified.getScoreInObj(entityWorldData, 'ha:dimes_created_count'); });
+
+        for (const data of this.builtedDime) {
+            worldToolsSimplified.changeScoreInObj(data, 'ha:dimes_createds', 'set', totalDimes() == 0 ? 1 : totalDimes());
+            worldToolsSimplified.changeScoreInObj(entityWorldData, 'ha:dimes_created_count', 'add', 1);
+        }
     }
 
     /**
@@ -92,7 +122,7 @@ class CustomDimensionsManager extends TL15DBaseManager {
      * @async
      */
     private async createBackRoomsTerrain(customDime: string, spawnCoords: mc.Vector3): Promise<void> {
-        if (this.builtedDime.has(customDime)) return;
+        if (this.builtedDime.has(customDime) || await this.isDimeBuilted(customDime)) return;
 
         this.builtedDime.add(customDime);
         this.saveDime();
@@ -102,11 +132,11 @@ class CustomDimensionsManager extends TL15DBaseManager {
         const regSize = 16;
         const delayReg = 1;
         const cellSize = 4;
-        const wallChance = 0.2;
+        const wallChance = 0.4;
         const spawnRadiusClear = 5;
         const lighSpace = 6;
         const lighChance = 0.7;
-        const chestChance = 0.001;
+        const chestChance = 0.01;
 
         const dime = mc.world.getDimension(customDime);
 
@@ -349,6 +379,12 @@ class CustomDimensionsManager extends TL15DBaseManager {
                 }
             });
 
+            try {
+                dime.runCommand(
+                    `fill ${spawnCoords.x + fromX} ${spawnCoords.y - 2} ${spawnCoords.z + fromZ} ${spawnCoords.x + toX} ${spawnCoords.y + height} ${spawnCoords.z + toZ} air`
+                );
+            } catch { }
+
             for (let x = fromX; x <= toX; x++) {
                 for (let z = fromZ; z <= toZ; z++) {
                     try {
@@ -373,6 +409,10 @@ class CustomDimensionsManager extends TL15DBaseManager {
      * @private
      */
     private generateMobsBackRooms(): void {
+        if (this.mobsLoopStarted) return;
+
+        this.mobsLoopStarted = true;
+
         const mobsToSpawn = [
             vanilla.MinecraftEntityTypes.Breeze,
             vanilla.MinecraftEntityTypes.ZombiePigman,
@@ -395,10 +435,16 @@ class CustomDimensionsManager extends TL15DBaseManager {
             vanilla.MinecraftEntityTypes.Vindicator,
             vanilla.MinecraftEntityTypes.Pillager,
             vanilla.MinecraftEntityTypes.Salmon,
+            vanilla.MinecraftEntityTypes.Fox,
+            vanilla.MinecraftEntityTypes.Allay,
+            vanilla.MinecraftEntityTypes.Witch,
+            vanilla.MinecraftEntityTypes.Warden,
+            vanilla.MinecraftEntityTypes.PiglinBrute,
+            vanilla.MinecraftEntityTypes.Hoglin
         ];
-        const minRad = 24;
+        const minRad = 10;
         const maxRad = 54;
-        const spawnAtts = 2;
+        const spawnAtts = 3;
 
         worldToolsSimplified.setLoop(() => {
             const dime = mc.world.getDimension(CustomDimensionsTypes.BackRooms);
@@ -443,7 +489,11 @@ class CustomDimensionsManager extends TL15DBaseManager {
             beforeEventsSimplified.createCustomDimension(dime.idPrefix);
 
             if (dime.onCreateEvents) {
-                afterEventsSimplified.onWorldReady(() => {
+                afterEventsSimplified.onPlayerSpawns((args) => {
+                    const firts = args.initialSpawn;
+
+                    if (!firts) return;
+
                     dime.onCreateEvents?.(dime.idPrefix, dime.spawnLocation);
                 });
             }

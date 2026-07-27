@@ -13,6 +13,7 @@ class PlyEventsManager {
      * @constructor
      */
     constructor () {
+        this.plySpawnEvents();
         this.blockPortals();
         this.breakBlocks();
         this.itemsSystem();

@@ -21,7 +21,7 @@ class CustomCmdsEvents extends TL15DBaseManager {
         {
             prefixCmd: 'ha:autoban',
             description: 'Comando que modifica el estado de baneo automatico del servidor.',
-            permsLevel: mc.CommandPermissionLevel.Admin,
+            permsLevel: mc.CommandPermissionLevel.GameDirectors,
             cheatsEnabled: true,
             paramsCmd: [{ name: 'banState', type: mc.CustomCommandParamType.Boolean }],
             onRunCmd: (ply, args) => {
@@ -45,7 +45,7 @@ class CustomCmdsEvents extends TL15DBaseManager {
         {
             prefixCmd: 'ha:hitboxes',
             description: 'Comando que alterna la visibilidad de las hitboxes de las entidades en un jugador en concreto.',
-            permsLevel: mc.CommandPermissionLevel.Admin,
+            permsLevel: mc.CommandPermissionLevel.GameDirectors,
             cheatsEnabled: true,
             paramsCmd: [
                 { name: 'player', type: mc.CustomCommandParamType.PlayerSelector },
@@ -110,7 +110,7 @@ class CustomCmdsEvents extends TL15DBaseManager {
         {
             prefixCmd: 'ha:fastitems',
             description: 'Comando que cambia los items por defecto que funcionan con el sistema de items rapidos',
-            permsLevel: mc.CommandPermissionLevel.Admin,
+            permsLevel: mc.CommandPermissionLevel.GameDirectors,
             cheatsEnabled: true,
             customEnums: {
                 'ha:enum_fastitems': ['add', 'replace']
@@ -166,16 +166,15 @@ class CustomCmdsEvents extends TL15DBaseManager {
             prefixCmd: 'ha:checkdeaths',
             cheatsEnabled: true,
             description: 'Comando que visualiza las muertes registradas internamente en el mundo. Esto con fines depurativos.',
-            permsLevel: mc.CommandPermissionLevel.Admin,
+            permsLevel: mc.CommandPermissionLevel.GameDirectors,
             paramsCmd: [],
             onRunCmd: (sourcePly) => {
                 worldToolsSimplified.setRun(async () => {
                     const entityWorldData = await this.getEntityDataWorld();
-                    const totalLinkeds = worldToolsSimplified.getScoreInObj(entityWorldData, 'ha:linkeds_counter');
                     const totalDeaths = worldToolsSimplified.getScoreInObj(entityWorldData, 'ha:death_counter');
                     const objDeaths = worldToolsSimplified.getOrCreateScorebordObj('ha:list_deaths') as mc.ScoreboardObjective;
 
-                    if (totalDeaths <= 0 && totalLinkeds <= 0) {
+                    if (totalDeaths <= 0) {
                         sourcePly.sendMessage({ rawtext: [{ translate: 'ui.form_deaths.no_plys_deaths' }] });
                         sourcePly.playSound('ui.error_item');
                         return;
@@ -195,7 +194,7 @@ class CustomCmdsEvents extends TL15DBaseManager {
                         let btns: ButtonFormBase[] = [];
 
                         for (const data of plyData) {
-                            if (data.linked) {
+                            if (data.linked == 'true') {
                                 btns.push({ buttomText: `${data.plyName}`, iconButtomUI: "textures/ui/custom/default_headsteve" });
                             } else {
                                 btns.push({ buttomText: data.plyName, iconButtomUI: "textures/ui/custom/default_headsteve" });
@@ -229,7 +228,7 @@ class CustomCmdsEvents extends TL15DBaseManager {
             prefixCmd: 'ha:seed',
             description: 'Comando que muestra la semilla del mundo actual',
             cheatsEnabled: true,
-            permsLevel: mc.CommandPermissionLevel.Admin,
+            permsLevel: mc.CommandPermissionLevel.GameDirectors,
             paramsCmd: [],
             onRunCmd: ((ply, args) => {
                 const seed = mc.world.seed;
@@ -237,6 +236,102 @@ class CustomCmdsEvents extends TL15DBaseManager {
                 worldToolsSimplified.setRun(() => {
                     ply.sendMessage({ rawtext: [{ text: `§7>> ${seed}` }] });
                     ply.playSound('random.levelup');
+                });
+            })
+        },
+        // Comando para eliminar info de jugadores muertos
+        {
+            prefixCmd: 'ha:changedeaths',
+            description: 'Comando que muestra la lista de jugadores muertos registrados y luego, al seleccionar uno, eliminarás su información del add-on. Con fines de depuración.',
+            cheatsEnabled: true,
+            permsLevel: mc.CommandPermissionLevel.GameDirectors,
+            paramsCmd: [],
+            onRunCmd: ((ply, args) => {
+                worldToolsSimplified.setRun(async () => {
+                    const entityWorldData = await this.getEntityDataWorld();
+                    const totalDeaths = (() => { return worldToolsSimplified.getScoreInObj(entityWorldData, 'ha:death_counter'); });
+                    const objDeaths = worldToolsSimplified.getOrCreateScorebordObj('ha:list_deaths') as mc.ScoreboardObjective;
+
+                    if (totalDeaths() <= 0) {
+                        ply.sendMessage({ rawtext: [{ translate: 'ui.form_deaths.no_plys_deaths' }] });
+                        ply.playSound('ui.error_item');
+                        return;
+                    }
+
+                    let plyData: { plyName: string, plyId: string; linked?: string; }[] = [];
+
+                    const deathDataPre = objDeaths.getParticipants().map(data => data.displayName);
+
+                    for (const data of deathDataPre) {
+                        const [name, id, linked] = data.split(':');
+
+                        plyData.push({ plyName: name, plyId: id, linked });
+                    }
+
+                    if (plyData.length > 0) {
+                        let btns: ButtonFormBase[] = [];
+
+                        for (const data of plyData) {
+                            if (data.linked == 'true') {
+                                btns.push({ buttomText: `${data.plyName}`, iconButtomUI: "textures/ui/custom/default_headsteve" });
+                            } else {
+                                btns.push({ buttomText: data.plyName, iconButtomUI: "textures/ui/custom/default_headsteve" });
+                            }
+
+                        }
+
+                        const principalForm = (() => {
+                            customEventsManager.createCustomClassicFormUI({
+                                titleForm: { rawtext: [{ translate: 'ui.form_deaths_delete.title.plys_deaths' }] },
+                                bodyText: { rawtext: [{ translate: 'ui.form_deaths_delete.subtitle.plys_deaths' }] },
+                                buttonsForm: btns,
+                                showPly: {
+                                    targetPly: ply,
+                                    onCreate: (ply) => {
+                                        ply.playSound('random.enderchestopen');
+                                    },
+                                    onClose: (ply) => {
+                                        ply.playSound('random.chestclosed');
+                                    },
+                                    onClickBtn: (ply, btnI) => {
+                                        const selectData = plyData[btnI];
+                                        const linkedFix = selectData.linked == undefined;
+                                        const finalDataNormal = `${selectData.plyName}:${selectData.plyId}:${linkedFix ? 'false' : selectData.linked}`;
+                                        const finalDataOld = `${selectData.plyName}:${selectData.plyId}${linkedFix ? '' : `:${selectData.linked}`}`;
+
+                                        customEventsManager.createCustomClassicFormUI({
+                                            titleForm: { rawtext: [{ translate: 'ui.form_deaths_delete.confirm_title.delete' }] },
+                                            bodyText: { rawtext: [{ translate: 'ui.form_deaths_delete.confirm_sub.delete', with: { rawtext: [{ text: `${selectData.plyName}` }] } }] },
+                                            buttonsForm: [
+                                                { buttomText: 'ui.form_deaths_delete.confirm_btn1.accept' },
+                                                { buttomText: 'ui.form_deaths_delete.confirm_btn2.cancel' }
+                                            ],
+                                            showPly: {
+                                                targetPly: ply,
+                                                onClickBtn: ((ply, btnI) => {
+                                                    if (btnI == 0) {
+                                                        objDeaths.removeParticipant(linkedFix ? finalDataOld : finalDataNormal);
+
+                                                        worldToolsSimplified.changeScoreInObj(entityWorldData, 'ha:death_counter', 'set', totalDeaths() == 0 ? 0 : totalDeaths() - 1);
+
+                                                        ply.sendMessage({ rawtext: [{ translate: 'chat.system.form_deaths_deleted.success', with: { rawtext: [{ text: `${selectData.plyName}` }] } }] });
+                                                        ply.playSound('random.levelup');
+                                                    } else {
+                                                        principalForm();
+                                                    }
+                                                })
+                                            }
+                                        });
+                                    }
+                                }
+                            });
+                        });
+
+                        principalForm();
+                    } else {
+                        ply.sendMessage({ rawtext: [{ translate: 'ui.form_deaths.no_plys_valid' }] });
+                        ply.playSound('ui.error_item');
+                    }
                 });
             })
         }

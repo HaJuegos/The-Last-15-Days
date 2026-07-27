@@ -6,9 +6,8 @@
             "rolls": 1,
             "conditions": [
                 {
-                    "condition": "random_chance_with_looting",
-                    "chance": 0.35,
-                    "looting_multiplier": 0.1
+                    "condition": "random_chance",
+                    "chance": 0.35
                 }
             ],
             "entries": [
@@ -23,9 +22,8 @@
             "rolls": 1,
             "conditions": [
                 {
-                    "condition": "random_chance_with_looting",
-                    "chance": 0.2,
-                    "looting_multiplier": 0.1
+                    "condition": "random_chance",
+                    "chance": 0.15
                 }
             ],
             "entries": [

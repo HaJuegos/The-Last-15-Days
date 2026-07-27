@@ -101,20 +101,20 @@ class GlobalWorldEventsManager extends TL15DBaseManager {
      * @author HaJuegos - 15-07-2026
      */
     private staticEvents(): void {
-        worldToolsSimplified.listenerScriptEvents((args) => {
+        worldToolsSimplified.listenerScriptEvents(async (args) => {
             const id = args.id;
             const sourceEntity = args.sourceEntity;
 
             if (!sourceEntity) return;
 
-            if (id == 'ha:test') {
+            if (id == 'ha:spawn_fake') {
                 for (let i = 0; i < 2; i++) {
                     fakePlysSimplified.createFakePly(`Test${i}`, sourceEntity.dimension, mc.GameMode.Survival);
                 }
             }
 
             if (id == 'ha:chance_backrooms') {
-                const chanceEnter = 0.002;
+                const chanceEnter = 0.005;
                 const fallDistance = 30;
                 const fallDuration = 2.5;
 
@@ -182,6 +182,8 @@ class GlobalWorldEventsManager extends TL15DBaseManager {
                     const toDime = args.toDimension;
                     const ply = args.player;
 
+                    if (ply.playerPermissionLevel == mc.PlayerPermissionLevel.Operator) return;
+
                     if (toDime.id == CustomDimensionsTypes.BackRooms) {
                         const landSettle = 0.3;
                         const standUpDuration = 1.3;
@@ -201,10 +203,10 @@ class GlobalWorldEventsManager extends TL15DBaseManager {
                         customEventsManager.startTimerLocal({
                             sourcePly: ply,
                             timerId: 'ha:timer_backrooms',
-                            initialMns: 3,
+                            initialMns: 10,
                             forceRestart: true,
                             onTimerEnds: (ply) => {
-                                ply.addEffect('fatal_poison', worldToolsSimplified.convertSecondsToTicks(99999), { amplifier: 2, showParticles: false });
+                                ply.addEffect('fatal_poison', worldToolsSimplified.convertSecondsToTicks(99999), { amplifier: 0, showParticles: false });
                             }
                         });
 

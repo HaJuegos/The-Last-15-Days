@@ -1,0 +1,46 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "ha:garfield",
+            "materials": {
+                "default": "cat"
+            },
+            "textures": {
+                "default": "textures/entity/cat/garfield",
+                "angry": "textures/entity/cat/supremacy_garfield"
+            },
+            "geometry": {
+                "default": "geometry.cat_garfield",
+                "angry": "geometry.cat_supremacy_garfield"
+            },
+            "scripts": {
+                "scale": "query.is_baby ? (1 / 0.4) : 1.0",
+                "animate": [
+                    "look_at_target_controller",
+                    "move_controller"
+                ]
+            },
+            "animations": {
+                "look_at_target_controller": "controller.animation.cat.look_at_target",
+                "move_controller": "controller.animation.cat.move",
+
+                "sneak": "animation.garfield.sneak",
+                "walk": "animation.garfield.walk",
+                "sprint": "animation.garfield.sprint",
+                "sit": "animation.garfield.sit",
+                "look_at_target": "animation.common.look_at_target",
+                "baby_transform": "animation.garfield.baby_transform",
+                "lie_down": "animation.garfield.lie_down",
+                "baby_lie_down": "animation.cat.baby_lie_down",
+                "baby_sit": "animation.cat.baby_sit"
+            },
+            "render_controllers": [ "controller.render.garfield" ],
+            "spawn_egg": {
+                "texture": "spawn_egg_cat"
+            }
+        }
+    }
+}

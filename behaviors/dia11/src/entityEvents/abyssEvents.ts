@@ -749,7 +749,7 @@ class AbbysDebuffsEvents extends TL15DBaseManager {
             const randomDebuff = this.possibleDebuffs[randomDebuffI];
             const finalCombo = worldToolsSimplified.changeScoreInObj(ply, randomDebuff.comboScoreboard, 'add', 1) as number;
 
-            worldToolsSimplified.changeScoreInObj(ply, randomDebuff.timerScoreboard, 'add', 10);
+            worldToolsSimplified.changeScoreInObj(ply, randomDebuff.timerScoreboard, 'add', 5);
 
             const baseDelay = worldToolsSimplified.convertSecondsToTicks(1);
             const constantDelay = i == 1 ? baseDelay : baseDelay + worldToolsSimplified.convertSecondsToTicks(i - 1);
@@ -1071,19 +1071,19 @@ class AbbysDebuffsEvents extends TL15DBaseManager {
             } break;
             case 5: {
                 effectAmp = 2;
-                handChance = 55;
-                invItems = 1;
-                invRandomChance = 10;
+                handChance = 35;
+                invItems = 2;
+                invRandomChance = 15;
                 armorItems = 1;
-                armorChance = 20;
+                armorChance = 10;
             } break;
             case 6: {
                 effectAmp = 2;
-                handChance = 100;
+                handChance = 40;
                 invItems = 3;
-                invRandomChance = 25;
+                invRandomChance = 20;
                 armorItems = 4;
-                armorChance = 40;
+                armorChance = 25;
             } break;
         }
 

@@ -22,7 +22,7 @@ class GlobalWorldEventsManager {
      * @private
      */
     private blockExploration(): void {
-        const limitExplorer = 510;
+        const limitExplorer = 5000;
         const limitExplorerY = 120;
 
         /**

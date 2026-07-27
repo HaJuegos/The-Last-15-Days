@@ -51,6 +51,13 @@ dialogue.royerbot.btns.btnintro=¡Claro!
 dialogue.royerbot.dia0.btn1=Reclamar regalo
 dialogue.royerbot.dia0.btn2=Algo más
 
+dialogue.garfield.pre-dialog1=§7§l[§r§v§lGARFIELD§7§l]§r Garfield §7§l>>§r John. ¿Dónde está mi lasaña? La necesito
+dialogue.garfield.pre-dialog2=§7§l[§r§v§lGARFIELD§7§l]§r Garfield §7§l>>§r John, tengo hambre. ¿Sabes qué pasa si no me das de comer, John?
+dialogue.garfield.pre-dialog3=§7§l[§r§v§lGARFIELD§7§l]§r Garfield §7§l>>§r John Craftea la Lasaña. Crafteala ahora
+dialogue.garfield.pre-dialog4=§7§l[§r§v§lGARFIELD§7§l]§r Garfield §7§l>>§r Te estás quedando sin tiempo, John. Puede que tenga que comer algo más si no consigo mi lasaña
+dialogue.garfield.pre-dialog5=§7§l[§r§v§lGARFIELD§7§l]§r Garfield §7§l>>§r 10 segundos, John..
+dialogue.garfield.pre-dialogfinal=§7§l[§r§v§lGARFIELD§7§l]§r Garfield §7§l>>§r Se acabó el tiempo. ¡Es la hora de la cena!
+dialogue.garfield.death=§7§l[§r§v§lGARFIELD§7§l]§r Garfield §7§l>>§r Estoy derrotado.
 
 ## System Texts
 disconnect.kicked=¡Game Over! Ya no puedes seguir jugando.
@@ -71,12 +78,17 @@ hbui.Bedtime.sleepingNotPossibleWorldOwner=La noche se pasará progresivamente. 
 
 
 ## Title texts
+ui.watermak.title=§4The Last 15 Days
+ui.watermak.version=§7v0.0.12-beta
+
+ui.watermak.telegram.title=§e¡Únete al Telegram de la comunidad de HaJuegos!
+ui.watermak.telegram.url=https://t.me/hacattoshub
+
+
 ui.game_over_title=§c¿Game Over?§r
 ui.fast_items.title=§g¡Sistema de ítems rápidos activado!
 ui.fast_items.sub1=Ahora con tu tecla de interacción, puedes cambiar
 ui.fast_items.sub2=rápidamente entre ítems como el tótem en tu otra mano.
-ui.watermak.title=§4The Last 15 Days
-ui.watermak.version=§7v0.0.12-beta
 ui.credits_panel.title=Créditos principales:
 ui.credits_panel.rolecreator=Creador
 ui.credits_panel.dev=Programador
@@ -115,6 +127,15 @@ ui.form_deaths.no_plys_deaths=§7>> No hay jugadores muertos registrados. Aun.
 ui.form_deaths.no_plys_valid=§7>> Hubo un error al intentar obtener los jugadores muertos registrados, o no hay, o los datos están erróneos.
 ui.form_deaths.title.plys_deaths=§p§l Jugadores muertos §r
 ui.form_deaths.subtitle.plys_deaths=§o§iTodos los jugadores registrados en el mundo desde el Día 0. Principalmente, datos usados para el soul link.§r
+
+ui.form_deaths_delete.title.plys_deaths=§3Muertos a eliminar§r
+ui.form_deaths_delete.subtitle.plys_deaths=§7§o>> Con fines de depuración, esta es la lista de jugadores muertos desde el Día 0. Si seleccionas a uno, eliminarás su información a largo plazo y este quedará fuera de los registros del add-on. §c§o¡Cuidado!§7
+
+ui.form_deaths_delete.confirm_title.delete=§4Confirmación final§r
+ui.form_deaths_delete.confirm_sub.delete=§c§o>> Estás a punto de eliminar los datos de §4%1.§c ¿Estás seguro de continuar?
+
+ui.form_deaths_delete.confirm_btn1.accept=Procede
+ui.form_deaths_delete.confirm_btn2.cancel=Volver atrás
 
 
 ## Chat texts
@@ -196,6 +217,8 @@ chat.system.fastitems_system.items_changed=§7>> Se han cambiado los ítems del 
 
 chat.system.banana_eated=§g§l>> %1 ha consumido una Banana.
 
+chat.system.form_deaths_deleted.success=§7>> Se han eliminado los datos de %1 correctamente.
+
 
 ## Entity Names
 entity.ha:player_ghost.name=Fantasma de un Jugador
@@ -212,6 +235,7 @@ entity.ha:spawned_trader_llama.name=Generador de Llamas del End
 entity.ha:crystal_llama_generator.name=Controlador de Debuffos del End
 entity.ha:nurse_npc.name=Enfermera brillante
 entity.ha:data_world.name=Datos del Mundo
+entity.ha:garfield.name=§v§lLord Garfield§r
 
 
 ## Spawn egg names
@@ -219,6 +243,7 @@ item.spawn_egg.entity.ha:bomber_pillager.name=Generador de Saqueador Bombardero
 item.spawn_egg.entity.ha:soul_ghast.name=Generador de §3Soul Ghast§r
 item.spawn_egg.entity.ha:lord_blaze.name=Generador de §pLord Blaze§r
 item.spawn_egg.entity.ha:armorer_piglin.name=Generador de Piglin Bruto Armado
+item.spawn_egg.entity.ha:garfield.name=Generador de §v§lLord Garfield§r
 
 
 ## Items names
@@ -324,6 +349,9 @@ item.ha:silla_disc.name=Un remix de una silla
 item.ha:banana=Banana
 item.ha:banana.name=Banana
 
+item.ha:lasagna=Lasaña
+item.ha:lasagna.name=Lasaña
+
 
 ## Item Catalog
 ha:itemGroup.name.nether_items=§4Cosas del Nether§r
@@ -377,7 +405,6 @@ advacement.elytra=Hasta el infinito... ¡y más allá!
 advacement.bad_omen=Exilio voluntario
 advacement.compass_block=Magnetita, llévame a casita
 advacement.monster_hunter=Monster Hunter
-advacement.betsy=La vieja Betsy
 advacement.dreams=Dulces sueños
 advacement.hero_village=Héroe de la aldea
 advacement.trident=Jugada maestra
@@ -403,6 +430,7 @@ advacement.infernal_crown=Domando al Nether
 advacement.hoglin_tusk=El Depredador Alfa
 advacement.cautious_armor=Domando la Cautela
 advacement.backrooms=Una visita a los backrooms
+advacement.garfield=Superando los 70's
 
 
 ## Subtitle Texts
@@ -440,6 +468,13 @@ ui.subtitle_custom.ambient_dragon_attack.nausea.damaged=§cNo te agachaste esta 
 ui.subtitle_custom.nurse_npc.idle=Una enfermera brillante quejándose
 ui.subtitle_custom.nurse_npc.hurt=Una enfermera brillante siendo lastimada
 ui.subtitle_custom.nurse_npc.purchased=Alguien le compró a una enfermera brillante
+
+ui.subtitle_custom.garfield.neutral_meow=Maullido de Garfield
+ui.subtitle_custom.garfield.angry_meow=Maullido furioso de Garfield
+ui.subtitle_custom.garfield.damage=Garfield siendo atacado
+ui.subtitle_custom.garfield.death=Garfield ha muerto
+ui.subtitle_custom.garfield.pre-dialog=Garfield está dando una advertencia
+ui.music_start.garfield_boss=§eLord Garfield ha aparecido§r
 
 ui.music_start.dragon_fight=Música del dragón sonando
 ui.music_start.final_music=Música de los créditos sonando

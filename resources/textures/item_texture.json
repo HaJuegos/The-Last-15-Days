@@ -173,6 +173,11 @@
             "textures": [
                 "textures/items/custom/banana"
             ]
+        },
+        "lasagna": {
+            "textures": [
+                "textures/items/custom/lasagna"
+            ]
         }
     }
 }

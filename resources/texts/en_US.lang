@@ -51,6 +51,14 @@ dialogue.royerbot.btns.btnintro=Sure!
 dialogue.royerbot.dia0.btn1=Get Gift
 dialogue.royerbot.dia0.btn2=Anything else?
 
+dialogue.garfield.pre-dialog1=§7§l[§r§v§lGARFIELD§7§l]§r Garfield §7§l>>§r John. Where's my lasagna? I need
+dialogue.garfield.pre-dialog2=§7§l[§r§v§lGARFIELD§7§l]§r Garfield §7§l>>§r John I am hungry. You know what happens if you don't feed me John?
+dialogue.garfield.pre-dialog3=§7§l[§r§v§lGARFIELD§7§l]§r Garfield §7§l>>§r John craft lasagna. Craft it now
+dialogue.garfield.pre-dialog4=§7§l[§r§v§lGARFIELD§7§l]§r Garfield §7§l>>§r You're running out of time John. I might need to eat something else if I don't get my lasagna
+dialogue.garfield.pre-dialog5=§7§l[§r§v§lGARFIELD§7§l]§r Garfield §7§l>>§r 10 seconds, John..
+dialogue.garfield.pre-dialogfinal=§7§l[§r§v§lGARFIELD§7§l]§r Garfield §7§l>>§r Time's up. It's dinner time!
+dialogue.garfield.death=§7§l[§r§v§lGARFIELD§7§l]§r Garfield §7§l>>§r I am defeated.
+
 
 ## System Texts
 disconnect.kicked=Game Over! You can't keep playing anymore.
@@ -71,12 +79,16 @@ hbui.Bedtime.sleepingNotPossibleWorldOwner=The night will gradually pass. Don't 
 
 
 ## Title texts
+ui.watermak.title=§4The Last 15 Days
+ui.watermak.version=§7v0.0.12-beta
+
+ui.watermak.telegram.title=§eJoin the HaJuegos community on Telegram!
+ui.watermak.telegram.url=https://t.me/hacattoshub
+
 ui.game_over_title=§cGame Over?§r
 ui.fast_items.title=§gQuick item switching is active!
 ui.fast_items.sub1=Now, use your interaction key to quickly
 ui.fast_items.sub2=switch between items like the totem in your off-hand.
-ui.watermak.title=§4The Last 15 Days
-ui.watermak.version=§7v0.0.12-beta
 ui.credits_panel.title=Credits:
 ui.credits_panel.rolecreator=Creator
 ui.credits_panel.dev=Developer
@@ -115,6 +127,15 @@ ui.form_deaths.no_plys_deaths=§7>> No player deaths have been recorded. Yet.
 ui.form_deaths.no_plys_valid=§7>> An error occurred while trying to retrieve the recorded player deaths; either there are none, or the data is incorrect.
 ui.form_deaths.title.plys_deaths=§p§l Dead Players §r
 ui.form_deaths.subtitle.plys_deaths=§o§iAll players registered in the world since Day 0. Primarily, data used for the soul link.§r
+
+ui.form_deaths_delete.title.plys_deaths=§3Dead Players to Delete§r
+ui.form_deaths_delete.subtitle.plys_deaths=§7§o>> For data cleanup purposes, this is the list of players who have died since Day 0. If you select one, you will permanently delete their information, and they will be removed from the add-on's records. §c§oWarning!§7
+
+ui.form_deaths_delete.confirm_title.delete=§4Final Confirmation§r
+ui.form_deaths_delete.confirm_sub.delete=§c§o>> You are about to delete the data for §4%1.§c Are you sure you want to continue?
+
+ui.form_deaths_delete.confirm_btn1.accept=Proceed
+ui.form_deaths_delete.confirm_btn2.cancel=Go Back
 
 
 ## Chat texts
@@ -196,6 +217,8 @@ chat.system.fastitems_system.items_changed=§7>> The items in the quick-items sy
 
 chat.system.banana_eated=§g§l>> %1 ate a banana.
 
+chat.system.form_deaths_deleted.success=§7>> The data from %1 has been successfully deleted.
+
 
 ## Entity Names
 entity.ha:player_ghost.name=Player Ghost
@@ -212,6 +235,7 @@ entity.ha:spawned_trader_llama.name=End Llama Generator
 entity.ha:crystal_llama_generator.name=End Debuff Controller
 entity.ha:nurse_npc.name=Shimmered Nurse
 entity.ha:data_world.name=World Data
+entity.ha:garfield.name=§v§lLord Garfield§r
 
 
 ## Spawn egg names
@@ -219,6 +243,7 @@ item.spawn_egg.entity.ha:bomber_pillager.name=Bomber Pillager Spawn Egg
 item.spawn_egg.entity.ha:soul_ghast.name=§3Soul Ghast§r Spawn Egg
 item.spawn_egg.entity.ha:lord_blaze.name=§pLord Blaze§r Spawn Egg
 item.spawn_egg.entity.ha:armorer_piglin.name=Armorer Piglin Brute Spawn Egg
+item.spawn_egg.entity.ha:garfield.name=§v§lLord Garfield§r Spawn Egg
 
 
 ## Items names
@@ -324,6 +349,8 @@ item.ha:silla_disc.name=A Chair Remix
 item.ha:banana=Banana
 item.ha:banana.name=Banana
 
+item.ha:lasagna=Lasagna
+item.ha:lasagna.name=Lasagna
 
 ## Item Catalog
 ha:itemGroup.name.nether_items=§4Nether Stuff§r
@@ -377,7 +404,6 @@ advacement.elytra=Sky's the Limit
 advacement.bad_omen=Voluntary Exile
 advacement.compass_block=Country Lode, Take Me Home
 advacement.monster_hunter=Monster Hunter
-advacement.betsy=Ol' Betsy
 advacement.dreams=Sweet Dreams
 advacement.hero_village=Hero of the Village
 advacement.trident=A Throwaway Joke
@@ -403,6 +429,7 @@ advacement.infernal_crown=Conquering the Nether
 advacement.hoglin_tusk=The Alpha Predator
 advacement.cautious_armor=Overcoming Caution
 advacement.backrooms=A Tour of the Backrooms
+advacement.garfield=Leaving the 70s behind
 
 
 ## Subtitle Texts
@@ -440,6 +467,13 @@ ui.subtitle_custom.ambient_dragon_attack.nausea.damaged=§cYou didn't bend down 
 ui.subtitle_custom.nurse_npc.idle=A Shimmered Nurse complaining
 ui.subtitle_custom.nurse_npc.hurt=A Shimmered Nurse getting hurt
 ui.subtitle_custom.nurse_npc.purchased=Someone bought something for a Shimmered Nurse
+
+ui.subtitle_custom.garfield.neutral_meow=Garfield's meow
+ui.subtitle_custom.garfield.angry_meow=Garfield's angry meow
+ui.subtitle_custom.garfield.damage=Garfield is being attacked
+ui.subtitle_custom.garfield.death=Garfield has died
+ui.subtitle_custom.garfield.pre-dialog=Garfield is issuing a warning
+ui.music_start.garfield_boss=§eLord Garfield has appeared§r
 
 ui.music_start.dragon_fight=Dragon music playing
 ui.music_start.final_music=Credits music playing

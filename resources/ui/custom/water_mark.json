@@ -32,6 +32,133 @@
         "duration": 99999.0
     },
 
+    "tg_slide_in": {
+        "anim_type": "offset",
+        "easing": "out_expo",
+        "from": [ 0, 100 ],
+        "to": [ 0, 0 ],
+        "duration": 2.0,
+        "next": "@watermarktld.tg_wait_before_fade"
+    },
+    "tg_wait_before_fade": {
+        "anim_type": "alpha",
+        "from": 1.0,
+        "to": 1.0,
+        "duration": 1.5,
+        "next": "@watermarktld.tg_fade_to_transparent"
+    },
+    "tg_fade_to_transparent": {
+        "anim_type": "alpha",
+        "from": 1.0,
+        "to": 0.35,
+        "duration": 0.5,
+        "next": "@watermarktld.tg_stay_transparent"
+    },
+    "tg_stay_transparent": {
+        "anim_type": "alpha",
+        "from": 0.45,
+        "to": 0.45,
+        "duration": 120.0,
+        "next": "@watermarktld.tg_fade_back"
+    },
+    "tg_fade_back": {
+        "anim_type": "alpha",
+        "from": 0.45,
+        "to": 1.0,
+        "duration": 0.5,
+        "next": "@watermarktld.tg_slide_out"
+    },
+    "tg_slide_out": {
+        "anim_type": "offset",
+        "easing": "in_expo",
+        "from": [ 0, 0 ],
+        "to": [ 0, 100 ],
+        "duration": 2.0,
+        "next": "@watermarktld.tg_wait_before_loop"
+    },
+    "tg_wait_before_loop": {
+        "anim_type": "offset",
+        "from": [ 0, 100 ],
+        "to": [ 0, 100 ],
+        "duration": 180.0,
+        "next": "@watermarktld.tg_slide_in"
+    },
+
+    "telegram_panel": {
+        "type": "stack_panel",
+        "orientation": "horizontal",
+        "anchor_from": "bottom_left",
+        "anchor_to": "bottom_left",
+        "offset": [ -3, -3 ],
+        "size": [ "100%c", 16 ],
+        "controls": [
+            {
+                "icon_container": {
+                    "type": "panel",
+                    "size": [ 16, 16 ],
+                    "controls": [
+                        {
+                            "icon": {
+                                "type": "image",
+                                "texture": "textures/ui/custom/tg_group",
+                                "size": [ "100%", "100%" ],
+                                "anims": [
+                                    "@watermarktld.tg_slide_in"
+                                ]
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "padding": {
+                    "type": "panel",
+                    "size": [ 3, 16 ]
+                }
+            },
+            {
+                "text_container": {
+                    "type": "panel",
+                    "size": [ "100%c", 16 ],
+                    "anchor_from": "center",
+                    "anchor_to": "center",
+                    "controls": [
+                        {
+                            "telegram_label": {
+                                "type": "label",
+                                "text": "ui.watermak.telegram.title",
+                                "font_size": "small",
+                                "shadow": true,
+                                "anchor_from": "top_left",
+                                "anchor_to": "top_left",
+                                "size": [ "default", 8 ],
+                                "offset": [ -5, 0 ],
+                                "anims": [
+                                    "@watermarktld.tg_slide_in"
+                                ]
+                            }
+                        },
+                        {
+                            "url_label": {
+                                "type": "label",
+                                "text": "ui.watermak.telegram.url",
+                                "font_size": "small",
+                                "shadow": true,
+                                "anchor_from": "bottom_left",
+                                "anchor_to": "bottom_left",
+                                "size": [ "default", 8 ],
+                                "offset": [ -5, 0 ],
+                                "anims": [
+                                    "@watermarktld.tg_slide_in"
+                                ]
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+
     "watermark_panel": {
         "type": "stack_panel",
         "orientation": "horizontal",

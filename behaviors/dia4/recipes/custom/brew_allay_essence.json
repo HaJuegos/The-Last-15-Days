@@ -1,0 +1,20 @@
+// mc-disable behaviorpack.items.missing
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.20.10",
+    "minecraft:recipe_brewing_mix": {
+        "description": {
+            "identifier": "ha:brew_allay_essence"
+        },
+        "tags": [ "brewing_stand" ],
+        "unlock": [
+            {
+                "item": "ha:allay_dust"
+            }
+        ],
+        "input": "minecraft:potion_type:awkward",
+        "reagent": "ha:allay_dust",
+        "output": "ha:allay_essence"
+    }
+}
