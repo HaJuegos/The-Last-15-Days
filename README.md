@@ -104,6 +104,11 @@ Este proyecto es una comision previa realizada por RosherRandom. Todos los credi
 			<td align="center"><a href="https://www.youtube.com/watch?v=yrf6yQIkyuU">Soft Breeze - OFF OST</a></td>
 			<td align="center">AliasConradColwood</td>
 		</tr>
+		<tr>
+			<td align="center"><img src="https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/main/.github/icon_template/musics/yhorm_the_giant.jpg" alt="Yhorm the Giant by Yuka Kitamura" width=300></td>
+			<td align="center"><a href="https://www.youtube.com/watch?v=Dd6pwO1q7ow">Yhorm the Giant - Dark Souls 3 OST</a></td>
+			<td align="center">Yuka Kitamura</td>
+		</tr>
 	</table>
 </div>
 
