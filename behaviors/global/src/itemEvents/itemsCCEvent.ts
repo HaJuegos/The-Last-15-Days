@@ -51,8 +51,22 @@ class ItemCustomComponentsManager extends TL15DBaseManager {
                     const item = args.itemStack;
 
                     if (item) {
+                        const lore = item.getLore();
+
                         sourcePly.playSound(`armor.equip_generic`);
-                        sourcePly.runCommand(`structure load ha:books ~~1~`);
+
+                        if (lore.length > 0) {
+                            const listStructures = [
+                                'backrooms:book1',
+                                'backrooms:book2',
+                                'backrooms:book3'
+                            ];
+                            const randomS = listStructures[Math.floor(Math.random() * listStructures.length)];
+
+                            sourcePly.runCommand(`structure load ${randomS} ~~1~`);
+                        } else {
+                            sourcePly.runCommand(`structure load ha:books ~~1~`);
+                        }
 
                         worldToolsSimplified.setRun(() => {
                             const bundle = new mc.ItemStack('minecraft:bundle');

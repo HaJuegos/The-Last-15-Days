@@ -161,7 +161,7 @@ class PlyEventsManager extends TL15DBaseManager {
                     plyInv.addItem(item);
                 }
 
-                if (ply.name == 'TheShadowcat318') {
+                if (ply.name == 'ShadowCat8651') {
                     const randomAmount = Math.floor(Math.random() * 4) + 1;
 
                     plyInv.addItem(new mc.ItemStack('ha:banana', randomAmount));

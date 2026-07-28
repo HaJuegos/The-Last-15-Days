@@ -1,4 +1,5 @@
 import * as mc from "@minecraft/server";
+import * as vanilla from "@minecraft/vanilla-data";
 
 import { afterEventsSimplified, worldToolsSimplified } from "simplified-mojang-api";
 

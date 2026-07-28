@@ -29,6 +29,11 @@
                     "type": "loot_table",
                     "weight": 1,
                     "name": "loot_tables/chests/shipwrecktreasure.json"
+                },
+                {
+                    "type": "loot_table",
+                    "weight": 1,
+                    "name": "loot_tables/chests/backrooms_loot.json"
                 }
             ]
         }

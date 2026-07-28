@@ -414,6 +414,7 @@ class CustomDimensionsManager extends TL15DBaseManager {
         this.mobsLoopStarted = true;
 
         const mobsToSpawn = [
+            vanilla.MinecraftEntityTypes.Bee,
             vanilla.MinecraftEntityTypes.Breeze,
             vanilla.MinecraftEntityTypes.ZombiePigman,
             vanilla.MinecraftEntityTypes.Zombie,

@@ -38,7 +38,7 @@ export class TL15DBaseManager {
     protected customRanks: CustomRankTemplate[] = [
         { plyName: 'BigRoyer', nameRank: ['OWNER', 'DEV'], colorCode: ['§l§e', '§l§g'] },
         { plyName: 'Ha Juegos', nameRank: ['DEV', 'Gay'], colorCode: ['§l§g', '§l§d'] },
-        { plyName: 'Convex!', nameRank: 'DEV', colorCode: '§l§g' },
+        { plyName: 'llConvex38ll', nameRank: 'DEV', colorCode: '§l§g' },
         { plyName: 'XChitoX3083', nameRank: 'Diresito Lover', colorCode: '§c' },
         { plyName: 'Dyaerl', nameRank: 'DaoLover', colorCode: '§a' },
         { plyName: 'Mattols7886', nameRank: 'Rey grasoso', colorCode: '§e' },

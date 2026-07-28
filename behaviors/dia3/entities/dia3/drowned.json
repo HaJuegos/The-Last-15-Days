@@ -154,6 +154,31 @@
             }
         },
         "components": {
+            "minecraft:shooter": {
+                "def": "minecraft:thrown_trident",
+                "sound": "item.trident.throw",
+                "magic": true
+            },
+            "minecraft:behavior.ranged_attack": {
+                "priority": 0,
+                "attack_interval_min": 1.0,
+                "attack_interval_max": 2.0,
+                "attack_radius": 20.0,
+                "swing": true
+            },
+            "minecraft:equipment": {
+                "table": "loot_tables/entities/drowned_ranged_equipment.json",
+                "slot_drop_chance": [
+                    {
+                        "drop_chance": -1,
+                        "slot": "slot.weapon.offhand"
+                    },
+                    {
+                        "drop_chance": -1,
+                        "slot": "slot.weapon.mainhand"
+                    }
+                ]
+            },
             "minecraft:nameable": {
             },
             // mc-disable-next-line behaviorpack.entity.component.missing
