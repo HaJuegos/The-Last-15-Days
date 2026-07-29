@@ -49,7 +49,7 @@ export class TL15DBaseManager {
         { plyName: 'SrLoboMCTuber', nameRank: 'Fan de Diresito uwu ', colorCode: '§l§d' },
         { plyName: 'ItsAncientMC', nameRank: 'Main-Astra', colorCode: '§l§u' },
         { plyName: 'Diresito', nameRank: 'nyaowodirepene', colorCode: '§l§a' },
-        { plyName: 'E S D I 1 0', nameRank: 'Bendies2', colorCode: '§a' },
+        { plyName: 'macros skill', nameRank: 'Bendies2', colorCode: '§a' },
         { plyName: 'ShedowXDYT', nameRank: 'ElFurro', colorCode: '§1' },
         { plyName: 'fede p5959', nameRank: 'MvpBtw', colorCode: '§e' },
         { plyName: 'GEOKILLER', nameRank: 'GeoPerro', colorCode: '§u' },

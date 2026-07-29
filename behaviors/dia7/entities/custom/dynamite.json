@@ -5,13 +5,64 @@
     "minecraft:entity": {
         "description": {
             "identifier": "ha:dynamite",
-            "runtime_identifier": "minecraft:ender_pearl",
+            "runtime_identifier": "minecraft:wind_charge_projectile",
             "spawn_category": "ambient",
             "is_experimental": false,
             "is_spawnable": false,
             "is_summonable": true
         },
         "component_groups": {
+            "ha:from_bomber": {
+                "minecraft:skin_id": {
+                    "value": 1
+                },
+                "minecraft:projectile": {
+                    "on_hit": {
+                        "impact_damage": {
+                            "damage": 1,
+                            "destroy_on_hit": false,
+                            "destroy_on_hit_requires_damage": false,
+                            "knockback": false,
+                            "power_multiplier": 1.36,
+                            "should_bounce": false
+                        },
+                        "definition_event": {
+                            "affect_projectile": true,
+                            "event_trigger": {
+                                "event": "ha:start_explode",
+                                "target": "self"
+                            }
+                        },
+                        "stick_in_ground": { }
+                    },
+                    "reflect_immunity": 1,
+                    "reflect_on_hurt": true,
+                    "stop_on_hurt": true,
+                    "offset": [ 0, 1, 0 ],
+                    "power": 2,
+                    "uncertainty_base": 5,
+                    "uncertainty_multiplier": 2,
+                    "anchor": 1,
+                    "should_bounce": true,
+                    "inertia": 0.95,
+                    "liquid_inertia": 0.4,
+                    "is_dangerous": true,
+                    "multiple_targets": true,
+                    "destroy_on_hurt": false,
+                    "knockback": false,
+                    "ignored_entities": [
+                        "boat",
+                        "chest_boat",
+                        "minecart",
+                        "illager",
+                        "ravager",
+                        "pillager",
+                        "ravager",
+                        "witch",
+                        "vex"
+                    ]
+                }
+            },
             "ha:from_player": {
                 "minecraft:projectile": {
                     "on_hit": {
@@ -50,13 +101,7 @@
                     "ignored_entities": [
                         "boat",
                         "chest_boat",
-                        "minecart",
-                        "illager",
-                        "ravager",
-                        "pillager",
-                        "ravager",
-                        "witch",
-                        "vex"
+                        "minecart"
                     ]
                 }
             },
@@ -105,13 +150,7 @@
                     "ignored_entities": [
                         "boat",
                         "chest_boat",
-                        "minecart",
-                        "illager",
-                        "ravager",
-                        "pillager",
-                        "ravager",
-                        "witch",
-                        "vex"
+                        "minecart"
                     ]
                 },
                 "minecraft:explode": {
@@ -127,51 +166,8 @@
             }
         },
         "components": {
-            "minecraft:projectile": {
-                "on_hit": {
-                    "impact_damage": {
-                        "damage": 1,
-                        "destroy_on_hit": false,
-                        "destroy_on_hit_requires_damage": false,
-                        "knockback": false,
-                        "power_multiplier": 1.36,
-                        "should_bounce": false
-                    },
-                    "definition_event": {
-                        "affect_projectile": true,
-                        "event_trigger": {
-                            "event": "ha:start_explode",
-                            "target": "self"
-                        }
-                    },
-                    "stick_in_ground": { }
-                },
-                "reflect_immunity": 1,
-                "reflect_on_hurt": true,
-                "stop_on_hurt": true,
-                "offset": [ 0, 1, 0 ],
-                "power": 2,
-                "uncertainty_base": 5,
-                "uncertainty_multiplier": 2,
-                "anchor": 1,
-                "should_bounce": true,
-                "inertia": 0.95,
-                "liquid_inertia": 0.4,
-                "is_dangerous": true,
-                "multiple_targets": true,
-                "destroy_on_hurt": false,
-                "knockback": false,
-                "ignored_entities": [
-                    "boat",
-                    "chest_boat",
-                    "minecart",
-                    "illager",
-                    "ravager",
-                    "pillager",
-                    "ravager",
-                    "witch",
-                    "vex"
-                ]
+            "minecraft:skin_id": {
+                "value": 0
             },
             "minecraft:transient": { },
             "minecraft:mob_effect_immunity": { },
@@ -188,7 +184,6 @@
                     }
                 ]
             },
-            "minecraft:cannot_be_attacked": { },
             "minecraft:pushable": {
                 "is_pushable": false,
                 "is_pushable_by_piston": true
@@ -196,8 +191,8 @@
             "minecraft:dimension_bound": { },
             "minecraft:physics": { },
             "minecraft:collision_box": {
-                "height": 0.25,
-                "width": 0.25
+                "height": 0.5,
+                "width": 0.5
             },
             "minecraft:conditional_bandwidth_optimization": {
                 "default_values": {
@@ -208,7 +203,20 @@
             }
         },
         "events": {
-            "minecraft:entity_spawned": { },
+            "minecraft:entity_spawned": {
+                "add": {
+                    "component_groups": [
+                        "ha:from_bomber"
+                    ]
+                }
+            },
+            "ha:from_bomber": {
+                "add": {
+                    "component_groups": [
+                        "ha:from_bomber"
+                    ]
+                }
+            },
             "ha:spawned_from_player": {
                 "add": {
                     "component_groups": [

@@ -29,20 +29,52 @@
             },
             "ha:ranged_attack": {
                 "minecraft:shooter": {
-                    "def": "ha:dynamite<minecraft:entity_spawned>",
+                    "def": "ha:dynamite<ha:from_bomber>",
                     "sound": "bow"
                 },
                 "minecraft:behavior.ranged_attack": {
-                    "priority": 0,
+                    "priority": 1,
+                    "target_in_sight_time": 0.1,
                     "burst_shots": 1,
                     "burst_interval": 0.1,
                     "attack_interval_max": 1.0,
                     "attack_interval_min": 0.9,
                     "charge_charged_trigger": 0,
                     "charge_shoot_trigger": 0.9,
-                    "attack_radius": 65,
+                    "attack_radius": 35,
                     "ranged_fov": 360,
-                    "speed_multiplier": 1.25
+                    "speed_multiplier": 1
+                },
+                "minecraft:behavior.avoid_mob_type": {
+                    "priority": 0,
+                    "remove_target": true,
+                    "sprint_distance": 5,
+                    "ignore_visibility": true,
+                    "entity_types": [
+                        {
+                            "filters": {
+                                "test": "is_family",
+                                "subject": "other",
+                                "value": "arrow"
+                            },
+                            "max_dist": 10,
+                            "max_flee": 4,
+                            "walk_speed_multiplier": 1.5,
+                            "sprint_speed_multiplier": 2.5
+                        },
+                        {
+                            "filters": {
+                                "any_of": [
+                                    { "test": "is_family", "subject": "other", "value": "player" },
+                                    { "test": "is_family", "subject": "other", "value": "irongolem" }
+                                ]
+                            },
+                            "max_dist": 6,
+                            "max_flee": 14,
+                            "walk_speed_multiplier": 1.3,
+                            "sprint_speed_multiplier": 1.7
+                        }
+                    ]
                 },
                 "minecraft:environment_sensor": {
                     "triggers": [
@@ -57,6 +89,9 @@
                             "target": "self"
                         }
                     ]
+                },
+                "minecraft:follow_range": {
+                    "value": 70
                 }
             },
             "ha:melee_attack": {
@@ -64,6 +99,12 @@
                     "triggers": [
                         {
                             "on_damage": {
+                                "filters": {
+                                    "test": "has_component",
+                                    "subject": "self",
+                                    "operator": "!=",
+                                    "value": "minecraft:is_ignited"
+                                },
                                 "event": "ha:force_explode",
                                 "target": "self"
                             },
@@ -75,11 +116,11 @@
                 "minecraft:behavior.melee_attack": {
                     "priority": 0,
                     "can_spread_on_fire": true,
-                    "cooldown_time": 0.6,
+                    "cooldown_time": 0.35,
                     "melee_fov": 360,
-                    "reach_multiplier": 4,
+                    "reach_multiplier": 5.5,
                     "speed_multiplier": 1.35,
-                    "track_target": true,
+                    "track_target": false,
                     "require_complete_path": true,
                     "on_attack": {
                         "filters": {
@@ -108,11 +149,14 @@
                             "target": "self"
                         }
                     ]
+                },
+                "minecraft:follow_range": {
+                    "value": 999
                 }
             },
             "minecraft:celebrate": {
                 "minecraft:behavior.celebrate": {
-                    "priority": 5,
+                    "priority": 8,
                     "celebration_sound": "celebrate",
                     "sound_interval": {
                         "range_min": 2.0,
@@ -148,7 +192,7 @@
                     "event_name": "ambient.in.raid"
                 },
                 "minecraft:behavior.move_to_village": {
-                    "priority": 5,
+                    "priority": 9,
                     "speed_multiplier": 1.0,
                     "goal_radius": 2.0
                 }
@@ -176,7 +220,7 @@
                     "table": "loot_tables/entities/custom/bomber_pillager_captain.json"
                 },
                 "minecraft:behavior.hold_ground": {
-                    "priority": 5,
+                    "priority": 10,
                     "min_radius": 10,
                     "broadcast": true,
                     "broadcast_range": 8,
@@ -186,7 +230,7 @@
                     }
                 },
                 "minecraft:behavior.move_to_random_block": {
-                    "priority": 6,
+                    "priority": 11,
                     "speed_multiplier": 0.55,
                     "within_radius": 8,
                     "block_distance": 512
@@ -194,13 +238,13 @@
             },
             "minecraft:patrol_follower": {
                 "minecraft:behavior.follow_target_captain": {
-                    "priority": 5,
+                    "priority": 12,
                     "speed_multiplier": 0.8,
                     "within_radius": 64,
                     "follow_distance": 5
                 },
                 "minecraft:behavior.hold_ground": {
-                    "priority": 6,
+                    "priority": 13,
                     "min_radius": 10,
                     "broadcast": true,
                     "broadcast_range": 8,
@@ -283,9 +327,6 @@
                 "is_pushable": true,
                 "is_pushable_by_piston": true
             },
-            "minecraft:follow_range": {
-                "value": 70
-            },
             "minecraft:behavior.float": {
                 "priority": 3
             },
@@ -293,17 +334,20 @@
                 "priority": 1,
                 "entity_types": {
                     "filters": {
-                        "test": "is_family", "subject": "other", "operator": "!=", "value": "illager"
-                    },
-                    "max_dist": 64
+                        "test": "is_family",
+                        "subject": "other",
+                        "operator": "not",
+                        "value": "illager"
+                    }
                 }
             },
-            "minecraft:behavior.nearest_attackable_target": {
+            "minecraft:behavior.nearest_prioritized_attackable_target": {
                 "priority": 2,
                 "must_see": true,
                 "reselect_targets": true,
                 "entity_types": [
                     {
+                        "priority": 0,
                         "filters": {
                             "any_of": [
                                 { "test": "is_family", "subject": "other", "value": "player" },
@@ -314,6 +358,7 @@
                         "max_dist": 30
                     },
                     {
+                        "priority": 1,
                         "filters": {
                             "all_of": [
                                 { "test": "is_family", "subject": "other", "value": "villager" },
@@ -328,15 +373,15 @@
                 "priority": 4
             },
             "minecraft:behavior.random_stroll": {
-                "priority": 8,
+                "priority": 5,
                 "speed_multiplier": 1
             },
             "minecraft:behavior.look_at_player": {
-                "priority": 9,
+                "priority": 6,
                 "look_distance": 8
             },
             "minecraft:behavior.random_look_around": {
-                "priority": 10
+                "priority": 7
             }
         },
         "events": {

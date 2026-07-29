@@ -186,6 +186,11 @@
             }
         },
         "components": {
+            "minecraft:type_family": {
+                "family": [
+                    "arrow"
+                ]
+            },
             "minecraft:collision_box": {
                 "height": 0.25,
                 "width": 0.25

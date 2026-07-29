@@ -468,6 +468,7 @@ ui.subtitle_custom.ambient_dragon_attack.nausea.damaged=§cNo te agachaste esta 
 ui.subtitle_custom.nurse_npc.idle=Una enfermera brillante quejándose
 ui.subtitle_custom.nurse_npc.hurt=Una enfermera brillante siendo lastimada
 ui.subtitle_custom.nurse_npc.purchased=Alguien le compró a una enfermera brillante
+ui.subtitle_custom.tnt_parried=Una dinamita fue desviada por un jugador
 
 ui.subtitle_custom.garfield.neutral_meow=Maullido de Garfield
 ui.subtitle_custom.garfield.angry_meow=Maullido furioso de Garfield

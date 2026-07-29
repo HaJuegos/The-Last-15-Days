@@ -461,6 +461,22 @@
                 }
             ]
         },
+        "mob.dynamite.parried": {
+            "__use_legacy_max_distance": "true",
+            "min_distance": null,
+            "max_distance": null,
+            "subtitle": "ui.subtitle_custom.tnt_parried",
+            "category": "player",
+            "sounds": [
+                {
+                    "is3D": true,
+                    "name": "sounds/ambient/parry",
+                    "volume": 1,
+                    "pitch": 1,
+                    "stream": false
+                }
+            ]
+        },
 
         "mob.nurse_npc.idle": {
             "__use_legacy_max_distance": "true",

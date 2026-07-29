@@ -22,6 +22,45 @@ class PlyEventsManager {
         this.itemsSystem();
         this.dolphinSystem();
         this.customMusicBox();
+        this.parrySystem();
+    }
+
+    /**
+     * Sistema de parrys curioso para los proyectiles que se pueden devolver.
+     * @returns {void}
+     * @author HaJuegos - 29-07-2026
+     * @private
+     */
+    private parrySystem(): void {
+        afterEventsSimplified.onHitEntity((args) => {
+            const hitEntity = args.hitEntity;
+            const sourceEntity = args.damagingEntity;
+
+            if (!hitEntity.isValid) return;
+
+            if (hitEntity.typeId == 'ha:dynamite' && (sourceEntity instanceof mc.Player)) {
+                const variant = hitEntity.getComponent(mc.EntityComponentTypes.SkinId)?.value as number;
+                const dime = hitEntity.dimension;
+
+                if (variant != 1) return;
+                if (hitEntity.isOnGround) return;
+
+                const viewDirection = sourceEntity.getViewDirection();
+                const parryPower = 2.5;
+
+                const impulseVector = {
+                    x: viewDirection.x * parryPower,
+                    y: viewDirection.y * parryPower,
+                    z: viewDirection.z * parryPower
+                };
+
+                hitEntity.clearVelocity();
+                hitEntity.applyImpulse(impulseVector);
+
+                dime.playSound("mob.dynamite.parried", sourceEntity.location);
+                dime.spawnParticle("minecraft:critical_hit_emitter", hitEntity.location);
+            }
+        });
     }
 
     /**
