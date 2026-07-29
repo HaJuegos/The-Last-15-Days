@@ -10,6 +10,11 @@
             "spawn_category": "creature"
         },
         "component_groups": {
+            "ha:has_loot": {
+                "minecraft:loot": {
+                    "table": "loot_tables/entities/allay_dust.json"
+                }
+            },
             "pickup_item": {
                 "minecraft:behavior.pickup_items": {
                     "can_pickup_any_item": false,
@@ -34,8 +39,27 @@
             }
         },
         "components": {
-            "minecraft:loot": {
-                "table": "loot_tables/entities/allay_dust.json"
+            "minecraft:environment_sensor": {
+                "triggers": [
+                    {
+                        "filters": {
+                            "test": "on_fire",
+                            "subject": "self",
+                            "value": true
+                        },
+                        "target": "self",
+                        "event": "ha:set_loot"
+                    },
+                    {
+                        "filters": {
+                            "test": "on_fire",
+                            "subject": "self",
+                            "value": false
+                        },
+                        "target": "self",
+                        "event": "ha:remove_loot"
+                    }
+                ]
             },
             "minecraft:ambient_sound_interval": {
                 "event_name": "ambient",
@@ -256,6 +280,20 @@
                 "add": {
                     "component_groups": [
                         "pickup_item"
+                    ]
+                }
+            },
+            "ha:set_loot": {
+                "add": {
+                    "component_groups": [
+                        "ha:has_loot"
+                    ]
+                }
+            },
+            "ha:remove_loot": {
+                "remove": {
+                    "component_groups": [
+                        "ha:has_loot"
                     ]
                 }
             },

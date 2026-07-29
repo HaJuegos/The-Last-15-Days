@@ -144,287 +144,16 @@
                     "damage": 14
                 },
                 "minecraft:behavior.melee_attack": {
-                    "priority": 1,
+                    "priority": 0,
                     "can_spread_on_fire": true,
                     "melee_fov": 360,
                     "cooldown_time": 0.45,
                     "reach_multiplier": 3,
                     "require_complete_path": true,
-                    "track_target": true
-                },
-                "minecraft:behavior.summon_entity": {
-                    "priority": 0,
-                    "summon_choices": [
-                        {
-                            "min_activation_range": 0,
-                            "max_activation_range": 100,
-                            "cooldown_time": 5,
-                            "do_casting": false,
-                            "cast_duration": 1,
-                            "weight": 1,
-                            "sequence": [
-                                {
-                                    "delay_per_summon": 0.5,
-                                    "entity_type": "minecraft:tnt",
-                                    "num_entities_spawned": 4,
-                                    "size": 1,
-                                    "shape": "circle",
-                                    "target": "target",
-                                    "entity_lifespan": 1200
-                                }
-                            ]
-                        },
-                        {
-                            "min_activation_range": 0,
-                            "max_activation_range": 100,
-                            "cooldown_time": 15,
-                            "do_casting": false,
-                            "cast_duration": 1,
-                            "weight": 1,
-                            "sequence": [
-                                {
-                                    "delay_per_summon": 0.5,
-                                    "entity_type": "minecraft:fox",
-                                    "num_entities_spawned": 4,
-                                    "size": 1,
-                                    "shape": "circle",
-                                    "target": "self",
-                                    "entity_lifespan": 1200
-                                }
-                            ]
-                        },
-                        {
-                            "min_activation_range": 0,
-                            "max_activation_range": 100,
-                            "cooldown_time": 15,
-                            "do_casting": false,
-                            "cast_duration": 1,
-                            "weight": 1,
-                            "sequence": [
-                                {
-                                    "delay_per_summon": 0.5,
-                                    "entity_type": "minecraft:bee",
-                                    "num_entities_spawned": 4,
-                                    "size": 1,
-                                    "shape": "circle",
-                                    "target": "self",
-                                    "entity_lifespan": 1200
-                                }
-                            ]
-                        },
-                        {
-                            "min_activation_range": 0,
-                            "max_activation_range": 100,
-                            "cooldown_time": 15,
-                            "do_casting": false,
-                            "cast_duration": 1,
-                            "weight": 1,
-                            "sequence": [
-                                {
-                                    "delay_per_summon": 0.5,
-                                    "entity_type": "minecraft:bogged",
-                                    "num_entities_spawned": 4,
-                                    "size": 1,
-                                    "shape": "circle",
-                                    "target": "self",
-                                    "entity_lifespan": 1200
-                                }
-                            ]
-                        },
-                        {
-                            "min_activation_range": 0,
-                            "max_activation_range": 100,
-                            "cooldown_time": 15,
-                            "do_casting": false,
-                            "cast_duration": 1,
-                            "weight": 1,
-                            "sequence": [
-                                {
-                                    "delay_per_summon": 0.5,
-                                    "entity_type": "minecraft:wither_skeleton",
-                                    "num_entities_spawned": 4,
-                                    "size": 1,
-                                    "shape": "circle",
-                                    "target": "self",
-                                    "entity_lifespan": 1200
-                                }
-                            ]
-                        },
-                        {
-                            "min_activation_range": 0,
-                            "max_activation_range": 100,
-                            "cooldown_time": 15,
-                            "do_casting": false,
-                            "cast_duration": 1,
-                            "weight": 1,
-                            "sequence": [
-                                {
-                                    "delay_per_summon": 0.5,
-                                    "entity_type": "minecraft:witch",
-                                    "num_entities_spawned": 4,
-                                    "size": 1,
-                                    "shape": "circle",
-                                    "target": "self",
-                                    "entity_lifespan": 1200
-                                }
-                            ]
-                        },
-                        {
-                            "min_activation_range": 0,
-                            "max_activation_range": 100,
-                            "cooldown_time": 15,
-                            "do_casting": false,
-                            "cast_duration": 1,
-                            "weight": 1,
-                            "sequence": [
-                                {
-                                    "delay_per_summon": 0.5,
-                                    "entity_type": "minecraft:pillager",
-                                    "num_entities_spawned": 4,
-                                    "size": 1,
-                                    "shape": "circle",
-                                    "target": "self",
-                                    "entity_lifespan": 1200
-                                }
-                            ]
-                        },
-                        {
-                            "min_activation_range": 0,
-                            "max_activation_range": 100,
-                            "cooldown_time": 15,
-                            "do_casting": false,
-                            "cast_duration": 1,
-                            "weight": 1,
-                            "sequence": [
-                                {
-                                    "delay_per_summon": 0.5,
-                                    "entity_type": "ha:bomber_pillager",
-                                    "num_entities_spawned": 2,
-                                    "size": 1,
-                                    "shape": "circle",
-                                    "target": "self",
-                                    "entity_lifespan": 1200
-                                }
-                            ]
-                        },
-                        {
-                            "min_activation_range": 0,
-                            "max_activation_range": 100,
-                            "cooldown_time": 15,
-                            "do_casting": false,
-                            "cast_duration": 1,
-                            "weight": 1,
-                            "sequence": [
-                                {
-                                    "delay_per_summon": 0.5,
-                                    "entity_type": "minecraft:ravager",
-                                    "num_entities_spawned": 2,
-                                    "size": 1,
-                                    "shape": "circle",
-                                    "target": "self",
-                                    "entity_lifespan": 1200
-                                }
-                            ]
-                        },
-                        {
-                            "min_activation_range": 0,
-                            "max_activation_range": 100,
-                            "cooldown_time": 5,
-                            "do_casting": false,
-                            "cast_duration": 1,
-                            "weight": 1,
-                            "sequence": [
-                                {
-                                    "delay_per_summon": 0.5,
-                                    "entity_type": "minecraft:creeper",
-                                    "num_entities_spawned": 4,
-                                    "size": 1,
-                                    "shape": "circle",
-                                    "target": "target",
-                                    "entity_lifespan": 1200
-                                }
-                            ]
-                        },
-                        {
-                            "min_activation_range": 0,
-                            "max_activation_range": 100,
-                            "cooldown_time": 15,
-                            "do_casting": false,
-                            "cast_duration": 1,
-                            "weight": 1,
-                            "sequence": [
-                                {
-                                    "delay_per_summon": 0.5,
-                                    "entity_type": "minecraft:enderman",
-                                    "num_entities_spawned": 4,
-                                    "size": 1,
-                                    "shape": "circle",
-                                    "target": "target",
-                                    "entity_lifespan": 1200
-                                }
-                            ]
-                        },
-                        {
-                            "min_activation_range": 0,
-                            "max_activation_range": 100,
-                            "cooldown_time": 5,
-                            "do_casting": false,
-                            "cast_duration": 1,
-                            "weight": 1,
-                            "sequence": [
-                                {
-                                    "delay_per_summon": 0.5,
-                                    "entity_type": "minecraft:zombie",
-                                    "num_entities_spawned": 4,
-                                    "size": 1,
-                                    "shape": "circle",
-                                    "target": "target",
-                                    "entity_lifespan": 1200
-                                }
-                            ]
-                        },
-                        {
-                            "min_activation_range": 0,
-                            "max_activation_range": 100,
-                            "cooldown_time": 15,
-                            "do_casting": false,
-                            "cast_duration": 1,
-                            "weight": 1,
-                            "sequence": [
-                                {
-                                    "delay_per_summon": 0.5,
-                                    "entity_type": "minecraft:cave_spider",
-                                    "num_entities_spawned": 4,
-                                    "size": 1,
-                                    "shape": "circle",
-                                    "target": "self",
-                                    "entity_lifespan": 1200
-                                }
-                            ]
-                        },
-                        {
-                            "min_activation_range": 0,
-                            "max_activation_range": 100,
-                            "cooldown_time": 5,
-                            "do_casting": false,
-                            "cast_duration": 1,
-                            "weight": 1,
-                            "sequence": [
-                                {
-                                    "delay_per_summon": 0.5,
-                                    "entity_type": "minecraft:guardian",
-                                    "num_entities_spawned": 4,
-                                    "size": 1,
-                                    "shape": "circle",
-                                    "target": "target",
-                                    "entity_lifespan": 1200
-                                }
-                            ]
-                        }
-                    ]
+                    "track_target": false
                 },
                 "minecraft:behavior.hurt_by_target": {
-                    "priority": 2,
+                    "priority": 1,
                     "hurt_owner": true,
                     "entity_types": {
                         "filters": {
@@ -435,17 +164,27 @@
                         }
                     }
                 },
-                "minecraft:behavior.nearest_attackable_target": {
-                    "priority": 3,
+                "minecraft:behavior.nearest_prioritized_attackable_target": {
+                    "priority": 0,
                     "reselect_targets": true,
                     "entity_types": [
                         {
+                            "priority": 0,
+                            "filters": {
+                                "test": "is_family",
+                                "subject": "other",
+                                "value": "player"
+                            },
+                            "max_dist": 300
+                        },
+                        {
+                            "priority": 1,
                             "filters": {
                                 "any_of": [
                                     {
                                         "test": "is_family",
                                         "subject": "other",
-                                        "value": "player"
+                                        "value": "irongolem"
                                     },
                                     {
                                         "test": "is_family",
@@ -455,20 +194,52 @@
                                     {
                                         "test": "is_family",
                                         "subject": "other",
-                                        "value": "irongolem"
+                                        "value": "chicken"
+                                    },
+                                    {
+                                        "test": "is_family",
+                                        "subject": "other",
+                                        "value": "rabbit"
+                                    },
+                                    {
+                                        "test": "is_family",
+                                        "subject": "other",
+                                        "value": "baby_turtle"
                                     }
                                 ]
                             },
-                            "max_dist": 40
+                            "max_dist": 300
                         }
                     ]
                 },
                 "minecraft:follow_range": {
-                    "value": 99999
+                    "value": 300
                 }
             }
         },
         "components": {
+            "minecraft:experience_reward": {
+                "on_death": "query.last_hit_by_player ? Math.Random(1,3) : 0"
+            },
+            "minecraft:rideable": {
+                "seat_count": 1,
+                "family_types": [ "baby_undead" ],
+                "seats": {
+                    "position": [ 0.0, 0.55, 0.0 ]
+                }
+            },
+            "minecraft:behavior.rise_to_liquid_level": {
+                "priority": 14,
+                "liquid_y_offset": 0.01,
+                "rise_delta": 0.1,
+                "sink_delta": 0.1
+            },
+            "minecraft:underwater_movement": {
+                "value": 0.2
+            },
+            "minecraft:lava_movement": {
+                "value": 0.2
+            },
             "minecraft:mob_effect_immunity": {
                 "mob_effects": [
                     "poison",
@@ -484,8 +255,8 @@
                 "table": "loot_tables/entities/custom/garfield.json"
             },
             "minecraft:health": {
-                "max": 700,
-                "value": 700
+                "max": 850,
+                "value": 850
             },
             "minecraft:offspring": {
                 "offspring_pairs": {
@@ -544,7 +315,7 @@
                 "priority": 11,
                 "speed_multiplier": 1.25,
                 "target_dist": 0,
-                "track_target": true
+                "track_target": false
             },
             "minecraft:behavior.look_at_player": {
                 "priority": 13

@@ -47,6 +47,28 @@ class EntityEventsManager {
             } else if (id == 'ha:garfield_start_fight') {
                 let musicPlys: string[] = [];
 
+                /**
+                 * Lista de mobs que genera garfield en concreto.
+                 * @type {({ type: vanilla.MinecraftEntityTypes | string; amount: number; }[])}
+                 * @author HaJuegos - 29-07-2026
+                 */
+                const summonChoices: { type: vanilla.MinecraftEntityTypes | string; amount: number; }[] = [
+                    { type: vanilla.MinecraftEntityTypes.Tnt, amount: 4 },
+                    { type: vanilla.MinecraftEntityTypes.Fox, amount: 4 },
+                    { type: vanilla.MinecraftEntityTypes.Bee, amount: 4 },
+                    { type: vanilla.MinecraftEntityTypes.Bogged, amount: 4 },
+                    { type: vanilla.MinecraftEntityTypes.WitherSkeleton, amount: 4 },
+                    { type: vanilla.MinecraftEntityTypes.Witch, amount: 4 },
+                    { type: vanilla.MinecraftEntityTypes.Pillager, amount: 4 },
+                    { type: "ha:bomber_pillager", amount: 2 },
+                    { type: vanilla.MinecraftEntityTypes.Ravager, amount: 2 },
+                    { type: vanilla.MinecraftEntityTypes.Creeper, amount: 4 },
+                    { type: vanilla.MinecraftEntityTypes.Vindicator, amount: 4 },
+                    { type: vanilla.MinecraftEntityTypes.Zombie, amount: 4 },
+                    { type: vanilla.MinecraftEntityTypes.CaveSpider, amount: 4 },
+                    { type: vanilla.MinecraftEntityTypes.ElderGuardian, amount: 4 }
+                ];
+
                 const loopId = worldToolsSimplified.setLoop(() => {
                     if (!entity.isValid) return;
 
@@ -77,7 +99,27 @@ class EntityEventsManager {
                     if (!entity.isValid) return;
 
                     dime.createExplosion(entity.location, 4, { allowUnderwater: true, breaksBlocks: true, source: entity });
-                }, worldToolsSimplified.convertSecondsToTicks(60));
+                }, worldToolsSimplified.convertSecondsToTicks(10));
+
+                const loopEntities = worldToolsSimplified.setLoop(() => {
+                    if (!entity.isValid) return;
+
+                    const target = entity.target;
+                    const centerLoc = (target && target.isValid && Math.random() < 0.5) ? target.location : entity.location;
+                    const choice = summonChoices[Math.floor(Math.random() * summonChoices.length)];
+
+                    for (let i = 0; i < choice.amount; i++) {
+                        const angle = (i / choice.amount) * Math.PI * 2;
+                        const offsetX = Math.cos(angle) * 3;
+                        const offsetZ = Math.sin(angle) * 3;
+                        const spawnLoc = {
+                            x: centerLoc.x + offsetX,
+                            y: centerLoc.y,
+                            z: centerLoc.z + offsetZ
+                        };
+                        dime.spawnEntity(choice.type as mc.VanillaEntityIdentifier, spawnLoc, { spawnEvent: 'minecraft:entity_spawned' });
+                    }
+                }, worldToolsSimplified.convertSecondsToTicks(10));
 
                 afterEventsSimplified.onEntityDie((args) => {
                     const entity = args.deadEntity;
@@ -90,6 +132,7 @@ class EntityEventsManager {
                     if (entity.typeId == 'ha:garfield') {
                         worldToolsSimplified.stopLoop(loopExplodes);
                         worldToolsSimplified.stopLoop(loopId);
+                        worldToolsSimplified.stopLoop(loopEntities);
 
                         for (const ply of plys) {
                             ply.stopMusic();
