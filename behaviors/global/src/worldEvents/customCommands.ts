@@ -334,6 +334,137 @@ class CustomCmdsEvents extends TL15DBaseManager {
                     }
                 });
             })
+        },
+        // Comando para eliminar el registro de linkeados
+        {
+            prefixCmd: 'ha:removelinked',
+            description: 'Comando que elimina el soul link de jugadores vinculados a sí mismos. Con fines de depuración.',
+            cheatsEnabled: true,
+            permsLevel: mc.CommandPermissionLevel.GameDirectors,
+            paramsCmd: [],
+            onRunCmd: ((ply, args) => {
+                worldToolsSimplified.setRun(async () => {
+                    const entityWorldData = await this.getEntityDataWorld();
+                    const objLinkdes = worldToolsSimplified.getOrCreateScorebordObj('ha:plys_linkeds') as mc.ScoreboardObjective;
+                    const objRevives = worldToolsSimplified.getOrCreateScorebordObj('ha:pending_revive') as mc.ScoreboardObjective;
+
+                    /**
+                     * Se utiliza una funcion auxiliar del formulario entero porque se recalcula la veces que se abre este mismo por los botones de cancelar y mantener la informacion actualizada a tiempo real.
+                     * @author HaJuegos - 30-07-2026
+                     */
+                    const mainForm = (() => {
+                        const linkeds = objLinkdes.getParticipants().map(p => p.displayName);
+
+                        if (linkeds.length <= 0) {
+                            ply.sendMessage({ rawtext: [{ translate: 'chat.system.remove_linked.no_data' }] });
+                            ply.playSound('ui.error_item');
+                            return;
+                        }
+
+                        const playersData: { rawData: string, ply1Name: string, ply1ID: string, ply2Name: string, ply2ID: string; }[] = [];
+
+                        for (const data of linkeds) {
+                            const [ply1name, ply1id, , ply2name, ply2id] = data.split(':');
+
+                            if (!ply1name || !ply1id || !ply2name || !ply2id) continue;
+
+                            playersData.push({
+                                rawData: data,
+                                ply1Name: ply1name,
+                                ply1ID: ply1id,
+                                ply2Name: ply2name,
+                                ply2ID: ply2id
+                            });
+                        }
+
+                        if (playersData.length <= 0) {
+                            ply.sendMessage({ rawtext: [{ translate: 'chat.system.remove_linked.no_data' }] });
+                            ply.playSound('ui.error_item');
+                            return;
+                        }
+
+                        const btns: ButtonFormBase[] = [];
+                        const btnsData: typeof playersData = [];
+
+                        playersData.forEach((data) => {
+                            btns.push({
+                                buttomText: { rawtext: [{ translate: 'ui.remove_linkeds.nameplys', with: { rawtext: [{ text: '\n' }, { text: `${data.ply1Name}` }, { text: `${data.ply2Name}` }] } }] },
+                                iconButtomUI: 'textures/ui/custom/default_headsteve'
+                            });
+                            btnsData.push(data);
+                        });
+
+                        return customEventsManager.createCustomClassicFormUI({
+                            titleForm: { rawtext: [{ translate: 'ui.remove_linkeds.title' }] },
+                            bodyText: { rawtext: [{ translate: 'ui.remove_linkeds.subtitle' }] },
+                            buttonsForm: btns,
+                            showPly: {
+                                targetPly: ply,
+                                onCreate: ((ply) => {
+                                    ply.playSound('random.enderchestopen');
+                                }),
+                                onClickBtn: ((ply, btnI) => {
+                                    const target = btnsData[btnI];
+
+                                    customEventsManager.createCustomClassicFormUI({
+                                        titleForm: { rawtext: [{ translate: 'ui.remove_linkeds.confirm.title' }] },
+                                        bodyText: { rawtext: [{ translate: 'ui.remove_linkeds.confirm.subtitle', with: { rawtext: [{ text: `${target.ply1Name}` }, { text: `${target.ply2Name}` }] } }] },
+                                        buttonsForm: [
+                                            { buttomText: { rawtext: [{ translate: 'ui.remove_linkeds.confirm.btn1.accept' }] } },
+                                            { buttomText: { rawtext: [{ translate: 'ui.remove_linkeds.confirm.btn2.cancel' }] } }
+                                        ],
+                                        showPly: {
+                                            targetPly: ply,
+                                            onClickBtn: ((ply, btnI) => {
+                                                if (btnI == 0) {
+                                                    objLinkdes.removeParticipant(target.rawData);
+
+                                                    const revives = objRevives.getParticipants().map(d => d.displayName);
+                                                    const reviveEntry = revives.find(d => d.split(':')[1] == target.ply1ID);
+
+                                                    if (reviveEntry) {
+                                                        objRevives.removeParticipant(reviveEntry);
+                                                    };
+
+                                                    const linker1 = mc.world.getPlayers().find(pl => pl.id == target.ply1ID);
+                                                    const linker2 = mc.world.getPlayers().find(pl => pl.id == target.ply2ID);
+
+                                                    if (linker1) {
+                                                        linker1.removeTag('isLinked');
+                                                    } else {
+                                                        worldToolsSimplified.changeScoreInObj(`${target.ply1Name}:${target.ply1ID}`, 'ha:pending_remove_link', 'set', 1);
+                                                    };
+
+                                                    if (linker2) {
+                                                        linker2.removeTag('isLinked');
+                                                    } else {
+                                                        worldToolsSimplified.changeScoreInObj(`${target.ply2Name}:${target.ply2ID}`, 'ha:pending_remove_link', 'set', 1);
+                                                    };
+
+                                                    worldToolsSimplified.changeScoreInObj(entityWorldData, 'ha:linkeds_counter', 'add', -1);
+
+                                                    ply.sendMessage({ rawtext: [{ translate: 'chat.system.remove_linked.success', with: { rawtext: [{ text: `${target.ply1Name}` }, { text: `${target.ply2Name}` }] } }] });
+                                                    ply.playSound('random.levelup');
+                                                } else {
+                                                    mainForm();
+                                                }
+                                            }),
+                                            onClose: (() => {
+                                                mainForm();
+                                            }),
+                                            onErrForm: (() => {
+                                                mainForm();
+                                            })
+                                        }
+                                    });
+                                })
+                            }
+                        });
+                    });
+
+                    mainForm();
+                });
+            })
         }
     ];
 

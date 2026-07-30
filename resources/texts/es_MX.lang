@@ -137,6 +137,15 @@ ui.form_deaths_delete.confirm_sub.delete=§c§o>> Estás a punto de eliminar los
 ui.form_deaths_delete.confirm_btn1.accept=Procede
 ui.form_deaths_delete.confirm_btn2.cancel=Volver atrás
 
+ui.remove_linkeds.title=§7Eliminar una pareja vinculada
+ui.remove_linkeds.subtitle=§7§oEsta zona es principalmente para depuración, no se recomienda su uso constante a largo plazo por problemas de compatibilidad. Este sistema permite eliminar el registro de un Soul Link de una pareja ya vinculada.
+ui.remove_linkeds.nameplys=%2 §7§oy§r%1%3
+
+ui.remove_linkeds.confirm.title=§cConfirmación de eliminación de vínculo§r
+ui.remove_linkeds.confirm.subtitle=§cEstás a punto de eliminar la información interna de la siguiente pareja vinculada: §4%1 y %2. §c¿Seguro que deseas continuar?
+ui.remove_linkeds.confirm.btn1.accept=Continuar
+ui.remove_linkeds.confirm.btn2.cancel=Volver
+
 
 ## Chat texts
 chat.system.resquicio_start=§c§l>>§r§c ¡%1 ha causado un §4§lResquicio Infernal§r!
@@ -218,6 +227,9 @@ chat.system.fastitems_system.items_changed=§7>> Se han cambiado los ítems del 
 chat.system.banana_eated=§g§l>> %1 ha consumido una Banana.
 
 chat.system.form_deaths_deleted.success=§7>> Se han eliminado los datos de %1 correctamente.
+
+chat.system.remove_linked.no_data=§7>> No hay registros de Soul Links aún... o puede que haya ocurrido un error.
+chat.system.remove_linked.success=§7>> Se ha eliminado con éxito el registro de la pareja vinculada conformada por %1 y %2.
 
 
 ## Entity Names

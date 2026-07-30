@@ -68,7 +68,22 @@ class PlyEventsManager extends TL15DBaseManager {
             const objPendingRevive = worldToolsSimplified.getOrCreateScorebordObj('ha:pending_revive') as mc.ScoreboardObjective;
             const participantsRevive = objPendingRevive.getParticipants().map(data => data.displayName);
 
+            const objPendingRemove = worldToolsSimplified.getOrCreateScorebordObj('ha:pending_remove_link') as mc.ScoreboardObjective;
+            const participantsPendingRemove = objPendingRemove.getParticipants().map(data => data.displayName);
+
             this.setCustomRank(ply);
+
+            if (participantsPendingRemove.length > 0) {
+                for (const data of participantsPendingRemove) {
+                    const [name, id] = data.split(':');
+
+                    if (id == ply.id) {
+                        ply.removeTag('isLinked');
+                        objPendingRemove.removeParticipant(data);
+                        break;
+                    }
+                }
+            }
 
             if (participantsDeaths.length > 0) {
                 let finalScore: string = "";
