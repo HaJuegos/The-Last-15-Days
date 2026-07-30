@@ -421,7 +421,7 @@
                 "singular_pickup": true
             },
             "minecraft:attack": {
-                "damage": 45
+                "damage": 14
             },
             "minecraft:behavior.melee_box_attack": {
                 "priority": 0,

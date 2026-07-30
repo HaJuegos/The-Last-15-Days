@@ -70,7 +70,7 @@
                     "track_target": true
                 },
                 "minecraft:attack": {
-                    "damage": 25
+                    "damage": 14
                 },
                 "minecraft:variant": {
                     "value": 1

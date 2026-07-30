@@ -236,33 +236,13 @@
                     {
                         "filters": {
                             "all_of": [
-                                {
-                                    "test": "has_tag",
-                                    "operator": "!=",
-                                    "value": "hasDamageBiome"
-                                },
-                                {
-                                    "test": "has_tag",
-                                    "operator": "!=",
-                                    "value": "crownInInv"
-                                },
+                                { "test": "has_tag", "operator": "!=", "value": "hasDamageBiome" },
+                                { "test": "has_tag", "operator": "!=", "value": "crownInInv" },
                                 {
                                     "any_of": [
-                                        {
-                                            "test": "is_temperature_type",
-                                            "subject": "self",
-                                            "value": "cold"
-                                        },
-                                        {
-                                            "test": "is_temperature_type",
-                                            "subject": "self",
-                                            "value": "ocean"
-                                        },
-                                        {
-                                            "test": "is_temperature_type",
-                                            "subject": "self",
-                                            "value": "warm"
-                                        }
+                                        { "test": "is_temperature_type", "subject": "self", "value": "cold" },
+                                        { "test": "is_temperature_type", "subject": "self", "value": "ocean" },
+                                        { "test": "is_temperature_type", "subject": "self", "value": "warm" }
                                     ]
                                 }
                             ]
@@ -272,39 +252,22 @@
                     },
                     {
                         "filters": {
-                            "any_of": [
+                            "all_of": [
                                 {
                                     "test": "has_tag",
-                                    "value": "crownInInv"
+                                    "value": "hasDamageBiome"
                                 },
                                 {
-                                    "all_of": [
+                                    "any_of": [
                                         {
                                             "test": "has_tag",
-                                            "value": "hasDamageBiome"
-                                        },
-                                        {
-                                            "test": "has_tag",
-                                            "operator": "!=",
                                             "value": "crownInInv"
                                         },
                                         {
                                             "none_of": [
-                                                {
-                                                    "test": "is_temperature_type",
-                                                    "subject": "self",
-                                                    "value": "cold"
-                                                },
-                                                {
-                                                    "test": "is_temperature_type",
-                                                    "subject": "self",
-                                                    "value": "ocean"
-                                                },
-                                                {
-                                                    "test": "is_temperature_type",
-                                                    "subject": "self",
-                                                    "value": "warm"
-                                                }
+                                                { "test": "is_temperature_type", "subject": "self", "value": "cold" },
+                                                { "test": "is_temperature_type", "subject": "self", "value": "ocean" },
+                                                { "test": "is_temperature_type", "subject": "self", "value": "warm" }
                                             ]
                                         }
                                     ]
@@ -318,7 +281,7 @@
             },
             "minecraft:damage_sensor": {
                 "triggers": [
-                   {
+                    {
                         "cause": "block_explosion",
                         "deals_damage": "yes",
                         "damage_multiplier": 2.0

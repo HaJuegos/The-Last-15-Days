@@ -20,7 +20,7 @@
                             "apply_effect_to_blocking_targets": false
                         },
                         "impact_damage": {
-                            "damage": [ 5, 25 ],
+                            "damage": [ 5, 15 ],
                             "knockback": true,
                             "destroy_on_hit": true,
                             "semi_random_diff_damage": false

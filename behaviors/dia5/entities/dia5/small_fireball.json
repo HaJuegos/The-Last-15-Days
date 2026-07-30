@@ -43,7 +43,7 @@
             },
             "ha:start_explode": {
                 "minecraft:explode": {
-                    "power": 3,
+                    "power": 2,
                     "knockback_scaling": 3,
                     "fuse_length": [ 0, 0 ],
                     "fuse_lit": true,

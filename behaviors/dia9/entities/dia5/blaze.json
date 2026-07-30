@@ -20,10 +20,10 @@
             },
             "melee_mode": {
                 "minecraft:attack": {
-                    "damage": 30
+                    "damage": 12
                 },
                 "minecraft:behavior.melee_box_attack": {
-                    "priority": 3
+                    "priority": 0
                 }
             },
             "mode_switcher": {
@@ -49,7 +49,7 @@
                     "attack_radius": 48.0,
                     "burst_interval": 0.3,
                     "burst_shots": 3,
-                    "priority": 3,
+                    "priority": 0,
                     "charge_charged_trigger": 0.0
                 },
                 "minecraft:shooter": {
@@ -59,7 +59,7 @@
         },
         "components": {
             "minecraft:behavior.float": {
-                "priority": 0
+                "priority": 3
             },
             "minecraft:behavior.hurt_by_target": {
                 "priority": 1,
@@ -101,10 +101,10 @@
                 "priority": 2
             },
             "minecraft:behavior.random_look_around": {
-                "priority": 5
+                "priority": 4
             },
             "minecraft:behavior.random_stroll": {
-                "priority": 4,
+                "priority": 5,
                 "speed_multiplier": 1.0
             },
             "minecraft:can_climb": { },

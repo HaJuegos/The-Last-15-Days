@@ -30,7 +30,7 @@
                             "apply_knockback_to_blocking_targets": true,
                             "catch_fire": true,
                             "semi_random_diff_damage": false,
-                            "damage": 10,
+                            "damage": 30,
                             "knockback": true
                         }
                     },
@@ -44,6 +44,7 @@
             "ha:start_explode": {
                 "minecraft:explode": {
                     "power": 2,
+                    "knockback_scaling": 3,
                     "fuse_length": [ 0, 0 ],
                     "fuse_lit": true,
                     "breaks_blocks": true,
@@ -84,7 +85,7 @@
                         "apply_knockback_to_blocking_targets": true,
                         "catch_fire": true,
                         "semi_random_diff_damage": false,
-                        "damage": 5,
+                        "damage": 25,
                         "knockback": true
                     }
                 },

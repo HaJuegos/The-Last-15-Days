@@ -14,7 +14,7 @@
         "component_groups": {
             "melee_mode": {
                 "minecraft:attack": {
-                    "damage": 30
+                    "damage": 12
                 },
                 "minecraft:behavior.melee_box_attack": {
                     "priority": 0,

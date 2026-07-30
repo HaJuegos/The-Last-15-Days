@@ -221,10 +221,10 @@ class PlyEventsManager {
                         ply.addTag('crownInInv');
                     }
 
-                    ply.addEffect('strength', worldToolsSimplified.convertSecondsToTicks(15), { amplifier: 1, showParticles: false });
                     ply.addEffect('fire_resistance', worldToolsSimplified.convertSecondsToTicks(15), { amplifier: 1, showParticles: false });
 
                     if (ply.dimension.id == 'minecraft:nether') {
+                        ply.addEffect('strength', worldToolsSimplified.convertSecondsToTicks(15), { amplifier: 1, showParticles: false });
                         ply.addEffect('resistance', worldToolsSimplified.convertSecondsToTicks(15), { amplifier: 1, showParticles: false });
                     }
                 } else {

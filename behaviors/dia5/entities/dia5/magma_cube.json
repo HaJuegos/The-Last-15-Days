@@ -206,7 +206,7 @@
                 "minecraft:area_attack": {
                     "cause": "entity_attack",
                     "damage_cooldown": 0.35,
-                    "damage_per_tick": 4,
+                    "damage_per_tick": 6,
                     "damage_range": 0.15,
                     "entity_filter": {
                         "any_of": [
@@ -224,7 +224,7 @@
                     }
                 },
                 "minecraft:attack": {
-                    "damage": 4
+                    "damage": 6
                 },
                 "minecraft:collision_box": {
                     "height": 0.52,

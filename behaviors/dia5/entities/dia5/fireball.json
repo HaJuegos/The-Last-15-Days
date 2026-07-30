@@ -14,7 +14,7 @@
                     "causes_fire": true,
                     "fire_affected_by_griefing": true,
                     "fuse_lit": true,
-                    "power": 3,
+                    "power": 2,
                     "destroy_affected_by_griefing": true,
                     "fuse_length": 0,
                     "knockback_scaling": 3,

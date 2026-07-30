@@ -426,14 +426,7 @@ class PlyEventsManager extends TL15DBaseManager {
         customEventsManager.onEntityUseTotem((ply) => {
             if (!(ply instanceof mc.Player)) return;
 
-            const dime = ply.dimension;
-            const plys = dime.getPlayers();
-
             worldToolsSimplified.sendMessageGlobal({ rawtext: [{ translate: 'chat.system.use_totem', with: { rawtext: [{ text: `${ply.name}` }] } }] });
-
-            for (const ply of plys) {
-                ply.playSound('random.totem', { volume: 0.65 });
-            }
         });
     }
 
