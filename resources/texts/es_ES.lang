@@ -231,6 +231,9 @@ chat.system.form_deaths_deleted.success=§7>> Se han eliminado los datos de %1 c
 chat.system.remove_linked.no_data=§7>> No hay registros de Soul Links aún... o puede que haya ocurrido un error.
 chat.system.remove_linked.success=§7>> Se ha eliminado con éxito el registro de la pareja vinculada conformada por %1 y %2.
 
+chat.system.change_debuffs.enabled=§7>> Se ha habilitado el sistema de debuffs. Ahora los debuffs pendientes y próximos serán aplicados a todos los jugadores.
+chat.system.change_debuffs.disabled=§7>> Se ha deshabilitado el sistema de debuffs. Pero eso no quita el hecho de que cualquier jugador próximo a morir estará acumulando debuffs pendientes cuando se piense rehabilitar este sistema nuevamente. ¿Muy difícil para ti?
+
 
 ## Entity Names
 entity.ha:player_ghost.name=Fantasma de un Jugador

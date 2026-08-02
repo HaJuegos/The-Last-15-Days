@@ -10,7 +10,7 @@
                 "operation": "insert_back",
                 "value": {
                     "binding_type": "view",
-                    "source_property_name": "(not (('%.7s' * #text) = 'abyssal' or ('%.8s' * #text) = 'colossus' or ('%.6s' * #text) = 'hunger' or ('%.7s' * #text) = 'shadows' or ('%.4s' * #text) = 'soul' or ('%.4s' * #text) = 'fury' or ('%.4s' * #text) = 'void'))",
+                    "source_property_name": "(not (('%.7s' * #text) = 'abyssal' or ('%.8s' * #text) = 'colossus' or ('%.6s' * #text) = 'hunger' or ('%.7s' * #text) = 'shadows' or ('%.4s' * #text) = 'soul' or ('%.4s' * #text) = 'fury' or ('%.4s' * #text) = 'void' or ('%.8s' * #text) = 'random1'))",
                     "target_property_name": "#visible"
                 }
             }
@@ -26,7 +26,7 @@
             },
             {
                 "binding_type": "view",
-                "source_property_name": "(not (('%.7s' * #text) = 'abyssal' or ('%.8s' * #text) = 'colossus' or ('%.6s' * #text) = 'hunger' or ('%.7s' * #text) = 'shadows' or ('%.4s' * #text) = 'soul' or ('%.4s' * #text) = 'fury' or ('%.4s' * #text) = 'void'))",
+                "source_property_name": "(not (('%.7s' * #text) = 'abyssal' or ('%.8s' * #text) = 'colossus' or ('%.6s' * #text) = 'hunger' or ('%.7s' * #text) = 'shadows' or ('%.4s' * #text) = 'soul' or ('%.4s' * #text) = 'fury' or ('%.4s' * #text) = 'void' or ('%.8s' * #text) = 'random1'))",
                 "target_property_name": "#visible"
             }
         ]
@@ -46,27 +46,6 @@
 
     "root_panel": {
         "modifications": [
-			{
-                "array_name": "controls",
-                "operation": "insert_front",
-                "value": {
-                    "fast_alert@fast_items_alert.toast_panel": { }
-                }
-            },
-            {
-                "array_name": "controls",
-                "operation": "insert_front",
-                "value": {
-                    "watermark1@watermarktld.watermark_panel": { }
-                }
-            },
-            {
-                "array_name": "controls",
-                "operation": "insert_front",
-                "value": {
-                    "watermark2@watermarktld.telegram_panel": { }
-                }
-            },
             {
                 "array_name": "controls",
                 "operation": "insert_front",

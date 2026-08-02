@@ -579,6 +579,19 @@ class AbbysDebuffsEvents extends TL15DBaseManager {
             }
         });
 
+        worldToolsSimplified.listenerScriptEvents(async (args) => {
+            const id = args.id;
+
+            if (id == 'ha:reload_debuffs') {
+                const entityWorldData = await this.getEntityDataWorld();
+                const onlinePlys = mc.world.getAllPlayers();
+
+                for (const ply of onlinePlys) {
+                    this.checkPendingDebuffs(entityWorldData, ply);
+                }
+            }
+        });
+
         // Eventos para la furia
 
         afterEventsSimplified.onHitEntity((args) => {
@@ -629,7 +642,6 @@ class AbbysDebuffsEvents extends TL15DBaseManager {
 
                 this.checkNetheriteArmor(ply, tags);
                 this.shadowsSystem(ply, tags);
-                this.furySystem(ply, tags, false);
 
                 if (tickCount % 10 == 0) {
                     this.hungerSystem(ply, tags);
@@ -732,8 +744,11 @@ class AbbysDebuffsEvents extends TL15DBaseManager {
      * @private
      */
     private checkPendingDebuffs(entityWorldData: mc.Entity, ply: mc.Player): void {
+        const debuffsState = worldToolsSimplified.getScoreInObj(entityWorldData, 'ha:debuffs_state');
         const totalDebuffsGlobal = worldToolsSimplified.getScoreInObj(entityWorldData, 'ha:stack_debuffs');
         const totalDebuffsPly = worldToolsSimplified.getScoreInObj(ply, 'ha:stack_debuffs');
+
+        if (debuffsState == 0) return;
 
         if (totalDebuffsGlobal == 0 || (totalDebuffsGlobal == totalDebuffsPly)) {
             this.loopTimersDebuff(ply);
@@ -749,7 +764,7 @@ class AbbysDebuffsEvents extends TL15DBaseManager {
             const randomDebuff = this.possibleDebuffs[randomDebuffI];
             const finalCombo = worldToolsSimplified.changeScoreInObj(ply, randomDebuff.comboScoreboard, 'add', 1) as number;
 
-            worldToolsSimplified.changeScoreInObj(ply, randomDebuff.timerScoreboard, 'add', 5);
+            worldToolsSimplified.changeScoreInObj(ply, randomDebuff.timerScoreboard, 'add', 10);
 
             const baseDelay = worldToolsSimplified.convertSecondsToTicks(1);
             const constantDelay = i == 1 ? baseDelay : baseDelay + worldToolsSimplified.convertSecondsToTicks(i - 1);

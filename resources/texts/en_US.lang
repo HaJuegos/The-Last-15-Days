@@ -231,6 +231,9 @@ chat.system.form_deaths_deleted.success=§7>> The data from %1 has been successf
 chat.system.remove_linked.no_data=§7>> No Soul Link records yet... or maybe something went wrong.
 chat.system.remove_linked.success=§7>> Successfully deleted the record for the linked pair %1 and %2.
 
+chat.system.change_debuffs.enabled=§7>> The debuff system has been enabled. Pending and upcoming debuffs will now be applied to all players.
+chat.system.change_debuffs.disabled=§7>> The debuff system has been disabled. However, this does not change the fact that any player close to death will continue to accumulate pending debuffs until this system is reactivated. Is that too difficult for you?
+
 
 ## Entity Names
 entity.ha:player_ghost.name=Player Ghost

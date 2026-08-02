@@ -467,6 +467,33 @@ class CustomCmdsEvents extends TL15DBaseManager {
                     mainForm();
                 });
             })
+        },
+        // Comando para activar o no las mecanicas de los debuffs.
+        {
+            prefixCmd: 'ha:changedebuffs',
+            description: 'Comando que activa o desactiva las mecánicas de los debuffs del add-on cuando un jugador muere en el Día 9. Con fines de depuración o preferencias. Por defecto estará activado.',
+            cheatsEnabled: true,
+            permsLevel: mc.CommandPermissionLevel.GameDirectors,
+            paramsCmd: [
+                { type: mc.CustomCommandParamType.Boolean, name: 'newState' }
+            ],
+            onRunCmd: ((ply, args) => {
+                const newState = args as boolean;
+
+                worldToolsSimplified.setRun(async () => {
+                    const entityWorldData = await this.getEntityDataWorld();
+
+                    if (newState) {
+                        ply.sendMessage({ rawtext: [{ translate: 'chat.system.change_debuffs.enabled' }] });
+                        mc.system.sendScriptEvent('ha:reload_debuffs', '');
+                    } else {
+                        ply.sendMessage({ rawtext: [{ translate: 'chat.system.change_debuffs.disabled' }] });
+                    }
+
+                    worldToolsSimplified.changeScoreInObj(entityWorldData, 'ha:debuffs_state', 'set', newState ? 1 : 0);
+                    ply.playSound('random.screenshot');
+                });
+            })
         }
     ];
 

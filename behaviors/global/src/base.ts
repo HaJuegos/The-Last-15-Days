@@ -221,6 +221,8 @@ export class TL15DBaseManager {
                     over.runCommand('summon ha:data_world 0 50 0');
 
                     entity = over.getEntities({ type: 'ha:data_world' })[0];
+
+                    worldToolsSimplified.changeScoreInObj(entity, 'ha:debuffs_state', 'set', 1);
                 }
 
                 r(entity);

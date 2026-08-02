@@ -300,6 +300,20 @@
                 }
             ]
         },
+        "ui.pickupthephone": {
+            "category": "ui",
+            "min_distance": null,
+            "max_distance": null,
+            "sounds": [
+                {
+                    "is3D": false,
+                    "name": "sounds/ui/pickupthephone",
+                    "volume": 1,
+                    "pitch": 1,
+                    "stream": true
+                }
+            ]
+        },
 
         "mob.player_ghost.death_sound": {
             "__use_legacy_max_distance": "true",

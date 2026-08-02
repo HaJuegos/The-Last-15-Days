@@ -68,6 +68,14 @@
             }
         },
         "components": {
+            "minecraft:mob_effect_immunity": {
+                "mob_effects": [
+                    "instant_damage",
+                    "poison",
+                    "slowness",
+                    "weakness"
+                ]
+            },
             "minecraft:spell_effects": {
                 "add_effects": [
                     {

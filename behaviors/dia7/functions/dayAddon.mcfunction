@@ -15,3 +15,4 @@ titleraw @s reset
 tag @s add intro
 
 scriptevent ha:chance_backrooms
+scriptevent ha:pickup_change

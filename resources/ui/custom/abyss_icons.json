@@ -59,6 +59,24 @@
         "to": 0.0,
         "duration": 0.5
     },
+    "random1_pop": {
+        "anim_type": "alpha",
+        "from": 0.0,
+        "to": 1.0,
+        "duration": 0.0,
+        "next": "@abyss_icons.random1_wait"
+    },
+    "random1_wait": {
+        "anim_type": "wait",
+        "duration": 1.65,
+        "next": "@abyss_icons.random1_hide"
+    },
+    "random1_hide": {
+        "anim_type": "alpha",
+        "from": 1.0,
+        "to": 0.0,
+        "duration": 0.0
+    },
 
     // Icons template base
 
@@ -76,6 +94,16 @@
         "layer": 100,
         "anims": [
             "@abyss_icons.base_pop"
+        ]
+    },
+
+    "randomshitone": {
+        "type": "image",
+        "size": [ "100%", "100%" ],
+        "layer": 200,
+        "texture": "textures/ui/custom/random1",
+        "anims": [
+            "@abyss_icons.random1_pop"
         ]
     },
 
@@ -768,7 +796,19 @@
             { "shadows@abyss_icons.shadows_icons_panel": { } },
             { "soul@abyss_icons.soul_icons_panel": { } },
             { "fury@abyss_icons.fury_icons_panel": { } },
-            { "void@abyss_icons.void_icons_panel": { } }
+            { "void@abyss_icons.void_icons_panel": { } },
+            {
+                "random1@abyss_icons.randomshitone": {
+                    "bindings": [
+                        { "binding_name": "#hud_title_text_string", "binding_condition": "once" },
+                        {
+                            "binding_type": "view",
+                            "source_property_name": "(#hud_title_text_string = 'random1')",
+                            "target_property_name": "#visible"
+                        }
+                    ]
+                }
+            }
         ]
     },
 

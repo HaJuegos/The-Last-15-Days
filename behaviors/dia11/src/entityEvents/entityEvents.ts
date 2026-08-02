@@ -68,7 +68,7 @@ class EntityEventsManager extends TL15DBaseManager {
             const hitEntity = args.hitEntity;
             const sourceEntity = args.damagingEntity;
 
-            if (hitEntity && sourceEntity) {
+            if ((hitEntity && sourceEntity) && (sourceEntity.isValid && hitEntity.isValid)) {
                 switch (sourceEntity.typeId) {
                     case vanilla.MinecraftEntityTypes.Husk: {
                         hitEntity.addEffect('hunger', worldToolsSimplified.convertSecondsToTicks(30), { amplifier: 3, showParticles: true });
@@ -166,7 +166,7 @@ class EntityEventsManager extends TL15DBaseManager {
             const sourceEntity = source.damagingEntity;
             const hitEntity = args.hurtEntity;
 
-            if (hitEntity && sourceEntity) {
+            if ((hitEntity && sourceEntity) && (sourceEntity.isValid && hitEntity.isValid)) {
                 switch (sourceEntity.typeId) {
                     case vanilla.MinecraftEntityTypes.Slime: {
                         hitEntity.addEffect('poison', worldToolsSimplified.convertSecondsToTicks(30), { amplifier: 3, showParticles: true });
@@ -222,7 +222,7 @@ class EntityEventsManager extends TL15DBaseManager {
             const hitEntity = args.getEntityHit().entity;
             const projectile = args.projectile;
 
-            if (hitEntity && sourceEntity) {
+            if ((hitEntity && sourceEntity) && (sourceEntity.isValid && hitEntity.isValid)) {
                 switch (projectile.typeId) {
                     case 'ha:slime_pearl': {
                         if (!sourceEntity.isValid || !hitEntity.isValid || !projectile.isValid) return;
@@ -513,6 +513,8 @@ class EntityEventsManager extends TL15DBaseManager {
         afterEventsSimplified.onEntityDie((args) => {
             const entity = args.deadEntity;
 
+            if (!entity.isValid) return;
+
             if (this.explosiveEntitys.includes(entity.typeId as vanilla.MinecraftEntityTypes)) {
                 const coords = entity.location;
                 const dime = entity.dimension;
@@ -670,6 +672,8 @@ class EntityEventsManager extends TL15DBaseManager {
         worldToolsSimplified.listenerScriptEvents((args) => {
             const id = args.id;
             const entity = args.sourceEntity as mc.Entity;
+
+            if (!entity.isValid) return;
 
             switch (id) {
                 case 'ha:give_bad_effects_wither': {

@@ -207,6 +207,7 @@ class AdvancementManager extends TL15DBaseManager {
      */
     private actionAdvancements(): void {
         afterEventsSimplified.onPlayerSpawns((args) => {
+            const sourcePly = args.player;
             const firstSpawn = args.initialSpawn;
 
             if (!firstSpawn) return;
@@ -217,12 +218,22 @@ class AdvancementManager extends TL15DBaseManager {
                 'llConvex38ll': 59
             };
 
-            const plys = mc.world.getAllPlayers().filter(ply => nameAdvs[ply.name] == undefined);
+            const allPlayers = mc.world.getAllPlayers();
 
-            for (const ply of plys) {
-                const advNumber = nameAdvs[ply.name];
+            for (const onlinePly of allPlayers) {
+                if (sourcePly.name == onlinePly.name) continue;
 
-                this.executeAdvan(ply, advNumber);
+                const sourceAdv = nameAdvs[sourcePly.name];
+
+                if (sourceAdv != undefined) {
+                    this.executeAdvan(onlinePly, sourceAdv);
+                }
+
+                const onlineAdv = nameAdvs[onlinePly.name];
+
+                if (onlineAdv != undefined) {
+                    this.executeAdvan(sourcePly, onlineAdv);
+                }
             }
         });
 
