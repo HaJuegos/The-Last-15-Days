@@ -407,7 +407,10 @@ class PlyEventsManager extends TL15DBaseManager {
 
             worldToolsSimplified.setRun(() => {
                 const name = ply.name;
-                const finalRank = this.getRanksPlys(name);
+                const isOp = ply.playerPermissionLevel == mc.PlayerPermissionLevel.Operator;
+                const isSurvi = (ply.getGameMode() == mc.GameMode.Survival || ply.getGameMode() == mc.GameMode.Adventure);
+                const isDeath = ply.hasTag('death');
+                const finalRank = this.getRanksPlys(name, isOp, isSurvi, isDeath);
                 const isLinked = ply.hasTag('isLinked') ? '' : '';
                 const finalMsg = `§7§l[§r${finalRank}§7§l]§r${isLinked} ${name} §7§l>>§r ${msg}`;
 

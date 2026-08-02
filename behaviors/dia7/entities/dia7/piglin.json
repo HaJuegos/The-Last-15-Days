@@ -414,35 +414,6 @@
                         },
                         {
                             "filters": {
-                                "all_of": [
-                                    {
-                                        "test": "is_family",
-                                        "subject": "self",
-                                        "value": "piglin_hunter"
-                                    },
-                                    {
-                                        "test": "is_family",
-                                        "subject": "other",
-                                        "value": "hoglin_huntable"
-                                    },
-                                    {
-                                        "test": "has_component",
-                                        "subject": "other",
-                                        "operator": "not",
-                                        "value": "minecraft:is_baby"
-                                    },
-                                    {
-                                        "test": "has_component",
-                                        "subject": "self",
-                                        "operator": "not",
-                                        "value": "minecraft:attack_cooldown"
-                                    }
-                                ]
-                            },
-                            "max_dist": 16
-                        },
-                        {
-                            "filters": {
                                 "test": "is_family",
                                 "subject": "other",
                                 "value": "player"

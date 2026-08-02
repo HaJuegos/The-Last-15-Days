@@ -242,10 +242,20 @@
             },
             "minecraft:conditional_bandwidth_optimization": { },
             "minecraft:damage_sensor": {
-                "triggers": {
-                    "cause": "fall",
-                    "deals_damage": "no"
-                }
+                "triggers": [
+                    {
+                        "cause": "fall",
+                        "deals_damage": "no"
+                    },
+                    {
+                        "on_damage": {
+                            "target": "self",
+                            "event": "ha:teleport_random"
+                        },
+                        "cause": "all",
+                        "deals_damage": "yes"
+                    }
+                ]
             },
             "minecraft:follow_range": {
                 "value": 64
@@ -508,6 +518,14 @@
             }
         },
         "events": {
+            "minecraft:entity_spawned": { },
+            "ha:teleport_random": {
+                "queue_command": {
+                    "command": [
+                        "tp @r[r=100]"
+                    ]
+                }
+            },
             "minecraft:from_player": {
                 "add": {
                     "component_groups": [

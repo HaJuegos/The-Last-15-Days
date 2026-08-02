@@ -76,6 +76,9 @@ class AdvancementManager extends TL15DBaseManager {
         { textAdv: 'advacement.cautious_armor', tagAdv: 'advCautiousArmor', items: ['ha:cautious_helmet', 'ha:cautious_chestplate', 'ha:cautious_leggings', 'ha:cautious_boots'], isRare: true, allItemsRequired: true }, // 54
         { textAdv: 'advacement.backrooms', tagAdv: 'advBackrooms', items: [], isRare: true, isAction: true }, // 55
         { textAdv: 'advacement.garfield', tagAdv: 'advGarfield', items: [], isRare: true, isAction: true }, // 56
+        { textAdv: 'advacement.ha', tagAdv: 'advHa', items: [], isRare: false, isAction: true }, // 57
+        { textAdv: 'advacement.royer', tagAdv: 'advRoyer', items: [], isRare: false, isAction: true }, // 58
+        { textAdv: 'advacement.convex', tagAdv: 'advConvex', items: [], isRare: true, isAction: true }, // 59
     ];
 
     /**
@@ -203,6 +206,26 @@ class AdvancementManager extends TL15DBaseManager {
      * @private
      */
     private actionAdvancements(): void {
+        afterEventsSimplified.onPlayerSpawns((args) => {
+            const firstSpawn = args.initialSpawn;
+
+            if (!firstSpawn) return;
+
+            const nameAdvs: { [key: string]: number; } = {
+                'Ha Juegos': 57,
+                'BigRoyer': 58,
+                'llConvex38ll': 59
+            };
+
+            const plys = mc.world.getAllPlayers().filter(ply => nameAdvs[ply.name] == undefined);
+
+            for (const ply of plys) {
+                const advNumber = nameAdvs[ply.name];
+
+                this.executeAdvan(ply, advNumber);
+            }
+        });
+
         afterEventsSimplified.onEntityDie((args) => {
             const sourceEntity = args.damageSource.damagingEntity;
             const projectile = args.damageSource.damagingProjectile;
@@ -256,13 +279,15 @@ class AdvancementManager extends TL15DBaseManager {
         afterEventsSimplified.onEntitySpawns((args) => {
             const entity = args.entity;
 
-            if (entity.typeId == vanilla.MinecraftEntityTypes.Wither) {
-                const dime = entity.dimension;
-                const plys = dime.getPlayers({ location: entity.location, maxDistance: 100 });
+            switch (entity.typeId) {
+                case vanilla.MinecraftEntityTypes.Wither: {
+                    const dime = entity.dimension;
+                    const plys = dime.getPlayers({ location: entity.location, maxDistance: 100 });
 
-                for (const ply of plys) {
-                    this.executeAdvan(ply, 20);
-                }
+                    for (const ply of plys) {
+                        this.executeAdvan(ply, 20);
+                    }
+                } break;
             }
         });
 

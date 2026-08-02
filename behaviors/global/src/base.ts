@@ -87,28 +87,50 @@ export class TL15DBaseManager {
     /**
      * Metodo auxiliar que obtiene datos del rango personalizado por nombre.
      * @param {string} name Nombre del jugador.
+     * @param {boolean} isOp Condicion a validar si el jugador es operador o no.
+     * @param {boolean} isSurvival Condicion a validar si el jugador esta en survival.
+     * @param {boolean} isDeath Condicion a valdiar si el jugador ya esta muerto.
      * @returns {{ namePly: string | string[]; rank: string; colorCode: string; } | undefined}
      * @author HaJuegos - 18-06-2026
      * @protected
      */
-    protected getRanksPlys(name: string): string {
+    protected getRanksPlys(name: string, isOp: boolean, isSurvival: boolean, isDeath: boolean): string {
         const data = this.customRanks.find((r) => Array.isArray(r.plyName) ? r.plyName.includes(name) : r.plyName == name);
+        const extraRanks: string[] = [];
 
-        if (!data) return '§4§lSobreviviente';
+        if (isOp && !isSurvival) {
+            extraRanks.push('§j§lEspectador');
+        }
+
+        if (isDeath) {
+            extraRanks.push('§8§lMuerto');
+        }
+
+        if (!data) {
+            return extraRanks.length > 0 ? extraRanks.join('§r§7§l] [§r') : '§4§lSobreviviente';
+        };
+
+        let baseRanks = '';
 
         if (!Array.isArray(data.nameRank)) {
             const color = Array.isArray(data.colorCode) ? data.colorCode[0] : data.colorCode;
 
-            return `${color}${data.nameRank}`;
+            baseRanks = `${color}${data.nameRank}`;
+        } else {
+            const multipleRanks = data.nameRank.map((rank, i) => {
+                const color = Array.isArray(data.colorCode) ? data.colorCode[i] : data.colorCode;
+
+                return `${color}${rank}`;
+            });
+
+            baseRanks = multipleRanks.join('§r§7§l] [§r');
         }
 
-        const multipleRanks = data.nameRank.map((rank, i) => {
-            const color = Array.isArray(data.colorCode) ? data.colorCode[i] : data.colorCode;
+        if (extraRanks.length > 0) {
+            return `${baseRanks}§r§7§l] [§r${extraRanks.join('§r§7§l] [§r')}`;
+        }
 
-            return `${color}${rank}`;
-        });
-
-        return multipleRanks.join('§r§7§l] [§r');
+        return baseRanks;
     }
 
     /**
@@ -161,8 +183,11 @@ export class TL15DBaseManager {
 
         const actualCurrentH = currentH ?? Math.floor(healthComponent.currentValue ?? 0);
         const actualMaxH = maxH ?? healthComponent.defaultValue ?? 20;
+        const isOp = (targetEntity instanceof mc.Player) ? targetEntity.playerPermissionLevel == mc.PlayerPermissionLevel.Operator : false;
+        const isSurvi = (targetEntity instanceof mc.Player) ? (targetEntity.getGameMode() == mc.GameMode.Survival || targetEntity.getGameMode() == mc.GameMode.Adventure) : false;
+        const isDeath = (targetEntity instanceof mc.Player) ? targetEntity.hasTag('death') : false;
 
-        const ranks = this.getRanksPlys(name);
+        const ranks = this.getRanksPlys(name, isOp, isSurvi, isDeath);
         const isLinked = targetEntity.hasTag('isLinked') ? '' : '';
         const iconDamage = isTakingDamage ? '' : '';
         const colorDamage = isTakingDamage ? '§4§l' : '§4';

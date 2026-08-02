@@ -226,7 +226,7 @@
                     "table": "loot_tables/entities/hoglin.json"
                 },
                 "minecraft:behavior.breed": {
-                    "priority": 3,
+                    "priority": 7,
                     "speed_multiplier": 0.6
                 },
                 "minecraft:breedable": {
@@ -255,6 +255,16 @@
             }
         },
         "components": {
+            "minecraft:lava_movement": {
+                "value": 0.15
+            },
+            "minecraft:behavior.rise_to_liquid_level": {
+                "priority": 8,
+                "liquid_y_offset": 0.01,
+                "rise_delta": 0.1,
+                "sink_delta": 0.1
+            },
+            "minecraft:floats_in_liquid": { },
             "minecraft:environment_sensor": {
                 "triggers": [
                     {
@@ -270,11 +280,6 @@
                 ]
             },
             "minecraft:on_death": {
-                "filters": {
-                    "test": "is_family",
-                    "subject": "damager",
-                    "value": "player"
-                },
                 "target": "self",
                 "event": "ha:drop_chance"
             },
@@ -284,11 +289,14 @@
             "minecraft:damage_sensor": {
                 "triggers": [
                     {
-                        "cause": "projectile",
-                        "deals_damage": "no"
-                    },
-                    {
-                        "cause": "magic",
+                        "on_damage": {
+                            "filters": {
+                                "test": "has_damage",
+                                "subject": "self",
+                                "operator": "not",
+                                "value": "attack"
+                            }
+                        },
                         "deals_damage": "no"
                     }
                 ]
@@ -324,21 +332,20 @@
             "minecraft:behavior.melee_attack": {
                 "priority": 0,
                 "can_spread_on_fire": true,
-                "cooldown_time": 0.8,
+                "cooldown_time": 1.1,
                 "melee_fov": 360,
-                "require_complete_path": true,
-                "reach_multiplier": 2.5,
-                "track_target": true
+                "reach_multiplier": 3,
+                "track_target": false
             },
             "minecraft:attack": {
-                "damage": [ 3, 9 ]
+                "damage": [ 9, 15 ]
             },
             "minecraft:spell_effects": {
                 "add_effects": [
                     {
                         "effect": "strength",
                         "duration": 99999,
-                        "amplifier": 2,
+                        "amplifier": 3,
                         "visible": true,
                         "ambient": false
                     },
@@ -380,47 +387,30 @@
             "minecraft:behavior.nearest_attackable_target": {
                 "priority": 2,
                 "reselect_targets": true,
-                "within_radius": 25,
                 "must_see": true,
                 "entity_types": [
                     {
                         "filters": {
-                            "all_of": [
-                                { "test": "is_family", "subject": "other", "value": "player" },
-                                {
-                                    "test": "has_component",
-                                    "subject": "self",
-                                    "operator": "!=",
-                                    "value": "minecraft:attack_cooldown"
-                                }
-                            ]
+                            "test": "is_family", "subject": "other", "value": "player"
                         },
-                        "max_dist": 25
+                        "max_dist": 35
                     }
                 ]
+            },
+            "minecraft:follow_range": {
+                "value": 50
             },
             "minecraft:breathable": {
                 "total_supply": 15,
                 "suffocate_time": 0
             },
-            "minecraft:hurt_on_condition": {
-                "damage_conditions": [
-                    {
-                        "filters": {
-                            "test": "in_lava",
-                            "subject": "self",
-                            "operator": "==",
-                            "value": true
-                        },
-                        "cause": "lava",
-                        "damage_per_tick": 4
-                    }
-                ]
-            },
+            "minecraft:fire_immune": { },
             "minecraft:navigation.walk": {
                 "can_path_over_water": true,
-                "avoid_water": true,
-                "avoid_damage_blocks": true
+                "can_walk_in_lava": true,
+                "can_path_over_lava": true,
+                "avoid_water": false,
+                "avoid_damage_blocks": false
             },
             "minecraft:movement.basic": { },
             "minecraft:jump.static": { },
@@ -429,15 +419,19 @@
             "minecraft:despawn": {
                 "despawn_from_distance": { }
             },
+            "minecraft:behavior.float": {
+                "priority": 9,
+                "sink_with_passengers": true
+            },
             "minecraft:behavior.random_stroll": {
-                "priority": 7,
+                "priority": 3,
                 "speed_multiplier": 0.4
             },
             "minecraft:behavior.random_look_around": {
-                "priority": 9
+                "priority": 4
             },
             "minecraft:behavior.look_at_player": {
-                "priority": 8,
+                "priority": 5,
                 "look_distance": 6.0,
                 "probability": 0.02
             },
@@ -463,10 +457,10 @@
             "ha:drop_chance": {
                 "randomize": [
                     {
-                        "weight": 85
+                        "weight": 90
                     },
                     {
-                        "weight": 15,
+                        "weight": 10,
                         "queue_command": {
                             "command": [
                                 "structure load ha:hoglin_sword ~~~"

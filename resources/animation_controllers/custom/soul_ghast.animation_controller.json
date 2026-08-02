@@ -12,7 +12,7 @@
                     ]
                 },
                 "on_chargin": {
-                    "animations": [ "chargin" ],
+                    "animations": [ "chargin", "chargin_loop" ],
                     "transitions": [
                         { "on_shoot": "q.is_charged && q.anim_time >= 2.8" },
                         { "default": "!q.facing_target_to_range_attack" }

@@ -30,6 +30,7 @@
             "animations": {
                 "controller_root": "controller.animation.soul_ghast.root",
                 "chargin": "animation.soul_ghast.chargin",
+                "chargin_loop": "animation.soul_ghast.chargin.looping_orb",
                 "shoot": "animation.soul_ghast.shoot",
 
                 "move": "animation.ghast.move",

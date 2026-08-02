@@ -39,7 +39,6 @@
 					}
 				},
 				"OrbeDeAlmas": {
-					"rotation": [ "query.anim_time * 240", 0, 0 ],
 					"position": {
 						"0.0": [ 0, -3, 4 ],
 						"3.0": [ 0, -2, 1 ]
@@ -65,7 +64,6 @@
 					}
 				},
 				"OrbeDeAlmas2": {
-					"rotation": [ 0, 0, "query.anim_time * 240" ],
 					"position": {
 						"0.0": [ 0, -3, 4 ],
 						"3.0": [ 0, -2, 1 ]
@@ -81,7 +79,6 @@
 					}
 				},
 				"OrbeDeAlmas3": {
-					"rotation": [ 0, "query.anim_time * 240", 0 ],
 					"position": {
 						"0.0": [ 0, -3, 4 ],
 						"3.0": [ 0, -2, 1 ]
@@ -100,6 +97,23 @@
 			"sound_effects": {
 				"0.3": {
 					"effect": "charge"
+				}
+			}
+		},
+		"animation.soul_ghast.chargin.looping_orb": {
+			"loop": true,
+			"bones": {
+				"body": {
+					"position": [ "math.sin(query.anim_time * 90) * 0.4", "math.sin(query.anim_time * 60) * 0.25", "math.cos(query.anim_time * 75) * 0.2" ]
+				},
+				"OrbeDeAlmas": {
+					"rotation": [ "query.anim_time * 240", 0, 0 ]
+				},
+				"OrbeDeAlmas2": {
+					"rotation": [ 0, 0, "query.anim_time * 240" ]
+				},
+				"OrbeDeAlmas3": {
+					"rotation": [ 0, "query.anim_time * 240", 0 ]
 				}
 			},
 			"particle_effects": {

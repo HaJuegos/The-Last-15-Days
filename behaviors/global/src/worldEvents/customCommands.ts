@@ -23,9 +23,11 @@ class CustomCmdsEvents extends TL15DBaseManager {
             description: 'Comando que modifica el estado de baneo automatico del servidor.',
             permsLevel: mc.CommandPermissionLevel.GameDirectors,
             cheatsEnabled: true,
-            paramsCmd: [{ name: 'banState', type: mc.CustomCommandParamType.Boolean }],
+            paramsCmd: [
+                { name: 'banState', type: mc.CustomCommandParamType.Boolean }
+            ],
             onRunCmd: (ply, args) => {
-                const newState = args[0] as boolean;
+                const newState = args as boolean;
 
                 worldToolsSimplified.setRun(() => {
                     if (newState) {

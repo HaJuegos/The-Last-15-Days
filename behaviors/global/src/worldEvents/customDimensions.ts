@@ -132,11 +132,11 @@ class CustomDimensionsManager extends TL15DBaseManager {
         const regSize = 16;
         const delayReg = 1;
         const cellSize = 4;
-        const wallChance = 0.4;
+        const wallChance = 0.25;
         const spawnRadiusClear = 5;
         const lighSpace = 6;
         const lighChance = 0.7;
-        const chestChance = 0.01;
+        const chestChance = 0.009;
 
         const dime = mc.world.getDimension(customDime);
 
