@@ -30,6 +30,7 @@
                     "default": 80
                 },
                 "minecraft:herd": {
+                    "event": "ha:spawn_in_over",
                     "min_size": 1,
                     "max_size": 2
                 },

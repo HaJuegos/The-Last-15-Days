@@ -9,7 +9,104 @@
 			"is_spawnable": true,
 			"spawn_category": "creature"
 		},
+		"component_groups": {
+			"ha:timer_despawn": {
+				"minecraft:timer": {
+					"looping": false,
+					"random_time_choices": [
+						{
+							"value": 2400,
+							"weight": 50
+						},
+						{
+							"value": 3600,
+							"weight": 50
+						}
+					],
+					"time_down_event": {
+						"event": "minecraft:start_despawn",
+						"target": "self"
+					}
+				}
+			},
+			"ha:become_socrates": {
+				"minecraft:spawn_entity": {
+					"entities": [
+						{
+							"min_wait_time": 0,
+							"max_wait_time": 0.1,
+							"num_to_spawn": 1,
+							"single_use": true,
+							"should_leash": false,
+							"spawn_entity": "ha:socrates_npc",
+							"spawn_event": "minecraft:entity_spawned"
+						}
+					]
+				},
+				"minecraft:instant_despawn": {
+					"remove_child_entities": true
+				}
+			},
+			"ha:explode": {
+				"minecraft:damage_sensor": { },
+				"minecraft:explode": {
+					"power": 4,
+					"fuse_length": [
+						0.7,
+						0.7
+					],
+					"fuse_lit": true,
+					"allow_underwater": true,
+					"breaks_blocks": true,
+					"causes_fire": false,
+					"destroy_affected_by_griefing": true,
+					"fire_affected_by_griefing": true,
+					"toggles_blocks": true,
+					"knockback_scaling": 3
+				}
+			},
+			"despawning": {
+				"minecraft:type_family": {
+					"family": [
+						"wandering_trader",
+						"wandering_trader_despawning",
+						"mob"
+					]
+				}
+			},
+			"managed": {
+				"minecraft:managed_wandering_trader": { }
+			},
+			"minecraft:scared": {
+				"minecraft:angry": {
+					"broadcastAnger": true,
+					"broadcastRange": 10,
+					"calm_event": {
+						"event": "minecraft:become_calm",
+						"target": "self"
+					},
+					"broadcast_filters": {
+						"subject": "other",
+						"test": "is_leashed_to",
+						"value": true
+					},
+					"broadcast_targets": [
+						"llama",
+						"trader_llama"
+					],
+					"duration": 5
+				}
+			}
+		},
 		"components": {
+			"minecraft:timer": {
+				"time": 1,
+				"looping": false,
+				"time_down_event": {
+					"event": "minecraft:entity_spawned",
+					"target": "self"
+				}
+			},
 			"minecraft:attack": {
 				"damage": 6
 			},
@@ -297,12 +394,12 @@
 				"suffocate_time": 0,
 				"total_supply": 15
 			},
-			"minecraft:can_climb": {},
+			"minecraft:can_climb": { },
 			"minecraft:collision_box": {
 				"height": 1.9,
 				"width": 0.6
 			},
-			"minecraft:conditional_bandwidth_optimization": {},
+			"minecraft:conditional_bandwidth_optimization": { },
 			"minecraft:damage_sensor": {
 				"triggers": [
 					{
@@ -395,13 +492,13 @@
 					}
 				]
 			},
-			"minecraft:is_hidden_when_invisible": {},
-			"minecraft:jump.static": {},
+			"minecraft:is_hidden_when_invisible": { },
+			"minecraft:jump.static": { },
 			"minecraft:movement": {
 				"value": 0.5
 			},
-			"minecraft:movement.basic": {},
-			"minecraft:nameable": {},
+			"minecraft:movement.basic": { },
+			"minecraft:nameable": { },
 			"minecraft:navigation.walk": {
 				"avoid_water": true,
 				"can_open_doors": false,
@@ -409,7 +506,7 @@
 				"can_pass_doors": true,
 				"can_path_over_water": true
 			},
-			"minecraft:physics": {},
+			"minecraft:physics": { },
 			"minecraft:pushable": {
 				"is_pushable": true,
 				"is_pushable_by_piston": true
@@ -427,23 +524,6 @@
 					}
 				]
 			},
-			"minecraft:timer": {
-				"looping": false,
-				"random_time_choices": [
-					{
-						"value": 2400,
-						"weight": 50
-					},
-					{
-						"value": 3600,
-						"weight": 50
-					}
-				],
-				"time_down_event": {
-					"event": "minecraft:start_despawn",
-					"target": "self"
-				}
-			},
 			"minecraft:type_family": {
 				"family": [
 					"wandering_trader",
@@ -451,86 +531,33 @@
 				]
 			}
 		},
-		"component_groups": {
-			"ha:become_socrates": {
-                "minecraft:transformation": {
-                    "into": "ha:socrates_npc<minecraft:entity_spawned>",
-                    "delay": {
-                        "value": 0.1
-                    },
-                    "keep_owner": true,
-                    "drop_inventory": false,
-                    "drop_equipment": false,
-                    "preserve_equipment": true
-                }
-            },
-			"ha:explode": {
-				"minecraft:damage_sensor": { },
-				"minecraft:explode": {
-					"power": 4,
-					"fuse_length": [
-						0.7,
-						0.7
-					],
-					"fuse_lit": true,
-					"allow_underwater": true,
-					"breaks_blocks": true,
-					"causes_fire": false,
-					"destroy_affected_by_griefing": true,
-					"fire_affected_by_griefing": true,
-					"toggles_blocks": true,
-					"knockback_scaling": 3
-				}
-			},
-			"despawning": {
-				"minecraft:type_family": {
-					"family": [
-						"wandering_trader",
-						"wandering_trader_despawning",
-						"mob"
-					]
-				}
-			},
-			"managed": {
-				"minecraft:managed_wandering_trader": {}
-			},
-			"minecraft:scared": {
-				"minecraft:angry": {
-					"broadcastAnger": true,
-					"broadcastRange": 10,
-					"calm_event": {
-						"event": "minecraft:become_calm",
-						"target": "self"
-					},
-					"broadcast_filters": {
-						"subject": "other",
-						"test": "is_leashed_to",
-						"value": true
-					},
-					"broadcast_targets": [
-						"llama",
-						"trader_llama"
-					],
-					"duration": 5
-				}
-			}
-		},
 		"events": {
 			"minecraft:entity_spawned": {
-                "randomize": [
-                    {
-                        "weight": 5,
-                        "add": {
-                            "component_groups": [
-                                "ha:become_socrates"
-                            ]
-                        }
-                    },
-                    {
-                        "weight": 95
-                    }
-                ]
-            },
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+								"ha:timer_despawn"
+							]
+						}
+					},
+					{
+						"randomize": [
+							{
+								"weight": 20,
+								"add": {
+									"component_groups": [
+										"ha:become_socrates"
+									]
+								}
+							},
+							{
+								"weight": 80
+							}
+						]
+					}
+				]
+			},
 			"ha:start_explode": {
 				"queue_command": {
 					"command": [

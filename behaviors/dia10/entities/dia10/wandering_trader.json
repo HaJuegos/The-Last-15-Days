@@ -10,16 +10,41 @@
 			"spawn_category": "creature"
 		},
 		"component_groups": {
+			"ha:timer_despawn": {
+				"minecraft:timer": {
+					"looping": false,
+					"random_time_choices": [
+						{
+							"value": 2400,
+							"weight": 50
+						},
+						{
+							"value": 3600,
+							"weight": 50
+						}
+					],
+					"time_down_event": {
+						"event": "minecraft:start_despawn",
+						"target": "self"
+					}
+				}
+			},
 			"ha:become_socrates": {
-				"minecraft:transformation": {
-					"into": "ha:socrates_npc<minecraft:entity_spawned>",
-					"delay": {
-						"value": 0.1
-					},
-					"keep_owner": true,
-					"drop_inventory": false,
-					"drop_equipment": false,
-					"preserve_equipment": true
+				"minecraft:spawn_entity": {
+					"entities": [
+						{
+							"min_wait_time": 0,
+							"max_wait_time": 0.1,
+							"num_to_spawn": 1,
+							"single_use": true,
+							"should_leash": false,
+							"spawn_entity": "ha:socrates_npc",
+							"spawn_event": "minecraft:entity_spawned"
+						}
+					]
+				},
+				"minecraft:instant_despawn": {
+					"remove_child_entities": true
 				}
 			},
 			"ha:explode": {
@@ -77,6 +102,14 @@
 			}
 		},
 		"components": {
+			"minecraft:timer": {
+				"time": 1,
+				"looping": false,
+				"time_down_event": {
+					"event": "minecraft:entity_spawned",
+					"target": "self"
+				}
+			},
 			"minecraft:attack": {
 				"damage": 6
 			},
@@ -494,23 +527,6 @@
 					}
 				]
 			},
-			"minecraft:timer": {
-				"looping": false,
-				"random_time_choices": [
-					{
-						"value": 2400,
-						"weight": 50
-					},
-					{
-						"value": 3600,
-						"weight": 50
-					}
-				],
-				"time_down_event": {
-					"event": "minecraft:start_despawn",
-					"target": "self"
-				}
-			},
 			"minecraft:type_family": {
 				"family": [
 					"wandering_trader",
@@ -520,17 +536,28 @@
 		},
 		"events": {
 			"minecraft:entity_spawned": {
-				"randomize": [
+				"sequence": [
 					{
-						"weight": 5,
 						"add": {
 							"component_groups": [
-								"ha:become_socrates"
+								"ha:timer_despawn"
 							]
 						}
 					},
 					{
-						"weight": 95
+						"randomize": [
+							{
+								"weight": 20,
+								"add": {
+									"component_groups": [
+										"ha:become_socrates"
+									]
+								}
+							},
+							{
+								"weight": 80
+							}
+						]
 					}
 				]
 			},

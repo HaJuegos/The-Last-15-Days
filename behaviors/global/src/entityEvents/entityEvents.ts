@@ -26,8 +26,14 @@ class EntityEventsManager {
     private staticEvents(): void {
         worldToolsSimplified.listenerScriptEvents((args) => {
             const entity = args.sourceEntity as mc.Entity;
+
+            if (!entity.isValid) return;
+
             const dime = entity.dimension;
-            const nearPlys = (() => { return dime.getPlayers({ location: entity.location, maxDistance: 100 }); });
+            const nearPlys = (() => {
+                return dime.getPlayers({ location: entity.location, maxDistance: 100 });
+            });
+
             const id = args.id;
             const msg = Number(args.message);
 

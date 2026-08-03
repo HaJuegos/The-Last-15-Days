@@ -213,6 +213,14 @@ class PlyEventsManager {
                         dime.spawnEntity('minecraft:silverfish', coords, { spawnEvent: 'minecraft:entity_spawned' });
                     });
                 } break;
+                case vanilla.MinecraftBlockTypes.ReinforcedDeepslate: {
+                    const dime = ply.dimension;
+                    const item = new mc.ItemStack(vanilla.MinecraftItemTypes.ReinforcedDeepslate, 1);
+
+                    worldToolsSimplified.setRun(() => {
+                        dime.spawnItem(item, block.location);
+                    });
+                } break;
             }
         });
     }

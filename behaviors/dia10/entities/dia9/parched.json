@@ -11,6 +11,9 @@
         },
         "component_groups": { },
         "components": {
+            "minecraft:follow_range": {
+                "value": 40
+            },
             "minecraft:damage_sensor": {
                 "triggers": [
                     {

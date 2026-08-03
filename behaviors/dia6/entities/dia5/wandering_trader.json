@@ -9,7 +9,86 @@
             "is_spawnable": true,
             "spawn_category": "creature"
         },
+        "component_groups": {
+            "ha:timer_despawn": {
+                "minecraft:timer": {
+                    "looping": false,
+                    "random_time_choices": [
+                        {
+                            "value": 2400,
+                            "weight": 50
+                        },
+                        {
+                            "value": 3600,
+                            "weight": 50
+                        }
+                    ],
+                    "time_down_event": {
+                        "event": "minecraft:start_despawn",
+                        "target": "self"
+                    }
+                }
+            },
+            "ha:become_socrates": {
+                "minecraft:spawn_entity": {
+                    "entities": [
+                        {
+                            "min_wait_time": 0,
+                            "max_wait_time": 0.1,
+                            "num_to_spawn": 1,
+                            "single_use": true,
+                            "should_leash": false,
+                            "spawn_entity": "ha:socrates_npc",
+                            "spawn_event": "minecraft:entity_spawned"
+                        }
+                    ]
+                },
+                "minecraft:instant_despawn": {
+                    "remove_child_entities": true
+                }
+            },
+            "despawning": {
+                "minecraft:type_family": {
+                    "family": [
+                        "wandering_trader",
+                        "wandering_trader_despawning",
+                        "mob"
+                    ]
+                }
+            },
+            "managed": {
+                "minecraft:managed_wandering_trader": { }
+            },
+            "minecraft:scared": {
+                "minecraft:angry": {
+                    "broadcastAnger": true,
+                    "broadcastRange": 10,
+                    "calm_event": {
+                        "event": "minecraft:become_calm",
+                        "target": "self"
+                    },
+                    "broadcast_filters": {
+                        "subject": "other",
+                        "test": "is_leashed_to",
+                        "value": true
+                    },
+                    "broadcast_targets": [
+                        "llama",
+                        "trader_llama"
+                    ],
+                    "duration": 5
+                }
+            }
+        },
         "components": {
+            "minecraft:timer": {
+                "time": 1,
+                "looping": false,
+                "time_down_event": {
+                    "event": "minecraft:entity_spawned",
+                    "target": "self"
+                }
+            },
             "minecraft:behavior.avoid_mob_type": {
                 "max_dist": 6,
                 "entity_types": [
@@ -370,23 +449,6 @@
                     }
                 ]
             },
-            "minecraft:timer": {
-                "looping": false,
-                "random_time_choices": [
-                    {
-                        "value": 2400,
-                        "weight": 50
-                    },
-                    {
-                        "value": 3600,
-                        "weight": 50
-                    }
-                ],
-                "time_down_event": {
-                    "event": "minecraft:start_despawn",
-                    "target": "self"
-                }
-            },
             "minecraft:type_family": {
                 "family": [
                     "wandering_trader",
@@ -394,65 +456,30 @@
                 ]
             }
         },
-        "component_groups": {
-            "ha:become_socrates": {
-                "minecraft:transformation": {
-                    "into": "ha:socrates_npc<minecraft:entity_spawned>",
-                    "delay": {
-                        "value": 0.1
-                    },
-                    "keep_owner": true,
-                    "drop_inventory": false,
-                    "drop_equipment": false,
-                    "preserve_equipment": true
-                }
-            },
-            "despawning": {
-                "minecraft:type_family": {
-                    "family": [
-                        "wandering_trader",
-                        "wandering_trader_despawning",
-                        "mob"
-                    ]
-                }
-            },
-            "managed": {
-                "minecraft:managed_wandering_trader": { }
-            },
-            "minecraft:scared": {
-                "minecraft:angry": {
-                    "broadcastAnger": true,
-                    "broadcastRange": 10,
-                    "calm_event": {
-                        "event": "minecraft:become_calm",
-                        "target": "self"
-                    },
-                    "broadcast_filters": {
-                        "subject": "other",
-                        "test": "is_leashed_to",
-                        "value": true
-                    },
-                    "broadcast_targets": [
-                        "llama",
-                        "trader_llama"
-                    ],
-                    "duration": 5
-                }
-            }
-        },
         "events": {
             "minecraft:entity_spawned": {
-                "randomize": [
+                "sequence": [
                     {
-                        "weight": 5,
                         "add": {
                             "component_groups": [
-                                "ha:become_socrates"
+                                "ha:timer_despawn"
                             ]
                         }
                     },
                     {
-                        "weight": 95
+                        "randomize": [
+                            {
+                                "weight": 20,
+                                "add": {
+                                    "component_groups": [
+                                        "ha:become_socrates"
+                                    ]
+                                }
+                            },
+                            {
+                                "weight": 80
+                            }
+                        ]
                     }
                 ]
             },

@@ -522,7 +522,7 @@
             "ha:teleport_random": {
                 "queue_command": {
                     "command": [
-                        "tp @r[r=100]"
+                        "tp @r[r=100,m=survival]"
                     ]
                 }
             },

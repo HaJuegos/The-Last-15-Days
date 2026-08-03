@@ -558,7 +558,9 @@ class EntityEventsManager {
                 case vanilla.MinecraftEntityTypes.SulfurCube: {
                     const idLoop = worldToolsSimplified.setLoop(() => {
                         if (entity.isValid) {
-                            entity.dimension.createExplosion(entity.location, 4, { allowUnderwater: true, source: entity });
+                            try {
+                                entity.dimension.createExplosion(entity.location, 4, { allowUnderwater: true, source: entity });
+                            } catch { }
                         } else {
                             worldToolsSimplified.stopLoop(idLoop);
                         }
@@ -572,12 +574,12 @@ class EntityEventsManager {
 
             if (!entity.isValid) return;
 
-            const dime = entity.dimension;
-
             if (entity.typeId == vanilla.MinecraftEntityTypes.SulfurCube) {
                 const idLoop = worldToolsSimplified.setLoop(() => {
                     if (entity.isValid) {
-                        dime.createExplosion(entity.location, 4, { allowUnderwater: true, source: entity });
+                        try {
+                            entity.dimension.createExplosion(entity.location, 4, { allowUnderwater: true, source: entity });
+                        } catch { }
                     } else {
                         worldToolsSimplified.stopLoop(idLoop);
                     }

@@ -244,6 +244,14 @@ class PlyEventsManager {
                         dime.setBlockType(coords, vanilla.MinecraftBlockTypes.Air);
                     });
                 } break;
+                case vanilla.MinecraftBlockTypes.ReinforcedDeepslate: {
+                    const dime = ply.dimension;
+                    const item = new mc.ItemStack(vanilla.MinecraftItemTypes.ReinforcedDeepslate, 1);
+
+                    worldToolsSimplified.setRun(() => {
+                        dime.spawnItem(item, block.location);
+                    });
+                } break;
             }
         });
     }

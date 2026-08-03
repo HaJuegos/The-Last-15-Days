@@ -22,7 +22,7 @@
                         "name": "regeneration",
                         "chance": 1.0,
                         "duration": 7,
-                        "amplifier": 2
+                        "amplifier": 1
                     },
                     {
                         "name": "absorption",

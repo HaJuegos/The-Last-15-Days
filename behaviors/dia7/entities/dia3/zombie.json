@@ -18,6 +18,49 @@
             }
         },
         "component_groups": {
+            "ha:zombie_sieger_leader": {
+                "minecraft:behavior.summon_entity": {
+                    "priority": 2,
+                    "summon_choices": [
+                        {
+                            "min_activation_range": 0,
+                            "max_activation_range": 30,
+                            "do_casting": false,
+                            "cast_duration": 0.1,
+                            "cooldown_time": 20,
+                            "weight": 1,
+                            "sequence": [
+                                {
+                                    "delay_per_summon": 0,
+                                    "entity_type": "minecraft:zombie<ha:spawn_sieger_patrol>",
+                                    "num_entities_spawned": 20,
+                                    "shape": "circle",
+                                    "size": 1,
+                                    "summon_cap": 20,
+                                    "summon_cap_radius": 200,
+                                    "target": "self"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            "ha:zombie_sieger": {
+                "minecraft:behavior.move_to_village": {
+                    "priority": 4,
+                    "goal_radius": 2,
+                    "speed_multiplier": 1.15
+                },
+                "minecraft:dweller": {
+                    "can_find_poi": false,
+                    "can_migrate": true,
+                    "dwelling_type": "village",
+                    "dweller_role": "hostile",
+                    "update_interval_base": 60,
+                    "update_interval_variant": 40,
+                    "first_founding_reward": 0
+                }
+            },
             "ha:become_husk": {
                 "minecraft:is_shaking": { },
                 "minecraft:transformation": {
@@ -760,6 +803,35 @@
             }
         },
         "events": {
+            "ha:spawn_sieger_leader": {
+                "sequence": [
+                    {
+                        "add": {
+                            "component_groups": [
+                                "ha:zombie_sieger_leader",
+                                "ha:zombie_sieger"
+                            ]
+                        }
+                    },
+                    {
+                        "trigger": "minecraft:entity_spawned"
+                    }
+                ]
+            },
+            "ha:spawn_sieger_patrol": {
+                "sequence": [
+                    {
+                        "add": {
+                            "component_groups": [
+                                "ha:zombie_sieger"
+                            ]
+                        }
+                    },
+                    {
+                        "trigger": "minecraft:entity_spawned"
+                    }
+                ]
+            },
             "minecraft:entity_spawned": {
                 "sequence": [
                     {

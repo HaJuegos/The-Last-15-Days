@@ -46,6 +46,97 @@ class PlyEventsManager extends TL15DBaseManager {
         this.deathEvents();
         this.chatManager();
         this.totemSystem();
+        this.zombieSiegerEvent();
+    }
+
+    /**
+     * Metodo auxiliar que calcula la generacion valida de la patrulla de zombies sieger.
+     * @returns {void}
+     * @author HaJuegos - 02-08-2026
+     * @private
+     */
+    private zombieSiegerEvent(): void {
+        let triggered = false;
+        let tickTarget = -1;
+
+        worldToolsSimplified.setLoop(() => {
+            const allPlys = mc.world.getAllPlayers();
+
+            if (allPlys.length == 0) return;
+
+            const time = mc.world.getTimeOfDay();
+
+            if (time < 13000) {
+                triggered = false;
+                tickTarget = -1;
+                return;
+            }
+
+            if (tickTarget == -1) {
+                tickTarget = 13000 + Math.floor(Math.random() * 6000);
+            }
+
+            if (triggered || time < tickTarget) return;
+
+            triggered = true;
+
+            const randomP = allPlys[Math.floor(Math.random() * allPlys.length)];
+
+            if (!randomP.isValid) return;
+
+            const dime = randomP.dimension;
+
+            let structures: (vanilla.MinecraftFeatureTypes | string)[];
+
+            try {
+                structures = dime.getGeneratedStructures(randomP.location);
+            } catch {
+                return;
+            }
+
+            const inVillage = structures.some(s => s.toString().includes("village"));
+
+            if (!inVillage) return;
+            if (Math.random() > 0.1) return;
+
+            const centerX = Math.floor(randomP.location.x);
+            const centerZ = Math.floor(randomP.location.z);
+            const radius = 24;
+
+            let attps = 0;
+            let spawnLoc: mc.Vector3 | undefined;
+
+            while (attps < 15 && !spawnLoc) {
+                attps++;
+
+                const x = centerX + Math.floor(Math.random() * radius * 2 - radius);
+                const z = centerZ + Math.floor(Math.random() * radius * 2 - radius);
+
+                let top: mc.Block | undefined;
+
+                try {
+                    top = dime.getTopmostBlock({ x, z });
+                } catch {
+                    continue;
+                }
+
+                if (!top || !top.isValid) continue;
+                if (!top.isSolid || top.isLiquid || top.typeId == vanilla.MinecraftBlockTypes.Water || top.typeId == vanilla.MinecraftBlockTypes.FlowingWater || top.typeId == vanilla.MinecraftBlockTypes.Lava || top.typeId == vanilla.MinecraftBlockTypes.FlowingLava) continue;
+
+                const f = top.above(1);
+                const h = top.above(2);
+
+                if (!f?.isValid || !h?.isValid) continue;
+                if (!f.isAir || !h.isAir) continue;
+                if (f.isLiquid || h.isLiquid) continue;
+
+                spawnLoc = { x: x + 0.5, y: top.location.y + 1, z: z + 0.5 };
+            }
+
+            if (!spawnLoc) return;
+
+            dime.spawnEntity(vanilla.MinecraftEntityTypes.Zombie, spawnLoc, { spawnEvent: 'ha:spawn_sieger_leader' });
+        }, worldToolsSimplified.convertSecondsToTicks(1));
     }
 
     /**

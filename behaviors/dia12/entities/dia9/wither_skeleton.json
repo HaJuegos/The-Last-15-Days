@@ -100,7 +100,7 @@
             "minecraft:behavior.nearest_attackable_target": {
                 "priority": 2,
                 "reselect_targets": true,
-                "must_see": false,
+                "must_see": true,
                 "entity_types": [
                     {
                         "filters": {
@@ -156,7 +156,7 @@
                 ]
             },
             "minecraft:follow_range": {
-                "value": 99999
+                "value": 50
             },
             "minecraft:shooter": {
                 "def": "minecraft:wither_skull<ha:spawn_from_wither_skeleton>"
