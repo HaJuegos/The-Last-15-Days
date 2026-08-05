@@ -398,7 +398,7 @@ class AbbysDebuffsEvents extends TL15DBaseManager {
                     }
                 },
                 {
-                    specificCombo: 1,
+                    specificCombo: 4,
                     events: (ply) => {
                         ply.removeTag('furyDebuff1');
                         ply.removeTag('furyDebuff2');
@@ -416,7 +416,7 @@ class AbbysDebuffsEvents extends TL15DBaseManager {
                     }
                 },
                 {
-                    specificCombo: 1,
+                    specificCombo: 5,
                     events: (ply) => {
                         ply.removeTag('furyDebuff1');
                         ply.removeTag('furyDebuff2');
@@ -434,7 +434,7 @@ class AbbysDebuffsEvents extends TL15DBaseManager {
                     }
                 },
                 {
-                    specificCombo: 1,
+                    specificCombo: 6,
                     events: (ply) => {
                         ply.removeTag('furyDebuff1');
                         ply.removeTag('furyDebuff2');
@@ -551,7 +551,7 @@ class AbbysDebuffsEvents extends TL15DBaseManager {
 
         worldToolsSimplified.setRun(() => {
             for (const ply of mc.world.getAllPlayers()) {
-                this.loopTimersDebuff(ply);
+                this.loopTimersDebuff(ply, true);
             }
         });
 
@@ -574,6 +574,7 @@ class AbbysDebuffsEvents extends TL15DBaseManager {
 
             if (!ply.hasTag('death')) {
                 worldToolsSimplified.setDelay(() => {
+                    this.checkDebuffsOnJoin(ply);
                     this.checkPendingDebuffs(entityWorldData, ply);
                 }, worldToolsSimplified.convertSecondsToTicks(3));
             }
@@ -626,6 +627,36 @@ class AbbysDebuffsEvents extends TL15DBaseManager {
     }
 
     /**
+     * Metodo auxiliar que revisa los debuffs de un jugador en concreto a relogear el mundo para limpiarle los datos al mismo.
+     * @param {mc.Player} ply Jugador en concreto a limpiar.
+     * @returns {void}
+     * @author HaJuegos - 04-08-2026
+     * @private
+     */
+    private checkDebuffsOnJoin(ply: mc.Player): void {
+        for (const debuff of this.possibleDebuffs) {
+            const totalMinutes = worldToolsSimplified.getScoreInObj(ply, debuff.timerScoreboard);
+            const currentCombo = worldToolsSimplified.getScoreInObj(ply, debuff.comboScoreboard);
+            const syncScore = `ha:${debuff.timerScoreboard}_sync_ply`;
+
+            if (totalMinutes <= 0 || currentCombo <= 0) {
+                debuff.eventsEndTimer(ply);
+                worldToolsSimplified.changeScoreInObj(ply, debuff.timerScoreboard, 'set', 0);
+                worldToolsSimplified.changeScoreInObj(ply, debuff.comboScoreboard, 'set', 0);
+                worldToolsSimplified.changeScoreInObj(ply, syncScore, 'set', 0);
+                ply.setDynamicProperty(`ha:debuff_timer_${debuff.id}`, undefined);
+            } else {
+                debuff.eventsEndTimer(ply);
+                const debuffEvent = debuff.eventsCombo.find(ev => ev.specificCombo == currentCombo || (ev.minRangeCombo && currentCombo >= ev.minRangeCombo)) ?? debuff.eventsCombo[debuff.eventsCombo.length - 1];
+
+                debuffEvent.events(ply);
+            }
+        }
+
+        this.loopTimersDebuff(ply, true);
+    }
+
+    /**
      * Metodo auxiliar principal que controla el looping de los efectos abismales de los jugadores.
      * @returns {void}
      * @private
@@ -657,57 +688,57 @@ class AbbysDebuffsEvents extends TL15DBaseManager {
      * @author HaJuegos - 20-05-2026
      * @private
      */
-    private loopTimersDebuff(ply: mc.Player): void {
+    private loopTimersDebuff(ply: mc.Player, forceRegister: boolean = false): void {
         for (const debuff of this.possibleDebuffs) {
             const totalMinutes = worldToolsSimplified.getScoreInObj(ply, debuff.timerScoreboard);
-            const realTimer = ply.getDynamicProperty(`ha:debuff_timer_${debuff.id}`) as number | undefined;
+            const currentCombo = worldToolsSimplified.getScoreInObj(ply, debuff.comboScoreboard);
+            const syncScore = `ha:${debuff.timerScoreboard}_sync_ply`;
 
-            if (totalMinutes <= 0 && (!realTimer || (realTimer - Date.now()) <= 0)) {
+            if (totalMinutes <= 0) {
+                if (currentCombo > 0) {
+                    worldToolsSimplified.changeScoreInObj(ply, syncScore, 'set', 0);
+                    ply.setDynamicProperty(`ha:debuff_timer_${debuff.id}`, undefined);
+                    debuff.eventsEndTimer(ply);
+                    worldToolsSimplified.changeScoreInObj(ply, debuff.timerScoreboard, 'set', 0);
+                    worldToolsSimplified.changeScoreInObj(ply, debuff.comboScoreboard, 'set', 0);
+                }
+
                 continue;
             }
 
-            let forceSync = false;
+            if (!forceRegister) {
+                let lastRegister = worldToolsSimplified.getScoreInObj(ply, syncScore);
 
-            if (realTimer != undefined) {
-                const remainMs = realTimer - Date.now();
-
-                if (remainMs > 0) {
-                    const remainMns = Math.floor(remainMs / 60000);
-
-                    if (remainMns != totalMinutes) {
-                        if (totalMinutes == 0 && remainMns == 0) {
-                            forceSync = false;
-                        } else {
-                            forceSync = true;
-                        }
-                    }
-                }
+                if (lastRegister == totalMinutes) continue;
             }
 
+            worldToolsSimplified.changeScoreInObj(ply, syncScore, 'set', totalMinutes);
+            ply.setDynamicProperty(`ha:debuff_timer_${debuff.id}`, Date.now() + totalMinutes * 60000);
+
             customEventsManager.startTimerLocal({
-                timerId: `ha:debuff_timer_${debuff.id}`,
+                timerId: `ha:debuff_timer_${debuff.id}_${ply.id}`,
                 sourcePly: ply,
                 initialMns: totalMinutes,
-                forceRestart: forceSync,
+                forceRestart: true,
                 onMinutePass: (ply) => {
                     const actualTime = worldToolsSimplified.getScoreInObj(ply, debuff.timerScoreboard);
 
                     if (actualTime > 0) {
                         worldToolsSimplified.changeScoreInObj(ply, debuff.timerScoreboard, 'add', -1);
+                        worldToolsSimplified.changeScoreInObj(ply, syncScore, 'add', -1);
                     }
                 },
                 onTimerEnds: (ply) => {
-                    const finalTime = worldToolsSimplified.getScoreInObj(ply, debuff.timerScoreboard);
+                    worldToolsSimplified.changeScoreInObj(ply, syncScore, 'set', 0);
+                    ply.setDynamicProperty(`ha:debuff_timer_${debuff.id}`, undefined);
 
-                    if (finalTime <= 0) {
-                        debuff.eventsEndTimer(ply);
+                    debuff.eventsEndTimer(ply);
 
-                        worldToolsSimplified.changeScoreInObj(ply, debuff.timerScoreboard, 'set', 0);
-                        worldToolsSimplified.changeScoreInObj(ply, debuff.comboScoreboard, 'set', 0);
+                    worldToolsSimplified.changeScoreInObj(ply, debuff.timerScoreboard, 'set', 0);
+                    worldToolsSimplified.changeScoreInObj(ply, debuff.comboScoreboard, 'set', 0);
 
-                        ply.sendMessage({ rawtext: [{ translate: 'chat.system.debuff_end_timer', with: { rawtext: [{ translate: `${debuff.translationKey}` }] } }] });
-                        ply.playSound('mob.guardian.death');
-                    }
+                    ply.sendMessage({ rawtext: [{ translate: 'chat.system.debuff_end_timer', with: { rawtext: [{ translate: `${debuff.translationKey}` }] } }] });
+                    ply.playSound('mob.guardian.death');
                 }
             });
         }
@@ -751,7 +782,7 @@ class AbbysDebuffsEvents extends TL15DBaseManager {
         if (debuffsState == 0) return;
 
         if (totalDebuffsGlobal == 0 || (totalDebuffsGlobal == totalDebuffsPly)) {
-            this.loopTimersDebuff(ply);
+            this.loopTimersDebuff(ply, true);
             return;
         };
 
@@ -762,7 +793,12 @@ class AbbysDebuffsEvents extends TL15DBaseManager {
         for (let i = 1; i <= totalNewDebuffs; i++) {
             const randomDebuffI = Math.floor(Math.random() * this.possibleDebuffs.length);
             const randomDebuff = this.possibleDebuffs[randomDebuffI];
-            const finalCombo = worldToolsSimplified.changeScoreInObj(ply, randomDebuff.comboScoreboard, 'add', 1) as number;
+            const rawCombo = worldToolsSimplified.changeScoreInObj(ply, randomDebuff.comboScoreboard, 'add', 1) as number;
+            const finalCombo = Math.min(rawCombo, 6);
+
+            if (rawCombo > 6) {
+                worldToolsSimplified.changeScoreInObj(ply, randomDebuff.comboScoreboard, 'set', 6);
+            }
 
             worldToolsSimplified.changeScoreInObj(ply, randomDebuff.timerScoreboard, 'add', 10);
 

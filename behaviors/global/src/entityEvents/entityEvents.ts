@@ -27,6 +27,7 @@ class EntityEventsManager {
         worldToolsSimplified.listenerScriptEvents((args) => {
             const entity = args.sourceEntity as mc.Entity;
 
+            if (!entity) return;
             if (!entity.isValid) return;
 
             const dime = entity.dimension;

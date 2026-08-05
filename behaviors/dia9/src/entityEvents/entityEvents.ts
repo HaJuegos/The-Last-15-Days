@@ -598,6 +598,7 @@ class EntityEventsManager {
             const id = args.id;
             const entity = args.sourceEntity as mc.Entity;
 
+            if (!entity) return;
             if (!entity.isValid) return;
 
             switch (id) {

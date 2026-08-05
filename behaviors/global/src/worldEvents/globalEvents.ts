@@ -106,6 +106,7 @@ class GlobalWorldEventsManager extends TL15DBaseManager {
             const sourceEntity = args.sourceEntity;
 
             if (!sourceEntity) return;
+            if (!sourceEntity.isValid) return;
 
             switch (id) {
                 case 'ha:spawn_fake': {

@@ -553,14 +553,25 @@ class PlyEventsManager extends TL15DBaseManager {
         const plyArmorContainer = ply.getComponent(mc.EntityComponentTypes.Equippable);
         const ghostInvContainer = ghostEntity.getComponent(mc.EntityComponentTypes.Inventory)?.container as mc.Container;
         const nameGhost = `§g§l${ply.name}'s Inventory§r`;
+        const excludeItems = [
+            'ha:void_item',
+            'ha:fake_netherite_boots',
+            'ha:fake_netherite_helmet',
+            'ha:fake_netherite_chestplate',
+            'ha:fake_netherite_leggings'
+        ];
 
         if (plyInvContainer && ghostInvContainer) {
             for (let i = 0; i < plyInvContainer.size; i++) {
                 const item = plyInvContainer.getItem(i);
 
-                if (item) {
-                    ghostInvContainer.addItem(item);
-                }
+                if (!item) continue;
+
+                if (excludeItems.includes(item.typeId)) continue;
+
+                item.lockMode = mc.ItemLockMode.none;
+
+                ghostInvContainer.addItem(item);
             }
         }
 
@@ -568,9 +579,13 @@ class PlyEventsManager extends TL15DBaseManager {
             for (const slot of this.armorSlots) {
                 const item = plyArmorContainer.getEquipment(slot);
 
-                if (item) {
-                    ghostInvContainer.addItem(item);
-                }
+                if (!item) continue;
+
+                if (excludeItems.includes(item.typeId)) continue;
+
+                item.lockMode = mc.ItemLockMode.none;
+
+                ghostInvContainer.addItem(item);
             }
         }
 

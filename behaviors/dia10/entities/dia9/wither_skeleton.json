@@ -12,6 +12,14 @@
         },
         "component_groups": {
             "ha:is_rider": {
+                "minecraft:behavior.find_mount": {
+                    "priority": 3,
+                    "max_failed_attempts": 100,
+                    "start_delay": 1,
+                    "within_radius": 100,
+                    "avoid_water": false,
+                    "mount_distance": 2
+                },
                 "minecraft:behavior.hurt_by_target": {
                     "priority": 1,
                     "entity_types": [
@@ -68,9 +76,9 @@
             "ha:set_persistance": {
                 "minecraft:persistent": { }
             },
-            "ha:wither_in_over": {
-                "minecraft:equipment": {
-                    "table": "loot_tables/entities/custom/wither_over_equipment.json"
+            "ha:can_despawn": {
+                "minecraft:despawn": {
+                    "despawn_from_distance": { }
                 }
             }
         },
@@ -161,6 +169,9 @@
             "minecraft:shooter": {
                 "def": "minecraft:wither_skull<ha:spawn_from_wither_skeleton>"
             },
+            "minecraft:behavior.hurt_by_target": {
+                "priority": 1
+            },
             "minecraft:behavior.ranged_attack": {
                 "priority": 0,
                 "speed_multiplier": 1.25,
@@ -202,7 +213,7 @@
                 "table": "loot_tables/entities/wither_skeleton.json"
             },
             "minecraft:equipment": {
-                "table": "loot_tables/entities/wither_skeleton_gear.json"
+                "table": "loot_tables/entities/custom/wither_over_equipment.json"
             },
             "minecraft:movement": {
                 "value": 0.25
@@ -643,14 +654,8 @@
             },
             "minecraft:fire_immune": {
             },
-            "minecraft:despawn": {
-                "despawn_from_distance": { }
-            },
-            "minecraft:behavior.hurt_by_target": {
-                "priority": 1
-            },
             "minecraft:behavior.equip_item": {
-                "priority": 3
+                "priority": 4
             },
             "minecraft:behavior.pickup_items": {
                 "priority": 5,
@@ -684,26 +689,34 @@
         },
         "events": {
             "minecraft:entity_spawned": {
-                "sequence": [
-                    {
-                        "filters": {
-                            "test": "has_biome_tag",
-                            "value": "overworld"
-                        },
-                        "add": {
-                            "component_groups": [
-                                "ha:wither_in_over"
-                            ]
-                        }
-                    }
-                ]
-            },
-            "ha:spawned_from_phantom": {
                 "add": {
                     "component_groups": [
-                        "ha:wither_in_over",
+                        "ha:can_despawn"
+                    ]
+                }
+            },
+            "ha:spawned_from_phantom": {
+                "remove": {
+                    "component_groups": [
+                        "ha:can_despawn"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
                         "ha:is_rider",
                         "ha:set_persistance"
+                    ]
+                }
+            },
+            "ha:remove_persistance": {
+                "remove": {
+                    "component_groups": [
+                        "ha:set_persistance"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
+                        "ha:can_despawn"
                     ]
                 }
             }

@@ -8,22 +8,22 @@
                 {
                     "type": "item",
                     "name": "minecraft:enchanted_golden_apple",
-                    "weight": 90
+                    "weight": 44
                 },
                 {
                     "type": "item",
                     "name": "minecraft:golden_apple",
-                    "weight": 90
+                    "weight": 44
                 },
                 {
                     "type": "item",
                     "name": "minecraft:porkchop",
-                    "weight": 10
+                    "weight": 5
                 },
                 {
                     "type": "item",
                     "name": "minecraft:cooked_porkchop",
-                    "weight": 10
+                    "weight": 5
                 },
                 {
                     "type": "item",

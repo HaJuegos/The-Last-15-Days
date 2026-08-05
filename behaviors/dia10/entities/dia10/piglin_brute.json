@@ -19,13 +19,11 @@
             },
             "scripts": {
                 "animate": [
-                    "on_fire",
                     "critic",
                     "health_sensor"
                 ]
             },
             "animations": {
-                "on_fire": "controller.animation.brute_sensors.in_fire",
                 "critic": "controller.animation.brute_sensors.critic",
                 "health_sensor": "controller.animation.brute_sensors.health_sensor"
             }
@@ -48,6 +46,13 @@
                 "minecraft:instant_despawn": { }
             },
             "ha:spawn_sensors": {
+                "minecraft:navigation.walk": {
+                    "can_path_over_water": true,
+                    "can_open_doors": true,
+                    "can_path_over_lava": true,
+                    "can_sink": true,
+                    "can_walk_in_lava": true
+                },
                 "minecraft:on_target_acquired": {
                     "event": "ha:start_pearl_mode",
                     "target": "self"
@@ -233,6 +238,13 @@
             },
 
             "ha:melee_sensors": {
+                "minecraft:navigation.climb": {
+                    "can_path_over_water": true,
+                    "can_open_doors": true,
+                    "can_path_over_lava": true,
+                    "can_sink": true,
+                    "can_walk_in_lava": true
+                },
                 "minecraft:on_target_escape": {
                     "target": "self",
                     "event": "ha:neutral_sensors"
@@ -301,6 +313,13 @@
                 }
             },
             "ha:mace_sensors": {
+                "minecraft:navigation.walk": {
+                    "can_path_over_water": true,
+                    "can_open_doors": true,
+                    "can_path_over_lava": true,
+                    "can_sink": true,
+                    "can_walk_in_lava": true
+                },
                 "minecraft:on_target_escape": {
                     "target": "self",
                     "event": "ha:neutral_sensors"
@@ -369,6 +388,13 @@
                 }
             },
             "ha:spear_sensors": {
+                "minecraft:navigation.walk": {
+                    "can_path_over_water": true,
+                    "can_open_doors": true,
+                    "can_path_over_lava": true,
+                    "can_sink": true,
+                    "can_walk_in_lava": true
+                },
                 "minecraft:on_target_escape": {
                     "target": "self",
                     "event": "ha:neutral_sensors"
@@ -438,6 +464,13 @@
             },
 
             "ha:ranged_sensors": {
+                "minecraft:navigation.walk": {
+                    "can_path_over_water": true,
+                    "can_open_doors": true,
+                    "can_path_over_lava": true,
+                    "can_sink": true,
+                    "can_walk_in_lava": true
+                },
                 "minecraft:on_target_escape": {
                     "target": "self",
                     "event": "ha:neutral_sensors"
@@ -516,6 +549,13 @@
                 }
             },
             "ha:pearl_sensors": {
+                "minecraft:navigation.walk": {
+                    "can_path_over_water": true,
+                    "can_open_doors": true,
+                    "can_path_over_lava": true,
+                    "can_sink": true,
+                    "can_walk_in_lava": true
+                },
                 "minecraft:on_target_escape": {
                     "target": "self",
                     "event": "ha:neutral_sensors"
@@ -588,10 +628,11 @@
                 "minecraft:behavior.melee_attack": {
                     "priority": 0,
                     "can_spread_on_fire": true,
-                    "cooldown_time": 0.85,
+                    "cooldown_time": 0.65,
                     "melee_fov": 360,
-                    "reach_multiplier": 4.5,
-                    "track_target": true
+                    "reach_multiplier": 5.5,
+                    "speed_multiplier": 1.25,
+                    "track_target": false
                 },
                 "minecraft:variant": {
                     "value": 1
@@ -654,7 +695,7 @@
                     "cooldown_time": 0.45,
                     "melee_fov": 360,
                     "reach_multiplier": 1.45,
-                    "track_target": true
+                    "track_target": false
                 },
                 "minecraft:equipment": {
                     "table": "loot_tables/entities/custom/brute_gears/spear_gear.json",
@@ -688,12 +729,14 @@
             },
             "ha:mace_charged_loop": {
                 "minecraft:timer": {
-                    "time": [ 1, 1 ],
+                    "time": 1.5,
                     "looping": true,
                     "time_down_event": {
                         "filters": {
-                            "test": "on_ground",
-                            "value": true
+                            "test": "target_distance",
+                            "subject": "self",
+                            "operator": "<=",
+                            "value": 5
                         },
                         "event": "ha:summon_charged",
                         "target": "self"
@@ -704,10 +747,11 @@
                 "minecraft:behavior.melee_attack": {
                     "priority": 0,
                     "can_spread_on_fire": true,
-                    "cooldown_time": 0.45,
+                    "cooldown_time": 0.75,
                     "melee_fov": 360,
                     "reach_multiplier": 7,
-                    "track_target": true
+                    "speed_multiplier": 1.25,
+                    "track_target": false
                 },
                 "minecraft:variant": {
                     "value": 1
@@ -937,6 +981,13 @@
                 }
             },
             "ha:food_gear": {
+                "minecraft:navigation.walk": {
+                    "can_path_over_water": true,
+                    "can_open_doors": true,
+                    "can_path_over_lava": true,
+                    "can_sink": true,
+                    "can_walk_in_lava": true
+                },
                 "minecraft:behavior.eat_carried_item": {
                     "priority": 0
                 },
@@ -971,6 +1022,13 @@
                 }
             },
             "ha:potions_gear": {
+                "minecraft:navigation.walk": {
+                    "can_path_over_water": true,
+                    "can_open_doors": true,
+                    "can_path_over_lava": true,
+                    "can_sink": true,
+                    "can_walk_in_lava": true
+                },
                 "minecraft:behavior.drink_potion": {
                     "priority": 0,
                     "potions": [
@@ -1047,9 +1105,16 @@
             },
 
             "ha:pickaxe_mode": {
+                "minecraft:navigation.climb": {
+                    "can_path_over_water": true,
+                    "can_open_doors": true,
+                    "can_path_over_lava": true,
+                    "can_sink": true,
+                    "can_walk_in_lava": true
+                },
                 "minecraft:timer": {
                     "time": [ 12, 12 ],
-                    "looping": false,
+                    "looping": true,
                     "time_down_event": {
                         "event": "ha:neutral_sensors",
                         "target": "self"
@@ -1059,7 +1124,8 @@
                     "priority": 0,
                     "can_spread_on_fire": true,
                     "melee_fov": 360,
-                    "track_target": true
+                    "track_target": true,
+                    "speed_multiplier": 1.25
                 },
                 "minecraft:variant": {
                     "value": 1
@@ -1081,7 +1147,7 @@
                                 "test": "target_distance",
                                 "subject": "self",
                                 "operator": "<=",
-                                "value": 3
+                                "value": 4
                             },
                             "target": "self",
                             "event": "ha:start_melee_mode"
@@ -2542,6 +2608,10 @@
             }
         },
         "components": {
+            "minecraft:tick_world": {
+                "never_despawn": false,
+                "radius": 4
+            },
             "minecraft:environment_sensor": {
                 "triggers": [
                     {
@@ -3004,13 +3074,6 @@
             },
             "minecraft:jump.static": { },
             "minecraft:movement.basic": { },
-            "minecraft:navigation.climb": {
-                "can_path_over_water": true,
-                "can_open_doors": true,
-                "can_path_over_lava": true,
-                "can_sink": true,
-                "can_walk_in_lava": true
-            },
             "minecraft:physics": { },
             "minecraft:health": {
                 "value": 350,
@@ -3212,7 +3275,8 @@
                                 "ha:fire_potion_gear",
                                 "ha:scare_brute",
 
-                                "ha:potions_gear"
+                                "ha:potions_gear",
+                                "ha:pickaxe_mode"
                             ]
                         },
                         "add": {
@@ -3224,7 +3288,7 @@
                     {
                         "randomize": [
                             {
-                                "weight": 90,
+                                "weight": 50,
                                 "remove": {
                                     "component_groups": [
                                         "ha:mace_sensors",
@@ -3244,7 +3308,7 @@
                                 }
                             },
                             {
-                                "weight": 10,
+                                "weight": 45,
                                 "sequence": [
                                     {
                                         "remove": {
@@ -3271,7 +3335,7 @@
                                 ]
                             },
                             {
-                                "weight": 10,
+                                "weight": 5,
                                 "remove": {
                                     "component_groups": [
                                         "ha:mace_sensors",
@@ -3310,7 +3374,8 @@
                         "ha:pearl_mode",
 
                         "ha:fire_potion_gear",
-                        "ha:scare_brute"
+                        "ha:scare_brute",
+                        "ha:pickaxe_mode"
                     ]
                 },
                 "add": {
@@ -3338,7 +3403,8 @@
                         "ha:ranged_mode",
 
                         "ha:fire_potion_gear",
-                        "ha:scare_brute"
+                        "ha:scare_brute",
+                        "ha:pickaxe_mode"
                     ]
                 },
                 "add": {

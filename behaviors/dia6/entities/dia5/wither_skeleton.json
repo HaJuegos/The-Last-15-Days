@@ -10,15 +10,6 @@
             "is_summonable": true,
             "is_experimental": false
         },
-
-        "component_groups": {
-            "ha:wither_in_over": {
-                "minecraft:equipment": {
-                    "table": "loot_tables/entities/custom/wither_over_equipment.json"
-                }
-            }
-        },
-
         "components": {
             "minecraft:is_hidden_when_invisible": {
             },
@@ -56,7 +47,7 @@
                 "table": "loot_tables/entities/wither_skeleton.json"
             },
             "minecraft:equipment": {
-                "table": "loot_tables/entities/wither_skeleton_gear.json"
+                "table": "loot_tables/entities/custom/wither_over_equipment.json"
             },
             "minecraft:movement": {
                 "value": 0.25
@@ -76,12 +67,6 @@
             "minecraft:shareables": {
                 "singular_pickup": true,
                 "items": [
-                    {
-                        "item": "ha:hoglin_fang",
-                        "want_amount": 1,
-                        "surplus_amount": 1,
-                        "priority": 0
-                    },
                     {
                         "item": "ha:piglin_mace",
                         "want_amount": 1,
@@ -599,30 +584,8 @@
             "minecraft:conditional_bandwidth_optimization": {
             }
         },
-
         "events": {
-            "minecraft:entity_spawned": {
-                "sequence": [
-                    {
-                        "filters": {
-                            "test": "has_biome_tag",
-                            "value": "overworld"
-                        },
-                        "add": {
-                            "component_groups": [
-                                "ha:wither_in_over"
-                            ]
-                        }
-                    }
-                ]
-            },
-            "ha:spawn_in_over": {
-                "add": {
-                    "component_groups": [
-                        "ha:wither_in_over"
-                    ]
-                }
-            }
+            "minecraft:entity_spawned": { }
         }
     }
 }
