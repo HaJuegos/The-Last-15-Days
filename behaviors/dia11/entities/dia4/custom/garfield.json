@@ -1,0 +1,456 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.26.0",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "ha:garfield",
+            "runtime_identifier": "minecraft:cat",
+            "spawn_category": "ambient",
+            "is_spawnable": true,
+            "is_summonable": true,
+            "is_experimental": false
+        },
+        "component_groups": {
+            "ha:neutral_intro": {
+                "minecraft:type_family": {
+                    "family": [
+                        "cat",
+                        "mob"
+                    ]
+                },
+                "minecraft:damage_sensor": {
+                    "triggers": [
+                        {
+                            "cause": "all",
+                            "deals_damage": "no"
+                        }
+                    ]
+                },
+                "minecraft:movement": {
+                    "value": 0.3
+                }
+            },
+            "ha:pre_one": {
+                "minecraft:timer": {
+                    "time": [ 10, 10 ],
+                    "looping": true,
+                    "time_down_event": {
+                        "event": "ha:pre_two",
+                        "target": "self"
+                    }
+                }
+            },
+            "ha:pre_two": {
+                "minecraft:timer": {
+                    "time": [ 9, 9 ],
+                    "looping": true,
+                    "time_down_event": {
+                        "event": "ha:pre_three",
+                        "target": "self"
+                    }
+                }
+            },
+            "ha:pre_three": {
+                "minecraft:timer": {
+                    "time": [ 9, 9 ],
+                    "looping": true,
+                    "time_down_event": {
+                        "event": "ha:pre_four",
+                        "target": "self"
+                    }
+                }
+            },
+            "ha:pre_four": {
+                "minecraft:timer": {
+                    "time": [ 9, 9 ],
+                    "looping": true,
+                    "time_down_event": {
+                        "event": "ha:pre_five",
+                        "target": "self"
+                    }
+                }
+            },
+            "ha:pre_five": {
+                "minecraft:timer": {
+                    "time": [ 15, 15 ],
+                    "looping": true,
+                    "time_down_event": {
+                        "event": "ha:pre_six",
+                        "target": "self"
+                    }
+                }
+            },
+            "ha:pre_final": {
+                "minecraft:timer": {
+                    "time": [ 2.5, 2.5 ],
+                    "looping": true,
+                    "time_down_event": {
+                        "event": "ha:start_boss",
+                        "target": "self"
+                    }
+                }
+            },
+            "ha:boss_mode": {
+                "minecraft:type_family": {
+                    "family": [
+                        "garfield",
+                        "cat",
+                        "monster",
+                        "mob"
+                    ]
+                },
+                "minecraft:damage_sensor": {
+                    "triggers": [
+                        {
+                            "on_damage": {
+                                "filters": {
+                                    "all_of": [
+                                        {
+                                            "test": "is_family",
+                                            "subject": "other",
+                                            "operator": "not",
+                                            "value": "player"
+                                        },
+                                        {
+                                            "test": "is_family",
+                                            "subject": "damager",
+                                            "operator": "not",
+                                            "value": "player"
+                                        }
+                                    ]
+                                }
+                            },
+                            "deals_damage": "no"
+                        }
+                    ]
+                },
+                "minecraft:skin_id": {
+                    "value": 1
+                },
+                "minecraft:boss": {
+                    "hud_range": 100,
+                    "should_darken_sky": true,
+                    "name": "entity.ha:garfield.name"
+                },
+                "minecraft:movement": {
+                    "value": 0.35
+                },
+                "minecraft:behavior.random_stroll": {
+                    "priority": 12,
+                    "speed_multiplier": 0.8
+                },
+                "minecraft:attack": {
+                    "damage": 14
+                },
+                "minecraft:behavior.melee_attack": {
+                    "priority": 0,
+                    "can_spread_on_fire": true,
+                    "melee_fov": 360,
+                    "cooldown_time": 0.45,
+                    "reach_multiplier": 3,
+                    "require_complete_path": true,
+                    "track_target": false
+                },
+                "minecraft:behavior.hurt_by_target": {
+                    "priority": 1,
+                    "hurt_owner": true,
+                    "entity_types": {
+                        "filters": {
+                            "test": "is_family",
+                            "subject": "other",
+                            "operator": "not",
+                            "value": "garfield"
+                        }
+                    }
+                },
+                "minecraft:behavior.nearest_prioritized_attackable_target": {
+                    "priority": 0,
+                    "reselect_targets": true,
+                    "entity_types": [
+                        {
+                            "priority": 0,
+                            "filters": {
+                                "test": "is_family",
+                                "subject": "other",
+                                "value": "player"
+                            },
+                            "max_dist": 300
+                        },
+                        {
+                            "priority": 1,
+                            "filters": {
+                                "any_of": [
+                                    {
+                                        "test": "is_family",
+                                        "subject": "other",
+                                        "value": "irongolem"
+                                    },
+                                    {
+                                        "test": "is_family",
+                                        "subject": "other",
+                                        "value": "snowgolem"
+                                    },
+                                    {
+                                        "test": "is_family",
+                                        "subject": "other",
+                                        "value": "chicken"
+                                    },
+                                    {
+                                        "test": "is_family",
+                                        "subject": "other",
+                                        "value": "rabbit"
+                                    },
+                                    {
+                                        "test": "is_family",
+                                        "subject": "other",
+                                        "value": "baby_turtle"
+                                    }
+                                ]
+                            },
+                            "max_dist": 300
+                        }
+                    ]
+                },
+                "minecraft:follow_range": {
+                    "value": 300
+                }
+            }
+        },
+        "components": {
+            "minecraft:experience_reward": {
+                "on_death": "query.last_hit_by_player ? Math.Random(1,3) : 0"
+            },
+            "minecraft:rideable": {
+                "seat_count": 1,
+                "family_types": [ "baby_undead" ],
+                "seats": {
+                    "position": [ 0.0, 0.55, 0.0 ]
+                }
+            },
+            "minecraft:behavior.rise_to_liquid_level": {
+                "priority": 14,
+                "liquid_y_offset": 0.01,
+                "rise_delta": 0.1,
+                "sink_delta": 0.1
+            },
+            "minecraft:underwater_movement": {
+                "value": 0.2
+            },
+            "minecraft:lava_movement": {
+                "value": 0.2
+            },
+            "minecraft:mob_effect_immunity": {
+                "mob_effects": [
+                    "poison",
+                    "instant_damage",
+                    "fatal_poison"
+                ]
+            },
+            "minecraft:on_death": {
+                "target": "self",
+                "event": "ha:death_garfield"
+            },
+            "minecraft:loot": {
+                "table": "loot_tables/entities/custom/garfield.json"
+            },
+            "minecraft:health": {
+                "max": 850,
+                "value": 850
+            },
+            "minecraft:offspring": {
+                "offspring_pairs": {
+                    "ha:garfield": "ha:garfield"
+                }
+            },
+            "minecraft:spawn_egg_interaction": { },
+            "minecraft:is_hidden_when_invisible": { },
+            "minecraft:nameable": {
+                "allow_name_tag_renaming": false,
+                "always_show": true
+            },
+            "minecraft:skin_id": {
+                "value": 0
+            },
+            "minecraft:physics": { },
+            "minecraft:breathable": {
+                "total_supply": 15,
+                "suffocate_time": 0
+            },
+            "minecraft:collision_box": {
+                "height": 0.6,
+                "width": 0.7
+            },
+            "minecraft:hurt_on_condition": {
+                "damage_conditions": [
+                    {
+                        "filters": {
+                            "test": "in_lava",
+                            "subject": "self",
+                            "operator": "==",
+                            "value": true
+                        },
+                        "cause": "lava",
+                        "damage_per_tick": 4
+                    }
+                ]
+            },
+            "minecraft:navigation.walk": {
+                "can_float": true,
+                "avoid_water": true,
+                "avoid_damage_blocks": true,
+                "avoid_portals": true
+            },
+            "minecraft:movement.basic": { },
+            "minecraft:jump.static": { },
+            "minecraft:can_climb": { },
+            "minecraft:persistent": { },
+            "minecraft:pushable_by_block": { },
+            "minecraft:pushable_by_entity": { },
+            "minecraft:conditional_bandwidth_optimization": { },
+            "minecraft:behavior.float": {
+                "priority": 10
+            },
+            "minecraft:behavior.mount_pathing": {
+                "priority": 11,
+                "speed_multiplier": 1.25,
+                "target_dist": 0,
+                "track_target": false
+            },
+            "minecraft:behavior.look_at_player": {
+                "priority": 13
+            }
+        },
+        "events": {
+            "minecraft:entity_spawned": {
+                "queue_command": {
+                    "command": [
+                        "playsound mob.garfield.pre-dialog.dialog1 @a ~~~",
+                        "scriptevent ha:garfield_pre-dialog 1"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
+                        "ha:neutral_intro",
+                        "ha:pre_one"
+                    ]
+                }
+            },
+            "ha:death_garfield": {
+                "queue_command": {
+                    "command": [
+                        "tellraw @a {\"rawtext\": [{ \"translate\": \"dialogue.garfield.death\" }]}"
+                    ]
+                }
+            },
+            "ha:pre_two": {
+                "queue_command": {
+                    "command": [
+                        "playsound mob.garfield.pre-dialog.dialog2 @a ~~~",
+                        "scriptevent ha:garfield_pre-dialog 2"
+                    ]
+                },
+                "remove": {
+                    "component_groups": [
+                        "ha:pre_one"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
+                        "ha:pre_two"
+                    ]
+                }
+            },
+            "ha:pre_three": {
+                "queue_command": {
+                    "command": [
+                        "playsound mob.garfield.pre-dialog.dialog3 @a ~~~",
+                        "scriptevent ha:garfield_pre-dialog 3"
+                    ]
+                },
+                "remove": {
+                    "component_groups": [
+                        "ha:pre_two"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
+                        "ha:pre_three"
+                    ]
+                }
+            },
+            "ha:pre_four": {
+                "queue_command": {
+                    "command": [
+                        "playsound mob.garfield.pre-dialog.dialog4 @a ~~~",
+                        "scriptevent ha:garfield_pre-dialog 4"
+                    ]
+                },
+                "remove": {
+                    "component_groups": [
+                        "ha:pre_three"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
+                        "ha:pre_four"
+                    ]
+                }
+            },
+            "ha:pre_five": {
+                "queue_command": {
+                    "command": [
+                        "playsound mob.garfield.pre-dialog.dialog5 @a ~~~",
+                        "scriptevent ha:garfield_pre-dialog 5"
+                    ]
+                },
+                "remove": {
+                    "component_groups": [
+                        "ha:pre_four"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
+                        "ha:pre_five"
+                    ]
+                }
+            },
+            "ha:pre_six": {
+                "queue_command": {
+                    "command": [
+                        "playsound mob.garfield.pre-dialog.dialogfinal @a ~~~",
+                        "scriptevent ha:garfield_pre-dialog 6"
+                    ]
+                },
+                "remove": {
+                    "component_groups": [
+                        "ha:pre_five"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
+                        "ha:pre_final"
+                    ]
+                }
+            },
+            "ha:start_boss": {
+                "queue_command": {
+                    "command": [
+                        "scriptevent ha:garfield_start_fight"
+                    ]
+                },
+                "remove": {
+                    "component_groups": [
+                        "ha:pre_final",
+                        "ha:neutral_intro"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
+                        "ha:boss_mode"
+                    ]
+                }
+            }
+        }
+    }
+}

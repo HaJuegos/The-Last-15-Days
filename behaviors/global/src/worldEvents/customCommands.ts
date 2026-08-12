@@ -2,6 +2,7 @@ import * as mc from "@minecraft/server";
 
 import { beforeEventsSimplified, ButtonFormBase, customEventsManager, debugToolsSimplified, worldToolsSimplified } from "simplified-mojang-api";
 import { TL15DBaseManager } from "../base";
+import { DebuffData } from "../customTypes";
 
 /**
  * Clase principal que controla los comandos personalizados del add-on a base de scripts.
@@ -9,6 +10,130 @@ import { TL15DBaseManager } from "../base";
  * @author HaJuegos - 07-07-2026
  */
 class CustomCmdsEvents extends TL15DBaseManager {
+    /**
+     * Lista de variables posibles para los debuffs a obtener.
+     * @type {DebuffData[]}
+     * @private
+     */
+    private readonly listOfDebuffs: DebuffData[] = [
+        {
+            id: 'abyssal',
+            idTitleUI: 'abyssal:combo',
+            maxComboUI: 6,
+            timerScoreboard: 'abyssalTimer',
+            comboScoreboard: 'abyssalCombo',
+            translationKey: 'chat.system.debuff_name.abyssal',
+            iconSamplePath: 'textures/ui/custom/abyss_icons/abyssal_eyes/base',
+            eventsEndTimer: (ply) => {
+                ply.runCommand(`clear @s ha:void_item`);
+            }
+        },
+        {
+            id: 'colossus',
+            idTitleUI: 'colossus:combo',
+            maxComboUI: 6,
+            timerScoreboard: 'colossusTimer',
+            comboScoreboard: 'colossusCombo',
+            translationKey: 'chat.system.debuff_name.colossus',
+            iconSamplePath: 'textures/ui/custom/abyss_icons/colossus_trick/base',
+            eventsEndTimer: (ply) => {
+                ply.triggerEvent(`ha:set_colossus_normal`);
+            }
+        },
+        {
+            id: 'hunger',
+            idTitleUI: 'hunger:combo',
+            maxComboUI: 6,
+            timerScoreboard: 'hungerTimer',
+            comboScoreboard: 'hungerCombo',
+            translationKey: 'chat.system.debuff_name.hunger',
+            iconSamplePath: 'textures/ui/custom/abyss_icons/endless_hunger/base',
+            eventsEndTimer: (ply) => {
+                ply.removeTag('hungerDebuff1');
+                ply.removeTag('hungerDebuff2');
+                ply.removeTag('hungerDebuff3');
+                ply.removeTag('hungerDebuff4');
+                ply.removeTag('hungerDebuff5');
+                ply.removeTag('hungerDebuff6');
+
+                ply.runCommand(`effect @s clear hunger`);
+            }
+        },
+        {
+            id: 'shadows',
+            idTitleUI: 'shadows:combo',
+            maxComboUI: 6,
+            timerScoreboard: 'shadowsTimer',
+            comboScoreboard: 'shadowsCombo',
+            translationKey: 'chat.system.debuff_name.shadows',
+            iconSamplePath: 'textures/ui/custom/abyss_icons/ravenous_shadows/base',
+            eventsEndTimer: (ply) => {
+                ply.removeTag('shedowsDebuff1');
+                ply.removeTag('shedowsDebuff2');
+                ply.removeTag('shedowsDebuff3');
+                ply.removeTag('shedowsDebuff4');
+                ply.removeTag('shedowsDebuff5');
+                ply.removeTag('shedowsDebuff6');
+            },
+        },
+        {
+            id: 'soul',
+            idTitleUI: 'soul:combo',
+            maxComboUI: 6,
+            timerScoreboard: 'soulTimer',
+            comboScoreboard: 'soulCombo',
+            translationKey: 'chat.system.debuff_name.decay',
+            iconSamplePath: 'textures/ui/custom/abyss_icons/soul_decay/base',
+            eventsEndTimer: (ply) => {
+                ply.triggerEvent('ha:set_soul_normal');
+            }
+        },
+        {
+            id: 'fury',
+            idTitleUI: 'fury:combo',
+            maxComboUI: 6,
+            timerScoreboard: 'furyTimer',
+            comboScoreboard: 'furyCombo',
+            translationKey: 'chat.system.debuff_name.fury',
+            iconSamplePath: 'textures/ui/custom/abyss_icons/unhinged_fury/base',
+            eventsEndTimer: (ply) => {
+                ply.removeTag('furyDebuff1');
+                ply.removeTag('furyDebuff2');
+                ply.removeTag('furyDebuff3');
+                ply.removeTag('furyDebuff4');
+                ply.removeTag('furyDebuff5');
+                ply.removeTag('furyDebuff6');
+
+                ply.runCommand(`fog @s pop furyFogID1`);
+                ply.runCommand(`fog @s pop furyFogID2`);
+                ply.runCommand(`fog @s pop furyFogID3`);
+                ply.runCommand(`fog @s pop furyFogID4`);
+                ply.runCommand(`fog @s pop furyFogID5`);
+                ply.runCommand(`fog @s pop furyFogID6`);
+            },
+        },
+        {
+            id: 'void',
+            idTitleUI: 'void:combo',
+            maxComboUI: 6,
+            timerScoreboard: 'voidTimer',
+            comboScoreboard: 'voidCombo',
+            translationKey: 'chat.system.debuff_name.void',
+            iconSamplePath: 'textures/ui/custom/abyss_icons/void_claws/base',
+            eventsEndTimer: (ply) => {
+                customEventsManager.lockItemsPly({
+                    ply: ply,
+                    invType: 'inv',
+                    lockMethod: mc.ItemLockMode.none,
+                    itemsSelection: {
+                        allSlots: true,
+                        whitelistItems: ['ha:void_item']
+                    }
+                });
+            },
+        }
+    ];
+
     /**
      * Todos los comandos custom creados a base de una plantilla fija para ser registradas en el mundo.
      * @type {CustomCmdTemplate[]}
@@ -45,67 +170,36 @@ class CustomCmdsEvents extends TL15DBaseManager {
         },
         // Comando de hitboxes
         {
-            prefixCmd: 'ha:hitboxes',
-            description: 'Comando que alterna la visibilidad de las hitboxes de las entidades en un jugador en concreto.',
-            permsLevel: mc.CommandPermissionLevel.GameDirectors,
-            cheatsEnabled: true,
+            prefixCmd: 'ha:showhitboxes',
+            description: 'Comando que alterna la visibilidad de las hitboxes de todas las entidades.',
+            permsLevel: mc.CommandPermissionLevel.Any,
+            cheatsEnabled: false,
             paramsCmd: [
-                { name: 'player', type: mc.CustomCommandParamType.PlayerSelector },
                 { name: 'state', type: mc.CustomCommandParamType.Boolean }
             ],
-            onRunCmd: (sourcePly, targets: { id: string; typeId: string; }[], newState: boolean) => {
-                const plys = mc.world.getAllPlayers().filter(ply =>
-                    targets.some(target => target.id == ply.id)
-                );
+            onRunCmd: (sourcePly, newState: boolean) => {
+                worldToolsSimplified.setRun(() => {
+                    if (!sourcePly.isValid) return;
 
-                if (plys.length == 0) {
-                    worldToolsSimplified.setRun(() => {
-                        sourcePly.sendMessage({ rawtext: [{ translate: 'chat.system.hitboxes_system.error.nothing' }] });
-                        sourcePly.playSound('ui.error_item');
-                    });
-
-                    return;
-                }
-
-                for (const ply of plys) {
-                    if (!ply.isValid) {
-                        worldToolsSimplified.setRun(() => {
-                            sourcePly.sendMessage({ rawtext: [{ translate: 'chat.system.hitboxes_system.error.noply', with: { rawtext: [{ text: `${ply.name}` }] } }] });
-                            sourcePly.playSound('ui.error_item');
-                        });
-
-                        return;
-                    };
-
-                    const actualState = ply.getDynamicProperty('ha:hitboxes_state') as boolean | undefined ?? false;
+                    const actualState = sourcePly.getDynamicProperty('ha:hitboxes_state') as boolean | undefined ?? false;
 
                     if (actualState == newState) {
-                        worldToolsSimplified.setRun(() => {
-                            sourcePly.sendMessage({ rawtext: [{ translate: 'chat.system.hitboxes_system.error.same_state', with: { rawtext: [{ text: `${ply.name}` }] } }] });
-                            sourcePly.playSound('ui.error_item');
-                        });
-
+                        sourcePly.sendMessage({ rawtext: [{ translate: 'chat.system.hitboxes_system.error.same_state', with: { rawtext: [{ text: `${sourcePly.name}` }] } }] });
+                        sourcePly.playSound('ui.error_item');
                         return;
                     }
 
                     if (newState) {
-                        worldToolsSimplified.setRun(() => {
-                            sourcePly.sendMessage({ rawtext: [{ translate: 'chat.system.hitboxes_system.enabled', with: { rawtext: [{ text: `${ply.name}` }] } }] });
-                            sourcePly.playSound('random.screenshot');
-                        });
-
-                        debugToolsSimplified.showHitboxes(ply);
+                        debugToolsSimplified.showHitboxes(sourcePly);
+                        sourcePly.sendMessage({ rawtext: [{ translate: 'chat.system.hitboxes_system.enabled', with: { rawtext: [{ text: `${sourcePly.name}` }] } }] });
                     } else {
-                        worldToolsSimplified.setRun(() => {
-                            sourcePly.sendMessage({ rawtext: [{ translate: 'chat.system.hitboxes_system.disabled', with: { rawtext: [{ text: `${ply.name}` }] } }] });
-                            sourcePly.playSound('random.screenshot');
-                        });
-
-                        debugToolsSimplified.stopHitboxes(ply);
+                        debugToolsSimplified.stopHitboxes(sourcePly);
+                        sourcePly.sendMessage({ rawtext: [{ translate: 'chat.system.hitboxes_system.disabled', with: { rawtext: [{ text: `${sourcePly.name}` }] } }] });
                     }
 
-                    ply.setDynamicProperty('ha:hitboxes_state', newState);
-                }
+                    sourcePly.playSound('random.screenshot');
+                    sourcePly.setDynamicProperty('ha:hitboxes_state', newState);
+                });
             }
         },
         // Comando de fastitems
@@ -402,9 +496,12 @@ class CustomCmdsEvents extends TL15DBaseManager {
                             buttonsForm: btns,
                             showPly: {
                                 targetPly: ply,
-                                onCreate: ((ply) => {
+                                onCreate: (ply) => {
                                     ply.playSound('random.enderchestopen');
-                                }),
+                                },
+                                onClose: (ply) => {
+                                    ply.playSound('random.chestclosed');
+                                },
                                 onClickBtn: ((ply, btnI) => {
                                     const target = btnsData[btnI];
 
@@ -494,6 +591,158 @@ class CustomCmdsEvents extends TL15DBaseManager {
                     ply.playSound('random.screenshot');
                 });
             })
+        },
+        // Comando para eliminar todos o un debuff a un jugador en especifico.
+        {
+            prefixCmd: 'ha:removedebuff',
+            description: 'Comando para eliminar manualmente uno o todos los debuffs de un jugador en específico. Con fines de depuración.',
+            cheatsEnabled: true,
+            permsLevel: mc.CommandPermissionLevel.GameDirectors,
+            paramsCmd: [
+                { type: mc.CustomCommandParamType.PlayerSelector, name: 'targetPlayer' }
+            ],
+            onRunCmd: ((sourcePly, args) => {
+                worldToolsSimplified.setRun(() => {
+                    const mathed = (Array.isArray(args) ? args : [args]) as mc.Player[];
+                    const selectedPly = mathed[0];
+
+                    if (!selectedPly || !selectedPly.isValid) {
+                        sourcePly.sendMessage({ rawtext: [{ translate: 'chat.system.form_remove_debuff.error.player_invalid' }] });
+                        sourcePly.playSound('ui.error_sound');
+                        return;
+                    }
+
+                    const btns: ButtonFormBase[] = [
+                        { buttomText: { rawtext: [{ translate: 'ui.form_remove_debuff.btn.deleted_all' }] }, iconButtomUI: 'textures/ui/custom/trash_icon' }
+                    ];
+
+                    for (const debuff of this.listOfDebuffs) {
+                        btns.push({ buttomText: { rawtext: [{ translate: debuff.translationKey }] }, iconButtomUI: debuff.iconSamplePath });
+                    }
+
+                    customEventsManager.createCustomClassicFormUI({
+                        titleForm: { rawtext: [{ translate: 'ui.form_remove_debuff.title' }] },
+                        bodyText: { rawtext: [{ translate: 'ui.form_remove_debuff.subtitle', with: { rawtext: [{ text: `${selectedPly.name}` }] } }] },
+                        buttonsForm: btns,
+                        showPly: {
+                            targetPly: sourcePly,
+                            onCreate: (ply) => {
+                                ply.playSound('random.enderchestopen');
+                            },
+                            onClose: (ply) => {
+                                ply.playSound('random.chestclosed');
+                            },
+                            onClickBtn: (ply, btnI) => {
+                                if (!selectedPly || !selectedPly.isValid) {
+                                    sourcePly.sendMessage({ rawtext: [{ translate: 'chat.system.form_remove_debuff.error.player_invalid' }] });
+                                    sourcePly.playSound('ui.error_sound');
+                                    return;
+                                }
+
+                                try {
+                                    if (btnI == 0) {
+                                        for (const debuff of this.listOfDebuffs) {
+                                            this.clearDebuff(ply, debuff);
+                                        }
+                                    } else {
+                                        this.clearDebuff(ply, this.listOfDebuffs[btnI - 1]);
+                                    }
+
+                                    sourcePly.sendMessage({ rawtext: [{ translate: 'chat.system.form_remove_debuff.success.removed_debuff', with: { rawtext: [{ text: `${selectedPly.name}` }] } }] });
+                                    sourcePly.playSound('random.levelup');
+                                } catch (e) {
+                                    sourcePly.sendMessage({ rawtext: [{ translate: 'chat.system.form_remove_debuff.error.fail_removal' }] });
+                                    sourcePly.playSound('ui.error_sound');
+                                }
+                            }
+                        }
+                    });
+                });
+            })
+        },
+        // Comando para revivir un jugador dentor del mundo.
+        {
+            prefixCmd: 'ha:reviveply',
+            description: 'Comando que revive manualmente a un jugador que haya muerto y esté dentro del mundo. Con fines de depuración.',
+            cheatsEnabled: true,
+            permsLevel: mc.CommandPermissionLevel.GameDirectors,
+            paramsCmd: [
+                { type: mc.CustomCommandParamType.PlayerSelector, name: 'targetPlayer' }
+            ],
+            onRunCmd: ((sourcePly, args) => {
+                worldToolsSimplified.setRun(async () => {
+                    const mathed = (Array.isArray(args) ? args : [args]) as mc.Player[];
+                    const selectedPly = mathed[0];
+
+                    if (!selectedPly || !selectedPly.isValid) {
+                        sourcePly.sendMessage({ rawtext: [{ translate: 'chat.system.form_revival_ply.error.player_invalid' }] });
+                        sourcePly.playSound('ui.error_sound');
+                        return;
+                    }
+
+                    const obj = worldToolsSimplified.getOrCreateScorebordObj('totalLives', 'ui.scoreboard.obj.title');
+
+                    selectedPly.runCommand(`function system/revive_ply`);
+                    obj?.addScore('ui.scoreboard.scores.lives', 1);
+                    obj?.addScore('ui.scoreboard.scores.deaths', -1);
+
+                    try {
+                        const entityWorldData = await this.getEntityDataWorld();
+                        const objDeaths = worldToolsSimplified.getOrCreateScorebordObj('ha:list_deaths') as mc.ScoreboardObjective;
+                        const totalDeaths = worldToolsSimplified.getScoreInObj(entityWorldData, 'ha:death_counter');
+
+                        const deathEntry = objDeaths.getParticipants().find(data => {
+                            const [name] = data.displayName.split(':');
+
+                            return name == selectedPly.name;
+                        });
+
+                        if (deathEntry != undefined) {
+                            objDeaths.removeParticipant(deathEntry.displayName);
+                            worldToolsSimplified.changeScoreInObj(entityWorldData, 'ha:death_counter', 'set', totalDeaths <= 0 ? 0 : totalDeaths - 1);
+                        }
+                    } catch (e) {
+                        sourcePly.sendMessage({ rawtext: [{ translate: 'chat.system.form_revival_ply.success_but.player_revive', with: { rawtext: [{ text: `${selectedPly.name}` }] } }] });
+                        sourcePly.playSound('ui.error_item');
+                    }
+
+                    sourcePly.sendMessage({ rawtext: [{ translate: 'chat.system.form_revival_ply.success.player_revive', with: { rawtext: [{ text: `${selectedPly.name}` }] } }] });
+                    sourcePly.playSound('random.levelup');
+                });
+            })
+        },
+        // Comando para teletransportarse a un jugador en modo espectador para todos.
+        {
+            prefixCmd: 'ha:tpspectator',
+            description: 'Comando auxiliar para los jugadores en modo espectador en el mundo y para las personas que no tienen operador.',
+            permsLevel: mc.CommandPermissionLevel.Any,
+            cheatsEnabled: true,
+            paramsCmd: [
+                { type: mc.CustomCommandParamType.PlayerSelector, name: 'targetPlayer' }
+            ],
+            onRunCmd: ((ply, args) => {
+                worldToolsSimplified.setRun(() => {
+                    const mathed = (Array.isArray(args) ? args : [args]) as mc.Player[];
+                    const selectedPly = mathed[0];
+
+                    if (ply.getGameMode() != mc.GameMode.Spectator) {
+                        ply.sendMessage({ rawtext: [{ translate: 'chat.system.teleport_spect.error.no_args' }] });
+                        ply.playSound('ui.error_sound');
+                        return;
+                    }
+
+                    if (!selectedPly || !selectedPly.isValid) {
+                        ply.sendMessage({ rawtext: [{ translate: 'chat.system.teleport_spect.error.player_invalid' }] });
+                        ply.playSound('ui.error_sound');
+                        return;
+                    }
+
+                    const coordsTarget = selectedPly.location;
+                    const dimeTarget = selectedPly.dimension;
+
+                    ply.tryTeleport(coordsTarget, { dimension: dimeTarget });
+                });
+            })
         }
     ];
 
@@ -505,6 +754,28 @@ class CustomCmdsEvents extends TL15DBaseManager {
         super();
 
         this.registerCmds();
+    }
+
+    /**
+     * Metodo auxiliar que controla la logica adiccional de todos los datos sobre el timer loop de los debuffs.
+     * @param {mc.Player} ply Jugador en concreto afectado.
+     * @param {DebuffData} debuff Debuff en concreto afectado.
+     * @returns {void}
+     * @author HaJuegos - 07-08-2026
+     * @private
+     */
+    private clearDebuff(ply: mc.Player, debuff: DebuffData): void {
+        debuff.eventsEndTimer(ply);
+
+        ply.sendMessage({ rawtext: [{ translate: 'chat.system.debuff_end_timer', with: { rawtext: [{ translate: `${debuff.translationKey}` }] } }] });
+        ply.playSound('mob.guardian.death');
+
+        const syncScore = `ha:${debuff.timerScoreboard}_sync_ply`;
+
+        worldToolsSimplified.changeScoreInObj(ply, debuff.timerScoreboard, 'set', 0);
+        worldToolsSimplified.changeScoreInObj(ply, debuff.comboScoreboard, 'set', 0);
+        worldToolsSimplified.changeScoreInObj(ply, syncScore, 'set', 0);
+        ply.setDynamicProperty(`ha:debuff_timer_${debuff.id}`, undefined);
     }
 
     /**

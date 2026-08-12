@@ -87,11 +87,15 @@ class EntityEventsManager extends TL15DBaseManager {
                     case vanilla.MinecraftEntityTypes.Hoglin: {
                         const hitDime = hitEntity.dimension;
                         const hitCoords = hitEntity.location;
-                        const boatsNear = hitDime.getEntities({ location: hitCoords, maxDistance: 10, families: ['boat', 'minecart'] });
+                        const minecartsNear = hitDime.getEntities({ location: hitCoords, maxDistance: 10, families: ['minecart'] });
+                        const boatsNear = hitDime.getEntities({ location: hitCoords, maxDistance: 10, families: ['boat'] });
+                        const entities = [...boatsNear, ...minecartsNear];
 
-                        for (const boat of boatsNear) {
-                            boat.runCommand(`playsound mob.wither.break_block @a ~~~`);
-                            boat.remove();
+                        if (entities.length > 0) {
+                            for (const entity of entities) {
+                                entity.runCommand(`playsound mob.wither.break_block @a ~~~`);
+                                entity.remove();
+                            }
                         }
                     } break;
                     case vanilla.MinecraftEntityTypes.Dolphin: {
@@ -143,19 +147,23 @@ class EntityEventsManager extends TL15DBaseManager {
                         }
                     } break;
                     case vanilla.MinecraftEntityTypes.PiglinBrute: {
-                        if (!sourceEntity.hasTag('bruteCritic')) return;
-
                         const coords = hitEntity.location;
                         const dime = hitEntity.dimension;
-                        const boatsNear = dime.getEntities({ location: coords, maxDistance: 10, families: ['boat', 'minecart'] });
+                        const minecartsNear = dime.getEntities({ location: coords, maxDistance: 10, families: ['minecart'] });
+                        const boatsNear = dime.getEntities({ location: coords, maxDistance: 10, families: ['boat'] });
+                        const entities = [...boatsNear, ...minecartsNear];
 
-                        dime.playSound('game.player.attack.critical', coords);
-                        dime.spawnParticle('minecraft:critical_hit_emitter', { x: coords.x, y: coords.y + 2, z: coords.z });
-
-                        for (const boat of boatsNear) {
-                            boat.runCommand(`playsound mob.wither.break_block @a ~~~`);
-                            boat.remove();
+                        if (entities.length > 0) {
+                            for (const entity of entities) {
+                                entity.runCommand(`playsound mob.wither.break_block @a ~~~`);
+                                entity.remove();
+                            }
                         }
+
+                        if (sourceEntity.hasTag('bruteCritic')) {
+                            dime.playSound('game.player.attack.critical', coords);
+                            dime.spawnParticle('minecraft:critical_hit_emitter', { x: coords.x, y: coords.y + 2, z: coords.z });
+                        };
                     } break;
                     case vanilla.MinecraftEntityTypes.Vex: {
                         const variant = sourceEntity.getComponent(mc.EntityComponentTypes.Variant);

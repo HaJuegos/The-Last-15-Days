@@ -1,6 +1,6 @@
 import * as mc from "@minecraft/server";
 
-import { afterEventsSimplified, customEventsManager, worldToolsSimplified } from "simplified-mojang-api";
+import { afterEventsSimplified, beforeEventsSimplified, customEventsManager, worldToolsSimplified } from "simplified-mojang-api";
 import { TL15DBaseManager } from "../base";
 
 /**
@@ -448,7 +448,7 @@ class AbbysDebuffsEvents extends TL15DBaseManager {
                         ply.runCommand(`fog @s remove furyFogID3`);
                         ply.runCommand(`fog @s remove furyFogID4`);
                         ply.runCommand(`fog @s remove furyFogID5`);
-                        ply.runCommand(`fog @s push ha:fury_fog_lvl_one furyFogID6`);
+                        ply.runCommand(`fog @s push ha:fury_fog_lvl_six furyFogID6`);
                     }
                 }
             ],
@@ -595,34 +595,36 @@ class AbbysDebuffsEvents extends TL15DBaseManager {
 
         // Eventos para la furia
 
+        afterEventsSimplified.onHurtEntity((args) => {
+            const hurtEntity = args.hurtEntity;
+
+            if (hurtEntity instanceof mc.Player) {
+                this.furySystem(hurtEntity, hurtEntity.getTags());
+            }
+        });
+
         afterEventsSimplified.onHitEntity((args) => {
             const sourceEntity = args.damagingEntity;
 
-            if (sourceEntity.typeId == 'minecraft:player') {
-                const tags = sourceEntity.getTags();
-
-                this.furySystem(sourceEntity as mc.Player, tags);
+            if (sourceEntity instanceof mc.Player) {
+                this.furySystem(sourceEntity as mc.Player, sourceEntity.getTags(), false);
             }
         });
 
-        afterEventsSimplified.onHurtEntity((args) => {
-            const sourceEntity = args.damageSource.damagingEntity;
+        beforeEventsSimplified.onUseItem((args) => {
+            const ply = args.source;
 
-            if (sourceEntity && sourceEntity.typeId == 'minecraft:player') {
-                const tags = sourceEntity.getTags();
-
-                this.furySystem(sourceEntity as mc.Player, tags);
-            }
+            worldToolsSimplified.setRun(() => {
+                this.furySystem(ply as mc.Player, ply.getTags(), false);
+            });
         });
 
-        afterEventsSimplified.onEntityDie((args) => {
-            const sourceEntity = args.damageSource.damagingEntity;
+        beforeEventsSimplified.onBreakBlock((args) => {
+            const ply = args.player;
 
-            if (sourceEntity && sourceEntity.typeId == 'minecraft:player') {
-                const tags = sourceEntity.getTags();
-
-                this.furySystem(sourceEntity as mc.Player, tags);
-            }
+            worldToolsSimplified.setRun(() => {
+                this.furySystem(ply, ply.getTags(), false);
+            });
         });
     }
 
@@ -1073,11 +1075,12 @@ class AbbysDebuffsEvents extends TL15DBaseManager {
      * Metodo auxiliar que controla los eventos del debuff de la Furia Desquiciada.
      * @param {mc.Player} ply Jugador en concreto.
      * @param {boolean} [onlyEffect] (Opcional, por defecto en false) Si es true, entonces solo se ejecutara el efecto de fuerza. Pero no los demas eventos.
+     * @param {boolean} [affectArmor] (Opcional, por defecto en true) Si es false, entonces no afectara la durabilidad de la armadura.
      * @returns {void}
      * @author HaJuegos - 20-05-2026
      * @private
      */
-    private furySystem(ply: mc.Player, tags: string[], onlyEffect: boolean = false): void {
+    private furySystem(ply: mc.Player, tags: string[], onlyEffect: boolean = false, affectArmor: boolean = true): void {
         if (this.globalFurySystem.has(ply.id)) return;
 
         this.globalFurySystem.add(ply.id);
@@ -1105,36 +1108,36 @@ class AbbysDebuffsEvents extends TL15DBaseManager {
                 handChance = 5;
             } break;
             case 2: {
-                effectAmp = 0;
+                effectAmp = 1;
                 handChance = 10;
             } break;
             case 3: {
-                effectAmp = 1;
-                handChance = 15;
+                effectAmp = 2;
+                handChance = 10;
                 invItems = 1;
-                invRandomChance = 5;
+                invRandomChance = 3;
             } break;
             case 4: {
-                effectAmp = 1;
-                handChance = 20;
+                effectAmp = 3;
+                handChance = 12;
                 invItems = 1;
-                invRandomChance = 10;
+                invRandomChance = 6;
             } break;
             case 5: {
-                effectAmp = 2;
-                handChance = 35;
+                effectAmp = 4;
+                handChance = 20;
                 invItems = 2;
-                invRandomChance = 15;
+                invRandomChance = 8;
                 armorItems = 1;
-                armorChance = 10;
+                armorChance = 6;
             } break;
             case 6: {
-                effectAmp = 2;
-                handChance = 40;
+                effectAmp = 4;
+                handChance = 25;
                 invItems = 3;
-                invRandomChance = 20;
-                armorItems = 4;
-                armorChance = 25;
+                invRandomChance = 10;
+                armorItems = 1;
+                armorChance = 12;
             } break;
         }
 
@@ -1161,6 +1164,12 @@ class AbbysDebuffsEvents extends TL15DBaseManager {
             const durability = item.getComponent(mc.ItemComponentTypes.Durability);
 
             if (!durability) return;
+
+            const enchantable = item.getComponent(mc.ItemComponentTypes.Enchantable);
+            const unbreakingLevel = enchantable?.getEnchantment('unbreaking')?.level ?? 0;
+            const damageChance = durability.getDamageChance(unbreakingLevel);
+
+            if (Math.random() * 100 > damageChance) return;
 
             const maxDurability = durability.maxDurability;
             const damage = Math.max(1, Math.floor(maxDurability * (pct / 100)));
@@ -1202,7 +1211,7 @@ class AbbysDebuffsEvents extends TL15DBaseManager {
             }
         }
 
-        if (armorChance > 0) {
+        if (armorChance > 0 && affectArmor) {
             const allSlots = [mc.EquipmentSlot.Head, mc.EquipmentSlot.Chest, mc.EquipmentSlot.Legs, mc.EquipmentSlot.Feet];
 
             let selectSlots: mc.EquipmentSlot[] = [];

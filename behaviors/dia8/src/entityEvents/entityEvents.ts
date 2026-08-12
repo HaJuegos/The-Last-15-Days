@@ -83,11 +83,15 @@ class EntityEventsManager {
                     case vanilla.MinecraftEntityTypes.Hoglin: {
                         const hitDime = hitEntity.dimension;
                         const hitCoords = hitEntity.location;
-                        const boatsNear = hitDime.getEntities({ location: hitCoords, maxDistance: 10, families: ['boat', 'minecart'] });
+                        const minecartsNear = hitDime.getEntities({ location: hitCoords, maxDistance: 10, families: ['minecart'] });
+                        const boatsNear = hitDime.getEntities({ location: hitCoords, maxDistance: 10, families: ['boat'] });
+                        const entities = [...boatsNear, ...minecartsNear];
 
-                        for (const boat of boatsNear) {
-                            boat.runCommand(`playsound mob.wither.break_block @a ~~~`);
-                            boat.remove();
+                        if (entities.length > 0) {
+                            for (const entity of entities) {
+                                entity.runCommand(`playsound mob.wither.break_block @a ~~~`);
+                                entity.remove();
+                            }
                         }
                     } break;
                     case vanilla.MinecraftEntityTypes.Dolphin: {

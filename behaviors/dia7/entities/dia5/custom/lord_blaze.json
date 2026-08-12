@@ -57,7 +57,7 @@
         },
         "components": {
             "minecraft:behavior.summon_entity": {
-                "priority": 0,
+                "priority": 1,
                 "summon_choices": [
                     {
                         "weight": 1,
@@ -83,10 +83,10 @@
                 ]
             },
             "minecraft:behavior.float": {
-                "priority": 3
+                "priority": 4
             },
             "minecraft:behavior.hurt_by_target": {
-                "priority": 1,
+                "priority": 2,
                 "entity_types": {
                     "filters": {
                         "test": "is_family",
@@ -97,7 +97,7 @@
                 }
             },
             "minecraft:behavior.nearest_attackable_target": {
-                "priority": 2,
+                "priority": 3,
                 "must_see": true,
                 "reselect_targets": true,
                 "entity_types": [
@@ -129,7 +129,7 @@
                 "priority": 5
             },
             "minecraft:behavior.random_stroll": {
-                "priority": 4,
+                "priority": 6,
                 "speed_multiplier": 1.0
             },
             "minecraft:can_climb": { },

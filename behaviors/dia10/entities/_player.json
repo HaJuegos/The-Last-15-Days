@@ -569,6 +569,29 @@
                         },
                         "event": "ha:remove_full_cautious_armor",
                         "target": "self"
+                    },
+                    // Sensor de no dormir
+                    {
+                        "filters": {
+                            "all_of": [
+                                { "test": "is_daytime", "value": false },
+                                { "test": "is_sleeping", "value": false },
+                                { "test": "has_tag", "operator": "not", "value": "noSleepingYet" }
+                            ]
+                        },
+                        "target": "self",
+                        "event": "ha:no_sleeping_event"
+                    },
+                    {
+                        "filters": {
+                            "all_of": [
+                                { "test": "is_daytime", "value": true },
+                                { "test": "has_tag", "operator": "==", "value": "noSleepingYet" },
+                                { "test": "has_tag", "operator": "not", "value": "alertSleep" }
+                            ]
+                        },
+                        "target": "self",
+                        "event": "ha:no_sleep"
                     }
                 ]
             },
@@ -974,6 +997,20 @@
             "ha:player_off_bed": {
                 "queue_command": {
                     "command": "tag @s remove inBed"
+                }
+            },
+            "ha:no_sleeping_event": {
+                "queue_command": {
+                    "command": [
+                        "tag @s add noSleepingYet"
+                    ]
+                }
+            },
+            "ha:no_sleep": {
+                "queue_command": {
+                    "command": [
+                        "scriptevent ha:no_sleeping_system dia5"
+                    ]
                 }
             },
 

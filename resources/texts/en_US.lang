@@ -146,6 +146,10 @@ ui.remove_linkeds.confirm.subtitle=§cYou're about to delete the internal data f
 ui.remove_linkeds.confirm.btn1.accept=Continue
 ui.remove_linkeds.confirm.btn2.cancel=Go back
 
+ui.form_remove_debuff.title=§v§lClear Debuffs§r
+ui.form_remove_debuff.subtitle=§7§oThis form shows all the debuffs that can be cleared from player %1. This doesn't mean they have all of these debuffs; these are just the available options for removal. Keep in mind that this is only meant to be used if something went wrong and for debugging purposes. It's not recommended to use this system too often.§r
+ui.form_remove_debuff.btn.deleted_all=§4§lClear All.§r
+
 
 ## Chat texts
 chat.system.resquicio_start=§c§l>>§r§c ¡%1 caused a §4§lHellish Rift§r!
@@ -233,6 +237,30 @@ chat.system.remove_linked.success=§7>> Successfully deleted the record for the 
 
 chat.system.change_debuffs.enabled=§7>> The debuff system has been enabled. Pending and upcoming debuffs will now be applied to all players.
 chat.system.change_debuffs.disabled=§7>> The debuff system has been disabled. However, this does not change the fact that any player close to death will continue to accumulate pending debuffs until this system is reactivated. Is that too difficult for you?
+
+chat.system.no_sleeping_alert=§4>> You haven't slept enough nights, and phantoms will probably spawn tomorrow night. Go to sleep!
+
+chat.system.form_remove_debuff.error.player_invalid=§c>> Something went wrong while trying to load the form. The selected player may have disconnected, or an error may have occurred. Please try again.
+chat.system.form_remove_debuff.error.fail_removal=§c>> Something went wrong while trying to remove the debuff from the selected player. Please try again.
+chat.system.form_remove_debuff.success.removed_debuff=§a>> The selected debuff(s) were successfully removed from player %1.
+
+chat.system.form_revival_ply.error.player_invalid=§c>> Something went wrong while trying to revive the selected player; they may have disconnected or may no longer be valid. Please try again.
+chat.system.form_revival_ply.success_but.player_revive=§c>> Player %1 was revived, but something went wrong during the process; their information is still available in the add-on's logs. Use the /changedeaths command to remove it.
+chat.system.form_revival_ply.success.player_revive=§a>> Player %1 was successfully revived.
+
+chat.system.teleport_spect.error.no_args=§c>> You can't use this command yet. Die first.
+chat.system.teleport_spect.error.player_invalid=§c>> There was an error while trying to get the selected player because they have disconnected or are no longer valid. Please try again.
+
+chat.random_msg_brute.msg1=§7§l[§r§4§lSobreviviente§7§l]§r Piglin Brute §7§l>>§r GG, L.
+chat.random_msg_brute.msg2=§7§l[§r§4§lSobreviviente§7§l]§r Piglin Brute §7§l>>§r Was that all? lol
+chat.random_msg_brute.msg3=§7§l[§r§4§lSobreviviente§7§l]§r Piglin Brute §7§l>>§r Bro ate the whole crystal.
+chat.random_msg_brute.msg4=§7§l[§r§4§lSobreviviente§7§l]§r Piglin Brute §7§l>>§r Didn't even blink. lmao
+chat.random_msg_brute.msg5=§7§l[§r§4§lSobreviviente§7§l]§r Piglin Brute §7§l>>§r How many totems you got left? Oh, none.
+chat.random_msg_brute.msg6=§7§l[§r§4§lSobreviviente§7§l]§r Piglin Brute §7§l>>§r Literally free.
+chat.random_msg_brute.msg7=§7§l[§r§4§lSobreviviente§7§l]§r Piglin Brute §7§l>>§r Bro doesn't know how to play. lmao
+chat.random_msg_brute.msg8=§7§l[§r§4§lSobreviviente§7§l]§r Piglin Brute §7§l>>§r Don't come back to my hole.
+chat.random_msg_brute.msg9=§7§l[§r§4§lSobreviviente§7§l]§r Piglin Brute §7§l>>§r Crystal diff. Easy.
+chat.random_msg_brute.msg10=§7§l[§r§4§lSobreviviente§7§l]§r Piglin Brute §7§l>>§r GG bro, come back when you learn how to place crystals.
 
 
 ## Entity Names
@@ -486,6 +514,7 @@ ui.subtitle_custom.nurse_npc.idle=A Shimmered Nurse complaining
 ui.subtitle_custom.nurse_npc.hurt=A Shimmered Nurse getting hurt
 ui.subtitle_custom.nurse_npc.purchased=Someone bought something for a Shimmered Nurse
 ui.subtitle_custom.tnt_parried=A dynamite was deflected by a player
+ui.subtitle_custom.player_eat_banana=Someone likes bananas
 
 ui.subtitle_custom.garfield.neutral_meow=Garfield's meow
 ui.subtitle_custom.garfield.angry_meow=Garfield's angry meow

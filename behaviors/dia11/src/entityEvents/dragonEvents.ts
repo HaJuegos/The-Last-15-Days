@@ -199,32 +199,76 @@ class DragonEvents extends TL15DBaseManager {
      */
     private dragonSensors(): void {
         worldToolsSimplified.setLoop(() => {
-            const plys = mc.world.getDimension('the_end').getPlayers();
-            const center = { x: 0, y: 88, z: 0 };
-            const maxDistance = 150;
+            const end = worldToolsSimplified.getDimension(vanilla.MinecraftDimensionTypes.TheEnd) as mc.Dimension;
+            const plys = end.getPlayers();
+            const dragons = end.getEntities({ type: vanilla.MinecraftEntityTypes.EnderDragon });
 
-            for (const ply of plys) {
-                this.checkHasMace(ply);
+            if (plys.length > 0) {
+                const center = { x: 0, y: 88, z: 0 };
+                const maxDistance = 150;
 
-                const dx = ply.location.x - center.x;
-                const dz = ply.location.z - center.z;
+                for (const ply of plys) {
+                    this.checkHasMace(ply);
 
-                if ((dx * dx) + (dz * dz) > (maxDistance * maxDistance)) {
-                    ply.tryTeleport({
-                        x: center.x + Math.floor(Math.random() * 11) - 5,
-                        y: center.y,
-                        z: center.z + Math.floor(Math.random() * 11) - 5
-                    }, { dimension: ply.dimension });
+                    const dx = ply.location.x - center.x;
+                    const dz = ply.location.z - center.z;
 
-                    worldToolsSimplified.setDelay(() => {
-                        if (ply.isValid) {
-                            ply.sendMessage({ translate: 'chat.system.no_end_islands' });
-                            ply.playSound("ui.error_sound");
-                        }
-                    }, worldToolsSimplified.convertSecondsToTicks(0.25));
+                    if ((dx * dx) + (dz * dz) > (maxDistance * maxDistance)) {
+                        ply.tryTeleport({
+                            x: center.x + Math.floor(Math.random() * 11) - 5,
+                            y: center.y,
+                            z: center.z + Math.floor(Math.random() * 11) - 5
+                        }, { dimension: ply.dimension });
+
+                        worldToolsSimplified.setDelay(() => {
+                            if (ply.isValid) {
+                                ply.sendMessage({ translate: 'chat.system.no_end_islands' });
+                                ply.playSound("ui.error_sound");
+                            }
+                        }, worldToolsSimplified.convertSecondsToTicks(0.25));
+                    }
                 }
             }
-        }, worldToolsSimplified.convertSecondsToTicks(1));
+
+            if (dragons.length > 0) {
+                let topY = 100;
+
+                try {
+                    const topBlock = end.getTopmostBlock({ x: 0, z: 0 });
+
+                    if (topBlock) {
+                        topY = topBlock.y;
+                    }
+                } catch { }
+
+                for (const dragon of dragons) {
+                    if (!dragon.isValid) {
+                        continue;
+                    }
+
+                    const variant = dragon.getComponent(mc.EntityComponentTypes.SkinId);
+
+                    if (!variant || variant.value != 1) {
+                        continue;
+                    }
+
+                    const coords = dragon.location;
+                    const centerRadius = 1;
+                    const distanceX = coords.x;
+                    const distanceZ = coords.z;
+                    const isInCenter = Math.abs(distanceX) <= centerRadius && Math.abs(distanceZ) <= centerRadius;
+                    const isLandingInCenter = isInCenter && coords.y <= topY;
+
+                    if (!isLandingInCenter) {
+                        continue;
+                    }
+
+                    try {
+                        dragon.tryTeleport({ x: 0, y: topY + 1, z: 0 });
+                    } catch { }
+                }
+            }
+        }, 1);
 
         afterEventsSimplified.onEntitySpawns((args) => {
             const entity = args.entity;

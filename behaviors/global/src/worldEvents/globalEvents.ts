@@ -1,10 +1,12 @@
 import * as mc from "@minecraft/server";
+import * as vanilla from "@minecraft/vanilla-data";
 
 import { afterEventsSimplified, beforeEventsSimplified, customEventsManager, debugToolsSimplified, fakePlysSimplified, worldToolsSimplified } from "simplified-mojang-api";
 
 import { TL15DBaseManager } from "../base";
 
 import { CustomDimensionsTypes } from "../customTypes";
+import { MinecraftBiomeTypes } from "@minecraft/vanilla-data";
 
 /**
  * Clase hijo que se encarga de los eventos globales del mundo.
@@ -104,6 +106,7 @@ class GlobalWorldEventsManager extends TL15DBaseManager {
         worldToolsSimplified.listenerScriptEvents(async (args) => {
             const id = args.id;
             const sourceEntity = args.sourceEntity;
+            const msg = args.message;
 
             if (!sourceEntity) return;
             if (!sourceEntity.isValid) return;
@@ -112,6 +115,29 @@ class GlobalWorldEventsManager extends TL15DBaseManager {
                 case 'ha:spawn_fake': {
                     for (let i = 0; i < 2; i++) {
                         fakePlysSimplified.createFakePly(`Test${i}`, sourceEntity.dimension, mc.GameMode.Survival);
+                    }
+                } break;
+                case 'ha:no_sleeping_system': {
+                    const ply = sourceEntity as mc.Player;
+
+                    if (ply.getGameMode() == mc.GameMode.Spectator) return;
+
+                    ply.removeTag('noSleepingYet');
+
+                    if (msg == 'dia5') {
+                        ply.sendMessage({ rawtext: [{ translate: 'chat.system.no_sleeping_alert' }] });
+                        ply.playSound('mob.player_ghost.death_sound');
+
+                        ply.addTag('alertSleep');
+                    } else {
+                        const newScore = worldToolsSimplified.changeScoreInObj(ply, 'ha:sleep_count', 'add', 1);
+
+                        if (newScore && newScore >= 5) {
+                            ply.sendMessage({ rawtext: [{ translate: 'chat.system.no_sleeping_alert' }] });
+                            ply.playSound('mob.player_ghost.death_sound');
+
+                            ply.addTag('alertSleep');
+                        }
                     }
                 } break;
                 case 'ha:pickup_change': {

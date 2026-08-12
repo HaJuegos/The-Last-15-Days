@@ -470,6 +470,13 @@
             }
         },
         "components": {
+            "minecraft:reflect_projectiles": {
+                "reflected_projectiles": [
+                    "llama_spit"
+                ],
+                "azimuth_angle": "180.0 + Math.random(-20.0, 20.0)",
+                "reflection_scale": "0.5"
+            },
             "minecraft:shooter": {
                 "def": "minecraft:llama_spit"
             },
@@ -484,7 +491,6 @@
             "minecraft:behavior.hurt_by_target": {
                 "priority": 1,
                 "hurt_owner": true,
-                "alert_same_type": true,
                 "entity_types": {
                     "filters": {
                         "any_of": [
@@ -544,6 +550,26 @@
             },
             "minecraft:damage_sensor": {
                 "triggers": [
+                    {
+                        "on_damage": {
+                            "filters": {
+                                "any_of": [
+                                    {
+                                        "test": "is_family",
+                                        "subject": "other",
+                                        "value": "llama"
+                                    },
+                                    {
+                                        "test": "is_family",
+                                        "subject": "damager",
+                                        "value": "llama"
+                                    }
+                                ]
+                            }
+                        },
+                        "cause": "all",
+                        "deals_damage": "no"
+                    },
                     {
                         "on_damage": {
                             "event": "ha:chance_explodes"
@@ -698,6 +724,7 @@
                     }
                 ]
             },
+
             "minecraft:entity_spawned": {
                 "sequence": [
                     {
@@ -728,11 +755,13 @@
                     }
                 ]
             },
+
             "minecraft:entity_born": {
                 "add": {
                     "component_groups": [ "minecraft:llama_baby" ]
                 }
             },
+
             "minecraft:ageable_grow_up": {
                 "remove": {
                     "component_groups": [ "minecraft:llama_baby" ]
@@ -741,6 +770,7 @@
                     "component_groups": [ "minecraft:llama_adult", "minecraft:llama_wild" ]
                 }
             },
+
             "minecraft:on_tame": {
                 "remove": {
                     "component_groups": [ "minecraft:llama_wild" ]
@@ -752,11 +782,13 @@
                     ]
                 }
             },
+
             "minecraft:become_angry": {
                 "add": {
                     "component_groups": [ "minecraft:llama_angry" ]
                 }
             },
+
             "minecraft:on_calm": {
                 "remove": {
                     "component_groups": [
@@ -765,16 +797,19 @@
                     ]
                 }
             },
+
             "minecraft:on_leash": {
                 "remove": {
                     "component_groups": [ "minecraft:llama_unleashed" ]
                 }
             },
+
             "minecraft:on_unleash": {
                 "add": {
                     "component_groups": [ "minecraft:llama_unleashed" ]
                 }
             },
+
             "minecraft:on_chest": {
                 "remove": {
                     "component_groups": [ "minecraft:llama_unchested" ]
@@ -783,6 +818,7 @@
                     "component_groups": [ "minecraft:llama_chested" ]
                 }
             },
+
             "minecraft:add_attributes": {
                 "sequence": [
                     {
@@ -849,6 +885,7 @@
                     }
                 ]
             },
+
             "minecraft:spawn_baby": {
                 "add": {
                     "component_groups": [
@@ -858,6 +895,7 @@
                 },
                 "trigger": "minecraft:add_attributes"
             },
+
             "minecraft:spawn_adult": {
                 "add": {
                     "component_groups": [
@@ -868,6 +906,7 @@
                 },
                 "trigger": "minecraft:add_attributes"
             },
+
             "minecraft:spawn_tame_adult": {
                 "add": {
                     "component_groups": [

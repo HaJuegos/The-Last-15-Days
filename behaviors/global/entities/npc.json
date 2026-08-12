@@ -11,6 +11,15 @@
             "spawn_category": "creature"
         },
         "component_groups": {
+            "ha:set_tick": {
+                "minecraft:skin_id": {
+                    "value": 1
+                },
+                "minecraft:tick_world": {
+                    "never_despawn": true,
+                    "radius": 4
+                }
+            },
             "ha:self_explode": {
                 "minecraft:explode": {
                     "power": 5,
@@ -27,6 +36,28 @@
             }
         },
         "components": {
+            "minecraft:environment_sensor": {
+                "triggers": [
+                    {
+                        "filters": {
+                            "all_of": [
+                                {
+                                    "test": "is_skin_id",
+                                    "operator": "==",
+                                    "value": 1
+                                },
+                                {
+                                    "test": "has_component",
+                                    "operator": "not",
+                                    "value": "minecraft:tick_world"
+                                }
+                            ]
+                        },
+                        "target": "self",
+                        "event": "ha:set_tick"
+                    }
+                ]
+            },
             "minecraft:behavior.look_at_player": {
                 "look_time": {
                     "min": 1,
@@ -276,6 +307,13 @@
         },
         "events": {
             "minecraft:entity_spawned": { },
+            "ha:set_tick": {
+                "add": {
+                    "component_groups": [
+                        "ha:set_tick"
+                    ]
+                }
+            },
             "ha:explode": {
                 "add": {
                     "component_groups": [

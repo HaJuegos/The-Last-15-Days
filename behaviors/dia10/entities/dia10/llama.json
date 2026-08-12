@@ -412,6 +412,13 @@
             }
         },
         "components": {
+            "minecraft:reflect_projectiles": {
+                "reflected_projectiles": [
+                    "llama_spit"
+                ],
+                "azimuth_angle": "180.0 + Math.random(-20.0, 20.0)",
+                "reflection_scale": "0.5"
+            },
             "minecraft:shooter": {
                 "def": "minecraft:llama_spit"
             },
@@ -426,7 +433,6 @@
             "minecraft:behavior.hurt_by_target": {
                 "priority": 1,
                 "hurt_owner": true,
-                "alert_same_type": true,
                 "entity_types": {
                     "filters": {
                         "any_of": [
@@ -486,6 +492,26 @@
             },
             "minecraft:damage_sensor": {
                 "triggers": [
+                    {
+                        "on_damage": {
+                            "filters": {
+                                "any_of": [
+                                    {
+                                        "test": "is_family",
+                                        "subject": "other",
+                                        "value": "llama"
+                                    },
+                                    {
+                                        "test": "is_family",
+                                        "subject": "damager",
+                                        "value": "llama"
+                                    }
+                                ]
+                            }
+                        },
+                        "cause": "all",
+                        "deals_damage": "no"
+                    },
                     {
                         "on_damage": {
                             "event": "ha:chance_explodes"

@@ -23,7 +23,9 @@ class ItemCustomComponentsManager extends TL15DBaseManager {
             events: {
                 onConsume(args) {
                     const entity = args.source;
-                    const name = (entity instanceof mc.Player) ? entity.name : entity.typeId.split(':').pop()!.split('_').map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(' ');;
+                    const dime = entity.dimension;
+                    const coords = entity.location;
+                    const name = (entity instanceof mc.Player) ? entity.name : entity.typeId.split(':').pop()!.split('_').map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(' ');
 
                     worldToolsSimplified.sendMessageGlobal({ rawtext: [{ translate: 'chat.system.banana_eated', with: { rawtext: [{ text: `${name}` }] } }] });
 
@@ -36,8 +38,8 @@ class ItemCustomComponentsManager extends TL15DBaseManager {
                     entity.addEffect('bad_omen', worldToolsSimplified.convertSecondsToTicks(60), { amplifier: 10 });
 
                     if (entity instanceof mc.Player) {
-                        entity.spawnParticle('ha:banana_confetti', entity.location);
-                        entity.playSound('ui.banana_eated');
+                        dime.spawnParticle('ha:banana_confetti', coords);
+                        dime.playSound('ui.banana_eated', coords);
                     }
                 }
             }

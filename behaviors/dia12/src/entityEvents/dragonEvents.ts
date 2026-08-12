@@ -199,12 +199,55 @@ class DragonEvents extends TL15DBaseManager {
      */
     private dragonSensors(): void {
         worldToolsSimplified.setLoop(() => {
-            const plys = mc.world.getDimension('the_end').getPlayers();
+            const end = worldToolsSimplified.getDimension(vanilla.MinecraftDimensionTypes.TheEnd) as mc.Dimension;
+            const plys = end.getPlayers();
+            const dragons = end.getEntities({ type: vanilla.MinecraftEntityTypes.EnderDragon });
 
-            for (const ply of plys) {
-                this.checkHasMace(ply);
+            if (plys.length > 0) {
+                for (const ply of plys) {
+                    this.checkHasMace(ply);
+                }
             }
-        }, worldToolsSimplified.convertSecondsToTicks(1));
+
+            if (dragons.length > 0) {
+                let topY = 100;
+
+                try {
+                    const topBlock = end.getTopmostBlock({ x: 0, z: 0 });
+
+                    if (topBlock) {
+                        topY = topBlock.y;
+                    }
+                } catch { }
+
+                for (const dragon of dragons) {
+                    if (!dragon.isValid) {
+                        continue;
+                    }
+
+                    const variant = dragon.getComponent(mc.EntityComponentTypes.SkinId);
+
+                    if (!variant || variant.value != 1) {
+                        continue;
+                    }
+
+                    const coords = dragon.location;
+                    const centerRadius = 1;
+                    const distanceX = coords.x;
+                    const distanceZ = coords.z;
+                    const isInCenter = Math.abs(distanceX) <= centerRadius && Math.abs(distanceZ) <= centerRadius;
+                    const isLandingInCenter = isInCenter && coords.y <= topY;
+
+                    if (!isLandingInCenter) {
+                        continue;
+                    }
+
+                    try {
+                        dragon.tryTeleport({ x: 0, y: topY + 1, z: 0 });
+                    } catch { }
+                }
+            }
+        }, 1);
 
         afterEventsSimplified.onEntitySpawns((args) => {
             const entity = args.entity;

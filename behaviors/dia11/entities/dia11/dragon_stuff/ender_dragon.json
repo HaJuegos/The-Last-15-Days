@@ -49,6 +49,9 @@
                 }
             },
             "ha:landing_mode": {
+                "minecraft:skin_id": {
+                    "value": 1
+                },
                 "minecraft:reflect_projectiles": {
                     "reflected_projectiles": [
                         "xp_bottle",
@@ -74,8 +77,9 @@
                     "azimuth_angle": "180.0 + Math.random(-20.0, 20.0)",
                     "reflection_scale": "0.5"
                 },
+                "minecraft:floats_in_liquid": { },
                 "minecraft:behavior.dragonflaming": {
-                    "priority": 1,
+                    "priority": 2,
                     "cooldown_time": 6,
                     "flame_time": 1.25,
                     "roar_time": 1.2,
@@ -85,7 +89,7 @@
                     "priority": 0
                 },
                 "minecraft:behavior.dragonscanning": {
-                    "priority": 2
+                    "priority": 1
                 },
                 "minecraft:timer": {
                     "time": [ 25, 25 ],
@@ -97,6 +101,9 @@
                 }
             },
             "ha:flying_mode": {
+                "minecraft:skin_id": {
+                    "value": 0
+                },
                 "minecraft:behavior.dragonchargeplayer": {
                     "priority": 2,
                     "active_speed": 4.3,
@@ -143,22 +150,68 @@
             }
         },
         "components": {
+            "minecraft:physics": {
+                "has_collision": false,
+                "has_gravity": false
+            },
+            "minecraft:tick_world": {
+                "never_despawn": true,
+                "radius": 4
+            },
+            "minecraft:break_blocks": {
+                "breakable_blocks": [
+                    "lava",
+                    "flowing_lava",
+                    "water",
+                    "flowing_water"
+                ]
+            },
             "minecraft:on_death": {
                 "target": "self",
                 "event": "ha:start_death_mode"
             },
             "minecraft:attack": {
-                "damage": 3
+                "damage": 20
             },
             "minecraft:collision_box": {
                 "height": 4,
                 "width": 13
             },
             "minecraft:damage_sensor": {
-                "triggers": {
-                    "cause": "fall",
-                    "deals_damage": "no"
-                }
+                "triggers": [
+                    {
+                        "cause": "block_explosion",
+                        "deals_damage": "no"
+                    },
+                    {
+                        "cause": "entity_explosion",
+                        "deals_damage": "no"
+                    },
+                    {
+                        "on_damage": {
+                            "filters": [
+                                {
+                                    "any_of": [
+                                        {
+                                            "test": "is_family",
+                                            "subject": "other",
+                                            "operator": "not",
+                                            "value": "player"
+                                        },
+                                        {
+                                            "test": "is_family",
+                                            "subject": "damager",
+                                            "operator": "not",
+                                            "value": "player"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "cause": "all",
+                        "deals_damage": "no"
+                    }
+                ]
             },
             "minecraft:dimension_bound": { },
             "minecraft:fire_immune": { },
@@ -181,10 +234,6 @@
                 "value": 0.3
             },
             "minecraft:persistent": { },
-            "minecraft:physics": {
-                "has_collision": false,
-                "has_gravity": false
-            },
             "minecraft:type_family": {
                 "family": [
                     "dragon",

@@ -1,7 +1,7 @@
 /* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
 /* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
 {
-    "format_version": "1.21.50",
+    "format_version": "1.26.0",
     "minecraft:entity": {
         "description": {
             "identifier": "ha:player_ghost",
@@ -83,9 +83,13 @@
             },
             "minecraft:leashable": {
                 "can_be_stolen": true,
-                "hard_distance": 6,
-                "max_distance": 10,
-                "soft_distance": 4
+                "presets": [
+                    {
+                        "hard_distance": 6,
+                        "max_distance": 10,
+                        "soft_distance": 4
+                    }
+                ]
             },
             "minecraft:leashable_to": { },
             "minecraft:health": {
@@ -116,10 +120,8 @@
             },
             "minecraft:jump.static": { },
             "minecraft:can_fly": { },
-            "minecraft:pushable": {
-                "is_pushable": false,
-                "is_pushable_by_piston": true
-            },
+            "minecraft:pushable_by_block": { },
+            "minecraft:pushable_by_entity": { },
             "minecraft:game_event_movement_tracking": {
                 "emit_flap": true
             },
@@ -162,7 +164,8 @@
                     "llama_spit",
                     "fireworks_rocket",
                     "fishing_hook",
-                    "ha:dynamite"
+                    "ha:dynamite",
+                    "ha:slime_pearl"
                 ],
                 "azimuth_angle": "180.0 + Math.random(-20.0, 20.0)",
                 "reflection_scale": "0.5"

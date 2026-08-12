@@ -200,6 +200,18 @@
                                         "subject": "other",
                                         "operator": "!=",
                                         "value": "sulfur_cube"
+                                    },
+                                    {
+                                        "test": "is_family",
+                                        "subject": "other",
+                                        "operator": "!=",
+                                        "value": "npc"
+                                    },
+                                    {
+                                        "test": "is_family",
+                                        "subject": "other",
+                                        "operator": "!=",
+                                        "value": "inanimate"
                                     }
                                 ]
                             },
@@ -1248,6 +1260,18 @@
                                         "subject": "other",
                                         "operator": "!=",
                                         "value": "sulfur_cube"
+                                    },
+                                    {
+                                        "test": "is_family",
+                                        "subject": "other",
+                                        "operator": "!=",
+                                        "value": "npc"
+                                    },
+                                    {
+                                        "test": "is_family",
+                                        "subject": "other",
+                                        "operator": "!=",
+                                        "value": "inanimate"
                                     }
                                 ]
                             },
@@ -3050,6 +3074,18 @@
                                     "subject": "other",
                                     "operator": "!=",
                                     "value": "sulfur_cube"
+                                },
+                                {
+                                    "test": "is_family",
+                                    "subject": "other",
+                                    "operator": "!=",
+                                    "value": "npc"
+                                },
+                                {
+                                    "test": "is_family",
+                                    "subject": "other",
+                                    "operator": "!=",
+                                    "value": "inanimate"
                                 }
                             ]
                         },
@@ -3126,45 +3162,9 @@
             },
             "minecraft:conditional_bandwidth_optimization": { },
             "minecraft:despawn": {
-                "filters": {
-                    "any_of": [
-                        {
-                            "all_of": [
-                                {
-                                    "test": "is_persistent",
-                                    "value": false
-                                },
-                                {
-                                    "operator": ">",
-                                    "test": "distance_to_nearest_player",
-                                    "value": 54
-                                }
-                            ]
-                        },
-                        {
-                            "all_of": [
-                                {
-                                    "test": "is_persistent",
-                                    "value": false
-                                },
-                                {
-                                    "subject": "self",
-                                    "test": "inactivity_timer",
-                                    "value": 30
-                                },
-                                {
-                                    "test": "random_chance",
-                                    "value": 800
-                                },
-                                {
-                                    "operator": ">",
-                                    "test": "distance_to_nearest_player",
-                                    "value": 32
-                                }
-                            ]
-                        }
-                    ]
-                }
+                "despawn_from_distance": { },
+                "despawn_from_inactivity": true,
+                "min_range_inactivity_timer": 200
             },
             "minecraft:experience_reward": {
                 "on_death": "query.last_hit_by_player ? 20 : 0"

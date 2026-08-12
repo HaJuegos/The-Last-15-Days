@@ -9,14 +9,13 @@
             "is_spawnable": true,
             "is_summonable": true
         },
-
         "component_groups": {
-            "ha:spawn_bomber_raid": {
+            "ha:bomber_raid_spawned": {
                 "minecraft:spawn_entity": {
                     "entities": [
                         {
                             "min_wait_time": 0,
-                            "max_wait_time": 0,
+                            "max_wait_time": 0.1,
                             "num_to_spawn": 1,
                             "should_leash": false,
                             "single_use": true,
@@ -26,42 +25,12 @@
                     ]
                 }
             },
-            "ha:become_bomber_raid": {
+            "ha:bomber_captain_spawned": {
                 "minecraft:spawn_entity": {
                     "entities": [
                         {
                             "min_wait_time": 0,
-                            "max_wait_time": 0,
-                            "num_to_spawn": 1,
-                            "should_leash": false,
-                            "single_use": true,
-                            "spawn_entity": "ha:bomber_pillager",
-                            "spawn_event": "minecraft:spawn_for_raid"
-                        }
-                    ]
-                }
-            },
-            "ha:spawn_bomber_patron": {
-                "minecraft:spawn_entity": {
-                    "entities": [
-                        {
-                            "min_wait_time": 0,
-                            "max_wait_time": 0,
-                            "num_to_spawn": 1,
-                            "should_leash": false,
-                            "single_use": true,
-                            "spawn_entity": "ha:bomber_pillager",
-                            "spawn_event": "minecraft:spawn_as_patrol_follower"
-                        }
-                    ]
-                }
-            },
-            "ha:become_bomber_captain": {
-                "minecraft:spawn_entity": {
-                    "entities": [
-                        {
-                            "min_wait_time": 0,
-                            "max_wait_time": 0,
+                            "max_wait_time": 0.1,
                             "num_to_spawn": 1,
                             "should_leash": false,
                             "single_use": true,
@@ -71,6 +40,22 @@
                     ]
                 }
             },
+            "ha:bomber_patrol_follower_spawned": {
+                "minecraft:spawn_entity": {
+                    "entities": [
+                        {
+                            "min_wait_time": 0,
+                            "max_wait_time": 0.1,
+                            "num_to_spawn": 1,
+                            "should_leash": false,
+                            "single_use": true,
+                            "spawn_entity": "ha:bomber_pillager",
+                            "spawn_event": "minecraft:spawn_as_patrol_follower"
+                        }
+                    ]
+                }
+            },
+
             "minecraft:celebrate": {
                 "minecraft:behavior.celebrate": {
                     "priority": 5,
@@ -254,7 +239,6 @@
                 }
             }
         },
-
         "components": {
             "minecraft:damage_sensor": {
                 "triggers": [
@@ -425,7 +409,6 @@
                 "priority": 10
             }
         },
-
         "events": {
             "minecraft:entity_spawned": {
                 "add": {
@@ -434,35 +417,60 @@
                     ]
                 }
             },
+
             "minecraft:spawn_for_raid": {
                 "sequence": [
                     {
-                        "add": {
-                            "component_groups": [
-                                "minecraft:ranged_attack",
-                                "minecraft:raid_configuration",
-                                "minecraft:raid_persistence"
-                            ]
-                        }
-                    },
-                    {
-                        "randomize": [
+                        "sequence": [
                             {
-                                "weight": 33
-                            },
-                            {
-                                "weight": 33,
                                 "add": {
                                     "component_groups": [
-                                        "ha:spawn_bomber_raid"
+                                        "minecraft:ranged_attack",
+                                        "minecraft:raid_configuration",
+                                        "minecraft:raid_persistence"
                                     ]
                                 }
                             },
                             {
-                                "weight": 33,
+                                "randomize": [
+                                    {
+                                        "weight": 60
+                                    },
+                                    {
+                                        "weight": 40,
+                                        "add": {
+                                            "component_groups": [
+                                                "minecraft:patrol_follower"
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "weight": 40,
+                                        "add": {
+                                            "component_groups": [
+                                                "minecraft:illager_squad_captain"
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "randomize": [
+                            {
+                                "weight": 1,
                                 "add": {
                                     "component_groups": [
-                                        "ha:become_bomber_raid"
+                                        "ha:bomber_captain_spawned"
+                                    ]
+                                }
+                            },
+                            {
+                                "weight": 1,
+                                "add": {
+                                    "component_groups": [
+                                        "ha:bomber_raid_spawned"
                                     ]
                                 }
                             }
@@ -483,13 +491,13 @@
                     {
                         "randomize": [
                             {
-                                "weight": 50
+                                "weight": 60
                             },
                             {
-                                "weight": 50,
+                                "weight": 40,
                                 "add": {
                                     "component_groups": [
-                                        "ha:spawn_bomber_patron"
+                                        "ha:bomber_patrol_follower_spawned"
                                     ]
                                 }
                             }
@@ -498,9 +506,8 @@
                 ]
             },
             "minecraft:spawn_as_illager_captain": {
-                "randomize": [
+                "sequence": [
                     {
-                        "weight": 50,
                         "add": {
                             "component_groups": [
                                 "minecraft:ranged_attack",
@@ -509,15 +516,23 @@
                         }
                     },
                     {
-                        "weight": 50,
-                        "add": {
-                            "component_groups": [
-                                "ha:become_bomber_captain"
-                            ]
-                        }
+                        "randomize": [
+                            {
+                                "weight": 60
+                            },
+                            {
+                                "weight": 40,
+                                "add": {
+                                    "component_groups": [
+                                        "ha:bomber_captain_spawned"
+                                    ]
+                                }
+                            }
+                        ]
                     }
                 ]
             },
+
             "minecraft:promote_to_illager_captain": {
                 "add": {
                     "component_groups": [
@@ -544,6 +559,7 @@
                     ]
                 }
             },
+
             "minecraft:melee_mode": {
                 "remove": { "component_groups": [ "minecraft:ranged_attack" ] },
                 "add": { "component_groups": [ "minecraft:melee_attack" ] }

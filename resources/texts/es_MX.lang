@@ -146,6 +146,10 @@ ui.remove_linkeds.confirm.subtitle=§cEstás a punto de eliminar la información
 ui.remove_linkeds.confirm.btn1.accept=Continuar
 ui.remove_linkeds.confirm.btn2.cancel=Volver
 
+ui.form_remove_debuff.title=§v§lLimpiar Debuff§r
+ui.form_remove_debuff.subtitle=§7§oEste formulario muestra todos los debuffs que se pueden limpiar al jugador %1. Esto no quiere decir que tenga todos estos debuffs; son solo las opciones disponibles para eliminar. Ten en cuenta que esto es solo por si algo salió mal y con fines depurativos. No se recomienda usar mucho este sistema.
+ui.form_remove_debuff.btn.deleted_all=§4§lLimpiar Todos.§r
+
 
 ## Chat texts
 chat.system.resquicio_start=§c§l>>§r§c ¡%1 ha causado un §4§lResquicio Infernal§r!
@@ -233,6 +237,30 @@ chat.system.remove_linked.success=§7>> Se ha eliminado con éxito el registro d
 
 chat.system.change_debuffs.enabled=§7>> Se ha habilitado el sistema de debuffs. Ahora los debuffs pendientes y próximos serán aplicados a todos los jugadores.
 chat.system.change_debuffs.disabled=§7>> Se ha deshabilitado el sistema de debuffs. Pero eso no quita el hecho de que cualquier jugador próximo a morir estará acumulando debuffs pendientes cuando se piense rehabilitar este sistema nuevamente. ¿Muy difícil para ti?
+
+chat.system.no_sleeping_alert=§4>> No has dormido las noches suficientes y es probable que spawneen phantoms la próxima noche. ¡Duerme!
+
+chat.system.form_remove_debuff.error.player_invalid=§7>> Hubo un error al intentar cargar el formulario. Es posible que el jugador seleccionado se haya desconectado o haya pasado un error. Vuelve a intentarlo.
+chat.system.form_remove_debuff.error.fail_removal=§7>> Algo pasó al intentar remover el debuff al jugador seleccionado. Vuelve a intentarlo.
+chat.system.form_remove_debuff.success.removed_debuff=§7>> Se ha(n) eliminado los debuffs seleccionados correctamente al jugador %1.
+
+chat.system.form_revival_ply.error.player_invalid=§c>> Hubo un problema al intentar revivir al jugador seleccionado; es posible que se haya desconectado o sea inválido. Vuelve a intentarlo.
+chat.system.form_revival_ply.success_but.player_revive=§c>> Se ha revivido al jugador %1, pero no fue del todo correcto; la información del mismo aún está disponible en los registros del add-on. Usa el comando /changedeaths para eliminarlo.
+chat.system.form_revival_ply.success.player_revive=§a>> Se ha revivido al jugador %1 correctamente.
+
+chat.system.teleport_spect.error.no_args=§c>> No puedes usar este comando, aún. Muere primero. 
+chat.system.teleport_spect.error.player_invalid=§c>> Hubo un error al intentar obtener el jugador seleccionado debido a que se ha desconectado o es inválido. Intenta nuevamente.
+
+chat.random_msg_brute.msg1=§7§l[§r§4§lSobreviviente§7§l]§r Piglin Brute §7§l>>§r GG, L.
+chat.random_msg_brute.msg2=§7§l[§r§4§lSobreviviente§7§l]§r Piglin Brute §7§l>>§r ¿Eso fue todo? lol
+chat.random_msg_brute.msg3=§7§l[§r§4§lSobreviviente§7§l]§r Piglin Brute §7§l>>§r Bro se comió el cristal entero.
+chat.random_msg_brute.msg4=§7§l[§r§4§lSobreviviente§7§l]§r Piglin Brute §7§l>>§r Sin pestañar. lmao
+chat.random_msg_brute.msg5=§7§l[§r§4§lSobreviviente§7§l]§r Piglin Brute §7§l>>§r ¿Cuántos totems te quedan? Ah, ninguno.
+chat.random_msg_brute.msg6=§7§l[§r§4§lSobreviviente§7§l]§r Piglin Brute §7§l>>§r Literalmente gratis.
+chat.random_msg_brute.msg7=§7§l[§r§4§lSobreviviente§7§l]§r Piglin Brute §7§l>>§r Bro no sabe jugar. lmao
+chat.random_msg_brute.msg8=§7§l[§r§4§lSobreviviente§7§l]§r Piglin Brute §7§l>>§r No vuelvas a entrar en mi hole.
+chat.random_msg_brute.msg9=§7§l[§r§4§lSobreviviente§7§l]§r Piglin Brute §7§l>>§r Crystal diff. Fácil.
+chat.random_msg_brute.msg10=§7§l[§r§4§lSobreviviente§7§l]§r Piglin Brute §7§l>>§r GG bro, vuelve cuando aprendas a colocar cristales.
 
 
 ## Entity Names
@@ -487,6 +515,7 @@ ui.subtitle_custom.nurse_npc.idle=Una enfermera brillante quejándose
 ui.subtitle_custom.nurse_npc.hurt=Una enfermera brillante siendo lastimada
 ui.subtitle_custom.nurse_npc.purchased=Alguien le compró a una enfermera brillante
 ui.subtitle_custom.tnt_parried=Una dinamita fue desviada por un jugador
+ui.subtitle_custom.player_eat_banana=A alguien le gusta la banana
 
 ui.subtitle_custom.garfield.neutral_meow=Maullido de Garfield
 ui.subtitle_custom.garfield.angry_meow=Maullido furioso de Garfield

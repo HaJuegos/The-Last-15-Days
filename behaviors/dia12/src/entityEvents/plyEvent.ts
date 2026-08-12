@@ -24,6 +24,7 @@ class PlyEventsManager {
         this.customMusicBox();
         this.blockEnchants();
         this.parrySystem();
+        this.bruteMsgDeath();
     }
 
     /**
@@ -126,6 +127,40 @@ class PlyEventsManager {
                 }
             }
         }, worldToolsSimplified.convertSecondsToTicks(1));
+    }
+
+    /**
+     * Metodo auxiliar que controla los mensajes randoms que envia el piglin brute al matar a un jugador.
+     * @returns {void}
+     * @author HaJuegos - 07-08-2026
+     * @private
+     */
+    private bruteMsgDeath(): void {
+        afterEventsSimplified.onEntityDie((args) => {
+            const deathEntity = args.deadEntity;
+            const source = args.damageSource;
+            const sourceEntity = source.damagingEntity;
+
+            if ((deathEntity instanceof mc.Player) && (sourceEntity && sourceEntity.typeId == vanilla.MinecraftEntityTypes.PiglinBrute)) {
+                if (!sourceEntity.isValid) return;
+
+                const listOfMsg: string[] = [
+                    'chat.random_msg_brute.msg1',
+                    'chat.random_msg_brute.msg2',
+                    'chat.random_msg_brute.msg3',
+                    'chat.random_msg_brute.msg4',
+                    'chat.random_msg_brute.msg5',
+                    'chat.random_msg_brute.msg6',
+                    'chat.random_msg_brute.msg7',
+                    'chat.random_msg_brute.msg8',
+                    'chat.random_msg_brute.msg9',
+                    'chat.random_msg_brute.msg10'
+                ];
+                const randomI = Math.floor(Math.random() * listOfMsg.length);
+
+                worldToolsSimplified.sendMessageGlobal({ rawtext: [{ translate: `${listOfMsg[randomI]}` }] });
+            }
+        });
     }
 
     /**

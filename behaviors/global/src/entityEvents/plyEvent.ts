@@ -324,9 +324,69 @@ class PlyEventsManager extends TL15DBaseManager {
                 worldToolsSimplified.changeScoreInObj(entityWorldData, 'ha:royerbot_spawned', 'set', 1);
             }
 
+            this.createPointRoyerBot(ply);
             this.getEntityDataWorld();
         });
+
+        worldToolsSimplified.listenerScriptEvents((args) => {
+            const id = args.id;
+            const sourceEntity = args.sourceEntity;
+
+            if (!sourceEntity) return;
+
+            if (id == 'ha:test') {
+                this.createPointRoyerBot(sourceEntity as mc.Player);
+            }
+        });
     };
+
+    /**
+     * Metodo auxiliar que crea un waypoint custom en la locator bar para el NPC de RoyerBot.
+     * @param {mc.Player} ply Jugador en concreto a mostrar el waypoint.
+     * @returns {void}
+     * @author HaJuegos - 06-08-2026
+     * @private
+     */
+    private createPointRoyerBot(ply: mc.Player): void {
+        const over = mc.world.getDimension(vanilla.MinecraftDimensionTypes.Overworld);
+        const npcsEntities = over.getEntities({ type: vanilla.MinecraftEntityTypes.Npc });
+
+        if (!npcsEntities || npcsEntities.length == 0) return;
+
+        const royerEntity = npcsEntities.find((e) => e.getComponent(mc.EntityComponentTypes.SkinId)?.value == 1);
+
+        if (royerEntity) {
+            const coords = royerEntity.location;
+
+            const finalPoint = customEventsManager.createCustomWayPoint({
+                dimension: over,
+                location: coords,
+                targetPlys: ply,
+                visible: true,
+                iconTexture: {
+                    path: 'textures/ui/custom/royerbot_locator',
+                    iconHeight: 1,
+                    iconWidth: 1
+                }
+            });
+
+            if (!finalPoint) return;
+
+            beforeEventsSimplified.onEntityRemoved((args) => {
+                const entity = args.removedEntity;
+
+                if (entity.typeId == vanilla.MinecraftEntityTypes.Npc) {
+                    const variant = entity.getComponent(mc.EntityComponentTypes.SkinId);
+
+                    if (variant && variant.value == 1) {
+                        worldToolsSimplified.setRun(() => {
+                            finalPoint.isEnabled = false;
+                        });
+                    }
+                }
+            });
+        }
+    }
 
     /**
      * Metodo auxiliar que controla los eventos relacionados con la muerte de los jugadores.

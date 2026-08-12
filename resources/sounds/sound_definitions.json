@@ -286,14 +286,15 @@
             ]
         },
         "ui.banana_eated": {
-            "category": "ui",
+            "__use_legacy_max_distance": "true",
+            "category": "player",
             "min_distance": null,
             "max_distance": null,
-            "subtitle": "",
+            "subtitle": "ui.subtitle_custom.player_eat_banana",
             "sounds": [
                 {
                     "load_on_low_memory": true,
-                    "is3D": false,
+                    "is3D": true,
                     "name": "sounds/ui/banana_sound",
                     "stream": false,
                     "volume": 1
