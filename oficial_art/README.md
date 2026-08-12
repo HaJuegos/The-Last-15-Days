@@ -1,20 +1,26 @@
 # BANNERS DE CAMBIOS CANON DE TL15D
 
-- ****POSIBLEMENTE ESTOS BANNERS LES FALTE INFORMACION O ESTEN INCOMPLETOS, PARA SABER LOS CAMBIOS AL 100%, [REVISA LA PAGINA OFICIAL DE GITHUB](https://github.com/HaJuegos/The-Last-15-Days?tab=readme-ov-file#lista-de-cambios)****
-- ****POSIBLEMENTE ESTOS BANNERS LES FALTE INFORMACION O ESTEN INCOMPLETOS, PARA SABER LOS CAMBIOS AL 100%, [REVISA LA PAGINA OFICIAL DE GITHUB](https://github.com/HaJuegos/The-Last-15-Days?tab=readme-ov-file#lista-de-cambios)****
-- ****POSIBLEMENTE ESTOS BANNERS LES FALTE INFORMACION O ESTEN INCOMPLETOS, PARA SABER LOS CAMBIOS AL 100%, [REVISA LA PAGINA OFICIAL DE GITHUB](https://github.com/HaJuegos/The-Last-15-Days?tab=readme-ov-file#lista-de-cambios)****
+- **POSIBLEMENTE ESTOS BANNERS LES FALTE INFORMACION O ESTEN INCOMPLETOS, PARA SABER LOS CAMBIOS AL 100%, [REVISA LA PAGINA OFICIAL DE GITHUB](https://github.com/HaJuegos/The-Last-15-Days/wiki/Cambios-de-Dificultad)**
+- **POSIBLEMENTE ESTOS BANNERS LES FALTE INFORMACION O ESTEN INCOMPLETOS, PARA SABER LOS CAMBIOS AL 100%, [REVISA LA PAGINA OFICIAL DE GITHUB](https://github.com/HaJuegos/The-Last-15-Days/wiki/Cambios-de-Dificultad)**
+- **POSIBLEMENTE ESTOS BANNERS LES FALTE INFORMACION O ESTEN INCOMPLETOS, PARA SABER LOS CAMBIOS AL 100%, [REVISA LA PAGINA OFICIAL DE GITHUB](https://github.com/HaJuegos/The-Last-15-Days/wiki/Cambios-de-Dificultad)**
 
 # Dia 0
 
 ![1](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/main/oficial_art/banners/dia0/1.png)
-![2](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/main/oficial_art/banners/dia0/2.jpg)
-![3](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/main/oficial_art/banners/dia0/3.jpg)
-![4](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/main/oficial_art/banners/dia0/4.jpg)
+![2](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/main/oficial_art/banners/dia0/2.png)
+![3](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/main/oficial_art/banners/dia0/3.png)
+![4](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/main/oficial_art/banners/dia0/4.png)
 ![5](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/main/oficial_art/banners/dia0/5.png)
-![6](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/main/oficial_art/banners/dia0/6.jpg)
-![7](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/main/oficial_art/banners/dia0/7.jpg)
-![8](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/main/oficial_art/banners/dia0/8.jpg)
-![9](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/main/oficial_art/banners/dia0/9.jpg)
+![6](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/main/oficial_art/banners/dia0/6.png)
+![7](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/main/oficial_art/banners/dia0/7.png)
+![8](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/main/oficial_art/banners/dia0/8.png)
+![9](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/main/oficial_art/banners/dia0/9.png)
+![10](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/main/oficial_art/banners/dia0/10.png)
+![11](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/main/oficial_art/banners/dia0/11.png)
+![12](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/main/oficial_art/banners/dia0/12.png)
+![13](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/main/oficial_art/banners/dia0/13.png)
+![14](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/main/oficial_art/banners/dia0/14.png)
+![15](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/main/oficial_art/banners/dia0/15.png)
 
 # Dia 1
 

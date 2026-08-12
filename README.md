@@ -40,7 +40,7 @@
 			<td><strong>Astral302:</strong> Colaborador principal en mejorar y crear el estilo artístico del add-on.</td>
 		</tr>
 		<tr>
-			<td align="center" width="200px"><img src="https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/main/.github/icon_template/fundy.png" width="100px" alt="Fundy"/><br /><sub><b>Idea Original de Garfield</b></sub></td>
+			<td align="center" width="200px"><img src="https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/main/.github/icon_template/fundy.jpg" width="100px" alt="Fundy"/><br /><sub><b>Idea Original de Garfield</b></sub></td>
 			<td><strong>Fundy:</strong> Creador del plugin de Garfield adaptado al Add-on. <a href="https://www.youtube.com/watch?v=7mA2c0vx2VQ" target="_blank">Mira su video aquí</a></td>
 		</tr>
 	</table>
