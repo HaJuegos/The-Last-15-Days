@@ -511,13 +511,6 @@
                         },
                         "cause": "all",
                         "deals_damage": "no"
-                    },
-                    {
-                        "on_damage": {
-                            "event": "ha:chance_explodes"
-                        },
-                        "cause": "all",
-                        "deals_damage": "yes"
                     }
                 ]
             },
@@ -646,27 +639,6 @@
             }
         },
         "events": {
-            "ha:chance_explodes": {
-                "randomize": [
-                    {
-                        "weight": 95
-                    },
-                    {
-                        "weight": 5,
-                        "queue_command": {
-                            "command": [
-                                "playsound mob.start_exploding.sound @a ~~~"
-                            ]
-                        },
-                        "add": {
-                            "component_groups": [
-                                "ha:start_exploding"
-                            ]
-                        }
-                    }
-                ]
-            },
-
             "minecraft:entity_spawned": {
                 "sequence": [
                     {

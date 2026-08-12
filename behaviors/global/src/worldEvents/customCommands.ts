@@ -642,10 +642,10 @@ class CustomCmdsEvents extends TL15DBaseManager {
                                 try {
                                     if (btnI == 0) {
                                         for (const debuff of this.listOfDebuffs) {
-                                            this.clearDebuff(ply, debuff);
+                                            this.clearDebuff(selectedPly, debuff);
                                         }
                                     } else {
-                                        this.clearDebuff(ply, this.listOfDebuffs[btnI - 1]);
+                                        this.clearDebuff(selectedPly, this.listOfDebuffs[btnI - 1]);
                                     }
 
                                     sourcePly.sendMessage({ rawtext: [{ translate: 'chat.system.form_remove_debuff.success.removed_debuff', with: { rawtext: [{ text: `${selectedPly.name}` }] } }] });
@@ -660,7 +660,7 @@ class CustomCmdsEvents extends TL15DBaseManager {
                 });
             })
         },
-        // Comando para revivir un jugador dentor del mundo.
+        // Comando para revivir un jugador dentro del mundo.
         {
             prefixCmd: 'ha:reviveply',
             description: 'Comando que revive manualmente a un jugador que haya muerto y esté dentro del mundo. Con fines de depuración.',

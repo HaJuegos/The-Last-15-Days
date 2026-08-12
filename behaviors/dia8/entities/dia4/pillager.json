@@ -421,56 +421,33 @@
             "minecraft:spawn_for_raid": {
                 "sequence": [
                     {
-                        "sequence": [
-                            {
-                                "add": {
-                                    "component_groups": [
-                                        "minecraft:ranged_attack",
-                                        "minecraft:raid_configuration",
-                                        "minecraft:raid_persistence"
-                                    ]
-                                }
-                            },
-                            {
-                                "randomize": [
-                                    {
-                                        "weight": 60
-                                    },
-                                    {
-                                        "weight": 40,
-                                        "add": {
-                                            "component_groups": [
-                                                "minecraft:patrol_follower"
-                                            ]
-                                        }
-                                    },
-                                    {
-                                        "weight": 40,
-                                        "add": {
-                                            "component_groups": [
-                                                "minecraft:illager_squad_captain"
-                                            ]
-                                        }
-                                    }
-                                ]
-                            }
-                        ]
+                        "add": {
+                            "component_groups": [
+                                "minecraft:ranged_attack",
+                                "minecraft:raid_configuration",
+                                "minecraft:raid_persistence",
+                                "ha:bomber_raid_spawned"
+                            ]
+                        }
                     },
                     {
                         "randomize": [
                             {
-                                "weight": 1,
+                                "weight": 60
+                            },
+                            {
+                                "weight": 40,
                                 "add": {
                                     "component_groups": [
-                                        "ha:bomber_captain_spawned"
+                                        "minecraft:patrol_follower"
                                     ]
                                 }
                             },
                             {
-                                "weight": 1,
+                                "weight": 40,
                                 "add": {
                                     "component_groups": [
-                                        "ha:bomber_raid_spawned"
+                                        "minecraft:illager_squad_captain"
                                     ]
                                 }
                             }

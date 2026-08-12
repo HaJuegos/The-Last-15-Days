@@ -10,64 +10,6 @@
             "is_summonable": true
         },
         "component_groups": {
-            "ha:from_end": {
-                "minecraft:persistent": { },
-                "minecraft:leashable": {
-                    "can_be_cut": false,
-                    "can_be_stolen": false,
-                    "presets": [
-                        {
-                            "hard_distance": 10,
-                            "soft_distance": 5,
-                            "max_distance": 20
-                        }
-                    ]
-                },
-                "minecraft:behavior.nearest_attackable_target": {
-                    "priority": 2,
-                    "must_see": false,
-                    "reselect_targets": true,
-                    "attack_owner": true,
-                    "entity_types": {
-                        "filters": {
-                            "any_of": [
-                                {
-                                    "test": "is_family",
-                                    "subject": "other",
-                                    "value": "wolf"
-                                },
-                                {
-                                    "test": "is_family",
-                                    "subject": "other",
-                                    "value": "player"
-                                },
-                                {
-                                    "test": "is_family",
-                                    "subject": "other",
-                                    "value": "irongolem"
-                                },
-                                {
-                                    "test": "is_family",
-                                    "subject": "other",
-                                    "value": "snowgolem"
-                                }
-                            ]
-                        },
-                        "max_dist": 90
-                    }
-                },
-                "minecraft:behavior.ranged_attack": {
-                    "priority": 0,
-                    "attack_interval_min": 1.15,
-                    "attack_interval_max": 2,
-                    "attack_radius": 90,
-                    "speed_multiplier": 1.35,
-                    "ranged_fov": 360
-                },
-                "minecraft:follow_range": {
-                    "value": 9999
-                }
-            },
             "ha:start_exploding": {
                 "minecraft:damage_sensor": { },
                 "minecraft:explode": {
@@ -329,6 +271,13 @@
             }
         },
         "components": {
+            "minecraft:reflect_projectiles": {
+                "reflected_projectiles": [
+                    "llama_spit"
+                ],
+                "azimuth_angle": "180.0 + Math.random(-20.0, 20.0)",
+                "reflection_scale": "0.5"
+            },
             "minecraft:shooter": {
                 "def": "minecraft:llama_spit"
             },
@@ -405,10 +354,23 @@
                 "triggers": [
                     {
                         "on_damage": {
-                            "event": "ha:chance_explodes"
+                            "filters": {
+                                "any_of": [
+                                    {
+                                        "test": "is_family",
+                                        "subject": "other",
+                                        "value": "llama"
+                                    },
+                                    {
+                                        "test": "is_family",
+                                        "subject": "damager",
+                                        "value": "llama"
+                                    }
+                                ]
+                            }
                         },
                         "cause": "all",
-                        "deals_damage": "yes"
+                        "deals_damage": "no"
                     }
                 ]
             },
@@ -568,20 +530,6 @@
                                 "trigger": "minecraft:spawn_baby"
                             }
                         ]
-                    }
-                ]
-            },
-            "ha:spawned_from_end": {
-                "sequence": [
-                    {
-                        "trigger": "minecraft:entity_spawned"
-                    },
-                    {
-                        "add": {
-                            "component_groups": [
-                                "ha:from_end"
-                            ]
-                        }
                     }
                 ]
             },

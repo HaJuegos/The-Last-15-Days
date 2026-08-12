@@ -271,6 +271,13 @@
             }
         },
         "components": {
+            "minecraft:reflect_projectiles": {
+                "reflected_projectiles": [
+                    "llama_spit"
+                ],
+                "azimuth_angle": "180.0 + Math.random(-20.0, 20.0)",
+                "reflection_scale": "0.5"
+            },
             "minecraft:shooter": {
                 "def": "minecraft:llama_spit"
             },
@@ -347,10 +354,23 @@
                 "triggers": [
                     {
                         "on_damage": {
-                            "event": "ha:chance_explodes"
+                            "filters": {
+                                "any_of": [
+                                    {
+                                        "test": "is_family",
+                                        "subject": "other",
+                                        "value": "llama"
+                                    },
+                                    {
+                                        "test": "is_family",
+                                        "subject": "damager",
+                                        "value": "llama"
+                                    }
+                                ]
+                            }
                         },
                         "cause": "all",
-                        "deals_damage": "yes"
+                        "deals_damage": "no"
                     }
                 ]
             },

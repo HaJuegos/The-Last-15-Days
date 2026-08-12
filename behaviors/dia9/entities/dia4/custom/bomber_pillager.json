@@ -472,13 +472,40 @@
             },
 
             "minecraft:spawn_for_raid": {
-                "add": {
-                    "component_groups": [
-                        "ha:ranged_attack",
-                        "minecraft:raid_configuration",
-                        "minecraft:raid_persistence"
-                    ]
-                }
+                "sequence": [
+                    {
+                        "add": {
+                            "component_groups": [
+                                "ha:ranged_attack",
+                                "minecraft:raid_configuration",
+                                "minecraft:raid_persistence"
+                            ]
+                        }
+                    },
+                    {
+                        "randomize": [
+                            {
+                                "weight": 1
+                            },
+                            {
+                                "weight": 1,
+                                "add": {
+                                    "component_groups": [
+                                        "minecraft:illager_squad_captain"
+                                    ]
+                                }
+                            },
+                            {
+                                "weight": 1,
+                                "add": {
+                                    "component_groups": [
+                                        "minecraft:patrol_follower"
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                ]
             },
             "minecraft:spawn_as_illager_captain": {
                 "add": {
