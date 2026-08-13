@@ -53,7 +53,8 @@
 Este proyecto es una comision previa realizada por RosherRandom. Todos los creditos a el mismo. Igualmente a todos los sonidos o efectos de sonidos
 
 - 📖 **[Wiki General e Información del Add-on](https://github.com/HaJuegos/The-Last-15-Days/wiki)**: Revisa guías, mecánicas y preguntas frecuentes o mas!
-- ⚔️ **[Cambios de Dificultad](https://github.com/HaJuegos/The-Last-15-Days/wiki)**: Enterate de todos los cambios que contiene este add-on consecutivo.
+- ⚔️ **[Cambios de Dificultad](https://github.com/HaJuegos/The-Last-15-Days/wiki/Cambios-de-Dificultad)**: Enterate de todos los cambios que contiene este add-on.
+- 🤺 **[Cambios de Dificultad - Banners](https://github.com/HaJuegos/The-Last-15-Days/wiki/Cambios-de-Dificultad)**: Enterate de todos los cambios que contiene este add-on. ¡Pero con imagenes!.
 
 ---
 
