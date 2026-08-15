@@ -11,6 +11,17 @@
         },
         "component_groups": {
             "ha:spider_zombie_jockey_end": {
+                "minecraft:behavior.hurt_by_target": {
+                    "priority": 3,
+                    "entity_types": {
+                        "filters": {
+                            "test": "is_family",
+                            "subject": "other",
+                            "operator": "!=",
+                            "value": "dragon"
+                        }
+                    }
+                },
                 "minecraft:persistent": { },
                 "minecraft:type_family": {
                     "family": [

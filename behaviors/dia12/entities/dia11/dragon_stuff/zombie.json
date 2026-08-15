@@ -77,6 +77,29 @@
                 }
             },
             "ha:jockey_zombie_end": {
+                "minecraft:behavior.hurt_by_target": {
+                    "priority": 1,
+                    "entity_types": [
+                        {
+                            "filters": {
+                                "any_of": [
+                                    {
+                                        "test": "is_family",
+                                        "subject": "other",
+                                        "operator": "not",
+                                        "value": "breeze"
+                                    },
+                                    {
+                                        "test": "is_family",
+                                        "subject": "other",
+                                        "operator": "not",
+                                        "value": "dragon"
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
                 "minecraft:persistent": { },
                 "minecraft:type_family": {
                     "family": [ "zombie_jockey", "zombie", "undead", "monster", "mob" ]

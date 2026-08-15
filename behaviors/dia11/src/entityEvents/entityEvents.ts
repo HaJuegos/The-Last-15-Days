@@ -44,6 +44,15 @@ class EntityEventsManager extends TL15DBaseManager {
     ];
 
     /**
+     * Variable adiccional y auxiliar en caso para evitar que las entidades que generan llamas no se muevan de su posicion.
+     * @type {Map<string, { coords: mc.Vector3, dime: mc.Dimension; }>}
+     * @author HaJuegos - 13-08-2026
+     * @readonly
+     * @private
+     */
+    private readonly llamasGeneratorsCoords: Map<string, { coords: mc.Vector3, dime: mc.Dimension; }> = new Map();
+
+    /**
      * Eventos iniciales de la clase cuando es llamada o inicializada.
      * @constructor
      */
@@ -614,6 +623,9 @@ class EntityEventsManager extends TL15DBaseManager {
                 case 'ha:nurse_npc': {
                     entity.nameTag = `Shimmered Nurse`;
                 } break;
+                case 'ha:crystal_llama_generator': {
+                    this.llamaGeneratorCheck(entity);
+                } break;
             }
         });
 
@@ -622,18 +634,112 @@ class EntityEventsManager extends TL15DBaseManager {
 
             if (!entity.isValid) return;
 
-            if (entity.typeId == vanilla.MinecraftEntityTypes.SulfurCube) {
-                const idLoop = worldToolsSimplified.setLoop(() => {
-                    if (entity.isValid) {
-                        try {
-                            entity.dimension.createExplosion(entity.location, 4, { allowUnderwater: true, source: entity });
-                        } catch { }
-                    } else {
-                        worldToolsSimplified.stopLoop(idLoop);
-                    }
-                }, worldToolsSimplified.convertSecondsToTicks(150));
+            switch (entity.typeId) {
+                case vanilla.MinecraftEntityTypes.SulfurCube: {
+                    const idLoop = worldToolsSimplified.setLoop(() => {
+                        if (entity.isValid) {
+                            try {
+                                entity.dimension.createExplosion(entity.location, 4, { allowUnderwater: true, source: entity });
+                            } catch { }
+                        } else {
+                            worldToolsSimplified.stopLoop(idLoop);
+                        }
+                    }, worldToolsSimplified.convertSecondsToTicks(150));
+                } break;
+                case 'ha:crystal_llama_generator': {
+                    this.llamaGeneratorCheck(entity);
+                } break;
             }
         });
+    }
+
+    /**
+     * Metodo auxiliar de la logica de generacion y chekeo de generacion de llamas o mobs en la posicion donde exploto un cristal.
+     * @param {mc.Entity} entity Entidad en concreto a considerar que es el generador de mobs. 
+     * @returns {void}
+     * @author HaJuegos - 14-08-2026
+     * @private
+     */
+    private llamaGeneratorCheck(entity: mc.Entity): void {
+        const spawnedCoords = entity.location;
+        const spawnedDime = entity.dimension;
+
+        if (!this.llamasGeneratorsCoords.has(entity.id)) {
+            this.llamasGeneratorsCoords.set(entity.id, { coords: spawnedCoords, dime: spawnedDime });
+        }
+
+        // Tp constante
+        const loopTPId = worldToolsSimplified.setLoop(() => {
+            if (entity.isValid) {
+                const data = this.llamasGeneratorsCoords.get(entity.id);
+
+                if (!data) {
+                    worldToolsSimplified.stopLoop(loopTPId);
+                    return;
+                };
+
+                try {
+                    entity.tryTeleport(data.coords, { dimension: data.dime });
+                } catch { }
+            } else {
+                this.llamasGeneratorsCoords.delete(entity.id);
+                worldToolsSimplified.stopLoop(loopTPId);
+            }
+        }, 1);
+
+        // Revisar spawn constante
+        const loopCheckSpawn = worldToolsSimplified.setLoop(async () => {
+            if (entity.isValid) {
+                const worldData = await this.getEntityDataWorld();
+                const canSpawnMobs = worldToolsSimplified.getScoreInObj(worldData, 'ha:canMobsSpawnOnCrystal') == 1;
+                const mobChanged = worldToolsSimplified.getScoreInObj(worldData, 'ha:changeMobSpawnOnCrystal') == 1;
+
+                if (canSpawnMobs && !mobChanged) {
+                    entity.triggerEvent('ha:set_manual_llamas');
+                } else {
+                    entity.triggerEvent('ha:remove_spawn_llamas');
+                }
+            } else {
+                worldToolsSimplified.stopLoop(loopCheckSpawn);
+            }
+        }, worldToolsSimplified.convertSecondsToTicks(1));
+
+        // Spawn mob constante
+        const mobLoops = (() => {
+            if (!entity.isValid) return;
+
+            const maxSeconds = Math.floor(Math.random() * (120 - 90 + 1)) + 90;
+
+            worldToolsSimplified.setDelay(async () => {
+                if (!entity.isValid) return;
+
+                try {
+                    const worldData = await this.getEntityDataWorld();
+                    const canSpawnMobs = worldToolsSimplified.getScoreInObj(worldData, 'ha:canMobsSpawnOnCrystal') == 1;
+                    const mobChanged = worldToolsSimplified.getScoreInObj(worldData, 'ha:changeMobSpawnOnCrystal') == 1;
+
+                    if (canSpawnMobs && mobChanged) {
+                        let customMobId: string | undefined;
+                        const objective = worldToolsSimplified.getOrCreateScorebordObj('ha:custom_entity_crystal');
+
+                        if (objective) {
+                            for (const participant of objective.getParticipants()) {
+                                customMobId = participant.displayName;
+                                break;
+                            }
+                        }
+
+                        if (customMobId) {
+                            entity.dimension.spawnEntity(customMobId as mc.VanillaEntityIdentifier, entity.location);
+                        }
+                    }
+                } catch { }
+
+                mobLoops();
+            }, worldToolsSimplified.convertSecondsToTicks(maxSeconds));
+        });
+
+        mobLoops();
     }
 
     /**

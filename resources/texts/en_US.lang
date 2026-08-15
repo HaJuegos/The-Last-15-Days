@@ -150,6 +150,19 @@ ui.form_remove_debuff.title=§v§lClear Debuffs§r
 ui.form_remove_debuff.subtitle=§7§oThis form shows all the debuffs that can be cleared from player %1. This doesn't mean they have all of these debuffs; these are just the available options for removal. Keep in mind that this is only meant to be used if something went wrong and for debugging purposes. It's not recommended to use this system too often.§r
 ui.form_remove_debuff.btn.deleted_all=§4§lClear All.§r
 
+ui.custom_command.desc.autoban=Command that allows you to toggle the automatic ban feature for dead players. Enable or disable this feature.
+ui.custom_command.desc.hitboxes=Command that allows you to toggle the visibility of entity hitboxes. Enable or disable this feature.
+ui.custom_command.desc.change_fastitems=Command that allows you to change the items accepted by the quick-item mechanic, replacing or adding to the entire list of allowed items.
+ui.custom_command.desc.check_deaths=Command that allows you to review the list of dead players recorded by the add-on. For debugging purposes.
+ui.custom_command.desc.seed=Command that displays the seed of the current world.
+ui.custom_command.desc.change_deaths=Command that displays the full list of dead players recorded by the add-on and removes their entries from the add-on. For debugging purposes.
+ui.custom_command.desc.remove_linkeds = Command that displays the full list of linked players and allows them to be linked. For debugging purposes.
+ui.custom_command.desc.change_debuffs=Command that allows you to toggle the functionality of the Day 9 debuff or curse system, enabling or disabling it.
+ui.custom_command.desc.change_debuffs_ply=Command that allows you to remove one or all of a player’s debuffs.
+ui.custom_command.desc.force_revive_ply=Command that allows you to forcibly revive a player, while also deleting their data.
+ui.custom_command.desc.tp_spectator=Command that allows you to teleport to a player in spectator mode without an operator.
+ui.custom_command.desc.change_royerbot_fight=Command that allows you to toggle and modify the combat characteristics of the Day 10 RoyerBot.
+
 
 ## Chat texts
 chat.system.resquicio_start=§c§l>>§r§c ¡%1 caused a §4§lHellish Rift§r!
@@ -208,7 +221,9 @@ chat.system.get_cautious_item=§w>> %1 has obtained %2§r§7 | (%3/4)
 chat.system.dragon_attack_finished.nausea=§7>> The Nauseas effect has ended.
 chat.system.dragon_attack_finished.conduit=§7>> The Conduit effect has ended.
 chat.system.timer_bear_trap.starts=§7>> You were hit by a bear trap. You cannot move for %1 seconds.
-chat.system.ender_crystal_explodes=§4§l>> An EnderCrystal explodes at %1. Llamas will now appear in the arena.
+chat.system.ender_crystal_explodes.default=§4§l>> An EnderCrystal explodes at %1. Llamas will now appear in the arena.
+chat.system.ender_crystal_explodes.custom_mob=§4§l>> An EnderCrystal explodes at %1. Mobs will now appear in the arena.
+chat.system.ender_crystal_explodes.removed=§7>> An EnderCrystal explodes at %1. But it's all right, because mob spawning in crystals has been disabled.
 chat.system.no_end_islands=§7>> You're not allowed to go to the End Islands yet. Come back tomorrow and/or finish fighting the dragon.
 chat.system.spawn_items_rain=§d>> An item rain has occurred in %1.
 chat.system.spawn_totems_rain=§e>> A totem rain has occurred in %1.
@@ -261,6 +276,16 @@ chat.random_msg_brute.msg7=§7§l[§r§4§lSobreviviente§7§l]§r Piglin Brute 
 chat.random_msg_brute.msg8=§7§l[§r§4§lSobreviviente§7§l]§r Piglin Brute §7§l>>§r Don't come back to my hole.
 chat.random_msg_brute.msg9=§7§l[§r§4§lSobreviviente§7§l]§r Piglin Brute §7§l>>§r Crystal diff. Easy.
 chat.random_msg_brute.msg10=§7§l[§r§4§lSobreviviente§7§l]§r Piglin Brute §7§l>>§r GG bro, come back when you learn how to place crystals.
+
+chat.system.change_feature_fight=§7>> Feature %1 for the fight with RoyerBot has been successfully %2.
+chat.system.change_feature_fight.args.true=enabled
+chat.system.change_feature_fight.args.false=disabled
+chat.system.change_feature_fight.error.missing_entity=§c>> The entity to be changed is required if you want to modify which mob spawns at EnderCrystals.
+chat.system.change_feature_fight.error.no_valid_entity=§c>> This entity cannot be changed; please select a valid one.
+chat.system.change_feature_fight.mob_change=§7>> Feature %1 was successfully changed to mob %2.
+
+
+chat.system.no_mele_brute=§4§l>> This mob cannot be attacked in melee. Use explosions instead!
 
 
 ## Entity Names

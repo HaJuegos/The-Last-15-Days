@@ -25,6 +25,17 @@
         },
         "component_groups": {
             "ha:from_creeper": {
+                "minecraft:behavior.hurt_by_target": {
+                    "priority": 1,
+                    "entity_types": {
+                        "filters": {
+                            "test": "is_family",
+                            "subject": "other",
+                            "operator": "!=",
+                            "value": "dragon"
+                        }
+                    }
+                },
                 "minecraft:leashable": {
                     "can_be_stolen": false,
                     "can_be_cut": false,

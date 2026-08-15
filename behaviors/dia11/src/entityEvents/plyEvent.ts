@@ -446,6 +446,18 @@ class PlyEventsManager {
      * @author HaJuegos - 28-06-2026
      */
     private onHitSystem(): void {
+        afterEventsSimplified.onHitEntity((args) => {
+            const hitEntity = args.hitEntity;
+            const sourceEntity = args.damagingEntity;
+
+            if (!hitEntity.isValid || !sourceEntity.isValid) return;
+
+            if (hitEntity.typeId == vanilla.MinecraftEntityTypes.PiglinBrute && sourceEntity instanceof mc.Player) {
+                sourceEntity.sendMessage({ rawtext: [{ translate: 'chat.system.no_mele_brute' }] });
+                sourceEntity.playSound('ui.error_item');
+            }
+        });
+
         beforeEventsSimplified.onEntityHurt((args) => {
             const ply = args.hurtEntity;
             const sourcePly = args.damageSource.damagingEntity;

@@ -31,7 +31,7 @@
                     "value": 0.45
                 },
                 "minecraft:behavior.melee_box_attack": {
-                    "priority": 2
+                    "priority": 0
                 }
             },
             "minecraft:riding": {
@@ -107,10 +107,6 @@
             "minecraft:type_family": {
                 "family": [ "enderman", "monster", "mob" ]
             },
-            "minecraft:breathable": {
-                "total_supply": 15,
-                "suffocate_time": 0
-            },
             "minecraft:nameable": {
             },
             "minecraft:loot": {
@@ -166,7 +162,7 @@
                 "despawn_from_distance": { }
             },
             "minecraft:behavior.nearest_attackable_target": {
-                "priority": 5,
+                "priority": 2,
                 "must_see": true,
                 "reselect_targets": true,
                 "entity_types": [
@@ -211,7 +207,16 @@
                 ]
             },
             "minecraft:navigation.walk": {
-                "can_path_over_water": true
+                "avoid_damage_blocks": false,
+                "avoid_portals": true,
+                "can_swim": true,
+                "can_float": true,
+                "can_jump": true,
+                "can_sink": true,
+                "can_walk": true,
+                "can_path_over_water": true,
+                "can_walk_in_lava": true,
+                "can_path_over_lava": true
             },
             "minecraft:movement.basic": {
             },
@@ -236,24 +241,36 @@
                 "base_value": 1.0625, // 1 block + 1 pixel
                 "jump_prevented_value": 0.5625 // 0.5 blocks + 1 pixel
             },
+            "minecraft:underwater_movement": {
+                "value": 0.15
+            },
+            "minecraft:lava_movement": {
+                "value": 0.2
+            },
+            "minecraft:floats_in_liquid": { },
+            "minecraft:behavior.rise_to_liquid_level": {
+                "priority": 9,
+                "liquid_y_offset": 0,
+                "rise_delta": 0,
+                "sink_delta": 0
+            },
             "minecraft:behavior.float": {
-                "priority": 0
+                "priority": 3
             },
             "minecraft:behavior.random_stroll": {
-                "priority": 7,
+                "priority": 4,
                 "speed_multiplier": 1.0
             },
             "minecraft:behavior.look_at_player": {
-                "priority": 8,
+                "priority": 5,
                 "look_distance": 8.0,
                 "probability": 1.0
             },
             "minecraft:behavior.random_look_around": {
-                "priority": 8
+                "priority": 6
             },
             "minecraft:behavior.hurt_by_target": {
-                "priority": 3,
-                "alert_same_type": true,
+                "priority": 1,
                 "entity_types": {
                     "filters": {
                         "none_of": [
@@ -269,13 +286,13 @@
                 }
             },
             "minecraft:behavior.place_block": {
-                "priority": 10,
+                "priority": 7,
                 "xz_range": [ -1, 1 ],
                 "y_range": [ 0, 2 ],
                 "chance": 0.0005
             },
             "minecraft:behavior.take_block": {
-                "priority": 11,
+                "priority": 8,
                 "xz_range": [ -2, 2 ],
                 "y_range": [ 0, 3 ],
                 "chance": 0.05,
