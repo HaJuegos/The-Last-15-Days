@@ -256,7 +256,7 @@
         },
         "components": {
             "minecraft:lava_movement": {
-                "value": 0.15
+                "value": 0.2
             },
             "minecraft:behavior.rise_to_liquid_level": {
                 "priority": 8,

@@ -11,6 +11,26 @@
         },
         "component_groups": {
             "ha:from_end": {
+                "minecraft:behavior.hurt_by_target": {
+                    "priority": 1,
+                    "hurt_owner": true,
+                    "entity_types": {
+                        "filters": {
+                            "none_of": [
+                                {
+                                    "test": "is_family",
+                                    "subject": "other",
+                                    "value": "llama"
+                                },
+                                {
+                                    "test": "is_family",
+                                    "subject": "other",
+                                    "value": "dragon"
+                                }
+                            ]
+                        }
+                    }
+                },
                 "minecraft:persistent": { },
                 "minecraft:leashable": {
                     "can_be_cut": false,
@@ -59,7 +79,7 @@
                 "minecraft:behavior.ranged_attack": {
                     "priority": 0,
                     "attack_interval_min": 1.15,
-                    "attack_interval_max": 2,
+                    "attack_interval_max": 2.35,
                     "attack_radius": 90,
                     "speed_multiplier": 1.35,
                     "ranged_fov": 360

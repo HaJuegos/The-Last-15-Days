@@ -150,6 +150,19 @@ ui.form_remove_debuff.title=§v§lLimpiar Debuff§r
 ui.form_remove_debuff.subtitle=§7§oEste formulario muestra todos los debuffs que se pueden limpiar al jugador %1. Esto no quiere decir que tenga todos estos debuffs; son solo las opciones disponibles para eliminar. Ten en cuenta que esto es solo por si algo salió mal y con fines depurativos. No se recomienda usar mucho este sistema.
 ui.form_remove_debuff.btn.deleted_all=§4§lLimpiar Todos.§r
 
+ui.custom_command.desc.autoban=Comando que permite alternar la funcionalidad del baneo automático de jugadores muertos. Habilitando o deshabilitando esta función.
+ui.custom_command.desc.hitboxes=Comando que permite alternar la visibilidad de las hitboxes de las entidades. Habilitándolo o deshabilitándolo.
+ui.custom_command.desc.change_fastitems=Comando que permite cambiar los ítems que acepta la mecánica de los ítems rápidos, reemplazando o añadiendo toda la lista de ítems permitidos.
+ui.custom_command.desc.check_deaths=Comando que permite revisar la lista de jugadores muertos registrados en el add-on. Con fines depurativos.
+ui.custom_command.desc.seed=Comando que muestra la semilla del mundo actual.
+ui.custom_command.desc.change_deaths=Comando que muestra toda la lista de jugadores muertos registrados en el add-on y elimina su registro del mismo. Con fines depurativos.
+ui.custom_command.desc.remove_linkeds = Comando que muestra toda la lista de jugadores vinculados entre sí y permite la vinculación de los mismos. Con fines depurativos.
+ui.custom_command.desc.change_debuffs=Comando que permite alternar la funcionalidad del sistema de debuffs o maldiciones del Día 9, habilitándolo o deshabilitándolo.
+ui.custom_command.desc.change_debuffs_ply=Comando que permite eliminar uno o todos los debuffs que tenga un jugador.
+ui.custom_command.desc.force_revive_ply=Comando que permite revivir a un jugador de forma forzada, eliminando sus datos también.
+ui.custom_command.desc.tp_spectator=Comando que permite teletransportarte a un jugador, en modo espectador sin operador.
+ui.custom_command.desc.change_royerbot_fight=Comando que permite alternar y modificar características de la pelea del RoyerBot del Día 10.
+
 
 ## Chat texts
 chat.system.resquicio_start=§c§l>>§r§c ¡%1 ha causado un §4§lResquicio Infernal§r!
@@ -208,7 +221,9 @@ chat.system.get_cautious_item=§w>> %1 ha conseguido el ítem %2.§r§7 | (%3/4)
 chat.system.dragon_attack_finished.nausea=§7>> Se ha terminado el efecto de Nauseas.
 chat.system.dragon_attack_finished.conduit=§7>> Se ha terminado el efecto del Conduit.
 chat.system.timer_bear_trap.starts=§7>> Fuiste atacado por una trampa de osos. No puedes moverte durante %1 segundos.
-chat.system.ender_crystal_explodes=§4§l>> Un EnderCrystal fue explotado en %1. Ahora apareceran Llamas en la arena.
+chat.system.ender_crystal_explodes.default=§4§l>> Un EnderCrystal fue explotado en %1. Ahora apareceran Llamas en la arena.
+chat.system.ender_crystal_explodes.custom_mob=§4§l>> Un EnderCrystal fue explotado en %1. Ahora apareceran mobs en la arena.
+chat.system.ender_crystal_explodes.removed=§7>> Un EnderCrystal fue explotado en %1. Pero todo está bien, porque se ha deshabilitado la generación de mobs en cristales.
 chat.system.no_end_islands=§7>> Aún no tienes permitido ir a las islas del End. Regresa al día siguiente y/o termina de pelear con el dragón.
 chat.system.spawn_items_rain=§d>> Una lluvia de ítems ha ocurrido en %1.
 chat.system.spawn_totems_rain=§e>> Una lluvia de tótems ha ocurrido en %1.
@@ -261,6 +276,16 @@ chat.random_msg_brute.msg7=§7§l[§r§4§lSobreviviente§7§l]§r Piglin Brute 
 chat.random_msg_brute.msg8=§7§l[§r§4§lSobreviviente§7§l]§r Piglin Brute §7§l>>§r No vuelvas a entrar en mi hole.
 chat.random_msg_brute.msg9=§7§l[§r§4§lSobreviviente§7§l]§r Piglin Brute §7§l>>§r Crystal diff. Fácil.
 chat.random_msg_brute.msg10=§7§l[§r§4§lSobreviviente§7§l]§r Piglin Brute §7§l>>§r GG bro, vuelve cuando aprendas a colocar cristales.
+
+chat.system.change_feature_fight=§7>> Se ha %2 la característica %1 de la pelea con el RoyerBot correctamente.
+chat.system.change_feature_fight.args.true=habilitado
+chat.system.change_feature_fight.args.false=deshabilitado
+chat.system.change_feature_fight.error.missing_entity=§c>> Hace falta la entidad a cambiar si quieres modificar qué mob spawnea en EnderCrystals.
+chat.system.change_feature_fight.error.no_valid_entity=§c>> Esta entidad no está permitida para cambiar; elige otra válida.
+chat.system.change_feature_fight.mob_change=§7>> La característica %1 fue cambiada por el mob %2 correctamente. 
+
+
+chat.system.no_mele_brute=§4§l>> Este mob no puede ser atacado a melee. ¡Usa explosiones en su lugar!
 
 
 ## Entity Names

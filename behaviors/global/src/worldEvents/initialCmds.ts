@@ -32,6 +32,8 @@ class InitialWorldEventsManager extends TL15DBaseManager {
                 // @ts-ignore no acepta string en este aspecto xd
                 mc.world.gameRules[rule] = value;
             });
+
+            mc.world.allowCheats = true;
         });
     }
 }

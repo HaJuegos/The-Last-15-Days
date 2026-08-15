@@ -8,7 +8,14 @@
             "spawn_category": "ambient",
             "is_experimental": false,
             "is_spawnable": false,
-            "is_summonable": true
+            "is_summonable": true,
+            "properties": {
+                "ha:already_spawn_llamas": {
+                    "default": true,
+                    "type": "bool",
+                    "client_sync": true
+                }
+            }
         },
         "component_groups": {
             "ha:despawn": {
@@ -97,6 +104,11 @@
             "minecraft:entity_spawned": {
                 "sequence": [
                     {
+                        "set_property": {
+                            "ha:already_spawn_llamas": true
+                        }
+                    },
+                    {
                         "queue_command": {
                             "command": [
                                 "summon llama ~~~"
@@ -126,6 +138,9 @@
                 ]
             },
             "ha:start_despawn": {
+                "set_property": {
+                    "ha:already_spawn_llamas": false
+                },
                 "remove": {
                     "component_groups": [
                         "ha:spawned_llama",
@@ -135,6 +150,37 @@
                 "add": {
                     "component_groups": [
                         "ha:despawn"
+                    ]
+                }
+            },
+            "ha:set_manual_llamas": {
+                "sequence": [
+                    {
+                        "filters": {
+                            "test": "bool_property",
+                            "domain": "ha:already_spawn_llamas",
+                            "value": false
+                        },
+                        "set_property": {
+                            "ha:already_spawn_llamas": true
+                        },
+                        "add": {
+                            "component_groups": [
+                                "ha:spawned_llama",
+                                "ha:spawned_trader_llama"
+                            ]
+                        }
+                    }
+                ]
+            },
+            "ha:remove_spawn_llamas": {
+                "set_property": {
+                    "ha:already_spawn_llamas": false
+                },
+                "remove": {
+                    "component_groups": [
+                        "ha:spawned_llama",
+                        "ha:spawned_trader_llama"
                     ]
                 }
             }

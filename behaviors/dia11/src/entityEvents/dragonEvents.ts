@@ -273,15 +273,36 @@ class DragonEvents extends TL15DBaseManager {
         afterEventsSimplified.onEntitySpawns((args) => {
             const entity = args.entity;
 
-            if (entity.isValid && entity.typeId == vanilla.MinecraftEntityTypes.EnderDragon) {
-                const dime = entity.dimension;
-                const plys = dime.getPlayers();
+            if (!entity.isValid) return;
 
-                if (plys.length > 0) {
-                    for (const ply of plys) {
-                        ply.playMusic('music.athazagoraphobia.dragon_fight', { loop: true });
+            switch (entity.typeId) {
+                case vanilla.MinecraftEntityTypes.EnderDragon: {
+                    const dime = entity.dimension;
+                    const plys = dime.getPlayers();
+
+                    if (plys.length > 0) {
+                        for (const ply of plys) {
+                            ply.playMusic('music.athazagoraphobia.dragon_fight', { loop: true });
+                        }
                     }
-                }
+                } break;
+                case 'ha:data_world': {
+                    const defaultOnFlags = [
+                        'ha:canDragonReflectDamage',
+                        'ha:canDragonKnockback',
+                        'ha:canSummonLightnings',
+                        'ha:canBreakTowersOnCrystal',
+                        'ha:canMobsSpawnOnCrystal'
+                    ];
+
+                    for (const flag of defaultOnFlags) {
+                        const obj = worldToolsSimplified.getOrCreateScorebordObj(flag);
+
+                        if (obj && !obj.hasParticipant(entity)) {
+                            obj.setScore(entity, 1);
+                        }
+                    }
+                } break;
             }
         });
 
@@ -328,21 +349,35 @@ class DragonEvents extends TL15DBaseManager {
             const damage = args.damage;
 
             if ((sourceEntity && sourceEntity.isValid) && (hitEntity && hitEntity.isValid)) {
-                if (hitEntity.typeId == vanilla.MinecraftEntityTypes.EnderDragon && Math.random() <= 0.25) {
-                    sourceEntity.applyDamage(damage, { cause: mc.EntityDamageCause.sonicBoom, damagingEntity: hitEntity });
-                }
+                worldToolsSimplified.setRun(async () => {
+                    if (!hitEntity.isValid || !sourceEntity.isValid) return;
 
-                if (hitEntity instanceof mc.Player && sourceEntity.typeId == vanilla.MinecraftEntityTypes.EnderDragon && source.cause == mc.EntityDamageCause.entityAttack && Math.random() <= 0.40) {
-                    const dx = hitEntity.location.x - sourceEntity.location.x;
-                    const dz = hitEntity.location.z - sourceEntity.location.z;
-                    const distance = Math.sqrt(dx * dx + dz * dz);
-                    const dirX = distance > 0 ? (dx / distance) : (Math.random() - 0.5);
-                    const dirZ = distance > 0 ? (dz / distance) : (Math.random() - 0.5);
-                    const horizontalForce = (Math.random() * (3.5 - 1.5)) + 1.5;
-                    const verticalForce = (Math.random() * (2.5 - 1.0)) + 1.0;
+                    let canReflect = true;
+                    let canKnockback = true;
 
-                    hitEntity.applyKnockback({ x: dirX * horizontalForce, z: dirZ * horizontalForce }, verticalForce);
-                }
+                    try {
+                        const worldData = await this.getEntityDataWorld();
+
+                        canReflect = worldToolsSimplified.getScoreInObj(worldData, 'ha:canDragonReflectDamage') == 1;
+                        canKnockback = worldToolsSimplified.getScoreInObj(worldData, 'ha:canDragonKnockback') == 1;
+                    } catch { }
+
+                    if (canReflect && hitEntity.typeId == vanilla.MinecraftEntityTypes.EnderDragon && Math.random() <= 0.35) {
+                        sourceEntity.applyDamage(damage, { cause: mc.EntityDamageCause.sonicBoom, damagingEntity: hitEntity });
+                    }
+
+                    if (canKnockback && sourceEntity.typeId == vanilla.MinecraftEntityTypes.EnderDragon && source.cause == mc.EntityDamageCause.entityAttack && Math.random() <= 0.40) {
+                        const dx = hitEntity.location.x - sourceEntity.location.x;
+                        const dz = hitEntity.location.z - sourceEntity.location.z;
+                        const distance = Math.sqrt(dx * dx + dz * dz);
+                        const dirX = distance > 0 ? (dx / distance) : (Math.random() - 0.5);
+                        const dirZ = distance > 0 ? (dz / distance) : (Math.random() - 0.5);
+                        const horizontalForce = (Math.random() * (3.5 - 1.5)) + 1.5;
+                        const verticalForce = (Math.random() * (2.5 - 1.0)) + 1.0;
+
+                        hitEntity.applyKnockback({ x: dirX * horizontalForce, z: dirZ * horizontalForce }, verticalForce);
+                    }
+                });
             }
         });
 
@@ -358,24 +393,35 @@ class DragonEvents extends TL15DBaseManager {
                     entity.addTag('enragedMode');
 
                     const plys = dime.getPlayers();
-                    const boltCount = Math.floor(Math.random() * 6) + 15;
 
-                    for (let i = 0; i < boltCount; i++) {
-                        const radius = 35 * Math.sqrt(Math.random());
-                        const theta = Math.random() * 2 * Math.PI;
-                        const randomX = Math.floor(radius * Math.cos(theta));
-                        const randomZ = Math.floor(radius * Math.sin(theta));
-                        const topBlock = dime.getTopmostBlock({ x: randomX, z: randomZ });
-                        const targetY = topBlock ? topBlock.y : 65;
-
-                        dime.runCommand(`summon lightning_bolt ${randomX} ${targetY} ${randomZ}`);
+                    worldToolsSimplified.setRun(async () => {
+                        let canSummonLightnings = true;
 
                         try {
-                            dime.createExplosion({ x: randomX, y: targetY, z: randomZ }, 4, { allowUnderwater: true, breaksBlocks: true, source: entity });
-                        } catch (e) {
-                            continue;
+                            const worldData = await this.getEntityDataWorld();
+
+                            canSummonLightnings = worldToolsSimplified.getScoreInObj(worldData, 'ha:canSummonLightnings') == 1;
+                        } catch { }
+
+                        if (canSummonLightnings) {
+                            const boltCount = Math.floor(Math.random() * 6) + 15;
+
+                            for (let i = 0; i < boltCount; i++) {
+                                const radius = 35 * Math.sqrt(Math.random());
+                                const theta = Math.random() * 2 * Math.PI;
+                                const randomX = Math.floor(radius * Math.cos(theta));
+                                const randomZ = Math.floor(radius * Math.sin(theta));
+                                const topBlock = dime.getTopmostBlock({ x: randomX, z: randomZ });
+                                const targetY = topBlock ? topBlock.y : 65;
+
+                                dime.runCommand(`summon lightning_bolt ${randomX} ${targetY} ${randomZ}`);
+
+                                try {
+                                    dime.createExplosion({ x: randomX, y: targetY, z: randomZ }, 4, { allowUnderwater: true, breaksBlocks: true, source: entity });
+                                } catch { continue; }
+                            }
                         }
-                    }
+                    });
 
                     for (const ply of plys) {
                         ply.playSound('mob.enderdragon.growl');
@@ -456,6 +502,32 @@ class DragonEvents extends TL15DBaseManager {
                 dime.spawnItem(item, entity.location);
             }
         });
+
+        afterEventsSimplified.onEntityLoadInWorld((args) => {
+            const entity = args.entity;
+
+            if (!entity.isValid) return;
+
+            switch (entity.typeId) {
+                case 'ha:data_world': {
+                    const defaultOnFlags = [
+                        'ha:canDragonReflectDamage',
+                        'ha:canDragonKnockback',
+                        'ha:canSummonLightnings',
+                        'ha:canBreakTowersOnCrystal',
+                        'ha:canMobsSpawnOnCrystal'
+                    ];
+
+                    for (const flag of defaultOnFlags) {
+                        const obj = worldToolsSimplified.getOrCreateScorebordObj(flag);
+
+                        if (obj && !obj.hasParticipant(entity)) {
+                            obj.setScore(entity, 1);
+                        }
+                    }
+                } break;
+            }
+        });
     }
 
     /**
@@ -467,12 +539,32 @@ class DragonEvents extends TL15DBaseManager {
      * @author HaJuegos - 10-06-2026
      * @private
      */
-    private crystalExplode(coords: mc.Vector3, dime: mc.Dimension, dragonDeath: boolean = false): void {
+    private async crystalExplode(coords: mc.Vector3, dime: mc.Dimension, dragonDeath: boolean = false): Promise<void> {
         const plys = mc.world.getAllPlayers().filter(p => (p.dimension.id == 'minecraft:the_end'));
+
+        let canSpawnMobs = true;
+        let changeMob = false;
+        let canBreakTowers = true;
+
+        try {
+            const worldData = await this.getEntityDataWorld();
+
+            canSpawnMobs = worldToolsSimplified.getScoreInObj(worldData, 'ha:canMobsSpawnOnCrystal') == 1;
+            changeMob = worldToolsSimplified.getScoreInObj(worldData, 'ha:changeMobSpawnOnCrystal') == 1;
+            canBreakTowers = worldToolsSimplified.getScoreInObj(worldData, 'ha:canBreakTowersOnCrystal') == 1;
+        } catch { }
 
         for (const ply of plys) {
             if (!dragonDeath) {
-                ply.sendMessage({ translate: 'chat.system.ender_crystal_explodes', with: { rawtext: [{ text: `${this.simplifiedCoords(coords)}` }] } });
+                let translationKey = 'chat.system.ender_crystal_explodes.default';
+
+                if (!canSpawnMobs) {
+                    translationKey = 'chat.system.ender_crystal_explodes.removed';
+                } else if (changeMob) {
+                    translationKey = 'chat.system.ender_crystal_explodes.custom_mob';
+                }
+
+                ply.sendMessage({ translate: translationKey, with: { rawtext: [{ text: `${this.simplifiedCoords(coords)}` }] } });
             };
 
             ply.playSound('mob.wither.spawn');
@@ -535,21 +627,26 @@ class DragonEvents extends TL15DBaseManager {
         };
 
         const volumeStone = new mc.BlockVolume(minStoneCoords, maxStoneCoords);
-        const filterObsidian: mc.BlockFillOptions = {
+        const blocksToProtect = [
+            vanilla.MinecraftBlockTypes.Bedrock,
+            vanilla.MinecraftBlockTypes.EmeraldBlock,
+            vanilla.MinecraftBlockTypes.GoldBlock
+        ];
+
+        if (!canBreakTowers) {
+            blocksToProtect.push(vanilla.MinecraftBlockTypes.Obsidian);
+            blocksToProtect.push(vanilla.MinecraftBlockTypes.IronBars);
+        }
+
+        const currentFilter: mc.BlockFillOptions = {
             blockFilter: {
-                includeTypes: [
-                    vanilla.MinecraftBlockTypes.Obsidian,
-                    vanilla.MinecraftBlockTypes.IronBars,
-                    vanilla.MinecraftBlockTypes.Bedrock,
-                    vanilla.MinecraftBlockTypes.EmeraldBlock,
-                    vanilla.MinecraftBlockTypes.GoldBlock
-                ]
+                excludeTypes: blocksToProtect
             }
         };
 
         try {
-            dime.fillBlocks(volumeAir, vanilla.MinecraftBlockTypes.Air, filterObsidian);
-            dime.fillBlocks(volumeStone, vanilla.MinecraftBlockTypes.EndStone, filterObsidian);
+            dime.fillBlocks(volumeAir, vanilla.MinecraftBlockTypes.Air, currentFilter);
+            dime.fillBlocks(volumeStone, vanilla.MinecraftBlockTypes.EndStone, currentFilter);
         } catch (e) { }
 
         const effectTotal = 25;

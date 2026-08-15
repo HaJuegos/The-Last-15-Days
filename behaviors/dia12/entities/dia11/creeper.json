@@ -28,6 +28,17 @@
                 "minecraft:behavior.avoid_mob_type": { }
             },
             "ha:spawn_frends": {
+                "minecraft:behavior.hurt_by_target": {
+                    "priority": 2,
+                    "entity_types": {
+                        "filters": {
+                            "test": "is_family",
+                            "subject": "other",
+                            "operator": "!=",
+                            "value": "dragon"
+                        }
+                    }
+                },
                 "minecraft:spawn_entity": {
                     "entities": [
                         {

@@ -149,9 +149,13 @@ class GlobalWorldEventsManager extends TL15DBaseManager {
 
                     if (ply.hasTag('random1Picked')) return;
 
-                    ply.addTag('random1Picked');
-                    ply.playSound('ui.pickupthephone');
-                    ply.onScreenDisplay.setTitle('random1');
+                    worldToolsSimplified.setDelay(() => {
+                        if (!ply.isValid) return;
+
+                        ply.addTag('random1Picked');
+                        ply.playSound('ui.pickupthephone');
+                        ply.onScreenDisplay.setTitle('random1');
+                    }, worldToolsSimplified.convertSecondsToTicks(2));
                 } break;
                 case 'ha:chance_backrooms': {
                     const chanceEnter = 0.005;

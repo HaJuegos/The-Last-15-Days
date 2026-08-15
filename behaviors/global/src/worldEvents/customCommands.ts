@@ -145,7 +145,7 @@ class CustomCmdsEvents extends TL15DBaseManager {
         // Comando de ban
         {
             prefixCmd: 'ha:autoban',
-            description: 'Comando que modifica el estado de baneo automatico del servidor.',
+            description: 'ui.custom_command.desc.autoban',
             permsLevel: mc.CommandPermissionLevel.GameDirectors,
             cheatsEnabled: true,
             paramsCmd: [
@@ -170,8 +170,8 @@ class CustomCmdsEvents extends TL15DBaseManager {
         },
         // Comando de hitboxes
         {
-            prefixCmd: 'ha:showhitboxes',
-            description: 'Comando que alterna la visibilidad de las hitboxes de todas las entidades.',
+            prefixCmd: 'ha:hitboxes',
+            description: 'ui.custom_command.desc.hitboxes',
             permsLevel: mc.CommandPermissionLevel.Any,
             cheatsEnabled: false,
             paramsCmd: [
@@ -205,7 +205,7 @@ class CustomCmdsEvents extends TL15DBaseManager {
         // Comando de fastitems
         {
             prefixCmd: 'ha:fastitems',
-            description: 'Comando que cambia los items por defecto que funcionan con el sistema de items rapidos',
+            description: 'ui.custom_command.desc.change_fastitems',
             permsLevel: mc.CommandPermissionLevel.GameDirectors,
             cheatsEnabled: true,
             customEnums: {
@@ -223,7 +223,7 @@ class CustomCmdsEvents extends TL15DBaseManager {
                 { name: 'item6', type: mc.CustomCommandParamType.ItemType },
                 { name: 'item7', type: mc.CustomCommandParamType.ItemType }
             ],
-            onRunCmd: (sourcePly, method: 'add' | 'replace', ...items: ({ id: string, localizationKey: string; } | undefined)[]) => {
+            onRunCmd: (sourcePly, method: 'add' | 'replace', ...items: (mc.ItemType | undefined)[]) => {
                 worldToolsSimplified.setRun(() => {
                     const mapItems = items.filter(i => i != undefined).map(i => i!.id);
                     const listOfItemsLocal = mc.world.getDynamicProperty('ha:fastitems_list') as string | undefined;
@@ -261,7 +261,7 @@ class CustomCmdsEvents extends TL15DBaseManager {
         {
             prefixCmd: 'ha:checkdeaths',
             cheatsEnabled: true,
-            description: 'Comando que visualiza las muertes registradas internamente en el mundo. Esto con fines depurativos.',
+            description: 'ui.custom_command.desc.check_deaths',
             permsLevel: mc.CommandPermissionLevel.GameDirectors,
             paramsCmd: [],
             onRunCmd: (sourcePly) => {
@@ -322,7 +322,7 @@ class CustomCmdsEvents extends TL15DBaseManager {
         // Comando de seed
         {
             prefixCmd: 'ha:seed',
-            description: 'Comando que muestra la semilla del mundo actual',
+            description: 'ui.custom_command.desc.seed',
             cheatsEnabled: true,
             permsLevel: mc.CommandPermissionLevel.GameDirectors,
             paramsCmd: [],
@@ -338,7 +338,7 @@ class CustomCmdsEvents extends TL15DBaseManager {
         // Comando para eliminar info de jugadores muertos
         {
             prefixCmd: 'ha:changedeaths',
-            description: 'Comando que muestra la lista de jugadores muertos registrados y luego, al seleccionar uno, eliminarás su información del add-on. Con fines de depuración.',
+            description: 'ui.custom_command.desc.change_deaths',
             cheatsEnabled: true,
             permsLevel: mc.CommandPermissionLevel.GameDirectors,
             paramsCmd: [],
@@ -434,7 +434,7 @@ class CustomCmdsEvents extends TL15DBaseManager {
         // Comando para eliminar el registro de linkeados
         {
             prefixCmd: 'ha:removelinked',
-            description: 'Comando que elimina el soul link de jugadores vinculados a sí mismos. Con fines de depuración.',
+            description: 'ui.custom_command.desc.remove_linkeds',
             cheatsEnabled: true,
             permsLevel: mc.CommandPermissionLevel.GameDirectors,
             paramsCmd: [],
@@ -568,7 +568,7 @@ class CustomCmdsEvents extends TL15DBaseManager {
         // Comando para activar o no las mecanicas de los debuffs.
         {
             prefixCmd: 'ha:changedebuffs',
-            description: 'Comando que activa o desactiva las mecánicas de los debuffs del add-on cuando un jugador muere en el Día 9. Con fines de depuración o preferencias. Por defecto estará activado.',
+            description: 'ui.custom_command.desc.change_debuffs',
             cheatsEnabled: true,
             permsLevel: mc.CommandPermissionLevel.GameDirectors,
             paramsCmd: [
@@ -595,7 +595,7 @@ class CustomCmdsEvents extends TL15DBaseManager {
         // Comando para eliminar todos o un debuff a un jugador en especifico.
         {
             prefixCmd: 'ha:removedebuff',
-            description: 'Comando para eliminar manualmente uno o todos los debuffs de un jugador en específico. Con fines de depuración.',
+            description: 'ui.custom_command.desc.change_debuffs_ply',
             cheatsEnabled: true,
             permsLevel: mc.CommandPermissionLevel.GameDirectors,
             paramsCmd: [
@@ -663,7 +663,7 @@ class CustomCmdsEvents extends TL15DBaseManager {
         // Comando para revivir un jugador dentro del mundo.
         {
             prefixCmd: 'ha:reviveply',
-            description: 'Comando que revive manualmente a un jugador que haya muerto y esté dentro del mundo. Con fines de depuración.',
+            description: 'ui.custom_command.desc.force_revive_ply',
             cheatsEnabled: true,
             permsLevel: mc.CommandPermissionLevel.GameDirectors,
             paramsCmd: [
@@ -714,7 +714,7 @@ class CustomCmdsEvents extends TL15DBaseManager {
         // Comando para teletransportarse a un jugador en modo espectador para todos.
         {
             prefixCmd: 'ha:tpspectator',
-            description: 'Comando auxiliar para los jugadores en modo espectador en el mundo y para las personas que no tienen operador.',
+            description: 'ui.custom_command.desc.tp_spectator',
             permsLevel: mc.CommandPermissionLevel.Any,
             cheatsEnabled: true,
             paramsCmd: [
@@ -741,6 +741,85 @@ class CustomCmdsEvents extends TL15DBaseManager {
                     const dimeTarget = selectedPly.dimension;
 
                     ply.tryTeleport(coordsTarget, { dimension: dimeTarget });
+                });
+            })
+        },
+        // Comando para deshabilitar o habilitar una caracteristica de la pelea del RoyerBot. (Dragon)
+        {
+            prefixCmd: 'ha:changeroyerbotfight',
+            description: 'ui.custom_command.desc.change_royerbot_fight',
+            permsLevel: mc.CommandPermissionLevel.GameDirectors,
+            cheatsEnabled: true,
+            customEnums: {
+                "ha:featureType": [
+                    'canMobsSpawnOnCrystal', // ya
+                    'canBreakTowersOnCrystal', // ya
+                    'canDragonKnockback', // ya
+                    'canDragonReflectDamage', // ya
+                    'canSummonLightnings', // ya
+                    'changeMobSpawnOnCrystal' // ya
+                ]
+            },
+            paramsCmd: [
+                { name: 'feature', enumName: 'ha:featureType', type: mc.CustomCommandParamType.Enum },
+                { name: 'state', type: mc.CustomCommandParamType.Boolean },
+            ],
+            optionalParamsCmd: [
+                { name: 'mobToChange', type: mc.CustomCommandParamType.EntityType }
+            ],
+            onRunCmd: ((sourcePly, ...args) => {
+                worldToolsSimplified.setRun(async () => {
+                    const worldData = await this.getEntityDataWorld();
+                    const featureSelected = args[0] as string;
+                    const rawNewState = args[1] as boolean;
+                    const newState = rawNewState ? 1 : 0;
+                    const mobSelected = args[2] as mc.EntityType | undefined;
+
+                    if (featureSelected == 'changeMobSpawnOnCrystal' && mobSelected) {
+                        if (!mobSelected) {
+                            sourcePly.sendMessage({ rawtext: [{ translate: 'chat.system.change_feature_fight.error.missing_entity' }] });
+                            sourcePly.playSound('ui.error_sound');
+                            return;
+                        }
+
+                        const blacklistedMobs = [
+                            'minecraft:player',
+                            'minecraft:ender_crystal',
+                            'minecraft:item'
+                        ];
+
+                        if (blacklistedMobs.includes(mobSelected.id)) {
+                            sourcePly.sendMessage({ rawtext: [{ translate: 'chat.system.change_feature_fight.error.no_valid_entity' }] });
+                            sourcePly.playSound('ui.error_sound');
+                            return;
+                        }
+
+                        try {
+                            const objective = worldToolsSimplified.getOrCreateScorebordObj('ha:custom_entity_crystal');
+
+                            if (objective) {
+                                const participants = objective.getParticipants();
+
+                                for (const participant of participants) {
+                                    objective.removeParticipant(participant);
+                                }
+                            }
+                        } catch { }
+
+                        worldToolsSimplified.changeScoreInObj(worldData, `ha:${featureSelected}`, 'set', newState);
+
+                        if (newState == 1) {
+                            worldToolsSimplified.changeScoreInObj(mobSelected.id, `ha:custom_entity_crystal`, 'set', newState);
+                        }
+
+                        sourcePly.sendMessage({ rawtext: [{ translate: 'chat.system.change_feature_fight.mob_change', with: { rawtext: [{ text: `${featureSelected}` }, { text: `${mobSelected.id}` }] } }] });
+                        sourcePly.playSound('random.screenshot');
+                    } else {
+                        worldToolsSimplified.changeScoreInObj(worldData, `ha:${featureSelected}`, 'set', newState);
+
+                        sourcePly.sendMessage({ rawtext: [{ translate: 'chat.system.change_feature_fight', with: { rawtext: [{ text: `${featureSelected}` }, { translate: `chat.system.change_feature_fight.args.${rawNewState}` }] } }] });
+                        sourcePly.playSound('random.screenshot');
+                    }
                 });
             })
         }
