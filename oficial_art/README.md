@@ -41,13 +41,19 @@
 
 # Dia 3
 
-![1](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/main/oficial_art/banners/dia3/1.jpg)
-![2](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/main/oficial_art/banners/dia3/2.jpg)
-![3](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/main/oficial_art/banners/dia3/3.jpg)
-![4](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/main/oficial_art/banners/dia3/4.jpg)
-![5](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/main/oficial_art/banners/dia3/5.jpg)
-![6](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/main/oficial_art/banners/dia3/6.jpg)
-![7](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/main/oficial_art/banners/dia3/7.jpg)
+![1](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/main/oficial_art/banners/dia3/1.png)
+![2](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/main/oficial_art/banners/dia3/2.png)
+![3](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/main/oficial_art/banners/dia3/3.png)
+![4](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/main/oficial_art/banners/dia3/4.png)
+![5](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/main/oficial_art/banners/dia3/5.png)
+![6](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/main/oficial_art/banners/dia3/6.png)
+![7](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/main/oficial_art/banners/dia3/7.png)
+![7](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/main/oficial_art/banners/dia3/8.png)
+![7](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/main/oficial_art/banners/dia3/9.png)
+![7](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/main/oficial_art/banners/dia3/10.png)
+![7](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/main/oficial_art/banners/dia3/11.png)
+![7](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/main/oficial_art/banners/dia3/12.png)
+![7](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/main/oficial_art/banners/dia3/13.png)
 
 # Dia 4
 
