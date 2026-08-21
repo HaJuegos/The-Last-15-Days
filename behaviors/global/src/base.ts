@@ -57,8 +57,9 @@ export class TL15DBaseManager {
         { plyName: 'CopyCat Mc', nameRank: ['Gato', 'GatoTester'], colorCode: ['§d§l', '§9'] },
         { plyName: 'Iam4ndrew', nameRank: 'SoSneaky SpeedRunner', colorCode: '§u§l' },
         { plyName: 'CloudMrcZ', nameRank: ['Sobreviviente', 'CloudTester'], colorCode: ['§l§4', '§9'] },
-        { plyName: 'ChangoZax', nameRank: 'Pelowisos', colorCode: '§l§d' },
-        { plyName: 'Emiliocrack1355', nameRank: 'FurroGayArgentino', colorCode: '§l§u' }, // Esto es un placeholder, aun no me dice xd
+        { plyName: 'KyzaxxLL', nameRank: 'Pelowisos', colorCode: '§l§d' },
+        { plyName: 'Emiliocrack1355', nameRank: 'El Furro', colorCode: '§c§l' },
+        { plyName: 'AlternativeGWG', nameRank: 'Cataclysm', colorCode: '§p§l' }
     ];
 
     /**
