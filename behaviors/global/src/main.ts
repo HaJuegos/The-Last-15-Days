@@ -13,3 +13,4 @@ import './worldEvents/initialCmds';
 import './worldEvents/globalEvents';
 import './worldEvents/customCommands';
 import './worldEvents/customDimensions';
+import './worldEvents/customMusicBox';

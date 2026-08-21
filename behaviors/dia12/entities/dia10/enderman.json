@@ -250,9 +250,9 @@
             "minecraft:floats_in_liquid": { },
             "minecraft:behavior.rise_to_liquid_level": {
                 "priority": 9,
-                "liquid_y_offset": 0,
-                "rise_delta": 0,
-                "sink_delta": 0
+                "liquid_y_offset": 0.01,
+                "rise_delta": 0.1,
+                "sink_delta": 0.1
             },
             "minecraft:behavior.float": {
                 "priority": 3
