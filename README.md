@@ -40,7 +40,7 @@
 			<td><strong>Astral302:</strong> Colaborador principal en mejorar y crear el estilo artístico del add-on.</td>
 		</tr>
 		<tr>
-			<td align="center" width="200px"><img src="https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/main/.github/icon_template/fundy.png" width="100px" alt="Fundy"/><br /><sub><b>Idea Original de Garfield</b></sub></td>
+			<td align="center" width="200px"><img src="https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/main/.github/icon_template/fundy.jpg" width="100px" alt="Fundy"/><br /><sub><b>Idea Original de Garfield</b></sub></td>
 			<td><strong>Fundy:</strong> Creador del plugin de Garfield adaptado al Add-on. <a href="https://www.youtube.com/watch?v=7mA2c0vx2VQ" target="_blank">Mira su video aquí</a></td>
 		</tr>
 	</table>
@@ -53,7 +53,8 @@
 Este proyecto es una comision previa realizada por RosherRandom. Todos los creditos a el mismo. Igualmente a todos los sonidos o efectos de sonidos
 
 - 📖 **[Wiki General e Información del Add-on](https://github.com/HaJuegos/The-Last-15-Days/wiki)**: Revisa guías, mecánicas y preguntas frecuentes o mas!
-- ⚔️ **[Cambios de Dificultad](https://github.com/HaJuegos/The-Last-15-Days/wiki)**: Enterate de todos los cambios que contiene este add-on consecutivo.
+- ⚔️ **[Cambios de Dificultad](https://github.com/HaJuegos/The-Last-15-Days/wiki/Cambios-de-Dificultad)**: Enterate de todos los cambios que contiene este add-on.
+- 🤺 **[Cambios de Dificultad - Banners](https://github.com/HaJuegos/The-Last-15-Days/wiki/Cambios-de-Dificultad)**: Enterate de todos los cambios que contiene este add-on. ¡Pero con imagenes!.
 
 ---
 
