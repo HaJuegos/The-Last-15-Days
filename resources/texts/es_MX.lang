@@ -284,8 +284,9 @@ chat.system.change_feature_fight.error.missing_entity=§c>> Hace falta la entida
 chat.system.change_feature_fight.error.no_valid_entity=§c>> Esta entidad no está permitida para cambiar; elige otra válida.
 chat.system.change_feature_fight.mob_change=§7>> La característica %1 fue cambiada por el mob %2 correctamente. 
 
-
 chat.system.no_mele_brute=§4§l>> Este mob no puede ser atacado a melee. ¡Usa explosiones en su lugar!
+
+chat.system.death.how_to_use_tp=§5§l>> ¡Has muerto! Pero no fuiste baneado del servidor debido a que un administrador desactivó esa opción. Usa el comando /tpspectator <nombre> para teletransportarte a un jugador. 
 
 
 ## Entity Names

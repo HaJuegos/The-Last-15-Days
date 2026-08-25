@@ -1,4 +1,5 @@
 import * as mc from '@minecraft/server';
+import * as vanilla from '@minecraft/vanilla-data';
 
 import { beforeEventsSimplified, ButtonFormBase, customEventsManager, worldToolsSimplified } from "simplified-mojang-api";
 
@@ -178,6 +179,10 @@ class ItemCustomComponentsManager extends TL15DBaseManager {
                                     worldToolsSimplified.changeScoreInObj(`${targetName}:${targetID}`, 'ha:pending_revive', 'set', newLinkeds);
                                     worldToolsSimplified.changeScoreInObj(`${targetName}:${targetID}:false:${ply.name}:${ply.id}:false`, 'ha:plys_linkeds', 'set', newLinkeds);
 
+                                    if (targetID) {
+                                        this.reviveInSpectator(targetID);
+                                    }
+
                                     ply.addTag('isLinked');
                                     inv.setItem(selectSlot, undefined);
                                     ply.spawnParticle('ha:totem_link_particle', coords);
@@ -230,6 +235,67 @@ class ItemCustomComponentsManager extends TL15DBaseManager {
             }
         }
     ];
+
+    /**
+     * Metodo auxiliar que revisa y revive a jugadores que esten vinculados y ya esten dentro del servidor sin necesidad de relogear.
+     * @param {string} targetID ID del jugador en concreto a considerar.
+     * @returns {void}
+     * @author HaJuegos - 24-08-2026
+     * @private
+     */
+    private reviveInSpectator(targetID: string): void {
+        const plys = mc.world.getPlayers();
+        const targetPly = plys.find((p) => p.id == targetID);
+
+        if (!targetPly || !targetPly.isValid) return;
+
+        const over = worldToolsSimplified.getDimension(vanilla.MinecraftDimensionTypes.Overworld) as mc.Dimension;
+
+        let reviveData!: { coords: mc.Vector3, dime: mc.Dimension; } | undefined;
+
+        try {
+            const plySpawn = targetPly.getSpawnPoint();
+
+            if (plySpawn) {
+                reviveData = {
+                    coords: { x: plySpawn.x, y: plySpawn.y, z: plySpawn.z },
+                    dime: plySpawn.dimension
+                };
+            } else {
+                const topBlock = over.getTopmostBlock({ x: 0, z: 0 });
+
+                if (topBlock) {
+                    reviveData = {
+                        coords: { x: topBlock.x, y: topBlock.y, z: topBlock.z },
+                        dime: topBlock.dimension
+                    };
+                }
+            }
+        } catch {
+            reviveData = { coords: { x: 0, y: 70, z: 0 }, dime: over };
+        }
+
+        if (reviveData) {
+            targetPly.tryTeleport(reviveData.coords, { dimension: reviveData.dime });
+        } else {
+            targetPly.tryTeleport(mc.world.getDefaultSpawnLocation(), { dimension: over });
+            targetPly.runCommand(`spreadplayers ~ ~ 0 10 @s ~`);
+        }
+
+        targetPly.runCommand(`function system/revive_ply_system`);
+
+        const objPendingRevive = worldToolsSimplified.getOrCreateScorebordObj('ha:pending_revive') as mc.ScoreboardObjective;
+        const participantsRevive = objPendingRevive.getParticipants().map(data => data.displayName);
+
+        for (const data of participantsRevive) {
+            const [name, id] = data.split(':');
+
+            if (id == targetID) {
+                objPendingRevive.removeParticipant(data);
+                break;
+            }
+        }
+    }
 
     /**
      * Eventos principales de la clase cuando es inicializada o llamada.

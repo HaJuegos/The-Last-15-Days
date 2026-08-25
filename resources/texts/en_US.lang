@@ -284,8 +284,9 @@ chat.system.change_feature_fight.error.missing_entity=§c>> The entity to be cha
 chat.system.change_feature_fight.error.no_valid_entity=§c>> This entity cannot be changed; please select a valid one.
 chat.system.change_feature_fight.mob_change=§7>> Feature %1 was successfully changed to mob %2.
 
-
 chat.system.no_mele_brute=§4§l>> This mob cannot be attacked in melee. Use explosions instead!
+
+chat.system.death.how_to_use_tp=§5§l>> You've died! But you weren't banned from the server because an administrator disabled that option. Use the command /tpspectator <name> to teleport to a player.
 
 
 ## Entity Names

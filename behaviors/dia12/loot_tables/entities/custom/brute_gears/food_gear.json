@@ -28,12 +28,17 @@
                 {
                     "type": "item",
                     "name": "ha:iron_apple",
-                    "weight": 5
+                    "weight": 10
                 },
                 {
                     "type": "item",
                     "name": "ha:lasagna",
-                    "weight": 5
+                    "weight": 10
+                },
+                {
+                    "type": "item",
+                    "name": "ha:banana",
+                    "weight": 1
                 }
             ]
         }
