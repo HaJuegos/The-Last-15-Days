@@ -438,12 +438,25 @@ class AdvancementManager extends TL15DBaseManager {
         customEventsManager.onEntityUseTotem((ply) => {
             if (!(ply instanceof mc.Player)) return;
 
-            this.executeAdvan(ply, 35);
+            worldToolsSimplified.setRun(() => {
+                this.executeAdvan(ply, 35);
+            });
         });
 
         afterEventsSimplified.onAddsEffect((args) => {
             const entity = args.entity;
             const effect = args.effect;
+
+            if (!entity || !effect) return;
+
+            let typeID: string;
+
+            try {
+                typeID = effect.typeId;
+            } catch {
+                return;
+            }
+
             const requiredEffects = [
                 'minecraft:night_vision', 'minecraft:invisibility', 'minecraft:jump_boost', 'minecraft:fire_resistance',
                 'minecraft:speed', 'minecraft:slowness', 'minecraft:water_breathing', 'minecraft:poison', 'minecraft:regeneration',
@@ -452,7 +465,7 @@ class AdvancementManager extends TL15DBaseManager {
             ];
 
             if (entity instanceof mc.Player) {
-                if (requiredEffects.includes(effect.typeId)) {
+                if (requiredEffects.includes(typeID)) {
                     const hasAllEffects = requiredEffects.every((effectId) => entity.getEffect(effectId));
 
                     if (hasAllEffects) {
@@ -460,11 +473,11 @@ class AdvancementManager extends TL15DBaseManager {
                     }
                 }
 
-                if (effect.typeId == vanilla.MinecraftEffectTypes.RaidOmen) {
+                if (typeID == vanilla.MinecraftEffectTypes.RaidOmen) {
                     this.executeAdvan(entity, 28);
                 }
 
-                if (effect.typeId == vanilla.MinecraftEffectTypes.VillageHero) {
+                if (typeID == vanilla.MinecraftEffectTypes.VillageHero) {
                     this.executeAdvan(entity, 32);
                 }
             }

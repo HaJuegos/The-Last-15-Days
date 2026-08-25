@@ -1,43 +1,40 @@
-// mc-disable resourcepack.sounds.missing
 /* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
 /* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
 {
-    "format_version": "1.26.0",
+    "format_version": "1.26.40",
     "minecraft:entity": {
         "description": {
             "identifier": "minecraft:piglin_brute",
             "spawn_category": "monster",
             "is_experimental": false,
-            "is_summonable": true,
             "is_spawnable": true,
+            "is_summonable": true,
             "properties": {
                 "ha:is_new_brute": {
                     "client_sync": true,
-                    "default": false,
+                    "default": true,
                     "type": "bool"
                 }
             },
+            "animations": {
+                "critic_sensor": "controller.animation.brute_sensors.critic"
+            },
             "scripts": {
                 "animate": [
-                    "critic",
-                    "health_sensor"
+                    "critic_sensor"
                 ]
-            },
-            "animations": {
-                "critic": "controller.animation.brute_sensors.critic",
-                "health_sensor": "controller.animation.brute_sensors.health_sensor"
             }
         },
         "component_groups": {
-            "ha:become_new": {
+            "ha:replace_piglin": {
                 "minecraft:spawn_entity": {
                     "entities": [
                         {
-                            "min_wait_time": 0.1,
+                            "min_wait_time": 0,
                             "max_wait_time": 0.1,
                             "num_to_spawn": 1,
-                            "single_use": true,
                             "should_leash": false,
+                            "single_use": true,
                             "spawn_entity": "minecraft:piglin_brute",
                             "spawn_event": "minecraft:entity_spawned"
                         }
@@ -45,198 +42,42 @@
                 },
                 "minecraft:instant_despawn": { }
             },
-            "ha:spawn_sensors": {
-                "minecraft:navigation.walk": {
-                    "can_path_over_water": true,
-                    "can_open_doors": true,
-                    "can_path_over_lava": true,
-                    "can_sink": true,
-                    "can_walk_in_lava": true
-                },
-                "minecraft:on_target_acquired": {
-                    "event": "ha:start_pearl_mode",
-                    "target": "self"
-                },
+
+            "ha:initial_comps": {
                 "minecraft:environment_sensor": {
                     "triggers": [
                         {
                             "filters": {
-                                "test": "bool_property",
+                                "test": "actor_health",
                                 "subject": "self",
-                                "domain": "ha:is_new_brute",
-                                "value": false
+                                "operator": "<=",
+                                "value": 70
                             },
                             "target": "self",
-                            "event": "ha:remove_old_version"
-                        },
-                        {
-                            "filters": {
-                                "all_of": [
-                                    {
-                                        "test": "actor_health",
-                                        "subject": "self",
-                                        "operator": "<",
-                                        "value": 80
-                                    },
-                                    {
-                                        "test": "has_target",
-                                        "subject": "self",
-                                        "value": false
-                                    },
-                                    {
-                                        "test": "has_component",
-                                        "subject": "self",
-                                        "operator": "not",
-                                        "value": "minecraft:is_sheared"
-                                    }
-                                ]
-                            },
-                            "target": "self",
-                            "event": "ha:panic_event"
-                        },
-                        {
-                            "filters": {
-                                "all_of": [
-                                    {
-                                        "test": "has_target",
-                                        "subject": "self",
-                                        "value": true
-                                    },
-                                    {
-                                        "test": "is_underground",
-                                        "subject": "target",
-                                        "value": true
-                                    },
-                                    {
-                                        "test": "random_chance",
-                                        "value": 150
-                                    },
-                                    {
-                                        "test": "is_moving",
-                                        "subject": "target",
-                                        "value": false
-                                    },
-                                    {
-                                        "test": "in_lava",
-                                        "subject": "self",
-                                        "value": false
-                                    },
-                                    {
-                                        "test": "has_tag",
-                                        "subject": "self",
-                                        "operator": "!=",
-                                        "value": "mining_mode"
-                                    }
-                                ]
-                            },
-                            "target": "self",
-                            "event": "ha:start_mining"
+                            "event": "ha:start_regenerating"
                         }
                     ]
                 },
-                "minecraft:behavior.nearest_prioritized_attackable_target": {
-                    "priority": 3,
-                    "must_see": true,
-                    "reselect_targets": true,
-                    "entity_types": [
-                        {
-                            "priority": 0,
-                            "filters": {
-                                "test": "is_family",
-                                "subject": "other",
-                                "value": "player"
-                            },
-                            "max_dist": 150,
-                            "must_see": false
-                        },
-                        {
-                            "priority": 1,
-                            "filters": {
-                                "any_of": [
-                                    {
-                                        "test": "is_family",
-                                        "subject": "other",
-                                        "value": "irongolem"
-                                    },
-                                    {
-                                        "test": "is_family",
-                                        "subject": "other",
-                                        "value": "snowgolem"
-                                    }
-                                ]
-                            },
-                            "max_dist": 50
-                        },
-                        {
-                            "priority": 2,
-                            "filters": {
-                                "all_of": [
-                                    {
-                                        "test": "is_family",
-                                        "subject": "other",
-                                        "operator": "!=",
-                                        "value": "player"
-                                    },
-                                    {
-                                        "test": "is_family",
-                                        "subject": "other",
-                                        "operator": "!=",
-                                        "value": "irongolem"
-                                    },
-                                    {
-                                        "test": "is_family",
-                                        "subject": "other",
-                                        "operator": "!=",
-                                        "value": "snowgolem"
-                                    },
-                                    {
-                                        "test": "is_family",
-                                        "subject": "other",
-                                        "operator": "!=",
-                                        "value": "piglin"
-                                    },
-                                    {
-                                        "test": "is_family",
-                                        "subject": "other",
-                                        "operator": "!=",
-                                        "value": "sulfur_cube"
-                                    },
-                                    {
-                                        "test": "is_family",
-                                        "subject": "other",
-                                        "operator": "!=",
-                                        "value": "npc"
-                                    },
-                                    {
-                                        "test": "is_family",
-                                        "subject": "other",
-                                        "operator": "!=",
-                                        "value": "inanimate"
-                                    }
-                                ]
-                            },
-                            "max_dist": 100,
-                            "must_see": false
-                        }
-                    ]
+                "minecraft:on_target_acquired": {
+                    "target": "self",
+                    "event": "ha:start_pearl_mode"
                 }
             },
-
             "ha:angry_mode": {
                 "minecraft:angry": {
-                    "angry_sound": "angry",
-                    "broadcast_anger_when_dying": true,
                     "broadcast_anger": true,
-                    "broadcast_anger_on_attack": false,
+                    "broadcast_anger_on_attack": true,
                     "broadcast_anger_on_being_attacked": true,
-                    "broadcast_range": 30,
-                    "duration": 30,
+                    "broadcast_anger_when_dying": true,
+                    "broadcast_range": 100,
+                    "duration": 230,
                     "broadcast_targets": [ "piglin" ],
+                    "angry_sound": "angry",
                     "filters": {
                         "all_of": [
                             {
-                                "operator": "!=",
                                 "test": "is_family",
+                                "operator": "!=",
                                 "subject": "other",
                                 "value": "piglin"
                             }
@@ -249,36 +90,45 @@
                 }
             },
 
-            "ha:melee_sensors": {
-                "minecraft:navigation.climb": {
-                    "can_path_over_water": true,
-                    "can_open_doors": true,
-                    "can_path_over_lava": true,
-                    "can_sink": true,
-                    "can_walk_in_lava": true
-                },
-                "minecraft:on_target_escape": {
-                    "target": "self",
-                    "event": "ha:neutral_sensors"
-                },
+            "ha:pearl_sensors": {
                 "minecraft:environment_sensor": {
                     "triggers": [
                         {
                             "filters": {
-                                "test": "bool_property",
+                                "test": "actor_health",
                                 "subject": "self",
-                                "domain": "ha:is_new_brute",
-                                "value": false
+                                "operator": "<=",
+                                "value": 70
                             },
                             "target": "self",
-                            "event": "ha:remove_old_version"
+                            "event": "ha:start_regenerating"
                         },
                         {
                             "filters": {
                                 "test": "target_distance",
                                 "subject": "self",
-                                "operator": ">=",
-                                "value": 14
+                                "operator": "<=",
+                                "value": 6
+                            },
+                            "target": "self",
+                            "event": "ha:start_melee_mode"
+                        },
+                        {
+                            "filters": {
+                                "all_of": [
+                                    {
+                                        "test": "target_distance",
+                                        "subject": "self",
+                                        "operator": ">",
+                                        "value": 6
+                                    },
+                                    {
+                                        "test": "target_distance",
+                                        "subject": "self",
+                                        "operator": "<=",
+                                        "value": 9
+                                    }
+                                ]
                             },
                             "target": "self",
                             "event": "ha:start_ranged_mode"
@@ -324,203 +174,81 @@
                     ]
                 }
             },
-            "ha:mace_sensors": {
-                "minecraft:navigation.walk": {
-                    "can_path_over_water": true,
-                    "can_open_doors": true,
-                    "can_path_over_lava": true,
-                    "can_sink": true,
-                    "can_walk_in_lava": true
-                },
-                "minecraft:on_target_escape": {
-                    "target": "self",
-                    "event": "ha:neutral_sensors"
-                },
-                "minecraft:environment_sensor": {
-                    "triggers": [
+            "ha:pearl_mode": {
+                "minecraft:equipment": {
+                    "table": "loot_tables/entities/custom/brute_gears/pearl_gear.json",
+                    "slot_drop_chance": [
                         {
-                            "filters": {
-                                "test": "bool_property",
-                                "subject": "self",
-                                "domain": "ha:is_new_brute",
-                                "value": false
-                            },
-                            "target": "self",
-                            "event": "ha:remove_old_version"
-                        },
-                        {
-                            "filters": {
-                                "test": "target_distance",
-                                "subject": "self",
-                                "operator": ">=",
-                                "value": 17
-                            },
-                            "target": "self",
-                            "event": "ha:start_ranged_mode"
-                        },
-                        {
-                            "filters": {
-                                "all_of": [
-                                    {
-                                        "test": "has_target",
-                                        "subject": "self",
-                                        "value": true
-                                    },
-                                    {
-                                        "test": "is_underground",
-                                        "subject": "target",
-                                        "value": true
-                                    },
-                                    {
-                                        "test": "random_chance",
-                                        "value": 150
-                                    },
-                                    {
-                                        "test": "is_moving",
-                                        "subject": "target",
-                                        "value": false
-                                    },
-                                    {
-                                        "test": "in_lava",
-                                        "subject": "self",
-                                        "value": false
-                                    },
-                                    {
-                                        "test": "has_tag",
-                                        "subject": "self",
-                                        "operator": "!=",
-                                        "value": "mining_mode"
-                                    }
-                                ]
-                            },
-                            "target": "self",
-                            "event": "ha:start_mining"
+                            "slot": "slot.weapon.mainhand",
+                            "drop_chance": -1
                         }
                     ]
-                }
-            },
-            "ha:spear_sensors": {
-                "minecraft:navigation.walk": {
-                    "can_path_over_water": true,
-                    "can_open_doors": true,
-                    "can_path_over_lava": true,
-                    "can_sink": true,
-                    "can_walk_in_lava": true
                 },
-                "minecraft:on_target_escape": {
-                    "target": "self",
-                    "event": "ha:neutral_sensors"
+                "minecraft:shooter": {
+                    "def": "ha:slime_pearl<ha:spawned_by_brute>",
+                    "magic": true
                 },
-                "minecraft:environment_sensor": {
-                    "triggers": [
-                        {
-                            "filters": {
-                                "test": "bool_property",
-                                "subject": "self",
-                                "domain": "ha:is_new_brute",
-                                "value": false
-                            },
-                            "target": "self",
-                            "event": "ha:remove_old_version"
-                        },
-                        {
-                            "filters": {
-                                "test": "target_distance",
-                                "subject": "self",
-                                "operator": ">=",
-                                "value": 14
-                            },
-                            "target": "self",
-                            "event": "ha:start_ranged_mode"
-                        },
-                        {
-                            "filters": {
-                                "all_of": [
-                                    {
-                                        "test": "has_target",
-                                        "subject": "self",
-                                        "value": true
-                                    },
-                                    {
-                                        "test": "is_underground",
-                                        "subject": "target",
-                                        "value": true
-                                    },
-                                    {
-                                        "test": "random_chance",
-                                        "value": 150
-                                    },
-                                    {
-                                        "test": "is_moving",
-                                        "subject": "target",
-                                        "value": false
-                                    },
-                                    {
-                                        "test": "in_lava",
-                                        "subject": "self",
-                                        "value": false
-                                    },
-                                    {
-                                        "test": "has_tag",
-                                        "subject": "self",
-                                        "operator": "!=",
-                                        "value": "mining_mode"
-                                    }
-                                ]
-                            },
-                            "target": "self",
-                            "event": "ha:start_mining"
-                        }
-                    ]
+                "minecraft:variant": {
+                    "value": 1
+                },
+                "minecraft:behavior.ranged_attack": {
+                    "priority": 0,
+                    "attack_interval": {
+                        "min": 0.95,
+                        "max": 1
+                    },
+                    "attack_radius": 100,
+                    "ranged_fov": 360,
+                    "speed_multiplier": 1.05,
+                    "swing": true
                 }
             },
 
-            "ha:ranged_sensors": {
-                "minecraft:navigation.walk": {
-                    "can_path_over_water": true,
-                    "can_open_doors": true,
-                    "can_path_over_lava": true,
-                    "can_sink": true,
-                    "can_walk_in_lava": true
-                },
-                "minecraft:on_target_escape": {
-                    "target": "self",
-                    "event": "ha:neutral_sensors"
-                },
+            "ha:melee_normal_sensors": {
                 "minecraft:environment_sensor": {
                     "triggers": [
                         {
                             "filters": {
-                                "test": "bool_property",
+                                "test": "actor_health",
                                 "subject": "self",
-                                "domain": "ha:is_new_brute",
-                                "value": false
+                                "operator": "<=",
+                                "value": 70
                             },
                             "target": "self",
-                            "event": "ha:remove_old_version"
+                            "event": "ha:start_regenerating"
+                        },
+                        {
+                            "filters": {
+                                "all_of": [
+                                    {
+                                        "test": "target_distance",
+                                        "subject": "self",
+                                        "operator": ">",
+                                        "value": 6
+                                    },
+                                    {
+                                        "test": "target_distance",
+                                        "subject": "self",
+                                        "operator": "<=",
+                                        "value": 9
+                                    }
+                                ]
+                            },
+                            "target": "self",
+                            "event": "ha:start_ranged_mode"
                         },
                         {
                             "filters": {
                                 "test": "target_distance",
                                 "subject": "self",
                                 "operator": ">=",
-                                "value": 22
+                                "value": 10
                             },
                             "target": "self",
                             "event": "ha:start_pearl_mode"
                         },
                         {
                             "filters": {
-                                "test": "target_distance",
-                                "subject": "self",
-                                "operator": "<=",
-                                "value": 10
-                            },
-                            "target": "self",
-                            "event": "ha:start_melee_mode"
-                        },
-                        {
-                            "filters": {
                                 "all_of": [
                                     {
                                         "test": "has_target",
@@ -560,39 +288,48 @@
                     ]
                 }
             },
-            "ha:pearl_sensors": {
-                "minecraft:navigation.walk": {
-                    "can_path_over_water": true,
-                    "can_open_doors": true,
-                    "can_path_over_lava": true,
-                    "can_sink": true,
-                    "can_walk_in_lava": true
-                },
-                "minecraft:on_target_escape": {
-                    "target": "self",
-                    "event": "ha:neutral_sensors"
-                },
+            "ha:melee_mace_sensors": {
                 "minecraft:environment_sensor": {
                     "triggers": [
                         {
                             "filters": {
-                                "test": "bool_property",
+                                "test": "actor_health",
                                 "subject": "self",
-                                "domain": "ha:is_new_brute",
-                                "value": false
+                                "operator": "<=",
+                                "value": 70
                             },
                             "target": "self",
-                            "event": "ha:remove_old_version"
+                            "event": "ha:start_regenerating"
+                        },
+                        {
+                            "filters": {
+                                "all_of": [
+                                    {
+                                        "test": "target_distance",
+                                        "subject": "self",
+                                        "operator": ">",
+                                        "value": 12
+                                    },
+                                    {
+                                        "test": "target_distance",
+                                        "subject": "self",
+                                        "operator": "<=",
+                                        "value": 14
+                                    }
+                                ]
+                            },
+                            "target": "self",
+                            "event": "ha:start_ranged_mode"
                         },
                         {
                             "filters": {
                                 "test": "target_distance",
                                 "subject": "self",
-                                "operator": "<=",
-                                "value": 11
+                                "operator": ">=",
+                                "value": 15
                             },
                             "target": "self",
-                            "event": "ha:start_melee_mode"
+                            "event": "ha:start_pearl_mode"
                         },
                         {
                             "filters": {
@@ -636,182 +373,218 @@
                 }
             },
 
-            "ha:melee_mode": {
-                "minecraft:behavior.melee_attack": {
-                    "priority": 0,
-                    "can_spread_on_fire": true,
-                    "cooldown_time": 0.65,
-                    "melee_fov": 360,
-                    "reach_multiplier": 5.5,
-                    "speed_multiplier": 1.25,
-                    "track_target": false
-                },
-                "minecraft:variant": {
-                    "value": 1
-                },
+            "ha:melee_normal_equips": {
                 "minecraft:equipment": {
                     "table": "loot_tables/entities/custom/brute_gears/melee_gear.json",
                     "slot_drop_chance": [
                         {
                             "slot": "slot.weapon.mainhand",
                             "drop_chance": -1
-                        },
-                        {
-                            "slot": "slot.weapon.offhand",
-                            "drop_chance": -1
-                        },
-                        {
-                            "slot": "slot.armor.head",
-                            "drop_chance": -1
-                        },
-                        {
-                            "slot": "slot.armor.chest",
-                            "drop_chance": -1
-                        },
-                        {
-                            "slot": "slot.armor.legs",
-                            "drop_chance": -1
-                        },
-                        {
-                            "slot": "slot.armor.feet",
-                            "drop_chance": -1
                         }
                     ]
                 }
             },
-            "ha:spear_mode": {
-                "minecraft:behavior.use_kinetic_weapon": {
-                    "priority": 0,
-                    "approach_distance": 30,
-                    "reposition_distance": {
-                        "min": 0,
-                        "max": 15
-                    },
-                    "cooldown_distance": {
-                        "min": 0,
-                        "max": 5
-                    },
-                    "cooldown_time": 0.0,
-                    "weapon_reach_multiplier": 1.15,
-                    "melee_fov": 360,
-                    "require_complete_path": false,
-                    "weapon_min_speed_multiplier": 1.15,
-                    "reposition_speed_multiplier": 1.15,
-                    "cooldown_speed_multiplier": 1.15,
-                    "hijack_mount_navigation": true,
-                    "track_target": true
-                },
-                "minecraft:behavior.melee_attack": {
-                    "priority": 1,
-                    "can_spread_on_fire": true,
-                    "cooldown_time": 0.45,
-                    "melee_fov": 360,
-                    "reach_multiplier": 1.45,
-                    "track_target": false
-                },
-                "minecraft:equipment": {
-                    "table": "loot_tables/entities/custom/brute_gears/spear_gear.json",
-                    "slot_drop_chance": [
-                        {
-                            "slot": "slot.weapon.mainhand",
-                            "drop_chance": -1
-                        },
-                        {
-                            "slot": "slot.weapon.offhand",
-                            "drop_chance": -1
-                        },
-                        {
-                            "slot": "slot.armor.head",
-                            "drop_chance": -1
-                        },
-                        {
-                            "slot": "slot.armor.chest",
-                            "drop_chance": -1
-                        },
-                        {
-                            "slot": "slot.armor.legs",
-                            "drop_chance": -1
-                        },
-                        {
-                            "slot": "slot.armor.feet",
-                            "drop_chance": -1
-                        }
-                    ]
-                }
-            },
-            "ha:mace_charged_loop": {
-                "minecraft:timer": {
-                    "time": 1.5,
-                    "looping": true,
-                    "time_down_event": {
-                        "filters": {
-                            "test": "target_distance",
-                            "subject": "self",
-                            "operator": "<=",
-                            "value": 5
-                        },
-                        "event": "ha:summon_charged",
-                        "target": "self"
-                    }
-                }
-            },
-            "ha:mace_mode": {
-                "minecraft:behavior.melee_attack": {
-                    "priority": 0,
-                    "can_spread_on_fire": true,
-                    "cooldown_time": 0.75,
-                    "melee_fov": 360,
-                    "reach_multiplier": 7,
-                    "speed_multiplier": 1.25,
-                    "track_target": false
-                },
-                "minecraft:variant": {
-                    "value": 1
-                },
+            "ha:melee_mace_equips": {
                 "minecraft:equipment": {
                     "table": "loot_tables/entities/custom/brute_gears/mace_gear.json",
                     "slot_drop_chance": [
                         {
                             "slot": "slot.weapon.mainhand",
                             "drop_chance": -1
-                        },
+                        }
+                    ]
+                }
+            },
+            "ha:melee_spear_equips": {
+                "minecraft:equipment": {
+                    "table": "loot_tables/entities/custom/brute_gears/spear_gear.json",
+                    "slot_drop_chance": [
                         {
-                            "slot": "slot.weapon.offhand",
-                            "drop_chance": -1
-                        },
-                        {
-                            "slot": "slot.armor.head",
-                            "drop_chance": -1
-                        },
-                        {
-                            "slot": "slot.armor.chest",
-                            "drop_chance": -1
-                        },
-                        {
-                            "slot": "slot.armor.legs",
-                            "drop_chance": -1
-                        },
-                        {
-                            "slot": "slot.armor.feet",
+                            "slot": "slot.weapon.mainhand",
                             "drop_chance": -1
                         }
                     ]
                 }
             },
+            "ha:mace_loop": {
+                "minecraft:timer": {
+                    "time": 1,
+                    "looping": true,
+                    "time_down_event": {
+                        "filters": {
+                            "all_of": [
+                                {
+                                    "test": "on_ground",
+                                    "subject": "self",
+                                    "value": true
+                                },
+                                {
+                                    "test": "target_distance",
+                                    "subject": "self",
+                                    "operator": "<=",
+                                    "value": 7
+                                }
+                            ]
+                        },
+                        "event": "ha:summon_wind_charge",
+                        "target": "self"
+                    }
+                }
+            },
 
-            "ha:ranged_mode": {
+            "ha:set_resistance": {
+                "minecraft:knockback_resistance": {
+                    "value": 999
+                }
+            },
+            "ha:remove_resistance": {
+                "minecraft:knockback_resistance": {
+                    "value": 0
+                }
+            },
+
+            "ha:melee_mode_normal": {
                 "minecraft:variant": {
                     "value": 1
                 },
-                "minecraft:behavior.ranged_attack": {
+                "minecraft:behavior.melee_attack": {
                     "priority": 0,
-                    "attack_interval_min": 0.75,
-                    "attack_interval_max": 1.15,
-                    "attack_radius": 80,
-                    "ranged_fov": 360,
-                    "swing": false,
-                    "target_in_sight_time": 0.1,
-                    "speed_multiplier": 1.25
+                    "can_spread_on_fire": true,
+                    "cooldown_time": 0.75,
+                    "melee_fov": 360,
+                    "reach_multiplier": 1.5,
+                    "track_target": false,
+                    "min_path_time": 0.1,
+                    "max_path_time": 0.15,
+                    "require_complete_path": false
+                }
+            },
+            "ha:melee_mode_mace": {
+                "minecraft:variant": {
+                    "value": 1
+                },
+                "minecraft:behavior.melee_attack": {
+                    "priority": 0,
+                    "can_spread_on_fire": true,
+                    "cooldown_time": 0.75,
+                    "melee_fov": 360,
+                    "reach_multiplier": 7,
+                    "track_target": true,
+                    "min_path_time": 0.1,
+                    "max_path_time": 0.15,
+                    "require_complete_path": false
+                }
+            },
+            "ha:melee_mode_spear": {
+                "minecraft:variant": {
+                    "value": 1
+                },
+                "minecraft:behavior.use_kinetic_weapon": {
+                    "priority": 0,
+                    "approach_distance": 8,
+                    "attack_once": false,
+                    "reposition_distance": {
+                        "min": 4,
+                        "max": 5
+                    },
+                    "cooldown_distance": {
+                        "min": 6,
+                        "max": 7
+                    },
+                    "cooldown_time": 0.4,
+                    "weapon_reach_multiplier": 1.2,
+                    "hijack_mount_navigation": true,
+                    "melee_fov": 360,
+                    "min_path_time": 0.05,
+                    "max_path_time": 0.1,
+                    "speed_multiplier": 1.35,
+                    "track_target": true
+                }
+            },
+
+            "ha:ranged_sensor": {
+                "minecraft:environment_sensor": {
+                    "triggers": [
+                        {
+                            "filters": {
+                                "test": "actor_health",
+                                "subject": "self",
+                                "operator": "<=",
+                                "value": 70
+                            },
+                            "target": "self",
+                            "event": "ha:start_regenerating"
+                        },
+                        {
+                            "filters": {
+                                "test": "target_distance",
+                                "subject": "self",
+                                "operator": "<=",
+                                "value": 6
+                            },
+                            "target": "self",
+                            "event": "ha:start_melee_mode"
+                        },
+                        {
+                            "filters": {
+                                "test": "target_distance",
+                                "subject": "self",
+                                "operator": ">=",
+                                "value": 10
+                            },
+                            "target": "self",
+                            "event": "ha:start_pearl_mode"
+                        },
+                        {
+                            "filters": {
+                                "all_of": [
+                                    {
+                                        "test": "has_target",
+                                        "subject": "self",
+                                        "value": true
+                                    },
+                                    {
+                                        "test": "is_underground",
+                                        "subject": "target",
+                                        "value": true
+                                    },
+                                    {
+                                        "test": "random_chance",
+                                        "value": 150
+                                    },
+                                    {
+                                        "test": "is_moving",
+                                        "subject": "target",
+                                        "value": false
+                                    },
+                                    {
+                                        "test": "in_lava",
+                                        "subject": "self",
+                                        "value": false
+                                    },
+                                    {
+                                        "test": "has_tag",
+                                        "subject": "self",
+                                        "operator": "!=",
+                                        "value": "mining_mode"
+                                    }
+                                ]
+                            },
+                            "target": "self",
+                            "event": "ha:start_mining"
+                        }
+                    ]
+                }
+            },
+            "ha:ranged_mode": {
+                "minecraft:equipment": {
+                    "table": "loot_tables/entities/custom/brute_gears/ranged_gear.json",
+                    "slot_drop_chance": [
+                        {
+                            "slot": "slot.weapon.mainhand",
+                            "drop_chance": -1
+                        }
+                    ]
                 },
                 "minecraft:shooter": {
                     "magic": true,
@@ -884,121 +657,279 @@
                         }
                     ]
                 },
-                "minecraft:equipment": {
-                    "table": "loot_tables/entities/custom/brute_gears/ranged_gear.json",
-                    "slot_drop_chance": [
-                        {
-                            "slot": "slot.weapon.mainhand",
-                            "drop_chance": -1
-                        },
-                        {
-                            "slot": "slot.weapon.offhand",
-                            "drop_chance": -1
-                        },
-                        {
-                            "slot": "slot.armor.head",
-                            "drop_chance": -1
-                        },
-                        {
-                            "slot": "slot.armor.chest",
-                            "drop_chance": -1
-                        },
-                        {
-                            "slot": "slot.armor.legs",
-                            "drop_chance": -1
-                        },
-                        {
-                            "slot": "slot.armor.feet",
-                            "drop_chance": -1
-                        }
-                    ]
-                },
-                "minecraft:timer": {
-                    "time": [ 20, 20 ],
-                    "looping": false,
-                    "time_down_event": {
-                        "event": "ha:start_pearl_mode",
-                        "target": "self"
-                    }
-                }
-            },
-            "ha:pearl_mode": {
-                "minecraft:variant": {
-                    "value": 1
-                },
                 "minecraft:behavior.ranged_attack": {
                     "priority": 0,
-                    "attack_interval_min": 0.65,
-                    "attack_interval_max": 2,
-                    "attack_radius": 80,
+                    "attack_interval": {
+                        "min": 0.35,
+                        "max": 1
+                    },
+                    "attack_radius": 50,
                     "ranged_fov": 360,
-                    "swing": true,
-                    "target_in_sight_time": 0.1,
-                    "speed_multiplier": 1.25
+                    "speed_multiplier": 1.15
+                }
+            },
+
+            "ha:normal_damage": {
+                "minecraft:skin_id": {
+                    "value": 0
                 },
-                "minecraft:shooter": {
-                    "def": "ha:slime_pearl"
+                "minecraft:attack": {
+                    "damage": 25
+                }
+            },
+            "ha:critic_damage": {
+                "minecraft:skin_id": {
+                    "value": 1
                 },
-                "minecraft:equipment": {
-                    "table": "loot_tables/entities/custom/brute_gears/pearl_gear.json",
-                    "slot_drop_chance": [
+                "minecraft:attack": {
+                    "damage": 30
+                }
+            },
+
+            "ha:normal_targets": {
+                "minecraft:behavior.nearest_prioritized_attackable_target": {
+                    "priority": 2,
+                    "must_see": true,
+                    "must_see_forget_duration": 60,
+                    "must_reach": true,
+                    "reselect_targets": true,
+                    "within_radius": 95,
+                    "entity_types": [
                         {
-                            "slot": "slot.weapon.mainhand",
-                            "drop_chance": -1
+                            "priority": 0,
+                            "filters": {
+                                "test": "is_family",
+                                "subject": "other",
+                                "value": "player"
+                            },
+                            "max_dist": 100
                         },
                         {
-                            "slot": "slot.weapon.offhand",
-                            "drop_chance": -1
+                            "priority": 1,
+                            "filters": {
+                                "test": "is_family",
+                                "subject": "other",
+                                "value": "player_ghost"
+                            },
+                            "cooldown": 60,
+                            "max_dist": 100
                         },
                         {
-                            "slot": "slot.armor.head",
-                            "drop_chance": -1
+                            "priority": 2,
+                            "filters": {
+                                "any_of": [
+                                    {
+                                        "test": "is_family",
+                                        "subject": "other",
+                                        "value": "wither"
+                                    },
+                                    {
+                                        "test": "is_family",
+                                        "subject": "other",
+                                        "value": "hoglin"
+                                    },
+                                    {
+                                        "all_of": [
+                                            {
+                                                "test": "has_equipment",
+                                                "subject": "self",
+                                                "operator": "not",
+                                                "value": "ha:cautious_helmet"
+                                            },
+                                            {
+                                                "test": "is_family",
+                                                "subject": "other",
+                                                "value": "enderman"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "all_of": [
+                                            {
+                                                "test": "has_equipment",
+                                                "subject": "self",
+                                                "operator": "not",
+                                                "value": "ha:cautious_leggings"
+                                            },
+                                            {
+                                                "test": "is_family",
+                                                "subject": "other",
+                                                "value": "ravager"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "all_of": [
+                                            {
+                                                "test": "has_equipment",
+                                                "subject": "self",
+                                                "operator": "not",
+                                                "value": "ha:cautious_boots"
+                                            },
+                                            {
+                                                "test": "is_family",
+                                                "subject": "other",
+                                                "value": "llama"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            "cooldown": 60,
+                            "must_see": false,
+                            "max_dist": 100
+                        }
+                    ]
+                }
+            },
+            "ha:pickaxe_targets": {
+                "minecraft:behavior.nearest_prioritized_attackable_target": {
+                    "priority": 2,
+                    "must_see": false,
+                    "reselect_targets": true,
+                    "entity_types": [
+                        {
+                            "priority": 0,
+                            "filters": {
+                                "test": "is_family",
+                                "subject": "other",
+                                "value": "player"
+                            },
+                            "max_dist": 150
                         },
                         {
-                            "slot": "slot.armor.chest",
-                            "drop_chance": -1
+                            "priority": 1,
+                            "filters": {
+                                "test": "is_family",
+                                "subject": "other",
+                                "value": "player_ghost"
+                            },
+                            "cooldown": 300,
+                            "max_dist": 150
                         },
                         {
-                            "slot": "slot.armor.legs",
-                            "drop_chance": -1
-                        },
-                        {
-                            "slot": "slot.armor.feet",
-                            "drop_chance": -1
+                            "priority": 2,
+                            "filters": {
+                                "any_of": [
+                                    {
+                                        "test": "is_family",
+                                        "subject": "other",
+                                        "value": "wither"
+                                    },
+                                    {
+                                        "test": "is_family",
+                                        "subject": "other",
+                                        "value": "hoglin"
+                                    },
+                                    {
+                                        "all_of": [
+                                            {
+                                                "test": "has_equipment",
+                                                "subject": "self",
+                                                "operator": "not",
+                                                "value": "ha:cautious_helmet"
+                                            },
+                                            {
+                                                "test": "is_family",
+                                                "subject": "other",
+                                                "value": "enderman"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "all_of": [
+                                            {
+                                                "test": "has_equipment",
+                                                "subject": "self",
+                                                "operator": "not",
+                                                "value": "ha:cautious_leggings"
+                                            },
+                                            {
+                                                "test": "is_family",
+                                                "subject": "other",
+                                                "value": "ravager"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "all_of": [
+                                            {
+                                                "test": "has_equipment",
+                                                "subject": "self",
+                                                "operator": "not",
+                                                "value": "ha:cautious_boots"
+                                            },
+                                            {
+                                                "test": "is_family",
+                                                "subject": "other",
+                                                "value": "llama"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            "cooldown": 300,
+                            "max_dist": 150
                         }
                     ]
                 }
             },
 
-            "ha:timer_food": {
-                "minecraft:is_sheared": { },
-                "minecraft:timer": {
-                    "time": [ 2.9, 2.9 ],
-                    "looping": false,
-                    "time_down_event": {
-                        "event": "ha:neutral_sensors",
-                        "target": "self"
+            "ha:scare_brute": {
+                "minecraft:behavior.avoid_mob_type": {
+                    "priority": 1,
+                    "remove_target": true,
+                    "walk_speed_multiplier": 2,
+                    "sprint_speed_multiplier": 2,
+                    "sprint_distance": 10,
+                    "max_dist": 64,
+                    "ignore_visibility": false,
+                    "entity_types": {
+                        "filters": {
+                            "test": "is_family",
+                            "subject": "other",
+                            "operator": "!=",
+                            "value": "piglin"
+                        }
                     }
                 }
             },
-            "ha:timer_potion": {
-                "minecraft:is_sheared": { },
+            "ha:foods_mode_reg": {
+                "minecraft:healable": {
+                    "force_use": true,
+                    "items": [
+                        {
+                            "item": "minecraft:porkchop",
+                            "heal_amount": 10
+                        },
+                        {
+                            "item": "minecraft:cooked_porkchop",
+                            "heal_amount": 25
+                        },
+                        {
+                            "item": "minecraft:golden_apple",
+                            "heal_amount": 30
+                        },
+                        {
+                            "item": "minecraft:enchanted_golden_apple",
+                            "heal_amount": 50
+                        },
+                        {
+                            "item": "ha:iron_apple",
+                            "heal_amount": 100
+                        }
+                    ]
+                },
+                "minecraft:variant": {
+                    "value": 0
+                },
                 "minecraft:timer": {
-                    "time": [ 2, 2 ],
-                    "looping": false,
+                    "time": 2.9,
+                    "looping": true,
                     "time_down_event": {
-                        "event": "ha:neutral_sensors",
+                        "event": "ha:remove_regenerating",
                         "target": "self"
                     }
-                }
-            },
-            "ha:food_gear": {
-                "minecraft:navigation.walk": {
-                    "can_path_over_water": true,
-                    "can_open_doors": true,
-                    "can_path_over_lava": true,
-                    "can_sink": true,
-                    "can_walk_in_lava": true
                 },
                 "minecraft:behavior.eat_carried_item": {
                     "priority": 0
@@ -1009,37 +940,21 @@
                         {
                             "slot": "slot.weapon.mainhand",
                             "drop_chance": -1
-                        },
-                        {
-                            "slot": "slot.weapon.offhand",
-                            "drop_chance": -1
-                        },
-                        {
-                            "slot": "slot.armor.head",
-                            "drop_chance": -1
-                        },
-                        {
-                            "slot": "slot.armor.chest",
-                            "drop_chance": -1
-                        },
-                        {
-                            "slot": "slot.armor.legs",
-                            "drop_chance": -1
-                        },
-                        {
-                            "slot": "slot.armor.feet",
-                            "drop_chance": -1
                         }
                     ]
                 }
             },
-            "ha:potions_gear": {
-                "minecraft:navigation.walk": {
-                    "can_path_over_water": true,
-                    "can_open_doors": true,
-                    "can_path_over_lava": true,
-                    "can_sink": true,
-                    "can_walk_in_lava": true
+            "ha:potions_mode_reg": {
+                "minecraft:variant": {
+                    "value": 0
+                },
+                "minecraft:timer": {
+                    "time": 1.9,
+                    "looping": true,
+                    "time_down_event": {
+                        "event": "ha:remove_regenerating",
+                        "target": "self"
+                    }
                 },
                 "minecraft:behavior.drink_potion": {
                     "priority": 0,
@@ -1116,43 +1031,26 @@
                 }
             },
 
-            "ha:pickaxe_mode": {
-                "minecraft:navigation.climb": {
-                    "can_path_over_water": true,
-                    "can_open_doors": true,
-                    "can_path_over_lava": true,
-                    "can_sink": true,
-                    "can_walk_in_lava": true
-                },
+            "ha:pickaxe_sensor": {
                 "minecraft:timer": {
-                    "time": [ 12, 12 ],
+                    "time": 15,
                     "looping": true,
                     "time_down_event": {
-                        "event": "ha:neutral_sensors",
+                        "event": "ha:start_melee_mode",
                         "target": "self"
                     }
-                },
-                "minecraft:behavior.melee_attack": {
-                    "priority": 0,
-                    "can_spread_on_fire": true,
-                    "melee_fov": 360,
-                    "track_target": true,
-                    "speed_multiplier": 1.25
-                },
-                "minecraft:variant": {
-                    "value": 1
                 },
                 "minecraft:environment_sensor": {
                     "triggers": [
                         {
                             "filters": {
-                                "test": "bool_property",
+                                "test": "actor_health",
                                 "subject": "self",
-                                "domain": "ha:is_new_brute",
-                                "value": false
+                                "operator": "<=",
+                                "value": 70
                             },
                             "target": "self",
-                            "event": "ha:remove_old_version"
+                            "event": "ha:start_regenerating"
                         },
                         {
                             "filters": {
@@ -1165,119 +1063,32 @@
                             "event": "ha:start_melee_mode"
                         }
                     ]
-                },
+                }
+            },
+            "ha:pickaxe_mode": {
                 "minecraft:equipment": {
                     "table": "loot_tables/entities/custom/brute_gears/pickaxe_gear.json",
                     "slot_drop_chance": [
                         {
                             "slot": "slot.weapon.mainhand",
                             "drop_chance": -1
-                        },
-                        {
-                            "slot": "slot.weapon.offhand",
-                            "drop_chance": -1
-                        },
-                        {
-                            "slot": "slot.armor.head",
-                            "drop_chance": -1
-                        },
-                        {
-                            "slot": "slot.armor.chest",
-                            "drop_chance": -1
-                        },
-                        {
-                            "slot": "slot.armor.legs",
-                            "drop_chance": -1
-                        },
-                        {
-                            "slot": "slot.armor.feet",
-                            "drop_chance": -1
                         }
                     ]
                 },
-                "minecraft:behavior.nearest_prioritized_attackable_target": {
-                    "priority": 3,
-                    "must_see": false,
-                    "reselect_targets": true,
-                    "entity_types": [
-                        {
-                            "priority": 0,
-                            "filters": {
-                                "test": "is_family",
-                                "subject": "other",
-                                "value": "player"
-                            },
-                            "max_dist": 150
-                        },
-                        {
-                            "priority": 1,
-                            "filters": {
-                                "any_of": [
-                                    {
-                                        "test": "is_family",
-                                        "subject": "other",
-                                        "value": "irongolem"
-                                    },
-                                    {
-                                        "test": "is_family",
-                                        "subject": "other",
-                                        "value": "snowgolem"
-                                    }
-                                ]
-                            },
-                            "max_dist": 150
-                        },
-                        {
-                            "priority": 2,
-                            "filters": {
-                                "all_of": [
-                                    {
-                                        "test": "is_family",
-                                        "subject": "other",
-                                        "operator": "!=",
-                                        "value": "player"
-                                    },
-                                    {
-                                        "test": "is_family",
-                                        "subject": "other",
-                                        "operator": "!=",
-                                        "value": "irongolem"
-                                    },
-                                    {
-                                        "test": "is_family",
-                                        "subject": "other",
-                                        "operator": "!=",
-                                        "value": "snowgolem"
-                                    },
-                                    {
-                                        "test": "is_family",
-                                        "subject": "other",
-                                        "operator": "!=",
-                                        "value": "piglin"
-                                    },
-                                    {
-                                        "test": "is_family",
-                                        "subject": "other",
-                                        "operator": "!=",
-                                        "value": "sulfur_cube"
-                                    },
-                                    {
-                                        "test": "is_family",
-                                        "subject": "other",
-                                        "operator": "!=",
-                                        "value": "npc"
-                                    },
-                                    {
-                                        "test": "is_family",
-                                        "subject": "other",
-                                        "operator": "!=",
-                                        "value": "inanimate"
-                                    }
-                                ]
-                            },
-                            "max_dist": 150
-                        }
-                    ]
+                "minecraft:behavior.melee_attack": {
+                    "priority": 0,
+                    "can_spread_on_fire": true,
+                    "melee_fov": 360,
+                    "min_path_time": 0.1,
+                    "max_path_time": 0.2,
+                    "reach_multiplier": 0,
+                    "require_complete_path": true,
+                    "track_target": true,
+                    "speed_multiplier": 1.15,
+                    "on_attack": {
+                        "target": "self",
+                        "event": "ha:start_melee_mode"
+                    }
                 },
                 "minecraft:break_blocks": {
                     "breakable_blocks": [
@@ -2582,611 +2393,172 @@
                 }
             },
 
-            "ha:fire_potion_gear": {
-                "minecraft:behavior.drink_potion": {
-                    "priority": 0,
-                    "speed_multiplier": 1.35,
-                    "potions": [
-                        {
-                            "id": 13,
-                            "chance": 1,
-                            "filters": {
-                                "test": "has_mob_effect",
-                                "operator": "!=",
-                                "subject": "self",
-                                "value": "fire_resistance"
-                            }
-                        }
-                    ]
+            "ha:path_normal": {
+                "minecraft:movement.basic": { },
+                "minecraft:navigation.walk": {
+                    "avoid_damage_blocks": false,
+                    "avoid_water": false,
+                    "avoid_portals": false,
+                    "avoid_sun": false,
+                    "can_break_doors": true,
+                    "can_jump": true,
+                    "can_open_doors": true,
+                    "can_open_iron_doors": true,
+                    "can_pass_doors": true,
+                    "can_path_over_lava": true,
+                    "can_path_over_water": true,
+                    "can_breach": true,
+                    "can_float": true,
+                    "can_sink": false,
+                    "can_swim": true,
+                    "can_walk": true,
+                    "can_walk_in_lava": true
                 }
             },
-            "ha:scare_brute": {
-                "minecraft:behavior.avoid_mob_type": {
-                    "priority": 1,
-                    "remove_target": true,
-                    "walk_speed_multiplier": 2,
-                    "sprint_speed_multiplier": 2,
-                    "sprint_distance": 10,
-                    "max_dist": 64,
-                    "ignore_visibility": false,
-                    "entity_types": {
-                        "filters": {
-                            "test": "is_family",
-                            "subject": "other",
-                            "operator": "!=",
-                            "value": "piglin"
-                        }
-                    }
-                }
-            },
-
-            "ha:normal_damage": {
-                "minecraft:attack": {
-                    "damage": 25
-                }
-            },
-            "ha:critic_damage": {
-                "minecraft:attack": {
-                    "damage": 30
+            "ha:path_melee": {
+                "minecraft:movement.generic": { },
+                "minecraft:navigation.climb": {
+                    "avoid_damage_blocks": false,
+                    "avoid_water": false,
+                    "avoid_portals": false,
+                    "avoid_sun": false,
+                    "can_break_doors": true,
+                    "can_jump": true,
+                    "can_open_doors": true,
+                    "can_open_iron_doors": true,
+                    "can_pass_doors": true,
+                    "can_path_over_lava": true,
+                    "can_path_over_water": true,
+                    "can_breach": true,
+                    "can_float": true,
+                    "can_sink": false,
+                    "can_swim": true,
+                    "can_walk": true,
+                    "can_walk_in_lava": true
                 }
             }
         },
         "components": {
-            "minecraft:tick_world": {
-                "never_despawn": false,
-                "radius": 4
-            },
-            "minecraft:environment_sensor": {
-                "triggers": [
-                    {
-                        "filters": {
-                            "test": "bool_property",
-                            "subject": "self",
-                            "domain": "ha:is_new_brute",
-                            "value": false
-                        },
-                        "target": "self",
-                        "event": "ha:remove_old_version"
-                    }
-                ]
-            },
-            "minecraft:damage_sensor": {
-                "triggers": [
-                    {
-                        "on_damage": {
-                            "filters": {
-                                "any_of": [
-                                    {
-                                        "test": "has_damage",
-                                        "value": "block_explosion"
-                                    },
-                                    {
-                                        "test": "has_damage",
-                                        "value": "entity_explosion"
-                                    }
-                                ]
-                            }
-                        },
-                        "deals_damage": "yes"
-                    },
-                    {
-                        "on_damage": {
-                            "filters": {
-                                "none_of": [
-                                    {
-                                        "test": "has_damage",
-                                        "value": "block_explosion"
-                                    },
-                                    {
-                                        "test": "has_damage",
-                                        "value": "entity_explosion"
-                                    }
-                                ]
-                            }
-                        },
-                        "deals_damage": "no"
-                    }
-                ]
-            },
-            "minecraft:equip_item": { },
-            "minecraft:behavior.pickup_items": {
-                "priority": 4,
-                "can_pickup_any_item": true,
-                "can_pickup_to_hand_or_equipment": true,
-                "cooldown_after_being_attacked": 20,
-                "goal_radius": 1.5,
-                "max_dist": 60,
-                "pickup_based_on_chance": false,
-                "search_height": 3,
-                "speed_multiplier": 1,
-                "track_target": true
-            },
-            "minecraft:behavior.equip_item": {
-                "priority": 4
-            },
-            "minecraft:healable": {
-                "force_use": false,
-                "items": [
-                    {
-                        "item": "minecraft:porkchop",
-                        "heal_amount": 2
-                    },
-                    {
-                        "item": "minecraft:cooked_porkchop",
-                        "heal_amount": 2
-                    },
-                    {
-                        "item": "minecraft:golden_apple",
-                        "heal_amount": 4
-                    },
-                    {
-                        "item": "minecraft:enchanted_golden_apple",
-                        "heal_amount": 4
-                    },
-                    {
-                        "item": "ha:iron_apple",
-                        "heal_amount": 4
-                    }
-                ]
-            },
+            "minecraft:fire_immune": { },
             "minecraft:inventory": {
                 "can_be_siphoned_from": false,
                 "container_type": "inventory",
-                "inventory_size": 64,
+                "inventory_size": 74,
                 "restrict_to_owner": true
             },
+            "minecraft:jump.static": { },
+            "minecraft:on_target_escape": {
+                "target": "self",
+                "event": "ha:calm_event"
+            },
+            "minecraft:equipment": {
+                "table": "loot_tables/entities/custom/brute_gears/armor_gear.json"
+            },
             "minecraft:shareables": {
+                "all_items": true,
+                "all_items_max_amount": 64,
                 "items": [
                     {
                         "item": "ha:cautious_helmet",
-                        "want_amount": 1,
+                        "priority": 0,
                         "surplus_amount": 1,
-                        "priority": 0
+                        "want_amount": 1
                     },
                     {
                         "item": "ha:cautious_chestplate",
-                        "want_amount": 1,
+                        "priority": 0,
                         "surplus_amount": 1,
-                        "priority": 0
+                        "want_amount": 1
                     },
                     {
                         "item": "ha:cautious_leggings",
-                        "want_amount": 1,
+                        "priority": 0,
                         "surplus_amount": 1,
-                        "priority": 0
+                        "want_amount": 1
                     },
                     {
                         "item": "ha:cautious_boots",
-                        "want_amount": 1,
+                        "priority": 0,
                         "surplus_amount": 1,
-                        "priority": 0
+                        "want_amount": 1
                     },
-
-                    {
-                        "item": "ha:fake_netherite_helmet",
-                        "want_amount": 1,
-                        "surplus_amount": 1,
-                        "priority": 0
-                    },
-                    {
-                        "item": "ha:fake_netherite_chestplate",
-                        "want_amount": 1,
-                        "surplus_amount": 1,
-                        "priority": 0
-                    },
-                    {
-                        "item": "ha:fake_netherite_leggings",
-                        "want_amount": 1,
-                        "surplus_amount": 1,
-                        "priority": 0
-                    },
-                    {
-                        "item": "ha:fake_netherite_boots",
-                        "want_amount": 1,
-                        "surplus_amount": 1,
-                        "priority": 0
-                    },
-
-                    {
-                        "item": "ha:hoglin_fang",
-                        "want_amount": 1,
-                        "surplus_amount": 1,
-                        "priority": 0
-                    },
-                    {
-                        "item": "ha:piglin_mace",
-                        "want_amount": 1,
-                        "surplus_amount": 1,
-                        "priority": 0
-                    },
-
                     {
                         "item": "minecraft:netherite_helmet",
                         "priority": 1,
-                        "stored_in_inventory": true,
-                        "max_amount": 1
+                        "surplus_amount": 1,
+                        "want_amount": 1
                     },
                     {
                         "item": "minecraft:netherite_chestplate",
                         "priority": 1,
-                        "stored_in_inventory": true,
-                        "max_amount": 1
+                        "surplus_amount": 1,
+                        "want_amount": 1
                     },
                     {
                         "item": "minecraft:netherite_leggings",
                         "priority": 1,
-                        "stored_in_inventory": true,
-                        "max_amount": 1
+                        "surplus_amount": 1,
+                        "want_amount": 1
                     },
                     {
                         "item": "minecraft:netherite_boots",
                         "priority": 1,
-                        "stored_in_inventory": true,
-                        "max_amount": 1
-                    },
-                    {
-                        "item": "minecraft:netherite_sword",
-                        "priority": 1,
-                        "stored_in_inventory": true,
-                        "max_amount": 1
-                    },
-                    {
-                        "item": "ha:hoglin_fang",
-                        "priority": 1,
-                        "stored_in_inventory": true,
-                        "max_amount": 1
-                    },
-                    {
-                        "item": "ha:piglin_mace",
-                        "priority": 1,
-                        "stored_in_inventory": true,
-                        "max_amount": 1
-                    },
-                    {
-                        "item": "minecraft:netherite_spear",
-                        "priority": 1,
-                        "stored_in_inventory": true,
-                        "max_amount": 1
-                    },
-                    {
-                        "item": "minecraft:netherite_axe",
-                        "priority": 1,
-                        "stored_in_inventory": true,
-                        "max_amount": 1
-                    },
-                    {
-                        "item": "minecraft:mace",
-                        "priority": 1,
-                        "stored_in_inventory": true,
-                        "max_amount": 1
-                    },
-                    {
-                        "item": "minecraft:trident",
-                        "priority": 1,
-                        "stored_in_inventory": true,
-                        "max_amount": 1
-                    },
-                    {
-                        "item": "minecraft:bow",
-                        "priority": 1,
-                        "stored_in_inventory": true,
-                        "max_amount": 1
-                    },
-                    {
-                        "item": "minecraft:crossbow",
-                        "priority": 1,
-                        "stored_in_inventory": true,
-                        "max_amount": 1
-                    },
-                    {
-                        "item": "minecraft:shield",
-                        "priority": 1,
-                        "stored_in_inventory": true,
-                        "max_amount": 1
-                    },
-                    {
-                        "item": "minecraft:wind_charge",
-                        "priority": 2,
-                        "stored_in_inventory": true,
-                        "max_amount": 64
+                        "surplus_amount": 1,
+                        "want_amount": 1
                     },
                     {
                         "item": "minecraft:elytra",
-                        "priority": 1,
-                        "stored_in_inventory": true,
-                        "max_amount": 1
+                        "priority": 2,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:netherite_sword",
+                        "priority": 2,
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    },
+                    {
+                        "item": "minecraft:shield",
+                        "priority": 2,
+                        "surplus_amount": 1,
+                        "want_amount": 1
                     },
                     {
                         "item": "minecraft:totem_of_undying",
                         "priority": 1,
-                        "stored_in_inventory": true,
-                        "max_amount": 1
-                    },
+                        "surplus_amount": 1,
+                        "want_amount": 1
+                    }
+                ]
+            },
+            "minecraft:floats_in_liquid": { },
+            "minecraft:preferred_path": {
+                "max_fall_blocks": 9999
+            },
+            "minecraft:equip_item": {
+                "can_wear_armor": true,
+                "excluded_items": [
                     {
-                        "item": "ha:slime_pearl",
-                        "priority": 2,
-                        "stored_in_inventory": true,
-                        "max_amount": 64
-                    },
-                    {
-                        "item": "ha:allay_essence",
-                        "priority": 2,
-                        "stored_in_inventory": true,
-                        "max_amount": 1
-                    },
-                    {
-                        "item": "ha:allay_dust",
-                        "priority": 2,
-                        "stored_in_inventory": true,
-                        "max_amount": 64
-                    },
-                    {
-                        "item": "minecraft:porkchop",
-                        "priority": 2,
-                        "stored_in_inventory": true,
-                        "max_amount": 64
-                    },
-                    {
-                        "item": "minecraft:cooked_porkchop",
-                        "priority": 2,
-                        "stored_in_inventory": true,
-                        "max_amount": 64
-                    },
-                    {
-                        "item": "minecraft:golden_apple",
-                        "priority": 2,
-                        "stored_in_inventory": true,
-                        "max_amount": 64
-                    },
-                    {
-                        "item": "minecraft:enchanted_golden_apple",
-                        "priority": 2,
-                        "stored_in_inventory": true,
-                        "max_amount": 64
-                    },
-                    {
-                        "item": "ha:iron_apple",
-                        "priority": 2,
-                        "stored_in_inventory": true,
-                        "max_amount": 64
+                        "item": "minecraft:banner:15"
                     }
                 ]
             },
             "minecraft:group_size": {
-                "radius": 20,
+                "radius": 32,
                 "filters": {
-                    "test": "is_family",
-                    "subject": "other",
-                    "value": "piglin"
-                }
-            },
-            "minecraft:attack": {
-                "damage": 25
-            },
-            "minecraft:equipment": {
-                "table": "loot_tables/entities/custom/brute_gears/armor_gear.json",
-                "slot_drop_chance": [
-                    {
-                        "slot": "slot.weapon.mainhand",
-                        "drop_chance": -1
-                    },
-                    {
-                        "slot": "slot.weapon.offhand",
-                        "drop_chance": -1
-                    },
-                    {
-                        "slot": "slot.armor.head",
-                        "drop_chance": -1
-                    },
-                    {
-                        "slot": "slot.armor.chest",
-                        "drop_chance": -1
-                    },
-                    {
-                        "slot": "slot.armor.legs",
-                        "drop_chance": -1
-                    },
-                    {
-                        "slot": "slot.armor.feet",
-                        "drop_chance": -1
-                    }
-                ]
-            },
-            "minecraft:behavior.hurt_by_target": {
-                "priority": 2,
-                "hurt_owner": true,
-                "entity_types": {
-                    "filters": {
-                        "all_of": [
-                            {
-                                "test": "is_family",
-                                "subject": "other",
-                                "operator": "!=",
-                                "value": "piglin"
-                            }
-                        ]
-                    }
-                }
-            },
-            "minecraft:behavior.nearest_prioritized_attackable_target": {
-                "priority": 3,
-                "must_see": true,
-                "reselect_targets": true,
-                "entity_types": [
-                    {
-                        "priority": 0,
-                        "filters": {
+                    "all_of": [
+                        {
+                            "test": "has_component",
+                            "operator": "not",
+                            "value": "minecraft:is_baby"
+                        },
+                        {
                             "test": "is_family",
-                            "subject": "other",
-                            "value": "player"
-                        },
-                        "max_dist": 150,
-                        "must_see": false
-                    },
-                    {
-                        "priority": 1,
-                        "filters": {
-                            "any_of": [
-                                {
-                                    "test": "is_family",
-                                    "subject": "other",
-                                    "value": "irongolem"
-                                },
-                                {
-                                    "test": "is_family",
-                                    "subject": "other",
-                                    "value": "snowgolem"
-                                }
-                            ]
-                        },
-                        "max_dist": 50
-                    },
-                    {
-                        "priority": 2,
-                        "filters": {
-                            "all_of": [
-                                {
-                                    "test": "is_family",
-                                    "subject": "other",
-                                    "operator": "!=",
-                                    "value": "player"
-                                },
-                                {
-                                    "test": "is_family",
-                                    "subject": "other",
-                                    "operator": "!=",
-                                    "value": "irongolem"
-                                },
-                                {
-                                    "test": "is_family",
-                                    "subject": "other",
-                                    "operator": "!=",
-                                    "value": "snowgolem"
-                                },
-                                {
-                                    "test": "is_family",
-                                    "subject": "other",
-                                    "operator": "!=",
-                                    "value": "piglin"
-                                },
-                                {
-                                    "test": "is_family",
-                                    "subject": "other",
-                                    "operator": "!=",
-                                    "value": "sulfur_cube"
-                                },
-                                {
-                                    "test": "is_family",
-                                    "subject": "other",
-                                    "operator": "!=",
-                                    "value": "npc"
-                                },
-                                {
-                                    "test": "is_family",
-                                    "subject": "other",
-                                    "operator": "!=",
-                                    "value": "inanimate"
-                                }
-                            ]
-                        },
-                        "max_dist": 100,
-                        "must_see": false
-                    }
-                ]
-            },
-            "minecraft:annotation.open_door": { },
-            "minecraft:annotation.break_door": {
-                "break_time": 5,
-                "min_difficulty": "hard"
-            },
-            "minecraft:behavior.break_door": { },
-            "minecraft:behavior.door_interact": { },
-            "minecraft:behavior.open_door": {
-                "priority": 6,
-                "close_door_after": false
-            },
-            "minecraft:movement": {
-                "value": 0.35
-            },
-            "minecraft:jump.static": { },
-            "minecraft:movement.basic": { },
-            "minecraft:physics": { },
-            "minecraft:health": {
-                "value": 350,
-                "max": 350
-            },
-            "minecraft:follow_range": {
-                "value": 100
-            },
-            "minecraft:behavior.rise_to_liquid_level": {
-                "priority": 3,
-                "liquid_y_offset": 0.01,
-                "rise_delta": 0.1,
-                "sink_delta": 0.1
-            },
-            "minecraft:underwater_movement": {
-                "value": 0.2
-            },
-            "minecraft:lava_movement": {
-                "value": 0.2
-            },
-            "minecraft:can_climb": { },
-            "minecraft:game_event_movement_tracking": {
-                "emit_move": true,
-                "emit_swim": true
-            },
-            "minecraft:preferred_path": {
-                "max_fall_blocks": 100
-            },
-            "minecraft:behavior.look_at_player": {
-                "look_time": {
-                    "min": 1,
-                    "max": 2
-                },
-                "priority": 9
-            },
-            "minecraft:behavior.random_look_around": {
-                "priority": 10
-            },
-            "minecraft:behavior.random_stroll": {
-                "priority": 11,
-                "speed_multiplier": 0.6
-            },
-            "minecraft:breathable": {
-                "suffocate_time": 0,
-                "total_supply": 15
-            },
-            "minecraft:collision_box": {
-                "height": 1.9,
-                "width": 0.6
-            },
-            "minecraft:conditional_bandwidth_optimization": { },
-            "minecraft:despawn": {
-                "despawn_from_distance": { },
-                "despawn_from_inactivity": true,
-                "min_range_inactivity_timer": 200
-            },
-            "minecraft:experience_reward": {
-                "on_death": "query.last_hit_by_player ? 20 : 0"
-            },
-            "minecraft:home": { },
-            "minecraft:is_hidden_when_invisible": { },
-            "minecraft:loot": {
-                "table": "loot_tables/entities/custom/cautious_drops/piglin_brute.json"
-            },
-            "minecraft:nameable": {
-                "allow_name_tag_renaming": false,
-                "always_show": true
-            },
-            "minecraft:pushable_by_block": { },
-            "minecraft:pushable_by_entity": { },
-            "minecraft:type_family": {
-                "family": [
-                    "piglin",
-                    "adult_piglin",
-                    "piglin_brute",
-                    "monster"
-                ]
+                            "value": "piglin"
+                        }
+                    ]
+                }
             },
             "minecraft:reflect_projectiles": {
                 "reflected_projectiles": [
@@ -3207,23 +2579,245 @@
                     "llama_spit",
                     "fireworks_rocket",
                     "fishing_hook",
-                    "ha:dynamite",
                     "ha:slime_pearl"
                 ],
                 "azimuth_angle": "180.0 + Math.random(-20.0, 20.0)",
                 "reflection_scale": "0.5"
+            },
+            "minecraft:damage_sensor": {
+                "triggers": [
+                    {
+                        "cause": "all",
+                        "on_damage": {
+                            "filters": {
+                                "none_of": [
+                                    {
+                                        "test": "has_damage",
+                                        "subject": "self",
+                                        "value": "block_explosion"
+                                    },
+                                    {
+                                        "test": "has_damage",
+                                        "subject": "self",
+                                        "value": "entity_explosion"
+                                    }
+                                ]
+                            }
+                        },
+                        "deals_damage": "no"
+                    }
+                ]
+            },
+            "minecraft:can_climb": { },
+            "minecraft:block_climber": { },
+            "minecraft:tick_world": {
+                "never_despawn": false,
+                "radius": 4
+            },
+            "minecraft:environment_sensor": {
+                "triggers": [
+                    {
+                        "filters": {
+                            "test": "bool_property",
+                            "subject": "self",
+                            "operator": "not",
+                            "domain": "ha:is_new_brute",
+                            "value": true
+                        },
+                        "event": "ha:forced_change",
+                        "target": "self"
+                    }
+                ]
+            },
+            "minecraft:annotation.open_door": { },
+            "minecraft:annotation.break_door": {
+                "break_time": 2,
+                "min_difficulty": "hard"
+            },
+            "minecraft:behavior.hurt_by_target": {
+                "priority": 1,
+                "hurt_owner": true,
+                "entity_types": {
+                    "filters": {
+                        "test": "is_family",
+                        "subject": "other",
+                        "operator": "not",
+                        "value": "piglin"
+                    }
+                }
+            },
+            "minecraft:behavior.equip_item": {
+                "priority": 5
+            },
+            "minecraft:buoyant": {
+                "movement_type": "waves",
+                "can_auto_step_from_liquid": true,
+                "apply_gravity": false,
+                "base_buoyancy": 1.0,
+                "liquid_blocks": [
+                    "minecraft:lava",
+                    "minecraft:flowing_lava"
+                ]
+            },
+            "minecraft:behavior.rise_to_liquid_level": {
+                "priority": 4,
+                "liquid_y_offset": 0.01,
+                "rise_delta": 0.1,
+                "sink_delta": 0.1
+            },
+            "minecraft:behavior.pickup_items": {
+                "priority": 3,
+                "can_pickup_any_item": true,
+                "can_pickup_to_hand_or_equipment": true,
+                "cooldown_after_being_attacked": 0,
+                "goal_radius": 2,
+                "max_dist": 100,
+                "pickup_based_on_chance": false,
+                "speed_multiplier": 1.05,
+                "track_target": false
+            },
+            "minecraft:behavior.break_door": {
+                "priority": 6
+            },
+            "minecraft:behavior.open_door": {
+                "priority": 7,
+                "close_door_after": true
+            },
+            "minecraft:behavior.look_at_player": {
+                "priority": 8,
+                "look_time": {
+                    "min": 1,
+                    "max": 2
+                }
+            },
+            "minecraft:behavior.random_look_around": {
+                "priority": 9
+            },
+            "minecraft:behavior.random_stroll": {
+                "priority": 10,
+                "speed_multiplier": 1
+            },
+            "minecraft:behavior.stomp_turtle_egg": {
+                "priority": 11,
+                "goal_radius": 1.14,
+                "search_height": 2,
+                "interval": 20,
+                "search_range": 10,
+                "speed_multiplier": 1
+            },
+            "minecraft:behavior.mount_pathing": {
+                "priority": 12,
+                "target_dist": 0,
+                "speed_multiplier": 1.25,
+                "track_target": true
+            },
+            "minecraft:rideable": {
+                "family_types": [ "baby_piglin" ],
+                "pull_in_entities": true,
+                "seat_count": 5,
+                "seats": [
+                    {
+                        "lock_rider_rotation": 0,
+                        "position": [ 0, 1.18, -0.4 ]
+                    },
+                    {
+                        "lock_rider_rotation": 0,
+                        "position": [ 0, 2, -0.4 ]
+                    },
+                    {
+                        "lock_rider_rotation": 0,
+                        "position": [ 0, 3, -0.4 ]
+                    },
+                    {
+                        "lock_rider_rotation": 0,
+                        "position": [ 0, 4, -0.4 ]
+                    },
+                    {
+                        "lock_rider_rotation": 0,
+                        "position": [ 0, 5, -0.4 ]
+                    }
+                ]
+            },
+            "minecraft:rotation_locked_to_vehicle": { },
+            "minecraft:collision_box": {
+                "height": 1.9,
+                "width": 0.6
+            },
+            "minecraft:conditional_bandwidth_optimization": { },
+            "minecraft:despawn": {
+                "despawn_from_distance": { }
+            },
+            "minecraft:experience_reward": {
+                "on_death": 20
+            },
+            "minecraft:follow_range": {
+                "value": 64
+            },
+            "minecraft:health": {
+                "value": 350,
+                "max": 350
+            },
+            "minecraft:is_hidden_when_invisible": { },
+            "minecraft:loot": {
+                "table": "loot_tables/entities/custom/cautious_drops/piglin_brute.json"
+            },
+            "minecraft:movement": {
+                "value": 0.35
+            },
+            "minecraft:underwater_movement": {
+                "value": 0.32
+            },
+            "minecraft:lava_movement": {
+                "value": 0.32
+            },
+            "minecraft:nameable": {
+                "allow_name_tag_renaming": false,
+                "always_show": true
+            },
+            "minecraft:pushable_by_block": { },
+            "minecraft:pushable_by_entity": { },
+            "minecraft:physics": { },
+            "minecraft:type_family": {
+                "family": [
+                    "piglin",
+                    "adult_piglin",
+                    "piglin_brute",
+                    "monster"
+                ]
             }
         },
         "events": {
             "minecraft:entity_spawned": {
                 "sequence": [
                     {
+                        "set_property": {
+                            "ha:is_new_brute": true
+                        },
+                        "queue_command": {
+                            "command": [
+                                "tag @s remove mining_mode"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "ha:remove_resistance",
+                                "ha:pickaxe_targets"
+                            ]
+                        },
+                        "add": {
+                            "component_groups": [
+                                "ha:initial_comps",
+                                "ha:path_normal",
+                                "ha:set_resistance",
+                                "ha:normal_targets"
+                            ]
+                        }
+                    },
+                    {
                         "randomize": [
+                            { "weight": 10 },
                             {
-                                "weight": 90
-                            },
-                            {
-                                "weight": 10,
+                                "weight": 90,
                                 "queue_command": {
                                     "command": [
                                         "replaceitem entity @s slot.weapon.offhand 0 totem_of_undying"
@@ -3231,125 +2825,132 @@
                                 }
                             }
                         ]
-                    },
-                    {
-                        "set_property": {
-                            "ha:is_new_brute": true
-                        },
-                        "add": {
-                            "component_groups": [
-                                "ha:spawn_sensors",
-                                "ha:potions_gear"
-                            ]
-                        }
                     }
                 ]
             },
-            "ha:remove_old_version": {
+            "ha:forced_change": {
                 "add": {
                     "component_groups": [
-                        "ha:become_new"
+                        "ha:replace_piglin"
                     ]
                 }
             },
-            "ha:summon_charged": {
+
+            "ha:start_pearl_mode": {
                 "queue_command": {
                     "command": [
-                        "summon wind_charge_projectile ~~~"
+                        "tag @s remove mining_mode"
+                    ]
+                },
+                "remove": {
+                    "component_groups": [
+                        "ha:initial_comps",
+
+                        "ha:melee_normal_sensors",
+                        "ha:melee_mace_sensors",
+
+                        "ha:melee_normal_equips",
+                        "ha:melee_mace_equips",
+                        "ha:melee_spear_equips",
+                        "ha:mace_loop",
+
+                        "ha:melee_mode_mace",
+                        "ha:melee_mode_normal",
+                        "ha:melee_mode_spear",
+
+                        "ha:path_melee",
+                        "ha:remove_resistance",
+
+                        "ha:pickaxe_targets",
+                        "ha:pickaxe_sensor",
+                        "ha:pickaxe_mode"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
+                        "ha:angry_mode",
+
+                        "ha:pearl_sensors",
+
+                        "ha:pearl_mode",
+
+                        "ha:normal_targets",
+                        "ha:path_normal",
+                        "ha:set_resistance"
                     ]
                 }
             },
             "ha:start_melee_mode": {
                 "sequence": [
                     {
+                        "queue_command": {
+                            "command": [
+                                "tag @s remove mining_mode"
+                            ]
+                        },
                         "remove": {
                             "component_groups": [
-                                "ha:spawn_sensors",
-
-                                "ha:ranged_sensors",
                                 "ha:pearl_sensors",
 
-                                "ha:ranged_mode",
                                 "ha:pearl_mode",
 
-                                "ha:fire_potion_gear",
-                                "ha:scare_brute",
+                                "ha:path_normal",
+                                "ha:set_resistance",
 
-                                "ha:potions_gear",
+                                "ha:normal_targets",
+                                "ha:pickaxe_sensor",
                                 "ha:pickaxe_mode"
                             ]
                         },
                         "add": {
                             "component_groups": [
-                                "ha:angry_mode"
+                                "ha:normal_targets",
+                                "ha:path_melee"
                             ]
                         }
                     },
                     {
                         "randomize": [
                             {
-                                "weight": 50,
-                                "remove": {
-                                    "component_groups": [
-                                        "ha:mace_sensors",
-                                        "ha:spear_sensors",
-
-                                        "ha:spear_mode",
-                                        "ha:mace_mode",
-                                        "ha:mace_charged_loop"
-                                    ]
-                                },
+                                "weight": 65,
                                 "add": {
                                     "component_groups": [
-                                        "ha:melee_sensors",
+                                        "ha:melee_normal_sensors",
 
-                                        "ha:melee_mode"
+                                        "ha:melee_normal_equips",
+
+                                        "ha:melee_mode_normal"
                                     ]
                                 }
                             },
                             {
-                                "weight": 45,
-                                "sequence": [
-                                    {
-                                        "remove": {
-                                            "component_groups": [
-                                                "ha:melee_sensors",
-                                                "ha:spear_sensors",
-
-                                                "ha:spear_mode",
-                                                "ha:melee_mode"
-                                            ]
-                                        },
-                                        "add": {
-                                            "component_groups": [
-                                                "ha:mace_sensors",
-
-                                                "ha:mace_mode",
-                                                "ha:mace_charged_loop"
-                                            ]
-                                        }
-                                    },
-                                    {
-                                        "trigger": "ha:summon_charged"
-                                    }
-                                ]
-                            },
-                            {
-                                "weight": 5,
-                                "remove": {
-                                    "component_groups": [
-                                        "ha:mace_sensors",
-                                        "ha:melee_sensors",
-
-                                        "ha:melee_mode",
-                                        "ha:mace_mode"
+                                "weight": 25,
+                                "queue_command": {
+                                    "command": [
+                                        "summon wind_charge_projectile ~~~"
                                     ]
                                 },
                                 "add": {
                                     "component_groups": [
-                                        "ha:spear_sensors",
+                                        "ha:melee_mace_sensors",
 
-                                        "ha:spear_mode"
+                                        "ha:melee_mace_equips",
+
+                                        "ha:mace_loop",
+                                        "ha:melee_mode_mace",
+                                        "ha:remove_resistance"
+                                    ]
+                                }
+                            },
+                            {
+                                "weight": 10,
+                                "add": {
+                                    "component_groups": [
+                                        "ha:melee_normal_sensors",
+
+                                        "ha:melee_spear_equips",
+
+                                        "ha:melee_mode_spear"
                                     ]
                                 }
                             }
@@ -3358,64 +2959,6 @@
                 ]
             },
             "ha:start_ranged_mode": {
-                "remove": {
-                    "component_groups": [
-                        "ha:spawn_sensors",
-                        "ha:melee_sensors",
-                        "ha:mace_sensors",
-                        "ha:mace_charged_loop",
-                        "ha:spear_sensors",
-                        "ha:pearl_sensors",
-
-                        "ha:melee_mode",
-                        "ha:spear_mode",
-                        "ha:mace_mode",
-
-                        "ha:pearl_mode",
-
-                        "ha:fire_potion_gear",
-                        "ha:scare_brute",
-                        "ha:pickaxe_mode"
-                    ]
-                },
-                "add": {
-                    "component_groups": [
-                        "ha:ranged_sensors",
-                        "ha:ranged_mode",
-                        "ha:angry_mode"
-                    ]
-                }
-            },
-            "ha:start_pearl_mode": {
-                "remove": {
-                    "component_groups": [
-                        "ha:spawn_sensors",
-                        "ha:melee_sensors",
-                        "ha:mace_sensors",
-                        "ha:mace_charged_loop",
-                        "ha:spear_sensors",
-                        "ha:ranged_sensors",
-
-                        "ha:melee_mode",
-                        "ha:spear_mode",
-                        "ha:mace_mode",
-
-                        "ha:ranged_mode",
-
-                        "ha:fire_potion_gear",
-                        "ha:scare_brute",
-                        "ha:pickaxe_mode"
-                    ]
-                },
-                "add": {
-                    "component_groups": [
-                        "ha:pearl_sensors",
-                        "ha:pearl_mode",
-                        "ha:angry_mode"
-                    ]
-                }
-            },
-            "ha:neutral_sensors": {
                 "queue_command": {
                     "command": [
                         "tag @s remove mining_mode"
@@ -3423,51 +2966,233 @@
                 },
                 "remove": {
                     "component_groups": [
-                        "ha:melee_sensors",
-                        "ha:mace_sensors",
-                        "ha:mace_charged_loop",
-                        "ha:spear_sensors",
-                        "ha:ranged_sensors",
                         "ha:pearl_sensors",
+                        "ha:melee_normal_sensors",
+                        "ha:melee_mace_sensors",
 
-                        "ha:angry_mode",
-
-                        "ha:melee_mode",
-                        "ha:spear_mode",
-                        "ha:mace_mode",
-
-                        "ha:ranged_mode",
                         "ha:pearl_mode",
 
-                        "ha:timer_food",
-                        "ha:timer_potion",
+                        "ha:melee_mode_normal",
+                        "ha:melee_mode_mace",
+                        "ha:melee_mode_spear",
+                        "ha:mace_loop",
 
-                        "ha:food_gear",
-                        "ha:potions_gear",
-                        "ha:pickaxe_mode",
+                        "ha:melee_normal_equips",
+                        "ha:melee_mace_equips",
+                        "ha:melee_spear_equips",
 
-                        "ha:fire_potion_gear",
+                        "ha:path_melee",
+                        "ha:remove_resistance",
+
+                        "ha:pickaxe_targets",
+                        "ha:pickaxe_sensor",
+                        "ha:pickaxe_mode"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
+                        "ha:normal_targets",
+                        "ha:ranged_sensor",
+
+                        "ha:ranged_mode",
+                        "ha:set_resistance"
+                    ]
+                }
+            },
+
+            "ha:summon_wind_charge": {
+                "queue_command": {
+                    "command": [
+                        "summon wind_charge_projectile ~~~"
+                    ]
+                }
+            },
+
+            "ha:calm_event": {
+                "queue_command": {
+                    "command": [
+                        "tag @s remove mining_mode"
+                    ]
+                },
+                "remove": {
+                    "component_groups": [
+                        "ha:angry_mode",
+
+                        "ha:pearl_sensors",
+                        "ha:melee_normal_sensors",
+                        "ha:melee_mace_sensors",
+                        "ha:ranged_sensor",
+
+                        "ha:melee_normal_equips",
+                        "ha:melee_mace_equips",
+                        "ha:melee_spear_equips",
+                        "ha:mace_loop",
+
+                        "ha:melee_mode_normal",
+                        "ha:melee_mode_mace",
+                        "ha:melee_mode_spear",
+
+                        "ha:ranged_mode",
+
+                        "ha:path_melee",
+                        "ha:remove_resistance",
+
+                        "ha:pickaxe_targets",
+                        "ha:pickaxe_sensor",
+                        "ha:pickaxe_mode"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
+                        "ha:normal_targets",
+                        "ha:path_normal",
+
+                        "ha:initial_comps",
+                        "ha:set_resistance"
+                    ]
+                }
+            },
+
+            "ha:start_regenerating": {
+                "sequence": [
+                    {
+                        "queue_command": {
+                            "command": [
+                                "tag @s remove mining_mode"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "ha:initial_comps",
+                                "ha:angry_mode",
+
+                                "ha:pearl_sensors",
+                                "ha:melee_normal_sensors",
+                                "ha:melee_mace_sensors",
+                                "ha:ranged_sensor",
+
+                                "ha:pearl_mode",
+
+                                "ha:melee_normal_equips",
+                                "ha:melee_mace_equips",
+                                "ha:melee_mace_equips",
+                                "ha:melee_spear_equips",
+                                "ha:mace_loop",
+
+                                "ha:melee_mode_normal",
+                                "ha:melee_mode_mace",
+                                "ha:melee_mode_spear",
+
+                                "ha:ranged_mode",
+
+                                "ha:path_melee",
+                                "ha:remove_resistance",
+
+                                "ha:pickaxe_targets",
+                                "ha:normal_targets",
+
+                                "ha:pickaxe_sensor",
+                                "ha:pickaxe_mode"
+                            ]
+                        },
+                        "add": {
+                            "component_groups": [
+                                "ha:path_normal",
+
+                                "ha:scare_brute",
+                                "ha:set_resistance"
+                            ]
+                        }
+                    },
+                    {
+                        "randomize": [
+                            {
+                                "weight": 70,
+                                "add": {
+                                    "component_groups": [
+                                        "ha:foods_mode_reg"
+                                    ]
+                                }
+                            },
+                            {
+                                "weight": 30,
+                                "add": {
+                                    "component_groups": [
+                                        "ha:potions_mode_reg"
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            "ha:remove_regenerating": {
+                "remove": {
+                    "component_groups": [
+                        "ha:potions_mode_reg",
+                        "ha:foods_mode_reg",
                         "ha:scare_brute"
                     ]
                 },
                 "add": {
                     "component_groups": [
-                        "ha:spawn_sensors"
+                        "ha:normal_targets",
+                        "ha:initial_comps"
                     ]
                 }
             },
-            "ha:critic_damage": {
+
+            "ha:start_mining": {
+                "queue_command": {
+                    "command": [
+                        "tag @s add mining_mode"
+                    ]
+                },
                 "remove": {
                     "component_groups": [
-                        "ha:normal_damage"
+                        "ha:initial_comps",
+                        "ha:angry_mode",
+
+                        "ha:pearl_sensors",
+                        "ha:melee_normal_sensors",
+                        "ha:melee_mace_sensors",
+                        "ha:ranged_sensor",
+
+                        "ha:pearl_mode",
+
+                        "ha:melee_normal_equips",
+                        "ha:melee_mace_equips",
+                        "ha:melee_spear_equips",
+                        "ha:mace_loop",
+
+                        "ha:melee_mode_normal",
+                        "ha:remove_resistance",
+                        "ha:melee_mode_mace",
+                        "ha:melee_mode_spear",
+
+                        "ha:ranged_mode",
+
+                        "ha:scare_brute",
+                        "ha:foods_mode_reg",
+                        "ha:potions_mode_reg",
+
+                        "ha:path_melee",
+
+                        "ha:normal_targets"
                     ]
                 },
                 "add": {
                     "component_groups": [
-                        "ha:critic_damage"
+                        "ha:pickaxe_targets",
+
+                        "ha:pickaxe_sensor",
+                        "ha:pickaxe_mode",
+
+                        "ha:path_normal"
                     ]
                 }
             },
+
             "ha:normal_damage": {
                 "remove": {
                     "component_groups": [
@@ -3480,153 +3205,15 @@
                     ]
                 }
             },
-            "ha:drink_resistance": {
-                "queue_command": {
-                    "command": [
-                        "replaceitem entity @s slot.weapon.mainhand 0 air"
-                    ]
-                },
+            "ha:critic_damage": {
                 "remove": {
                     "component_groups": [
-                        "ha:spawn_sensors",
-
-                        "ha:melee_sensors",
-                        "ha:mace_sensors",
-                        "ha:spear_sensors",
-
-                        "ha:ranged_sensors",
-                        "ha:pearl_sensors",
-
-                        "ha:angry_mode",
-
-                        "ha:melee_mode",
-                        "ha:spear_mode",
-                        "ha:mace_charged_loop",
-                        "ha:mace_mode",
-
-                        "ha:ranged_mode",
-                        "ha:pearl_mode",
-
-                        "ha:food_gear",
-                        "ha:potions_gear"
+                        "ha:normal_damage"
                     ]
                 },
                 "add": {
                     "component_groups": [
-                        "ha:fire_potion_gear",
-                        "ha:scare_brute"
-                    ]
-                }
-            },
-            "ha:start_eat_event": {
-                "sequence": [
-                    {
-                        "queue_command": {
-                            "command": [
-                                "replaceitem entity @s slot.weapon.mainhand 0 air"
-                            ]
-                        },
-                        "randomize": [
-                            {
-                                "weight": 1,
-                                "add": {
-                                    "component_groups": [
-                                        "ha:timer_food",
-                                        "ha:food_gear"
-                                    ]
-                                }
-                            },
-                            {
-                                "weight": 1,
-                                "add": {
-                                    "component_groups": [
-                                        "ha:timer_potion",
-                                        "ha:potions_gear"
-                                    ]
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        "add": {
-                            "component_groups": [
-                                "ha:scare_brute"
-                            ]
-                        }
-                    }
-                ]
-            },
-            "ha:panic_event": {
-                "sequence": [
-                    {
-                        "remove": {
-                            "component_groups": [
-                                "ha:spawn_sensors",
-                                "ha:melee_sensors",
-                                "ha:mace_sensors",
-                                "ha:spear_sensors",
-                                "ha:ranged_sensors",
-                                "ha:pearl_sensors",
-
-                                "ha:angry_mode",
-
-                                "ha:melee_mode",
-                                "ha:spear_mode",
-                                "ha:mace_charged_loop",
-                                "ha:mace_mode",
-
-                                "ha:ranged_mode",
-                                "ha:pearl_mode",
-
-                                "ha:fire_potion_gear",
-                                "ha:normal_damage",
-                                "ha:critic_damage"
-                            ]
-                        }
-                    },
-                    {
-                        "trigger": "ha:start_eat_event"
-                    }
-                ]
-            },
-            "ha:start_mining": {
-                "queue_command": {
-                    "command": [
-                        "tag @s add mining_mode"
-                    ]
-                },
-                "remove": {
-                    "component_groups": [
-                        "ha:spawn_sensors",
-
-                        "ha:melee_sensors",
-                        "ha:mace_sensors",
-                        "ha:spear_sensors",
-
-                        "ha:ranged_sensors",
-                        "ha:pearl_sensors",
-
-                        "ha:melee_mode",
-                        "ha:spear_mode",
-                        "ha:mace_charged_loop",
-                        "ha:mace_mode",
-
-                        "ha:ranged_mode",
-                        "ha:pearl_mode",
-
-                        "ha:timer_food",
-                        "ha:timer_potion",
-                        "ha:food_gear",
-                        "ha:potions_gear",
-
-                        "ha:fire_potion_gear",
-                        "ha:scare_brute"
-                    ]
-                },
-                "add": {
-                    "component_groups": [
-                        "ha:angry_mode",
-                        "ha:pickaxe_mode"
+                        "ha:critic_damage"
                     ]
                 }
             }

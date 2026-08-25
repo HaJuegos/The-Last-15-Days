@@ -38,7 +38,7 @@ export class TL15DBaseManager {
         if (!healthComponent) return;
 
         const actualCurrentH = currentH ?? Math.floor(healthComponent.currentValue ?? 0);
-        const actualMaxH = maxH ?? healthComponent.defaultValue ?? 20;
+        const actualMaxH = maxH ?? healthComponent.effectiveMax ?? healthComponent.defaultValue ?? 20;
 
         const iconDamage = isTakingDamage ? '' : '';
         const colorDamage = isTakingDamage ? '§4§l' : '§4';

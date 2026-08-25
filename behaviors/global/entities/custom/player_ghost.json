@@ -67,10 +67,7 @@
             "minecraft:persistent": { },
             "minecraft:type_family": {
                 "family": [
-                    "player_ghost",
-                    "inanimate",
-                    "undead",
-                    "mob"
+                    "player_ghost"
                 ]
             },
             "minecraft:collision_box": {
@@ -177,7 +174,6 @@
                 "value": 9999
             },
             "minecraft:body_rotation_blocked": { },
-            "minecraft:cannot_be_attacked": { },
             "minecraft:dimension_bound": { },
             "minecraft:fire_immune": { },
             "minecraft:can_climb": { },
@@ -199,6 +195,12 @@
                                         "subject": "damager",
                                         "operator": "!=",
                                         "value": "player"
+                                    },
+                                    {
+                                        "test": "is_family",
+                                        "subject": "damager",
+                                        "operator": "!=",
+                                        "value": "piglin_brute"
                                     }
                                 ]
                             }

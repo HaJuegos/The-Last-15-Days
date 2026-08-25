@@ -2,6 +2,7 @@
 ## Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days.
 
 tag @s add death
+tag @s add banned
 
 gamemode spectator
 

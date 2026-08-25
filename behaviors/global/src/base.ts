@@ -54,11 +54,12 @@ export class TL15DBaseManager {
         { plyName: 'fede p5959', nameRank: 'MvpBtw', colorCode: '§e' },
         { plyName: 'GEOKILLER', nameRank: 'GeoPerro', colorCode: '§u' },
         { plyName: 'zVicX9198', nameRank: 'The Lagger', colorCode: '§u' },
-        { plyName: 'CopyCat Mc', nameRank: ['Gato', 'GatoTester'], colorCode: ['§d§l', '§9'] },
+        { plyName: ['CopyCat Mc', 'pwsCopyk', 'CopyLay'], nameRank: ['Gato', 'GatoTester'], colorCode: ['§d§l', '§9'] },
         { plyName: 'Iam4ndrew', nameRank: 'SoSneaky SpeedRunner', colorCode: '§u§l' },
         { plyName: 'CloudMrcZ', nameRank: ['Sobreviviente', 'CloudTester'], colorCode: ['§l§4', '§9'] },
-        { plyName: 'ChangoZax', nameRank: 'Pelowisos', colorCode: '§l§d' },
-        { plyName: 'Emiliocrack1355', nameRank: 'FurroGayArgentino', colorCode: '§l§u' }, // Esto es un placeholder, aun no me dice xd
+        { plyName: ['KyzaxxLL', 'pwszax', 'ChangoZax'], nameRank: 'Pelowisos', colorCode: '§l§d' },
+        { plyName: 'Emiliocrack1355', nameRank: 'El Furro', colorCode: '§c§l' },
+        { plyName: 'AlternativeGWG', nameRank: 'Cataclysm', colorCode: '§p§l' }
     ];
 
     /**
@@ -184,7 +185,7 @@ export class TL15DBaseManager {
         if (!healthComponent) return;
 
         const actualCurrentH = currentH ?? Math.floor(healthComponent.currentValue ?? 0);
-        const actualMaxH = maxH ?? healthComponent.defaultValue ?? 20;
+        const actualMaxH = maxH ?? healthComponent.effectiveMax ?? healthComponent.defaultValue ?? 20;
         const isOp = (targetEntity instanceof mc.Player) ? targetEntity.playerPermissionLevel == mc.PlayerPermissionLevel.Operator : false;
         const isSurvi = (targetEntity instanceof mc.Player) ? (targetEntity.getGameMode() == mc.GameMode.Survival || targetEntity.getGameMode() == mc.GameMode.Adventure) : false;
         const isDeath = (targetEntity instanceof mc.Player) ? targetEntity.hasTag('death') : false;

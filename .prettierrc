@@ -4,11 +4,10 @@
     "printWidth": 80,
     "trailingComma": "es5",
     "bracketSpacing": true,
-    "jsxBracketSameLine": false,
     "arrowParens": "always",
     "overrides": [
         {
-            "files": "*.json",
+            "files": ["*.json", ".prettierrc"],
             "options": {
                 "tabWidth": 4,
                 "trailingComma": "none"
@@ -17,7 +16,8 @@
         {
             "files": ["*.js", "*.jsx", "*.ts", "*.tsx"],
             "options": {
-                "tabWidth": 4
+                "tabWidth": 4,
+                "printWidth": 200
             }
         }
     ]

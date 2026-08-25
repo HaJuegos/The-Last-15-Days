@@ -7,9 +7,13 @@
             "initial_state": "default",
             "states": {
                 "default": {
+                    "on_entry": [
+                        "/tag @s remove bruteCritic",
+                        "@s ha:normal_damage"
+                    ],
                     "transitions": [
                         {
-                            "critic": "!q.is_on_ground"
+                            "critic": "!q.is_on_ground && q.skin_id == 0"
                         }
                     ]
                 },
@@ -20,33 +24,7 @@
                     ],
                     "transitions": [
                         {
-                            "default": "q.is_on_ground"
-                        }
-                    ],
-                    "on_exit": [
-                        "/tag @s remove bruteCritic",
-                        "@s ha:normal_damage"
-                    ]
-                }
-            }
-        },
-        "controller.animation.brute_sensors.health_sensor": {
-            "initial_state": "default",
-            "states": {
-                "default": {
-                    "transitions": [
-                        {
-                            "low_health": "q.health <= 70"
-                        }
-                    ]
-                },
-                "low_health": {
-                    "on_entry": [
-                        "@s ha:panic_event"
-                    ],
-                    "transitions": [
-                        {
-                            "default": "!q.is_sheared"
+                            "default": "q.is_on_ground && q.skin_id == 1"
                         }
                     ]
                 }

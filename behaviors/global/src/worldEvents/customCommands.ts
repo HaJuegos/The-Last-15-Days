@@ -601,17 +601,10 @@ class CustomCmdsEvents extends TL15DBaseManager {
             paramsCmd: [
                 { type: mc.CustomCommandParamType.PlayerSelector, name: 'targetPlayer' }
             ],
-            onRunCmd: ((sourcePly, args) => {
+            onRunCmd: ((sourcePly, targetPlayers: mc.Player[]) => {
                 worldToolsSimplified.setRun(() => {
-                    const mathed = (Array.isArray(args) ? args : [args]) as mc.Player[];
-                    const selectedPly = mathed[0];
-
-                    if (!selectedPly || !selectedPly.isValid) {
-                        sourcePly.sendMessage({ rawtext: [{ translate: 'chat.system.form_remove_debuff.error.player_invalid' }] });
-                        sourcePly.playSound('ui.error_sound');
-                        return;
-                    }
-
+                    const targets = (Array.isArray(targetPlayers) ? targetPlayers : [targetPlayers]).filter(p => p && p.isValid);
+                    const targetNames = targets.map(p => p.name).join(', ');
                     const btns: ButtonFormBase[] = [
                         { buttomText: { rawtext: [{ translate: 'ui.form_remove_debuff.btn.deleted_all' }] }, iconButtomUI: 'textures/ui/custom/trash_icon' }
                     ];
@@ -622,7 +615,7 @@ class CustomCmdsEvents extends TL15DBaseManager {
 
                     customEventsManager.createCustomClassicFormUI({
                         titleForm: { rawtext: [{ translate: 'ui.form_remove_debuff.title' }] },
-                        bodyText: { rawtext: [{ translate: 'ui.form_remove_debuff.subtitle', with: { rawtext: [{ text: `${selectedPly.name}` }] } }] },
+                        bodyText: { rawtext: [{ translate: 'ui.form_remove_debuff.subtitle', with: { rawtext: [{ text: `${targetNames}` }] } }] },
                         buttonsForm: btns,
                         showPly: {
                             targetPly: sourcePly,
@@ -633,22 +626,20 @@ class CustomCmdsEvents extends TL15DBaseManager {
                                 ply.playSound('random.chestclosed');
                             },
                             onClickBtn: (ply, btnI) => {
-                                if (!selectedPly || !selectedPly.isValid) {
-                                    sourcePly.sendMessage({ rawtext: [{ translate: 'chat.system.form_remove_debuff.error.player_invalid' }] });
-                                    sourcePly.playSound('ui.error_sound');
-                                    return;
-                                }
-
                                 try {
-                                    if (btnI == 0) {
-                                        for (const debuff of this.listOfDebuffs) {
-                                            this.clearDebuff(selectedPly, debuff);
+                                    for (const target of targets) {
+                                        if (!target.isValid) continue;
+
+                                        if (btnI == 0) {
+                                            for (const debuff of this.listOfDebuffs) {
+                                                this.clearDebuff(target, debuff);
+                                            }
+                                        } else {
+                                            this.clearDebuff(target, this.listOfDebuffs[btnI - 1]);
                                         }
-                                    } else {
-                                        this.clearDebuff(selectedPly, this.listOfDebuffs[btnI - 1]);
                                     }
 
-                                    sourcePly.sendMessage({ rawtext: [{ translate: 'chat.system.form_remove_debuff.success.removed_debuff', with: { rawtext: [{ text: `${selectedPly.name}` }] } }] });
+                                    sourcePly.sendMessage({ rawtext: [{ translate: 'chat.system.form_remove_debuff.success.removed_debuff', with: { rawtext: [{ text: `${targetNames}` }] } }] });
                                     sourcePly.playSound('random.levelup');
                                 } catch (e) {
                                     sourcePly.sendMessage({ rawtext: [{ translate: 'chat.system.form_remove_debuff.error.fail_removal' }] });
@@ -669,44 +660,42 @@ class CustomCmdsEvents extends TL15DBaseManager {
             paramsCmd: [
                 { type: mc.CustomCommandParamType.PlayerSelector, name: 'targetPlayer' }
             ],
-            onRunCmd: ((sourcePly, args) => {
+            onRunCmd: ((sourcePly, targetPLys: mc.Player[]) => {
                 worldToolsSimplified.setRun(async () => {
-                    const mathed = (Array.isArray(args) ? args : [args]) as mc.Player[];
-                    const selectedPly = mathed[0];
-
-                    if (!selectedPly || !selectedPly.isValid) {
-                        sourcePly.sendMessage({ rawtext: [{ translate: 'chat.system.form_revival_ply.error.player_invalid' }] });
-                        sourcePly.playSound('ui.error_sound');
-                        return;
-                    }
+                    const targets = (Array.isArray(targetPLys) ? targetPLys : [targetPLys]).filter(p => p && p.isValid);
 
                     const obj = worldToolsSimplified.getOrCreateScorebordObj('totalLives', 'ui.scoreboard.obj.title');
+                    const targetNames = targets.map(p => p.name).join(', ');
 
-                    selectedPly.runCommand(`function system/revive_ply`);
-                    obj?.addScore('ui.scoreboard.scores.lives', 1);
-                    obj?.addScore('ui.scoreboard.scores.deaths', -1);
+                    for (const target of targets) {
+                        if (!target.isValid) continue;
 
-                    try {
-                        const entityWorldData = await this.getEntityDataWorld();
-                        const objDeaths = worldToolsSimplified.getOrCreateScorebordObj('ha:list_deaths') as mc.ScoreboardObjective;
-                        const totalDeaths = worldToolsSimplified.getScoreInObj(entityWorldData, 'ha:death_counter');
+                        target.runCommand(`function system/revive_ply`);
+                        obj?.addScore('ui.scoreboard.scores.lives', 1);
+                        obj?.addScore('ui.scoreboard.scores.deaths', -1);
 
-                        const deathEntry = objDeaths.getParticipants().find(data => {
-                            const [name] = data.displayName.split(':');
+                        try {
+                            const entityWorldData = await this.getEntityDataWorld();
+                            const objDeaths = worldToolsSimplified.getOrCreateScorebordObj('ha:list_deaths') as mc.ScoreboardObjective;
+                            const totalDeaths = worldToolsSimplified.getScoreInObj(entityWorldData, 'ha:death_counter');
 
-                            return name == selectedPly.name;
-                        });
+                            const deathEntry = objDeaths.getParticipants().find(data => {
+                                const [name] = data.displayName.split(':');
 
-                        if (deathEntry != undefined) {
-                            objDeaths.removeParticipant(deathEntry.displayName);
-                            worldToolsSimplified.changeScoreInObj(entityWorldData, 'ha:death_counter', 'set', totalDeaths <= 0 ? 0 : totalDeaths - 1);
+                                return name == target.name;
+                            });
+
+                            if (deathEntry != undefined) {
+                                objDeaths.removeParticipant(deathEntry.displayName);
+                                worldToolsSimplified.changeScoreInObj(entityWorldData, 'ha:death_counter', 'set', totalDeaths <= 0 ? 0 : totalDeaths - 1);
+                            }
+                        } catch (e) {
+                            sourcePly.sendMessage({ rawtext: [{ translate: 'chat.system.form_revival_ply.success_but.player_revive', with: { rawtext: [{ text: `${target.name}` }] } }] });
+                            sourcePly.playSound('ui.error_item');
                         }
-                    } catch (e) {
-                        sourcePly.sendMessage({ rawtext: [{ translate: 'chat.system.form_revival_ply.success_but.player_revive', with: { rawtext: [{ text: `${selectedPly.name}` }] } }] });
-                        sourcePly.playSound('ui.error_item');
                     }
 
-                    sourcePly.sendMessage({ rawtext: [{ translate: 'chat.system.form_revival_ply.success.player_revive', with: { rawtext: [{ text: `${selectedPly.name}` }] } }] });
+                    sourcePly.sendMessage({ rawtext: [{ translate: 'chat.system.form_revival_ply.success.player_revive', with: { rawtext: [{ text: `${targetNames}` }] } }] });
                     sourcePly.playSound('random.levelup');
                 });
             })
@@ -720,9 +709,9 @@ class CustomCmdsEvents extends TL15DBaseManager {
             paramsCmd: [
                 { type: mc.CustomCommandParamType.PlayerSelector, name: 'targetPlayer' }
             ],
-            onRunCmd: ((ply, args) => {
+            onRunCmd: ((ply, targetPlys: mc.Player[]) => {
                 worldToolsSimplified.setRun(() => {
-                    const mathed = (Array.isArray(args) ? args : [args]) as mc.Player[];
+                    const mathed = (Array.isArray(targetPlys) ? targetPlys : [targetPlys]);
                     const selectedPly = mathed[0];
 
                     if (ply.getGameMode() != mc.GameMode.Spectator) {

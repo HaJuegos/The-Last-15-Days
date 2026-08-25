@@ -47,6 +47,7 @@ class PlyEventsManager extends TL15DBaseManager {
         this.chatManager();
         this.totemSystem();
         this.zombieSiegerEvent();
+        this.changeNetheriteItems();
     }
 
     /**
@@ -205,7 +206,7 @@ class PlyEventsManager extends TL15DBaseManager {
                 }
             }
 
-            if (ply.hasTag('banned') && TL15DBaseManager.banState) {
+            if (ply.hasTag('banned') && firstSpawn) {
                 let isLinked = false;
 
                 if (participantsRevive.length > 0) {
@@ -246,7 +247,7 @@ class PlyEventsManager extends TL15DBaseManager {
                     }
 
                     ply.runCommand(`function system/revive_ply_system`);
-                } else {
+                } else if (TL15DBaseManager.banState) {
                     ply.runCommand(`kick "${ply.name}"`);
                 }
             }
@@ -327,17 +328,6 @@ class PlyEventsManager extends TL15DBaseManager {
             this.createPointRoyerBot(ply);
             this.getEntityDataWorld();
         });
-
-        worldToolsSimplified.listenerScriptEvents((args) => {
-            const id = args.id;
-            const sourceEntity = args.sourceEntity;
-
-            if (!sourceEntity) return;
-
-            if (id == 'ha:test') {
-                this.createPointRoyerBot(sourceEntity as mc.Player);
-            }
-        });
     };
 
     /**
@@ -400,7 +390,9 @@ class PlyEventsManager extends TL15DBaseManager {
             const plyEntity = args.deadEntity;
             const obj = worldToolsSimplified.getOrCreateScorebordObj('totalLives', 'ui.scoreboard.obj.title');
 
-            if (plyEntity.typeId == 'minecraft:player' && !plyEntity.hasTag('death')) {
+            if (!(plyEntity instanceof mc.Player)) return;
+
+            if (!plyEntity.hasTag('death')) {
                 worldToolsSimplified.setObjInDisplay('totalLives', mc.DisplaySlotId.Sidebar);
                 obj?.addScore('ui.scoreboard.scores.lives', -1);
                 obj?.addScore('ui.scoreboard.scores.deaths', 1);
@@ -412,6 +404,25 @@ class PlyEventsManager extends TL15DBaseManager {
                 });
 
                 plyEntity.runCommand(`function system/death_effects`);
+
+                worldToolsSimplified.sendMessageGlobal(
+                    {
+                        rawtext: [{
+                            translate: "chat.system.last_location_player", with: {
+                                rawtext: [
+                                    { text: `${plyEntity.name}` },
+                                    { text: `${this.simplifiedCoords(plyEntity.location)}` },
+                                    { text: `${this.simplifiedDimension(plyEntity.dimension)}` }
+                                ]
+                            }
+                        }
+                        ]
+                    }
+                );
+
+                if (!TL15DBaseManager.banState) {
+                    plyEntity.sendMessage({ translate: 'chat.system.death.how_to_use_tp' });
+                }
 
                 this.spawnInventory(plyEntity as mc.Player, plyEntity.location, plyEntity.dimension);
                 this.savePlyID(plyEntity as mc.Player);
@@ -426,26 +437,10 @@ class PlyEventsManager extends TL15DBaseManager {
             const plyEntity = args.player;
             const isFirstSpawn = args.initialSpawn;
 
-            if (isFirstSpawn == false && (plyEntity.hasTag('death') && !plyEntity.hasTag('banned'))) {
+            if (!isFirstSpawn && (plyEntity.hasTag('death') && plyEntity.hasTag('banned'))) {
                 const data = this.dataDeath.get(plyEntity.id);
 
                 if (!data) return;
-
-                worldToolsSimplified.sendMessageGlobal(
-                    {
-                        rawtext: [
-                            {
-                                translate: "chat.system.last_location_player", with: {
-                                    rawtext: [
-                                        { text: `${plyEntity.name}` },
-                                        { text: `${this.simplifiedCoords(data.coords)}` },
-                                        { text: `${this.simplifiedDimension(data.dime)}` }
-                                    ]
-                                }
-                            }
-                        ]
-                    }
-                );
 
                 plyEntity.tryTeleport(data.coords, { dimension: data.dime });
 
@@ -460,9 +455,6 @@ class PlyEventsManager extends TL15DBaseManager {
 
                     worldToolsSimplified.setDelay(() => {
                         if (!plyEntity.isValid) return;
-
-                        plyEntity.addTag('banned');
-
                         if (!TL15DBaseManager.banState) return;
 
                         plyEntity.runCommand(`kick "${plyEntity.name}"`);
@@ -600,6 +592,68 @@ class PlyEventsManager extends TL15DBaseManager {
     }
 
     /**
+     * Metodo auxiliar que cambia rapidamente los datos de un item falso a uno verdadero en caso de que el jugador agarre dicho item.
+     * @returns {void}
+     * @author HaJuegos - 04-08-2026
+     * @private
+     */
+    private changeNetheriteItems(): void {
+        beforeEventsSimplified.onItemPickupEntity((args) => {
+            const { entity, item: entityItem } = args;
+
+            if (entity instanceof mc.Player) {
+                const iComponent = entityItem.getComponent(mc.EntityComponentTypes.Item) as mc.EntityItemComponent;
+                const actualItem = iComponent.itemStack;
+                const idItem = actualItem.typeId;
+                const fakeItemsList: { [fakeID: string]: string; } = {
+                    'ha:fake_netherite_helmet': 'minecraft:netherite_helmet',
+                    'ha:fake_netherite_chestplate': 'minecraft:netherite_chestplate',
+                    'ha:fake_netherite_leggings': 'minecraft:netherite_leggings',
+                    'ha:fake_netherite_boots': 'minecraft:netherite_boots'
+                };
+
+                const realItemId = fakeItemsList[idItem];
+
+                if (realItemId) {
+                    args.cancel = true;
+
+                    worldToolsSimplified.setRun(() => {
+                        if (!entity.isValid) return;
+
+                        const newItem = new mc.ItemStack(realItemId, actualItem.amount);
+
+                        newItem.nameTag = actualItem.nameTag;
+                        newItem.setLore(actualItem.getLore());
+                        newItem.keepOnDeath = actualItem.keepOnDeath;
+                        newItem.lockMode = actualItem.lockMode;
+
+                        const oldDurability = actualItem.getComponent(mc.ItemComponentTypes.Durability) as mc.ItemDurabilityComponent;
+                        const newDurability = newItem.getComponent(mc.ItemComponentTypes.Durability) as mc.ItemDurabilityComponent;
+
+                        if (oldDurability && newDurability) {
+                            newDurability.damage = oldDurability.damage;
+                        }
+
+                        const oldEnchants = actualItem.getComponent(mc.ItemComponentTypes.Enchantable) as mc.ItemEnchantableComponent;
+                        const newEnchants = newItem.getComponent(mc.ItemComponentTypes.Enchantable) as mc.ItemEnchantableComponent;
+
+                        if (oldEnchants && newEnchants) {
+                            newEnchants.addEnchantments(oldEnchants.getEnchantments());
+                        }
+
+                        const inv = entity.getComponent(mc.EntityComponentTypes.Inventory) as mc.EntityInventoryComponent;
+
+                        if (inv && inv.container) {
+                            inv.container.addItem(newItem);
+                            entityItem.kill();
+                        }
+                    });
+                }
+            }
+        });
+    }
+
+    /**
      * Metodo auxiliar que prepara el spawneo de la entidad que reemplaza al jugador al morir con su inventario.
      * @param {(mc.Player | mc.Entity)} ply Jugador o entidad que murio a considerar. 
      * @param {mc.Vector3} coords Ultima localizacion a considerar.
@@ -607,11 +661,44 @@ class PlyEventsManager extends TL15DBaseManager {
      * @author HaJuegos - 13-03-2026
      * @private
      */
-    private spawnInventory(ply: mc.Player, coords: mc.Vector3, dime: mc.Dimension): void {
-        const ghostEntity = dime.spawnEntity('ha:player_ghost' as mc.VanillaEntityIdentifier, coords, { spawnEvent: 'minecraft:entity_spawned' });
+    private async spawnInventory(ply: mc.Player, coords: mc.Vector3, dime: mc.Dimension): Promise<void> {
+        const safeCoords = { x: coords.x, y: coords.y, z: coords.z };
+        const limit = dime.heightRange.min;
+
+        if (safeCoords.y <= limit) {
+            safeCoords.y = limit + 1;
+        }
+
+        const chunkID = `ha:chunk_area_${ply.id.replace(/-/g, '')}`;
+        const tickArea = await worldToolsSimplified.getOrCreateTickingArea(chunkID, {
+            dimension: dime,
+            from: safeCoords,
+            to: safeCoords
+        });
+
+        if (!ply.isValid) {
+            if (tickArea) {
+                worldToolsSimplified.deletedTickingArea(tickArea);
+            }
+
+            return;
+        }
+
+        let ghostEntity: mc.Entity | undefined;
+
+        try {
+            ghostEntity = dime.spawnEntity('ha:player_ghost' as mc.VanillaEntityIdentifier, safeCoords, { spawnEvent: 'minecraft:entity_spawned' });
+        } catch {
+            if (tickArea) {
+                worldToolsSimplified.deletedTickingArea(tickArea);
+            }
+
+            return;
+        }
+
         const plyInvContainer = ply.getComponent(mc.EntityComponentTypes.Inventory)?.container;
         const plyArmorContainer = ply.getComponent(mc.EntityComponentTypes.Equippable);
-        const ghostInvContainer = ghostEntity.getComponent(mc.EntityComponentTypes.Inventory)?.container as mc.Container;
+        const ghostInvContainer = ghostEntity?.getComponent(mc.EntityComponentTypes.Inventory)?.container as mc.Container;
         const nameGhost = `§g§l${ply.name}'s Inventory§r`;
         const excludeItems = [
             'ha:void_item',
@@ -649,11 +736,17 @@ class PlyEventsManager extends TL15DBaseManager {
             }
         }
 
-        if (!ghostEntity.isValid) return;
+        if (ghostEntity && ghostEntity.isValid) {
+            ghostEntity.nameTag = nameGhost;
 
-        ghostEntity.nameTag = nameGhost;
+            ply.runCommand(`clear @s`);
+        }
 
-        ply.runCommand(`clear @s`);
+        if (tickArea) {
+            try {
+                worldToolsSimplified.deletedTickingArea(tickArea);
+            } catch { }
+        }
     }
 }
 

@@ -114,8 +114,59 @@ class GlobalWorldEventsManager extends TL15DBaseManager {
             switch (id) {
                 case 'ha:spawn_fake': {
                     for (let i = 0; i < 2; i++) {
-                        fakePlysSimplified.createFakePly(`Test${i}`, sourceEntity.dimension, mc.GameMode.Survival);
+                        const ply = await fakePlysSimplified.createFakePly(`Test${i}`, sourceEntity.dimension, mc.GameMode.Survival);
+
+                        if (!ply) continue;
+
+                        const armorInv = ply.getComponent(mc.EntityComponentTypes.Equippable);
+
+                        if (!armorInv) continue;
+
+                        const items: Map<mc.EquipmentSlot, mc.ItemStack> = new Map([
+                            [mc.EquipmentSlot.Mainhand, new mc.ItemStack('ha:infernal_crown', 1)],
+                            [mc.EquipmentSlot.Head, new mc.ItemStack('ha:cautious_helmet', 1)],
+                            [mc.EquipmentSlot.Chest, new mc.ItemStack('ha:cautious_chestplate', 1)],
+                            [mc.EquipmentSlot.Legs, new mc.ItemStack('ha:cautious_leggings', 1)],
+                            [mc.EquipmentSlot.Feet, new mc.ItemStack('ha:cautious_boots', 1)]
+                        ]);
+
+                        items.forEach((item, slot) => {
+                            armorInv.setEquipment(slot, item);
+                        });
                     }
+                } break;
+                case 'ha:final_addon': {
+                    if (!(sourceEntity instanceof mc.Player)) return;
+                    if (sourceEntity.hasTag('finalMsg')) return;
+
+                    customEventsManager.createCustomClassicFormUI({
+                        titleForm: { rawtext: [{ translate: 'ui.system.end_addon.thanks' }] },
+                        headerText: { rawtext: [{ translate: 'ui.system.end_addon.header_thanks' }] },
+                        bodyText: { rawtext: [{ translate: 'ui.system.end_addon.body_thanks' }] },
+                        labelText: { rawtext: [{ translate: 'ui.system.end_addon.label_team' }] },
+                        buttonsForm: [
+                            { buttomText: { rawtext: [{ translate: 'ui.system.end_addon.button_ok' }] }, }
+                        ],
+                        showPly: {
+                            targetPly: sourceEntity,
+                            onCreate: (ply) => {
+                                ply.playSound('random.levelup');
+                                ply.playSound('ui.advancements.rare');
+                                ply.playSound('music.final_music');
+                            },
+                            onClickBtn: (ply) => {
+                                ply.addTag('finalMsg');
+                            },
+                            onErrForm: (ply) => {
+                                if (!ply.hasTag('finalMsg')) {
+                                    ply.runCommand(`scriptevent ha:final_addon`);
+                                }
+                            },
+                            onClose: (ply) => {
+                                ply.addTag('finalMsg');
+                            }
+                        }
+                    });
                 } break;
                 case 'ha:no_sleeping_system': {
                     const ply = sourceEntity as mc.Player;

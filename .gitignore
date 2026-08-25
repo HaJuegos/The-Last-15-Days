@@ -1,3 +1,4 @@
 manifest.json
 
-scripts/
+behaviors/scripts/
+behaviors/*/scripts/
