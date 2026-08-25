@@ -54,7 +54,7 @@ Este proyecto es una comision previa realizada por RosherRandom. Todos los credi
 
 - 📖 **[Wiki General e Información del Add-on](https://github.com/HaJuegos/The-Last-15-Days/wiki)**: Revisa guías, mecánicas y preguntas frecuentes o mas!
 - ⚔️ **[Cambios de Dificultad](https://github.com/HaJuegos/The-Last-15-Days/wiki/Cambios-de-Dificultad)**: Enterate de todos los cambios que contiene este add-on.
-- 🤺 **[Cambios de Dificultad - Banners](https://github.com/HaJuegos/The-Last-15-Days/wiki/Cambios-de-Dificultad)**: Enterate de todos los cambios que contiene este add-on. ¡Pero con imagenes!.
+- 🤺 **[Cambios de Dificultad - Banners](https://github.com/HaJuegos/The-Last-15-Days/tree/main/oficial_art#banners-de-cambios-canon-de-tl15d)**: Enterate de todos los cambios que contiene este add-on. ¡Pero con imagenes!.
 
 ---
 
