@@ -89,13 +89,15 @@
 
 # Dia 6
 
-![1](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/main/oficial_art/banners/dia6/1.jpg)
-![2](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/main/oficial_art/banners/dia6/2.jpg)
-![3](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/main/oficial_art/banners/dia6/3.jpg)
-![4](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/main/oficial_art/banners/dia6/4.jpg)
-![5](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/main/oficial_art/banners/dia6/5.jpg)
-![6](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/main/oficial_art/banners/dia6/6.jpg)
-![7](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/main/oficial_art/banners/dia6/7.jpg)
+![1](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/main/oficial_art/banners/dia6/1.png)
+![2](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/main/oficial_art/banners/dia6/2.png)
+![3](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/main/oficial_art/banners/dia6/3.png)
+![4](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/main/oficial_art/banners/dia6/4.png)
+![5](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/main/oficial_art/banners/dia6/5.png)
+![6](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/main/oficial_art/banners/dia6/6.png)
+![7](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/main/oficial_art/banners/dia6/7.png)
+![8](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/main/oficial_art/banners/dia6/8.png)
+![9](https://raw.githubusercontent.com/HaJuegos/The-Last-15-Days/refs/heads/main/oficial_art/banners/dia6/9.png)
 
 # Dia 7
 
