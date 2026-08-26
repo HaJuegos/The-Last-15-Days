@@ -20,13 +20,13 @@
                 "item": "ha:infernal_gem_piglin"
             },
             "C": {
-                "item": "ha:soul_fire"
+                "item": "ha:infernal_crown_empty"
             },
             "M": {
                 "item": "ha:infernal_gem_magma"
             },
             "S": {
-                "item": "ha:infernal_crown_empty"
+                "item": "ha:soul_fire"
             }
         },
         "unlock": [
