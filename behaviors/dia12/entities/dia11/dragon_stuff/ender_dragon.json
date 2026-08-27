@@ -1,22 +1,78 @@
 /* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
 /* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
 {
-    "format_version": "1.26.0",
+    "format_version": "1.26.40",
     "minecraft:entity": {
         "description": {
             "identifier": "minecraft:ender_dragon",
+            "spawn_category": "monster",
             "is_summonable": true,
             "is_spawnable": true,
-            "spawn_category": "monster"
+            "is_experimental": false,
+            "properties": {
+                "ha:fase_dragon": {
+                    "client_sync": true,
+                    "type": "enum",
+                    "default": "normal",
+                    "values": [
+                        "normal",
+                        "enraged"
+                    ]
+                },
+                "ha:autosummon_balls": {
+                    "client_sync": true,
+                    "type": "bool",
+                    "default": false
+                },
+                "ha:in_center": {
+                    "client_sync": true,
+                    "type": "bool",
+                    "default": false
+                }
+            }
         },
         "component_groups": {
+            "ha:autosummon_ball_normal": {
+                "minecraft:spawn_entity": {
+                    "entities": [
+                        {
+                            "min_wait_time": 5,
+                            "max_wait_time": 5,
+                            "num_to_spawn": 1,
+                            "should_leash": false,
+                            "single_use": false,
+                            "spawn_entity": "minecraft:dragon_fireball",
+                            "spawn_event": "ha:normal_balls"
+                        }
+                    ]
+                }
+            },
+            "ha:autosummon_ball_enraged": {
+                "minecraft:spawn_entity": {
+                    "entities": [
+                        {
+                            "min_wait_time": 5,
+                            "max_wait_time": 5,
+                            "num_to_spawn": 1,
+                            "should_leash": false,
+                            "single_use": false,
+                            "spawn_entity": "minecraft:dragon_fireball",
+                            "spawn_event": "ha:enraged_balls"
+                        }
+                    ]
+                }
+            },
+
             "ha:normal_balls": {
                 "minecraft:behavior.ranged_attack": {
                     "priority": 1,
-                    "attack_interval_min": 0.65,
-                    "attack_interval_max": 1.35,
-                    "attack_radius": 200,
-                    "ranged_fov": 360,
+                    "attack_interval": {
+                        "min": 4,
+                        "max": 4
+                    },
+                    "swing": true,
+                    "attack_radius": 132,
+                    "ranged_fov": 200,
                     "target_in_sight_time": 0.1
                 },
                 "minecraft:boss": {
@@ -31,10 +87,11 @@
             "ha:enraged_balls": {
                 "minecraft:behavior.ranged_attack": {
                     "priority": 1,
-                    "attack_interval_min": 0.65,
-                    "attack_interval_max": 1.35,
-                    "burst_shots": 2,
-                    "burst_interval": 3,
+                    "attack_interval": {
+                        "min": 4,
+                        "max": 4
+                    },
+                    "swing": true,
                     "attack_radius": 132,
                     "ranged_fov": 200,
                     "target_in_sight_time": 0.1
@@ -48,6 +105,7 @@
                     "def": "minecraft:dragon_fireball<ha:enraged_balls>"
                 }
             },
+
             "ha:landing_mode": {
                 "minecraft:skin_id": {
                     "value": 1
@@ -92,7 +150,7 @@
                     "priority": 1
                 },
                 "minecraft:timer": {
-                    "time": [ 25, 25 ],
+                    "time": 20,
                     "looping": false,
                     "time_down_event": {
                         "event": "ha:start_flying",
@@ -112,13 +170,13 @@
                         "min": 3,
                         "max": 110
                     },
-                    "continue_charge_threshold_time": 0.35
+                    "continue_charge_threshold_time": 5
                 },
                 "minecraft:behavior.dragonholdingpattern": {
-                    "priority": 3
+                    "priority": 1
                 },
                 "minecraft:behavior.dragonstrafeplayer": {
-                    "priority": 1,
+                    "priority": 3,
                     "active_speed": 0.9,
                     "flight_speed": 0.9,
                     "fireball_range": 200,
@@ -128,14 +186,14 @@
                     },
                     "turn_speed": 0.8,
                     "view_angle": 360,
-                    "target_in_range_and_in_view_time": 0.1,
+                    "target_in_range_and_in_view_time": 3,
                     "switch_direction_probability": 1
                 },
                 "minecraft:behavior.dragontakeoff": {
                     "priority": 0
                 },
                 "minecraft:timer": {
-                    "time": [ 30, 30 ],
+                    "time": 35,
                     "looping": false,
                     "time_down_event": {
                         "event": "ha:start_landing",
@@ -150,6 +208,101 @@
             }
         },
         "components": {
+            "minecraft:follow_range": {
+                "value": 100,
+                "max": 150
+            },
+            "minecraft:behavior.hurt_by_target": {
+                "priority": 5,
+                "hurt_owner": true
+            },
+            "minecraft:behavior.nearest_attackable_target": {
+                "priority": 4,
+                "must_see": false,
+                "reselect_targets": false,
+                "entity_types": [
+                    {
+                        "filters": {
+                            "all_of": [
+                                {
+                                    "test": "is_family",
+                                    "subject": "other",
+                                    "value": "player"
+                                },
+                                {
+                                    "test": "is_family",
+                                    "subject": "other",
+                                    "operator": "not",
+                                    "value": "nurse"
+                                }
+                            ]
+                        },
+                        "max_dist": 100
+                    }
+                ]
+            },
+            "minecraft:environment_sensor": {
+                "triggers": [
+                    {
+                        "filters": {
+                            "all_of": [
+                                {
+                                    "test": "has_target",
+                                    "value": true
+                                },
+                                {
+                                    "test": "is_underground",
+                                    "subject": "target",
+                                    "value": true
+                                },
+                                {
+                                    "test": "bool_property",
+                                    "domain": "ha:autosummon_balls",
+                                    "value": false
+                                },
+                                {
+                                    "test": "bool_property",
+                                    "domain": "ha:in_center",
+                                    "value": false
+                                }
+                            ]
+                        },
+                        "target": "self",
+                        "event": "ha:start_timer_summon_autoballs"
+                    },
+                    {
+                        "filters": {
+                            "all_of": [
+                                {
+                                    "any_of": [
+                                        {
+                                            "test": "has_target",
+                                            "value": false
+                                        },
+                                        {
+                                            "test": "is_underground",
+                                            "subject": "target",
+                                            "value": false
+                                        }
+                                    ]
+                                },
+                                {
+                                    "test": "bool_property",
+                                    "domain": "ha:autosummon_balls",
+                                    "value": true
+                                },
+                                {
+                                    "test": "bool_property",
+                                    "domain": "ha:in_center",
+                                    "value": false
+                                }
+                            ]
+                        },
+                        "target": "self",
+                        "event": "ha:remove_timer_summon_autoballs"
+                    }
+                ]
+            },
             "minecraft:physics": {
                 "has_collision": false,
                 "has_gravity": false
@@ -244,29 +397,38 @@
         },
         "events": {
             "minecraft:entity_spawned": {
-                "randomize": [
+                "sequence": [
                     {
-                        "weight": 10000,
-                        "add": {
-                            "component_groups": [
-                                "ha:flying_mode",
-                                "ha:normal_balls"
-                            ]
+                        "set_property": {
+                            "ha:fase_dragon": "normal"
                         }
                     },
                     {
-                        "weight": 1,
-                        "add": {
-                            "component_groups": [
-                                "ha:flying_mode",
-                                "ha:normal_balls"
-                            ]
-                        },
-                        "queue_command": {
-                            "command": [
-                                "summon ender_dragon ~ ~ ~ 0 0 ha:lucky_one"
-                            ]
-                        }
+                        "randomize": [
+                            {
+                                "weight": 10000,
+                                "add": {
+                                    "component_groups": [
+                                        "ha:flying_mode",
+                                        "ha:normal_balls"
+                                    ]
+                                }
+                            },
+                            {
+                                "weight": 1,
+                                "add": {
+                                    "component_groups": [
+                                        "ha:flying_mode",
+                                        "ha:normal_balls"
+                                    ]
+                                },
+                                "queue_command": {
+                                    "command": [
+                                        "summon ender_dragon ~ ~ ~ 0 0 ha:lucky_one"
+                                    ]
+                                }
+                            }
+                        ]
                     }
                 ]
             },
@@ -279,6 +441,9 @@
                 }
             },
             "ha:start_normal_mode": {
+                "set_property": {
+                    "ha:fase_dragon": "normal"
+                },
                 "remove": {
                     "component_groups": [
                         "ha:enraged_balls"
@@ -291,6 +456,9 @@
                 }
             },
             "ha:start_enraged_mode": {
+                "set_property": {
+                    "ha:fase_dragon": "enraged"
+                },
                 "remove": {
                     "component_groups": [
                         "ha:normal_balls"
@@ -302,8 +470,57 @@
                     ]
                 }
             },
+            "ha:start_timer_summon_autoballs": {
+                "sequence": [
+                    {
+                        "set_property": {
+                            "ha:autosummon_balls": true
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "enum_property",
+                            "domain": "ha:fase_dragon",
+                            "subject": "self",
+                            "value": "normal"
+                        },
+                        "add": {
+                            "component_groups": [
+                                "ha:autosummon_ball_normal"
+                            ]
+                        }
+                    },
+                    {
+                        "filters": {
+                            "test": "enum_property",
+                            "domain": "ha:fase_dragon",
+                            "subject": "self",
+                            "value": "enraged"
+                        },
+                        "add": {
+                            "component_groups": [
+                                "ha:autosummon_ball_enraged"
+                            ]
+                        }
+                    }
+                ]
+            },
+            "ha:remove_timer_summon_autoballs": {
+                "set_property": {
+                    "ha:autosummon_balls": false
+                },
+                "remove": {
+                    "component_groups": [
+                        "ha:autosummon_ball_normal",
+                        "ha:autosummon_ball_enraged"
+                    ]
+                }
+            },
 
             "ha:start_flying": {
+                "set_property": {
+                    "ha:in_center": false
+                },
                 "remove": {
                     "component_groups": [
                         "ha:landing_mode"
@@ -316,16 +533,27 @@
                 }
             },
             "ha:start_landing": {
-                "remove": {
-                    "component_groups": [
-                        "ha:flying_mode"
-                    ]
-                },
-                "add": {
-                    "component_groups": [
-                        "ha:landing_mode"
-                    ]
-                }
+                "sequence": [
+                    {
+                        "reset_target": { },
+                        "set_property": {
+                            "ha:in_center": true
+                        },
+                        "remove": {
+                            "component_groups": [
+                                "ha:flying_mode"
+                            ]
+                        },
+                        "add": {
+                            "component_groups": [
+                                "ha:landing_mode"
+                            ]
+                        }
+                    },
+                    {
+                        "trigger": "ha:remove_timer_summon_autoballs"
+                    }
+                ]
             },
             "ha:start_death_mode": {
                 "remove": {

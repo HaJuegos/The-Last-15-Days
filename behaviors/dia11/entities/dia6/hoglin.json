@@ -457,13 +457,13 @@
             "ha:drop_chance": {
                 "randomize": [
                     {
-                        "weight": 90
+                        "weight": 75
                     },
                     {
-                        "weight": 10,
+                        "weight": 25,
                         "queue_command": {
                             "command": [
-                                "structure load ha:hoglin_sword ~~~"
+                                "structure load ha:hoglin_sword ~ ~1 ~"
                             ]
                         }
                     }

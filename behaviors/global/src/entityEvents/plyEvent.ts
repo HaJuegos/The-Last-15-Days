@@ -247,6 +247,7 @@ class PlyEventsManager extends TL15DBaseManager {
                     }
 
                     ply.runCommand(`function system/revive_ply_system`);
+                    worldToolsSimplified.sendMessageGlobal({ rawtext: [{ translate: 'chat.system.form_revival_ply.success.player_revive', with: { rawtext: [{ text: `${ply.name}` }] } }] });
                 } else if (TL15DBaseManager.banState) {
                     ply.runCommand(`kick "${ply.name}"`);
                 }

@@ -67,8 +67,8 @@
                 "minecraft:behavior.ranged_attack": {
                     "priority": 1,
                     "attack_interval": {
-                        "min": 5,
-                        "max": 5
+                        "min": 4,
+                        "max": 4
                     },
                     "swing": true,
                     "attack_radius": 132,
@@ -88,8 +88,8 @@
                 "minecraft:behavior.ranged_attack": {
                     "priority": 1,
                     "attack_interval": {
-                        "min": 5,
-                        "max": 5
+                        "min": 4,
+                        "max": 4
                     },
                     "swing": true,
                     "attack_radius": 132,
@@ -150,7 +150,7 @@
                     "priority": 1
                 },
                 "minecraft:timer": {
-                    "time": 25,
+                    "time": 20,
                     "looping": false,
                     "time_down_event": {
                         "event": "ha:start_flying",
@@ -219,13 +219,23 @@
             "minecraft:behavior.nearest_attackable_target": {
                 "priority": 4,
                 "must_see": false,
-                "reselect_targets": true,
+                "reselect_targets": false,
                 "entity_types": [
                     {
                         "filters": {
-                            "test": "is_family",
-                            "subject": "other",
-                            "value": "player"
+                            "all_of": [
+                                {
+                                    "test": "is_family",
+                                    "subject": "other",
+                                    "value": "player"
+                                },
+                                {
+                                    "test": "is_family",
+                                    "subject": "other",
+                                    "operator": "not",
+                                    "value": "nurse"
+                                }
+                            ]
                         },
                         "max_dist": 100
                     }
@@ -432,7 +442,7 @@
             },
             "ha:start_normal_mode": {
                 "set_property": {
-                    "ha:fase_dragon": "enraged"
+                    "ha:fase_dragon": "normal"
                 },
                 "remove": {
                     "component_groups": [
@@ -447,7 +457,7 @@
             },
             "ha:start_enraged_mode": {
                 "set_property": {
-                    "ha:fase_dragon": "normal"
+                    "ha:fase_dragon": "enraged"
                 },
                 "remove": {
                     "component_groups": [

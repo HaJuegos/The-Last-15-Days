@@ -26,6 +26,35 @@
             }
         },
         "component_groups": {
+            "ha:adult_mode": {
+                "minecraft:rideable": {
+                    "family_types": [ "baby_piglin" ],
+                    "pull_in_entities": true,
+                    "seat_count": 5,
+                    "seats": [
+                        {
+                            "lock_rider_rotation": 0,
+                            "position": [ 0, 1.18, -0.4 ]
+                        },
+                        {
+                            "lock_rider_rotation": 0,
+                            "position": [ 0, 2, -0.4 ]
+                        },
+                        {
+                            "lock_rider_rotation": 0,
+                            "position": [ 0, 3, -0.4 ]
+                        },
+                        {
+                            "lock_rider_rotation": 0,
+                            "position": [ 0, 4, -0.4 ]
+                        },
+                        {
+                            "lock_rider_rotation": 0,
+                            "position": [ 0, 5, -0.4 ]
+                        }
+                    ]
+                }
+            },
             "ha:baby_mode": {
                 "minecraft:is_baby": { },
                 "minecraft:scale": {
@@ -89,16 +118,18 @@
                 },
                 "minecraft:on_target_acquired": {
                     "filters": {
-                        "all_of": [
+                        "none_of": [
                             {
-                                "test": "is_family",
-                                "subject": "self",
-                                "operator": "not",
-                                "value": "baby_piglin"
-                            },
-                            {
-                                "test": "is_riding",
-                                "value": false
+                                "all_of": [
+                                    {
+                                        "test": "is_family",
+                                        "value": "baby_piglin"
+                                    },
+                                    {
+                                        "test": "is_riding",
+                                        "value": true
+                                    }
+                                ]
                             }
                         ]
                     },
@@ -120,8 +151,8 @@
                         "all_of": [
                             {
                                 "test": "is_family",
-                                "operator": "!=",
                                 "subject": "other",
+                                "operator": "not",
                                 "value": "piglin"
                             }
                         ]
@@ -496,7 +527,7 @@
                     "cooldown_time": 0.65,
                     "melee_fov": 360,
                     "reach_multiplier": 3.5,
-                    "track_target": false,
+                    "track_target": true,
                     "min_path_time": 0.1,
                     "max_path_time": 0.15,
                     "require_complete_path": false
@@ -540,7 +571,7 @@
                     "melee_fov": 360,
                     "min_path_time": 0.05,
                     "max_path_time": 0.1,
-                    "speed_multiplier": 1.35,
+                    "speed_multiplier": 2,
                     "track_target": true
                 }
             },
@@ -773,6 +804,16 @@
                                         "value": "hoglin"
                                     },
                                     {
+                                        "test": "is_family",
+                                        "subject": "other",
+                                        "value": "irongolem"
+                                    },
+                                    {
+                                        "test": "is_family",
+                                        "subject": "other",
+                                        "value": "snowgolem"
+                                    },
+                                    {
                                         "all_of": [
                                             {
                                                 "test": "has_equipment",
@@ -864,6 +905,16 @@
                                         "test": "is_family",
                                         "subject": "other",
                                         "value": "hoglin"
+                                    },
+                                    {
+                                        "test": "is_family",
+                                        "subject": "other",
+                                        "value": "irongolem"
+                                    },
+                                    {
+                                        "test": "is_family",
+                                        "subject": "other",
+                                        "value": "snowgolem"
                                     },
                                     {
                                         "all_of": [
@@ -2760,33 +2811,6 @@
                 "speed_multiplier": 1.25,
                 "track_target": true
             },
-            "minecraft:rideable": {
-                "family_types": [ "baby_piglin" ],
-                "pull_in_entities": true,
-                "seat_count": 5,
-                "seats": [
-                    {
-                        "lock_rider_rotation": 0,
-                        "position": [ 0, 1.18, -0.4 ]
-                    },
-                    {
-                        "lock_rider_rotation": 0,
-                        "position": [ 0, 2, -0.4 ]
-                    },
-                    {
-                        "lock_rider_rotation": 0,
-                        "position": [ 0, 3, -0.4 ]
-                    },
-                    {
-                        "lock_rider_rotation": 0,
-                        "position": [ 0, 4, -0.4 ]
-                    },
-                    {
-                        "lock_rider_rotation": 0,
-                        "position": [ 0, 5, -0.4 ]
-                    }
-                ]
-            },
             "minecraft:rotation_locked_to_vehicle": { },
             "minecraft:collision_box": {
                 "height": 1.9,
@@ -2858,7 +2882,8 @@
                                 "ha:initial_comps",
                                 "ha:path_normal",
                                 "ha:remove_resistance",
-                                "ha:normal_targets"
+                                "ha:normal_targets",
+                                "ha:adult_mode"
                             ]
                         }
                     },
@@ -2878,11 +2903,11 @@
                     {
                         "randomize": [
                             {
-                                "weight": 5,
+                                "weight": 10,
                                 "trigger": "ha:set_baby"
                             },
                             {
-                                "weight": 95
+                                "weight": 90
                             }
                         ]
                     }
@@ -2934,6 +2959,11 @@
             },
 
             "ha:set_baby": {
+                "remove": {
+                    "component_groups": [
+                        "ha:adult_mode"
+                    ]
+                },
                 "add": {
                     "component_groups": [
                         "ha:baby_mode"
@@ -3007,7 +3037,6 @@
                                 "ha:pearl_mode",
 
                                 "ha:path_normal",
-                                "ha:remove_resistance",
 
                                 "ha:normal_targets",
                                 "ha:pickaxe_sensor",
@@ -3017,8 +3046,7 @@
                         "add": {
                             "component_groups": [
                                 "ha:normal_targets",
-                                "ha:path_melee",
-                                "ha:set_resistance"
+                                "ha:path_melee"
                             ]
                         }
                     },
@@ -3026,13 +3054,20 @@
                         "randomize": [
                             {
                                 "weight": 65,
+                                "remove": {
+                                    "component_groups": [
+                                        "ha:remove_resistance"
+                                    ]
+                                },
                                 "add": {
                                     "component_groups": [
                                         "ha:melee_normal_sensors",
 
                                         "ha:melee_normal_equips",
 
-                                        "ha:melee_mode_normal"
+                                        "ha:melee_mode_normal",
+
+                                        "ha:set_resistance"
                                     ]
                                 }
                             },
@@ -3043,6 +3078,11 @@
                                         "summon wind_charge_projectile ~~~"
                                     ]
                                 },
+                                "remove": {
+                                    "component_groups": [
+                                        "ha:set_resistance"
+                                    ]
+                                },
                                 "add": {
                                     "component_groups": [
                                         "ha:melee_mace_sensors",
@@ -3050,19 +3090,28 @@
                                         "ha:melee_mace_equips",
 
                                         "ha:mace_loop",
-                                        "ha:melee_mode_mace"
+                                        "ha:melee_mode_mace",
+
+                                        "ha:remove_resistance"
                                     ]
                                 }
                             },
                             {
                                 "weight": 10,
+                                "remove": {
+                                    "component_groups": [
+                                        "ha:remove_resistance"
+                                    ]
+                                },
                                 "add": {
                                     "component_groups": [
                                         "ha:melee_normal_sensors",
 
                                         "ha:melee_spear_equips",
 
-                                        "ha:melee_mode_spear"
+                                        "ha:melee_mode_spear",
+
+                                        "ha:set_resistance"
                                     ]
                                 }
                             }

@@ -121,7 +121,7 @@ class DragonEvents extends TL15DBaseManager {
                                 onTimerEnds: (entity: mc.Entity) => {
                                     const dime = entity.dimension;
                                     const allEntitiesEnd = dime.getEntities({
-                                        excludeTypes: ['minecraft:ender_crystal', 'ha:crystal_llama_generator']
+                                        excludeTypes: ['minecraft:ender_crystal', 'ha:crystal_llama_generator', 'minecraft:item']
                                     });
 
                                     for (const entity of allEntitiesEnd) {
@@ -628,12 +628,12 @@ class DragonEvents extends TL15DBaseManager {
 
         const volumeStone = new mc.BlockVolume(minStoneCoords, maxStoneCoords);
         const blocksToProtect = [
-            vanilla.MinecraftBlockTypes.Bedrock,
             vanilla.MinecraftBlockTypes.EmeraldBlock,
             vanilla.MinecraftBlockTypes.GoldBlock
         ];
 
         if (!canBreakTowers) {
+            blocksToProtect.push(vanilla.MinecraftBlockTypes.Bedrock);
             blocksToProtect.push(vanilla.MinecraftBlockTypes.Obsidian);
             blocksToProtect.push(vanilla.MinecraftBlockTypes.IronBars);
         }
