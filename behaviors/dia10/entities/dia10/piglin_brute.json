@@ -9,13 +9,6 @@
             "is_experimental": false,
             "is_spawnable": true,
             "is_summonable": true,
-            "properties": {
-                "ha:is_new_brute": {
-                    "client_sync": true,
-                    "default": true,
-                    "type": "bool"
-                }
-            },
             "animations": {
                 "critic_sensor": "controller.animation.brute_sensors.critic"
             },
@@ -23,9 +16,74 @@
                 "animate": [
                     "critic_sensor"
                 ]
+            },
+            "properties": {
+                "ha:is_new_brute": {
+                    "client_sync": true,
+                    "type": "bool",
+                    "default": false
+                }
             }
         },
         "component_groups": {
+            "ha:adult_mode": {
+                "minecraft:rideable": {
+                    "family_types": [ "baby_piglin" ],
+                    "pull_in_entities": true,
+                    "seat_count": 5,
+                    "seats": [
+                        {
+                            "lock_rider_rotation": 0,
+                            "position": [ 0, 1.18, -0.4 ]
+                        },
+                        {
+                            "lock_rider_rotation": 0,
+                            "position": [ 0, 2, -0.4 ]
+                        },
+                        {
+                            "lock_rider_rotation": 0,
+                            "position": [ 0, 3, -0.4 ]
+                        },
+                        {
+                            "lock_rider_rotation": 0,
+                            "position": [ 0, 4, -0.4 ]
+                        },
+                        {
+                            "lock_rider_rotation": 0,
+                            "position": [ 0, 5, -0.4 ]
+                        }
+                    ]
+                }
+            },
+            "ha:baby_mode": {
+                "minecraft:is_baby": { },
+                "minecraft:scale": {
+                    "value": 0.5
+                },
+                "minecraft:collision_box": {
+                    "height": 1.96, // 0.98/0.5
+                    "width": 0.98 // 0.49/0.5
+                },
+                "minecraft:movement": {
+                    "value": 0.42
+                },
+                "minecraft:type_family": {
+                    "family": [
+                        "piglin",
+                        "baby_piglin",
+                        "baby_piglin_brute",
+                        "piglin_brute",
+                        "monster"
+                    ]
+                },
+                "minecraft:behavior.find_mount": {
+                    "priority": 1,
+                    "within_radius": 16,
+                    "start_delay": 15,
+                    "max_failed_attempts": 20
+                }
+            },
+
             "ha:replace_piglin": {
                 "minecraft:spawn_entity": {
                     "entities": [
@@ -59,6 +117,22 @@
                     ]
                 },
                 "minecraft:on_target_acquired": {
+                    "filters": {
+                        "none_of": [
+                            {
+                                "all_of": [
+                                    {
+                                        "test": "is_family",
+                                        "value": "baby_piglin"
+                                    },
+                                    {
+                                        "test": "is_riding",
+                                        "value": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
                     "target": "self",
                     "event": "ha:start_pearl_mode"
                 }
@@ -77,8 +151,8 @@
                         "all_of": [
                             {
                                 "test": "is_family",
-                                "operator": "!=",
                                 "subject": "other",
+                                "operator": "not",
                                 "value": "piglin"
                             }
                         ]
@@ -450,10 +524,10 @@
                 "minecraft:behavior.melee_attack": {
                     "priority": 0,
                     "can_spread_on_fire": true,
-                    "cooldown_time": 0.75,
+                    "cooldown_time": 0.65,
                     "melee_fov": 360,
-                    "reach_multiplier": 1.5,
-                    "track_target": false,
+                    "reach_multiplier": 3.5,
+                    "track_target": true,
                     "min_path_time": 0.1,
                     "max_path_time": 0.15,
                     "require_complete_path": false
@@ -497,7 +571,7 @@
                     "melee_fov": 360,
                     "min_path_time": 0.05,
                     "max_path_time": 0.1,
-                    "speed_multiplier": 1.35,
+                    "speed_multiplier": 2,
                     "track_target": true
                 }
             },
@@ -659,6 +733,7 @@
                 },
                 "minecraft:behavior.ranged_attack": {
                     "priority": 0,
+                    "target_in_sight_time": 0.1,
                     "attack_interval": {
                         "min": 0.35,
                         "max": 1
@@ -727,6 +802,16 @@
                                         "test": "is_family",
                                         "subject": "other",
                                         "value": "hoglin"
+                                    },
+                                    {
+                                        "test": "is_family",
+                                        "subject": "other",
+                                        "value": "irongolem"
+                                    },
+                                    {
+                                        "test": "is_family",
+                                        "subject": "other",
+                                        "value": "snowgolem"
                                     },
                                     {
                                         "all_of": [
@@ -820,6 +905,16 @@
                                         "test": "is_family",
                                         "subject": "other",
                                         "value": "hoglin"
+                                    },
+                                    {
+                                        "test": "is_family",
+                                        "subject": "other",
+                                        "value": "irongolem"
+                                    },
+                                    {
+                                        "test": "is_family",
+                                        "subject": "other",
+                                        "value": "snowgolem"
                                     },
                                     {
                                         "all_of": [
@@ -2439,6 +2534,12 @@
             }
         },
         "components": {
+            "minecraft:offspring": {
+                "offspring_pairs": {
+                    "minecraft:piglin_brute": "minecraft:piglin_brute<ha:spawn_baby>"
+                }
+            },
+            "minecraft:spawn_egg_interaction": { },
             "minecraft:fire_immune": { },
             "minecraft:inventory": {
                 "can_be_siphoned_from": false,
@@ -2620,9 +2721,8 @@
                         "filters": {
                             "test": "bool_property",
                             "subject": "self",
-                            "operator": "not",
                             "domain": "ha:is_new_brute",
-                            "value": true
+                            "value": false
                         },
                         "event": "ha:forced_change",
                         "target": "self"
@@ -2711,33 +2811,6 @@
                 "speed_multiplier": 1.25,
                 "track_target": true
             },
-            "minecraft:rideable": {
-                "family_types": [ "baby_piglin" ],
-                "pull_in_entities": true,
-                "seat_count": 5,
-                "seats": [
-                    {
-                        "lock_rider_rotation": 0,
-                        "position": [ 0, 1.18, -0.4 ]
-                    },
-                    {
-                        "lock_rider_rotation": 0,
-                        "position": [ 0, 2, -0.4 ]
-                    },
-                    {
-                        "lock_rider_rotation": 0,
-                        "position": [ 0, 3, -0.4 ]
-                    },
-                    {
-                        "lock_rider_rotation": 0,
-                        "position": [ 0, 4, -0.4 ]
-                    },
-                    {
-                        "lock_rider_rotation": 0,
-                        "position": [ 0, 5, -0.4 ]
-                    }
-                ]
-            },
             "minecraft:rotation_locked_to_vehicle": { },
             "minecraft:collision_box": {
                 "height": 1.9,
@@ -2800,7 +2873,7 @@
                         },
                         "remove": {
                             "component_groups": [
-                                "ha:remove_resistance",
+                                "ha:set_resistance",
                                 "ha:pickaxe_targets"
                             ]
                         },
@@ -2808,7 +2881,60 @@
                             "component_groups": [
                                 "ha:initial_comps",
                                 "ha:path_normal",
+                                "ha:remove_resistance",
+                                "ha:normal_targets",
+                                "ha:adult_mode"
+                            ]
+                        }
+                    },
+                    {
+                        "randomize": [
+                            { "weight": 10 },
+                            {
+                                "weight": 90,
+                                "queue_command": {
+                                    "command": [
+                                        "replaceitem entity @s slot.weapon.offhand 0 totem_of_undying"
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "randomize": [
+                            {
+                                "weight": 10,
+                                "trigger": "ha:set_baby"
+                            },
+                            {
+                                "weight": 90
+                            }
+                        ]
+                    }
+                ]
+            },
+            "ha:spawn_baby": {
+                "sequence": [
+                    {
+                        "set_property": {
+                            "ha:is_new_brute": true
+                        },
+                        "queue_command": {
+                            "command": [
+                                "tag @s remove mining_mode"
+                            ]
+                        },
+                        "remove": {
+                            "component_groups": [
                                 "ha:set_resistance",
+                                "ha:pickaxe_targets"
+                            ]
+                        },
+                        "add": {
+                            "component_groups": [
+                                "ha:initial_comps",
+                                "ha:path_normal",
+                                "ha:remove_resistance",
                                 "ha:normal_targets"
                             ]
                         }
@@ -2825,8 +2951,24 @@
                                 }
                             }
                         ]
+                    },
+                    {
+                        "trigger": "ha:set_baby"
                     }
                 ]
+            },
+
+            "ha:set_baby": {
+                "remove": {
+                    "component_groups": [
+                        "ha:adult_mode"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
+                        "ha:baby_mode"
+                    ]
+                }
             },
             "ha:forced_change": {
                 "add": {
@@ -2859,7 +3001,7 @@
                         "ha:melee_mode_spear",
 
                         "ha:path_melee",
-                        "ha:remove_resistance",
+                        "ha:set_resistance",
 
                         "ha:pickaxe_targets",
                         "ha:pickaxe_sensor",
@@ -2876,7 +3018,7 @@
 
                         "ha:normal_targets",
                         "ha:path_normal",
-                        "ha:set_resistance"
+                        "ha:remove_resistance"
                     ]
                 }
             },
@@ -2895,7 +3037,6 @@
                                 "ha:pearl_mode",
 
                                 "ha:path_normal",
-                                "ha:set_resistance",
 
                                 "ha:normal_targets",
                                 "ha:pickaxe_sensor",
@@ -2913,13 +3054,20 @@
                         "randomize": [
                             {
                                 "weight": 65,
+                                "remove": {
+                                    "component_groups": [
+                                        "ha:remove_resistance"
+                                    ]
+                                },
                                 "add": {
                                     "component_groups": [
                                         "ha:melee_normal_sensors",
 
                                         "ha:melee_normal_equips",
 
-                                        "ha:melee_mode_normal"
+                                        "ha:melee_mode_normal",
+
+                                        "ha:set_resistance"
                                     ]
                                 }
                             },
@@ -2930,6 +3078,11 @@
                                         "summon wind_charge_projectile ~~~"
                                     ]
                                 },
+                                "remove": {
+                                    "component_groups": [
+                                        "ha:set_resistance"
+                                    ]
+                                },
                                 "add": {
                                     "component_groups": [
                                         "ha:melee_mace_sensors",
@@ -2938,19 +3091,27 @@
 
                                         "ha:mace_loop",
                                         "ha:melee_mode_mace",
+
                                         "ha:remove_resistance"
                                     ]
                                 }
                             },
                             {
                                 "weight": 10,
+                                "remove": {
+                                    "component_groups": [
+                                        "ha:remove_resistance"
+                                    ]
+                                },
                                 "add": {
                                     "component_groups": [
                                         "ha:melee_normal_sensors",
 
                                         "ha:melee_spear_equips",
 
-                                        "ha:melee_mode_spear"
+                                        "ha:melee_mode_spear",
+
+                                        "ha:set_resistance"
                                     ]
                                 }
                             }
@@ -2982,7 +3143,7 @@
                         "ha:melee_spear_equips",
 
                         "ha:path_melee",
-                        "ha:remove_resistance",
+                        "ha:set_resistance",
 
                         "ha:pickaxe_targets",
                         "ha:pickaxe_sensor",
@@ -2995,7 +3156,7 @@
                         "ha:ranged_sensor",
 
                         "ha:ranged_mode",
-                        "ha:set_resistance"
+                        "ha:remove_resistance"
                     ]
                 }
             },
@@ -3035,7 +3196,7 @@
                         "ha:ranged_mode",
 
                         "ha:path_melee",
-                        "ha:remove_resistance",
+                        "ha:set_resistance",
 
                         "ha:pickaxe_targets",
                         "ha:pickaxe_sensor",
@@ -3048,7 +3209,7 @@
                         "ha:path_normal",
 
                         "ha:initial_comps",
-                        "ha:set_resistance"
+                        "ha:remove_resistance"
                     ]
                 }
             },
@@ -3086,7 +3247,7 @@
                                 "ha:ranged_mode",
 
                                 "ha:path_melee",
-                                "ha:remove_resistance",
+                                "ha:set_resistance",
 
                                 "ha:pickaxe_targets",
                                 "ha:normal_targets",
@@ -3100,7 +3261,7 @@
                                 "ha:path_normal",
 
                                 "ha:scare_brute",
-                                "ha:set_resistance"
+                                "ha:remove_resistance"
                             ]
                         }
                     },
@@ -3165,8 +3326,9 @@
                         "ha:melee_spear_equips",
                         "ha:mace_loop",
 
+                        "ha:set_resistance",
+
                         "ha:melee_mode_normal",
-                        "ha:remove_resistance",
                         "ha:melee_mode_mace",
                         "ha:melee_mode_spear",
 
@@ -3188,7 +3350,9 @@
                         "ha:pickaxe_sensor",
                         "ha:pickaxe_mode",
 
-                        "ha:path_normal"
+                        "ha:path_normal",
+
+                        "ha:remove_resistance"
                     ]
                 }
             },

@@ -121,7 +121,7 @@ class DragonEvents extends TL15DBaseManager {
                                 onTimerEnds: (entity: mc.Entity) => {
                                     const dime = entity.dimension;
                                     const allEntitiesEnd = dime.getEntities({
-                                        excludeTypes: ['minecraft:ender_crystal', 'ha:crystal_llama_generator']
+                                        excludeTypes: ['minecraft:ender_crystal', 'ha:crystal_llama_generator', 'minecraft:item']
                                     });
 
                                     for (const entity of allEntitiesEnd) {
@@ -204,8 +204,29 @@ class DragonEvents extends TL15DBaseManager {
             const dragons = end.getEntities({ type: vanilla.MinecraftEntityTypes.EnderDragon });
 
             if (plys.length > 0) {
+                const center = { x: 0, y: 88, z: 0 };
+                const maxDistance = 150;
+
                 for (const ply of plys) {
                     this.checkHasMace(ply);
+
+                    const dx = ply.location.x - center.x;
+                    const dz = ply.location.z - center.z;
+
+                    if ((dx * dx) + (dz * dz) > (maxDistance * maxDistance)) {
+                        ply.tryTeleport({
+                            x: center.x + Math.floor(Math.random() * 11) - 5,
+                            y: center.y,
+                            z: center.z + Math.floor(Math.random() * 11) - 5
+                        }, { dimension: ply.dimension });
+
+                        worldToolsSimplified.setDelay(() => {
+                            if (ply.isValid) {
+                                ply.sendMessage({ translate: 'chat.system.no_end_islands' });
+                                ply.playSound("ui.error_sound");
+                            }
+                        }, worldToolsSimplified.convertSecondsToTicks(0.25));
+                    }
                 }
             }
 
@@ -607,12 +628,12 @@ class DragonEvents extends TL15DBaseManager {
 
         const volumeStone = new mc.BlockVolume(minStoneCoords, maxStoneCoords);
         const blocksToProtect = [
-            vanilla.MinecraftBlockTypes.Bedrock,
             vanilla.MinecraftBlockTypes.EmeraldBlock,
             vanilla.MinecraftBlockTypes.GoldBlock
         ];
 
         if (!canBreakTowers) {
+            blocksToProtect.push(vanilla.MinecraftBlockTypes.Bedrock);
             blocksToProtect.push(vanilla.MinecraftBlockTypes.Obsidian);
             blocksToProtect.push(vanilla.MinecraftBlockTypes.IronBars);
         }

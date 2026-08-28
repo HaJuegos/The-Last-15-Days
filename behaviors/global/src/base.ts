@@ -57,7 +57,7 @@ export class TL15DBaseManager {
         { plyName: ['CopyCat Mc', 'pwsCopyk', 'CopyLay'], nameRank: ['Gato', 'GatoTester'], colorCode: ['§d§l', '§9'] },
         { plyName: 'Iam4ndrew', nameRank: 'SoSneaky SpeedRunner', colorCode: '§u§l' },
         { plyName: 'CloudMrcZ', nameRank: ['Sobreviviente', 'CloudTester'], colorCode: ['§l§4', '§9'] },
-        { plyName: ['KyzaxxLL', 'pwszax', 'ChangoZax'], nameRank: 'Pelowisos', colorCode: '§l§d' },
+        { plyName: ['KyzaxxLL', 'pwsZax', 'ChangoZax'], nameRank: 'Pelowisos', colorCode: '§l§d' },
         { plyName: 'Emiliocrack1355', nameRank: 'El Furro', colorCode: '§c§l' },
         { plyName: 'AlternativeGWG', nameRank: 'Cataclysm', colorCode: '§p§l' }
     ];
@@ -79,7 +79,7 @@ export class TL15DBaseManager {
         [mc.GameRule.RandomTickSpeed]: 2,
         [mc.GameRule.RecipesUnlock]: true,
         [mc.GameRule.SendCommandFeedback]: false,
-        [mc.GameRule.ShowBorderEffect]: false,
+        [mc.GameRule.ShowBorderEffect]: true,
         [mc.GameRule.ShowCoordinates]: true,
         [mc.GameRule.ShowDaysPlayed]: true,
         [mc.GameRule.ShowRecipeMessages]: true,

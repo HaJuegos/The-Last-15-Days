@@ -24,6 +24,40 @@ class PlyEventsManager {
         this.blockEnchants();
         this.parrySystem();
         this.bruteMsgDeath();
+        this.blockCenterEnd();
+    }
+
+    /**
+     * Metodo auxiliar que bloquea y avisa que no se puede poner bloques en el centro de la isla del End.
+     * @returns {void}
+     * @author HaJuegos - 26-08-2026
+     * @private
+     */
+    private blockCenterEnd(): void {
+        beforeEventsSimplified.onInteractBlock((args) => {
+            const { block, player: ply, isFirstEvent: firstAttpm } = args;
+            const dime = block.dimension;
+
+            if (dime.id == vanilla.MinecraftDimensionTypes.TheEnd) {
+                const coords = block.location;
+                const radCenter = 0;
+                const distanceCenter = Math.hypot(coords.x, coords.z);
+                const isCenter = distanceCenter <= radCenter;
+
+                if (isCenter) {
+                    args.cancel = true;
+
+                    if (firstAttpm) {
+                        worldToolsSimplified.setRun(() => {
+                            if (!ply.isValid) return;
+
+                            ply.sendMessage({ rawtext: [{ translate: 'chat.system.error.noplaceblock_center_end' }] });
+                            ply.playSound('ui.error_sound');
+                        });
+                    }
+                }
+            }
+        });
     }
 
     /**

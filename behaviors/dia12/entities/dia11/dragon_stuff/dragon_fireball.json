@@ -302,7 +302,7 @@
             "ha:normal_balls": {
                 "randomize": [
                     {
-                        "weight": 85,
+                        "weight": 1,
                         "add": {
                             "component_groups": [
                                 "ha:normal_fireball"
@@ -310,7 +310,7 @@
                         }
                     },
                     {
-                        "weight": 10,
+                        "weight": 1,
                         "add": {
                             "component_groups": [
                                 "ha:nausea_fireball"
@@ -318,7 +318,7 @@
                         }
                     },
                     {
-                        "weight": 10,
+                        "weight": 1,
                         "add": {
                             "component_groups": [
                                 "ha:warden_fireball"
@@ -326,7 +326,7 @@
                         }
                     },
                     {
-                        "weight": 5,
+                        "weight": 1,
                         "add": {
                             "component_groups": [
                                 "ha:spider_fireball"
@@ -334,7 +334,7 @@
                         }
                     },
                     {
-                        "weight": 85,
+                        "weight": 1,
                         "add": {
                             "component_groups": [
                                 "ha:bear_fireball"
@@ -342,7 +342,7 @@
                         }
                     },
                     {
-                        "weight": 10,
+                        "weight": 1,
                         "add": {
                             "component_groups": [
                                 "ha:totem_fireball"
@@ -361,7 +361,7 @@
                         "weight": 1,
                         "randomize": [
                             {
-                                "weight": 50,
+                                "weight": 1,
                                 "add": {
                                     "component_groups": [
                                         "ha:conduit_fireball"
@@ -369,7 +369,7 @@
                                 }
                             },
                             {
-                                "weight": 10,
+                                "weight": 1,
                                 "add": {
                                     "component_groups": [
                                         "ha:items_fireball"
@@ -377,7 +377,7 @@
                                 }
                             },
                             {
-                                "weight": 5,
+                                "weight": 1,
                                 "add": {
                                     "component_groups": [
                                         "ha:brute_fireball"
@@ -385,7 +385,7 @@
                                 }
                             },
                             {
-                                "weight": 50,
+                                "weight": 1,
                                 "add": {
                                     "component_groups": [
                                         "ha:polly_fireball"

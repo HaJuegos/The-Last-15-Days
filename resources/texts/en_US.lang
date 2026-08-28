@@ -288,6 +288,8 @@ chat.system.no_mele_brute=§4§l>> This mob cannot be attacked in melee. Use exp
 
 chat.system.death.how_to_use_tp=§5§l>> You've died! But you weren't banned from the server because an administrator disabled that option. Use the command /tpspectator <name> to teleport to a player.
 
+chat.system.error.noplaceblock_center_end=§c§l>> You're not allowed to place blocks in the center of the island. Don't get too clever!
+
 
 ## Entity Names
 entity.ha:player_ghost.name=Player Ghost

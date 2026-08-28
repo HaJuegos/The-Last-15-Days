@@ -286,7 +286,9 @@ chat.system.change_feature_fight.mob_change=§7>> La característica %1 fue camb
 
 chat.system.no_mele_brute=§4§l>> Este mob no puede ser atacado a melee. ¡Usa explosiones en su lugar!
 
-chat.system.death.how_to_use_tp=§5§l>> ¡Has muerto! Pero no fuiste baneado del servidor debido a que un administrador desactivó esa opción. Usa el comando /tpspectator <nombre> para teletransportarte a un jugador. 
+chat.system.death.how_to_use_tp=§5§l>> ¡Has muerto! Pero no fuiste baneado del servidor debido a que un administrador desactivó esa opción. Usa el comando /tpspectator <nombre> para teletransportarte a un jugador.
+
+chat.system.error.noplaceblock_center_end=§c§l>> No tienes permitido poner bloques en el centro de la isla. ¡No te pases de listo!
 
 
 ## Entity Names

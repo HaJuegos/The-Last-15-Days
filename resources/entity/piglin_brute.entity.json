@@ -9,10 +9,12 @@
                 "default": "piglin_brute"
             },
             "textures": {
-                "default": "textures/entity/piglin/piglin_brute"
+                "default": "textures/entity/piglin/piglin_brute",
+                "baby": "textures/entity/piglin/piglin_brute_baby"
             },
             "geometry": {
-                "default": "geometry.piglin"
+                "default": "geometry.piglin",
+                "baby": "geometry.piglin.baby"
             },
             "spawn_egg": {
                 // mc-disable-next-line behaviorpack.item.components.texture_not_found

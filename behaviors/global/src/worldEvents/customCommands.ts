@@ -695,7 +695,7 @@ class CustomCmdsEvents extends TL15DBaseManager {
                         }
                     }
 
-                    sourcePly.sendMessage({ rawtext: [{ translate: 'chat.system.form_revival_ply.success.player_revive', with: { rawtext: [{ text: `${targetNames}` }] } }] });
+                    worldToolsSimplified.sendMessageGlobal({ rawtext: [{ translate: 'chat.system.form_revival_ply.success.player_revive', with: { rawtext: [{ text: `${targetNames}` }] } }] });
                     sourcePly.playSound('random.levelup');
                 });
             })
