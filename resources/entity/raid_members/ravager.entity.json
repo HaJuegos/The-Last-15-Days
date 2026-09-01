@@ -1,0 +1,58 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "minecraft:ravager",
+            "textures": {
+                "default": "textures/entity/illager/ravager"
+            },
+            "materials": {
+                "default": "raid_base",
+                "glowing": "raid_glow"
+            },
+            "geometry": {
+                "default": "geometry.ravager",
+                "glowing": "geometry.ravager.glow"
+            },
+            "render_controllers": [
+                {
+                    "controller.render.entity_glowing": "q.property('ha:is_glow')"
+                },
+                "controller.render.ravager"
+            ],
+            "spawn_egg": {
+                "texture": "spawn_egg_ravager"
+            },
+            "animations": {
+                "glowing_scale": "animation.entity_glow.glowing_scale",
+
+                "walk": "animation.ravager.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "idle_mouth": "animation.ravager.idle_mouth",
+                "stunned": "animation.ravager.stunned",
+                "roaring": "animation.ravager.roaring",
+                "move": "controller.animation.ravager.move",
+                "head": "controller.animation.ravager.head_movement",
+                "biting": "animation.ravager.biting"
+            },
+            "scripts": {
+                "pre_animation": [
+                    "variable.roar_length = 1.0;",
+                    "variable.bite_anim_duration = 0.75f;",
+                    "variable.bite_neck_length = 10;"
+                ],
+                "animate": [
+                    "move",
+                    "head",
+
+                    "glowing_scale"
+                ]
+            },
+            "particle_effects": {
+                "stun_particles": "minecraft:stunned_emitter"
+            }
+        }
+    }
+}

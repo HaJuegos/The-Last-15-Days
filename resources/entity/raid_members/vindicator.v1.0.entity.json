@@ -1,0 +1,68 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "minecraft:vindicator",
+            "min_engine_version": "1.8.0",
+            "materials": {
+                "default": "raid_base",
+                "glowing": "raid_glow"
+            },
+            "textures": {
+                "default": "textures/entity/vindicator"
+            },
+            "geometry": {
+                "default": "geometry.vindicator.v1.8",
+                "glowing": "geometry.vindicator.v1.8.glow"
+            },
+            "scripts": {
+                "scale": "0.9375",
+                "animate": [
+                    "vindicator_base",
+                    "vindicator_walk",
+                    "controller_look_at_target",
+                    "controller_vindicator_base",
+                    "controller_riding",
+
+                    "glowing_scale"
+                ],
+                "pre_animation": [
+                    "variable.riding_y_offset_with_respect_to_player = 1.25;",
+                    "variable.riding_y_offset_on_vehicle_where_other_entites_can_stand = query.is_riding_any_entity_of_type('minecraft:minecart', 'minecraft:boat', 'minecraft:chest_boat') ? -3.0 : 0.0;",
+                    "variable.riding_y_offset = variable.riding_y_offset_with_respect_to_player + variable.riding_y_offset_on_vehicle_where_other_entites_can_stand;"
+                ]
+            },
+            "animations": {
+                "glowing_scale": "animation.entity_glow.glowing_scale",
+
+                "look_at_target_default": "animation.humanoid.look_at_target.default",
+                "look_at_target_gliding": "animation.humanoid.look_at_target.gliding",
+                "look_at_target_swimming": "animation.humanoid.look_at_target.swimming",
+                "riding.arms": "animation.vindicator.riding.arms",
+                "riding.legs": "animation.vindicator.riding.legs",
+                "vindicator_base": "animation.vindicator.base",
+                "vindicator_attack": "animation.vindicator.attack",
+                "vindicator_walk": "animation.vindicator.walk",
+                "celebrating": "animation.humanoid.celebrating",
+                "controller_look_at_target": "controller.animation.humanoid.look_at_target",
+                "controller_vindicator_base": "controller.animation.vindicator.base",
+                "controller_riding": "controller.animation.humanoid.riding",
+                "vindicator_hand_attack": "animation.vindicator.hand_attack",
+                "riding.body": "animation.humanoid.riding.body"
+            },
+            "render_controllers": [
+                {
+                    "controller.render.entity_glowing": "q.property('ha:is_glow')"
+                },
+                "controller.render.vindicator"
+            ],
+            "spawn_egg": {
+                "texture": "spawn_egg_vindicator"
+            },
+            "enable_attachables": true,
+            "hide_armor": true
+        }
+    }
+}

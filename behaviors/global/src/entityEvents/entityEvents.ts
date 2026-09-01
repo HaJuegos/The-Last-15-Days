@@ -1,7 +1,7 @@
 import * as mc from "@minecraft/server";
 import * as vanilla from "@minecraft/vanilla-data";
 
-import { afterEventsSimplified, worldToolsSimplified } from "simplified-mojang-api";
+import { afterEventsSimplified, beforeEventsSimplified, worldToolsSimplified } from "simplified-mojang-api";
 
 /**
  * Clase global que controla los eventos principales del add-on respecto a entidades.
@@ -14,7 +14,74 @@ class EntityEventsManager {
      * @constructor
      */
     constructor () {
+        this.bellRaidGlowing();
         this.staticEvents();
+    }
+
+    /**
+     * Metodo auxiliar que calcula si un jugador puede interactuar y activar el efecto de glowing en una campana.
+     * @returns {void}
+     * @author HaJuegos - 01-09-2026
+     * @private
+     */
+    private bellRaidGlowing(): void {
+        const raidMobs: vanilla.MinecraftEntityTypes[] | string[] = [
+            vanilla.MinecraftEntityTypes.Pillager,
+            vanilla.MinecraftEntityTypes.Vindicator,
+            vanilla.MinecraftEntityTypes.EvocationIllager,
+            vanilla.MinecraftEntityTypes.Vex,
+            vanilla.MinecraftEntityTypes.Ravager,
+            vanilla.MinecraftEntityTypes.Witch,
+            'ha:bomber_pillager',
+        ];
+
+        beforeEventsSimplified.onInteractBlock(async (args) => {
+            const { block, isFirstEvent: firstAttp, player: ply } = args;
+
+            if (block.isValid && block.typeId == vanilla.MinecraftBlockTypes.Bell && firstAttp) {
+                await null;
+
+                const canInteract = block.permutation.getState('toggle_bit');
+
+                if (!canInteract) return;
+
+                const cooldownBell = 24;
+                const lastUse = ply.getDynamicProperty('ha:cooldown_bell') as number ?? 0;
+                const elapsed = (Date.now() - lastUse) / 1000;
+
+                if (elapsed < cooldownBell) return;
+
+                block.setPermutation(block.permutation.withState('toggle_bit', false));
+
+                const coords = block.location;
+                const dime = block.dimension;
+                const center = {
+                    x: coords.x + 0.5,
+                    y: coords.y + 0.5,
+                    z: coords.z + 0.5
+                };
+
+                const entitiesNear = dime.getEntities({
+                    location: center,
+                    maxDistance: 75
+                }).filter(e => raidMobs.includes(e.typeId));
+
+                if (entitiesNear.length == 0) return;
+
+                ply.setDynamicProperty('ha:cooldown_bell', Date.now());
+                dime.playSound('ambient.reveal_raid', coords);
+
+                worldToolsSimplified.setDelay(() => {
+                    for (const entity of entitiesNear) {
+                        if (!entity.isValid) continue;
+
+                        try {
+                            entity.triggerEvent('ha:set_glow');
+                        } catch { }
+                    }
+                }, worldToolsSimplified.convertSecondsToTicks(2));
+            }
+        });
     }
 
     /**

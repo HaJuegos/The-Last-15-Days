@@ -7,23 +7,32 @@
             "identifier": "minecraft:llama",
             "spawn_category": "creature",
             "is_spawnable": true,
-            "is_summonable": true
+            "is_summonable": true,
+            "is_experimental": false,
+            "properties": {
+                "ha:is_new_llama": {
+                    "client_sync": true,
+                    "type": "bool",
+                    "default": true
+                }
+            }
         },
         "component_groups": {
-            "ha:start_exploding": {
-                "minecraft:damage_sensor": { },
-                "minecraft:explode": {
-                    "power": 4,
-                    "fuse_length": [ 0.7, 0.7 ],
-                    "fuse_lit": true,
-                    "allow_underwater": true,
-                    "breaks_blocks": true,
-                    "causes_fire": false,
-                    "destroy_affected_by_griefing": true,
-                    "fire_affected_by_griefing": true,
-                    "knockback_scaling": 2,
-                    "toggles_blocks": true
-                }
+            "ha:become_new": {
+                "minecraft:spawn_entity": {
+                    "entities": [
+                        {
+                            "num_to_spawn": 1,
+                            "min_wait_time": 0,
+                            "max_wait_time": 0.1,
+                            "should_leash": false,
+                            "single_use": true,
+                            "spawn_entity": "minecraft:llama",
+                            "spawn_event": "minecraft:entity_spawned"
+                        }
+                    ]
+                },
+                "minecraft:instant_despawn": { }
             },
 
             "minecraft:llama_baby": {
@@ -412,6 +421,19 @@
             }
         },
         "components": {
+            "minecraft:environment_sensor": {
+                "triggers": [
+                    {
+                        "filters": {
+                            "test": "bool_property",
+                            "domain": "ha:is_new_llama",
+                            "value": false
+                        },
+                        "event": "ha:become_new_llama",
+                        "target": "self"
+                    }
+                ]
+            },
             "minecraft:reflect_projectiles": {
                 "reflected_projectiles": [
                     "llama_spit"
@@ -639,8 +661,20 @@
             }
         },
         "events": {
+            "ha:become_new_llama": {
+                "add": {
+                    "component_groups": [
+                        "ha:become_new"
+                    ]
+                }
+            },
             "minecraft:entity_spawned": {
                 "sequence": [
+                    {
+                        "set_property": {
+                            "ha:is_new_llama": true
+                        }
+                    },
                     {
                         "randomize": [
                             {

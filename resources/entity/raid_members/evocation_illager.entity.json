@@ -7,19 +7,23 @@
             "identifier": "minecraft:evocation_illager",
             "min_engine_version": "1.8.0",
             "materials": {
-                "default": "evoker"
+                "default": "raid_base",
+                "glowing": "raid_glow"
             },
             "textures": {
                 "default": "textures/entity/illager/evoker"
             },
             "geometry": {
-                "default": "geometry.evoker.v1.8"
+                "default": "geometry.evoker.v1.8",
+                "glowing": "geometry.evoker.v1.8.glow"
             },
             "scripts": {
                 "scale": "0.9375",
                 "animate": [
                     "controller_general",
-                    "controller_move"
+                    "controller_move",
+
+                    "glowing_scale"
                 ],
                 "pre_animation": [
                     "variable.riding_y_offset_with_respect_to_player = 1.25;",
@@ -28,6 +32,7 @@
                 ]
             },
             "animations": {
+                "glowing_scale": "animation.entity_glow.glowing_scale",
                 "ranged_attack": "animation.evoker.ranged_attack",
 
                 "general": "animation.evoker.general",
@@ -46,6 +51,9 @@
                 "spell": "minecraft:evoker_spell"
             },
             "render_controllers": [
+                {
+                    "controller.render.entity_glowing": "q.property('ha:is_glow')"
+                },
                 "controller.render.evoker"
             ],
             "spawn_egg": {

@@ -319,6 +319,15 @@ class PlyEventsManager extends TL15DBaseManager {
                 ply.inputPermissions.setPermissionCategory(mc.InputPermissionCategory.Camera, true);
             }
 
+            if (firstSpawn) {
+                const loginTime = Date.now();
+                const hasSaved = ply.getDynamicProperty('ha:login_time') as number | undefined;
+
+                if (!hasSaved) {
+                    ply.setDynamicProperty('ha:login_time', loginTime);
+                }
+            }
+
             const royerBotSpawned = worldToolsSimplified.getScoreInObj(entityWorldData, 'ha:royerbot_spawned');
 
             if (royerBotSpawned == 0) {

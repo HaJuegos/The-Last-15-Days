@@ -31,7 +31,8 @@
                 },
                 "on_open_commands": [
                     "/tag @initiator add royer_dia6",
-                    "/give @initiator turtle_scute 5"
+                    "/give @initiator turtle_scute 5",
+                    "/execute as @initiator at @s run scriptevent ha:see_royerbot_counter"
                 ]
             },
 

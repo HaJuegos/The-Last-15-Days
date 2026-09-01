@@ -191,6 +191,11 @@ class GlobalWorldEventsManager extends TL15DBaseManager {
                         }
                     }
                 } break;
+                case 'ha:see_royerbot_counter': {
+                    const totalDialogs = sourceEntity.getDynamicProperty('ha:total_dialogs_royerbot') as number ?? 0;
+
+                    sourceEntity.setDynamicProperty('ha:total_dialogs_royerbot', totalDialogs + 1);
+                } break;
                 case 'ha:pickup_change': {
                     const chance = 0.01;
 

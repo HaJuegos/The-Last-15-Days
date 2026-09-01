@@ -792,69 +792,79 @@
                         {
                             "priority": 2,
                             "filters": {
-                                "any_of": [
+                                "all_of": [
                                     {
-                                        "test": "is_family",
-                                        "subject": "other",
-                                        "value": "wither"
+                                        "test": "distance_to_nearest_player",
+                                        "subject": "self",
+                                        "operator": ">=",
+                                        "value": 9
                                     },
                                     {
-                                        "test": "is_family",
-                                        "subject": "other",
-                                        "value": "hoglin"
-                                    },
-                                    {
-                                        "test": "is_family",
-                                        "subject": "other",
-                                        "value": "irongolem"
-                                    },
-                                    {
-                                        "test": "is_family",
-                                        "subject": "other",
-                                        "value": "snowgolem"
-                                    },
-                                    {
-                                        "all_of": [
+                                        "any_of": [
                                             {
-                                                "test": "has_equipment",
-                                                "subject": "self",
-                                                "operator": "not",
-                                                "value": "ha:cautious_helmet"
+                                                "test": "is_family",
+                                                "subject": "other",
+                                                "value": "wither"
                                             },
                                             {
                                                 "test": "is_family",
                                                 "subject": "other",
-                                                "value": "enderman"
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "all_of": [
-                                            {
-                                                "test": "has_equipment",
-                                                "subject": "self",
-                                                "operator": "not",
-                                                "value": "ha:cautious_leggings"
+                                                "value": "hoglin"
                                             },
                                             {
                                                 "test": "is_family",
                                                 "subject": "other",
-                                                "value": "ravager"
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "all_of": [
-                                            {
-                                                "test": "has_equipment",
-                                                "subject": "self",
-                                                "operator": "not",
-                                                "value": "ha:cautious_boots"
+                                                "value": "irongolem"
                                             },
                                             {
                                                 "test": "is_family",
                                                 "subject": "other",
-                                                "value": "llama"
+                                                "value": "snowgolem"
+                                            },
+                                            {
+                                                "all_of": [
+                                                    {
+                                                        "test": "has_equipment",
+                                                        "subject": "self",
+                                                        "operator": "not",
+                                                        "value": "ha:cautious_helmet"
+                                                    },
+                                                    {
+                                                        "test": "is_family",
+                                                        "subject": "other",
+                                                        "value": "enderman"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "all_of": [
+                                                    {
+                                                        "test": "has_equipment",
+                                                        "subject": "self",
+                                                        "operator": "not",
+                                                        "value": "ha:cautious_leggings"
+                                                    },
+                                                    {
+                                                        "test": "is_family",
+                                                        "subject": "other",
+                                                        "value": "ravager"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "all_of": [
+                                                    {
+                                                        "test": "has_equipment",
+                                                        "subject": "self",
+                                                        "operator": "not",
+                                                        "value": "ha:cautious_boots"
+                                                    },
+                                                    {
+                                                        "test": "is_family",
+                                                        "subject": "other",
+                                                        "value": "llama"
+                                                    }
+                                                ]
                                             }
                                         ]
                                     }
@@ -895,69 +905,79 @@
                         {
                             "priority": 2,
                             "filters": {
-                                "any_of": [
+                                "all_of": [
                                     {
-                                        "test": "is_family",
-                                        "subject": "other",
-                                        "value": "wither"
+                                        "test": "distance_to_nearest_player",
+                                        "subject": "self",
+                                        "operator": ">=",
+                                        "value": 9
                                     },
                                     {
-                                        "test": "is_family",
-                                        "subject": "other",
-                                        "value": "hoglin"
-                                    },
-                                    {
-                                        "test": "is_family",
-                                        "subject": "other",
-                                        "value": "irongolem"
-                                    },
-                                    {
-                                        "test": "is_family",
-                                        "subject": "other",
-                                        "value": "snowgolem"
-                                    },
-                                    {
-                                        "all_of": [
+                                        "any_of": [
                                             {
-                                                "test": "has_equipment",
-                                                "subject": "self",
-                                                "operator": "not",
-                                                "value": "ha:cautious_helmet"
+                                                "test": "is_family",
+                                                "subject": "other",
+                                                "value": "wither"
                                             },
                                             {
                                                 "test": "is_family",
                                                 "subject": "other",
-                                                "value": "enderman"
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "all_of": [
-                                            {
-                                                "test": "has_equipment",
-                                                "subject": "self",
-                                                "operator": "not",
-                                                "value": "ha:cautious_leggings"
+                                                "value": "hoglin"
                                             },
                                             {
                                                 "test": "is_family",
                                                 "subject": "other",
-                                                "value": "ravager"
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "all_of": [
-                                            {
-                                                "test": "has_equipment",
-                                                "subject": "self",
-                                                "operator": "not",
-                                                "value": "ha:cautious_boots"
+                                                "value": "irongolem"
                                             },
                                             {
                                                 "test": "is_family",
                                                 "subject": "other",
-                                                "value": "llama"
+                                                "value": "snowgolem"
+                                            },
+                                            {
+                                                "all_of": [
+                                                    {
+                                                        "test": "has_equipment",
+                                                        "subject": "self",
+                                                        "operator": "not",
+                                                        "value": "ha:cautious_helmet"
+                                                    },
+                                                    {
+                                                        "test": "is_family",
+                                                        "subject": "other",
+                                                        "value": "enderman"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "all_of": [
+                                                    {
+                                                        "test": "has_equipment",
+                                                        "subject": "self",
+                                                        "operator": "not",
+                                                        "value": "ha:cautious_leggings"
+                                                    },
+                                                    {
+                                                        "test": "is_family",
+                                                        "subject": "other",
+                                                        "value": "ravager"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "all_of": [
+                                                    {
+                                                        "test": "has_equipment",
+                                                        "subject": "self",
+                                                        "operator": "not",
+                                                        "value": "ha:cautious_boots"
+                                                    },
+                                                    {
+                                                        "test": "is_family",
+                                                        "subject": "other",
+                                                        "value": "llama"
+                                                    }
+                                                ]
                                             }
                                         ]
                                     }

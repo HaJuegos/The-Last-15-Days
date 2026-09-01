@@ -32,7 +32,8 @@
                 "on_open_commands": [
                     "/tag @initiator add royer_dia5",
                     "/give @initiator slime 2",
-                    "/give @initiator blaze_rod 2"
+                    "/give @initiator blaze_rod 2",
+                    "/execute as @initiator at @s run scriptevent ha:see_royerbot_counter"
                 ]
             },
 

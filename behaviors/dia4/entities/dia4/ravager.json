@@ -1,15 +1,40 @@
 /* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
 /* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
 {
-    "format_version": "1.21.90",
+    "format_version": "1.26.0",
     "minecraft:entity": {
         "description": {
             "identifier": "minecraft:ravager",
             "spawn_category": "monster",
             "is_spawnable": true,
-            "is_summonable": true
+            "is_summonable": true,
+            "properties": {
+                "ha:is_glow": {
+                    "client_sync": true,
+                    "type": "bool",
+                    "default": false
+                }
+            }
         },
         "component_groups": {
+            "ha:timer_glowing": {
+                "minecraft:behavior.timer_flag_1": {
+                    "priority": 0,
+                    "cooldown_range": {
+                        "min": 0,
+                        "max": 0
+                    },
+                    "duration_range": {
+                        "min": 10,
+                        "max": 10
+                    },
+                    "on_end": {
+                        "event": "ha:remove_glow",
+                        "target": "self"
+                    }
+                }
+            },
+
             "minecraft:celebrate": {
                 "minecraft:behavior.celebrate": {
                     "priority": 5,
@@ -31,36 +56,63 @@
             },
             "minecraft:pillager_rider": {
                 "minecraft:addrider": {
-                    "entity_type": "minecraft:pillager"
+                    "riders": [
+                        {
+                            "entity_type": "minecraft:pillager"
+                        }
+                    ]
                 }
             },
             "minecraft:pillager_rider_for_raid": {
                 "minecraft:addrider": {
-                    "entity_type": "minecraft:pillager",
-                    "spawn_event": "minecraft:spawn_for_raid"
+                    "riders": [
+                        {
+                            "entity_type": "minecraft:pillager",
+                            "spawn_event": "minecraft:spawn_for_raid"
+                        }
+                    ]
                 }
             },
             "minecraft:evoker_rider_for_raid": {
                 "minecraft:addrider": {
-                    "entity_type": "minecraft:evocation_illager",
-                    "spawn_event": "minecraft:spawn_for_raid"
+                    "riders": [
+                        {
+                            "entity_type": "minecraft:evocation_illager",
+                            "spawn_event": "minecraft:spawn_for_raid"
+                        }
+                    ]
+
                 }
             },
             "minecraft:pillager_captain_rider": {
                 "minecraft:addrider": {
-                    "entity_type": "minecraft:pillager",
-                    "spawn_event": "minecraft:spawn_as_illager_captain"
+                    "riders": [
+                        {
+                            "entity_type": "minecraft:pillager",
+                            "spawn_event": "minecraft:spawn_as_illager_captain"
+                        }
+                    ]
+
                 }
             },
             "minecraft:vindicator_rider": {
                 "minecraft:addrider": {
-                    "entity_type": "minecraft:vindicator"
+                    "riders": [
+                        {
+                            "entity_type": "minecraft:vindicator"
+                        }
+                    ]
+
                 }
             },
             "minecraft:vindicator_captain_rider": {
                 "minecraft:addrider": {
-                    "entity_type": "minecraft:vindicator",
-                    "spawn_event": "minecraft:spawn_as_illager_captain"
+                    "riders": [
+                        {
+                            "entity_type": "minecraft:vindicator",
+                            "spawn_event": "minecraft:spawn_as_illager_captain"
+                        }
+                    ]
                 }
             },
             "minecraft:raid_configuration": {
@@ -372,6 +424,27 @@
             }
         },
         "events": {
+            "ha:set_glow": {
+                "set_property": {
+                    "ha:is_glow": true
+                },
+                "add": {
+                    "component_groups": [
+                        "ha:timer_glowing"
+                    ]
+                }
+            },
+            "ha:remove_glow": {
+                "set_property": {
+                    "ha:is_glow": false
+                },
+                "remove": {
+                    "component_groups": [
+                        "ha:timer_glowing"
+                    ]
+                }
+            },
+
             "minecraft:entity_spawned": {
                 "add": {
                     "component_groups": [

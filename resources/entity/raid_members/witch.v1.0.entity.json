@@ -1,0 +1,51 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "minecraft:witch",
+            "min_engine_version": "1.8.0",
+            "materials": {
+                "default": "raid_base",
+                "glowing": "raid_glow"
+            },
+            "textures": {
+                "default": "textures/entity/witch"
+            },
+            "geometry": {
+                "default": "geometry.villager.witch.v1.8",
+                "glowing": "geometry.villager.witch.v1.8.glow"
+            },
+            "scripts": {
+                "animate": [
+                    "general_control",
+                    "move_control",
+
+                    "glowing_scale"
+                ],
+                "scale": "0.9375"
+            },
+            "animations": {
+                "glowing_scale": "animation.entity_glow.glowing_scale",
+
+                "general_control": "controller.animation.witch.general",
+                "move_control": "controller.animation.villager.move",
+
+                "villager_general": "animation.villager.general",
+                "look_at_target": "animation.common.look_at_target",
+                "move": "animation.villager.move",
+                "general": "animation.witch.general"
+            },
+            "render_controllers": [
+                {
+                    "controller.render.entity_glowing": "q.property('ha:is_glow')"
+                },
+                "controller.render.witch"
+            ],
+            "spawn_egg": {
+                "texture": "spawn_egg_witch"
+            }
+        }
+    }
+}

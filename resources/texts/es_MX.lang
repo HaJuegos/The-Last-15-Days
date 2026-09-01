@@ -162,6 +162,11 @@ ui.custom_command.desc.change_debuffs_ply=Comando que permite eliminar uno o tod
 ui.custom_command.desc.force_revive_ply=Comando que permite revivir a un jugador de forma forzada, eliminando sus datos también.
 ui.custom_command.desc.tp_spectator=Comando que permite teletransportarte a un jugador, en modo espectador sin operador.
 ui.custom_command.desc.change_royerbot_fight=Comando que permite alternar y modificar características de la pelea del RoyerBot del Día 10.
+ui.custom_command.desc.statistics=Comando que te enseña todas las estadísticas del add-on y el total del add-on completado.
+
+ui.form_statistics.title=§7§oEstadísticas del Add-on§r
+ui.form_statistics.subtitle=§7§oAquí verás todo lo que llevas completado del add-on. ¿Lograrás llegar al %1?§r
+ui.form_statistics.dynamic_stats=§a§l- Progreso Total: §n%2§r%1%1§7§o- Tiempo jugado: %3§r%1%1§e§l- Logros Vanilla completados: §n%4/50§r%1%1§g§l- Logros Custom completados: §n%5/9§r%1%1§6§l- Regalos de RoyerBot: §n%6/10§r%1%1
 
 
 ## Chat texts
@@ -505,6 +510,7 @@ advacement.garfield=Superando los 70's
 advacement.ha=¡Hey, es HaJuegos!
 advacement.royer=¡Pero si es BigRoyer!
 advacement.convex=Sorprendentemente, ¡ha llegado Convex!
+advacement.riding_llama=Domando a la bestia
 
 
 ## Subtitle Texts
@@ -544,6 +550,7 @@ ui.subtitle_custom.nurse_npc.hurt=Una enfermera brillante siendo lastimada
 ui.subtitle_custom.nurse_npc.purchased=Alguien le compró a una enfermera brillante
 ui.subtitle_custom.tnt_parried=Una dinamita fue desviada por un jugador
 ui.subtitle_custom.player_eat_banana=A alguien le gusta la banana
+ui.subtitle_custom.raid_reveal=Una raid fue revelada
 
 ui.subtitle_custom.garfield.neutral_meow=Maullido de Garfield
 ui.subtitle_custom.garfield.angry_meow=Maullido furioso de Garfield

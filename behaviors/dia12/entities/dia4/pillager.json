@@ -7,9 +7,27 @@
             "identifier": "minecraft:pillager",
             "spawn_category": "monster",
             "is_spawnable": true,
-            "is_summonable": true
+            "is_summonable": true,
+            "properties": {
+                "ha:is_glow": {
+                    "client_sync": true,
+                    "type": "bool",
+                    "default": false
+                }
+            }
         },
         "component_groups": {
+            "ha:timer_glowing": {
+                "minecraft:timer": {
+                    "time": 10,
+                    "looping": true,
+                    "time_down_event": {
+                        "event": "ha:remove_glow",
+                        "target": "self"
+                    }
+                }
+            },
+
             "ha:bomber_raid_spawned": {
                 "minecraft:spawn_entity": {
                     "entities": [
@@ -410,6 +428,27 @@
             }
         },
         "events": {
+            "ha:set_glow": {
+                "set_property": {
+                    "ha:is_glow": true
+                },
+                "add": {
+                    "component_groups": [
+                        "ha:timer_glowing"
+                    ]
+                }
+            },
+            "ha:remove_glow": {
+                "set_property": {
+                    "ha:is_glow": false
+                },
+                "remove": {
+                    "component_groups": [
+                        "ha:timer_glowing"
+                    ]
+                }
+            },
+
             "minecraft:entity_spawned": {
                 "add": {
                     "component_groups": [

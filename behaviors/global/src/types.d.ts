@@ -191,5 +191,11 @@ declare global {
          * @type {?boolean}
          */
         isAction?: boolean;
+
+        /**
+         * (Opcional) Si se pone true, es porque es un logro custom.
+         * @type {?boolean}
+         */
+        isCustom?: boolean;
     }
 }

@@ -2,6 +2,21 @@
     "materials": {
         "version": "1.0.0",
 
+        // Raid Glow
+        "raid_glow:entity_alphatest": {
+            "+defines": [
+                "USE_COLOR_MASK"
+            ],
+            "+states": [
+                "DisableCulling",
+                "DisableDepthWrite"
+            ],
+            "depthFunc": "Always"
+        },
+        "raid_base:entity_alphatest": {
+            "depthFunc": "LessEqual"
+        },
+
         // Fox Materials
         "fox:entity_alphatest": { },
         "mask_fox:entity_alphatest": {

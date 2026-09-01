@@ -13,6 +13,14 @@ import { afterEventsSimplified, beforeEventsSimplified, customEventsManager, wor
  */
 class AdvancementManager extends TL15DBaseManager {
     /**
+     * Mapa precomputado para los items requeridos en logros. Para no recorrer toda la lista de logros nuevamente.
+     * @type {Map<string, ListOfAdvs[]>}
+     * @author HaJuegos - 31-08-2026
+     * @private
+     */
+    private itemsToAdvs: Map<string, ListOfAdvs[]> = new Map();
+
+    /**
      * Todos los logros disponibles del add-on para obtener.
      * @type {ListOfAdvs[]}
      * @author HaJuegos - 20-03-2026
@@ -71,14 +79,15 @@ class AdvancementManager extends TL15DBaseManager {
         { textAdv: 'advacement.wax_off', tagAdv: 'advWax', items: [], isRare: false, isAction: true }, // 49
         { textAdv: 'advacement.axolotl', tagAdv: 'advAxolotl', items: vanilla.MinecraftItemTypes.AxolotlBucket, isRare: false }, // 50
         { textAdv: 'advacement.all_frogs', tagAdv: 'advAllFrogs', items: [vanilla.MinecraftItemTypes.OchreFroglight, vanilla.MinecraftItemTypes.VerdantFroglight, vanilla.MinecraftItemTypes.PearlescentFroglight], isRare: true, allItemsRequired: true }, // 51
-        { textAdv: 'advacement.infernal_crown', tagAdv: 'advInfernalCrown', items: 'ha:infernal_crown', isRare: true, allItemsRequired: true }, // 52
-        { textAdv: 'advacement.hoglin_tusk', tagAdv: 'advHoglinTusk', items: 'ha:hoglin_fang', isRare: true, allItemsRequired: true }, // 53
+        { textAdv: 'advacement.infernal_crown', tagAdv: 'advInfernalCrown', items: 'ha:infernal_crown', isRare: true, allItemsRequired: true, isCustom: true }, // 52
+        { textAdv: 'advacement.hoglin_tusk', tagAdv: 'advHoglinTusk', items: 'ha:hoglin_fang', isRare: true, allItemsRequired: true, isCustom: true }, // 53
         { textAdv: 'advacement.cautious_armor', tagAdv: 'advCautiousArmor', items: ['ha:cautious_helmet', 'ha:cautious_chestplate', 'ha:cautious_leggings', 'ha:cautious_boots'], isRare: true, allItemsRequired: true }, // 54
-        { textAdv: 'advacement.backrooms', tagAdv: 'advBackrooms', items: [], isRare: true, isAction: true }, // 55
-        { textAdv: 'advacement.garfield', tagAdv: 'advGarfield', items: [], isRare: true, isAction: true }, // 56
-        { textAdv: 'advacement.ha', tagAdv: 'advHa', items: [], isRare: false, isAction: true }, // 57
-        { textAdv: 'advacement.royer', tagAdv: 'advRoyer', items: [], isRare: false, isAction: true }, // 58
-        { textAdv: 'advacement.convex', tagAdv: 'advConvex', items: [], isRare: true, isAction: true }, // 59
+        { textAdv: 'advacement.backrooms', tagAdv: 'advBackrooms', items: [], isRare: true, isAction: true, isCustom: true }, // 55
+        { textAdv: 'advacement.garfield', tagAdv: 'advGarfield', items: [], isRare: true, isAction: true, isCustom: true }, // 56
+        { textAdv: 'advacement.ha', tagAdv: 'advHa', items: [], isRare: false, isAction: true, isCustom: true }, // 57
+        { textAdv: 'advacement.royer', tagAdv: 'advRoyer', items: [], isRare: false, isAction: true, isCustom: true }, // 58
+        { textAdv: 'advacement.convex', tagAdv: 'advConvex', items: [], isRare: true, isAction: true, isCustom: true }, // 59
+        { textAdv: 'advacement.riding_llama', tagAdv: 'advLlama', items: [], isRare: false, isAction: true, isCustom: true }, // 60
     ];
 
     /**
@@ -93,6 +102,27 @@ class AdvancementManager extends TL15DBaseManager {
     }
 
     /**
+     * Metodo auxiliar que construye el mapa de items requeridos por los logros que lo necesitan, computarizando todo de ante mano en vez de recorrer todo nuevamente.
+     * @returns {void}
+     * @author HaJuegos - 31-08-2026
+     * @private
+     */
+    private buildItemsMap(): void {
+        const itemsAdvs = this.listOfAdvancements.filter(adv => !adv.isAction);
+
+        for (const adv of itemsAdvs) {
+            const items = Array.isArray(adv.items) ? adv.items : [adv.items];
+
+            for (const itemID of items) {
+                const exist = this.itemsToAdvs.get(itemID as string) ?? [];
+
+                exist.push(adv);
+                this.itemsToAdvs.set(itemID as string, exist);
+            }
+        }
+    }
+
+    /**
      * Metodo principal que detecta los logros basados en items, con deteccion automatica por un segundo in game.
      * @version 3 Se cambia de loop a un evento especifico.
      * @version 2 Se optimiza el codigo.
@@ -101,66 +131,39 @@ class AdvancementManager extends TL15DBaseManager {
      * @private
      */
     private loopCheckItems(): void {
-        const itemAdvancements = this.listOfAdvancements.filter(adv => !adv.isAction);
+        this.buildItemsMap();
 
         afterEventsSimplified.onPlyInvChange((args) => {
             const ply = args.player;
             const item = args.itemStack;
 
-            if (item) {
-                const idItem = item.typeId as vanilla.MinecraftItemTypes;
-                const pendingAdv = itemAdvancements.filter((adv) => (!ply.hasTag(adv.tagAdv)));
+            if (!item) return;
 
-                if (pendingAdv.length == 0) return;
+            const idItem = item.typeId as vanilla.MinecraftItemTypes;
+            const relevantAdvs = this.itemsToAdvs.get(idItem);
 
-                for (const adv of pendingAdv) {
-                    let complete = false;
+            if (!relevantAdvs) return;
 
-                    if (adv.allItemsRequired && Array.isArray(adv.items)) {
-                        const relevantItem = adv.items.includes(idItem);
+            for (const adv of relevantAdvs) {
+                if (ply.hasTag(adv.tagAdv)) return;
 
-                        if (relevantItem) {
-                            const actualItems = this.checkPlyInv(ply);
-                            const advComplete = (adv.items as vanilla.MinecraftItemTypes[]).every((tID) => (actualItems.has(tID)));
+                let completed = false;
 
-                            if (advComplete) {
-                                this.giveAdvancement(ply, adv);
-                            }
+                if (adv.allItemsRequired && Array.isArray(adv.items)) {
+                    const actualItems = this.checkPlyInv(ply);
 
-                            continue;
-                        }
-                    } else if (Array.isArray(adv.items)) {
-                        complete = adv.items.includes(idItem);
-                    } else {
-                        complete = (idItem == adv.items);
-                    }
+                    completed = adv.items.every((tID) => (actualItems.has(tID)));
+                } else if (Array.isArray(adv.items)) {
+                    completed = adv.items.includes(idItem);
+                } else {
+                    completed = (idItem == adv.items);
+                }
 
-                    if (complete) {
-                        this.giveAdvancement(ply, adv);
-                    }
+                if (completed) {
+                    this.giveAdvancement(ply, adv);
                 }
             }
         });
-    }
-
-    /**
-     * Metodo auxiliar que da el tag y el texto en especifico del logro obtenido.
-     * @param {mc.Player} ply Jugador en cuestion.
-     * @param {ListOfAdvs} adv Logro en cuestion.
-     * @returns {void}
-     * @author HaJuegos - 19-06-2026
-     * @private
-     */
-    private giveAdvancement(ply: mc.Player, adv: ListOfAdvs): void {
-        const txtAdvBase = adv.isRare ? 'chat.advan.rare_base' : 'chat.advan.normal_base';
-        const soundAdvBase = adv.isRare ? 'ui.advancements.rare' : 'ui.advancements.normal';
-        const lvlsGive = Math.floor(Math.random() * 7) + (adv.isRare ? 5 : 1);
-
-        worldToolsSimplified.sendMessageGlobal({ rawtext: [{ translate: `${txtAdvBase}`, with: { rawtext: [{ text: `${ply.name}` }, { translate: `${adv.textAdv}` }] } }] });
-
-        ply.playSound(soundAdvBase);
-        ply.addTag(adv.tagAdv);
-        ply.addLevels(lvlsGive);
     }
 
     /**
@@ -326,11 +329,9 @@ class AdvancementManager extends TL15DBaseManager {
                 this.executeAdvan(sourceEntity, 34);
 
                 if (hitEntity?.typeId == vanilla.MinecraftEntityTypes.Skeleton) {
-                    const pos1 = sourceEntity.location;
-                    const pos2 = hitEntity.location;
-                    const distanceSq = (pos2.x - pos1.x) ** 2 + (pos2.y - pos1.y) ** 2 + (pos2.z - pos1.z) ** 2;
+                    const distance = this.calculatorDistance(sourceEntity.location, hitEntity.location);
 
-                    if (distanceSq >= 2500) {
+                    if (distance >= 50) {
                         this.executeAdvan(sourceEntity, 37);
                     }
                 }
@@ -344,12 +345,7 @@ class AdvancementManager extends TL15DBaseManager {
             if (!block.isValid || (sourceEntity && !sourceEntity.isValid)) return;
 
             if ((sourceEntity && sourceEntity instanceof mc.Player) && block.typeId == vanilla.MinecraftBlockTypes.Target) {
-                const pos1 = sourceEntity.location;
-                const pos2 = block.location;
-                const dx = pos2.x - pos1.x;
-                const dy = pos2.y - pos1.y;
-                const dz = pos2.z - pos1.z;
-                const distance = Math.sqrt(dx * dx + dy * dy + dz * dz);
+                const distance = this.calculatorDistance(sourceEntity.location, block.location);
 
                 if (distance >= 30) {
                     this.executeAdvan(sourceEntity, 38);
@@ -491,30 +487,75 @@ class AdvancementManager extends TL15DBaseManager {
                 this.executeAdvan(ply, 42);
             }
         });
+
+        afterEventsSimplified.onTamedEntity((args) => {
+            const { entity, tamingEntity: sourceEntity } = args;
+
+            if (!(sourceEntity instanceof mc.Player)) return;
+
+            if (entity.typeId == vanilla.MinecraftEntityTypes.Llama || entity.typeId == vanilla.MinecraftEntityTypes.TraderLlama) {
+                const isDay10 = entity.getProperty('ha:is_new_llama');
+
+                if (isDay10) {
+                    this.executeAdvan(sourceEntity, 60);
+                }
+
+            }
+        });
     }
 
     /**
-     * Metodo auxiliar que ejecuta la logica de dar un logro basado en el index de la lista de logros.
+     * Metodo auxiliar que ejecuta la logica de los logros basado por index de la lista de logros mapeada.
      * @param {mc.Player} ply Jugador que consiguio el logro.
      * @param {number} advIndex Index del logro en concreto.
      * @author HaJuegos - 20-03-2026 
      * @private
      */
     private executeAdvan(ply: mc.Player, advIndex: number): void {
-        const adv = this.listOfAdvancements[advIndex];
+        this.giveAdvancement(ply, this.listOfAdvancements[advIndex]);
+    }
 
-        if (ply.hasTag(adv.tagAdv)) {
-            return;
-        }
+    /**
+     * Metodo auxiliar que contiene toda la logica de los logros obtenidos y mapeados.
+     * @param {mc.Player} ply Jugador en cuestion.
+     * @param {ListOfAdvs} adv Logro en cuestion.
+     * @returns {void}
+     * @author HaJuegos - 19-06-2026
+     * @private
+     */
+    private giveAdvancement(ply: mc.Player, adv: ListOfAdvs): void {
+        if (ply.hasTag(adv.tagAdv)) return;
 
-        const textAdvBase = adv.isRare ? 'chat.advan.rare_base' : 'chat.advan.normal_base';
+        const txtAdvBase = adv.isRare ? 'chat.advan.rare_base' : 'chat.advan.normal_base';
         const soundAdvBase = adv.isRare ? 'ui.advancements.rare' : 'ui.advancements.normal';
-        const levelsGiven = Math.floor(Math.random() * 7) + (adv.isRare ? 5 : 1);
+        const lvlsGive = Math.floor(Math.random() * 7) + (adv.isRare ? 5 : 1);
 
-        worldToolsSimplified.sendMessageGlobal({ rawtext: [{ translate: `${textAdvBase}`, with: { rawtext: [{ text: `${ply.name}` }, { translate: `${adv.textAdv}` }] } }] });
+        worldToolsSimplified.sendMessageGlobal({ rawtext: [{ translate: `${txtAdvBase}`, with: { rawtext: [{ text: `${ply.name}` }, { translate: `${adv.textAdv}` }] } }] });
+
         ply.playSound(soundAdvBase);
         ply.addTag(adv.tagAdv);
-        ply.addLevels(levelsGiven);
+        ply.addLevels(lvlsGive);
+
+        const dynamicKey = adv.isCustom ? 'ha:total_advs_custom' : 'ha:total_advs';
+        const totalActual = ply.getDynamicProperty(dynamicKey) as number ?? 0;
+
+        ply.setDynamicProperty(dynamicKey, totalActual + 1);
+    }
+
+    /**
+     * Metodo auxiliar que calcular la distancia que hay de un punto de coordenadas a otro punto.
+     * @param {mc.Vector3} coords1 Punto inicial a calcular.
+     * @param {mc.Vector3} coords2 Punto final a calcular.
+     * @returns {number} Devuelve la distancia que hay entre los dos puntos.
+     * @author HaJuegos - 31-08-2026 
+     * @private
+     */
+    private calculatorDistance(coords1: mc.Vector3, coords2: mc.Vector3): number {
+        const dx = coords2.x - coords1.x;
+        const dy = coords2.y - coords1.y;
+        const dz = coords2.z - coords1.z;
+
+        return Math.sqrt(dx * dx + dy * dy + dz * dz);
     }
 }
 

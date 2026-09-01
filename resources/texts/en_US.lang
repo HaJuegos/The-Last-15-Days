@@ -162,6 +162,11 @@ ui.custom_command.desc.change_debuffs_ply=Command that allows you to remove one 
 ui.custom_command.desc.force_revive_ply=Command that allows you to forcibly revive a player, while also deleting their data.
 ui.custom_command.desc.tp_spectator=Command that allows you to teleport to a player in spectator mode without an operator.
 ui.custom_command.desc.change_royerbot_fight=Command that allows you to toggle and modify the combat characteristics of the Day 10 RoyerBot.
+ui.custom_command.desc.statistics=Command that shows you all the add-on's statistics and the total progress made in the add-on.
+
+ui.form_statistics.title=§7§oAdd-on Stats§r
+ui.form_statistics.subtitle=§7§oHere's your overall progress in the add-on. Will you manage to hit %1?§r
+ui.form_statistics.dynamic_stats=§a§l- Total Progress: §n%2§r%1%1§7§o- Playtime: %3§r%1%1§e§l- Vanilla Achievements: §n%4/50§r%1%1§g§l- Custom Achievements: §n%5/9§r%1%1§6§l- RoyerBot Gifts: §n%6/10§r%1%1
 
 
 ## Chat texts
@@ -504,6 +509,7 @@ advacement.garfield=Leaving the 70s behind
 advacement.ha=Hey, it's HaJuegos!
 advacement.royer=Look who it is, BigRoyer!
 advacement.convex=Shockingly, Convex has arrived!
+advacement.riding_llama=Taming the Beast
 
 
 ## Subtitle Texts
@@ -543,6 +549,7 @@ ui.subtitle_custom.nurse_npc.hurt=A Shimmered Nurse getting hurt
 ui.subtitle_custom.nurse_npc.purchased=Someone bought something for a Shimmered Nurse
 ui.subtitle_custom.tnt_parried=A dynamite was deflected by a player
 ui.subtitle_custom.player_eat_banana=Someone likes bananas
+ui.subtitle_custom.raid_reveal=A raid was revealed
 
 ui.subtitle_custom.garfield.neutral_meow=Garfield's meow
 ui.subtitle_custom.garfield.angry_meow=Garfield's angry meow

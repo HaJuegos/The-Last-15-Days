@@ -811,6 +811,67 @@ class CustomCmdsEvents extends TL15DBaseManager {
                     }
                 });
             })
+        },
+        // Comando de estadisticas generales del add-on
+        {
+            prefixCmd: 'ha:statistics',
+            description: 'ui.custom_command.desc.statistics',
+            permsLevel: mc.CommandPermissionLevel.Any,
+            cheatsEnabled: false,
+            paramsCmd: [],
+            onRunCmd: ((sourcePly) => {
+                worldToolsSimplified.setRun(() => {
+                    const totalAdvsV = sourcePly.getDynamicProperty('ha:total_advs') as number ?? 0;
+                    const totalAdvsC = sourcePly.getDynamicProperty('ha:total_advs_custom') as number ?? 0;
+                    const totalRDialogues = sourcePly.getDynamicProperty('ha:total_dialogs_royerbot') as number ?? 0;
+                    const lastLoginTime = sourcePly.getDynamicProperty('ha:login_time') as number ?? 0;
+                    const sessionTimeMs = lastLoginTime > 0 ? Date.now() - lastLoginTime : 0;
+                    const totalSeconds = Math.floor(sessionTimeMs / 1000);
+
+                    const hours = Math.floor(totalSeconds / 3600);
+                    const minutes = Math.floor((totalSeconds % 3600) / 60);
+                    const seconds = totalSeconds % 60;
+                    const hh = String(hours).padStart(2, '0');
+                    const mm = String(minutes).padStart(2, '0');
+                    const ss = String(seconds).padStart(2, '0');
+                    const totalTime = `${hh}:${mm}:${ss}`;
+
+                    const maxAdvVanilla = 50;
+                    const maxAdvCustom = 9;
+                    const maxDialoguesR = 10;
+
+                    const totalMaxGlobal = maxAdvVanilla + maxAdvCustom + maxDialoguesR;
+                    const totalCompleted = totalAdvsV + totalAdvsC + totalRDialogues;
+
+                    const totalPer = Math.round((totalCompleted / totalMaxGlobal) * 100);
+
+                    customEventsManager.createCustomClassicFormUI({
+                        titleForm: { rawtext: [{ translate: 'ui.form_statistics.title' }] },
+                        bodyText: { rawtext: [{ translate: 'ui.form_statistics.subtitle', with: ['100%%'] }] },
+                        labelText: {
+                            rawtext: [{
+                                translate: 'ui.form_statistics.dynamic_stats', with: [
+                                    '\n',
+                                    `${totalPer}%%`,
+                                    `${totalTime}`,
+                                    `${totalAdvsV}`,
+                                    `${totalAdvsC}`,
+                                    `${totalRDialogues}`,
+                                ]
+                            }]
+                        },
+                        showPly: {
+                            targetPly: sourcePly,
+                            onCreate: (() => {
+                                sourcePly.playSound('random.enderchestopen');
+                            }),
+                            onClose: (() => {
+                                sourcePly.playSound('random.chestclosed');
+                            })
+                        }
+                    });
+                });
+            })
         }
     ];
 

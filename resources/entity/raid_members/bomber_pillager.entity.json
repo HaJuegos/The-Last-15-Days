@@ -6,10 +6,12 @@
         "description": {
             "identifier": "ha:bomber_pillager",
             "geometry": {
-                "default": "geometry.bomber_pillager"
+                "default": "geometry.bomber_pillager",
+                "glowing": "geometry.bomber_pillager.glow"
             },
             "materials": {
-                "default": "entity_alphatest"
+                "default": "raid_base",
+                "glowing": "raid_glow"
             },
             "textures": {
                 "default": "textures/entity/pillager_bomber"
@@ -24,10 +26,13 @@
                     },
                     "controller_particles",
                     "controller_shooter",
-                    "controller_fase"
+                    "controller_fase",
+
+                    "glowing_scale"
                 ]
             },
             "animations": {
+                "glowing_scale": "animation.entity_glow.glowing_scale",
                 "controller_fase": "controller.animation.pillager_bomber.start_fase",
                 "controller_shooter": "controller.animation.pillager_bomber.shooting",
                 "controller_particles": "controller.animation.pillager_bomber.particles",
@@ -57,6 +62,9 @@
                 "riding.body": "animation.humanoid.riding.body"
             },
             "render_controllers": [
+                {
+                    "controller.render.entity_glowing": "q.property('ha:is_glow')"
+                },
                 "controller.render.bomber_pillager"
             ],
             "spawn_egg": {

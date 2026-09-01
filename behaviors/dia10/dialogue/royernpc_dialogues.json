@@ -31,7 +31,8 @@
                 },
                 "on_open_commands": [
                     "/tag @initiator add royer_dia10",
-                    "/give @initiator ha:invocation_skull 2"
+                    "/give @initiator ha:invocation_skull 2",
+                    "/execute as @initiator at @s run scriptevent ha:see_royerbot_counter"
                 ]
             },
 

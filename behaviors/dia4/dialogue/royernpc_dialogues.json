@@ -32,7 +32,8 @@
                 "on_open_commands": [
                     "/tag @initiator add royer_dia4",
                     "/give @initiator ha:dynamite_item 5",
-                    "/give @initiator emerald_block 10"
+                    "/give @initiator emerald_block 10",
+                    "/execute as @initiator at @s run scriptevent ha:see_royerbot_counter"
                 ]
             },
 

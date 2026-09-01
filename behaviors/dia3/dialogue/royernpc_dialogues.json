@@ -31,7 +31,8 @@
                 },
                 "on_open_commands": [
                     "/tag @initiator add royer_dia3",
-                    "/give @initiator ha:iron_apple 1"
+                    "/give @initiator ha:iron_apple 1",
+                    "/execute as @initiator at @s run scriptevent ha:see_royerbot_counter"
                 ]
             },
 

@@ -942,6 +942,23 @@
                 }
             ]
         },
+        "ambient.reveal_raid": {
+            "__use_legacy_max_distance": "true",
+            "category": "player",
+            "min_distance": null,
+            "max_distance": 50,
+            "subtitle": "ui.subtitle_custom.raid_reveal",
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "is3D": true,
+                    "name": "sounds/ambient/reveal_raid",
+                    "pitch": 1,
+                    "volume": 3,
+                    "stream": false
+                }
+            ]
+        },
         "ambient.weather.rain": {
             "sounds": [
                 {

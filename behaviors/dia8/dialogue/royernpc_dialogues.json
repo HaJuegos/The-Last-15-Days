@@ -31,7 +31,8 @@
                 },
                 "on_open_commands": [
                     "/tag @initiator add royer_dia8",
-                    "/give @initiator ha:allay_dust 16"
+                    "/give @initiator ha:allay_dust 16",
+                    "/execute as @initiator at @s run scriptevent ha:see_royerbot_counter"
                 ]
             },
 
