@@ -779,6 +779,34 @@ class EntityEventsManager extends TL15DBaseManager {
 
                     entity.remove();
                 } break;
+                case 'ha:force_lava_knockback': {
+                    const coords = entity.location;
+                    const dime = entity.dimension;
+                    const target = entity.target;
+
+                    dime.playSound('wind_charge.burst', coords);
+                    dime.spawnParticle('minecraft:wind_explosion_emitter', coords);
+
+                    let impulseX = 0;
+                    let impulseZ = 0;
+                    const impulseY = 1;
+
+                    if (target && target.isValid) {
+                        const targetCoords = target.location;
+                        const dx = targetCoords.x - coords.x;
+                        const dz = targetCoords.z - coords.z;
+                        const distance = Math.sqrt(dx * dx + dz * dz);
+
+                        if (distance > 0.1) {
+                            const horizontalForce = 0.95;
+
+                            impulseX = (dx / distance) * horizontalForce;
+                            impulseZ = (dz / distance) * horizontalForce;
+                        }
+                    }
+
+                    entity.applyImpulse({ x: impulseX, y: impulseY, z: impulseZ });
+                } break;
             }
         });
     }

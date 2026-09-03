@@ -5,7 +5,7 @@
     "minecraft:entity": {
         "description": {
             "identifier": "minecraft:fishing_hook",
-            "is_summonable": false,
+            "is_summonable": true,
             "is_spawnable": false
         },
         "component_groups": {

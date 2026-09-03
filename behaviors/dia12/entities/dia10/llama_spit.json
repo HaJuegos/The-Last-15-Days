@@ -6,7 +6,7 @@
         "description": {
             "identifier": "minecraft:llama_spit",
             "is_experimental": false,
-            "is_summonable": false,
+            "is_summonable": true,
             "is_spawnable": false,
             "spawn_category": "misc"
         },

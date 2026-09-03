@@ -6,7 +6,7 @@
         "description": {
             "identifier": "minecraft:dragon_fireball",
             "spawn_category": "ambient",
-            "is_summonable": false,
+            "is_summonable": true,
             "is_spawnable": true
         },
         "component_groups": {

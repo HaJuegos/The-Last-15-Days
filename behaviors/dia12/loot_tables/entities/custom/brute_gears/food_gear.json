@@ -37,6 +37,16 @@
                 },
                 {
                     "type": "item",
+                    "name": "ha:allay_dust",
+                    "weight": 10
+                },
+                {
+                    "type": "item",
+                    "name": "ha:allay_essence",
+                    "weight": 10
+                },
+                {
+                    "type": "item",
                     "name": "ha:banana",
                     "weight": 1
                 }

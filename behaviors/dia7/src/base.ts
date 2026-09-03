@@ -18,13 +18,7 @@ export class TL15DBaseManager {
         return new Promise((r) => {
             worldToolsSimplified.setRun(() => {
                 const over = mc.world.getDimension(vanilla.MinecraftDimensionTypes.Overworld);
-                let entity = over.getEntities({ type: 'ha:data_world' })[0];
-
-                if (entity == undefined) {
-                    over.runCommand('summon ha:data_world 0 50 0');
-
-                    entity = over.getEntities({ type: 'ha:data_world' })[0];
-                }
+                const entity = over.getEntities({ type: 'ha:data_world' })[0];
 
                 r(entity);
             });

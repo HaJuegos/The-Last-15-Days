@@ -54,16 +54,38 @@ export class TL15DBaseManager {
     protected getEntityDataWorld(): Promise<mc.Entity> {
         return new Promise((r) => {
             worldToolsSimplified.setRun(() => {
-                const over = mc.world.getDimension(vanilla.MinecraftDimensionTypes.Overworld);
-                let entity = over.getEntities({ type: 'ha:data_world' })[0];
+                const over = worldToolsSimplified.getDimension(vanilla.MinecraftDimensionTypes.Overworld) as mc.Dimension;
+                const findWorldData = over.getEntities({ type: 'ha:data_world' });
+                const plys = over.getPlayers();
 
-                if (entity == undefined) {
-                    over.runCommand('summon ha:data_world 0 50 0');
+                let finalEntity: mc.Entity;
 
-                    entity = over.getEntities({ type: 'ha:data_world' })[0];
+                if (!findWorldData || findWorldData.length == 0) {
+                    const spawnLoc = plys.length > 0 ? plys[0].location : { x: 0, y: 0, z: 0 };
+
+                    finalEntity = over.spawnEntity('ha:data_world' as mc.VanillaEntityIdentifier, spawnLoc);
+
+                    worldToolsSimplified.changeScoreInObj(finalEntity, 'ha:debuffs_state', 'set', 1);
+                    worldToolsSimplified.getOrCreateTickingArea('ha:spawn_area', {
+                        dimension: over,
+                        from: spawnLoc,
+                        to: spawnLoc,
+                    });
+                } else {
+                    finalEntity = findWorldData[0];
+
+                    if (findWorldData.length > 1) {
+                        for (let i = 1; i < findWorldData.length; i++) {
+                            const duplicate = findWorldData[i];
+
+                            if (duplicate.isValid) {
+                                duplicate.remove();
+                            };
+                        }
+                    }
                 }
 
-                r(entity);
+                r(finalEntity);
             });
         });
     }

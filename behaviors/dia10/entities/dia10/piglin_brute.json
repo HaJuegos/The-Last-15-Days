@@ -362,6 +362,90 @@
                     ]
                 }
             },
+            "ha:melee_spear_sensors": {
+                "minecraft:environment_sensor": {
+                    "triggers": [
+                        {
+                            "filters": {
+                                "test": "actor_health",
+                                "subject": "self",
+                                "operator": "<=",
+                                "value": 70
+                            },
+                            "target": "self",
+                            "event": "ha:start_regenerating"
+                        },
+                        {
+                            "filters": {
+                                "all_of": [
+                                    {
+                                        "test": "target_distance",
+                                        "subject": "self",
+                                        "operator": ">",
+                                        "value": 24
+                                    },
+                                    {
+                                        "test": "target_distance",
+                                        "subject": "self",
+                                        "operator": "<=",
+                                        "value": 30
+                                    }
+                                ]
+                            },
+                            "target": "self",
+                            "event": "ha:start_ranged_mode"
+                        },
+                        {
+                            "filters": {
+                                "test": "target_distance",
+                                "subject": "self",
+                                "operator": ">=",
+                                "value": 31
+                            },
+                            "target": "self",
+                            "event": "ha:start_pearl_mode"
+                        },
+                        {
+                            "filters": {
+                                "all_of": [
+                                    {
+                                        "test": "has_target",
+                                        "subject": "self",
+                                        "value": true
+                                    },
+                                    {
+                                        "test": "is_underground",
+                                        "subject": "target",
+                                        "value": true
+                                    },
+                                    {
+                                        "test": "random_chance",
+                                        "value": 150
+                                    },
+                                    {
+                                        "test": "is_moving",
+                                        "subject": "target",
+                                        "value": false
+                                    },
+                                    {
+                                        "test": "in_lava",
+                                        "subject": "self",
+                                        "value": false
+                                    },
+                                    {
+                                        "test": "has_tag",
+                                        "subject": "self",
+                                        "operator": "!=",
+                                        "value": "mining_mode"
+                                    }
+                                ]
+                            },
+                            "target": "self",
+                            "event": "ha:start_mining"
+                        }
+                    ]
+                }
+            },
             "ha:melee_mace_sensors": {
                 "minecraft:environment_sensor": {
                     "triggers": [
@@ -382,13 +466,13 @@
                                         "test": "target_distance",
                                         "subject": "self",
                                         "operator": ">",
-                                        "value": 12
+                                        "value": 24
                                     },
                                     {
                                         "test": "target_distance",
                                         "subject": "self",
                                         "operator": "<=",
-                                        "value": 14
+                                        "value": 30
                                     }
                                 ]
                             },
@@ -400,7 +484,7 @@
                                 "test": "target_distance",
                                 "subject": "self",
                                 "operator": ">=",
-                                "value": 15
+                                "value": 31
                             },
                             "target": "self",
                             "event": "ha:start_pearl_mode"
@@ -486,17 +570,16 @@
                     "looping": true,
                     "time_down_event": {
                         "filters": {
-                            "all_of": [
+                            "any_of": [
                                 {
                                     "test": "on_ground",
                                     "subject": "self",
                                     "value": true
                                 },
                                 {
-                                    "test": "target_distance",
+                                    "test": "in_lava",
                                     "subject": "self",
-                                    "operator": "<=",
-                                    "value": 7
+                                    "value": true
                                 }
                             ]
                         },
@@ -518,6 +601,21 @@
             },
 
             "ha:melee_mode_normal": {
+                "minecraft:behavior.timer_flag_1": {
+                    "priority": 0,
+                    "cooldown_range": {
+                        "min": 0,
+                        "max": 0
+                    },
+                    "duration_range": {
+                        "min": 20,
+                        "max": 20
+                    },
+                    "on_end": {
+                        "event": "ha:start_pearl_mode",
+                        "target": "self"
+                    }
+                },
                 "minecraft:variant": {
                     "value": 1
                 },
@@ -526,7 +624,7 @@
                     "can_spread_on_fire": true,
                     "cooldown_time": 0.65,
                     "melee_fov": 360,
-                    "reach_multiplier": 3.5,
+                    "reach_multiplier": 5,
                     "track_target": true,
                     "min_path_time": 0.1,
                     "max_path_time": 0.15,
@@ -534,6 +632,21 @@
                 }
             },
             "ha:melee_mode_mace": {
+                "minecraft:behavior.timer_flag_1": {
+                    "priority": 0,
+                    "cooldown_range": {
+                        "min": 0,
+                        "max": 0
+                    },
+                    "duration_range": {
+                        "min": 20,
+                        "max": 20
+                    },
+                    "on_end": {
+                        "event": "ha:start_pearl_mode",
+                        "target": "self"
+                    }
+                },
                 "minecraft:variant": {
                     "value": 1
                 },
@@ -550,29 +663,57 @@
                 }
             },
             "ha:melee_mode_spear": {
+                "minecraft:behavior.timer_flag_1": {
+                    "priority": 0,
+                    "cooldown_range": {
+                        "min": 0,
+                        "max": 0
+                    },
+                    "duration_range": {
+                        "min": 10,
+                        "max": 10
+                    },
+                    "on_end": {
+                        "event": "ha:start_pearl_mode",
+                        "target": "self"
+                    }
+                },
                 "minecraft:variant": {
                     "value": 1
                 },
+                "minecraft:behavior.melee_attack": {
+                    "priority": 1,
+                    "can_spread_on_fire": true,
+                    "cooldown_time": 0.75,
+                    "melee_fov": 360,
+                    "reach_multiplier": 7,
+                    "track_target": true,
+                    "min_path_time": 0.1,
+                    "max_path_time": 0.15,
+                    "require_complete_path": false
+                },
                 "minecraft:behavior.use_kinetic_weapon": {
                     "priority": 0,
-                    "approach_distance": 8,
-                    "attack_once": false,
-                    "reposition_distance": {
-                        "min": 4,
-                        "max": 5
-                    },
                     "cooldown_distance": {
-                        "min": 6,
-                        "max": 7
+                        "min": 0,
+                        "max": 0
                     },
-                    "cooldown_time": 0.4,
-                    "weapon_reach_multiplier": 1.2,
+                    "cooldown_speed_multiplier": 1.8,
+                    "cooldown_time": 0,
                     "hijack_mount_navigation": true,
                     "melee_fov": 360,
-                    "min_path_time": 0.05,
+                    "min_path_time": 0,
                     "max_path_time": 0.1,
-                    "speed_multiplier": 2,
-                    "track_target": true
+                    "reposition_distance": {
+                        "min": 0,
+                        "max": 0
+                    },
+                    "reposition_speed_multiplier": 1.8,
+                    "require_complete_path": false,
+                    "speed_multiplier": 1.8,
+                    "track_target": true,
+                    "weapon_reach_multiplier": 1,
+                    "weapon_min_speed_multiplier": 0.2
                 }
             },
 
@@ -651,6 +792,21 @@
                 }
             },
             "ha:ranged_mode": {
+                "minecraft:behavior.timer_flag_1": {
+                    "priority": 0,
+                    "cooldown_range": {
+                        "min": 0,
+                        "max": 0
+                    },
+                    "duration_range": {
+                        "min": 20,
+                        "max": 20
+                    },
+                    "on_end": {
+                        "event": "ha:start_pearl_mode",
+                        "target": "self"
+                    }
+                },
                 "minecraft:equipment": {
                     "table": "loot_tables/entities/custom/brute_gears/ranged_gear.json",
                     "slot_drop_chance": [
@@ -797,7 +953,7 @@
                                         "test": "distance_to_nearest_player",
                                         "subject": "self",
                                         "operator": ">=",
-                                        "value": 9
+                                        "value": 25
                                     },
                                     {
                                         "any_of": [
@@ -910,7 +1066,7 @@
                                         "test": "distance_to_nearest_player",
                                         "subject": "self",
                                         "operator": ">=",
-                                        "value": 9
+                                        "value": 25
                                     },
                                     {
                                         "any_of": [
@@ -1181,6 +1337,21 @@
                 }
             },
             "ha:pickaxe_mode": {
+                "minecraft:behavior.timer_flag_1": {
+                    "priority": 0,
+                    "cooldown_range": {
+                        "min": 0,
+                        "max": 0
+                    },
+                    "duration_range": {
+                        "min": 15,
+                        "max": 15
+                    },
+                    "on_end": {
+                        "event": "ha:start_pearl_mode",
+                        "target": "self"
+                    }
+                },
                 "minecraft:equipment": {
                     "table": "loot_tables/entities/custom/brute_gears/pickaxe_gear.json",
                     "slot_drop_chance": [
@@ -2787,7 +2958,7 @@
             },
             "minecraft:behavior.pickup_items": {
                 "priority": 3,
-                "can_pickup_any_item": true,
+                "can_pickup_any_item": false,
                 "can_pickup_to_hand_or_equipment": true,
                 "cooldown_after_being_attacked": 0,
                 "goal_radius": 2,
@@ -3009,6 +3180,7 @@
                         "ha:initial_comps",
 
                         "ha:melee_normal_sensors",
+                        "ha:melee_spear_sensors",
                         "ha:melee_mace_sensors",
 
                         "ha:melee_normal_equips",
@@ -3020,8 +3192,16 @@
                         "ha:melee_mode_normal",
                         "ha:melee_mode_spear",
 
+                        "ha:ranged_sensor",
+                        "ha:ranged_mode",
+
                         "ha:path_melee",
                         "ha:set_resistance",
+
+                        "ha:angry_mode",
+                        "ha:scare_brute",
+                        "ha:foods_mode_reg",
+                        "ha:potions_mode_reg",
 
                         "ha:pickaxe_targets",
                         "ha:pickaxe_sensor",
@@ -3052,6 +3232,30 @@
                         },
                         "remove": {
                             "component_groups": [
+                                "ha:initial_comps",
+                                "ha:remove_resistance",
+
+                                "ha:ranged_sensor",
+                                "ha:ranged_mode",
+
+                                "ha:melee_normal_sensors",
+                                "ha:melee_spear_sensors",
+                                "ha:melee_mace_sensors",
+
+                                "ha:melee_normal_equips",
+                                "ha:melee_mace_equips",
+                                "ha:melee_spear_equips",
+                                "ha:mace_loop",
+
+                                "ha:melee_mode_normal",
+                                "ha:melee_mode_mace",
+                                "ha:melee_mode_spear",
+
+                                "ha:angry_mode",
+                                "ha:scare_brute",
+                                "ha:foods_mode_reg",
+                                "ha:potions_mode_reg",
+
                                 "ha:pearl_sensors",
 
                                 "ha:pearl_mode",
@@ -3093,11 +3297,6 @@
                             },
                             {
                                 "weight": 25,
-                                "queue_command": {
-                                    "command": [
-                                        "summon wind_charge_projectile ~~~"
-                                    ]
-                                },
                                 "remove": {
                                     "component_groups": [
                                         "ha:set_resistance"
@@ -3125,7 +3324,7 @@
                                 },
                                 "add": {
                                     "component_groups": [
-                                        "ha:melee_normal_sensors",
+                                        "ha:melee_spear_sensors",
 
                                         "ha:melee_spear_equips",
 
@@ -3147,11 +3346,17 @@
                 },
                 "remove": {
                     "component_groups": [
+                        "ha:initial_comps",
+                        "ha:remove_resistance",
+
                         "ha:pearl_sensors",
+                        "ha:ranged_sensor",
                         "ha:melee_normal_sensors",
                         "ha:melee_mace_sensors",
+                        "ha:melee_spear_sensors",
 
                         "ha:pearl_mode",
+                        "ha:ranged_mode",
 
                         "ha:melee_mode_normal",
                         "ha:melee_mode_mace",
@@ -3164,6 +3369,11 @@
 
                         "ha:path_melee",
                         "ha:set_resistance",
+
+                        "ha:angry_mode",
+                        "ha:scare_brute",
+                        "ha:foods_mode_reg",
+                        "ha:potions_mode_reg",
 
                         "ha:pickaxe_targets",
                         "ha:pickaxe_sensor",
@@ -3184,7 +3394,7 @@
             "ha:summon_wind_charge": {
                 "queue_command": {
                     "command": [
-                        "summon wind_charge_projectile ~~~"
+                        "scriptevent ha:force_lava_knockback"
                     ]
                 }
             },
@@ -3199,6 +3409,8 @@
                     "component_groups": [
                         "ha:angry_mode",
 
+                        "ha:pearl_mode",
+
                         "ha:pearl_sensors",
                         "ha:melee_normal_sensors",
                         "ha:melee_mace_sensors",
@@ -3212,6 +3424,10 @@
                         "ha:melee_mode_normal",
                         "ha:melee_mode_mace",
                         "ha:melee_mode_spear",
+
+                        "ha:scare_brute",
+                        "ha:foods_mode_reg",
+                        "ha:potions_mode_reg",
 
                         "ha:ranged_mode",
 
@@ -3249,13 +3465,13 @@
 
                                 "ha:pearl_sensors",
                                 "ha:melee_normal_sensors",
+                                "ha:melee_spear_sensors",
                                 "ha:melee_mace_sensors",
                                 "ha:ranged_sensor",
 
                                 "ha:pearl_mode",
 
                                 "ha:melee_normal_equips",
-                                "ha:melee_mace_equips",
                                 "ha:melee_mace_equips",
                                 "ha:melee_spear_equips",
                                 "ha:mace_loop",
@@ -3273,7 +3489,11 @@
                                 "ha:normal_targets",
 
                                 "ha:pickaxe_sensor",
-                                "ha:pickaxe_mode"
+                                "ha:pickaxe_mode",
+
+                                "ha:scare_brute",
+                                "ha:foods_mode_reg",
+                                "ha:potions_mode_reg"
                             ]
                         },
                         "add": {
@@ -3336,6 +3556,7 @@
 
                         "ha:pearl_sensors",
                         "ha:melee_normal_sensors",
+                        "ha:melee_spear_sensors",
                         "ha:melee_mace_sensors",
                         "ha:ranged_sensor",
 

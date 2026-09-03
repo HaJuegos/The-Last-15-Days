@@ -362,7 +362,7 @@ class ItemCustomComponentsManager extends TL15DBaseManager {
         }
 
         targetPly.runCommand(`function system/revive_ply_system`);
-        worldToolsSimplified.sendMessageGlobal({ rawtext: [{ translate: 'chat.system.form_revival_ply.success.player_revive', with: { rawtext: [{ text: `${targetPly}` }] } }] });
+        worldToolsSimplified.sendMessageGlobal({ rawtext: [{ translate: 'chat.system.form_revival_ply.success.player_revive', with: { rawtext: [{ text: `${targetPly.name}` }] } }] });
 
         const objPendingRevive = worldToolsSimplified.getOrCreateScorebordObj('ha:pending_revive') as mc.ScoreboardObjective;
         const participantsRevive = objPendingRevive.getParticipants().map(data => data.displayName);

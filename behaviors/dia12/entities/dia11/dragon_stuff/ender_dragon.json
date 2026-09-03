@@ -158,7 +158,13 @@
                     }
                 }
             },
-            "ha:melee_mode": {
+            "ha:flying_mode": {
+                "minecraft:skin_id": {
+                    "value": 0
+                },
+                "minecraft:behavior.dragonholdingpattern": {
+                    "priority": 1
+                },
                 "minecraft:behavior.dragonchargeplayer": {
                     "priority": 2,
                     "active_speed": 4.3,
@@ -168,14 +174,6 @@
                         "max": 110
                     },
                     "continue_charge_threshold_time": 6
-                }
-            },
-            "ha:flying_mode": {
-                "minecraft:skin_id": {
-                    "value": 0
-                },
-                "minecraft:behavior.dragonholdingpattern": {
-                    "priority": 1
                 },
                 "minecraft:behavior.dragonstrafeplayer": {
                     "priority": 3,
@@ -326,7 +324,7 @@
                 "event": "ha:start_death_mode"
             },
             "minecraft:attack": {
-                "damage": 20
+                "damage": 1
             },
             "minecraft:collision_box": {
                 "height": 4,
@@ -477,11 +475,6 @@
                     {
                         "set_property": {
                             "ha:autosummon_balls": true
-                        },
-                        "add": {
-                            "component_groups": [
-                                "ha:melee_mode"
-                            ]
                         }
                     },
                     {
@@ -519,8 +512,7 @@
                 "remove": {
                     "component_groups": [
                         "ha:autosummon_ball_normal",
-                        "ha:autosummon_ball_enraged",
-                        "ha:melee_mode"
+                        "ha:autosummon_ball_enraged"
                     ]
                 }
             },

@@ -647,6 +647,66 @@
                         },
                         "cause": "all",
                         "deals_damage": "yes"
+                    },
+                    {
+                        "on_damage": {
+                            "filters": {
+                                "all_of": [
+                                    {
+                                        "any_of": [
+                                            {
+                                                "test": "is_family",
+                                                "subject": "damager",
+                                                "value": "dragon"
+                                            },
+                                            {
+                                                "test": "is_family",
+                                                "subject": "other",
+                                                "value": "dragon"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "test": "has_damage",
+                                        "subject": "self",
+                                        "value": "magic"
+                                    }
+                                ]
+                            }
+                        },
+                        "cause": "all",
+                        "damage_modifier": 8,
+                        "deals_damage": "yes"
+                    },
+                    {
+                        "on_damage": {
+                            "filters": {
+                                "all_of": [
+                                    {
+                                        "any_of": [
+                                            {
+                                                "test": "is_family",
+                                                "subject": "damager",
+                                                "value": "dragon"
+                                            },
+                                            {
+                                                "test": "is_family",
+                                                "subject": "other",
+                                                "value": "dragon"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "test": "has_damage",
+                                        "subject": "self",
+                                        "value": "attack"
+                                    }
+                                ]
+                            }
+                        },
+                        "cause": "all",
+                        "damage_modifier": 5,
+                        "deals_damage": "yes"
                     }
                 ]
             }

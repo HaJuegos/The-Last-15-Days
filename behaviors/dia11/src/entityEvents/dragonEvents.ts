@@ -29,164 +29,31 @@ class DragonEvents extends TL15DBaseManager {
      */
     private debuffEntites(): void {
         afterEventsSimplified.onEntitySpawns((args) => {
-            const entity = args.entity;
+            const { entity } = args;
 
-            if (entity.typeId == 'ha:debuff_timer' && entity.isValid) {
-                const variant = entity.getComponent(mc.EntityComponentTypes.Variant);
+            if (!entity?.isValid || entity.typeId != 'ha:debuff_timer') return;
 
-                if (variant) {
-                    switch (variant.value) {
-                        //  Variante de Nauseas
-                        case 0: {
-                            customEventsManager.startTimerLocal({
-                                timerId: 'ha:nausea_timer',
-                                sourcePly: entity as mc.Player,
-                                forceRestart: true,
-                                initialScnds: 9,
-                                onTimerStarts: () => {
-                                    const plys = mc.world.getAllPlayers().filter(p => p.dimension.id == 'minecraft:the_end');
+            const variant = entity.getComponent(mc.EntityComponentTypes.Variant);
 
-                                    for (const ply of plys) {
-                                        ply.addEffect('nausea', worldToolsSimplified.convertSecondsToTicks(10));
-                                        ply.playSound('ui.dragon_attack_nausea.start');
-                                        ply.spawnParticle('ha:nausea_attack', ply.location);
-                                    }
-                                },
-                                onSecondPass: () => {
-                                    const plys = mc.world.getAllPlayers().filter(p => p.dimension.id == 'minecraft:the_end');
+            if (!variant) return;
 
-                                    for (const ply of plys) {
-                                        ply.playSound('random.click', { pitch: 2 });
-                                    }
-                                },
-                                onTimerEnds: (entity: mc.Entity) => {
-                                    const sneakingPlys = mc.world.getAllPlayers().filter(p => (p.dimension.id == 'minecraft:the_end' && !p.isSneaking));
-                                    const allPlys = mc.world.getAllPlayers().filter(p => (
-                                        p.dimension.id == 'minecraft:the_end' && p.isSneaking && (p.getGameMode() == mc.GameMode.Survival || p.getGameMode() == mc.GameMode.Adventure)
-                                    ));
-
-                                    const dragon = mc.world.getDimension('minecraft:the_end').getEntities().find(e => (e.typeId == vanilla.MinecraftEntityTypes.EnderDragon));
-
-                                    if (!dragon || !dragon.isValid) return;
-
-                                    for (const ply of sneakingPlys) {
-                                        const takenDamage = ply.applyDamage(999, { cause: mc.EntityDamageCause.sonicBoom, damagingEntity: dragon });
-
-                                        if (takenDamage) {
-                                            ply.camera.fade({ fadeColor: worldToolsSimplified.convertHexToRGB('#000000'), fadeTime: { fadeInTime: 0, holdTime: 1, fadeOutTime: 0.15 } });
-
-                                            ply.runCommand(`titleraw @s times 0 1 0`);
-                                            ply.onScreenDisplay.setTitle({ translate: 'ui.system.dragon_damage_nausea.title' });
-                                            ply.onScreenDisplay.updateSubtitle({ translate: 'ui.system.dragon_damage_nausea.subtitle' });
-                                            ply.runCommand(`titleraw @s reset`);
-
-                                            ply.playSound('ui.dragon_attack.damage_nausea');
-                                            ply.sendMessage({ translate: 'chat.system.dragon_attack_finished.nausea' });
-                                        }
-                                    }
-
-                                    for (const ply of allPlys) {
-                                        ply.playSound('mob.guardian.death');
-                                        ply.sendMessage({ translate: 'chat.system.dragon_attack_finished.nausea' });
-                                    }
-
-                                    entity.triggerEvent('ha:start_despawn');
-                                }
-                            });
-                        } break;
-
-                        // Variante de Conduit
-                        case 1: {
-                            customEventsManager.startTimerLocal({
-                                timerId: 'ha:conduit_timer',
-                                sourcePly: entity as mc.Player,
-                                forceRestart: true,
-                                initialScnds: 9,
-                                onTimerStarts: () => {
-                                    const plys = mc.world.getAllPlayers().filter(p => p.dimension.id == 'minecraft:the_end');
-
-                                    for (const ply of plys) {
-                                        ply.addEffect('conduit_power', worldToolsSimplified.convertSecondsToTicks(10));
-                                        ply.playSound('ui.dragon_attack_conduit.start');
-                                        ply.spawnParticle('ha:conduit_attack', ply.location);
-                                    }
-                                },
-                                onSecondPass: () => {
-                                    const plys = mc.world.getAllPlayers().filter(p => p.dimension.id == 'minecraft:the_end');
-
-                                    for (const ply of plys) {
-                                        ply.playSound('random.click', { pitch: 2 });
-                                    }
-                                },
-                                onTimerEnds: (entity: mc.Entity) => {
-                                    const dime = entity.dimension;
-                                    const allEntitiesEnd = dime.getEntities({
-                                        excludeTypes: ['minecraft:ender_crystal', 'ha:crystal_llama_generator', 'minecraft:item']
-                                    });
-
-                                    for (const entity of allEntitiesEnd) {
-                                        if ((entity instanceof mc.Player) && !(entity.getGameMode() == mc.GameMode.Survival || entity.getGameMode() == mc.GameMode.Adventure)) continue;
-
-                                        const radius = 50 * Math.sqrt(Math.random());
-                                        const theta = Math.random() * 2 * Math.PI;
-                                        const randomX = radius * Math.cos(theta);
-                                        const randomZ = radius * Math.sin(theta);
-                                        const currentY = entity.location.y;
-
-                                        entity.tryTeleport({ x: randomX, y: currentY, z: randomZ });
-
-                                        if (entity instanceof mc.Player) {
-                                            entity.playSound('mob.guardian.death');
-                                            entity.sendMessage({ translate: 'chat.system.dragon_attack_finished.conduit' });
-                                        }
-                                    }
-
-                                    entity.triggerEvent('ha:start_despawn');
-                                }
-                            });
-                        } break;
-
-                        // Variante de Totems
-                        case 2: {
-                            const coords = entity.location;
-                            const dime = entity.dimension;
-
-                            worldToolsSimplified.sendMessageGlobal({ rawtext: [{ translate: 'chat.system.spawn_totems_rain', with: { rawtext: [{ text: `${this.simplifiedCoords(coords)}` }] } }] });
-
-                            dime.spawnParticle('ha:emerald_rain_placement', { x: coords.x, y: coords.y + 0.5, z: coords.z });
-
-                            entity.runCommand(`loot spawn ~ ~25 ~ loot "entities/custom/dragon_drops/totem_rain"`);
-
-                            entity.runCommand(`fill ~3 ~-1 ~3 ~-3 ~-10 ~-3 emerald_block replace end_stone`);
-                            entity.runCommand(`fill ~3 ~-1 ~3 ~-3 ~-10 ~-3 emerald_block replace end_bricks`);
-                            entity.runCommand(`fill ~3 ~-1 ~3 ~-3 ~-10 ~-3 emerald_block replace gold_block`);
-                            entity.runCommand(`fill ~3 ~-1 ~3 ~-3 ~-10 ~-3 emerald_block replace obsidian`);
-                            entity.runCommand(`fill ~3 ~-1 ~3 ~-3 ~-10 ~-3 emerald_block replace bedrock`);
-
-                            entity.triggerEvent('ha:start_despawn');
-                        } break;
-
-                        // Variante de Items
-                        case 3: {
-                            const coords = entity.location;
-                            const dime = entity.dimension;
-
-                            worldToolsSimplified.sendMessageGlobal({ rawtext: [{ translate: 'chat.system.spawn_items_rain', with: { rawtext: [{ text: `${this.simplifiedCoords(coords)}` }] } }] });
-
-                            dime.spawnParticle('ha:emerald_rain_placement', { x: coords.x, y: coords.y + 0.5, z: coords.z });
-
-                            entity.runCommand(`loot spawn ~ ~25 ~ loot "entities/custom/dragon_drops/items_rain"`);
-
-                            entity.runCommand(`fill ~3 ~-1 ~3 ~-3 ~-10 ~-3 gold_block replace end_stone`);
-                            entity.runCommand(`fill ~3 ~-1 ~3 ~-3 ~-10 ~-3 gold_block replace end_bricks`);
-                            entity.runCommand(`fill ~3 ~-1 ~3 ~-3 ~-10 ~-3 gold_block replace emerald_block`);
-                            entity.runCommand(`fill ~3 ~-1 ~3 ~-3 ~-10 ~-3 gold_block replace obsidian`);
-                            entity.runCommand(`fill ~3 ~-1 ~3 ~-3 ~-10 ~-3 gold_block replace bedrock`);
-
-                            entity.triggerEvent('ha:start_despawn');
-                        } break;
-                    }
-                }
+            switch (variant.value) {
+                // Nauseas
+                case 0: {
+                    this.nauseasTimerLogic(entity);
+                } break;
+                // Conduit
+                case 1: {
+                    this.conduitTimerLogic(entity);
+                } break;
+                // Totems
+                case 2: {
+                    this.rainItemsLogic(entity, 'totem_rain', vanilla.MinecraftBlockTypes.EmeraldBlock, 'chat.system.spawn_totems_rain');
+                } break;
+                // Items
+                case 3: {
+                    this.rainItemsLogic(entity, 'items_rain', vanilla.MinecraftBlockTypes.GoldBlock, 'chat.system.spawn_items_rain');
+                } break;
             }
         });
     }
@@ -343,42 +210,46 @@ class DragonEvents extends TL15DBaseManager {
         });
 
         afterEventsSimplified.onHurtEntity((args) => {
-            const source = args.damageSource;
-            const sourceEntity = source.damagingEntity;
-            const hitEntity = args.hurtEntity;
-            const damage = args.damage;
+            const { damageSource: source, hurtEntity: hitEntity, damage } = args;
+            const sourceEntity = source.damagingEntity as mc.Player | undefined;
 
-            if ((sourceEntity && sourceEntity.isValid) && (hitEntity && hitEntity.isValid)) {
-                worldToolsSimplified.setRun(async () => {
-                    if (!hitEntity.isValid || !sourceEntity.isValid) return;
+            if (!sourceEntity?.isValid || !hitEntity?.isValid) return;
 
-                    let canReflect = true;
-                    let canKnockback = true;
+            const isHitDragon = hitEntity.typeId == vanilla.MinecraftEntityTypes.EnderDragon;
+            const isSourceDragon = sourceEntity.typeId == vanilla.MinecraftEntityTypes.EnderDragon;
 
-                    try {
-                        const worldData = await this.getEntityDataWorld();
+            if (!isHitDragon && !isSourceDragon) return;
 
-                        canReflect = worldToolsSimplified.getScoreInObj(worldData, 'ha:canDragonReflectDamage') == 1;
-                        canKnockback = worldToolsSimplified.getScoreInObj(worldData, 'ha:canDragonKnockback') == 1;
-                    } catch { }
+            worldToolsSimplified.setRun(async () => {
+                if (!hitEntity.isValid || !sourceEntity.isValid) return;
 
-                    if (canReflect && hitEntity.typeId == vanilla.MinecraftEntityTypes.EnderDragon && Math.random() <= 0.35) {
-                        sourceEntity.applyDamage(damage, { cause: mc.EntityDamageCause.sonicBoom, damagingEntity: hitEntity });
-                    }
+                let canReflect = true;
+                let canKnockback = true;
 
-                    if (canKnockback && sourceEntity.typeId == vanilla.MinecraftEntityTypes.EnderDragon && source.cause == mc.EntityDamageCause.entityAttack && Math.random() <= 0.40) {
-                        const dx = hitEntity.location.x - sourceEntity.location.x;
-                        const dz = hitEntity.location.z - sourceEntity.location.z;
-                        const distance = Math.sqrt(dx * dx + dz * dz);
-                        const dirX = distance > 0 ? (dx / distance) : (Math.random() - 0.5);
-                        const dirZ = distance > 0 ? (dz / distance) : (Math.random() - 0.5);
-                        const horizontalForce = (Math.random() * (3.5 - 1.5)) + 1.5;
-                        const verticalForce = (Math.random() * (2.5 - 1.0)) + 1.0;
+                try {
+                    const worldData = await this.getEntityDataWorld();
 
-                        hitEntity.applyKnockback({ x: dirX * horizontalForce, z: dirZ * horizontalForce }, verticalForce);
-                    }
-                });
-            }
+                    canReflect = worldToolsSimplified.getScoreInObj(worldData, 'ha:canDragonReflectDamage') == 1;
+                    canKnockback = worldToolsSimplified.getScoreInObj(worldData, 'ha:canDragonKnockback') == 1;
+                } catch { }
+
+                if (isHitDragon && canReflect && source.cause != mc.EntityDamageCause.thorns && Math.random() < 0.5) {
+                    sourceEntity.applyDamage(damage, { cause: mc.EntityDamageCause.sonicBoom, damagingEntity: hitEntity });
+                    sourceEntity.playSound('damage.thorns');
+                }
+
+                if (isSourceDragon && canKnockback && source.cause == mc.EntityDamageCause.entityAttack && Math.random() <= 0.35) {
+                    const dx = hitEntity.location.x - sourceEntity.location.x;
+                    const dz = hitEntity.location.z - sourceEntity.location.z;
+                    const distance = Math.hypot(dx, dz);
+                    const dirX = distance > 0 ? (dx / distance) : (Math.random() - 0.5);
+                    const dirZ = distance > 0 ? (dz / distance) : (Math.random() - 0.5);
+                    const horizontalForce = (Math.random() * 2.0) + 1.5;
+                    const verticalForce = (Math.random() * 1.5) + 1.0;
+
+                    hitEntity.applyKnockback({ x: dirX * horizontalForce, z: dirZ * horizontalForce }, verticalForce);
+                }
+            });
         });
 
         afterEventsSimplified.onHealthEntityChange((args) => {
@@ -660,6 +531,188 @@ class DragonEvents extends TL15DBaseManager {
             dime.spawnParticle('minecraft:knockback_roar_particle', randomLoc);
             dime.playSound('mob.wither.break_block', randomLoc);
         }
+    }
+
+    /**
+     * Metodo auxiliar que contiene la logica del ataque de nauseas y su respectivo timer.
+     * @param {mc.Entity} entity Entidad en concreto a considerar y que activo el timer.
+     * @returns {void}
+     * @author HaJuegos - 02-09-2026 
+     * @private
+     */
+    private nauseasTimerLogic(entity: mc.Entity): void {
+        customEventsManager.startTimerLocal({
+            timerId: 'ha:nausea_timer',
+            sourcePly: entity as mc.Player,
+            forceRestart: true,
+            initialScnds: 9,
+            onTimerStarts: (() => {
+                for (const ply of this.getPlysInDime(entity)) {
+                    ply.addEffect('nausea', worldToolsSimplified.convertSecondsToTicks(10));
+                    ply.playSound('ui.dragon_attack_nausea.start');
+                    ply.spawnParticle('ha:nausea_attack', ply.location);
+                }
+            }),
+            onSecondPass: (() => {
+                for (const ply of this.getPlysInDime(entity)) {
+                    ply.playSound('random.click', { pitch: 2 });
+                }
+            }),
+            onTimerEnds: ((entity: mc.Entity) => {
+                const dime = entity.dimension;
+                const dragon = dime.getEntities({ type: vanilla.MinecraftEntityTypes.EnderDragon }).find(e => e.isValid);
+
+                if (!dragon) return;
+
+                for (const ply of this.getPlysInDime(entity)) {
+                    const inSurvivalValid = ply.getGameMode() == mc.GameMode.Survival || ply.getGameMode() == mc.GameMode.Adventure;
+
+                    if (!ply.isSneaking && inSurvivalValid) {
+                        ply.camera.fade({ fadeColor: worldToolsSimplified.convertHexToRGB('#000000'), fadeTime: { fadeInTime: 0, holdTime: 1, fadeOutTime: 0.15 } });
+
+                        ply.runCommand(`titleraw @s times 0 1 0`);
+                        ply.onScreenDisplay.setTitle({ translate: 'ui.system.dragon_damage_nausea.title' });
+                        ply.onScreenDisplay.updateSubtitle({ translate: 'ui.system.dragon_damage_nausea.subtitle' });
+
+                        ply.runCommand(`titleraw @s reset`);
+                        ply.playSound('ui.dragon_attack.damage_nausea');
+                    }
+
+                    ply.sendMessage({ translate: 'chat.system.dragon_attack_finished.nausea' });
+                    ply.playSound('mob.guardian.death');
+                }
+
+                entity.triggerEvent('ha:start_despawn');
+            })
+        });
+    }
+
+    /**
+     * Metodo auxiliar que contiene la logica del ataque del conduit y su respectivo timer.
+     * @param {mc.Entity} entity Entidad en concreto a considerar y que activo el timer.
+     * @returns {void}
+     * @author HaJuegos - 02-09-2026 
+     * @private
+     */
+    private conduitTimerLogic(entity: mc.Entity): void {
+        customEventsManager.startTimerLocal({
+            timerId: 'ha:conduit_timer',
+            sourcePly: entity as mc.Player,
+            forceRestart: true,
+            initialScnds: 9,
+            onTimerStarts: (() => {
+                for (const ply of this.getPlysInDime(entity)) {
+                    ply.addEffect('conduit_power', worldToolsSimplified.convertSecondsToTicks(10));
+                    ply.playSound('ui.dragon_attack_conduit.start');
+                    ply.spawnParticle('ha:conduit_attack', ply.location);
+                }
+            }),
+            onSecondPass: (() => {
+                for (const ply of this.getPlysInDime(entity)) {
+                    ply.playSound('random.click', { pitch: 2 });
+                }
+            }),
+            onTimerEnds: ((entity: mc.Entity) => {
+                const dime = entity.dimension;
+                const allEntitiesDime = dime.getEntities({
+                    excludeTypes: [
+                        'minecraft:ender_crystal',
+                        'ha:crystal_llama_generator',
+                        'minecraft:item',
+                        'minecraft:npc',
+                        'ha:data_world',
+                        'ha:custom_damage_area',
+                        'ha:player_ghost',
+                        'ha:nurse_npc',
+                        'ha:debuff_timer'
+                    ]
+                }).filter(e => e.isValid);
+
+                for (const targetEntity of allEntitiesDime) {
+                    const isPly = targetEntity instanceof mc.Player;
+                    const inSurvivalValid = isPly ? (targetEntity.getGameMode() == mc.GameMode.Survival || targetEntity.getGameMode() == mc.GameMode.Adventure) : false;
+
+                    if (isPly && !inSurvivalValid) continue;
+
+                    const radius = 50 * Math.sqrt(Math.random());
+                    const theta = Math.random() * 2 * Math.PI;
+                    const targetX = radius * Math.cos(theta);
+                    const targetZ = radius * Math.sin(theta);
+
+                    let targetY = targetEntity.location.y;
+
+                    try {
+                        const topBlock = dime.getTopmostBlock({ x: targetX, z: targetZ });
+
+                        if (topBlock && topBlock.isValid) {
+                            targetY = topBlock.location.y + 1;
+                        }
+                    } catch { }
+
+                    targetEntity.tryTeleport({ x: targetX, y: targetY, z: targetZ });
+
+                    if (isPly) {
+                        targetEntity.playSound('mob.guardian.death');
+                        targetEntity.sendMessage({ translate: 'chat.system.dragon_attack_finished.conduit' });
+                    }
+                }
+
+                entity.triggerEvent('ha:start_despawn');
+            })
+        });
+    }
+
+    /**
+     * Metodo auxiliar que controla la logica de la lluvia de items y totems del respectivo ataque de la entidad.
+     * @param {mc.Entity} entity Entidad en cuestion a considerar y que activo el ataque.
+     * @param {string} lootName El nombre de la loot table seleccionada.
+     * @param {string} blockToReplace Bloque a reemplazar por donde spawneo la entidad.
+     * @param {string} msgRain El mensaje correspondiente de la lluvia en cuestion.
+     * @returns {void}
+     * @author HaJuegos - 02-09-2026 
+     * @private
+     */
+    private rainItemsLogic(entity: mc.Entity, lootName: string, blockToReplace: string, msgRain: string): void {
+        const coords = entity.location;
+        const dime = entity.dimension;
+
+        worldToolsSimplified.sendMessageGlobal({ rawtext: [{ translate: msgRain, with: [this.simplifiedCoords(coords)] }] });
+
+        dime.spawnParticle('ha:emerald_rain_placement', { x: coords.x, y: coords.y + 0.5, z: coords.z });
+
+        entity.runCommand(`loot spawn ~ ~25 ~ loot "entities/custom/dragon_drops/${lootName}"`);
+
+        const blocksToChange = [
+            vanilla.MinecraftBlockTypes.EndStone,
+            vanilla.MinecraftBlockTypes.EndBricks,
+            vanilla.MinecraftBlockTypes.GoldBlock,
+            vanilla.MinecraftBlockTypes.EmeraldBlock,
+            vanilla.MinecraftBlockTypes.Obsidian,
+            vanilla.MinecraftBlockTypes.Bedrock
+        ];
+
+        for (const targetBlock of blocksToChange) {
+            if (targetBlock != blockToReplace) {
+                entity.runCommand(`fill ~3 ~-1 ~3 ~-3 ~-5 ~-3 ${blockToReplace} replace ${targetBlock}`);
+            }
+        }
+
+        entity.triggerEvent('ha:start_despawn');
+    }
+
+    /**
+     * Metodo auxiliar que obtiene a todos los jugadores en la respectiva dimension donde esta la entidad.
+     * @throws En caso de errores, mandara una lista vacia.
+     * @returns {mc.Player[]} Devuelve la lista de todos los jugadores obtenidos, en caso de errores, devolvera una lista vacia.
+     * @author HaJuegos - 02-09-2026
+     * @private
+     */
+    private getPlysInDime(entity: mc.Entity): mc.Player[] {
+        const plysInWorld = worldToolsSimplified.getAllPlysGlobal();
+
+        if (!plysInWorld) return [];
+
+        return plysInWorld.filter(p => p.dimension.id == entity.dimension.id);
     }
 
     /**

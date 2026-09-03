@@ -11,6 +11,15 @@
                     "weight": 1,
                     "functions": [
                         {
+                            "function": "specific_enchants",
+                            "enchants": [
+                                {
+                                    "id": "lure",
+                                    "level": [ 3, 3 ]
+                                }
+                            ]
+                        },
+                        {
                             "function": "enchant_with_levels",
                             "treasure": true,
                             "levels": 100
