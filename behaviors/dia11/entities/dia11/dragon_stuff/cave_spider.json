@@ -10,7 +10,37 @@
             "spawn_category": "monster"
         },
         "component_groups": {
+            "ha:no_damage_fall": {
+                "minecraft:damage_sensor": {
+                    "triggers": [
+                        {
+                            "on_damage": {
+                                "filters": {
+                                    "test": "has_damage",
+                                    "subject": "self",
+                                    "value": "fall"
+                                },
+                                "target": "self",
+                                "event": "ha:remove_inmune_fall"
+                            },
+                            "cause": "all",
+                            "deals_damage": "no"
+                        }
+                    ]
+                }
+            },
             "ha:spider_zombie_jockey_end": {
+                "minecraft:behavior.melee_attack": {
+                    "priority": 1,
+                    "can_spread_on_fire": true,
+                    "cooldown_time": 3,
+                    "melee_fov": 360,
+                    "min_path_time": 0.1,
+                    "max_path_time": 1,
+                    "require_complete_path": true,
+                    "reach_multiplier": 3,
+                    "track_target": true
+                },
                 "minecraft:behavior.hurt_by_target": {
                     "priority": 3,
                     "entity_types": {
@@ -38,6 +68,18 @@
                     "target_dist": 0.0,
                     "track_target": true
                 },
+                "minecraft:rideable": {
+                    "family_types": [ "baby_undead" ],
+                    "seat_count": 1,
+                    "seats": {
+                        "position": [ 0.0, 0.325, 0.0 ]
+                    }
+                },
+                "minecraft:behavior.float": {
+                    "priority": 4,
+                    "time_under_water_to_dismount_passengers": 99999,
+                    "sink_with_passengers": true
+                },
                 "minecraft:addrider": {
                     "riders": [
                         {
@@ -47,6 +89,7 @@
                     ]
                 }
             },
+
             "ha:spider_zombie_jockey": {
                 "minecraft:type_family": {
                     "family": [
@@ -384,14 +427,23 @@
             }
         },
         "events": {
+            "ha:remove_inmune_fall": {
+                "remove": {
+                    "component_groups": [
+                        "ha:no_damage_fall"
+                    ]
+                }
+            },
             "ha:from_end": {
                 "add": {
                     "component_groups": [
+                        "ha:no_damage_fall",
                         "ha:spider_zombie_jockey_end",
                         "minecraft:spider_poison_hard"
                     ]
                 }
             },
+
             "minecraft:entity_spawned": {
                 "add": {
                     "component_groups": [
