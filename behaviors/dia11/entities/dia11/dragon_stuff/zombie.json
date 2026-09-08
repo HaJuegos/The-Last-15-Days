@@ -23,6 +23,66 @@
             }
         },
         "component_groups": {
+            "ha:no_damage_fall": {
+                "minecraft:damage_sensor": {
+                    "triggers": [
+                        {
+                            "on_damage": {
+                                "filters": {
+                                    "test": "has_damage",
+                                    "subject": "self",
+                                    "value": "fall"
+                                },
+                                "target": "self",
+                                "event": "ha:remove_inmune_fall"
+                            },
+                            "cause": "all",
+                            "deals_damage": "no"
+                        }
+                    ]
+                }
+            },
+            "ha:jockey_zombie_end": {
+                "minecraft:behavior.melee_box_attack": {
+                    "priority": 4,
+                    "can_spread_on_fire": true,
+                    "cooldown_time": 3,
+                    "horizontal_reach": 1.35,
+                    "melee_fov": 360,
+                    "min_path_time": 0.1,
+                    "max_path_time": 1,
+                    "require_complete_path": true,
+                    "track_target": true
+                },
+                "minecraft:behavior.hurt_by_target": {
+                    "priority": 1,
+                    "entity_types": [
+                        {
+                            "filters": {
+                                "any_of": [
+                                    {
+                                        "test": "is_family",
+                                        "subject": "other",
+                                        "operator": "not",
+                                        "value": "breeze"
+                                    },
+                                    {
+                                        "test": "is_family",
+                                        "subject": "other",
+                                        "operator": "not",
+                                        "value": "dragon"
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                "minecraft:persistent": { },
+                "minecraft:type_family": {
+                    "family": [ "zombie_jockey", "zombie", "undead", "monster", "mob" ]
+                }
+            },
+
             "ha:zombie_sieger_leader": {
                 "minecraft:behavior.summon_entity": {
                     "priority": 2,
@@ -74,35 +134,6 @@
             "ha:axe_damage_attack": {
                 "minecraft:attack": {
                     "damage": 24
-                }
-            },
-            "ha:jockey_zombie_end": {
-                "minecraft:behavior.hurt_by_target": {
-                    "priority": 1,
-                    "entity_types": [
-                        {
-                            "filters": {
-                                "any_of": [
-                                    {
-                                        "test": "is_family",
-                                        "subject": "other",
-                                        "operator": "not",
-                                        "value": "breeze"
-                                    },
-                                    {
-                                        "test": "is_family",
-                                        "subject": "other",
-                                        "operator": "not",
-                                        "value": "dragon"
-                                    }
-                                ]
-                            }
-                        }
-                    ]
-                },
-                "minecraft:persistent": { },
-                "minecraft:type_family": {
-                    "family": [ "zombie_jockey", "zombie", "undead", "monster", "mob" ]
                 }
             },
             "ha:jockey_zombie": {
@@ -958,6 +989,26 @@
             }
         },
         "events": {
+            "ha:remove_inmune_fall": {
+                "remove": {
+                    "component_groups": [
+                        "ha:no_damage_fall"
+                    ]
+                }
+            },
+            "ha:jockey_cave_spider_end": {
+                "add": {
+                    "component_groups": [
+                        "ha:no_damage_fall",
+                        "ha:jockey_zombie_end",
+                        "minecraft:zombie_default",
+                        "minecraft:zombie_baby",
+                        "minecraft:on_foot",
+                        "minecraft:not_on_zombie_horse"
+                    ]
+                }
+            },
+
             "ha:spawn_sieger_leader": {
                 "sequence": [
                     {
@@ -986,17 +1037,6 @@
                         "trigger": "minecraft:entity_spawned"
                     }
                 ]
-            },
-            "ha:jockey_cave_spider_end": {
-                "add": {
-                    "component_groups": [
-                        "ha:jockey_zombie_end",
-                        "minecraft:zombie_default",
-                        "minecraft:zombie_baby",
-                        "minecraft:on_foot",
-                        "minecraft:not_on_zombie_horse"
-                    ]
-                }
             },
             "ha:jockey_cave_spider": {
                 "add": {

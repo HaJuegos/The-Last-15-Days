@@ -31,7 +31,18 @@
             },
 
             "ha:explode": {
-                "minecraft:damage_sensor": { },
+                "minecraft:damage_sensor": {
+                    "triggers": [
+                        {
+                            "cause": "block_explosion",
+                            "deals_damage": "no"
+                        },
+                        {
+                            "cause": "entity_explosion",
+                            "deals_damage": "no"
+                        }
+                    ]
+                },
                 "minecraft:is_pregnant": { },
                 "minecraft:is_ignited": { },
                 "minecraft:explode": {
@@ -127,6 +138,14 @@
                                 "target": "self"
                             },
                             "deals_damage": "yes"
+                        },
+                        {
+                            "cause": "block_explosion",
+                            "deals_damage": "no"
+                        },
+                        {
+                            "cause": "entity_explosion",
+                            "deals_damage": "no"
                         }
                     ]
                 },
@@ -292,6 +311,18 @@
             }
         },
         "components": {
+            "minecraft:damage_sensor": {
+                "triggers": [
+                    {
+                        "cause": "block_explosion",
+                        "deals_damage": "no"
+                    },
+                    {
+                        "cause": "entity_explosion",
+                        "deals_damage": "no"
+                    }
+                ]
+            },
             "minecraft:is_hidden_when_invisible": { },
             "minecraft:experience_reward": {
                 "on_death": "query.last_hit_by_player ? (query.is_baby ? 12 : 5) + (Math.die_roll(query.equipment_count,1,3)) : 0"
@@ -364,10 +395,18 @@
                 "priority": 1,
                 "entity_types": {
                     "filters": {
-                        "test": "is_family",
-                        "subject": "other",
-                        "operator": "not",
-                        "value": "illager"
+                        "none_of": [
+                            {
+                                "test": "is_family",
+                                "subject": "other",
+                                "value": "illager"
+                            },
+                            {
+                                "test": "is_family",
+                                "subject": "other",
+                                "value": "witch"
+                            }
+                        ]
                     }
                 }
             },

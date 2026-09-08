@@ -12,6 +12,16 @@
         },
         "component_groups": {
             "ha:from_creeper": {
+                "minecraft:behavior.melee_box_attack": {
+                    "priority": 0,
+                    "can_spread_on_fire": true,
+                    "horizontal_reach": 1.22,
+                    "cooldown_time": 2,
+                    "melee_fov": 360,
+                    "speed_multiplier": 1.15,
+                    "track_target": true,
+                    "require_complete_path": true
+                },
                 "minecraft:behavior.hurt_by_target": {
                     "priority": 1,
                     "hurt_owner": true,

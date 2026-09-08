@@ -9,65 +9,23 @@
                 "npc_name": "§gRoyerBot§r",
                 "scene_tag": "royerbot_dialogue",
                 "text": {
-                    "rawtext": [ { "translate": "dialogue.royerbot.dia0.txt" } ]
-                },
-                "buttons": [
-                    {
-                        "name": { "rawtext": [ { "translate": "dialogue.royerbot.dia0.btn1" } ] },
-                        "commands": [
-                            "/dialogue open @s @initiator[tag=!royer_dia0] royerbot_dialogue.dia0.btn1.dialogue",
-                            "/dialogue open @s @initiator[tag=royer_dia0] royerbot_dialogue.dia0.btn1.dialogue.alr"
-                        ]
-                    },
-                    {
-                        "name": { "rawtext": [ { "translate": "dialogue.royerbot.dia0.btn2" } ] },
-                        "commands": [ "/dialogue open @s @initiator royerbot_dialogue.dia0.btn2.dialogue" ]
-                    }
-                ]
-            },
-
-            // Dialogo reco
-            {
-                "npc_name": "§gRoyerBot§r",
-                "scene_tag": "royerbot_dialogue.dia0.btn1.dialogue",
-                "text": {
-                    "rawtext": [ { "translate": "dialogue.royerbot.dia0.btn1.txt" } ]
-                },
-                "on_open_commands": [
-                    "/tag @initiator add royer_dia0",
-                    "/give @initiator enchanted_golden_apple 1",
-                    "/execute as @initiator at @s run scriptevent ha:see_royerbot_counter"
-                ],
-                "buttons": [
-                    {
-                        "name": { "rawtext": [ { "translate": "dialogue.royerbot.dia0.btn2" } ] },
-                        "commands": [ "/dialogue open @s @initiator royerbot_dialogue.dia0.btn2.dialogue" ]
-                    }
-                ]
-            },
-
-            // Dialogo reco, ya
-            {
-                "npc_name": "§gRoyerBot§r",
-                "scene_tag": "royerbot_dialogue.dia0.btn1.dialogue.alr",
-                "text": {
-                    "rawtext": [ { "translate": "dialogue.royerbot.dia0.btn1.txt.alr" } ]
+                    "rawtext": [ { "translate": "dialogue.royerbot.dia11.txt" } ]
                 },
                 "buttons": [
                     {
                         "name": { "rawtext": [ { "translate": "dialogue.royerbot.dia0.btn2" } ] },
-                        "commands": [ "/dialogue open @s @initiator royerbot_dialogue.dia0.btn2.dialogue" ]
+                        "commands": [ "/dialogue open @s @initiator royerbot_dialogue.dia11.btn2.dialogue" ]
                     }
                 ]
             },
-
             // Extra dialogo
             {
                 "npc_name": "§gRoyerBot§r",
-                "scene_tag": "royerbot_dialogue.dia0.btn2.dialogue",
-                "text": {
-                    "rawtext": [ { "translate": "dialogue.royerbot.dia0.btn2.txt" } ]
-                }
+                "scene_tag": "royerbot_dialogue.dia11.btn2.dialogue",
+                "text": "",
+                "on_open_commands": [
+                    "/event entity @s ha:explode"
+                ]
             }
         ]
     }

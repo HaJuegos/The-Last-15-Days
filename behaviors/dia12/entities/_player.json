@@ -705,7 +705,7 @@
                             }
                         },
                         "cause": "all",
-                        "damage_modifier": 5,
+                        "damage_modifier": 4,
                         "deals_damage": "yes"
                     }
                 ]
