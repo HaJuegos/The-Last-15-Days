@@ -58,6 +58,29 @@ class PlyEventsManager {
                 }
             }
         });
+
+        beforeEventsSimplified.onPlaceBlock((args) => {
+            const { block, player: ply } = args;
+            const dime = block.dimension;
+
+            if (dime.id == vanilla.MinecraftDimensionTypes.TheEnd) {
+                const coords = block.location;
+                const radCenter = 0;
+                const distanceCenter = Math.hypot(coords.x, coords.z);
+                const isCenter = distanceCenter <= radCenter;
+
+                if (isCenter) {
+                    args.cancel = true;
+
+                    worldToolsSimplified.setRun(() => {
+                        if (!ply.isValid) return;
+
+                        ply.sendMessage({ rawtext: [{ translate: 'chat.system.error.noplaceblock_center_end' }] });
+                        ply.playSound('ui.error_sound');
+                    });
+                }
+            }
+        });
     }
 
     /**
