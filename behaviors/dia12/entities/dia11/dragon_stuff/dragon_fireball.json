@@ -27,7 +27,7 @@
                         "remove_on_hit": { }
                     },
                     "anchor": 2,
-                    "gravity": 0.05,
+                    "gravity": 0.25,
                     "hit_sound": "explode",
                     "power": 2.4,
                     "inertia": 1,
@@ -52,7 +52,7 @@
                         "remove_on_hit": { }
                     },
                     "anchor": 2,
-                    "gravity": 0.05,
+                    "gravity": 0.25,
                     "hit_sound": "explode",
                     "power": 2.4,
                     "inertia": 1,
@@ -77,7 +77,7 @@
                         "remove_on_hit": { }
                     },
                     "anchor": 2,
-                    "gravity": 0.05,
+                    "gravity": 0.25,
                     "hit_sound": "explode",
                     "power": 2.4,
                     "inertia": 1,
@@ -102,7 +102,7 @@
                         "remove_on_hit": { }
                     },
                     "anchor": 2,
-                    "gravity": 0.05,
+                    "gravity": 0.25,
                     "hit_sound": "explode",
                     "power": 2.4,
                     "inertia": 1,
@@ -127,7 +127,7 @@
                         "remove_on_hit": { }
                     },
                     "anchor": 2,
-                    "gravity": 0.05,
+                    "gravity": 0.25,
                     "hit_sound": "explode",
                     "power": 2.4,
                     "inertia": 1,
@@ -153,7 +153,7 @@
                         "remove_on_hit": { }
                     },
                     "anchor": 2,
-                    "gravity": 0.05,
+                    "gravity": 0.25,
                     "hit_sound": "explode",
                     "power": 2.4,
                     "inertia": 1,
@@ -178,7 +178,7 @@
                         "remove_on_hit": { }
                     },
                     "anchor": 2,
-                    "gravity": 0.05,
+                    "gravity": 0.25,
                     "hit_sound": "explode",
                     "power": 2.4,
                     "inertia": 1,
@@ -203,7 +203,7 @@
                         "remove_on_hit": { }
                     },
                     "anchor": 2,
-                    "gravity": 0.05,
+                    "gravity": 0.25,
                     "hit_sound": "explode",
                     "power": 2.4,
                     "inertia": 1,
@@ -228,7 +228,7 @@
                         "remove_on_hit": { }
                     },
                     "anchor": 2,
-                    "gravity": 0.05,
+                    "gravity": 0.25,
                     "hit_sound": "explode",
                     "power": 2.4,
                     "inertia": 1,
@@ -253,7 +253,7 @@
                         "remove_on_hit": { }
                     },
                     "anchor": 2,
-                    "gravity": 0.05,
+                    "gravity": 0.25,
                     "hit_sound": "explode",
                     "power": 2.4,
                     "inertia": 1,
