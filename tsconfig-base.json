@@ -2,10 +2,11 @@
     "compilerOptions": {
         "target": "ES2020",
         "module": "ES2020",
-        "moduleResolution": "node",
-        "baseUrl": ".",
+        "moduleResolution": "bundler",
+        "noEmit": true,
         "paths": {
-            "@minecraft/*": [ "node_modules/@minecraft/*" ]
+            "@minecraft/*": [ "./node_modules/@minecraft/*" ],
+            "simplified-mojang-api/*": [ "./node_modules/simplified-mojang-api/*" ]
         },
         "lib": [
             "ES2020",
@@ -20,9 +21,10 @@
         "allowJs": true,
         "checkJs": true,
         "noImplicitAny": true,
-        "noResolve": false,
-        "traceResolution": false,
-        "sourceMap": false
+        "sourceMap": false,
+        "types": [
+            "node"
+        ]
     },
     "exclude": [
         "node_modules",
