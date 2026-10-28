@@ -4,6 +4,13 @@ Todos los cambios importantes de este proyecto se documentarán en este archivo.
 
 El formato se basa en [Cómo llevar un registro de cambios](https://keepachangelog.com/en/1.0.0/), y este proyecto sigue las normas de [Versión semántica](https://semver.org/spec/v2.0.0.html).
 
+## [0.0.13-beta - #2 Cambio] - 2026-10-27
+
+### Lista de Cambios
+
+- Hacia falta la version nueva de MC en los texts files.
+- Habia un error en el package.
+
 ## [0.0.13-beta - #1 Cambio] - 2026-10-27
 
 ### Lista de Cambios

@@ -12,7 +12,7 @@
     },
     "license": "ISC",
     "author": "HaJuegos",
-    "type": "commonjs",
+    "type": "module",
     "main": "main.ts",
     "devDependencies": {
         "@minecraft/debug-utilities": "1.0.0-beta.1.26.60-stable",
