@@ -1,4 +1,5 @@
 manifest.json
+manifest.ts
 
-behaviors/scripts/
-behaviors/*/scripts/
+behaviors/.build/
+behaviors/*/.build/
