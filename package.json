@@ -23,14 +23,15 @@
         "@minecraft/server-net": "1.0.0-beta.1.26.60-stable",
         "@minecraft/server-ui": "2.4.0-beta.1.26.60-stable",
         "@minecraft/vanilla-data": "1.26.60",
-        "@types/adm-zip": "^0.6.0",
 
+        "simplified-mojang-api": "0.0.70",
+
+        "@types/adm-zip": "^0.6.0",
         "@types/node": "^26.6.5",
         "adm-zip": "^0.6.1",
         "chokidar": "^6.0.0",
         "esbuild": "^0.28.2",
         "nodemon": "^3.1.14",
-        "simplified-mojang-api": "0.0.69",
         "tsx": "^4.23.15",
         "typescript": "^7.0.2"
     },

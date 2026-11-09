@@ -17,19 +17,6 @@ export class TL15DBaseManager {
     protected static banState: boolean = true;
 
     /**
-     * Todos los items permitidos para el fast items, tanto por defecto, como dinamicamente.
-     * @type {(string[] | vanilla.MinecraftItemTypes[])}
-     * @author HaJuegos - 08-07-2026
-     * @protected
-     */
-    protected static listOfFastItems: string[] | vanilla.MinecraftItemTypes[] = [
-        vanilla.MinecraftItemTypes.TotemOfUndying,
-        vanilla.MinecraftItemTypes.Shield,
-        'arrow',
-        'firework'
-    ];
-
-    /**
    * Los rangos personalizables para usuarios que compraron un Ko-Fi en mi pagina :3
    * @type {({ namePly: string | string[]; rank: string; colorCode: string; }[])}
    * @author HaJuegos - 19-03-2026
