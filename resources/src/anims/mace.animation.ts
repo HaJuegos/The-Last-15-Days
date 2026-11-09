@@ -1,0 +1,27 @@
+import { createRPAnimation } from "simplified-mojang-jsons";
+
+export const MaceAnimations = createRPAnimation({
+    animations: [
+        {
+            idAnimation: "rp.bt.mace_third_person",
+            loop: true,
+            bones: {
+                mace: {
+                    rotation: [95, 0, 0],
+                    position: [0, 13, -5]
+                }
+            }
+        },
+        {
+            idAnimation: "rp.bt.mace_first_person",
+            loop: true,
+            bones: {
+                mace: {
+                    rotation: [120, 60, -15],
+                    position: [9, 6, 18],
+                    scale: 1.6
+                }
+            }
+        }
+    ]
+});

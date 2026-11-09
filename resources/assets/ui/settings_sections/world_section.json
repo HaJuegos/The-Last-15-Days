@@ -1,0 +1,348 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+	"namespace": "world_section",
+
+	"game_section": {
+		"modifications": [
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "new_edit_world_opt_in_panel"
+			},
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "new_edit_world_opt_in_divider"
+			},
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "unlock_template_options_panel"
+			},
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "option_info_label"
+			},
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "hardcore_info_label"
+			},
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "world_settings_label"
+			},
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "option_text_edit_0"
+			},
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "project_section_divider_1"
+			},
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "project_header_label"
+			},
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "project_section_divider_2"
+			},
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "project_spacer"
+			},
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "option_text_edit_1"
+			},
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "export_settings_section_divider_1"
+			},
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "export_settings_header_label"
+			},
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "export_settings_header_description"
+			},
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "export_settings_section_divider_2"
+			},
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "export_settings_spacer"
+			},
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "is_hardcore_toggle"
+			},
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "world_preferences_label"
+			},
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "starting_map_toggle"
+			},
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "bonus_chest_toggle"
+			},
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "option_dropdown_permissions"
+			},
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "option_dropdown_3"
+			},
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "level_seed_selector_edu"
+			},
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "level_seed_selector"
+			},
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "level_seed_selector_trial"
+			},
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "world_options_label"
+			},
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "pvp_toggle"
+			},
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "show_coordinates_toggle"
+			},
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "locator_bar_toggle"
+			},
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "show_days_played_toggle"
+			},
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "fire_spreads_toggle"
+			},
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "recipes_unlock_toggle"
+			},
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "tnt_explodes_toggle"
+			},
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "respawn_blocks_explode_toggle"
+			},
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "mob_loot_toggle"
+			},
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "natural_regeneration_toggle"
+			},
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "tile_drops_toggle"
+			},
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "player_sleep_toggle"
+			},
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "player_sleep_percentage_slider"
+			},
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "immediate_respawn_toggle"
+			},
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "respawn_radius"
+			},
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "experimental_toggles_label"
+			},
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "experimental_toggles_label_info"
+			},
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "experimental_toggles"
+			},
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "world_cheats_label"
+			},
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "allow_cheats_toggle"
+			},
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "education_toggle"
+			},
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "always_day_toggle"
+			},
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "daylight_cycle_toggle"
+			},
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "keep_inventory_toggle"
+			},
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "mob_spawn_toggle"
+			},
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "mob_griefing_toggle"
+			},
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "entities_drop_loot_toggle"
+			},
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "weather_cycle_toggle"
+			},
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "command_blocks_enabled_toggle"
+			},
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "random_tick_speed"
+			},
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "world_management_label"
+			},
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "convert_to_infinite_panel"
+			},
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "delete_button"
+			},
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "button_panel"
+			},
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "export_template_panel"
+			},
+			{
+				"array_name": "controls",
+				"operation": "remove",
+				"control_name": "clear_player_data_panel"
+			},
+			{
+				"array_name": "controls",
+				"operation": "insert_back",
+				"value": [
+					{
+						"credits_spacer_top": {
+							"type": "panel",
+							"size": [ "100%", 10 ]
+						}
+					},
+					{
+						"credits_panel@custom_credits.credits_panel": { }
+					},
+					{
+						"credits_spacer_bottom": {
+							"type": "panel",
+							"size": [ "100%", 10 ]
+						}
+					}
+				]
+			}
+		]
+	}
+}
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */

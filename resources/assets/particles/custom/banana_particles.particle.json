@@ -1,0 +1,94 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+	"format_version": "1.10.0",
+	"particle_effect": {
+		"description": {
+			"identifier": "ha:banana_confetti",
+			"basic_render_parameters": {
+				"material": "particles_alpha",
+				"texture": "textures/particle/banana_conffetti"
+			}
+		},
+		"components": {
+			"minecraft:emitter_rate_steady": {
+				"spawn_rate": 100,
+				"max_particles": 120
+			},
+			"minecraft:emitter_lifetime_once": {
+				"active_time": 1
+			},
+			"minecraft:emitter_shape_sphere": {
+				"offset": [
+					0,
+					0.8,
+					0
+				],
+				"radius": 0.5,
+				"surface_only": true,
+				"direction": [
+					"Math.random(-0.1, 0.1)",
+					"Math.random(0, 0.55)",
+					"Math.random(-0.1, 0.1)"
+				]
+			},
+			"minecraft:particle_lifetime_expression": {
+				"max_lifetime": "math.random(1, 2)"
+			},
+			"minecraft:particle_initial_spin": {
+				"rotation": "math.random(-100, 100)",
+				"rotation_rate": "math.random(215, 420)"
+			},
+			"minecraft:particle_initial_speed": 12,
+			"minecraft:particle_motion_dynamic": {
+				"linear_acceleration": [
+					0,
+					-8,
+					"math.random(0, 1.5)"
+				],
+				"linear_drag_coefficient": 2.4,
+				"rotation_acceleration": "math.random(15, 210)",
+				"rotation_drag_coefficient": "math.random(-0.5, 2)"
+			},
+			"minecraft:particle_appearance_billboard": {
+				"size": [
+					0.16,
+					0.06
+				],
+				"facing_camera_mode": "rotate_xyz",
+				"uv": {
+					"texture_width": 6,
+					"texture_height": 8,
+					"flipbook": {
+						"base_UV": [
+							0,
+							0
+						],
+						"size_UV": [
+							6,
+							2
+						],
+						"step_UV": [
+							0,
+							2
+						],
+						"frames_per_second": 7,
+						"max_frame": 7,
+						"loop": true
+					}
+				}
+			},
+			"minecraft:particle_motion_collision": {
+				"collision_radius": 0.2
+			},
+			"minecraft:particle_appearance_tinting": {
+				"color": [
+					1,
+					1,
+					1,
+					1
+				]
+			}
+		}
+	}
+}

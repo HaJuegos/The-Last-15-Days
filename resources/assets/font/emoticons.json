@@ -1,0 +1,14 @@
+[
+    {
+        "name": "hardcore_heart", // 
+        "code": "0xE110"
+    },
+    {
+        "name": "hardcore_heart_half", // 
+        "code": "0xE111"
+    },
+    {
+        "name": "soul_link", // 
+        "code": "0xE112"
+    }
+]

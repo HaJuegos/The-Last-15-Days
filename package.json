@@ -37,9 +37,9 @@
     "allowScripts": {
         "esbuild@0.28.1": true
     },
-    "packageManager": "pnpm@12.15.0",
+    "packageManager": "pnpm@12.18.0",
     "dependencies": {
         "@minecraft/vanilla-data": "1.26.60",
-        "simplified-mojang-jsons": "0.0.9"
+        "simplified-mojang-jsons": "0.0.21"
     }
 }

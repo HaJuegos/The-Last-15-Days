@@ -1,6 +1,12 @@
 import { BPEntityComponents, BPEntityTemplates, EntityFilters } from "simplified-mojang-jsons";
 
 export const NpcChanges = BPEntityTemplates.NpcTemplate({
+    components: {
+        "minecraft:nameable": new BPEntityComponents.SetNameable({
+            alwaysShow: true,
+            allowNameTagRenaming: false
+        })
+    },
     add: {
         componentsGroups: {
             "ha:set_tick": [

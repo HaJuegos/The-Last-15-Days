@@ -1,0 +1,305 @@
+/* Creado o modificado por Ha Juegos. Archivo de uso libre, cualquier modificacion o edicion del mismo, debe ser acreditado. Gracias, cualquier informacion en: https://github.com/HaJuegos/The-Last-15-Days. */
+/* Created or modified by Ha Juegos. Free to use file, any modification or editing of it must be credited. Thank you, any information at: https://github.com/HaJuegos/The-Last-15-Days. */
+{
+    "namespace": "fast_items_alert",
+
+    "toast_slide_in": {
+        "anim_type": "offset",
+        "easing": "in_cubic",
+        "from": [ 220, 5 ],
+        "to": [ -5, 5 ],
+        "duration": 0.45,
+        "next": "@fast_items_alert.toast_slide_hold"
+    },
+    "toast_slide_hold": {
+        "anim_type": "offset",
+        "from": [ -5, 5 ],
+        "to": [ -5, 5 ],
+        "duration": 8.0,
+        "next": "@fast_items_alert.toast_slide_out"
+    },
+    "toast_slide_out": {
+        "anim_type": "offset",
+        "easing": "in_cubic",
+        "from": [ -5, 5 ],
+        "to": [ 400, 5 ],
+        "duration": 0.45,
+        "next": "@fast_items_alert.toast_stay_hidden"
+    },
+    "toast_stay_hidden": {
+        "anim_type": "offset",
+        "from": [ 400, 5 ],
+        "to": [ 2000, 5 ],
+        "duration": 99999.0
+    },
+
+    "sub1_visible": {
+        "anim_type": "alpha",
+        "from": 1.0,
+        "to": 1.0,
+        "duration": 6.0,
+        "next": "@fast_items_alert.sub1_fade_out"
+    },
+    "sub1_fade_out": {
+        "anim_type": "alpha",
+        "from": 1.0,
+        "to": 0.0,
+        "duration": 0.5,
+        "next": "@fast_items_alert.sub1_hidden"
+    },
+    "sub1_hidden": {
+        "anim_type": "alpha",
+        "from": 0.0,
+        "to": 0.0,
+        "duration": 99999.0
+    },
+
+    "sub2_wait": {
+        "anim_type": "alpha",
+        "from": 0.0,
+        "to": 0.0,
+        "duration": 6.5,
+        "next": "@fast_items_alert.sub2_fade_in"
+    },
+    "sub2_fade_in": {
+        "anim_type": "alpha",
+        "from": 0.0,
+        "to": 1.0,
+        "duration": 0.5,
+        "next": "@fast_items_alert.sub2_visible"
+    },
+    "sub2_visible": {
+        "anim_type": "alpha",
+        "from": 1.0,
+        "to": 1.0,
+        "duration": 99999.0
+    },
+
+    "icon1_show": {
+        "anim_type": "alpha",
+        "from": 1.0,
+        "to": 1.0,
+        "duration": 1.5,
+        "next": "@fast_items_alert.icon1_fade_out"
+    },
+    "icon1_fade_out": {
+        "anim_type": "alpha",
+        "from": 1.0,
+        "to": 0.0,
+        "duration": 0.5,
+        "next": "@fast_items_alert.icon1_hide"
+    },
+    "icon1_hide": {
+        "anim_type": "alpha",
+        "from": 0.0,
+        "to": 0.0,
+        "duration": 1.5,
+        "next": "@fast_items_alert.icon1_fade_in"
+    },
+    "icon1_fade_in": {
+        "anim_type": "alpha",
+        "from": 0.0,
+        "to": 1.0,
+        "duration": 0.5,
+        "next": "@fast_items_alert.icon1_show"
+    },
+
+    "icon2_hide": {
+        "anim_type": "alpha",
+        "from": 0.0,
+        "to": 0.0,
+        "duration": 1.5,
+
+        "next": "@fast_items_alert.icon2_fade_in"
+    },
+    "icon2_fade_in": {
+        "anim_type": "alpha",
+        "from": 0.0,
+        "to": 1.0,
+        "duration": 0.5,
+        "next": "@fast_items_alert.icon2_show"
+    },
+    "icon2_show": {
+        "anim_type": "alpha",
+        "from": 1.0,
+        "to": 1.0,
+        "duration": 1.5,
+        "next": "@fast_items_alert.icon2_fade_out"
+    },
+    "icon2_fade_out": {
+        "anim_type": "alpha",
+        "from": 1.0,
+        "to": 0.0,
+        "duration": 0.5,
+        "next": "@fast_items_alert.icon2_hide"
+    },
+
+    "toast_bg": {
+        "type": "image",
+        "texture": "textures/ui/fast_alert/popup_display",
+        "size": [ "100%", "100%" ],
+        "nineslice_size": 4,
+        "layer": 1
+    },
+
+    "icons_panel": {
+        "type": "panel",
+        "size": [ 20, 20 ],
+        "anchor_from": "center",
+        "anchor_to": "center",
+        "controls": [
+            {
+                "totem_icon": {
+                    "type": "image",
+                    "texture": "textures/ui/fast_alert/totem_item",
+                    "size": [ "100%", "100%" ],
+                    "anims": [ "@fast_items_alert.icon1_show" ]
+                }
+            },
+            {
+                "shield_icon": {
+                    "type": "image",
+                    "texture": "textures/ui/fast_alert/shield_item",
+                    "size": [ "100%", "100%" ],
+                    "alpha": 0.0,
+                    "anims": [ "@fast_items_alert.icon2_hide" ]
+                }
+            }
+        ]
+    },
+
+    "text_panel": {
+        "type": "stack_panel",
+        "orientation": "vertical",
+        "size": [ "100%", "100%c" ],
+        "anchor_from": "center_left",
+        "anchor_to": "center_left",
+        "controls": [
+            {
+                "title_wrapper": {
+                    "type": "panel",
+                    "size": [ "100%", 16 ],
+                    "controls": [
+                        {
+                            "title": {
+                                "type": "label",
+                                "text": "ui.fast_items.title",
+                                "font_size": "small",
+                                "font_scale_factor": 1.7,
+                                "shadow": true,
+                                "size": [ "100%", "default" ],
+                                "anchor_from": "top_left",
+                                "anchor_to": "top_left",
+                                "offset": [ 2, 2.45 ]
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "spacer": {
+                    "type": "panel",
+                    "size": [ "100%", 1 ]
+                }
+            },
+            {
+                "subtitle_wrapper": {
+                    "type": "panel",
+                    "size": [ "100%", 10 ],
+                    "controls": [
+                        {
+                            "sub1": {
+                                "type": "label",
+                                "text": "ui.fast_items.sub1",
+                                "font_size": "small",
+                                "shadow": false,
+                                "size": [ "100%", "default" ],
+                                "anchor_from": "top_left",
+                                "anchor_to": "top_left",
+                                "anims": [ "@fast_items_alert.sub1_visible" ],
+                                "offset": [ 2, 0 ]
+                            }
+                        },
+                        {
+                            "sub2": {
+                                "type": "label",
+                                "text": "ui.fast_items.sub2",
+                                "font_size": "small",
+                                "shadow": false,
+                                "alpha": 0.0,
+                                "size": [ "100%", "default" ],
+                                "anchor_from": "top_left",
+                                "anchor_to": "top_left",
+                                "anims": [ "@fast_items_alert.sub2_wait" ],
+                                "offset": [ 2, 0 ]
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+
+    "content_stack": {
+        "type": "stack_panel",
+        "orientation": "horizontal",
+        "size": [ "100%", "100%" ],
+        "anchor_from": "center",
+        "anchor_to": "center",
+        "layer": 2,
+        "controls": [
+            {
+                "padding_left": {
+                    "type": "panel",
+                    "size": [ 8, "100%" ]
+                }
+            },
+            {
+                "icon_container": {
+                    "type": "panel",
+                    "size": [ 20, "100%" ],
+                    "controls": [
+                        { "icons@fast_items_alert.icons_panel": { } }
+                    ]
+                }
+            },
+            {
+                "padding_middle": {
+                    "type": "panel",
+                    "size": [ 4, "100%" ]
+                }
+            },
+            {
+                "text_container": {
+                    "type": "panel",
+                    "size": [ "fill", "100%" ],
+                    "controls": [
+                        { "text@fast_items_alert.text_panel": { } }
+                    ]
+                }
+            },
+            {
+                "padding_right": {
+                    "type": "panel",
+                    "size": [ 8, "100%" ]
+                }
+            }
+        ]
+    },
+
+    "toast_panel": {
+        "type": "panel",
+        "size": [ 200, 37 ],
+        "anchor_from": "top_right",
+        "anchor_to": "top_right",
+        "offset": [ 220, 10 ],
+        "layer": 100,
+        "anims": [
+            "@fast_items_alert.toast_slide_in"
+        ],
+        "controls": [
+            { "bg@fast_items_alert.toast_bg": { } },
+            { "content@fast_items_alert.content_stack": { } }
+        ]
+    }
+}
