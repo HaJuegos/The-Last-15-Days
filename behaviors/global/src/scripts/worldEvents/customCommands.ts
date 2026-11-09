@@ -127,7 +127,7 @@ class CustomCmdsEvents extends TL15DBaseManager {
                     lockMethod: mc.ItemLockMode.none,
                     itemsSelection: {
                         allSlots: true,
-                        whitelistItems: ['ha:void_item']
+                        blockedItems: ['ha:void_item']
                     }
                 });
             },
@@ -199,61 +199,6 @@ class CustomCmdsEvents extends TL15DBaseManager {
 
                     sourcePly.playSound('random.screenshot');
                     sourcePly.setDynamicProperty('ha:hitboxes_state', newState);
-                });
-            }
-        },
-        // Comando de fastitems
-        {
-            prefixCmd: 'ha:fastitems',
-            description: 'ui.custom_command.desc.change_fastitems',
-            permsLevel: mc.CommandPermissionLevel.GameDirectors,
-            cheatsEnabled: true,
-            customEnums: {
-                'ha:enum_fastitems': ['add', 'replace']
-            },
-            paramsCmd: [
-                { name: 'method', enumName: 'ha:enum_fastitems', type: mc.CustomCommandParamType.Enum },
-                { name: 'item1', type: mc.CustomCommandParamType.ItemType }
-            ],
-            optionalParamsCmd: [
-                { name: 'item2', type: mc.CustomCommandParamType.ItemType },
-                { name: 'item3', type: mc.CustomCommandParamType.ItemType },
-                { name: 'item4', type: mc.CustomCommandParamType.ItemType },
-                { name: 'item5', type: mc.CustomCommandParamType.ItemType },
-                { name: 'item6', type: mc.CustomCommandParamType.ItemType },
-                { name: 'item7', type: mc.CustomCommandParamType.ItemType }
-            ],
-            onRunCmd: (sourcePly, method: 'add' | 'replace', ...items: (mc.ItemType | undefined)[]) => {
-                worldToolsSimplified.setRun(() => {
-                    const mapItems = items.filter(i => i != undefined).map(i => i!.id);
-                    const listOfItemsLocal = mc.world.getDynamicProperty('ha:fastitems_list') as string | undefined;
-
-                    let currentList: string[] = [];
-
-                    if (listOfItemsLocal) {
-                        try {
-                            currentList = JSON.parse(listOfItemsLocal);
-                        } catch (e) {
-                            currentList = [...TL15DBaseManager.listOfFastItems];
-                        }
-                    } else {
-                        currentList = [...TL15DBaseManager.listOfFastItems];
-                    }
-
-                    let newList: string[] = [];
-
-                    if (method == 'add') {
-                        newList = [... new Set([...currentList, ...mapItems])];
-                    } else if (method == 'replace') {
-                        newList = [... new Set([...mapItems])];
-                    }
-
-                    TL15DBaseManager.listOfFastItems = newList;
-
-                    mc.world.setDynamicProperty('ha:fastitems_list', JSON.stringify(newList));
-
-                    sourcePly.sendMessage({ rawtext: [{ translate: 'chat.system.fastitems_system.items_changed' }] });
-                    sourcePly.playSound('random.levelup');
                 });
             }
         },

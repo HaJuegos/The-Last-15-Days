@@ -588,12 +588,11 @@ class PlyEventsManager extends TL15DBaseManager {
     /**
      * Metodo que maneja el sistema del uso de totems y el fast items.
      * @returns {void}
-     * @author HaJuegos - 19-03-2026
+     * @author HaJuegos - 09-11-2026
+     * @version 2 - Eliminacion del fastitems.
      * @private
      */
     private totemSystem(): void {
-        customEventsManager.fastItemsSystem(() => TL15DBaseManager.listOfFastItems);
-
         customEventsManager.onEntityUseTotem((ply) => {
             if (!(ply instanceof mc.Player)) return;
 

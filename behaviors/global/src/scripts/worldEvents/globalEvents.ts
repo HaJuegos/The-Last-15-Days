@@ -23,7 +23,6 @@ class GlobalWorldEventsManager extends TL15DBaseManager {
 
         this.checkBanState();
         this.checkHitboxesState();
-        this.checkListOfFasItems();
         this.staticEvents();
     }
 
@@ -61,38 +60,6 @@ class GlobalWorldEventsManager extends TL15DBaseManager {
             } else {
                 debugToolsSimplified.stopHitboxes(ply);
             }
-        });
-    }
-
-    /**
-     * Metodo principal que calcula dinamicamente la lista de items rapidos en el mundo.
-     * @returns {void}
-     * @author HaJuegos - 08-07-2026
-     * @private
-     */
-    private checkListOfFasItems(): void {
-        afterEventsSimplified.onWorldReady(() => {
-            const listOfItemsLocal = mc.world.getDynamicProperty('ha:fastitems_list') as string | undefined;
-
-            if (listOfItemsLocal) {
-                try {
-                    TL15DBaseManager.listOfFastItems = JSON.parse(listOfItemsLocal);
-                } catch (e) { }
-            }
-
-            customEventsManager.fastItemsSystem(() => TL15DBaseManager.listOfFastItems);
-        });
-
-        afterEventsSimplified.onPlayerSpawns(() => {
-            const listOfItemsLocal = mc.world.getDynamicProperty('ha:fastitems_list') as string | undefined;
-
-            if (listOfItemsLocal) {
-                try {
-                    TL15DBaseManager.listOfFastItems = JSON.parse(listOfItemsLocal);
-                } catch (e) { }
-            }
-
-            customEventsManager.fastItemsSystem(() => TL15DBaseManager.listOfFastItems);
         });
     }
 

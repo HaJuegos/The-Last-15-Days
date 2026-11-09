@@ -194,7 +194,7 @@ export const TextsDef = new MetadataGeneratorManager([
         texts: {
             spanish: {
                 "ui.watermak.title": "§4The Last 15 Days",
-                "ui.watermak.version": "§7v0.0.12-beta",
+                "ui.watermak.version": "§7v0.0.13-beta",
 
                 "ui.watermak.telegram.title": "§e¡Únete al Telegram de la comunidad de HaJuegos!",
                 "ui.watermak.telegram.url": "https://t.me/hacattoshub",
@@ -284,7 +284,7 @@ export const TextsDef = new MetadataGeneratorManager([
             },
             english: {
                 "ui.watermak.title": "§4The Last 15 Days",
-                "ui.watermak.version": "§7v0.0.12-beta",
+                "ui.watermak.version": "§7v0.0.13-beta",
 
                 "ui.watermak.telegram.title": "§eJoin the HaJuegos community on Telegram!",
                 "ui.watermak.telegram.url": "https://t.me/hacattoshub",
