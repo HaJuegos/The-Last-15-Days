@@ -127,7 +127,7 @@ class CustomCmdsEvents extends TL15DBaseManager {
                     lockMethod: mc.ItemLockMode.none,
                     itemsSelection: {
                         allSlots: true,
-                        whitelistItems: ['ha:void_item']
+                        allowedItems: ['ha:void_item']
                     }
                 });
             },

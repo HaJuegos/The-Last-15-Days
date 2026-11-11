@@ -20,7 +20,8 @@ export const EvocationIllagerClientEntity = RPClientEntityTemplates.EvocationIll
         },
         animations: {
             glowing_scale: "animation.entity_glow.glowing_scale",
-            ranged_attack: "animation.evoker.ranged_attack"
+            ranged_attack: "animation.evoker.ranged_attack",
+            holding: "animation.humanoid.holding"
         },
         renderControllers: [
             {

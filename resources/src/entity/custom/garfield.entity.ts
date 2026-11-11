@@ -1,4 +1,4 @@
-import {createRPEntityClient, MoLang} from "simplified-mojang-jsons";
+import { createRPEntityClient, MoLang } from "simplified-mojang-jsons";
 
 export const GarfieldClientEntity = createRPEntityClient({
     idEntity: "ha:garfield",
@@ -7,8 +7,8 @@ export const GarfieldClientEntity = createRPEntityClient({
             default: "cat"
         },
         textures: {
-            default: "textures/entity/cat/garfield",
-            angry: "textures/entity/cat/supremacy_garfield"
+            default: "textures/entity/cat/garfield/normal",
+            angry: "textures/entity/cat/garfield/angry"
         },
         geometry: {
             default: "geometry.cat_garfield",

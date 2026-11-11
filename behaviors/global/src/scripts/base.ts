@@ -68,7 +68,7 @@ export class TL15DBaseManager {
     * @protected
     * @author HaJuegos - 12-03-2026
     */
-    protected initialGameRules: Partial<Record<mc.GameRule, boolean | number>> = {
+    protected initialGameRules: Partial<Record<mc.GameRule, boolean | number | string>> = {
         [mc.GameRule.CommandBlockOutput]: false,
         [mc.GameRule.DoDayLightCycle]: true,
         [mc.GameRule.DoImmediateRespawn]: true,
@@ -84,7 +84,8 @@ export class TL15DBaseManager {
         [mc.GameRule.ShowDaysPlayed]: true,
         [mc.GameRule.ShowRecipeMessages]: true,
         [mc.GameRule.ShowTags]: true,
-        [mc.GameRule.SpawnRadius]: 2
+        [mc.GameRule.SpawnRadius]: 2,
+        [mc.GameRule.PlayerWaypoints]: mc.PlayerWaypointsMode.Everyone
     };
 
     /**

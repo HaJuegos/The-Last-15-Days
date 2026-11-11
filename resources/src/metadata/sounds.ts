@@ -1360,7 +1360,7 @@ export const SoundsDefs = new MetadataGeneratorManager([
         maxDistance: null,
         subtitle: {
             spanish: {
-                "ui.music_start.garfield_boss": "§eLord Garfield has appeared§r"
+                "ui.music_start.garfield_boss": "§eLord Garfield ha aparecido§r"
             },
             english: {
                 "ui.music_start.garfield_boss": "§eLord Garfield has appeared§r"
@@ -1496,10 +1496,10 @@ export const SoundsDefs = new MetadataGeneratorManager([
         maxDistance: 50,
         subtitle: {
             spanish: {
-                "ui.subtitle_custom.raid_reveal": "§4Elige a tu víctima§r"
+                "ui.subtitle_custom.raid_reveal": "Una raid fue revelada"
             },
             english: {
-                "ui.subtitle_custom.raid_reveal": "§4Pick your victim§r"
+                "ui.subtitle_custom.raid_reveal": "A raid was revealed"
             }
         },
         sounds: [

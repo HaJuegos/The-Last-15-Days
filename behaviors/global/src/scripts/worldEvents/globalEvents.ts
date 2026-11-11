@@ -112,29 +112,6 @@ class GlobalWorldEventsManager extends TL15DBaseManager {
             if (!sourceEntity.isValid) return;
 
             switch (id) {
-                case 'ha:spawn_fake': {
-                    for (let i = 0; i < 2; i++) {
-                        const ply = await fakePlysSimplified.createFakePly(`Test${i}`, sourceEntity.dimension, mc.GameMode.Survival);
-
-                        if (!ply) continue;
-
-                        const armorInv = ply.getComponent(mc.EntityComponentTypes.Equippable);
-
-                        if (!armorInv) continue;
-
-                        const items: Map<mc.EquipmentSlot, mc.ItemStack> = new Map([
-                            [mc.EquipmentSlot.Mainhand, new mc.ItemStack('ha:infernal_crown', 1)],
-                            [mc.EquipmentSlot.Head, new mc.ItemStack('ha:cautious_helmet', 1)],
-                            [mc.EquipmentSlot.Chest, new mc.ItemStack('ha:cautious_chestplate', 1)],
-                            [mc.EquipmentSlot.Legs, new mc.ItemStack('ha:cautious_leggings', 1)],
-                            [mc.EquipmentSlot.Feet, new mc.ItemStack('ha:cautious_boots', 1)]
-                        ]);
-
-                        items.forEach((item, slot) => {
-                            armorInv.setEquipment(slot, item);
-                        });
-                    }
-                } break;
                 case 'ha:final_addon': {
                     if (!(sourceEntity instanceof mc.Player)) return;
                     if (sourceEntity.hasTag('finalMsg')) return;

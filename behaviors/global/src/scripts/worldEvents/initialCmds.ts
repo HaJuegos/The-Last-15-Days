@@ -27,7 +27,7 @@ class InitialWorldEventsManager extends TL15DBaseManager {
      * @private
      */
     private initEvents(): void {
-        afterEventsSimplified.onWorldReady((args) => {
+        afterEventsSimplified.onWorldReady(() => {
             Object.entries(this.initialGameRules).forEach(([rule, value]) => {
                 // @ts-ignore no acepta string en este aspecto xd
                 mc.world.gameRules[rule] = value;

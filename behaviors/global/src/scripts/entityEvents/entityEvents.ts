@@ -1,7 +1,5 @@
 import * as mc from "@minecraft/server";
 import * as vanilla from "@minecraft/vanilla-data";
-import { json } from "node:stream/consumers";
-import { after, before } from "node:test";
 
 import { afterEventsSimplified, beforeEventsSimplified, worldToolsSimplified } from "simplified-mojang-api";
 
@@ -19,19 +17,6 @@ class EntityEventsManager {
         this.bellRaidGlowing();
         this.staticEvents();
         this.inmunePlyGhost();
-
-        this.test();
-    }
-
-    private test(): void {
-        afterEventsSimplified.getEntityEvents((args) => {
-            const { entity } = args;
-            const events = args.getModifiers();
-
-            if (entity.typeId == vanilla.MinecraftEntityTypes.Bogged) {
-                console.log(JSON.stringify(events));
-            }
-        });
     }
 
     /**
@@ -83,7 +68,7 @@ class EntityEventsManager {
 
                 if (!canInteract) return;
 
-                const cooldownBell = 24;
+                const cooldownBell = 10;
                 const lastUse = ply.getDynamicProperty('ha:cooldown_bell') as number ?? 0;
                 const elapsed = (Date.now() - lastUse) / 1000;
 

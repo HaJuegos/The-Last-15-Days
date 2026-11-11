@@ -1,0 +1,7 @@
+{
+	"format_version": "1.16.100",
+	"minecraft:texture_set": {
+		"color": "tame_baby",
+		"metalness_emissive_roughness": "tame_baby_mer"
+	}
+}

@@ -363,11 +363,35 @@ class PlyEventsManager extends TL15DBaseManager {
                 location: coords,
                 targetPlys: ply,
                 visible: true,
-                iconTexture: {
-                    path: 'textures/ui/custom/royerbot_locator',
-                    iconHeight: 1,
-                    iconWidth: 1
-                }
+                iconTextures: [
+                    {
+                        minDistance: 0,
+                        maxDistance: 20,
+                        setTexture: {
+                            path: 'textures/ui/custom/royerbot_locator/1',
+                            iconHeight: 0.95,
+                            iconWidth: 0.95
+                        }
+                    },
+                    {
+                        minDistance: 21,
+                        maxDistance: 40,
+                        setTexture: {
+                            path: 'textures/ui/custom/royerbot_locator/2',
+                            iconHeight: 0.9,
+                            iconWidth: 0.9
+                        }
+                    },
+                    {
+                        minDistance: 41,
+                        maxDistance: 9999,
+                        setTexture: {
+                            path: 'textures/ui/custom/royerbot_locator/3',
+                            iconHeight: 0.85,
+                            iconWidth: 0.85
+                        }
+                    }
+                ]
             });
 
             if (!finalPoint) return;

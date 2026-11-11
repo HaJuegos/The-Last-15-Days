@@ -9,6 +9,9 @@ export const BackroomsCustomDime = createBPDimension({
         }),
         new BPDimensionComponents.SetGeneration({
             generatorType: "void"
+        }),
+        new BPDimensionComponents.SetDefaultBiome({
+            biome: "ha:backrooms_biome"
         })
     ]
 });

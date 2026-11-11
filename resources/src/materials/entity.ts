@@ -6,27 +6,19 @@ export const NewEntityMaterials = createRPEntityMaterial({
         {
             idMaterial: "raid_glow",
             idMaterialReference: "entity_alphatest",
-            depthFunc: "Always",
             "+defines": [
                 "USE_COLOR_MASK"
             ],
             "+states": [
                 "DisableCulling",
                 "DisableDepthWrite"
-            ]
+            ],
+            depthFunc: "Always"
         },
         {
             idMaterial: "raid_base",
             idMaterialReference: "entity_alphatest",
-            depthFunc: "Equal",
-            blendSrc: "SourceAlpha",
-            blendDst: "OneMinusSrcAlpha",
-            "+defines": [
-                "USE_COLOR_MASK"
-            ],
-            "+states": [
-                "Blending"
-            ]
+            depthFunc: "LessEqual"
         },
 
         // Fox changes
@@ -37,15 +29,15 @@ export const NewEntityMaterials = createRPEntityMaterial({
         {
             idMaterial: "mask_fox",
             idMaterialReference: "entity_alphatest",
-            depthFunc: "Equal",
-            blendSrc: "SourceAlpha",
-            blendDst: "OneMinusSrcAlpha",
             "+defines": [
                 "USE_COLOR_MASK"
             ],
             "+states": [
                 "Blending"
-            ]
+            ],
+            depthFunc: "Equal",
+            blendSrc: "SourceAlpha",
+            blendDst: "OneMinusSrcAlpha"
         },
 
         // Player Ghost
