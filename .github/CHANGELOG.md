@@ -4,6 +4,14 @@ Todos los cambios importantes de este proyecto se documentarán en este archivo.
 
 El formato se basa en [Cómo llevar un registro de cambios](https://keepachangelog.com/en/1.0.0/), y este proyecto sigue las normas de [Versión semántica](https://semver.org/spec/v2.0.0.html).
 
+## [0.0.13-beta - #3 Cambio] - 2026-11-12
+
+### Lista de Cambios
+
+- El daño de temperatura ahora es mas visual usando los tipos de daños en concreto. Si intentas evitar el daño de fuego, te aplicara igualmente el daño.
+- Las cabras ahora hacen mucho empuje al atacar.
+- Ahora los Aldeanos tienen variantes de colores. ¿Porque? Si.
+
 ## [0.0.13-beta - #3 Cambio] - 2026-11-09
 
 ### Lista de Cambios
