@@ -1,6 +1,14 @@
 import { BPEntityComponents, BPEntityTemplates, EntityFilters } from "simplified-mojang-jsons";
 
 export const VillagerChanges = BPEntityTemplates.VillagerV2Template({
+    properties: {
+        "ha:skin_variant": {
+            type: "int",
+            clientSync: true,
+            default: 0,
+            range: [0, 4]
+        }
+    },
     components: {
         "minecraft:damage_sensor": new BPEntityComponents.SetDamageSensor({
             triggers: [
@@ -161,6 +169,103 @@ export const VillagerChanges = BPEntityTemplates.VillagerV2Template({
             })
         ],
         events: {
+            "minecraft:entity_spawned": {
+                sequence: [
+                    {
+                        trigger: "ha:set_random_skin_color"
+                    }
+                ]
+            },
+            "minecraft:entity_born": {
+                sequence: [
+                    {
+                        trigger: "ha:set_random_skin_color"
+                    }
+                ]
+            },
+            "minecraft:spawn_from_village": {
+                sequence: [
+                    {
+                        trigger: "ha:set_random_skin_color"
+                    }
+                ]
+            },
+            "minecraft:entity_transformed": {
+                sequence: [
+                    {
+                        trigger: "ha:set_random_skin_color"
+                    }
+                ]
+            },
+
+            "minecraft:spawn_armorer": {
+                sequence: [
+                    {
+                        trigger: "ha:set_random_skin_color"
+                    }
+                ]
+            },
+            "minecraft:spawn_butcher": {
+                sequence: [
+                    {
+                        trigger: "ha:set_random_skin_color"
+                    }
+                ]
+            },
+            "minecraft:spawn_cleric": {
+                sequence: [
+                    {
+                        trigger: "ha:set_random_skin_color"
+                    }
+                ]
+            },
+            "minecraft:spawn_farmer": {
+                sequence: [
+                    {
+                        trigger: "ha:set_random_skin_color"
+                    }
+                ]
+            },
+            "minecraft:spawn_librarian": {
+                sequence: [
+                    {
+                        trigger: "ha:set_random_skin_color"
+                    }
+                ]
+            },
+
+            "ha:set_random_skin_color": {
+                randomize: [
+                    {
+                        weight: 65,
+                    },
+                    {
+                        weight: 9,
+                        setProperty: {
+                            "ha:skin_variant": 1
+                        }
+                    },
+                    {
+                        weight: 9,
+                        setProperty: {
+                            "ha:skin_variant": 2
+                        }
+                    },
+                    {
+                        weight: 9,
+                        setProperty: {
+                            "ha:skin_variant": 3
+                        }
+                    },
+                    {
+                        weight: 8,
+                        setProperty: {
+                            "ha:skin_variant": 4
+                        }
+                    }
+                ]
+            },
+
             "ha:become_angry": {
                 add: {
                     componentGroups: [
