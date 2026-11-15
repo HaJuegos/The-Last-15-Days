@@ -30,6 +30,11 @@ class EntityEventsManager {
             items: {
                 [vanilla.MinecraftItemTypes.GoldenApple]: 10
             }
+        },
+        3: {
+            items: {
+                ['ha:iron_apple']: 2
+            }
         }
     };
 

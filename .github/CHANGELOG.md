@@ -4,6 +4,12 @@ Todos los cambios importantes de este proyecto se documentarán en este archivo.
 
 El formato se basa en [Cómo llevar un registro de cambios](https://keepachangelog.com/en/1.0.0/), y este proyecto sigue las normas de [Versión semántica](https://semver.org/spec/v2.0.0.html).
 
+## [0.0.13-beta - #5 Cambio] - 2026-11-15
+
+### Lista de Cambios
+
+- Migración de lógica del Día 3 a la API nueva.
+
 ## [0.0.13-beta - #4 Cambio] - 2026-11-14
 
 ### Lista de Cambios
