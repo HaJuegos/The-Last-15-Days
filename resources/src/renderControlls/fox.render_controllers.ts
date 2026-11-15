@@ -1,17 +1,26 @@
-import { RPRenderControllerTemplates } from "simplified-mojang-jsons";
+import { MoLang, RPRenderControllerTemplates } from "simplified-mojang-jsons";
 
 export const FoxRenderController = RPRenderControllerTemplates.FoxV2({
     add: [
         {
             idRender: "mask_fox",
-            geometry: "Geometry.default",
+            arrays: {
+                textures: {
+                    "Array.masks": [
+                        "Texture.mask",
+                        "Texture.baby_mask",
+                        "Texture.baby_mask_sleep",
+                    ]
+                }
+            },
+            geometry: `${MoLang.isBaby()} ? Geometry.baby : Geometry.default`,
             materials: [
                 {
                     "*": "Material.mask"
                 }
             ],
             textures: [
-                "Texture.mask"
+                `${MoLang.isBaby()} ? (${MoLang.isSleeping()} ? Array.masks[2] : Array.masks[1]) : Array.masks[0]`
             ],
             filterLighting: true
         }

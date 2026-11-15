@@ -1,0 +1,7 @@
+{
+	"format_version": "1.16.100",
+	"minecraft:texture_set": {
+		"color": "banana",
+		"metalness_emissive_roughness": "banana_mer"
+	}
+}

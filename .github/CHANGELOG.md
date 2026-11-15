@@ -4,6 +4,18 @@ Todos los cambios importantes de este proyecto se documentarán en este archivo.
 
 El formato se basa en [Cómo llevar un registro de cambios](https://keepachangelog.com/en/1.0.0/), y este proyecto sigue las normas de [Versión semántica](https://semver.org/spec/v2.0.0.html).
 
+## [0.0.13-beta - #4 Cambio] - 2026-11-14
+
+### Lista de Cambios
+
+- Ajustes de colores a las entidades del Día 0 y globales respecto al RTX.
+- Se simplifica la lógica de los diálogos de RoyerBot NPC a un simple comando de ScriptEvent.
+- Ahora las abejas spawnean en todos lados independientemente del bioma en el Día 2 y ya despawnean correctamente.
+- Ahora los Zorros con datos viejos anteriores del Día 2 los actualizan correctamente.
+- Ahora los Zorros Bebe tienen la textura de ladrón correctamente.
+- Ahora las texturas de los zorros ladrones están adaptadas al RTX.
+- Migración de lógica de Día 2 a la API nueva.
+
 ## [0.0.13-beta - #3 Cambio] - 2026-11-12
 
 ### Lista de Cambios

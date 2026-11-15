@@ -1,0 +1,7 @@
+{
+	"format_version": "1.16.100",
+	"minecraft:texture_set": {
+		"color": "surprise_bundle",
+		"metalness_emissive_roughness": "surprise_bundle_mer"
+	}
+}

@@ -10,6 +10,30 @@ import { afterEventsSimplified, beforeEventsSimplified, worldToolsSimplified } f
  */
 class EntityEventsManager {
     /**
+     * Lista de items que da RoyerBot a lo largo de los dias del add-on.
+     * @type {Record<number, { items: Record<string | vanilla.MinecraftItemTypes, number>; }>}
+     * @readonly
+     * @private
+     */
+    private readonly RoyerNPCRecos: Record<number, { items: Record<string | vanilla.MinecraftItemTypes, number>; }> = {
+        0: {
+            items: {
+                [vanilla.MinecraftItemTypes.EnchantedGoldenApple]: 1
+            }
+        },
+        1: {
+            items: {
+                [vanilla.MinecraftItemTypes.Cookie]: 10
+            }
+        },
+        2: {
+            items: {
+                [vanilla.MinecraftItemTypes.GoldenApple]: 10
+            }
+        }
+    };
+
+    /**
      * Eventos principales de la clase cuando es llamada o inicializada.
      * @constructor
      */
@@ -17,6 +41,7 @@ class EntityEventsManager {
         this.bellRaidGlowing();
         this.staticEvents();
         this.inmunePlyGhost();
+        this.royerBotEvents();
     }
 
     /**
@@ -108,6 +133,48 @@ class EntityEventsManager {
     }
 
     /**
+     * Metodo auxiliar que ejecuta los eventos relacionados al NPC de RoyerBot.
+     * @returns {void}
+     * @author HaJuegos - 14-11-2026
+     * @private
+     */
+    private royerBotEvents(): void {
+        worldToolsSimplified.listenerScriptEvents((args) => {
+            const { id, initiator: initPly, sourceEntity: npcEntity, message: msg } = args;
+
+            if (id == 'ha:royernpc_dialog' && npcEntity && (initPly instanceof mc.Player)) {
+                const dayI = parseInt(msg, 10);
+                const data = this.RoyerNPCRecos[dayI];
+
+                if (!data) return;
+
+                const keyProp = `ha:royerbot_claimed_${dayI}`;
+                const alreadyClaimed = initPly.getDynamicProperty(keyProp) as boolean ?? false;
+
+                if (alreadyClaimed) {
+                    npcEntity.runCommand(`dialogue open @s "${initPly.name}" "royerbot_dialogue.dia0.btn1.dialogue.alr"`);
+                } else {
+                    initPly.setDynamicProperty(keyProp, true);
+
+                    const inv = initPly.getComponent(mc.EntityComponentTypes.Inventory)?.container as mc.Container;
+
+                    if (inv) {
+                        for (const [item, val] of Object.entries(data.items)) {
+                            inv.addItem(new mc.ItemStack(item, val));
+                        }
+                    }
+
+                    const totalDialogs = initPly.getDynamicProperty('ha:total_dialogs_royerbot') as number ?? 0;
+
+                    initPly.setDynamicProperty('ha:total_dialogs_royerbot', totalDialogs + 1);
+
+                    npcEntity.runCommand(`dialogue open @s "${initPly.name}" "royerbot_dialogue.dia0.btn1.dialogue"`);
+                }
+            }
+        });
+    }
+
+    /**
      * Metodo principal que controla los eventos estaticos que pasen en los add-ons en general.
      * @returns {void}
      * @author HaJuegos - 26-07-2026
@@ -115,7 +182,7 @@ class EntityEventsManager {
      */
     private staticEvents(): void {
         worldToolsSimplified.listenerScriptEvents((args) => {
-            const entity = args.sourceEntity as mc.Entity;
+            const entity = args.sourceEntity;
 
             if (!entity) return;
             if (!entity.isValid) return;
