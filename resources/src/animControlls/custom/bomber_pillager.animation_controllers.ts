@@ -42,7 +42,7 @@ export const BomberPillagerControllers = createRPAnimController({
             states: {
                 default: {
                     transitions: [
-                        { suicide: `${MoLang.isChested()}` }
+                        { suicide: `${MoLang.property('ha:in_melee_mode')}` }
                     ]
                 },
                 suicide: {

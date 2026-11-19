@@ -4,6 +4,15 @@ Todos los cambios importantes de este proyecto se documentarán en este archivo.
 
 El formato se basa en [Cómo llevar un registro de cambios](https://keepachangelog.com/en/1.0.0/), y este proyecto sigue las normas de [Versión semántica](https://semver.org/spec/v2.0.0.html).
 
+## [0.0.13-beta - #6 Cambio] - 2026-11-18
+
+### Lista de Cambios
+
+- Ajustes de colores a las entidades e ítems globales respecto al RTX.
+- Migración de lógica del Día 4 a la API nueva.
+- Se añade el Ilusionista en el Día 4.
+- Se cambian los cambios de dificultad.
+
 ## [0.0.13-beta - #5 Cambio] - 2026-11-15
 
 ### Lista de Cambios

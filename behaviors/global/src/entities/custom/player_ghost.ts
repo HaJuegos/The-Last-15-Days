@@ -5,7 +5,7 @@ export const PlayerGhostEntity = createBPEntity({
     description: {
         spawnCategory: SpawnCategoryEntities.Creature,
         isExperimental: false,
-        isSpawneable: true,
+        isSpawneable: false,
         isSummonable: true
     },
     componentsGroups: {

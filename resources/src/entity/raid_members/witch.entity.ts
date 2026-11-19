@@ -11,6 +11,9 @@ export const WitchClientEntity = RPClientEntityTemplates.WitchEntity({
         materials: {
             glowing: "raid_glow"
         },
+        textures: {
+            glowing: "textures/entity/glowing/witch/glowing_witch"
+        },
         geometry: {
             glowing: "geometry.villager.witch.v1.8.glow"
         },

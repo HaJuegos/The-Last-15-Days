@@ -12,7 +12,8 @@ export const BomberPillagerClientEntity = createRPEntityClient({
             glowing: "raid_glow"
         },
         textures: {
-            default: "textures/entity/pillager_bomber"
+            default: "textures/entity/pillager_bomber",
+            glowing: "textures/entity/glowing/bomber/glow_pillager_bomber"
         },
         scripts: {
             preAnimation: [
@@ -20,7 +21,7 @@ export const BomberPillagerClientEntity = createRPEntityClient({
             ],
             animate: [
                 {
-                    pillager_root_controller: `!${MoLang.isChested()}`
+                    pillager_root_controller: `!${MoLang.property('ha:in_melee_mode')}`
                 },
                 "controller_particles",
                 "controller_shooter",
@@ -60,10 +61,10 @@ export const BomberPillagerClientEntity = createRPEntityClient({
             "riding.body": "animation.humanoid.riding.body"
         },
         renderControllers: [
+            "controller.render.bomber_pillager",
             {
                 "controller.render.entity_glowing": `${MoLang.property('ha:is_glow')}`
-            },
-            "controller.render.bomber_pillager"
+            }
         ],
         spawnEgg: {
             "texture": "spawn_egg_pillager"

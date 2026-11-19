@@ -10,6 +10,9 @@ export const VindicatorClientEntity = RPClientEntityTemplates.VindicatorEntity({
         materials: {
             glowing: "raid_glow"
         },
+        textures: {
+            glowing: "textures/entity/glowing/vindicator/glow_vindicator"
+        },
         geometry: {
             glowing: "geometry.vindicator.v1.8.glow"
         },

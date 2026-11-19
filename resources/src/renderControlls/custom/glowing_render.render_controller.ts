@@ -1,4 +1,4 @@
-import {createRPRenderController, MoLang} from "simplified-mojang-jsons";
+import { createRPRenderController, MoLang } from "simplified-mojang-jsons";
 
 export const GlowingRenderController = createRPRenderController({
     renderControllers: [
@@ -9,7 +9,36 @@ export const GlowingRenderController = createRPRenderController({
                 { "*": "Material.glowing" }
             ],
             textures: [
-                "Texture.default"
+                "Texture.glowing"
+            ],
+            ignoreLighting: true,
+            onFireColor: {
+                r: "1.0",
+                g: "1.0",
+                b: "0.75",
+                a: `0.55 + 0.55 * Math.pow(1.0 - Math.mod(${MoLang.lifeTime()}, 3) / 3, 0.5)`
+            },
+            isHurtColor: {
+                r: "1.0",
+                g: "1.0",
+                b: "0.75",
+                a: `0.55 + 0.55 * Math.pow(1.0 - Math.mod(${MoLang.lifeTime()}, 3) / 3, 0.5)`
+            },
+            overlayColor: {
+                r: "1.0",
+                g: "1.0",
+                b: "0.75",
+                a: `0.55 + 0.55 * Math.pow(1.0 - Math.mod(${MoLang.lifeTime()}, 3) / 3, 0.5)`
+            }
+        },
+        {
+            idRender: "entity_glowing.vex",
+            geometry: "Geometry.glowing",
+            materials: [
+                { "*": "Material.glowing" }
+            ],
+            textures: [
+                `${MoLang.isCharging()} ? Texture.glowing_charged : Texture.glowing`
             ],
             ignoreLighting: true,
             onFireColor: {

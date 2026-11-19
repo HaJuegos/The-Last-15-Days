@@ -35,6 +35,12 @@ class EntityEventsManager {
             items: {
                 ['ha:iron_apple']: 2
             }
+        },
+        4: {
+            items: {
+                ['ha:dynamite_item']: 5,
+                [vanilla.MinecraftItemTypes.EmeraldBlock]: 10,
+            }
         }
     };
 

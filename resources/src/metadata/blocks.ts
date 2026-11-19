@@ -16,16 +16,16 @@ export const BlockDefs = new MetadataGeneratorManager([
         terrainTextures: {
             "dynamite_off": {
                 textures: [
-                    "textures/entity/dynamite_off"
+                    "textures/entity/dynamite/off"
                 ]
             },
             "dynamite_on": {
                 textures: [
-                    "textures/entity/dynamite"
+                    "textures/entity/dynamite/on"
                 ]
             }
         },
-        textures: {}
+        textures: "dynamite_off"
     },
     {
         idData: "ha:toxic_puddle",

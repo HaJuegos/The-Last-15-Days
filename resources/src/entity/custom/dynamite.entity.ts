@@ -10,7 +10,7 @@ export const DynamiteClientEntity = createRPEntityClient({
             default: "entity_alphatest"
         },
         textures: {
-            default: "textures/entity/dynamite"
+            default: "textures/entity/dynamite/on"
         },
         animations: {
             fly: "animation.dynamite.fly",

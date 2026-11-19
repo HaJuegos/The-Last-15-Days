@@ -5,7 +5,7 @@ export const NewEntityMaterials = createRPEntityMaterial({
         // Raid glow
         {
             idMaterial: "raid_glow",
-            idMaterialReference: "entity_alphatest",
+            idMaterialReference: "entity_emissive_alpha",
             "+defines": [
                 "USE_COLOR_MASK"
             ],

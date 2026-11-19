@@ -336,6 +336,41 @@ export const EntityDefs = new MetadataGeneratorManager([
             }
         }
     },
+    {
+        idData: "ha:illusioner",
+        typeData: "entity",
+        texts: {
+            spanish: {
+                "entity.ha:illusioner.name": "Ilusionista",
+                "item.spawn_egg.entity.ha:illusioner.name": "Generador del Ilusionista"
+            },
+            english: {
+                "entity.ha:illusioner.name": "Illusioner",
+                "item.spawn_egg.entity.ha:illusioner.name": "Illusioner Spawn Egg"
+            }
+        },
+        entitySounds: {
+            entities: {
+                events: {
+                    ambient: "mob.illusioner.idle",
+                    "ambient.in.raid": {
+                        "pitch": [0.80, 1.20],
+                        "sound": "mob.illusioner.idle",
+                        "volume": 3.0
+                    },
+                    celebrate: "mob.evocation_illager.celebrate",
+                    death: "mob.illusioner.death",
+                    hurt: "mob.illusioner.hurt",
+                    "cast.spell": "mob.illusioner.cast.complete",
+                    "prepare.wololo": "mob.illusioner.tp.mirror", // despues de cambiar pos
+                    "prepare.attack": "mob.illusioner.cast.blind", // para poner blindness
+                    "prepare.summon": "mob.illusioner.cast.mirror", // para cuando cambiar pos
+                },
+                pitch: [0.80, 1.20],
+                volume: 1.0
+            }
+        }
+    },
 
     // Non-entities
     {

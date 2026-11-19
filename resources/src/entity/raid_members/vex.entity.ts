@@ -11,6 +11,10 @@ export const VexClientEntity = RPClientEntityTemplates.VexEntity({
         materials: {
             glowing: "raid_glow"
         },
+        textures: {
+            glowing: "textures/entity/glowing/vex/glow_vex",
+            glowing_charged: "textures/entity/vex/ravager/glow_vex_charging"
+        },
         geometry: {
             glowing: "geometry.vex.v1.8.glow"
         },
@@ -24,7 +28,7 @@ export const VexClientEntity = RPClientEntityTemplates.VexEntity({
         },
         renderControllers: [
             {
-                "controller.render.entity_glowing": `${MoLang.property('ha:is_glow')}`
+                "controller.render.entity_glowing.vex": `${MoLang.property('ha:is_glow')}`
             }
         ]
     }

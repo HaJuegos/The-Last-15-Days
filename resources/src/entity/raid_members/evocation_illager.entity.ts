@@ -10,6 +10,9 @@ export const EvocationIllagerClientEntity = RPClientEntityTemplates.EvocationIll
         materials: {
             glowing: "raid_glow"
         },
+        textures: {
+            glowing: "textures/entity/glowing/evoker/glow_evoker"
+        },
         geometry: {
             glowing: "geometry.evoker.v1.8.glow"
         },
@@ -27,6 +30,7 @@ export const EvocationIllagerClientEntity = RPClientEntityTemplates.EvocationIll
             {
                 "controller.render.entity_glowing": `${MoLang.property('ha:is_glow')}`
             }
-        ]
+        ],
+        enableAttachables: true
     }
 });

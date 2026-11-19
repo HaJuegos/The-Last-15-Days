@@ -1221,7 +1221,7 @@ export const SoundsDefs = new MetadataGeneratorManager([
         ]
     },
     {
-        idData: "mob.garfield.pre-dialog.dialogfinal",
+        idData: "mob.garfield.pre-dialog.dialog6",
         typeData: "sound",
         "__use_legacy_max_distance": "true",
         category: "hostile",
@@ -1241,6 +1241,253 @@ export const SoundsDefs = new MetadataGeneratorManager([
                 is3D: true,
                 stream: false,
                 name: "sounds/mob/garfield/pre_dialogs/dialogue_final",
+                volume: 1,
+                pitch: 1
+            }
+        ]
+    },
+
+    {
+        idData: "mob.illusioner.idle",
+        typeData: "sound",
+        __use_legacy_max_distance: "true",
+        category: "hostile",
+        minDistance: null,
+        maxDistance: null,
+        subtitle: {
+            spanish: {
+                "ui.subtitle_custom.illusioner.idle": "Murmullos del ilusionista"
+            },
+            english: {
+                "ui.subtitle_custom.illusioner.idle": "Illusioner murmurs"
+            }
+        },
+        sounds: [
+            {
+                loadOnLowMemory: true,
+                is3D: true,
+                stream: false,
+                name: "sounds/mob/illusioner/idle1",
+                volume: 1,
+                pitch: 1
+            },
+            {
+                loadOnLowMemory: true,
+                is3D: true,
+                stream: false,
+                name: "sounds/mob/illusioner/idle2",
+                volume: 1,
+                pitch: 1
+            },
+            {
+                loadOnLowMemory: true,
+                is3D: true,
+                stream: false,
+                name: "sounds/mob/illusioner/idle3",
+                volume: 1,
+                pitch: 1
+            },
+            {
+                loadOnLowMemory: true,
+                is3D: true,
+                stream: false,
+                name: "sounds/mob/illusioner/idle4",
+                volume: 1,
+                pitch: 1
+            }
+        ]
+    },
+    {
+        idData: "mob.illusioner.hurt",
+        typeData: "sound",
+        __use_legacy_max_distance: "true",
+        category: "hostile",
+        minDistance: null,
+        maxDistance: null,
+        subtitle: {
+            spanish: {
+                "ui.subtitle_custom.illusioner.hurt": "Illusioner está herido"
+            },
+            english: {
+                "ui.subtitle_custom.illusioner.hurt": "Illusioner is hurt"
+            }
+        },
+        sounds: [
+            {
+                loadOnLowMemory: true,
+                is3D: true,
+                stream: false,
+                name: "sounds/mob/illusioner/hurt1",
+                volume: 1,
+                pitch: 1
+            },
+            {
+                loadOnLowMemory: true,
+                is3D: true,
+                stream: false,
+                name: "sounds/mob/illusioner/hurt2",
+                volume: 1,
+                pitch: 1
+            },
+            {
+                loadOnLowMemory: true,
+                is3D: true,
+                stream: false,
+                name: "sounds/mob/illusioner/hurt3",
+                volume: 1,
+                pitch: 1
+            }
+        ]
+    },
+    {
+        idData: "mob.illusioner.death",
+        typeData: "sound",
+        __use_legacy_max_distance: "true",
+        category: "hostile",
+        minDistance: null,
+        maxDistance: null,
+        subtitle: {
+            spanish: {
+                "ui.subtitle_custom.illusioner.death": "Muere el ilusionista"
+            },
+            english: {
+                "ui.subtitle_custom.illusioner.death": "Illusioner dies"
+            }
+        },
+        sounds: [
+            {
+                loadOnLowMemory: true,
+                is3D: true,
+                stream: false,
+                name: "sounds/mob/illusioner/death1",
+                volume: 1,
+                pitch: 1
+            },
+            {
+                loadOnLowMemory: true,
+                is3D: true,
+                stream: false,
+                name: "sounds/mob/illusioner/death2",
+                volume: 1,
+                pitch: 1
+            }
+        ]
+    },
+    {
+        idData: "mob.illusioner.cast.complete",
+        typeData: "sound",
+        __use_legacy_max_distance: "true",
+        category: "hostile",
+        minDistance: null,
+        maxDistance: null,
+        subtitle: {
+            spanish: {
+                "ui.subtitle_custom.illusioner.cast.complete": "El ilusionista lanza un hechizo"
+            },
+            english: {
+                "ui.subtitle_custom.illusioner.cast.complete": "Illusioner casts spell"
+            }
+        },
+        sounds: [
+            {
+                loadOnLowMemory: true,
+                is3D: true,
+                stream: false,
+                name: "sounds/mob/illusioner/cast1",
+                volume: 1,
+                pitch: 1
+            },
+            {
+                loadOnLowMemory: true,
+                is3D: true,
+                stream: false,
+                name: "sounds/mob/illusioner/cast2",
+                volume: 1,
+                pitch: 1
+            }
+        ]
+    },
+    {
+        idData: "mob.illusioner.tp.mirror",
+        typeData: "sound",
+        __use_legacy_max_distance: "true",
+        category: "hostile",
+        minDistance: null,
+        maxDistance: null,
+        subtitle: {
+            spanish: {
+                "ui.subtitle_custom.illusioner.tp.mirror": "El ilusionista se desplaza"
+            },
+            english: {
+                "ui.subtitle_custom.illusioner.tp.mirror": "Illusioner displaces"
+            }
+        },
+        sounds: [
+            {
+                loadOnLowMemory: true,
+                is3D: true,
+                stream: false,
+                name: "sounds/mob/illusioner/mirror_move1",
+                volume: 1,
+                pitch: 1
+            },
+            {
+                loadOnLowMemory: true,
+                is3D: true,
+                stream: false,
+                name: "sounds/mob/illusioner/mirror_move2",
+                volume: 1,
+                pitch: 1
+            }
+        ]
+    },
+    {
+        idData: "mob.illusioner.cast.blind",
+        typeData: "sound",
+        __use_legacy_max_distance: "true",
+        category: "hostile",
+        minDistance: null,
+        maxDistance: null,
+        subtitle: {
+            spanish: {
+                "ui.subtitle_custom.illusioner.cast.blind": "El ilusionista prepara la ceguera"
+            },
+            english: {
+                "ui.subtitle_custom.illusioner.cast.blind": "Illusioner prepares blindness"
+            }
+        },
+        sounds: [
+            {
+                loadOnLowMemory: true,
+                is3D: true,
+                stream: false,
+                name: "sounds/mob/illusioner/prepare_blind",
+                volume: 1,
+                pitch: 1
+            }
+        ]
+    },
+    {
+        idData: "mob.illusioner.cast.mirror",
+        typeData: "sound",
+        __use_legacy_max_distance: "true",
+        category: "hostile",
+        minDistance: null,
+        maxDistance: null,
+        subtitle: {
+            spanish: {
+                "ui.subtitle_custom.illusioner.cast.mirror": "El ilusionista prepara una imagen especular"
+            },
+            english: {
+                "ui.subtitle_custom.illusioner.cast.mirror": "Illusioner prepares mirror image"
+            }
+        },
+        sounds: [
+            {
+                loadOnLowMemory: true,
+                is3D: true,
+                stream: false,
+                name: "sounds/mob/illusioner/prepare_mirror",
                 volume: 1,
                 pitch: 1
             }

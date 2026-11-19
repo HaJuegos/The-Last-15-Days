@@ -33,7 +33,10 @@ export const GarfieldClientEntity = createRPEntityClient({
             baby_transform: "animation.garfield.baby_transform",
             lie_down: "animation.garfield.lie_down",
             baby_lie_down: "animation.cat.baby_lie_down",
-            baby_sit: "animation.cat.baby_sit"
+            baby_sit: "animation.cat.baby_sit",
+            baby_walk: "animation.cat.baby_walk",
+            baby_sprint: "animation.cat.baby_sprint",
+            baby_sneak: "animation.cat.baby_sneak"
         },
         renderControllers: [
             "controller.render.garfield"

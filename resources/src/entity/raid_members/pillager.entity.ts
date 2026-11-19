@@ -10,6 +10,9 @@ export const PillagerClientEntity = RPClientEntityTemplates.PillagerEntity({
         materials: {
             glowing: "raid_glow"
         },
+        textures: {
+            glowing: "textures/entity/glowing/pillager/glow_pillager"
+        },
         geometry: {
             glowing: "geometry.pillager.glow"
         },

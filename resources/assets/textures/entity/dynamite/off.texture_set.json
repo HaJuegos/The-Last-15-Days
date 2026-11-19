@@ -1,0 +1,8 @@
+{
+	"format_version": "1.16.100",
+	"minecraft:texture_set": {
+		"color": "off",
+		"metalness_emissive_roughness": "off_mer",
+		"normal": "off_normal"
+	}
+}

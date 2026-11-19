@@ -10,6 +10,9 @@ export const RavagerClientEntity = RPClientEntityTemplates.RavagerEntity({
         materials: {
             glowing: "raid_glow"
         },
+        textures: {
+            glowing: "textures/entity/glowing/ravager/glow_ravager"
+        },
         geometry: {
             glowing: "geometry.ravager.glow"
         },
